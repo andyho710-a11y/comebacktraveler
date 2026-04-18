@@ -1,0 +1,185 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+
+const AFFILIATE_LINK = 'https://onelink.one/s/PclP0';
+
+const offers = [
+  {
+    bank: '國泰世華 CUBE 信用卡',
+    title: '星野集團日本飯店 85 折',
+    badge: '15% OFF',
+    code: 'CUBEHO2685',
+    minSpend: null,
+    status: 'active',
+  },
+  {
+    bank: '國泰世華 CUBE 信用卡',
+    title: '日本旅遊商品 88 折',
+    badge: '12% OFF',
+    code: 'CUBEJP268804',
+    minSpend: null,
+    status: 'active',
+  },
+  {
+    bank: '玉山銀行公務人員國旅卡',
+    title: '全站商品滿 $3,000 享 94 折',
+    badge: '6% OFF',
+    code: 'ESUNDC26Q294',
+    minSpend: 'TWD 3,000',
+    status: 'active',
+  },
+  {
+    bank: '新光銀行 Visa 卡',
+    title: '海外商品 93 折',
+    badge: '7% OFF',
+    code: 'VSKB269304',
+    minSpend: null,
+    status: 'active',
+  },
+  {
+    bank: '中國信託 LINE Pay Visa 卡',
+    title: '台港澳飯店 12% LINE POINT 回饋',
+    badge: '12% 回饋',
+    code: 'CTBCLP26CH1',
+    minSpend: null,
+    status: 'active',
+  },
+  {
+    bank: '中華郵政 VISA 金融卡',
+    title: '高鐵國旅聯票滿 $1,000 折 $100',
+    badge: 'TWD 100 OFF',
+    code: 'POSTHS268504',
+    minSpend: 'TWD 1,000',
+    status: 'active',
+  },
+];
+---
+
+<BlogLayout
+  title="2026 Klook 優惠碼整理｜各大銀行刷卡折扣最高省 $1,000"
+  description="整理 2026 年最新 Klook 優惠碼，包含國泰世華、玉山、新光、中信等各大銀行刷卡折扣，海外商品最高折 $1,000，出發前一定要看！"
+  keywords="Klook優惠碼,Klook折扣,國泰世華Klook,玉山銀行Klook,新光銀行Klook,2026 Klook優惠"
+>
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center gap-2">
+      <span class="text-orange-500 text-xl">✈️</span>
+      <span class="font-bold text-gray-800">旅遊省錢情報</span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-orange-500 to-orange-600 text-white py-14 px-4 text-center">
+    <p class="text-orange-100 text-sm font-medium tracking-widest uppercase mb-3">2026 最新整理</p>
+    <h1 class="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
+      Klook 優惠碼大全<br />各大銀行刷卡最高省 $1,000
+    </h1>
+    <p class="text-orange-100 max-w-md mx-auto text-base mb-8">
+      透過指定連結進入 Klook，結帳輸入優惠碼即享折扣。優惠數量有限，先搶先贏！
+    </p>
+    <a
+      href={AFFILIATE_LINK}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block bg-white text-orange-600 font-bold px-10 py-3 rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all text-base"
+    >
+      立即領取優惠 →
+    </a>
+  </section>
+
+  <!-- How to use -->
+  <section class="max-w-3xl mx-auto px-4 py-10">
+    <h2 class="text-xl font-bold text-gray-900 mb-6 text-center">如何使用優惠碼？</h2>
+    <div class="grid grid-cols-3 gap-4 text-center text-sm">
+      {[
+        { step: '1', icon: '🔗', text: '點擊下方連結進入 Klook 官網' },
+        { step: '2', icon: '🛒', text: '選好行程或飯店加入購物車' },
+        { step: '3', icon: '🏷️', text: '結帳時輸入優惠碼享折扣' },
+      ].map(({ step, icon, text }) => (
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+          <div class="w-7 h-7 bg-orange-500 text-white rounded-full flex items-center justify-center text-xs font-bold mx-auto mb-3">{step}</div>
+          <div class="text-2xl mb-2">{icon}</div>
+          <p class="text-gray-600 leading-snug">{text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Offers -->
+  <section class="max-w-3xl mx-auto px-4 pb-10">
+    <h2 class="text-xl font-bold text-gray-900 mb-6">
+      🎫 可用優惠碼一覽
+      <span class="text-sm font-normal text-gray-400 ml-2">更新日期：2026/04</span>
+    </h2>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {offers.map((offer) => (
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <p class="text-xs text-gray-400 mb-1">{offer.bank}</p>
+              <p class="font-semibold text-gray-800 leading-snug">{offer.title}</p>
+            </div>
+            <span class="shrink-0 bg-orange-50 text-orange-600 font-bold text-xs px-3 py-1 rounded-full border border-orange-200">
+              {offer.badge}
+            </span>
+          </div>
+
+          <div class="flex items-center justify-between pt-2 border-t border-gray-50">
+            <div>
+              <p class="text-xs text-gray-400 mb-1">優惠碼</p>
+              <code class="bg-gray-100 text-gray-700 text-sm font-mono px-3 py-1 rounded-lg tracking-wide">
+                {offer.code}
+              </code>
+            </div>
+            {offer.minSpend && (
+              <p class="text-xs text-gray-400">低消 {offer.minSpend}</p>
+            )}
+          </div>
+
+          <a
+            href={AFFILIATE_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block text-center bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold py-2 rounded-xl transition-colors"
+          >
+            前往 Klook 使用 →
+          </a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Notice -->
+  <section class="max-w-3xl mx-auto px-4 pb-10">
+    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-sm text-amber-800">
+      <p class="font-semibold mb-2">⚠️ 注意事項</p>
+      <ul class="space-y-1 list-disc list-inside text-amber-700">
+        <li>優惠數量有限，依結帳順序為準</li>
+        <li>領取成功不代表保留名額，仍需完成結帳</li>
+        <li>各優惠碼適用商品及低消門檻不同，請詳閱各活動說明</li>
+        <li>優惠期限以 Klook 官方公告為準</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bg-gradient-to-br from-orange-500 to-orange-600 py-14 px-4 text-center text-white">
+    <h2 class="text-2xl font-bold mb-3">還在等什麼？</h2>
+    <p class="text-orange-100 mb-8 max-w-sm mx-auto">優惠數量有限，現在就進入 Klook 搶先領券，出遊省更多！</p>
+    <a
+      href={AFFILIATE_LINK}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block bg-white text-orange-600 font-bold px-12 py-3 rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all"
+    >
+      立即前往 Klook 領券
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 text-center text-xs text-gray-400 bg-white border-t border-gray-100">
+    <p>本頁含有聯盟行銷連結，透過連結購買不影響你的優惠，感謝支持 🙏</p>
+    <p class="mt-1">© {new Date().getFullYear()} 旅遊省錢情報</p>
+  </footer>
+</BlogLayout>

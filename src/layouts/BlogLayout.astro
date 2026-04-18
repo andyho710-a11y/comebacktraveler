@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  ogImage?: string;
+}
+
+const { title, description, keywords, ogImage } = Astro.props;
+const siteBase = Astro.site ?? new URL('https://cerulean-pie-07bb29.netlify.app');
+const canonicalURL = new URL(Astro.url.pathname, siteBase);
+const ogImageURL = ogImage
+  ? ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteBase).toString()
+  : undefined;
+---
+
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="zh_TW" />
+    {ogImageURL && <meta property="og:image" content={ogImageURL} />}
+    {ogImageURL && <meta property="og:image:width" content="1200" />}
+    {ogImageURL && <meta property="og:image:height" content="630" />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
+    <slot name="head" />
+  </head>
+  <body class="bg-slate-50 text-gray-800 antialiased">
+    <slot />
+    <script>var ConverlyCustomData = {channelId: null};</script>
+    <script async defer src="https://cdn.affiliates.one/production/adlinks/dc1934b1851fb555c85ddccc0e836789cb9598a699c122a43316fc4893529cb8.js"></script>
+  </body>
+</html>

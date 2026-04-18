@@ -1,0 +1,782 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+
+const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
+
+const brands = [
+  {
+    name: 'JOYTEL',
+    badges: [{ label: '台灣品牌', cls: 'badge-tw' }, { label: '首推', cls: 'badge-rec' }],
+    coverage: '日、韓、東南亞、歐洲、美加',
+    price: 'NT$299–799',
+    priceNote: '原生/漫遊皆有',
+    line: '原生線路',
+    lineNote: 'Docomo/SoftBank/KDDI',
+    hotspot: true,
+    support: true,
+    supportNote: 'LINE 全年無休',
+    forWho: '台灣旅客、注重速度與客服',
+    featured: true,
+    tags: 'japan korea sea europe',
+  },
+  {
+    name: 'DJB',
+    badges: [{ label: '聲量 No.1', cls: 'badge-rec' }],
+    coverage: '全球 90+ 國',
+    price: 'NT$450–650',
+    priceNote: '暢日卡PLUS',
+    line: '漫遊',
+    lineNote: '多國電信合作',
+    hotspot: true,
+    support: true,
+    supportNote: 'LINE 24hr',
+    forWho: '重度上網、商務人士',
+    featured: false,
+    tags: 'japan korea sea europe',
+  },
+  {
+    name: 'Klook',
+    badges: [{ label: '平台型', cls: 'badge-platform' }],
+    coverage: '日、韓、東南亞、澳洲等',
+    price: 'NT$350–550',
+    priceNote: '吃到飽不降速',
+    line: '漫遊',
+    lineNote: '',
+    hotspot: true,
+    hotspotNote: '可分享',
+    support: false,
+    supportNote: '英文為主',
+    forWho: '已用 Klook 訂行程者',
+    featured: false,
+    tags: 'japan korea sea',
+  },
+  {
+    name: 'KKday',
+    badges: [{ label: '平台型', cls: 'badge-platform' }],
+    coverage: '日、韓、東南亞等',
+    price: 'NT$295–623',
+    priceNote: '含/不含門號',
+    line: '漫遊',
+    lineNote: '',
+    hotspot: true,
+    support: false,
+    supportNote: '英文為主',
+    forWho: '需要當地門號接簡訊者',
+    featured: false,
+    tags: 'japan korea',
+  },
+  {
+    name: 'WaySim 威訊',
+    badges: [{ label: 'CP值高', cls: 'badge-cp' }],
+    coverage: '日本、韓國等',
+    price: 'NT$289–549',
+    priceNote: 'SK/Softbank 原生',
+    line: '原生線路',
+    lineNote: '5G 支援',
+    hotspot: true,
+    support: true,
+    supportNote: 'LINE 客服',
+    forWho: '日韓常客、預算有限者',
+    featured: false,
+    tags: 'japan korea',
+  },
+  {
+    name: 'Airalo',
+    badges: [{ label: '國際品牌', cls: 'badge-intl' }],
+    coverage: '全球 190+ 國',
+    price: 'NT$280–500',
+    priceNote: '依方案不同',
+    line: '漫遊',
+    lineNote: '',
+    hotspot: false,
+    hotspotNote: '部分方案不支援',
+    support: false,
+    supportNote: '英文介面',
+    forWho: '多國旅行、英文使用者',
+    featured: false,
+    tags: 'europe',
+  },
+];
+---
+
+<BlogLayout
+  title="出國 eSIM 怎麼選？住越南 10 年的台灣人幫你整理好了 | 重來的旅人"
+  description="整理 6 家 eSIM 品牌完整比較表，以台灣旅客常去的日本、韓國、東南亞為主，5 分鐘做決定，不用再 Google 到天亮。"
+  keywords="eSIM推薦,出國上網,JOYTEL,日本eSIM,韓國eSIM,東南亞eSIM,eSIM比較,台灣eSIM"
+  ogImage="/esim-cover.jpg"
+>
+  <link
+    slot="head"
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  />
+  <link
+    slot="head"
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <div class="esim-root">
+    <!-- Site Header -->
+    <header class="site-header">
+      <div class="site-name">重來的<span>旅人</span></div>
+    </header>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="category-tag">出國上網 · eSIM 攻略</div>
+      <h1>出國 eSIM 怎麼選？<br />住了越南 10 年的台灣人<br />幫你整理好了</h1>
+      <p class="subtitle">
+        前幾個月回越南辦事，才發現自己又在機場角落蹲著換卡 😅<br />
+        住了 10 年的地方，還是搞得一頭霧水。<br />
+        JOYTEL？DJB？Klook？Airalo？<br />
+        每一家都說自己最好，但哪家適合你？<br /><br />
+        身為在越南生活超過 10 年、踩過無數坑的過來人，
+        我花了幾天把市場上最常見的 6 家整理成一張表——
+        希望讓你 5 分鐘做決定，不用再 Google 到天亮。
+      </p>
+      <div class="meta">
+        <div class="author-dot">旅</div>
+        <div class="meta-info">
+          <span class="meta-author">重來的旅人</span>
+          <span>2026 年 4 月 · 越南住了 10 年、現在重新出發的中年男人</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article -->
+    <article class="article">
+
+      <div class="story-box">
+        <strong>先說說我自己</strong>——我不是旅遊達人，也不是網紅。<br />
+        我是一個在越南工廠當副總、養蝦失敗、跑過 Uber、
+        後來重新出發的中年台灣男人。<br /><br />
+        正因為走過這些，我更知道：出門在外，手機沒網路，
+        比什麼都讓人慌。這篇文章沒有業配口吻，
+        只有一個過來人想告訴你的真心話。
+      </div>
+
+      <h2>eSIM 是什麼？為什麼要用？</h2>
+      <p>
+        以前出國，一落地要拿出針來戳 SIM 卡槽、換卡、還要擔心台灣的號碼收不到訊息。
+        當年我剛到越南，語言不通又被宰客，連怎麼上網都搞不清楚，走了很多冤枉路。
+      </p>
+      <p>
+        現在有 eSIM，<strong>出發前在手機裡掃個 QR Code，落地直接開網路</strong>，
+        連換卡這個動作都省了。對於帶家人出遊、或是像我這種不想麻煩的人，
+        真的是差很多。
+      </p>
+
+      <div class="tip-box">
+        <div class="tip-title">eSIM 使用前提</div>
+        <p class="tip-body">
+          iPhone XS 以後、多數 2019 年後的 Android 旗艦都支援 eSIM。
+          使用前建議先到手機「設定 → 行動服務」確認是否有「新增行動方案」選項。
+        </p>
+      </div>
+
+      <h2>六家 eSIM 品牌完整比較</h2>
+      <p>
+        以下是我整理的主要品牌比較，以<strong>台灣旅客最常去的日本、韓國、東南亞</strong>為主要參考方向。
+        價格以「日本 5 天」為基準，僅供參考，實際以各家官網為準。
+      </p>
+
+      <!-- Table -->
+      <div class="table-section">
+        <div class="table-label">品牌比較表 · 2026 年整理</div>
+        <div class="filter-bar" role="group" aria-label="依地區篩選">
+          <button class="filter-btn active" data-tag="all">全部</button>
+          <button class="filter-btn" data-tag="japan">日本</button>
+          <button class="filter-btn" data-tag="korea">韓國</button>
+          <button class="filter-btn" data-tag="sea">東南亞</button>
+          <button class="filter-btn" data-tag="europe">歐洲</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>品牌</th>
+                <th>覆蓋地區</th>
+                <th>日本5天參考價</th>
+                <th>線路</th>
+                <th>熱點分享</th>
+                <th>中文客服</th>
+                <th>適合誰</th>
+              </tr>
+            </thead>
+            <tbody id="esim-tbody">
+              {brands.map((b) => (
+                <tr class={b.featured ? 'featured' : ''} data-tags={b.tags}>
+                  <td>
+                    <div class="brand-name">{b.name}</div>
+                    {b.badges.map((badge) => (
+                      <span class={`badge ${badge.cls}`}>{badge.label}</span>
+                    ))}
+                  </td>
+                  <td>{b.coverage}</td>
+                  <td>
+                    {b.price}
+                    {b.priceNote && <div class="cell-note">{b.priceNote}</div>}
+                  </td>
+                  <td>
+                    {b.line}
+                    {b.lineNote && <div class="cell-note">{b.lineNote}</div>}
+                  </td>
+                  <td>
+                    {b.hotspot
+                      ? <span class="check">✓</span>
+                      : <span class="cross">✗</span>}
+                    {b.hotspotNote && <div class="cell-note">{b.hotspotNote}</div>}
+                  </td>
+                  <td>
+                    {b.support
+                      ? <span class="check">✓</span>
+                      : <span class="cross">✗</span>}
+                    {b.supportNote && <div class="cell-note">{b.supportNote}</div>}
+                  </td>
+                  <td>{b.forWho}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">※ 價格為參考區間，以各官網最新方案為準。</p>
+      </div>
+
+      <h2>我的選擇：為什麼推薦 JOYTEL？</h2>
+      <p>
+        說實話，我選 JOYTEL 最主要的原因，不是因為它最便宜——
+        <strong>是因為它有 LINE 中文客服，全年無休</strong>。
+      </p>
+      <p>
+        當年我在越南處理工廠事務，最怕的就是遇到問題找不到人。
+        出國旅行也一樣：如果 eSIM 開不了、訊號有問題，
+        你需要的不是等 email 回覆，是馬上有人能用中文跟你講清楚怎麼做。
+      </p>
+      <p>
+        另外，JOYTEL 在日本提供<strong>真正的原生線路</strong>（Docomo / SoftBank / KDDI），
+        不是漫遊繞一圈，延遲低、速度穩，這對用 Google Maps 導航或視訊的人差異很明顯。
+      </p>
+
+      <div class="story-box">
+        「我不是在幫任何品牌說話。我只是一個帶著家人出門、
+        不想在機場角落慌亂換卡的普通台灣男人。
+        你如果跟我一樣，希望這張表有幫到你。」
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-box">
+        <p>想試試 JOYTEL？<br />下方連結可以直接查看日本、東南亞、韓國各方案</p>
+        <a class="cta-btn" href={JOYTEL_LINK} target="_blank" rel="noopener noreferrer">
+          前往 JOYTEL 查看方案 →
+        </a>
+        <p class="cta-label">※ 本文含聯盟行銷連結，點擊後購買我會獲得少量佣金，不影響你的價格</p>
+      </div>
+
+      <h2>挑選 eSIM 的三個重點</h2>
+
+      <h3>1. 原生線路 vs 漫遊線路</h3>
+      <p>
+        <strong>原生線路</strong>：eSIM 直接接入當地電信（如日本 Docomo），速度快、延遲低，
+        但方案選擇相對少。
+        <strong>漫遊線路</strong>：透過台灣電信商轉接，選擇多、有時更便宜，
+        但 PING 值較高（玩手遊可能有感）。一般旅遊兩者差異不大。
+      </p>
+
+      <h3>2. 吃到飽 vs 限量流量</h3>
+      <p>
+        一天滑手機、看地圖、傳 LINE，大約消耗 1–2 GB。
+        如果你會開熱點給家人用，或是會拍 Reels 邊上傳，建議選吃到飽，
+        省得旅途中一直看剩餘流量。
+      </p>
+
+      <h3>3. 購買時間</h3>
+      <p>
+        eSIM 大多下單後 5 分鐘到幾小時內寄出 QR Code，
+        建議<strong>出發前 1–3 天購買</strong>，在家 WiFi 環境下完成安裝，
+        落地後只需切換啟用，最省心。
+      </p>
+
+      <div class="tip-box">
+        <div class="tip-title">老實說</div>
+        <p class="tip-body">
+          如果你英文沒問題、又常跑多國，Airalo 或 Klook 也是合理選擇。
+          但如果你跟我一樣，希望遇到問題有中文人工客服能馬上聯絡，
+          就選有 LINE 客服的台灣品牌，心裡比較踏實。
+        </p>
+      </div>
+
+      <h2>最後</h2>
+      <p>
+        人生有些事，你只有走過了才能告訴別人怎麼走。
+        網路選擇、行前準備、旅途中的大小問題——這些細節，
+        決定了你出門是放鬆還是焦慮。
+      </p>
+      <p>
+        我花了前半生做了很多衝動的決定，現在希望能做一些真正有用的事。
+        如果這篇文章幫你省了 10 分鐘的 Google，就已經值了。
+      </p>
+      <p>有問題歡迎留言，我看到都會回。</p>
+
+      <!-- Comment Form -->
+      <div class="comment-section">
+        <h2>留言 / 問題</h2>
+        <form
+          name="esim-comments"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="comment-form"
+          id="comment-form"
+        >
+          <input type="hidden" name="form-name" value="esim-comments" />
+          <p class="hidden"><label>不要填這個：<input name="bot-field" /></label></p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-name">名字 <span class="required">*</span></label>
+              <input type="text" id="cf-name" name="name" placeholder="你的稱呼" required />
+            </div>
+            <div class="form-group">
+              <label for="cf-email">Email <span class="required">*</span></label>
+              <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cf-message">留言內容 <span class="required">*</span></label>
+            <textarea id="cf-message" name="message" rows="5" placeholder="想問什麼、或分享你的使用經驗..." required></textarea>
+          </div>
+
+          <div class="form-footer">
+            <p class="form-note">你的 email 只用於我回覆你，不會公開。</p>
+            <button type="submit" class="submit-btn">送出留言 →</button>
+          </div>
+        </form>
+
+        <div class="form-success" id="form-success" hidden>
+          <p>✓ 收到了！我會盡快回覆你。</p>
+        </div>
+      </div>
+
+    </article>
+
+    <footer class="site-footer">
+      <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br />
+      <span>自媒體行銷 · 越南生活 10 年 · 現在重新出發</span>
+    </footer>
+  </div>
+</BlogLayout>
+
+<script>
+  // Comment form AJAX submit
+  const form = document.getElementById('comment-form') as HTMLFormElement | null;
+  const successMsg = document.getElementById('form-success');
+  if (form && successMsg) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      await fetch('/', { method: 'POST', body: data });
+      form.hidden = true;
+      successMsg.hidden = false;
+    });
+  }
+
+  // Filter buttons
+  const btns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const rows = document.querySelectorAll<HTMLTableRowElement>('#esim-tbody tr');
+
+  btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.tag ?? 'all';
+      btns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      rows.forEach((row) => {
+        const tags = row.dataset.tags ?? '';
+        row.style.display = (tag === 'all' || tags.includes(tag)) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+<style>
+  .esim-root {
+    --ink: #1a1208;
+    --ink-light: #4a3f2f;
+    --paper: #faf8f3;
+    --paper-warm: #f2ede0;
+    --accent: #c0392b;
+    --gold: #b8860b;
+    --border: #d4c9b0;
+    --serif: 'Noto Serif TC', serif;
+    --sans: 'Noto Sans TC', sans-serif;
+
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.8;
+    font-size: 17px;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .site-header {
+    border-bottom: 2px solid var(--ink);
+    padding: 18px 0;
+    text-align: center;
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .site-name {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+  }
+  .site-name span { color: var(--accent); }
+
+  /* Hero */
+  .hero {
+    max-width: 740px;
+    margin: 60px auto 0;
+    padding: 0 24px;
+  }
+  .category-tag {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+  }
+  .subtitle {
+    font-size: 17px;
+    color: var(--ink-light);
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+    font-size: 13px;
+    color: var(--ink-light);
+  }
+  .author-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .meta-info { display: flex; flex-direction: column; gap: 2px; }
+  .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+  /* Article */
+  .article {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+  .article p { margin-bottom: 1.4em; color: var(--ink); }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 26px;
+    margin: 52px 0 16px;
+    color: var(--ink);
+    position: relative;
+    padding-left: 16px;
+  }
+  h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 4px;
+    height: 80%;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 19px;
+    margin: 32px 0 10px;
+    color: var(--ink);
+  }
+
+  /* Story box */
+  .story-box {
+    background: var(--paper-warm);
+    border-left: 4px solid var(--accent);
+    padding: 24px 28px;
+    margin: 40px 0;
+    border-radius: 0 6px 6px 0;
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--ink-light);
+    line-height: 1.9;
+  }
+  .story-box strong { color: var(--ink); font-weight: 600; }
+
+  /* Tip box */
+  .tip-box {
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 32px 0;
+    background: var(--paper);
+  }
+  .tip-title {
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-family: var(--sans);
+  }
+  .tip-body { margin: 0; font-size: 14px; color: var(--ink); }
+
+  /* Table */
+  .table-section { margin: 48px 0; }
+  .table-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .filter-btn {
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    color: var(--ink-light);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: var(--sans);
+  }
+  .filter-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    min-width: 620px;
+  }
+  thead tr { background: var(--ink); }
+  th {
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    color: var(--paper-warm);
+    white-space: nowrap;
+    font-family: var(--sans);
+  }
+  td {
+    padding: 13px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  tr.featured td { background: #fef9f0; }
+  tr:hover td { background: #f5f1e8; }
+  tr.featured:hover td { background: #fef3e0; }
+  .brand-name { font-weight: 500; font-family: var(--serif); font-size: 15px; }
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    margin-top: 4px;
+    font-family: var(--sans);
+  }
+  .badge-rec  { background: #fdebd0; color: #a04000; }
+  .badge-tw   { background: #d5e8d4; color: #27611b; }
+  .badge-platform { background: #e8d5f5; color: #5b2c8d; }
+  .badge-intl { background: #d6eaf8; color: #1a5276; }
+  .badge-cp   { background: #d5e8f5; color: #154360; }
+  .check { color: #27ae60; font-weight: 600; }
+  .cross { color: #c0392b; }
+  .cell-note { font-size: 11px; color: var(--ink-light); margin-top: 2px; }
+  .table-note { font-size: 12px; color: #888; margin-top: 10px; }
+
+  /* CTA */
+  .cta-box {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 32px 36px;
+    border-radius: 8px;
+    margin: 48px 0;
+    text-align: center;
+  }
+  .cta-box p { color: #f2ede0; margin-bottom: 20px; font-size: 16px; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 16px;
+    padding: 14px 36px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: #a93226; }
+  .cta-label { font-size: 11px; color: #888; margin-top: 10px; font-family: var(--sans); }
+
+  /* Footer */
+  .site-footer {
+    border-top: 2px solid var(--ink);
+    padding: 40px 24px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-light);
+  }
+  .site-footer strong { color: var(--ink); }
+  .site-footer span { margin-top: 8px; display: inline-block; }
+
+  /* Comment Form */
+  .comment-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+  .comment-form {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .hidden { display: none; }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-light);
+    letter-spacing: 0.04em;
+  }
+  .required { color: var(--accent); }
+  .form-group input,
+  .form-group textarea {
+    font-family: var(--sans);
+    font-size: 15px;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    background: var(--paper);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s;
+    resize: vertical;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: var(--ink);
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #b0a898;
+  }
+  .form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .form-note {
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+  }
+  .submit-btn {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 12px 32px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: background 0.15s;
+  }
+  .submit-btn:hover { background: #2c1f0f; }
+  .form-success {
+    margin-top: 20px;
+    padding: 18px 24px;
+    background: #d5e8d4;
+    border-radius: 4px;
+    color: #27611b;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .form-success p { margin: 0; color: #27611b; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 0 16px; }
+    .article { padding: 0 16px 60px; }
+    h1 { font-size: 28px; }
+    .story-box { padding: 18px 20px; }
+    .cta-box { padding: 24px 20px; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
