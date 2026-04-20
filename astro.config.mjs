@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://cerulean-pie-07bb29.netlify.app',
+  site: 'https://comebacktraveler.com',
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
