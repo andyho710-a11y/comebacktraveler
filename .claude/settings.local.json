@@ -6,7 +6,13 @@
       "Bash(netlify --version)",
       "Bash(npm install *)",
       "Bash(netlify login *)",
-      "Bash(netlify deploy *)"
+      "Bash(netlify deploy *)",
+      "Bash(wmux browser *)",
+      "Bash(start \"\" \"http://localhost:4321/esim\")",
+      "Bash(curl -sI \"https://afflink.one/s/zf2Z8\")",
+      "Bash(start \"\" \"https://afflink.one/s/zf2Z8\")",
+      "Bash(netlify status *)",
+      "Bash(start \"\" \"https://cerulean-pie-07bb29.netlify.app/esim\")"
     ]
   }
 }
