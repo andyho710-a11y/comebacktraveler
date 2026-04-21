@@ -4,182 +4,430 @@ import BlogLayout from '../layouts/BlogLayout.astro';
 const AFFILIATE_LINK = 'https://onelink.one/s/PclP0';
 
 const offers = [
+  { bank: '國泰世華 CUBE 信用卡', title: '星野集團日本飯店 85 折', badge: '15% OFF', code: 'CUBEHO2685' },
+  { bank: '國泰世華 CUBE 信用卡', title: '日本旅遊商品 88 折', badge: '12% OFF', code: 'CUBEJP268804' },
+  { bank: '玉山銀行公務人員國旅卡', title: '全站滿 $3,000 享 94 折', badge: '6% OFF', code: 'ESUNDC26Q294' },
+  { bank: '新光銀行 Visa 卡', title: '海外商品 93 折', badge: '7% OFF', code: 'VSKB269304' },
+  { bank: '中國信託 LINE Pay Visa', title: '台港澳飯店 12% 回饋', badge: '12% 回饋', code: 'CTBCLP26CH1' },
+  { bank: '中華郵政 VISA 金融卡', title: '高鐵國旅聯票滿 $1,000 折 $100', badge: '$100 OFF', code: 'POSTHS268504' },
+];
+
+const esimArticles = [
   {
-    bank: '國泰世華 CUBE 信用卡',
-    title: '星野集團日本飯店 85 折',
-    badge: '15% OFF',
-    code: 'CUBEHO2685',
-    minSpend: null,
-    status: 'active',
+    tag: 'eSIM 完整攻略',
+    title: '出國 eSIM 怎麼選？六家品牌完整比較',
+    desc: '把 JOYTEL、DJB、Klook、Airalo 等六家整理成一張表。5 分鐘做決定，不用再 Google 到天亮。',
+    href: '/esim',
+    label: '看比較表 →',
   },
   {
-    bank: '國泰世華 CUBE 信用卡',
-    title: '日本旅遊商品 88 折',
-    badge: '12% OFF',
-    code: 'CUBEJP268804',
-    minSpend: null,
-    status: 'active',
+    tag: '日本 eSIM 2026',
+    title: '日本 eSIM 推薦 2026｜只推這兩張',
+    desc: '原生線路 vs 漫遊線路差在哪？哪家有中文客服？踩過坑的過來人，幫你把選擇縮到最小。',
+    href: '/esim/japan',
+    label: '看日本推薦 →',
   },
   {
-    bank: '玉山銀行公務人員國旅卡',
-    title: '全站商品滿 $3,000 享 94 折',
-    badge: '6% OFF',
-    code: 'ESUNDC26Q294',
-    minSpend: 'TWD 3,000',
-    status: 'active',
-  },
-  {
-    bank: '新光銀行 Visa 卡',
-    title: '海外商品 93 折',
-    badge: '7% OFF',
-    code: 'VSKB269304',
-    minSpend: null,
-    status: 'active',
-  },
-  {
-    bank: '中國信託 LINE Pay Visa 卡',
-    title: '台港澳飯店 12% LINE POINT 回饋',
-    badge: '12% 回饋',
-    code: 'CTBCLP26CH1',
-    minSpend: null,
-    status: 'active',
-  },
-  {
-    bank: '中華郵政 VISA 金融卡',
-    title: '高鐵國旅聯票滿 $1,000 折 $100',
-    badge: 'TWD 100 OFF',
-    code: 'POSTHS268504',
-    minSpend: 'TWD 1,000',
-    status: 'active',
+    tag: '韓國 eSIM 2026',
+    title: '韓國 eSIM 推薦 2026｜只推這兩張',
+    desc: 'SKT 原生線路、Naver Map 導航都能跑，搭配中文 LINE 客服，首爾到濟州都不怕斷線。',
+    href: '/esim/korea',
+    label: '看韓國推薦 →',
   },
 ];
 ---
 
 <BlogLayout
-  title="2026 Klook 優惠碼整理｜各大銀行刷卡折扣最高省 $1,000"
-  description="整理 2026 年最新 Klook 優惠碼，包含國泰世華、玉山、新光、中信等各大銀行刷卡折扣，海外商品最高折 $1,000，出發前一定要看！"
-  keywords="Klook優惠碼,Klook折扣,國泰世華Klook,玉山銀行Klook,新光銀行Klook,2026 Klook優惠"
+  title="重來的旅人｜出國上網攻略、省錢情報"
+  description="一個在越南生活 10 年、跌過很多跤的台灣男人，把踩過的坑整理成攻略。eSIM 怎麼選、Klook 怎麼省，都在這裡。"
+  keywords="eSIM推薦,出國上網,日本eSIM,韓國eSIM,Klook優惠碼,重來的旅人"
 >
-  <!-- Header -->
-  <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm">
-    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center gap-2">
-      <span class="text-orange-500 text-xl">✈️</span>
-      <span class="font-bold text-gray-800">旅遊省錢情報</span>
-    </div>
-  </header>
+  <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
+  <link slot="head" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-orange-500 to-orange-600 text-white py-14 px-4 text-center">
-    <p class="text-orange-100 text-sm font-medium tracking-widest uppercase mb-3">2026 最新整理</p>
-    <h1 class="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
-      Klook 優惠碼大全<br />各大銀行刷卡最高省 $1,000
-    </h1>
-    <p class="text-orange-100 max-w-md mx-auto text-base mb-8">
-      透過指定連結進入 Klook，結帳輸入優惠碼即享折扣。優惠數量有限，先搶先贏！
-    </p>
-    <a
-      href={AFFILIATE_LINK}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-block bg-white text-orange-600 font-bold px-10 py-3 rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all text-base"
-    >
-      立即領取優惠 →
-    </a>
-  </section>
+  <div class="root">
 
-  <!-- How to use -->
-  <section class="max-w-3xl mx-auto px-4 py-10">
-    <h2 class="text-xl font-bold text-gray-900 mb-6 text-center">如何使用優惠碼？</h2>
-    <div class="grid grid-cols-3 gap-4 text-center text-sm">
-      {[
-        { step: '1', icon: '🔗', text: '點擊下方連結進入 Klook 官網' },
-        { step: '2', icon: '🛒', text: '選好行程或飯店加入購物車' },
-        { step: '3', icon: '🏷️', text: '結帳時輸入優惠碼享折扣' },
-      ].map(({ step, icon, text }) => (
-        <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-          <div class="w-7 h-7 bg-orange-500 text-white rounded-full flex items-center justify-center text-xs font-bold mx-auto mb-3">{step}</div>
-          <div class="text-2xl mb-2">{icon}</div>
-          <p class="text-gray-600 leading-snug">{text}</p>
+    <!-- Header -->
+    <header class="site-header">
+      <a href="/" class="site-name">重來的<span>旅人</span></a>
+    </header>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="category-tag">關於這個網站</div>
+      <h1>前半生跌了很多跤<br>現在把坑，整理給你</h1>
+      <p class="subtitle">
+        我在越南工廠當過副總、養蝦失敗、跑過 Uber、父親走了之後才真正開始重新出發。<br>
+        這個網站，是一個 40 幾歲台灣男人寫給自己、也寫給你的筆記。
+      </p>
+      <div class="meta">
+        <div class="author-dot">旅</div>
+        <div>
+          <div class="meta-author">重來的旅人</div>
+          <div>越南生活 10 年 · 自媒體行銷 · 2025 重新出發</div>
         </div>
-      ))}
+      </div>
     </div>
-  </section>
 
-  <!-- Offers -->
-  <section class="max-w-3xl mx-auto px-4 pb-10">
-    <h2 class="text-xl font-bold text-gray-900 mb-6">
-      🎫 可用優惠碼一覽
-      <span class="text-sm font-normal text-gray-400 ml-2">更新日期：2026/04</span>
-    </h2>
+    <!-- Author Story -->
+    <div class="article">
+      <div class="story-box">
+        <strong>我不是什麼旅遊達人，也沒有光鮮亮麗的履歷。</strong><br><br>
+        我是家裡文具工廠的第二代，年輕時叛逆衝動，被送去加拿大九個月就被帶回來。
+        後來去越南幫父親管廠，一待就是十年。
+        做過養蝦、投資過環保藥劑事業，全部失敗。
+        2018 年回台灣，家道中落，工廠被拍賣，跑起了 Uber。
+        父親肺癌末期過世，那是人生最深的失落。<br><br>
+        2025 年，我重新找回了方向。
+        這個網站，是我把這些年踩過的坑，整理成對你有用的東西。
+      </div>
 
-    <div class="grid gap-4 md:grid-cols-2">
-      {offers.map((offer) => (
-        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex flex-col gap-3 hover:shadow-md transition-shadow">
-          <div class="flex items-start justify-between gap-2">
-            <div>
-              <p class="text-xs text-gray-400 mb-1">{offer.bank}</p>
-              <p class="font-semibold text-gray-800 leading-snug">{offer.title}</p>
-            </div>
-            <span class="shrink-0 bg-orange-50 text-orange-600 font-bold text-xs px-3 py-1 rounded-full border border-orange-200">
-              {offer.badge}
-            </span>
-          </div>
+      <!-- eSIM Articles -->
+      <h2>出國上網攻略</h2>
+      <p>出門在外沒有網路，那種慌是真的。以下是我整理的 eSIM 選購指南，不業配，是用過才說。</p>
 
-          <div class="flex items-center justify-between pt-2 border-t border-gray-50">
-            <div>
-              <p class="text-xs text-gray-400 mb-1">優惠碼</p>
-              <code class="bg-gray-100 text-gray-700 text-sm font-mono px-3 py-1 rounded-lg tracking-wide">
-                {offer.code}
-              </code>
-            </div>
-            {offer.minSpend && (
-              <p class="text-xs text-gray-400">低消 {offer.minSpend}</p>
-            )}
-          </div>
-
-          <a
-            href={AFFILIATE_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block text-center bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold py-2 rounded-xl transition-colors"
-          >
-            前往 Klook 使用 →
+      <div class="card-grid">
+        {esimArticles.map((a) => (
+          <a href={a.href} class="article-card">
+            <div class="article-card-tag">{a.tag}</div>
+            <div class="article-card-title">{a.title}</div>
+            <p class="article-card-desc">{a.desc}</p>
+            <div class="article-card-link">{a.label}</div>
           </a>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      <!-- Klook Section -->
+      <h2>Klook 省錢情報</h2>
+      <p>
+        整理 2026 年最新各大銀行 Klook 刷卡折扣。
+        透過下方連結進入 Klook，結帳輸入優惠碼即享折扣。
+      </p>
+
+      <div class="coupon-grid">
+        {offers.map((o) => (
+          <div class="coupon-card">
+            <div class="coupon-top">
+              <div>
+                <div class="coupon-bank">{o.bank}</div>
+                <div class="coupon-title">{o.title}</div>
+              </div>
+              <span class="coupon-badge">{o.badge}</span>
+            </div>
+            <div class="coupon-bottom">
+              <div>
+                <div class="coupon-label">優惠碼</div>
+                <code class="coupon-code">{o.code}</code>
+              </div>
+            </div>
+            <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" class="coupon-btn">
+              前往 Klook 使用 →
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-title">注意事項</div>
+        <p style="margin:0;font-size:14px;color:var(--ink-light);">
+          優惠數量有限，依結帳順序為準。各優惠碼適用商品與低消門檻不同，請詳閱各活動說明。
+          優惠期限以 Klook 官方公告為準。本頁含聯盟行銷連結，透過連結購買不影響你的價格。
+        </p>
+      </div>
+
     </div>
-  </section>
 
-  <!-- Notice -->
-  <section class="max-w-3xl mx-auto px-4 pb-10">
-    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-sm text-amber-800">
-      <p class="font-semibold mb-2">⚠️ 注意事項</p>
-      <ul class="space-y-1 list-disc list-inside text-amber-700">
-        <li>優惠數量有限，依結帳順序為準</li>
-        <li>領取成功不代表保留名額，仍需完成結帳</li>
-        <li>各優惠碼適用商品及低消門檻不同，請詳閱各活動說明</li>
-        <li>優惠期限以 Klook 官方公告為準</li>
-      </ul>
-    </div>
-  </section>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+      <span>自媒體行銷 · 越南生活 10 年 · 現在重新出發</span>
+    </footer>
 
-  <!-- Bottom CTA -->
-  <section class="bg-gradient-to-br from-orange-500 to-orange-600 py-14 px-4 text-center text-white">
-    <h2 class="text-2xl font-bold mb-3">還在等什麼？</h2>
-    <p class="text-orange-100 mb-8 max-w-sm mx-auto">優惠數量有限，現在就進入 Klook 搶先領券，出遊省更多！</p>
-    <a
-      href={AFFILIATE_LINK}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-block bg-white text-orange-600 font-bold px-12 py-3 rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all"
-    >
-      立即前往 Klook 領券
-    </a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-8 text-center text-xs text-gray-400 bg-white border-t border-gray-100">
-    <p>本頁含有聯盟行銷連結，透過連結購買不影響你的優惠，感謝支持 🙏</p>
-    <p class="mt-1">© {new Date().getFullYear()} 旅遊省錢情報</p>
-  </footer>
+  </div>
 </BlogLayout>
+
+<style>
+  .root {
+    --ink: #1a1208;
+    --ink-light: #4a3f2f;
+    --paper: #faf8f3;
+    --paper-warm: #f2ede0;
+    --accent: #c0392b;
+    --gold: #b8860b;
+    --border: #d4c9b0;
+    --serif: 'Noto Serif TC', serif;
+    --sans: 'Noto Sans TC', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.8;
+    font-size: 17px;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .site-header {
+    border-bottom: 2px solid var(--ink);
+    padding: 18px 0;
+    text-align: center;
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .site-name {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .site-name span { color: var(--accent); }
+
+  /* Hero */
+  .hero {
+    max-width: 740px;
+    margin: 60px auto 0;
+    padding: 0 24px;
+  }
+  .category-tag {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.35;
+    margin-bottom: 20px;
+  }
+  .subtitle {
+    font-size: 17px;
+    color: var(--ink-light);
+    margin-bottom: 32px;
+    line-height: 1.75;
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+    font-size: 13px;
+    color: var(--ink-light);
+  }
+  .author-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+  /* Article body */
+  .article {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+  .article p { margin-bottom: 1.4em; }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 26px;
+    margin: 52px 0 16px;
+    position: relative;
+    padding-left: 16px;
+  }
+  h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 4px;
+    height: 80%;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  /* Story box */
+  .story-box {
+    background: var(--paper-warm);
+    border-left: 4px solid var(--accent);
+    padding: 24px 28px;
+    margin: 0 0 40px;
+    border-radius: 0 6px 6px 0;
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--ink-light);
+    line-height: 1.9;
+  }
+  .story-box strong { color: var(--ink); font-weight: 600; }
+
+  /* eSIM article cards */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 28px 0 48px;
+  }
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 20px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .article-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(192,57,43,0.08);
+  }
+  .article-card-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .article-card-title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1.45;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+  .article-card-desc {
+    font-size: 13.5px;
+    color: var(--ink-light);
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: 16px !important;
+  }
+  .article-card-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: auto;
+  }
+
+  /* Coupon cards */
+  .coupon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 28px 0 32px;
+  }
+  .coupon-card {
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--paper);
+  }
+  .coupon-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .coupon-bank { font-size: 11px; color: var(--ink-light); margin-bottom: 4px; }
+  .coupon-title { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+  .coupon-badge {
+    flex-shrink: 0;
+    background: #fde8e8;
+    color: #8b1a1a;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .coupon-bottom { display: flex; align-items: center; justify-content: space-between; }
+  .coupon-label { font-size: 11px; color: var(--ink-light); margin-bottom: 4px; }
+  .coupon-code {
+    background: var(--paper-warm);
+    color: var(--ink);
+    font-family: monospace;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.06em;
+  }
+  .coupon-btn {
+    display: block;
+    text-align: center;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .coupon-btn:hover { background: #2c1f0f; }
+
+  /* Tip box */
+  .tip-box {
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 32px 0 0;
+  }
+  .tip-title {
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* Footer */
+  .site-footer {
+    border-top: 2px solid var(--ink);
+    padding: 40px 24px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-light);
+  }
+  .site-footer strong { color: var(--ink); }
+  .site-footer span { display: block; margin-top: 6px; }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .coupon-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .hero, .article { padding: 0 16px; }
+    h1 { font-size: 28px; }
+    .story-box { padding: 18px 20px; }
+  }
+</style>
