@@ -72,11 +72,30 @@ const description = "去韓國不用再找換錢所換 SIM 卡了。從日本到
 
     footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
 
+    .comment-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .comment-form { margin-top: 24px; display: flex; flex-direction: column; gap: 20px; }
+    .hidden { display: none; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: 500; color: var(--ink-light); letter-spacing: 0.04em; }
+    .required { color: var(--accent); }
+    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--ink); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #b0a898; }
+    .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .form-note { font-size: 12px; color: #999; margin: 0; }
+    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--ink); color: var(--paper); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .submit-btn:hover { background: #2c1f0f; }
+    .form-success { margin-top: 20px; padding: 18px 24px; background: #d5e8d4; border-radius: 4px; color: #27611b; font-size: 15px; font-weight: 500; }
+    .form-success p { margin: 0; color: #27611b; }
+
     @media (max-width: 600px) {
       .hero, .article { padding: 0 16px; }
       .hero { padding-bottom: 0; }
       .recommend-card { padding: 20px; }
       .cta-box { padding: 24px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-footer { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -251,7 +270,8 @@ const description = "去韓國不用再找換錢所換 SIM 卡了。從日本到
       eSIM 要在<strong>有 WiFi 的環境下安裝</strong>。
       建議出發前 1–2 天在家完成安裝，
       確認「行動方案已新增」後，抵達韓國開啟行動數據即可立刻使用。
-      不要等到仁川機場才裝，機場 WiFi 有時不穩。
+      不要等到仁川機場才裝，機場 WiFi 有時不穩。<br><br>
+      → 不確定怎麼裝？看這篇：<a href="/esim/install" style="color:var(--accent);">eSIM 安裝教學（iPhone + Android 圖解）</a>
     </p>
   </div>
 
@@ -289,12 +309,65 @@ const description = "去韓國不用再找換錢所換 SIM 卡了。從日本到
   </p>
   <p>有問題歡迎留言，我看到都會回。</p>
 
+  <div class="comment-section">
+    <h2>留言 / 問題</h2>
+    <form
+      name="korea-comments"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="comment-form"
+      id="comment-form"
+    >
+      <input type="hidden" name="form-name" value="korea-comments" />
+      <p class="hidden"><label>不要填這個：<input name="bot-field" /></label></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-name">名字 <span class="required">*</span></label>
+          <input type="text" id="cf-name" name="name" placeholder="你的稱呼" required />
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email <span class="required">*</span></label>
+          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cf-message">留言內容 <span class="required">*</span></label>
+        <textarea id="cf-message" name="message" rows="5" placeholder="想問什麼、或分享你的使用經驗..." required></textarea>
+      </div>
+      <div class="form-footer">
+        <p class="form-note">你的 email 只用於我回覆你，不會公開。</p>
+        <button type="submit" class="submit-btn">送出留言 →</button>
+      </div>
+    </form>
+    <div class="form-success" id="form-success" hidden>
+      <p>✓ 收到了！我會盡快回覆你。</p>
+    </div>
+  </div>
+
 </article>
 
 <footer>
   <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <a href="/esim" style="color: var(--accent); text-decoration: none; margin-top: 8px; display: inline-block;">← 回到 eSIM 比較總表</a>
+  <div style="margin-top:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">← eSIM 比較總表</a>
+    <a href="/esim/japan" style="color:var(--accent);text-decoration:none;font-size:13px;">日本 eSIM 推薦</a>
+    <a href="/esim/install" style="color:var(--accent);text-decoration:none;font-size:13px;">eSIM 安裝教學</a>
+  </div>
 </footer>
 
+<script>
+  var form = document.getElementById('comment-form');
+  var successMsg = document.getElementById('form-success');
+  if (form && successMsg) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      await fetch('/', { method: 'POST', body: data });
+      form.hidden = true;
+      successMsg.hidden = false;
+    });
+  }
+</script>
 </body>
 </html>

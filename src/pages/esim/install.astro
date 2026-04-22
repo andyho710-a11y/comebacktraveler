@@ -1,0 +1,646 @@
+---
+const title = "eSIM 怎麼安裝？iPhone + Android 圖解教學｜重來的旅人";
+const description = "第一次裝 eSIM 不知道從哪開始？iPhone 掃 QR Code、Android 三星/Pixel 步驟全圖解，5 分鐘搞定，附常見問題排解。";
+const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="eSIM安裝,eSIM教學,iPhone eSIM,Android eSIM,三星eSIM,eSIM QR Code,JOYTEL安裝" />
+  <link rel="canonical" href="https://comebacktraveler.com/esim/install" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content="https://comebacktraveler.com/esim/install" />
+  <meta property="og:locale" content="zh_TW" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --green: #1D9E75;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    .article p { margin-bottom: 1.4em; }
+
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 52px 0 16px; position: relative; padding-left: 16px; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 20px; margin: 36px 0 12px; }
+
+    /* OS Tab Switch */
+    .os-tabs { display: flex; gap: 0; margin: 32px 0 0; border-bottom: 2px solid var(--border); }
+    .os-tab { font-family: var(--serif); font-size: 16px; font-weight: 600; padding: 12px 28px; border: none; background: transparent; color: var(--ink-light); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: color 0.15s, border-color 0.15s; }
+    .os-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .os-panel { display: none; padding: 32px 0 0; }
+    .os-panel.active { display: block; }
+
+    /* Step cards */
+    .steps { list-style: none; padding: 0; margin: 24px 0; display: flex; flex-direction: column; gap: 16px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; }
+    .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { flex: 1; }
+    .step-title { font-family: var(--serif); font-weight: 600; font-size: 17px; margin-bottom: 4px; color: var(--ink); }
+    .step-desc { font-size: 15px; color: var(--ink-light); line-height: 1.7; }
+    .step-path { display: inline-block; background: var(--paper-warm); border: 1px solid var(--border); border-radius: 4px; padding: 4px 10px; font-size: 13px; color: var(--ink); font-family: var(--sans); margin: 6px 0; letter-spacing: 0.02em; }
+
+    /* Screen mock */
+    .screen-mock { background: #1c1c1e; border-radius: 16px; padding: 20px 18px; margin: 20px 0; max-width: 320px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
+    .screen-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .screen-title-bar { font-size: 12px; color: #adadad; font-family: var(--sans); letter-spacing: 0.04em; }
+    .screen-row { background: #2c2c2e; border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .screen-row-label { font-size: 14px; color: #f5f5f7; font-family: var(--sans); }
+    .screen-row-value { font-size: 13px; color: #adadad; font-family: var(--sans); }
+    .screen-row.highlight { background: #3a1a1a; }
+    .screen-row.highlight .screen-row-label { color: #ff6b6b; }
+    .screen-chevron { color: #636366; font-size: 12px; }
+
+    /* Checklist */
+    .checklist { list-style: none; padding: 0; margin: 16px 0; }
+    .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; font-size: 15px; border-bottom: 1px solid var(--border); }
+    .checklist li:last-child { border-bottom: none; }
+    .check-icon { color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .warn-icon { color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+
+    /* Tip / warning box */
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+    .tip-box.warn { border-color: #e8c87a; background: #fffdf0; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; font-family: var(--sans); }
+    .tip-box.warn .tip-title { color: #a07800; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-q { font-family: var(--serif); font-weight: 600; font-size: 17px; color: var(--ink); margin-bottom: 8px; display: flex; gap: 10px; align-items: baseline; }
+    .faq-q::before { content: 'Q'; color: var(--accent); font-size: 14px; flex-shrink: 0; }
+    .faq-a { font-size: 15px; color: var(--ink-light); line-height: 1.75; padding-left: 22px; }
+
+    /* Related articles */
+    .related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0; }
+    .related-card { border: 1.5px solid var(--border); border-radius: 8px; padding: 20px 18px; text-decoration: none; transition: border-color 0.15s, transform 0.15s; display: block; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .related-label { font-size: 11px; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 6px; font-family: var(--sans); }
+    .related-title { font-family: var(--serif); font-weight: 600; font-size: 15px; color: var(--ink); line-height: 1.4; }
+
+    /* CTA */
+    .cta-box { background: var(--ink); color: var(--paper); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
+    .cta-box p { color: #d4c9b0; margin-bottom: 20px; font-size: 16px; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; letter-spacing: 0.04em; transition: background 0.2s; }
+    .cta-btn:hover { background: #a93226; }
+    .cta-label { font-size: 11px; color: #666; margin-top: 10px; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-links { margin-top: 12px; display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    .comment-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .comment-form { margin-top: 24px; display: flex; flex-direction: column; gap: 20px; }
+    .hidden { display: none; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: 500; color: var(--ink-light); letter-spacing: 0.04em; }
+    .required { color: var(--accent); }
+    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--ink); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #b0a898; }
+    .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .form-note { font-size: 12px; color: #999; margin: 0; }
+    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--ink); color: var(--paper); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .submit-btn:hover { background: #2c1f0f; }
+    .form-success { margin-top: 20px; padding: 18px 24px; background: #d5e8d4; border-radius: 4px; color: #27611b; font-size: 15px; font-weight: 500; }
+    .form-success p { margin: 0; color: #27611b; }
+
+    @media (max-width: 640px) {
+      .hero, .article { padding: 0 16px; }
+      .hero { padding-bottom: 0; }
+      .related-grid { grid-template-columns: 1fr; }
+      .cta-box { padding: 24px 20px; }
+      .screen-mock { max-width: 100%; }
+      .os-tab { padding: 10px 18px; font-size: 15px; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">eSIM 教學 · iPhone + Android</div>
+  <h1>eSIM 怎麼安裝？<br>iPhone + Android<br>圖解步驟教學</h1>
+  <p class="subtitle">
+    收到 QR Code 之後，很多人卡在這一步。<br>
+    其實 5 分鐘就能搞定——前提是你知道要去哪裡找那個選項。<br>
+    這篇把 iPhone、三星、Google Pixel 的步驟全部整理清楚。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 4 月更新 · 越南生活 10 年 · 現在重新出發</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <div class="story-box">
+    <strong>老實說，第一次裝 eSIM 我也傻住了。</strong><br>
+    QR Code 收到了，打開手機設定，翻了半天找不到入口。<br>
+    後來才知道：每個廠牌的路徑都不太一樣，知道在哪裡就沒事了。<br><br>
+    這篇文章就是要讓你不用摸索，直接按步驟走。
+  </div>
+
+  <h2>安裝前先確認這三件事</h2>
+
+  <ul class="checklist">
+    <li>
+      <span class="check-icon">✓</span>
+      <span><strong>手機支援 eSIM</strong>：iPhone XS（2018）以後、三星 Galaxy S20 以後、Google Pixel 3 以後大多支援。最快確認方式：進「設定 → 行動服務」，看有無「新增行動方案」或「新增 eSIM」選項。</span>
+    </li>
+    <li>
+      <span class="check-icon">✓</span>
+      <span><strong>手機沒有 SIM 鎖（鎖卡）</strong>：台灣原廠購入的手機通常無鎖，但電信門市購買的機型有時有鎖，需先聯繫原電信商解鎖。</span>
+    </li>
+    <li>
+      <span class="check-icon">✓</span>
+      <span><strong>有穩定的 WiFi</strong>：安裝 eSIM 需要下載設定檔，一定要在 WiFi 環境下進行。建議在家完成，不要等到機場。</span>
+    </li>
+    <li>
+      <span class="warn-icon">△</span>
+      <span><strong>eSIM 通常只能安裝一次</strong>：多數方案的 QR Code 掃描後即失效，無法重複使用。換手機前請確認是否支援 eSIM 轉移功能。</span>
+    </li>
+  </ul>
+
+  <!-- OS Tabs -->
+  <h2>選擇你的手機系統</h2>
+
+  <div class="os-tabs">
+    <button class="os-tab active" data-panel="iphone">iPhone (iOS)</button>
+    <button class="os-tab" data-panel="samsung">Android 三星</button>
+    <button class="os-tab" data-panel="pixel">Android Pixel</button>
+  </div>
+
+  <!-- iPhone Panel -->
+  <div class="os-panel active" id="panel-iphone">
+    <h3>iPhone eSIM 安裝步驟</h3>
+    <p style="font-size:15px;color:var(--ink-light);">適用：iPhone XS / XR 以後所有機型，iOS 版本建議 16 以上。</p>
+
+    <ul class="steps">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">打開「設定」</div>
+          <div class="step-desc">點開手機主畫面的「設定」（齒輪圖示）。</div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">進入「行動服務」</div>
+          <div class="step-desc">
+            在設定主頁往下找「行動服務」，點進去。<br>
+            <span class="step-path">設定 → 行動服務</span>
+          </div>
+          <div class="screen-mock">
+            <div class="screen-title-bar">設定</div>
+            <div class="screen-row"><span class="screen-row-label">Wi-Fi</span><span class="screen-row-value">已連線 <span class="screen-chevron">›</span></span></div>
+            <div class="screen-row"><span class="screen-row-label">藍牙</span><span class="screen-row-value">開 <span class="screen-chevron">›</span></span></div>
+            <div class="screen-row highlight"><span class="screen-row-label">行動服務</span><span class="screen-row-value"><span class="screen-chevron">›</span></span></div>
+            <div class="screen-row"><span class="screen-row-label">個人熱點</span><span class="screen-row-value"><span class="screen-chevron">›</span></span></div>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">點選「新增行動方案」</div>
+          <div class="step-desc">
+            頁面頂部會看到「新增行動方案」，點進去。<br>
+            <span class="step-path">行動服務 → 新增行動方案</span>
+          </div>
+          <div class="screen-mock">
+            <div class="screen-title-bar">行動服務</div>
+            <div class="screen-row highlight"><span class="screen-row-label">新增行動方案</span><span class="screen-row-value"><span class="screen-chevron">›</span></span></div>
+            <div class="screen-row"><span class="screen-row-label">我的號碼（主卡）</span><span class="screen-row-value">台灣大哥大 <span class="screen-chevron">›</span></span></div>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">用相機掃描 QR Code</div>
+          <div class="step-desc">
+            選「使用 QR Code」，鏡頭會自動開啟。將手機對準你收到的 eSIM QR Code 掃描。<br>
+            若 QR Code 在電腦螢幕上，可直接對著螢幕掃。
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title">確認並完成安裝</div>
+          <div class="step-desc">
+            掃描成功後畫面會顯示方案資訊，點「繼續」→ 確認「新增行動方案」。<br>
+            系統會自動下載設定檔，完成後 eSIM 會出現在行動服務清單中。
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <div class="step-title">到達目的地後開啟 eSIM</div>
+          <div class="step-desc">
+            抵達日本／韓國後，進入「設定 → 行動服務」，點選剛安裝的 eSIM，確認已開啟「開啟此號碼」和「行動數據」。<br>
+            如果有主卡，記得切換「行動數據」選項到 eSIM 方案。
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="tip-box">
+      <div class="tip-title">iPhone 小提醒</div>
+      <p style="margin:0;font-size:15px;">
+        部分 eSIM 有「需在台灣境內啟動」的規定，請在出發前完成步驟 1–5。
+        不確定的話可以先看 eSIM 說明信，或直接問客服。
+      </p>
+    </div>
+  </div>
+
+  <!-- Samsung Panel -->
+  <div class="os-panel" id="panel-samsung">
+    <h3>三星 Galaxy eSIM 安裝步驟</h3>
+    <p style="font-size:15px;color:var(--ink-light);">適用：三星 Galaxy S20 / Note20 / Z Fold / Z Flip 系列以後，One UI 版本建議 4.0 以上。</p>
+
+    <ul class="steps">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">打開「設定」</div>
+          <div class="step-desc">往下滑找到「連線」，點進去。<br><span class="step-path">設定 → 連線</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">進入「SIM 卡管理員」</div>
+          <div class="step-desc">
+            在「連線」頁面找「SIM 卡管理員」，點進去。<br>
+            <span class="step-path">連線 → SIM 卡管理員</span>
+          </div>
+          <div class="screen-mock">
+            <div class="screen-title-bar">連線</div>
+            <div class="screen-row"><span class="screen-row-label">Wi-Fi</span><span class="screen-row-value"><span class="screen-chevron">›</span></span></div>
+            <div class="screen-row highlight"><span class="screen-row-label">SIM 卡管理員</span><span class="screen-row-value"><span class="screen-chevron">›</span></span></div>
+            <div class="screen-row"><span class="screen-row-label">藍牙</span><span class="screen-row-value"><span class="screen-chevron">›</span></span></div>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">點選「新增 eSIM 方案」或「新增行動方案」</div>
+          <div class="step-desc">
+            頁面上方或底部會有「新增 eSIM 方案」按鈕。<br>
+            部分舊版 UI 顯示為「新增行動方案」。
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">選擇「掃描 QR Code」</div>
+          <div class="step-desc">選「掃描 QR Code」後，鏡頭開啟，對準 eSIM QR Code 掃描。</div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title">確認並安裝</div>
+          <div class="step-desc">確認方案內容後點「確認」，系統下載設定檔，安裝完成。</div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <div class="step-title">啟用 eSIM 並設定數據</div>
+          <div class="step-desc">
+            回到「SIM 卡管理員」，確認 eSIM 已啟用（切換為開啟）。<br>
+            進「行動數據」，選擇你的 eSIM 方案作為預設數據 SIM。
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="tip-box warn">
+      <div class="tip-title">三星注意事項</div>
+      <p style="margin:0;font-size:15px;">
+        少數三星機型在特定國家販售版本有鎖 eSIM 的情況（例如美國電信商版本）。
+        若掃描後顯示「不支援此運營商」，請確認你的手機購買來源，或聯絡原電信商。
+      </p>
+    </div>
+  </div>
+
+  <!-- Pixel Panel -->
+  <div class="os-panel" id="panel-pixel">
+    <h3>Google Pixel eSIM 安裝步驟</h3>
+    <p style="font-size:15px;color:var(--ink-light);">適用：Google Pixel 3 以後，Android 版本建議 10 以上。</p>
+
+    <ul class="steps">
+      <li class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">打開「設定」</div>
+          <div class="step-desc">進入「網路與網際網路」。<br><span class="step-path">設定 → 網路與網際網路</span></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">點選「SIM 卡」</div>
+          <div class="step-desc">
+            在「網路與網際網路」頁面找「SIM 卡」，進入後點「新增 SIM 卡」。<br>
+            <span class="step-path">網路與網際網路 → SIM 卡 → 新增 SIM 卡</span>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">選擇「掃描 QR Code」</div>
+          <div class="step-desc">系統會提示你掃描 QR Code，相機自動開啟，對準 eSIM QR Code 掃描。</div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">下載並確認</div>
+          <div class="step-desc">確認方案資訊後點「啟動」，等待設定下載完成。</div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title">設定為預設數據 SIM</div>
+          <div class="step-desc">
+            安裝完成後在「SIM 卡」頁面確認 eSIM 已開啟，並將行動數據切換到 eSIM 方案。
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="tip-box">
+      <div class="tip-title">Pixel 小提醒</div>
+      <p style="margin:0;font-size:15px;">
+        部分地區的 Pixel 機型（尤其日本、美國電信商版）可能有 eSIM 限制，
+        購買前可在「設定 → 關於手機 → IMEI」查看是否有兩個 IMEI 欄位，
+        有兩個通常代表支援 eSIM。
+      </p>
+    </div>
+  </div>
+
+  <!-- End of tabs -->
+
+  <h2>抵達後怎麼啟用？</h2>
+  <p>
+    大多數 eSIM 方案在「安裝後不會立刻連網」——<strong>必須抵達目的地、關閉飛航模式後才會啟動計費</strong>。
+    所以你可以安心在台灣先裝好，不用擔心時間浪費。
+  </p>
+  <p>
+    落地後的操作很簡單：
+  </p>
+  <ul class="steps">
+    <li class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">關閉飛航模式</div>
+        <div class="step-desc">離開飛機後關閉飛航模式。</div>
+      </div>
+    </li>
+    <li class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">確認行動數據來源</div>
+        <div class="step-desc">進入設定確認「行動數據」已切換到 eSIM 方案（不是你的台灣主卡）。</div>
+      </div>
+    </li>
+    <li class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">等待 1–3 分鐘</div>
+        <div class="step-desc">手機搜尋當地電信訊號，通常 1–3 分鐘內自動連線，狀態列出現訊號格就成功了。</div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="tip-box warn">
+    <div class="tip-title">主卡漫遊費用提醒</div>
+    <p style="margin:0;font-size:15px;">
+      使用 eSIM 上網的同時，你的台灣主卡仍在手機裡。
+      <strong>請確認主卡的「行動數據漫遊」已關閉</strong>，避免在不知情的情況下產生高額漫遊費。<br>
+      iPhone 路徑：設定 → 行動服務 → 台灣主卡 → 數據漫遊（關閉）
+    </p>
+  </div>
+
+  <div class="cta-box">
+    <p>還沒買 eSIM？<br>推薦 JOYTEL——台灣品牌、LINE 真人客服、原生線路穩定</p>
+    <a class="cta-btn" href={JOYTEL_LINK} target="_blank" rel="noopener">
+      查看 JOYTEL eSIM 方案 →
+    </a>
+    <p class="cta-label">※ 本文含聯盟行銷連結，點擊後購買我會獲得少量佣金，不影響你的價格</p>
+  </div>
+
+  <h2>常見問題 Q&A</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">掃描 QR Code 後顯示「無法辨識」或沒有反應？</div>
+    <div class="faq-a">
+      先確認網路連線正常（WiFi），再試以下方法：<br>
+      ① 調整 QR Code 與鏡頭距離（太近反而對焦不到）<br>
+      ② 截圖 QR Code 儲存在手機後，掃描頁面通常有「從相冊選取」選項，可以直接讀取圖片<br>
+      ③ 部分 eSIM 也提供「手動輸入啟動碼」選項，可向客服索取
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">eSIM 安裝後，訊號格只顯示「SOS」或沒有訊號？</div>
+    <div class="faq-a">
+      這通常是因為你還在台灣、eSIM 尚未啟動，屬於正常狀況。
+      到達目的地後訊號會自動出現。
+      若落地超過 5 分鐘仍無訊號，試試開關飛航模式重新搜尋，或重啟手機。
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">可以同時用台灣主卡接電話 + eSIM 上網嗎？</div>
+    <div class="faq-a">
+      可以。雙 SIM 卡手機可以設定：eSIM 負責行動數據，台灣主卡維持待機接電話和簡訊。
+      這樣國內的電話打過來不會漏接，網路也走 eSIM 不會產生漫遊費。
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">eSIM 可以開熱點給其他人用嗎？</div>
+    <div class="faq-a">
+      多數 eSIM 方案支援，但建議購買前確認。
+      JOYTEL 明確支援熱點分享（含日本、韓國原生方案）。
+      Airalo 部分方案則不支援，需仔細看方案說明。
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">回台灣後，eSIM 怎麼處理？</div>
+    <div class="faq-a">
+      方案到期後 eSIM 設定檔仍會留在手機裡，但無法上網。
+      可以保留（下次同品牌購買可能不需重新安裝）或到設定裡手動刪除。
+      刪除後如需再用需重新安裝新的 QR Code。
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">eSIM 和實體 SIM 卡比，哪個比較好？</div>
+    <div class="faq-a">
+      eSIM 最大優勢是免換卡、出發前就能備好、雙卡切換方便。
+      實體 SIM 的優勢是機場就能買、適合不支援 eSIM 的舊手機。
+      對於 2019 年後的主流旗艦機，eSIM 已經是更方便的選擇。
+    </div>
+  </div>
+
+  <h2>這篇之後，可以看這些</h2>
+  <p>安裝問題解決了，還在煩惱要買哪家？以下是我整理的各地推薦。</p>
+
+  <div class="related-grid">
+    <a href="/esim/japan" class="related-card">
+      <div class="related-label">日本上網</div>
+      <div class="related-title">日本 eSIM 推薦 2026｜只推這兩張</div>
+    </a>
+    <a href="/esim/korea" class="related-card">
+      <div class="related-label">韓國上網</div>
+      <div class="related-title">韓國 eSIM 推薦 2026｜首爾旅遊選這張</div>
+    </a>
+    <a href="/esim" class="related-card">
+      <div class="related-label">總整理</div>
+      <div class="related-title">6 家 eSIM 品牌完整比較表</div>
+    </a>
+  </div>
+
+  <h2>最後說一句</h2>
+  <p>
+    eSIM 這個技術剛出來的時候，說明真的很不直觀。
+    我第一次裝也搞了快 20 分鐘，翻遍設定才找到入口。
+  </p>
+  <p>
+    現在我把步驟整理出來，希望你看完這篇能在 5 分鐘內搞定，
+    把省下來的時間拿去查行程或吃頓好飯。
+  </p>
+  <p>如果還是卡關，歡迎留言，我看到都會回。</p>
+
+  <div class="comment-section">
+    <h2>留言 / 問題</h2>
+    <form
+      name="install-comments"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="comment-form"
+      id="comment-form"
+    >
+      <input type="hidden" name="form-name" value="install-comments" />
+      <p class="hidden"><label>不要填這個：<input name="bot-field" /></label></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-name">名字 <span class="required">*</span></label>
+          <input type="text" id="cf-name" name="name" placeholder="你的稱呼" required />
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email <span class="required">*</span></label>
+          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cf-message">留言內容 <span class="required">*</span></label>
+        <textarea id="cf-message" name="message" rows="5" placeholder="哪個步驟卡關了？或是有其他手機型號想問..." required></textarea>
+      </div>
+      <div class="form-footer">
+        <p class="form-note">你的 email 只用於我回覆你，不會公開。</p>
+        <button type="submit" class="submit-btn">送出留言 →</button>
+      </div>
+    </form>
+    <div class="form-success" id="form-success" hidden>
+      <p>✓ 收到了！我會盡快回覆你。</p>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略
+  <div class="footer-links">
+    <a href="/esim">← eSIM 比較總表</a>
+    <a href="/esim/japan">日本 eSIM 推薦</a>
+    <a href="/esim/korea">韓國 eSIM 推薦</a>
+  </div>
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.os-tab');
+  const panels = document.querySelectorAll<HTMLDivElement>('.os-panel');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.panel;
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const panel = document.getElementById(`panel-${target}`);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  const form = document.getElementById('comment-form') as HTMLFormElement | null;
+  const successMsg = document.getElementById('form-success');
+  if (form && successMsg) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      await fetch('/', { method: 'POST', body: data });
+      form.hidden = true;
+      successMsg.hidden = false;
+    });
+  }
+</script>
+
+</body>
+</html>

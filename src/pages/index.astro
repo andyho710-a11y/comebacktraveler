@@ -34,6 +34,13 @@ const esimArticles = [
     href: '/esim/korea',
     label: '看韓國推薦 →',
   },
+  {
+    tag: 'eSIM 安裝教學',
+    title: 'eSIM 怎麼安裝？iPhone + Android 圖解',
+    desc: '收到 QR Code 之後卡關了？iPhone、三星 Galaxy、Google Pixel 的設定路徑全圖解，5 分鐘搞定。',
+    href: '/esim/install',
+    label: '看安裝步驟 →',
+  },
 ];
 ---
 
@@ -285,7 +292,7 @@ const esimArticles = [
   /* eSIM article cards */
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     margin: 28px 0 48px;
   }
@@ -424,6 +431,9 @@ const esimArticles = [
   @media (max-width: 700px) {
     .card-grid { grid-template-columns: 1fr; }
     .coupon-grid { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 701px) and (max-width: 900px) {
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 600px) {
     .hero, .article { padding: 0 16px; }
