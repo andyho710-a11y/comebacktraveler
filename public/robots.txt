@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://comebacktraveler.com/sitemap-index.xml

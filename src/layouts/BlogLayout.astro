@@ -26,6 +26,7 @@ const ogImageURL = ogImage
     <title>{title}</title>
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="google-site-verification" content="Tew8sawgTRGXNPfGDO3PNQRC0mVNRmPvyvCwGSa0joQ" />
     <link rel="canonical" href={canonicalURL} />
     <meta property="og:type" content="article" />
     <meta property="og:title" content={title} />
@@ -39,6 +40,19 @@ const ogImageURL = ogImage
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": title,
+      "description": description,
+      "url": canonicalURL.toString(),
+      "inLanguage": "zh-TW",
+      "publisher": {
+        "@type": "Organization",
+        "name": "重來的旅人",
+        "url": "https://comebacktraveler.com"
+      }
+    })} />
     <slot name="head" />
   </head>
   <body class="bg-slate-50 text-gray-800 antialiased">
