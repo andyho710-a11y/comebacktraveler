@@ -1,0 +1,522 @@
+---
+const title = "JOYTEL eSIM 評測 2026｜速度實測、客服體驗、值不值得買？";
+const description = "深度評測 JOYTEL eSIM。日本韓國實測速度、LINE 客服回應時間、與 DJB 和 WaySim 比較，讓你 10 分鐘看完再決定要不要買。";
+const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="JOYTEL評測,JOYTEL eSIM評價,JOYTEL速度測試,JOYTEL客服,JOYTEL日本,JOYTEL韓國,台灣eSIM推薦" />
+  <link rel="canonical" href="https://comebacktraveler.com/esim/joytel" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content="https://comebacktraveler.com/esim/joytel" />
+  <meta property="og:locale" content="zh_TW" />
+  <script is:inline type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "name": title,
+    "description": description,
+    "url": "https://comebacktraveler.com/esim/joytel",
+    "inLanguage": "zh-TW",
+    "itemReviewed": {
+      "@type": "Product",
+      "name": "JOYTEL eSIM",
+      "brand": { "@type": "Brand", "name": "JOYTEL" }
+    },
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
+  })}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --green: #1D9E75;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 52px 0 16px; position: relative; padding-left: 16px; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 20px; margin: 32px 0 10px; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+
+    .verdict-box { border: 2px solid var(--ink); border-radius: 8px; padding: 28px 32px; margin: 32px 0; }
+    .verdict-box.pass { border-color: var(--green); background: #f0faf6; }
+    .verdict-box.warn { border-color: var(--gold); background: #fdf8ee; }
+    .verdict-label { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+    .verdict-label.pass { color: var(--green); }
+    .verdict-label.warn { color: var(--gold); }
+    .verdict-title { font-family: var(--serif); font-weight: 900; font-size: 20px; margin-bottom: 12px; }
+    .check-list { list-style: none; margin: 12px 0; }
+    .check-list li { padding: 5px 0; font-size: 15px; }
+    .check-list li::before { content: '✓ '; color: var(--green); font-weight: 600; }
+    .x-list li::before { content: '✗ '; color: var(--accent); font-weight: 600; }
+    .warn-list li::before { content: '△ '; color: var(--gold); font-weight: 600; }
+
+    table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 14px; }
+    th { font-family: var(--serif); font-weight: 600; background: var(--ink); color: var(--paper); padding: 12px 14px; text-align: left; }
+    td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:nth-child(even) td { background: var(--paper-warm); }
+    tr.highlight td { background: #fef0ee; font-weight: 500; }
+    td:first-child { font-weight: 500; white-space: nowrap; }
+
+    .speed-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0; }
+    .speed-card { border: 1.5px solid var(--border); border-radius: 6px; padding: 18px 16px; text-align: center; }
+    .speed-card.top { border-color: var(--accent); }
+    .speed-label { font-size: 12px; color: var(--ink-light); margin-bottom: 6px; font-weight: 500; }
+    .speed-val { font-family: var(--serif); font-size: 28px; font-weight: 900; color: var(--accent); }
+    .speed-unit { font-size: 13px; color: var(--ink-light); margin-top: 4px; }
+
+    .cta-box { background: var(--ink); color: var(--paper); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
+    .cta-box p { color: #d4c9b0; margin-bottom: 20px; font-size: 16px; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
+    .cta-btn:hover { background: #a93226; }
+    .cta-label { font-size: 11px; color: #666; margin-top: 10px; }
+
+    .related-links { border-top: 1px solid var(--border); margin-top: 56px; padding-top: 32px; }
+    .related-links h3 { font-family: var(--serif); font-weight: 600; font-size: 17px; margin-bottom: 16px; color: var(--ink-light); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .related-item { border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; text-decoration: none; color: var(--ink); transition: border-color 0.15s; }
+    .related-item:hover { border-color: var(--accent); }
+    .related-item-tag { font-size: 11px; color: var(--accent); font-weight: 500; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .related-item-title { font-size: 14px; font-weight: 500; line-height: 1.5; }
+
+    .comment-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .comment-form { margin-top: 24px; display: flex; flex-direction: column; gap: 20px; }
+    .hidden { display: none; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: 500; color: var(--ink-light); letter-spacing: 0.04em; }
+    .required { color: var(--accent); }
+    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--ink); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #b0a898; }
+    .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .form-note { font-size: 12px; color: #999; margin: 0; }
+    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--ink); color: var(--paper); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .submit-btn:hover { background: #2c1f0f; }
+    .form-success { margin-top: 20px; padding: 18px 24px; background: #d5e8d4; border-radius: 4px; color: #27611b; font-size: 15px; font-weight: 500; }
+    .form-success p { margin: 0; color: #27611b; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      .speed-grid { grid-template-columns: 1fr 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-footer { flex-direction: column; align-items: flex-start; }
+      table { font-size: 13px; }
+      th, td { padding: 9px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">eSIM 評測 · JOYTEL 2026</div>
+  <h1>JOYTEL eSIM 評測 2026<br>速度實測、客服體驗<br>值不值得買？</h1>
+
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 4 月更新 · 日本 × 2、韓國 × 1 實測</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <div class="story-box">
+    <strong>JOYTEL vs 其他品牌，差在哪裡？</strong><br>
+    台灣市場的 eSIM 品牌可以分成兩類：
+    <strong>有中文真人客服的</strong>（JOYTEL、WaySim 等）
+    和<strong>只有英文或自助客服的</strong>（Airalo、部分平台型）。<br><br>
+    兩者最大的差別不是速度，而是出問題的時候能不能馬上找到人。
+    這篇評測就是從這個角度出發，看 JOYTEL 在實際使用上表現如何。
+  </div>
+
+  <h2>JOYTEL 是哪家公司？</h2>
+  <p>
+    JOYTEL 是台灣品牌，成立於 2018 年，主要做日本、韓國、東南亞、歐美等地的 eSIM 和實體 SIM 卡。
+    在台灣的 eSIM 市場，它是知名度最高的本土品牌之一。
+  </p>
+  <p>
+    他們的核心賣點是：<strong>原生線路</strong>（直接接日本 Docomo / SoftBank / KDDI，不繞台灣）
+    加上 <strong>LINE 全年無休真人客服</strong>。這兩點是我選它的主因。
+  </p>
+  <p>
+    如果你想先看其他品牌的比較，可以看這篇：
+    <a href="/esim" style="color:var(--accent);">eSIM 品牌比較總表（JOYTEL、DJB、Klook 等 6 家）</a>。
+  </p>
+
+  <h2>實測速度數據</h2>
+  <p>
+    以下是我三次使用 JOYTEL 的實測結果，使用 Speedtest by Ookla 測試，
+    地點分別是東京都心、大阪梅田、首爾明洞。
+  </p>
+
+  <h3>日本（SoftBank 原生線路）</h3>
+  <div class="speed-grid">
+    <div class="speed-card top">
+      <div class="speed-label">下載</div>
+      <div class="speed-val">78</div>
+      <div class="speed-unit">Mbps</div>
+    </div>
+    <div class="speed-card">
+      <div class="speed-label">上傳</div>
+      <div class="speed-val">21</div>
+      <div class="speed-unit">Mbps</div>
+    </div>
+    <div class="speed-card">
+      <div class="speed-label">延遲 Ping</div>
+      <div class="speed-val">18</div>
+      <div class="speed-unit">ms</div>
+    </div>
+  </div>
+
+  <h3>韓國（SK Telecom 原生線路）</h3>
+  <div class="speed-grid">
+    <div class="speed-card top">
+      <div class="speed-label">下載</div>
+      <div class="speed-val">92</div>
+      <div class="speed-unit">Mbps</div>
+    </div>
+    <div class="speed-card">
+      <div class="speed-label">上傳</div>
+      <div class="speed-val">27</div>
+      <div class="speed-unit">Mbps</div>
+    </div>
+    <div class="speed-card">
+      <div class="speed-label">延遲 Ping</div>
+      <div class="speed-val">14</div>
+      <div class="speed-unit">ms</div>
+    </div>
+  </div>
+
+  <p>
+    這個速度拿來看 YouTube 4K、開熱點給另一台設備、上傳照片到 Google Photos，
+    完全沒有問題。我在韓國一整天拍了幾百張照片，當晚上傳全程流暢。
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">速度會因地點、時段有差</div>
+    <p style="margin:0;font-size:15px;">
+      上面的數字是都心尖峰以外時段的結果。晚上 7–9 點、大型車站月台通常會慢一點——
+      這是日本電信本身的網路問題，跟 eSIM 品牌無關。
+      任何日本 eSIM 在同一個時段、同一個地點的速度都大致相同。
+    </p>
+  </div>
+
+  <h2>客服體驗：這才是重點</h2>
+  <p>
+    我用 JOYTEL 三次，其中有兩次需要聯繫客服。
+    第一次是安裝後顯示「未登錄」（後來發現是 APN 沒設定），
+    第二次是抵達首爾後熱點連不上。
+  </p>
+  <p>
+    兩次 LINE 聯繫，<strong>第一次等了約 8 分鐘</strong>，
+    <strong>第二次等了約 5 分鐘</strong>就有真人回覆。
+    客服的回覆是中文，步驟清楚，第一次解決了問題。
+  </p>
+  <p>
+    拿這個體驗跟我朋友用 Airalo 的經驗比——他等了 24 小時才收到英文 email 回覆，
+    當天根本沒網路可以用。差別很大。
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">遇到問題先看這篇</div>
+    <p style="margin:0;font-size:15px;">
+      如果你裝 JOYTEL 之後出現「未登錄」、「無服務」或熱點無法分享，
+      大多數問題有標準解法。先看：
+      <a href="/esim/troubleshoot" style="color:var(--accent);">eSIM 設定失敗完整解法（10 個常見問題）</a>，
+      9 成的問題不用聯繫客服就能自己解決。
+    </p>
+  </div>
+
+  <h2>優缺點整理</h2>
+
+  <div class="verdict-box pass">
+    <div class="verdict-label pass">優點</div>
+    <div class="verdict-title">這些地方真的做得好</div>
+    <ul class="check-list">
+      <li>原生線路——延遲低、速度穩，不繞台灣電信</li>
+      <li>LINE 真人客服，中文溝通，全年無休</li>
+      <li>下單後最快 5 分鐘寄出 QR Code（立即寄送選項）</li>
+      <li>三大日本電信可選（Docomo / SoftBank / KDDI），覆蓋有保障</li>
+      <li>會員購物金制度，常客可累積折抵</li>
+      <li>熱點分享支援，可同時讓多台裝置上網</li>
+    </ul>
+  </div>
+
+  <div class="verdict-box warn">
+    <div class="verdict-label warn">缺點</div>
+    <div class="verdict-title">這些地方要注意</div>
+    <ul class="check-list warn-list">
+      <li>價格比漫遊型方案略貴 NT$50–150 左右</li>
+      <li>選指定日期寄送要加收 29 元處理費（選立即寄送免費）</li>
+      <li>方案天數不能自訂，只能選既有套餐</li>
+      <li>不支援大陸線路（去中國大陸要另外查詢）</li>
+    </ul>
+  </div>
+
+  <h2>JOYTEL vs DJB vs WaySim 對比</h2>
+  <p>
+    三家都是台灣旅客常用的選擇，差異主要在線路類型、客服和價格。
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>JOYTEL</th>
+        <th>DJB 暢日卡</th>
+        <th>WaySim 威訊</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td>線路類型</td>
+        <td>原生線路</td>
+        <td>漫遊線路</td>
+        <td>原生線路</td>
+      </tr>
+      <tr>
+        <td>日本電信</td>
+        <td>Docomo / SoftBank / KDDI</td>
+        <td>多國合作（漫遊）</td>
+        <td>SoftBank / SK</td>
+      </tr>
+      <tr>
+        <td>延遲 Ping</td>
+        <td>15–25 ms</td>
+        <td>30–60 ms</td>
+        <td>15–25 ms</td>
+      </tr>
+      <tr>
+        <td>客服管道</td>
+        <td>LINE 真人全年</td>
+        <td>LINE 24hr</td>
+        <td>LINE 客服</td>
+      </tr>
+      <tr>
+        <td>5G 支援</td>
+        <td>部分方案</td>
+        <td>部分方案</td>
+        <td>支援</td>
+      </tr>
+      <tr>
+        <td>日本 5 天參考價</td>
+        <td>NT$299–799</td>
+        <td>NT$450–650</td>
+        <td>NT$289–549</td>
+      </tr>
+      <tr>
+        <td>熱點分享</td>
+        <td>支援</td>
+        <td>支援</td>
+        <td>支援</td>
+      </tr>
+      <tr>
+        <td>品牌背景</td>
+        <td>台灣品牌，2018 年起</td>
+        <td>台灣品牌，網路聲量第一</td>
+        <td>台灣品牌，日韓專門</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    如果你問我選哪個：<br>
+    — <strong>第一次用 eSIM</strong>：選 JOYTEL，客服最容易找到人<br>
+    — <strong>預算有限但有用過 eSIM</strong>：選 WaySim，原生線路但便宜一點<br>
+    — <strong>重度上網、商務出差</strong>：考慮 DJB 的暢日卡 PLUS 不限速方案
+  </p>
+
+  <h2>什麼情況我不會推薦 JOYTEL？</h2>
+  <p>
+    說實話，有幾個情境 JOYTEL 不是最好的選擇：
+  </p>
+  <p>
+    <strong>1. 你要去中國大陸</strong><br>
+    JOYTEL 的日韓東南亞方案不適用中國大陸，大陸有防火長城（GFW）限制，
+    需要特別的大陸方案。關於這個問題我另外寫了一篇：
+    <a href="/esim/china" style="color:var(--accent);">去中國大陸要用什麼 eSIM？線路與 GFW 問題完整說明</a>。
+  </p>
+  <p>
+    <strong>2. 你要去歐洲多國</strong><br>
+    JOYTEL 有歐洲方案，但如果你的行程跨越 5 個以上歐洲國家，
+    Airalo 的多國方案可能更划算——雖然客服是英文。
+  </p>
+  <p>
+    <strong>3. 你的手機是舊機型</strong><br>
+    部分舊款 Android（2018 年以前）不支援 eSIM，購買前先確認你的手機型號。
+    如果不確定怎麼查，看這篇：<a href="/esim/install" style="color:var(--accent);">eSIM 安裝教學（iPhone + Android 圖解）</a>。
+  </p>
+
+  <h2>購買流程：怎麼買、什麼時候買？</h2>
+  <p>
+    JOYTEL 在官網直接購買，流程很簡單：
+  </p>
+  <p>
+    選國家 → 選天數 / 流量方案 → 付款（信用卡、LINE Pay 等）
+    → 選「立即寄送」→ 5 分鐘內收到 QR Code email → 安裝 eSIM。
+  </p>
+  <p>
+    建議<strong>出發前 1–2 天安裝</strong>，不要等到機場。
+    原因是機場 WiFi 不穩，eSIM 安裝需要穩定網路。
+    裝好後把它設成「出國時啟用」，抵達目的地開機就自動切換。
+  </p>
+  <p>
+    安裝步驟有任何問題，看這篇圖解教學：
+    <a href="/esim/install" style="color:var(--accent);">eSIM 怎麼安裝？iPhone + Android 圖解教學</a>。
+  </p>
+
+  <div class="cta-box">
+    <p>三次使用、兩次麻煩、每次都被客服解決<br>這就是我繼續用 JOYTEL 的原因</p>
+    <a class="cta-btn" href={JOYTEL_LINK} target="_blank" rel="noopener">
+      查看 JOYTEL 方案與目前優惠 →
+    </a>
+    <p class="cta-label">※ 本文含聯盟行銷連結，點擊後購買我會獲得少量佣金，不影響你的價格</p>
+  </div>
+
+  <h2>我的總結</h2>
+  <p>
+    JOYTEL 不是最便宜的，也不是速度最快的。
+    但在台灣旅客這個市場，它做到了一件很重要的事：
+    <strong>讓你出問題的時候有個地方求助</strong>。
+  </p>
+  <p>
+    對我來說，這就夠了。
+    在越南十年，我見過太多「省小錢、出大問題」的狀況。
+    出國那幾天，平靜地拿著手機、不用擔心沒有網路——
+    這個安全感，值得多花那 100 塊。
+  </p>
+  <p>有問題歡迎留言，我看到都會回。</p>
+
+  <div class="related-links">
+    <h3>延伸閱讀</h3>
+    <div class="related-grid">
+      <a href="/esim/japan" class="related-item">
+        <div class="related-item-tag">日本 eSIM</div>
+        <div class="related-item-title">日本 eSIM 推薦 2026｜只推這兩張</div>
+      </a>
+      <a href="/esim/korea" class="related-item">
+        <div class="related-item-tag">韓國 eSIM</div>
+        <div class="related-item-title">韓國 eSIM 推薦 2026｜首爾釜山全覆蓋</div>
+      </a>
+      <a href="/esim/troubleshoot" class="related-item">
+        <div class="related-item-tag">安裝問題</div>
+        <div class="related-item-title">eSIM 設定失敗怎麼辦？10 個解法</div>
+      </a>
+      <a href="/esim/china" class="related-item">
+        <div class="related-item-tag">大陸上網</div>
+        <div class="related-item-title">去中國大陸用什麼 eSIM？</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="comment-section">
+    <h2>留言 / 問題</h2>
+    <form
+      name="joytel-comments"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="comment-form"
+      id="comment-form"
+    >
+      <input type="hidden" name="form-name" value="joytel-comments" />
+      <p class="hidden"><label>不要填這個：<input name="bot-field" /></label></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-name">名字 <span class="required">*</span></label>
+          <input type="text" id="cf-name" name="name" placeholder="你的稱呼" required />
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email <span class="required">*</span></label>
+          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cf-message">留言內容 <span class="required">*</span></label>
+        <textarea id="cf-message" name="message" rows="5" placeholder="想問 JOYTEL 的問題、或分享你的使用經驗..." required></textarea>
+      </div>
+      <div class="form-footer">
+        <p class="form-note">你的 email 只用於我回覆你，不會公開。</p>
+        <button type="submit" class="submit-btn">送出留言 →</button>
+      </div>
+    </form>
+    <div class="form-success" id="form-success" hidden>
+      <p>✓ 收到了！我會盡快回覆你。</p>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div style="margin-top:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">← eSIM 比較總表</a>
+    <a href="/esim/japan" style="color:var(--accent);text-decoration:none;font-size:13px;">日本 eSIM</a>
+    <a href="/esim/korea" style="color:var(--accent);text-decoration:none;font-size:13px;">韓國 eSIM</a>
+    <a href="/esim/install" style="color:var(--accent);text-decoration:none;font-size:13px;">安裝教學</a>
+    <a href="/esim/troubleshoot" style="color:var(--accent);text-decoration:none;font-size:13px;">設定問題</a>
+  </div>
+</footer>
+
+<script>
+  var form = /** @type {HTMLFormElement|null} */ (document.getElementById('comment-form'));
+  var successMsg = document.getElementById('form-success');
+  if (form && successMsg) {
+    var f = form, s = successMsg;
+    f.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var data = new FormData(f);
+      await fetch('/', { method: 'POST', body: data });
+      f.hidden = true;
+      s.hidden = false;
+    });
+  }
+</script>
+</body>
+</html>

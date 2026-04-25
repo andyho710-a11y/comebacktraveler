@@ -1,0 +1,494 @@
+---
+const title = "eSIM 裝不起來怎麼辦？10 個常見問題完整解法";
+const description = "JOYTEL、DJB 等 eSIM 裝不起來、QR Code 掃不了、安裝失敗、沒有訊號、APN 錯誤——10 個問題逐一解法，一篇全搞定。";
+const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="eSIM設定失敗,eSIM安裝不了,eSIM沒有訊號,eSIM QR Code無效,APN設定,eSIM排錯,JOYTEL安裝失敗,eSIM問題解法" />
+  <link rel="canonical" href="https://comebacktraveler.com/esim/troubleshoot" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content="https://comebacktraveler.com/esim/troubleshoot" />
+  <meta property="og:locale" content="zh_TW" />
+  <script is:inline type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "name": title,
+    "description": description,
+    "url": "https://comebacktraveler.com/esim/troubleshoot",
+    "inLanguage": "zh-TW",
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
+  })}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --green: #1D9E75;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 52px 0 16px; position: relative; padding-left: 16px; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 20px; margin: 36px 0 10px; }
+
+    .toc { background: var(--paper-warm); border: 1px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+    .toc-title { font-family: var(--serif); font-weight: 600; font-size: 15px; margin-bottom: 12px; color: var(--ink-light); }
+    .toc ol { padding-left: 20px; }
+    .toc li { font-size: 14px; padding: 3px 0; }
+    .toc a { color: var(--accent); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+
+    .problem-block { border: 1.5px solid var(--border); border-radius: 8px; padding: 24px 28px; margin: 28px 0; }
+    .problem-block.urgent { border-color: var(--accent); background: #fef9f5; }
+    .problem-num { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .problem-title { font-family: var(--serif); font-weight: 900; font-size: 19px; margin-bottom: 14px; }
+    .problem-cause { font-size: 14px; color: var(--ink-light); background: var(--paper-warm); padding: 10px 14px; border-radius: 4px; margin-bottom: 14px; }
+    .problem-cause strong { color: var(--ink); }
+    .steps { list-style: none; counter-reset: step-counter; }
+    .steps li { counter-increment: step-counter; padding: 8px 0 8px 36px; position: relative; font-size: 15px; border-bottom: 1px dashed var(--border); }
+    .steps li:last-child { border-bottom: none; }
+    .steps li::before { content: counter(step-counter); position: absolute; left: 0; top: 8px; width: 24px; height: 24px; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 600; font-size: 13px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    code { font-family: monospace; font-size: 14px; background: var(--paper-warm); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--border); }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+
+    .device-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+    .device-card { border: 1.5px solid var(--border); border-radius: 6px; padding: 16px; }
+    .device-card-title { font-family: var(--serif); font-weight: 600; font-size: 16px; margin-bottom: 10px; }
+    .device-card ul { list-style: none; padding: 0; }
+    .device-card li { font-size: 14px; padding: 3px 0; color: var(--ink-light); }
+    .device-card li::before { content: '› '; color: var(--accent); }
+
+    .cta-box { background: var(--ink); color: var(--paper); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
+    .cta-box p { color: #d4c9b0; margin-bottom: 20px; font-size: 16px; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
+    .cta-btn:hover { background: #a93226; }
+    .cta-label { font-size: 11px; color: #666; margin-top: 10px; }
+
+    .related-links { border-top: 1px solid var(--border); margin-top: 56px; padding-top: 32px; }
+    .related-links h3 { font-family: var(--serif); font-weight: 600; font-size: 17px; margin-bottom: 16px; color: var(--ink-light); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .related-item { border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; text-decoration: none; color: var(--ink); transition: border-color 0.15s; }
+    .related-item:hover { border-color: var(--accent); }
+    .related-item-tag { font-size: 11px; color: var(--accent); font-weight: 500; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .related-item-title { font-size: 14px; font-weight: 500; line-height: 1.5; }
+
+    .comment-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .comment-form { margin-top: 24px; display: flex; flex-direction: column; gap: 20px; }
+    .hidden { display: none; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: 500; color: var(--ink-light); letter-spacing: 0.04em; }
+    .required { color: var(--accent); }
+    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--ink); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #b0a898; }
+    .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .form-note { font-size: 12px; color: #999; margin: 0; }
+    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--ink); color: var(--paper); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .submit-btn:hover { background: #2c1f0f; }
+    .form-success { margin-top: 20px; padding: 18px 24px; background: #d5e8d4; border-radius: 4px; color: #27611b; font-size: 15px; font-weight: 500; }
+    .form-success p { margin: 0; color: #27611b; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      .device-grid { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-footer { flex-direction: column; align-items: flex-start; }
+      .problem-block { padding: 18px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">eSIM 問題排解 · 完整指南</div>
+  <h1>eSIM 裝不起來怎麼辦？<br>10 個常見問題完整解法</h1>
+  <p class="subtitle">
+    你不是第一個在機場傻眼的人。
+    我整理了 JOYTEL、DJB 等台灣常見 eSIM 品牌的常見故障，
+    每一個問題都有步驟解法，大部分 5 分鐘內可以自己解決。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 4 月更新 · 根據真實客服案例整理</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <div class="story-box">
+    <strong>「裝起來了，但沒有網路」是最常見的情況。</strong><br>
+    根據 JOYTEL 客服統計，來電問題中排名前三的都一樣：
+    APN 沒設定、漫遊沒開啟、雙 SIM 卡設定選錯。<br><br>
+    這三個問題合計佔了將近 7 成的客訴。
+    也就是說，大多數人遇到的問題，其實在下面這份清單裡都有答案——
+    不用打給客服，自己可以解決。
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">本文目錄 — 快速跳到你的問題</div>
+    <ol>
+      <li><a href="#esim-support">確認手機支援 eSIM</a></li>
+      <li><a href="#qr-scan">QR Code 掃不到</a></li>
+      <li><a href="#install-fail">安裝失敗 / 逾時</a></li>
+      <li><a href="#no-signal">安裝成功但沒有訊號</a></li>
+      <li><a href="#apn">APN 設定問題</a></li>
+      <li><a href="#hotspot">熱點無法分享</a></li>
+      <li><a href="#roaming">漫遊沒有開啟</a></li>
+      <li><a href="#dual-sim">雙 SIM 設定混亂</a></li>
+      <li><a href="#locked">eSIM 被鎖定 / 無法刪除</a></li>
+      <li><a href="#airport">出了機場才發現沒訊號</a></li>
+    </ol>
+  </div>
+
+  <h2 id="esim-support">先確認：你的手機支援 eSIM 嗎？</h2>
+  <p>
+    在排查任何問題之前，先確認你的手機型號支援 eSIM。
+    以下是常見機型的支援狀況：
+  </p>
+
+  <div class="device-grid">
+    <div class="device-card">
+      <div class="device-card-title">iPhone</div>
+      <ul>
+        <li>XS / XR 以上（2018 起）✓</li>
+        <li>SE 第 2 代 / 第 3 代 ✓</li>
+        <li>iPhone 14 後支援純 eSIM</li>
+        <li>iPhone 6 / 7 / 8 系列 ✗</li>
+      </ul>
+    </div>
+    <div class="device-card">
+      <div class="device-card-title">Android</div>
+      <ul>
+        <li>Samsung S20 以上 ✓</li>
+        <li>Pixel 3a / 4 以上 ✓</li>
+        <li>Sony Xperia 10 IV 以上 ✓</li>
+        <li>OPPO / vivo 部分支援</li>
+        <li>陸版手機通常不支援 ✗</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>
+    <strong>中國大陸購買的手機版本</strong>（包含台灣水貨大陸版）通常沒有 eSIM 功能，
+    即使型號相同也可能因地區版本而不支援。如果你買的是平行輸入大陸版，請先確認。
+  </p>
+  <p>
+    如果你的手機支援 eSIM，但安裝過程中遇到問題，繼續看下面的解法。
+    還沒安裝過 eSIM 的，先看：<a href="/esim/install" style="color:var(--accent);">eSIM 安裝圖解教學（iPhone + Android）</a>。
+  </p>
+
+  <h2>10 個常見問題解法</h2>
+
+  <div class="problem-block urgent" id="qr-scan">
+    <div class="problem-num">問題 01</div>
+    <div class="problem-title">QR Code 掃不到</div>
+    <div class="problem-cause"><strong>常見原因：</strong>螢幕亮度不夠、QR Code 圖片太小、網路不穩定導致下載失敗</div>
+    <ol class="steps">
+      <li>把顯示 QR Code 的螢幕亮度調到最高</li>
+      <li>QR Code 要在有 WiFi 的環境下掃描——如果你手邊只有行動數據，先連 WiFi 再試</li>
+      <li>用系統相機直接掃描，不要用第三方 App</li>
+      <li>iPhone：設定 → 行動服務 → 加入行動方案 → 使用 QR Code</li>
+      <li>如果 email 裡的 QR Code 太小，放大郵件圖片，或截圖後在相簿裡放大再掃</li>
+      <li>還是掃不到：部分品牌（包括 JOYTEL）提供「手動輸入啟用碼」的備用方式，聯繫客服索取</li>
+    </ol>
+  </div>
+
+  <div class="problem-block" id="install-fail">
+    <div class="problem-num">問題 02</div>
+    <div class="problem-title">安裝失敗 / 顯示「無法新增方案」</div>
+    <div class="problem-cause"><strong>常見原因：</strong>WiFi 不穩、手機系統版本過舊、eSIM 已被其他手機啟用過</div>
+    <ol class="steps">
+      <li>確認你連的是穩定的 WiFi（不是咖啡廳超慢的 WiFi），建議用家裡網路</li>
+      <li>確認 iOS 版本 16 以上、Android 版本 12 以上。去設定 → 一般 → 軟體更新確認</li>
+      <li>一張 eSIM QR Code 只能在一台裝置上啟用一次。如果你之前在其他手機掃過，這張 QR Code 就失效了，要聯繫購買品牌補發</li>
+      <li>重啟手機後再試一次——部分系統快取會影響 eSIM 安裝</li>
+      <li>iPhone 可以試：設定 → 行動服務 → 加入行動方案（不用 QR Code，選手動輸入）</li>
+    </ol>
+  </div>
+
+  <div class="problem-block urgent" id="no-signal">
+    <div class="problem-num">問題 03</div>
+    <div class="problem-title">安裝顯示成功，但沒有訊號 / 顯示「未登錄」</div>
+    <div class="problem-cause"><strong>常見原因：</strong>方案尚未生效（有啟用日期設定）、漫遊未開啟、APN 未設定</div>
+    <ol class="steps">
+      <li>確認你買的方案的<strong>啟用日期</strong>。部分方案是指定日期才開始，不是安裝完立刻生效</li>
+      <li>開啟漫遊：設定 → 行動服務 → 行動數據選項 → 數據漫遊（打開）</li>
+      <li>到設定 → 行動服務，確認「行動數據」選的是你的 eSIM，不是台灣本地 SIM</li>
+      <li>重啟手機，讓 eSIM 重新搜尋訊號</li>
+      <li>如果還是「未登錄」，很可能是 APN 問題，看下面問題 04</li>
+    </ol>
+  </div>
+
+  <div class="problem-block" id="apn">
+    <div class="problem-num">問題 04</div>
+    <div class="problem-title">APN 設定問題（有訊號但網頁打不開）</div>
+    <div class="problem-cause"><strong>常見原因：</strong>APN 沒有設定或設定錯誤，這是最常見但最容易忽略的問題</div>
+    <ol class="steps">
+      <li>向你的 eSIM 購買品牌確認正確的 APN 值（每家不同，通常在購買確認信或官網 FAQ 裡）</li>
+      <li>iPhone 設定 APN：設定 → 行動服務 → 行動數據選項 → 行動數據網路 → 填入 APN 欄位</li>
+      <li>Android（三星）：設定 → 連線 → 行動網路 → 存取點名稱 → 新增 APN</li>
+      <li>填完後儲存，再重啟手機</li>
+      <li>JOYTEL 用戶：APN 通常在購買確認信中有提供，或可 LINE 詢問客服取得對應電信的 APN</li>
+    </ol>
+    <div style="margin-top:14px;font-size:14px;color:var(--ink-light);">
+      注意：部分 iPhone 型號（特別是 iOS 16 以上）的 APN 設定可能被系統隱藏，
+      需要透過品牌提供的「設定描述檔」安裝。請聯繫 eSIM 品牌客服取得描述檔連結。
+    </div>
+  </div>
+
+  <div class="problem-block" id="hotspot">
+    <div class="problem-num">問題 05</div>
+    <div class="problem-title">熱點無法分享</div>
+    <div class="problem-cause"><strong>常見原因：</strong>行動數據與熱點設定的 SIM 卡不一致、個人熱點沒有開啟</div>
+    <ol class="steps">
+      <li>確認購買的方案支援熱點分享（大部分 JOYTEL 方案支援，但少數特定方案不支援，購買前確認）</li>
+      <li>iPhone：設定 → 行動服務，確認「行動數據」和「個人熱點」都選了你的 eSIM</li>
+      <li>設定 → 個人熱點 → 允許他人加入（打開）</li>
+      <li>Android：設定 → 連線 → 行動網路，確認使用 eSIM 那張卡的行動數據，再開熱點</li>
+      <li>如果還是無法分享，重啟手機後再試</li>
+    </ol>
+  </div>
+
+  <div class="problem-block" id="roaming">
+    <div class="problem-num">問題 06</div>
+    <div class="problem-title">數據漫遊沒有開啟</div>
+    <div class="problem-cause"><strong>常見原因：</strong>這是使用境外 eSIM 最容易忘記的設定，也是最多人打電話客服的原因</div>
+    <ol class="steps">
+      <li>iPhone：設定 → 行動服務 → 點選你的 eSIM → 行動數據選項 → 數據漫遊（打開）</li>
+      <li>Android（三星）：設定 → 連線 → 行動網路 → 數據漫遊（打開）</li>
+      <li>Google Pixel：設定 → 網路和網際網路 → SIM 卡 → 選擇 eSIM → 數據漫遊</li>
+      <li>漫遊開啟後，重啟或切換一下飛航模式再取消，讓手機重新搜尋訊號</li>
+    </ol>
+  </div>
+
+  <div class="problem-block" id="dual-sim">
+    <div class="problem-num">問題 07</div>
+    <div class="problem-title">雙 SIM 卡設定混亂（台灣號碼 + eSIM）</div>
+    <div class="problem-cause"><strong>常見原因：</strong>手機同時有台灣 SIM 卡和境外 eSIM，系統設定沒有切換到正確的 SIM</div>
+    <ol class="steps">
+      <li>出國後，到設定 → 行動服務，將「行動數據」切換到你的境外 eSIM</li>
+      <li>台灣 SIM 可以保留，用於接收台灣電話或簡訊（打開「語音通話」給台灣 SIM）</li>
+      <li>上網用境外 eSIM，接電話用台灣 SIM，這樣兩邊都能用</li>
+      <li>如果你的台灣 SIM 也有開通國際漫遊，記得把「行動數據」設定為境外 eSIM，否則可能會被台灣電信收漫遊費</li>
+    </ol>
+  </div>
+
+  <div class="problem-block" id="locked">
+    <div class="problem-num">問題 08</div>
+    <div class="problem-title">eSIM 被鎖定 / 無法刪除重裝</div>
+    <div class="problem-cause"><strong>常見原因：</strong>MDM 企業鎖定（公司手機）、運營商鎖（Carrier Lock）、頻繁刪除觸發安全保護</div>
+    <ol class="steps">
+      <li>如果你的手機是公司發的，可能有 MDM 管理，聯繫 IT 部門確認是否限制 eSIM</li>
+      <li>確認手機是否為運營商鎖定版本：買手機時若綁定電信方案，手機可能被鎖，需向原電信解鎖</li>
+      <li>iPhone 查看鎖定狀態：設定 → 一般 → 關於本機，若沒有「運營商鎖定」選項通常代表已解鎖</li>
+      <li>如果 eSIM 刪除後無法重新安裝，聯繫品牌客服補發新的 QR Code</li>
+    </ol>
+  </div>
+
+  <div class="problem-block" id="airport">
+    <div class="problem-num">問題 09</div>
+    <div class="problem-title">到了機場 / 目的地才發現沒訊號</div>
+    <div class="problem-cause"><strong>常見原因：</strong>方案尚未開始、APN 未設定、漫遊未開啟、手機需要重啟</div>
+    <ol class="steps">
+      <li>先切換飛航模式 10 秒，再關掉，讓手機重新搜尋訊號</li>
+      <li>確認上面的問題 03–06 全部都已設定正確</li>
+      <li>去設定 → 行動服務 → 網路選擇，改為「自動」</li>
+      <li>如果你在日本：確認 eSIM 的電信是否有覆蓋當前地點（Docomo 覆蓋最廣，KDDI 次之）</li>
+      <li>如果你去的是中國大陸：一般日韓 eSIM 在中國大陸無效，需要購買專門的大陸方案。看這篇：<a href="/esim/china" style="color:var(--accent);">去中國大陸要用什麼 eSIM？</a></li>
+    </ol>
+  </div>
+
+  <div class="problem-block" id="other">
+    <div class="problem-num">問題 10</div>
+    <div class="problem-title">速度很慢 / 隔一段時間斷線</div>
+    <div class="problem-cause"><strong>常見原因：</strong>方案達到流量上限後降速、尖峰時段網路壅塞、漫遊線路延遲</div>
+    <ol class="steps">
+      <li>確認你的方案剩餘流量——部分方案超過高速額度後會降速至 1 Mbps</li>
+      <li>用 Speedtest 測試速度，若下載低於 1 Mbps 代表可能已降速</li>
+      <li>晚上 7–10 點日本都心地鐵站內的速度會比較慢，這是電信網路壅塞問題，非 eSIM 故障</li>
+      <li>隔一段時間斷線可能是手機電池優化把行動數據背景關掉，去設定 → 電池 → 確認沒有限制行動數據</li>
+      <li>如果懷疑是漫遊線路造成的延遲問題，看這篇了解原生 vs 漫遊線路的差異：<a href="/esim/joytel" style="color:var(--accent);">JOYTEL eSIM 評測（含原生線路說明）</a></li>
+    </ol>
+  </div>
+
+  <h2>聯繫客服前，準備這些資訊</h2>
+  <p>
+    如果上面 10 個解法都試過了還沒解決，才去聯繫客服。
+    但在聯繫前，先把這些資訊整理好，可以讓客服更快幫你：
+  </p>
+  <ul style="list-style:none;padding:0;">
+    <li style="padding:6px 0;font-size:15px;">› <strong>手機型號和系統版本</strong>（例：iPhone 15 / iOS 17.4）</li>
+    <li style="padding:6px 0;font-size:15px;">› <strong>購買的方案名稱和訂單編號</strong></li>
+    <li style="padding:6px 0;font-size:15px;">› <strong>問題描述</strong>：安裝失敗？有訊號沒網路？熱點無法分享？</li>
+    <li style="padding:6px 0;font-size:15px;">› <strong>截圖</strong>：錯誤訊息截圖、設定畫面截圖，讓客服知道你看到什麼</li>
+    <li style="padding:6px 0;font-size:15px;">› <strong>你目前在哪裡</strong>：台灣還是已經到目的地</li>
+  </ul>
+
+  <div class="tip-box">
+    <div class="tip-title">JOYTEL 客服聯繫方式</div>
+    <p style="margin:0;font-size:15px;">
+      LINE 官方帳號搜尋「JOYTEL」，或在官網頁面底部找到 LINE 連結。
+      全年無休，平均回覆時間 5–15 分鐘。
+      提供中文服務，如果你不確定怎麼描述問題，直接截圖給他們看就可以。<br><br>
+      如果你還沒有買 eSIM，可以從這裡查看方案：
+      <a href={JOYTEL_LINK} target="_blank" rel="noopener" style="color:var(--accent);">JOYTEL 方案一覽</a>
+    </p>
+  </div>
+
+  <h2>大陸線路的特殊問題</h2>
+  <p>
+    如果你要去中國大陸，一般的日韓 eSIM 方案是無法在大陸使用的。
+    這不是設定問題，而是電信授權範圍的限制。
+  </p>
+  <p>
+    大陸還有個特殊問題：<strong>防火長城（GFW）</strong>封鎖了 Google、LINE、Instagram、
+    WhatsApp 等大量常用 App，就算你有網路也可能發現這些 App 都打不開。
+    這個問題跟 eSIM 品牌無關，是中國政策問題。
+  </p>
+  <p>
+    關於去大陸要用什麼 eSIM、哪些 App 會被封鎖，
+    我另外整理了一篇：<a href="/esim/china" style="color:var(--accent);">去中國大陸用 eSIM——線路選擇、GFW 問題完整說明</a>。
+  </p>
+
+  <div class="cta-box">
+    <p>問題解決後，如果你還在找 eSIM<br>這是我用了三次的選擇</p>
+    <a class="cta-btn" href={JOYTEL_LINK} target="_blank" rel="noopener">
+      查看 JOYTEL 方案 →
+    </a>
+    <p class="cta-label">※ 本文含聯盟行銷連結，點擊後購買我會獲得少量佣金，不影響你的價格</p>
+  </div>
+
+  <div class="related-links">
+    <h3>延伸閱讀</h3>
+    <div class="related-grid">
+      <a href="/esim/install" class="related-item">
+        <div class="related-item-tag">安裝教學</div>
+        <div class="related-item-title">eSIM 怎麼安裝？iPhone + Android 圖解</div>
+      </a>
+      <a href="/esim/joytel" class="related-item">
+        <div class="related-item-tag">JOYTEL 評測</div>
+        <div class="related-item-title">JOYTEL eSIM 深度評測：速度、客服、優缺點</div>
+      </a>
+      <a href="/esim/china" class="related-item">
+        <div class="related-item-tag">大陸上網</div>
+        <div class="related-item-title">去中國大陸用什麼 eSIM？GFW 問題說明</div>
+      </a>
+      <a href="/esim" class="related-item">
+        <div class="related-item-tag">品牌比較</div>
+        <div class="related-item-title">6 家 eSIM 品牌比較總表</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="comment-section">
+    <h2>你的問題是哪個？</h2>
+    <p style="color:var(--ink-light);font-size:15px;">如果你遇到的問題沒在上面 10 個裡面，留言告訴我，我盡量幫你查。</p>
+    <form
+      name="troubleshoot-comments"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="comment-form"
+      id="comment-form"
+    >
+      <input type="hidden" name="form-name" value="troubleshoot-comments" />
+      <p class="hidden"><label>不要填這個：<input name="bot-field" /></label></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-name">名字 <span class="required">*</span></label>
+          <input type="text" id="cf-name" name="name" placeholder="你的稱呼" required />
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email <span class="required">*</span></label>
+          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cf-message">你的問題 <span class="required">*</span></label>
+        <textarea id="cf-message" name="message" rows="5" placeholder="手機型號、eSIM 品牌、遇到的錯誤訊息、你已經試過的方法..." required></textarea>
+      </div>
+      <div class="form-footer">
+        <p class="form-note">你的 email 只用於我回覆你，不會公開。</p>
+        <button type="submit" class="submit-btn">送出問題 →</button>
+      </div>
+    </form>
+    <div class="form-success" id="form-success" hidden>
+      <p>✓ 收到了！我會盡快回覆你。</p>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div style="margin-top:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">← eSIM 比較總表</a>
+    <a href="/esim/install" style="color:var(--accent);text-decoration:none;font-size:13px;">安裝教學</a>
+    <a href="/esim/joytel" style="color:var(--accent);text-decoration:none;font-size:13px;">JOYTEL 評測</a>
+    <a href="/esim/china" style="color:var(--accent);text-decoration:none;font-size:13px;">大陸上網</a>
+  </div>
+</footer>
+
+<script>
+  var form = /** @type {HTMLFormElement|null} */ (document.getElementById('comment-form'));
+  var successMsg = document.getElementById('form-success');
+  if (form && successMsg) {
+    var f = form, s = successMsg;
+    f.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var data = new FormData(f);
+      await fetch('/', { method: 'POST', body: data });
+      f.hidden = true;
+      s.hidden = false;
+    });
+  }
+</script>
+</body>
+</html>

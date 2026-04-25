@@ -1,0 +1,519 @@
+---
+const title = "去中國大陸用 eSIM｜哪些能用、GFW 封鎖哪些 App、常見問題解法";
+const description = "去中國大陸要買哪張 eSIM？一般日韓方案在大陸無效。本文說明大陸線路選擇、防火長城封鎖的 App 清單、常見連線問題解法。";
+const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="大陸eSIM,中國eSIM,大陸上網,中國手機上網,去中國大陸網路,防火長城,GFW,大陸線路eSIM,台灣人去大陸上網" />
+  <link rel="canonical" href="https://comebacktraveler.com/esim/china" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content="https://comebacktraveler.com/esim/china" />
+  <meta property="og:locale" content="zh_TW" />
+  <script is:inline type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "url": "https://comebacktraveler.com/esim/china",
+    "inLanguage": "zh-TW",
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
+  })}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --green: #1D9E75;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 52px 0 16px; position: relative; padding-left: 16px; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 20px; margin: 32px 0 10px; }
+
+    .alert-box { border: 2px solid var(--accent); border-radius: 6px; padding: 20px 24px; margin: 32px 0; background: #fef5f4; }
+    .alert-title { font-family: var(--serif); font-weight: 900; font-size: 16px; color: var(--accent); margin-bottom: 8px; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+
+    table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 14px; }
+    th { font-family: var(--serif); font-weight: 600; background: var(--ink); color: var(--paper); padding: 12px 14px; text-align: left; }
+    td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:nth-child(even) td { background: var(--paper-warm); }
+    td:first-child { font-weight: 500; }
+
+    .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
+    .app-card { border: 1.5px solid var(--border); border-radius: 6px; padding: 16px 18px; }
+    .app-card.blocked { border-color: #e0aaaa; background: #fff5f5; }
+    .app-card.works { border-color: #a8d5be; background: #f4fbf7; }
+    .app-card-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+    .app-card.blocked .app-card-label { color: var(--accent); }
+    .app-card.works .app-card-label { color: var(--green); }
+    .app-list { list-style: none; padding: 0; }
+    .app-list li { font-size: 14px; padding: 3px 0; }
+    .app-card.blocked .app-list li::before { content: '✗ '; color: var(--accent); }
+    .app-card.works .app-list li::before { content: '✓ '; color: var(--green); }
+
+    .checklist-box { border: 1.5px solid var(--border); border-radius: 8px; padding: 24px 28px; margin: 32px 0; }
+    .checklist-title { font-family: var(--serif); font-weight: 900; font-size: 18px; margin-bottom: 16px; }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; border-bottom: 1px dashed var(--border); font-size: 15px; }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist-check { flex-shrink: 0; width: 20px; height: 20px; border: 1.5px solid var(--border); border-radius: 3px; display: inline-block; margin-top: 2px; }
+
+    .cta-box { background: var(--ink); color: var(--paper); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
+    .cta-box p { color: #d4c9b0; margin-bottom: 20px; font-size: 16px; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
+    .cta-btn:hover { background: #a93226; }
+    .cta-label { font-size: 11px; color: #666; margin-top: 10px; }
+
+    .related-links { border-top: 1px solid var(--border); margin-top: 56px; padding-top: 32px; }
+    .related-links h3 { font-family: var(--serif); font-weight: 600; font-size: 17px; margin-bottom: 16px; color: var(--ink-light); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .related-item { border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; text-decoration: none; color: var(--ink); transition: border-color 0.15s; }
+    .related-item:hover { border-color: var(--accent); }
+    .related-item-tag { font-size: 11px; color: var(--accent); font-weight: 500; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .related-item-title { font-size: 14px; font-weight: 500; line-height: 1.5; }
+
+    .comment-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .comment-form { margin-top: 24px; display: flex; flex-direction: column; gap: 20px; }
+    .hidden { display: none; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: 500; color: var(--ink-light); letter-spacing: 0.04em; }
+    .required { color: var(--accent); }
+    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--ink); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #b0a898; }
+    .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .form-note { font-size: 12px; color: #999; margin: 0; }
+    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--ink); color: var(--paper); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .submit-btn:hover { background: #2c1f0f; }
+    .form-success { margin-top: 20px; padding: 18px 24px; background: #d5e8d4; border-radius: 4px; color: #27611b; font-size: 15px; font-weight: 500; }
+    .form-success p { margin: 0; color: #27611b; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      .app-grid { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-footer { flex-direction: column; align-items: flex-start; }
+      table { font-size: 13px; }
+      th, td { padding: 9px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">中國大陸上網 · eSIM 選擇指南</div>
+  <h1>去中國大陸用 eSIM<br>哪些能用、GFW 封什麼<br>常見問題怎麼解</h1>
+
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 4 月更新 · 越南–大陸跨境工作 10 年經驗</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <div class="story-box">
+    <strong>台灣人去大陸，網路問題分兩種：</strong><br>
+    第一種是「根本沒有訊號」——通常是買了日韓方案卻沒大陸授權，
+    或者漫遊設定沒開。這個問題可以在出發前解決。<br><br>
+    第二種是「有訊號，但 App 開不了」——這是防火長城（GFW）的問題，
+    跟你買哪家 eSIM 無關，是中國的網路政策。
+    這兩個問題性質完全不同，解法也不一樣。本文分開說明。
+  </div>
+
+  <div class="alert-box">
+    <div class="alert-title">重要提醒：一般日韓 eSIM 在大陸無效</div>
+    <p style="margin:0;font-size:15px;">
+      如果你買的是 JOYTEL 日本方案、韓國方案，或任何只標示日韓東南亞的 eSIM，
+      這張 eSIM 在中國大陸<strong>無法使用</strong>。
+      這不是設定問題，是電信授權範圍的限制。
+      去大陸要另外購買「大陸方案」的 eSIM 或實體 SIM。
+    </p>
+  </div>
+
+  <h2>台灣人去大陸，網路選擇有哪些？</h2>
+  <p>
+    去大陸的網路方案主要分三種：
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>方案類型</th>
+        <th>優點</th>
+        <th>缺點</th>
+        <th>適合誰</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>台灣電信國際漫遊</td>
+        <td>不用另外辦，到大陸自動切換</td>
+        <td>每天 NT$299–499，費用高</td>
+        <td>短期商務、只去 1–2 天</td>
+      </tr>
+      <tr>
+        <td>大陸 eSIM 方案</td>
+        <td>出發前搞定、價格合理</td>
+        <td>受 GFW 限制、需確認品牌有無大陸方案</td>
+        <td>旅遊 3 天以上、預算有限</td>
+      </tr>
+      <tr>
+        <td>香港/澳門過境 SIM</td>
+        <td>部分可在大陸漫遊使用</td>
+        <td>需要先到港澳，費用不一定划算</td>
+        <td>行程有包含港澳的旅客</td>
+      </tr>
+      <tr>
+        <td>大陸當地 SIM（中國移動 / 聯通 / 電信）</td>
+        <td>速度最穩、價格低</td>
+        <td>需要護照辦理、可能需要大陸手機號</td>
+        <td>長期出差、住超過 2 週</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    一般短期旅遊（3–10 天），大陸 eSIM 方案是最方便的選擇。
+    購買前確認你的 eSIM 品牌有提供大陸方案，以及方案覆蓋範圍（有些只覆蓋上海、廣東，有些全國通用）。
+  </p>
+
+  <h2>大陸線路 vs 一般亞洲 eSIM：關鍵差異</h2>
+  <p>
+    大陸的網路有一個跟其他亞洲國家完全不同的特殊情況：
+    <strong>防火長城（GFW，Great Firewall）</strong>。
+  </p>
+  <p>
+    GFW 是中國政府的網路管控系統，封鎖了大量境外網站和 App。
+    這個問題不管你用什麼 eSIM 都會遇到——它是基礎設施層面的限制，
+    不是 eSIM 設定問題，也不是哪家 eSIM 品牌的問題。
+  </p>
+
+  <h3>在大陸，哪些 App 開不了？</h3>
+
+  <div class="app-grid">
+    <div class="app-card blocked">
+      <div class="app-card-label">在大陸無法使用</div>
+      <ul class="app-list">
+        <li>Google Maps / Search</li>
+        <li>YouTube</li>
+        <li>Gmail</li>
+        <li>Google Drive / 相簿</li>
+        <li>Instagram</li>
+        <li>Facebook / Messenger</li>
+        <li>WhatsApp</li>
+        <li>LINE（有時可用，不穩定）</li>
+        <li>Twitter / X</li>
+        <li>Telegram</li>
+        <li>Netflix（部分內容）</li>
+      </ul>
+    </div>
+    <div class="app-card works">
+      <div class="app-card-label">在大陸可以使用</div>
+      <ul class="app-list">
+        <li>微信 WeChat</li>
+        <li>百度地圖</li>
+        <li>高德地圖</li>
+        <li>支付寶（需先開通）</li>
+        <li>大眾點評</li>
+        <li>攜程（Ctrip）</li>
+        <li>滴滴出行</li>
+        <li>淘寶 / 天貓</li>
+        <li>Bing（微軟，可用）</li>
+        <li>蘋果地圖（iOS）</li>
+        <li>iMessage（可用）</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>
+    上面這個清單會隨政策調整而變化，出發前可以搜尋最新狀況。
+    整體原則是：<strong>美國大型科技公司的服務幾乎全部被封</strong>，
+    中國本土 App 可以正常使用。
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">LINE 在大陸的特殊情況</div>
+    <p style="margin:0;font-size:15px;">
+      LINE 在大陸的狀態一直不穩定：有時能用、有時不行，
+      且通話功能幾乎都無法使用。如果你需要在大陸跟台灣聯繫，
+      建議改用 <strong>iMessage（iOS）</strong> 或 <strong>微信</strong>。
+      出發前跟家人和朋友互換微信 ID 是比較保險的做法。
+    </p>
+  </div>
+
+  <h2>大陸常見連線問題與解法</h2>
+
+  <h3>問題 1：有網路但 App 打不開</h3>
+  <p>
+    這幾乎 100% 是 GFW 的問題，不是你的 eSIM 或手機設定問題。
+    確認你有行動數據（狀態欄有 4G/5G 圖示）之後，
+    先用百度或蘋果地圖測試——如果這些能開，代表網路正常，
+    是 App 本身被封鎖。
+  </p>
+
+  <h3>問題 2：抵達大陸後完全沒訊號</h3>
+  <p>
+    如果你的手機完全沒有訊號（不只是 App 打不開，而是完全沒有行動數據），
+    最常見原因：
+  </p>
+  <ul style="list-style:none;padding:0;">
+    <li style="padding:5px 0;font-size:15px;">› 你買的 eSIM 方案不包含大陸（最常見）</li>
+    <li style="padding:5px 0;font-size:15px;">› 漫遊沒有開啟（設定 → 行動服務 → 數據漫遊）</li>
+    <li style="padding:5px 0;font-size:15px;">› APN 設定需要更新（大陸電信的 APN 跟日韓不同）</li>
+    <li style="padding:5px 0;font-size:15px;">› 手機型號的大陸頻段不支援（部分台灣購買機型無 B8 頻段）</li>
+  </ul>
+  <p>
+    處理步驟可以參考：<a href="/esim/troubleshoot" style="color:var(--accent);">eSIM 設定失敗完整解法（10 個問題）</a>。
+  </p>
+
+  <h3>問題 3：手機頻段不支援大陸</h3>
+  <p>
+    中國大陸主要使用 <strong>B8（900 MHz）</strong> 和 <strong>B39/B40/B41</strong> 頻段，
+    部分在台灣購買的手機（特別是電信綁約版）可能不支援這些頻段。
+  </p>
+  <p>
+    如果你的手機是最近 3 年內購買的旗艦機型（iPhone 12 以上、Samsung S21 以上），
+    通常沒有這個問題。如果是中低階機型，出發前建議查詢你的手機規格表確認頻段支援。
+  </p>
+
+  <h2>出發前的準備清單</h2>
+
+  <div class="checklist-box">
+    <div class="checklist-title">去大陸前，這些事先做完</div>
+    <ul class="checklist">
+      <li>
+        <span class="checklist-check"></span>
+        <span>確認 eSIM 方案有大陸覆蓋，且是全國通用（不是只有單一省份）</span>
+      </li>
+      <li>
+        <span class="checklist-check"></span>
+        <span>在台灣安裝好 eSIM，不要等到抵達大陸才裝（大陸 WiFi 需要實名登記才能用）</span>
+      </li>
+      <li>
+        <span class="checklist-check"></span>
+        <span>下載離線地圖：Apple Maps 或高德地圖的離線包，在大陸 Google Maps 無法使用</span>
+      </li>
+      <li>
+        <span class="checklist-check"></span>
+        <span>在台灣先下載好微信，並完成手機號驗證——微信在大陸需要手機號才能完整使用，大陸境內初次註冊比較麻煩</span>
+      </li>
+      <li>
+        <span class="checklist-check"></span>
+        <span>備妥聯絡方式：告訴家人你的微信 ID 或 iMessage，出發後主要靠這兩個聯絡</span>
+      </li>
+      <li>
+        <span class="checklist-check"></span>
+        <span>在台灣備份 Google Photos——到了大陸 Google 服務全部不可用，如果你的照片在雲端要先確認</span>
+      </li>
+      <li>
+        <span class="checklist-check"></span>
+        <span>查詢支付方式：大陸已大量轉為行動支付（微信支付 / 支付寶），現金使用場合減少但外籍人士仍可使用現金</span>
+      </li>
+    </ul>
+  </div>
+
+  <h2>香港轉機 / 過境的特殊情況</h2>
+  <p>
+    如果你的行程是台灣→香港→大陸，或者你在香港有停留時間，
+    香港的網路環境跟大陸完全不同——香港沒有 GFW，Google、LINE、Instagram 全部正常使用。
+  </p>
+  <p>
+    從香港進入大陸的瞬間（過關後），你會發現這些 App 突然不能用了。
+    這是正常的，不是你的 eSIM 壞了。
+  </p>
+  <p>
+    如果你買的是港澳台方案或香港 eSIM，記得確認它是否包含大陸漫遊，
+    以及大陸漫遊是否受 GFW 限制（通常是）。
+  </p>
+
+  <h2>JOYTEL 大陸方案說明</h2>
+  <p>
+    JOYTEL 主要以日本、韓國、東南亞方案為核心，
+    大陸方案需要在官網另行查詢是否有提供以及當前的方案選項。
+  </p>
+  <p>
+    如果你要日本 + 大陸的行程，需要分別購買兩張 eSIM。
+    一張手機通常可以同時存放多張 eSIM，出發日期切換到對應的 eSIM 即可。
+  </p>
+  <p>
+    想了解 JOYTEL 的日韓方案詳情，可以看：
+    <a href="/esim/joytel" style="color:var(--accent);">JOYTEL eSIM 完整評測（速度、客服、優缺點）</a>。
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">大陸 eSIM 常見問題 Q&amp;A</div>
+    <p style="margin:0;font-size:15px;">
+      <strong>Q：大陸 eSIM 可以用 Google Maps 嗎？</strong><br>
+      A：不行，GFW 封鎖了 Google 所有服務。請用蘋果地圖（iOS）或高德地圖。<br><br>
+      <strong>Q：有網路但速度很慢是 eSIM 的問題嗎？</strong><br>
+      A：不一定。大陸部分地區訊號本來就較弱，且透過大陸電信存取境外內容本身延遲就較高。<br><br>
+      <strong>Q：我在大陸可以用哪個搜尋引擎？</strong><br>
+      A：百度（中文）、Bing（微軟，可在大陸使用）是主要選項。<br><br>
+      <strong>Q：大陸 eSIM 用完了可以續購嗎？</strong><br>
+      A：視品牌而定，部分品牌提供線上加購流量，部分需要重新購買方案。出發前確認清楚。
+    </p>
+  </div>
+
+  <h2>我的建議</h2>
+  <p>
+    去大陸最大的心理準備是：<strong>你在台灣習慣用的 App，到了那邊可能一個都用不了</strong>。
+    這不是什麼大問題，當地人就是這樣活著——
+    但如果你沒有事先準備，抵達的第一天會很不習慣。
+  </p>
+  <p>
+    我在越南工廠的時候，每次去大陸出差都會準備兩件事：
+    <strong>微信帳號提前驗證好</strong>，還有<strong>高德地圖的離線地圖下載好</strong>。
+    這樣不管網路狀況怎樣，最基本的導航和聯絡都有備案。
+  </p>
+  <p>
+    至於 eSIM 設定問題，大部分在台灣都可以解決。
+    如果抵達大陸後有問題，看這篇排查：
+    <a href="/esim/troubleshoot" style="color:var(--accent);">eSIM 設定失敗怎麼辦？10 個常見問題解法</a>。
+  </p>
+
+  <div class="cta-box">
+    <p>不去大陸、去日本或韓國的話<br>這是我用了三次的 eSIM</p>
+    <a class="cta-btn" href={JOYTEL_LINK} target="_blank" rel="noopener">
+      查看 JOYTEL 日韓方案 →
+    </a>
+    <p class="cta-label">※ 本文含聯盟行銷連結，點擊後購買我會獲得少量佣金，不影響你的價格</p>
+  </div>
+
+  <div class="related-links">
+    <h3>延伸閱讀</h3>
+    <div class="related-grid">
+      <a href="/esim/troubleshoot" class="related-item">
+        <div class="related-item-tag">問題排解</div>
+        <div class="related-item-title">eSIM 設定失敗怎麼辦？10 個常見問題</div>
+      </a>
+      <a href="/esim/joytel" class="related-item">
+        <div class="related-item-tag">JOYTEL 評測</div>
+        <div class="related-item-title">JOYTEL eSIM 深度評測：速度、客服、優缺點</div>
+      </a>
+      <a href="/esim/japan" class="related-item">
+        <div class="related-item-tag">日本 eSIM</div>
+        <div class="related-item-title">日本 eSIM 推薦 2026｜只推這兩張</div>
+      </a>
+      <a href="/esim" class="related-item">
+        <div class="related-item-tag">品牌比較</div>
+        <div class="related-item-title">6 家 eSIM 品牌比較總表</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="comment-section">
+    <h2>去大陸的問題</h2>
+    <p style="color:var(--ink-light);font-size:15px;">有去大陸遇到的網路問題，或是要問大陸 eSIM 選擇的，留言給我。</p>
+    <form
+      name="china-comments"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="comment-form"
+      id="comment-form"
+    >
+      <input type="hidden" name="form-name" value="china-comments" />
+      <p class="hidden"><label>不要填這個：<input name="bot-field" /></label></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-name">名字 <span class="required">*</span></label>
+          <input type="text" id="cf-name" name="name" placeholder="你的稱呼" required />
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email <span class="required">*</span></label>
+          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cf-message">留言內容 <span class="required">*</span></label>
+        <textarea id="cf-message" name="message" rows="5" placeholder="去大陸的行程、遇到的問題、想問的事..." required></textarea>
+      </div>
+      <div class="form-footer">
+        <p class="form-note">你的 email 只用於我回覆你，不會公開。</p>
+        <button type="submit" class="submit-btn">送出留言 →</button>
+      </div>
+    </form>
+    <div class="form-success" id="form-success" hidden>
+      <p>✓ 收到了！我會盡快回覆你。</p>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div style="margin-top:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">← eSIM 比較總表</a>
+    <a href="/esim/joytel" style="color:var(--accent);text-decoration:none;font-size:13px;">JOYTEL 評測</a>
+    <a href="/esim/troubleshoot" style="color:var(--accent);text-decoration:none;font-size:13px;">設定問題</a>
+    <a href="/esim/install" style="color:var(--accent);text-decoration:none;font-size:13px;">安裝教學</a>
+  </div>
+</footer>
+
+<script>
+  var form = /** @type {HTMLFormElement|null} */ (document.getElementById('comment-form'));
+  var successMsg = document.getElementById('form-success');
+  if (form && successMsg) {
+    var f = form, s = successMsg;
+    f.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var data = new FormData(f);
+      await fetch('/', { method: 'POST', body: data });
+      f.hidden = true;
+      s.hidden = false;
+    });
+  }
+</script>
+</body>
+</html>
