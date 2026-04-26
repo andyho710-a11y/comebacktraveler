@@ -1,0 +1,331 @@
+---
+const title = "韓國自由行完整攻略 2026｜首爾、釜山行程規劃";
+const description = "首爾景福宮、弘大購物街、釜山海雲台——一個台灣人的韓國旅遊筆記，哪裡值得去、哪個 Klook 行程真的省事，整理在這裡。";
+const canonical = "https://comebacktraveler.com/korea-guide";
+const LINK_HANBOK = 'https://afflink.one/s/NOtgn';
+const LINK_NAMSAN = 'https://linkgo.one/s/I81MD';
+const LINK_BUSAN_BUS = 'https://onelink.one/s/INyuw';
+const LINK_KTX = 'https://linkgo.one/s/dWtAb';
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "dateModified": "2026-04-26"
+  })}</script>
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 52px 0 16px; position: relative; padding-left: 16px; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 700; font-size: 20px; margin: 36px 0 10px; }
+
+    .city-section { border: 1.5px solid var(--border); border-radius: 8px; padding: 28px 32px; margin: 32px 0; }
+    .city-label { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 6px; }
+    .city-name { font-family: var(--serif); font-weight: 900; font-size: 22px; margin-bottom: 16px; color: var(--ink); }
+    .spot-list { list-style: none; padding: 0; margin: 16px 0; }
+    .spot-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15px; display: flex; align-items: flex-start; gap: 10px; }
+    .spot-list li:last-child { border-bottom: none; }
+    .spot-icon { color: var(--accent); font-weight: 600; flex-shrink: 0; }
+
+    .klook-card { background: var(--paper-warm); border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 20px 0; }
+    .klook-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .klook-title { font-family: var(--serif); font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+    .klook-why { font-size: 14px; color: var(--ink-light); margin-bottom: 12px; }
+    .klook-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: 4px; text-decoration: none; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+
+    .compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+    .compare-card { border: 1.5px solid var(--border); border-radius: 6px; padding: 16px 18px; }
+    .compare-title { font-family: var(--serif); font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+    .compare-desc { font-size: 13px; color: var(--ink-light); line-height: 1.6; margin: 0; }
+
+    .internal-links { margin: 52px 0 0; padding: 28px 0; border-top: 1px solid var(--border); display: flex; gap: 20px; flex-wrap: wrap; }
+    .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .internal-links a:hover { text-decoration: underline; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+    .footer-nav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    .comment-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .comment-form { margin-top: 24px; display: flex; flex-direction: column; gap: 20px; }
+    .hidden { display: none; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: 500; color: var(--ink-light); }
+    .required { color: var(--accent); }
+    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--ink); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #b0a898; }
+    .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .form-note { font-size: 12px; color: #999; margin: 0; }
+    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--ink); color: var(--paper); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .submit-btn:hover { background: #2c1f0f; }
+    .form-success { margin-top: 20px; padding: 18px 24px; background: #d5e8d4; border-radius: 4px; }
+    .form-success p { margin: 0; color: #27611b; font-size: 15px; font-weight: 500; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      .city-section { padding: 20px; }
+      .compare-row { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">韓國自由行 · 行程攻略 2026</div>
+  <h1>韓國自由行完整攻略 2026<br>首爾、釜山<br>行程規劃全整理</h1>
+  <p class="subtitle">
+    首爾不只有明洞和景福宮。<br>
+    一個在越南住了十年的台灣人，用務實角度整理韓國旅遊攻略：<br>哪裡值得去、哪個 Klook 行程真的省事、韓國 eSIM 怎麼選。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 4 月更新 · 務實旅遊角度 · 不業配只說真話</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <div class="story-box">
+    <strong>韓國旅遊最大的坑，是資訊太多、噪音太大。</strong><br><br>
+    每個 YouTuber 都有「不能錯過的首爾十大景點」，但沒有人告訴你哪些要提前訂票、
+    哪些用 Naver Map 而不是 Google Maps、哪個 Klook 行程真的幫你省時間。<br><br>
+    這篇是務實版本的韓國筆記。你直接拿去用。
+  </div>
+
+  <h2>首爾：按區域規劃，別跳著跑</h2>
+
+  <div class="tip-box">
+    <div class="tip-title">首爾交通基礎</div>
+    <p style="margin:0;font-size:15px;">
+      首爾地鐵比東京複雜，但 <strong>T-money 交通卡</strong>（Klook 可預購）幾乎通吃地鐵、公車、便利商店。
+      不建議租車，停車費和塞車讓人崩潰。<br><br>
+      Naver Map 比 Google Maps 更準確，尤其是公車路線。下載好備用。
+    </p>
+  </div>
+
+  <div class="city-section">
+    <div class="city-label">歷史 + 文化區</div>
+    <div class="city-name">景福宮周邊</div>
+    <ul class="spot-list">
+      <li><span class="spot-icon">▶</span><div><strong>景福宮</strong>：韓國最大的朝鮮王朝宮殿，穿韓服入場免費。建議平日早上 9 點入場。</div></li>
+      <li><span class="spot-icon">▶</span><div><strong>北村韓屋村</strong>：傳統韓屋保存區，早上 7–9 點最安靜，白天人潮很多。</div></li>
+      <li><span class="spot-icon">▶</span><div><strong>仁寺洞</strong>：傳統工藝品、韓國茶、糖畫。不趕時間慢慢逛。</div></li>
+      <li><span class="spot-icon">▶</span><div><strong>國立中央博物館</strong>：免費入場，了解韓國歷史的最好方式，至少留 2–3 小時。</div></li>
+    </ul>
+  </div>
+
+  <div class="klook-card">
+    <div class="klook-label">Klook 推薦預訂</div>
+    <div class="klook-title">景福宮 + 韓服租借體驗</div>
+    <p class="klook-why">穿韓服入景福宮免費，Klook 上的韓服租借含頭飾和妝容，還有隨行攝影師加購。旺季週末要提前訂，否則很難搶到喜歡的款式。</p>
+    <a href={LINK_HANBOK} target="_blank" rel="noopener sponsored" class="klook-btn">Klook 預訂韓服 →</a>
+  </div>
+
+  <div class="city-section">
+    <div class="city-label">購物 + 夜生活</div>
+    <div class="city-name">弘大 / 梨泰院 / 明洞</div>
+    <ul class="spot-list">
+      <li><span class="spot-icon">▶</span><div><strong>弘大</strong>：大學區，年輕文化聚集。週末晚上有街頭表演，二手書店和獨立小店值得挖。</div></li>
+      <li><span class="spot-icon">▶</span><div><strong>梨泰院</strong>：多元文化美食集中，土耳其料理、中東料理、精釀酒吧都有。</div></li>
+      <li><span class="spot-icon">▶</span><div><strong>明洞</strong>：保養品掃貨首選，但人潮最多、價格不一定最低。貨比三家再下手。</div></li>
+      <li><span class="spot-icon">▶</span><div><strong>東大門設計廣場（DDP）</strong>：夜間燈光最美，設計展覽不定期舉行，免費入場。</div></li>
+    </ul>
+  </div>
+
+  <div class="city-section">
+    <div class="city-label">自然 + 漢江</div>
+    <div class="city-name">漢江公園 / 南山首爾塔</div>
+    <ul class="spot-list">
+      <li><span class="spot-icon">▶</span><div><strong>漢江公園</strong>：租腳踏車沿河騎行，便利商店買炸雞配漢江是經典行程。傍晚最美。</div></li>
+      <li><span class="spot-icon">▶</span><div><strong>南山首爾塔</strong>：纜車 + 觀景台，夜景值得一看。Klook 有套票比現場買便宜。</div></li>
+      <li><span class="spot-icon">▶</span><div><strong>北漢山</strong>：首爾市內健行聖地，不需要特別裝備，2–3 小時可完成基礎路線。</div></li>
+    </ul>
+  </div>
+
+  <div class="klook-card">
+    <div class="klook-label">Klook 推薦預訂</div>
+    <div class="klook-title">南山首爾塔纜車 + 觀景台套票</div>
+    <p class="klook-why">現場排隊纜車假日要等 30–45 分鐘，Klook 電子票直接上車，另外觀景台套票比分開買便宜約 10%。</p>
+    <a href={LINK_NAMSAN} target="_blank" rel="noopener sponsored" class="klook-btn">Klook 查票價 →</a>
+  </div>
+
+  <h2>釜山：海邊城市的不同節奏</h2>
+
+  <div class="city-section">
+    <div class="city-label">海港城市</div>
+    <div class="city-name">釜山</div>
+    <ul class="spot-list">
+      <li><span class="spot-icon">▶</span><div><strong>海雲台海水浴場</strong>：韓國最著名的海灘，夏季游泳、非夏季散步。日出時特別美。</div></li>
+      <li><span class="spot-icon">▶</span><div><strong>甘川文化村</strong>：韓國版「天空之城」，各色彩繪房屋掛在山坡上，拍照必去。平日人較少。</div></li>
+      <li><span class="spot-icon">▶</span><div><strong>札嘎其市場</strong>：韓國最大的水産市場，現場挑魚現殺現吃，道地釜山體驗。</div></li>
+      <li><span class="spot-icon">▶</span><div><strong>廣安里海灘 + 廣安大橋</strong>：夜晚的廣安大橋燈光是釜山最美的景色，配一杯便利商店咖啡。</div></li>
+      <li><span class="spot-icon">▶</span><div><strong>松島天空步道</strong>：懸掛在海上的玻璃步道，免費入場，日落時分最值得去。</div></li>
+    </ul>
+  </div>
+
+  <div class="klook-card">
+    <div class="klook-label">Klook 推薦預訂</div>
+    <div class="klook-title">釜山一日市區觀光巴士</div>
+    <p class="klook-why">釜山景點分散，自己搭地鐵轉乘需要 1–2 小時。Klook 的一日觀光巴士含主要景點接送，不用研究路線。適合第一次去釜山的人。</p>
+    <a href={LINK_BUSAN_BUS} target="_blank" rel="noopener sponsored" class="klook-btn">Klook 看行程 →</a>
+  </div>
+
+  <h2>首爾 vs 釜山：怎麼分配時間</h2>
+
+  <div class="compare-row">
+    <div class="compare-card">
+      <div class="compare-title">只有 4–5 天</div>
+      <p class="compare-desc">全待首爾，把每個區域好好走完。景福宮→弘大→漢江→明洞，一天一區最輕鬆。</p>
+    </div>
+    <div class="compare-card">
+      <div class="compare-title">有 7 天以上</div>
+      <p class="compare-desc">首爾 5 天 + 搭 KTX 列車到釜山 2 天。台灣人可以在 Klook 預訂列車票，約 2.5–3 小時到釜山。</p>
+    </div>
+  </div>
+
+  <div class="klook-card">
+    <div class="klook-label">Klook 推薦預訂</div>
+    <div class="klook-title">首爾 → 釜山 KTX 列車票</div>
+    <p class="klook-why">韓國 KTX 列車票可在 Klook 預訂，台灣出發前就能確認座位。旺季旅遊節假日車票搶手，建議提前 2–4 週訂。</p>
+    <a href={LINK_KTX} target="_blank" rel="noopener sponsored" class="klook-btn">Klook 買列車票 →</a>
+  </div>
+
+  <h2>出發前的清單</h2>
+  <ul style="padding-left:20px;margin-bottom:1.4em;">
+    <li style="margin-bottom:8px;"><strong>韓國 eSIM</strong>：落地就有網路，Naver Map 才能正常跑。<a href="/esim/korea" style="color:var(--accent);">韓國 eSIM 推薦看這裡</a>。</li>
+    <li style="margin-bottom:8px;"><strong>T-money 交通卡</strong>：首爾地鐵 + 公車都能用，便利商店也可刷。Klook 可預購加值。</li>
+    <li style="margin-bottom:8px;"><strong>景福宮韓服</strong>：想穿韓服體驗的話，旺季（春秋）提前 2–3 週在 Klook 預訂。</li>
+    <li style="margin-bottom:8px;"><strong>住宿</strong>：首爾建議住弘大或明洞附近，交通方便。釜山住海雲台或南浦洞都合適。</li>
+    <li style="margin-bottom:0;"><strong>保養品清單</strong>：明洞 vs Olive Young 哪裡比較便宜？多數人說 Olive Young 更划算，但可以現場比。</li>
+  </ul>
+
+  <div class="internal-links">
+    <a href="/esim/korea">→ 韓國 eSIM 推薦（SKT 原生線路）</a>
+    <a href="/japan-guide">→ 日本自由行攻略</a>
+    <a href="/#klook-offers">→ Klook 優惠碼整理</a>
+    <a href="/thsr-guide">→ 高鐵怎麼買最便宜</a>
+  </div>
+
+  <div class="comment-section">
+    <h2 style="margin-top:0;">你有韓國旅遊問題嗎？</h2>
+    <p style="font-size:15px;color:var(--ink-light);">留言問我，或分享你踩過的坑</p>
+    <form
+      name="korea-guide-comments"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="comment-form"
+      id="comment-form"
+    >
+      <input type="hidden" name="form-name" value="korea-guide-comments" />
+      <p class="hidden"><label>不要填這個：<input name="bot-field" /></label></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-name">名字 <span class="required">*</span></label>
+          <input type="text" id="cf-name" name="name" placeholder="你的稱呼" required />
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email <span class="required">*</span></label>
+          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cf-message">留言 <span class="required">*</span></label>
+        <textarea id="cf-message" name="message" rows="5" placeholder="想問什麼、或分享你的韓國旅遊經驗..." required></textarea>
+      </div>
+      <div class="form-footer">
+        <p class="form-note">你的 email 只用於我回覆你，不會公開。</p>
+        <button type="submit" class="submit-btn">送出留言 →</button>
+      </div>
+    </form>
+    <div class="form-success" id="form-success" hidden>
+      <p>✓ 收到了！我會盡快回覆你。</p>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div class="footer-nav">
+    <a href="/">← 回首頁</a>
+    <a href="/esim/korea">韓國 eSIM</a>
+    <a href="/japan-guide">日本攻略</a>
+    <a href="/thsr-guide">高鐵省錢</a>
+    <a href="/#klook-offers">Klook 優惠碼</a>
+  </div>
+</footer>
+
+<script>
+  var form = document.getElementById('comment-form');
+  var successMsg = document.getElementById('form-success');
+  if (form && successMsg) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var data = new FormData(form as HTMLFormElement);
+      await fetch('/', { method: 'POST', body: data });
+      (form as HTMLElement).hidden = true;
+      (successMsg as HTMLElement).hidden = false;
+    });
+  }
+</script>
+</body>
+</html>

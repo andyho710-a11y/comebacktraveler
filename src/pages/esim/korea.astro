@@ -349,10 +349,14 @@ const description = "去韓國不用再找換錢所換 SIM 卡了。從日本到
 
 <footer>
   <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div style="margin-top:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
-    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">← eSIM 比較總表</a>
+  <div style="margin-top:12px;display:flex;justify-content:center;gap:16px 24px;flex-wrap:wrap;">
+    <a href="/" style="color:var(--accent);text-decoration:none;font-size:13px;">← 回首頁</a>
+    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">eSIM 比較總表</a>
     <a href="/esim/japan" style="color:var(--accent);text-decoration:none;font-size:13px;">日本 eSIM 推薦</a>
     <a href="/esim/install" style="color:var(--accent);text-decoration:none;font-size:13px;">eSIM 安裝教學</a>
+    <a href="/korea-guide" style="color:var(--accent);text-decoration:none;font-size:13px;">韓國自由行攻略</a>
+    <a href="/thsr-guide" style="color:var(--accent);text-decoration:none;font-size:13px;">高鐵省錢攻略</a>
+    <a href="/#klook-offers" style="color:var(--accent);text-decoration:none;font-size:13px;">Klook 優惠碼</a>
   </div>
 </footer>
 
@@ -362,10 +366,10 @@ const description = "去韓國不用再找換錢所換 SIM 卡了。從日本到
   if (form && successMsg) {
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      var data = new FormData(form);
+      var data = new FormData(form as HTMLFormElement);
       await fetch('/', { method: 'POST', body: data });
-      form.hidden = true;
-      successMsg.hidden = false;
+      (form as HTMLElement).hidden = true;
+      (successMsg as HTMLElement).hidden = false;
     });
   }
 </script>

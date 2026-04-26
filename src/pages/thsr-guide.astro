@@ -1,0 +1,474 @@
+---
+const title = "高鐵怎麼買最便宜？2026 商務通勤族完整省錢攻略";
+const description = "每週跑台北台中，買法不同一年差 8,000 元以上。定期票、早鳥、KKday 晚鳥票完整比較，找到最適合你頻率的方案。";
+const canonical = "https://comebacktraveler.com/thsr-guide";
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "dateModified": "2026-04-26"
+  })}</script>
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 52px 0 16px; position: relative; padding-left: 16px; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 20px; margin: 36px 0 10px; }
+
+    .conclusion-box { background: var(--paper-warm); border: 2px solid var(--ink); border-radius: 8px; padding: 28px 32px; margin: 40px 0; }
+    .conclusion-box h2 { padding-left: 0; margin-top: 0; }
+    .conclusion-box h2::before { display: none; }
+    .conclusion-box ul { padding-left: 0; list-style: none; }
+    .conclusion-box li { padding: 6px 0; font-size: 16px; border-bottom: 1px solid var(--border); }
+    .conclusion-box li:last-child { border-bottom: none; }
+    .conclusion-box li strong { color: var(--accent); }
+
+    .method-card { border: 1.5px solid var(--border); border-radius: 8px; padding: 28px 32px; margin: 32px 0; }
+    .method-card.featured { border-color: var(--accent); background: #fef9f5; }
+    .method-num { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 8px; }
+    .method-title { font-family: var(--serif); font-weight: 900; font-size: 21px; margin-bottom: 12px; color: var(--ink); }
+    .method-price { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--accent); margin: 10px 0 4px; }
+    .method-tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 16px; }
+    .tag { font-size: 12px; padding: 3px 10px; border-radius: 10px; background: var(--paper-warm); color: var(--ink-light); font-weight: 500; }
+    .tag-red { background: #fde8e8; color: #8b1a1a; }
+    .tag-green { background: #d5e8d4; color: #1c5e15; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+
+    .compare-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 14px; }
+    .compare-table th { background: var(--ink); color: var(--paper); padding: 12px 14px; text-align: left; font-family: var(--serif); font-weight: 600; font-size: 13px; }
+    .compare-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:nth-child(even) td { background: var(--paper-warm); }
+    .compare-table .highlight td { background: #fef0ee !important; font-weight: 500; }
+    .compare-table .highlight td:first-child { border-left: 3px solid var(--accent); padding-left: 11px; }
+    .stars { color: var(--gold); letter-spacing: 1px; }
+
+    .freq-section { margin: 40px 0; }
+    .freq-block { border-left: 3px solid var(--border); padding: 16px 0 16px 20px; margin: 24px 0; }
+    .freq-block.active { border-left-color: var(--accent); }
+    .freq-label { font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: var(--ink-light); text-transform: uppercase; margin-bottom: 6px; }
+    .freq-rec { font-family: var(--serif); font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 6px; }
+
+    .coupon-box { background: var(--ink); color: var(--paper); border-radius: 8px; padding: 24px 28px; margin: 32px 0; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .coupon-code { font-family: var(--serif); font-size: 22px; font-weight: 900; letter-spacing: 0.12em; color: #ffd700; border: 2px dashed #ffd700; padding: 8px 18px; border-radius: 4px; flex-shrink: 0; }
+    .coupon-desc { font-size: 14px; color: #d4c9b0; line-height: 1.6; }
+    .coupon-desc strong { color: var(--paper); }
+
+    .cta-box { background: var(--ink); color: var(--paper); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
+    .cta-box p { color: #d4c9b0; margin-bottom: 20px; font-size: 16px; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
+    .cta-note { font-size: 12px; color: #888; margin-top: 12px; }
+
+    .faq-item { border-top: 1px solid var(--border); padding: 24px 0; }
+    .faq-item:last-child { border-bottom: 1px solid var(--border); }
+    .faq-q { font-family: var(--serif); font-weight: 700; font-size: 17px; margin-bottom: 10px; }
+    .faq-q::before { content: 'Q　'; color: var(--accent); }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+
+    .comment-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .comment-form { margin-top: 24px; display: flex; flex-direction: column; gap: 20px; }
+    .hidden { display: none; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: 500; color: var(--ink-light); letter-spacing: 0.04em; }
+    .required { color: var(--accent); }
+    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--ink); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: #b0a898; }
+    .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .form-note { font-size: 12px; color: #999; margin: 0; }
+    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--ink); color: var(--paper); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .submit-btn:hover { background: #2c1f0f; }
+    .form-success { margin-top: 20px; padding: 18px 24px; background: #d5e8d4; border-radius: 4px; color: #27611b; font-size: 15px; font-weight: 500; }
+    .form-success p { margin: 0; color: #27611b; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      .hero { padding-bottom: 0; }
+      .method-card { padding: 20px; }
+      .cta-box { padding: 24px 20px; }
+      .coupon-box { flex-direction: column; align-items: flex-start; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-footer { flex-direction: column; align-items: flex-start; }
+      .compare-table { font-size: 13px; }
+      .compare-table th, .compare-table td { padding: 9px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">台灣交通 · 高鐵省錢攻略 2026</div>
+  <h1>高鐵怎麼買最便宜？<br>2026 商務通勤族<br>完整省錢攻略</h1>
+  <p class="subtitle">
+    每週跑台北台中，我算過一筆帳——光高鐵票一年就吐出去快 4 萬元。<br>
+    研究了一輪，發現同樣的座位、同樣的車次，買法不同，一年可以差到 8,000 塊以上。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 4 月更新 · 前 Uber 司機 · 對每一塊錢的去向特別敏感</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <div class="story-box">
+    <strong>跑 Uber 那段日子，我對每一塊錢的去向特別敏感。</strong><br><br>
+    後來研究了一輪，發現同樣的座位、同樣的車次，買法不同，一年可以差到 8,000 塊以上。<br><br>
+    這篇就是那份研究的整理。不是要你很麻煩，是讓你找到最適合自己頻率的方式，設定好，之後就自動省錢。
+  </div>
+
+  <div class="conclusion-box">
+    <h2 style="font-size:20px;margin-bottom:16px;">先說結論（給沒時間看完的人）</h2>
+    <ul>
+      <li><strong>每週固定跑 2 趟以上</strong> → 定期票或回數票，沒有比這更便宜的</li>
+      <li><strong>一個月去幾次、時間不固定</strong> → 早鳥 + 對的信用卡，省 15–25%</li>
+      <li><strong>偶爾出差、臨時訂票</strong> → 官網定價，但搭配信用卡回饋補血</li>
+      <li><strong>外國客戶要來台灣</strong> → Klook / KKday 的 Taiwan Pass 方案，幫他們買最划算</li>
+    </ul>
+  </div>
+
+  <h2>五種買法完整比較</h2>
+
+  <h3>1. 官網原價購票</h3>
+  <div class="method-card">
+    <div class="method-num">方案一</div>
+    <div class="method-title">官網原價</div>
+    <div class="method-price">台北↔台中 NT$700（標準）｜ NT$1,190（商務）</div>
+    <div class="method-tags">
+      <span class="tag tag-green">可改票</span>
+      <span class="tag tag-green">可退票</span>
+      <span class="tag">彈性最高</span>
+      <span class="tag tag-red">無折扣</span>
+    </div>
+    <p style="font-size:15px;margin-bottom:0;">最直覺，最貴。彈性最高，可以改票、退票，但就是沒折扣。適合臨時出差、時間真的無法預測的人。搭配信用卡回饋可以回血 1–3%，聊勝於無。</p>
+  </div>
+
+  <h3>2. 高鐵早鳥優惠（官方）</h3>
+  <div class="method-card">
+    <div class="method-num">方案二</div>
+    <div class="method-title">早鳥優惠</div>
+    <div class="method-price">台北↔台中 7 折約 NT$490，省 NT$210/趟</div>
+    <div class="method-tags">
+      <span class="tag">35天前購買</span>
+      <span class="tag">7折 / 75折 / 8折</span>
+      <span class="tag tag-red">不可改退票</span>
+    </div>
+    <p style="font-size:15px;">每週兩趟，一年省下來接近 <strong>NT$22,000</strong>。限制很明確：不能改票、不能退票。行程確定的人才適合，否則省了票價、賠了靈活度。</p>
+    <p style="font-size:15px;margin-bottom:0;"><a href="https://www.thsrc.com.tw" target="_blank" rel="noopener" style="color:var(--accent);">→ 高鐵官網早鳥購票</a></p>
+  </div>
+
+  <h3>3. 定期票 / 回數票</h3>
+  <div class="method-card featured">
+    <div class="method-num">方案三 ★ 通勤族首選</div>
+    <div class="method-title">定期票 / 回數票</div>
+    <div class="method-price">月定期票約 NT$9,800，換算單趟不到 NT$250</div>
+    <div class="method-tags">
+      <span class="tag tag-green">比早鳥7折還便宜</span>
+      <span class="tag">每月固定購買</span>
+      <span class="tag tag-red">限特定時段班次</span>
+    </div>
+    <p style="font-size:15px;"><strong>通勤族的最強武器，知道的人不多。</strong>高鐵有賣「定期票」，以月為單位購買，適用特定區間、特定時段。回數票則是一次買 10 張，依區間有不同折扣，彈性比定期票高一點。</p>
+    <div class="tip-box" style="margin:16px 0 4px;">
+      <div class="tip-title">注意事項</div>
+      <p style="margin:0;font-size:14px;">定期票只能搭特定班次時段（通常是非尖峰），商務用途要確認班次對不對。去高鐵官網「定期票申請」頁面查你的區間價格，或直接去車站詢問。</p>
+    </div>
+  </div>
+
+  <h3>4. Klook 高鐵套票</h3>
+  <div class="method-card">
+    <div class="method-num">方案四</div>
+    <div class="method-title">Klook 高鐵套票</div>
+    <div class="method-price">景點套票優惠價 / 外籍旅客 HSR Pass 不限次數</div>
+    <div class="method-tags">
+      <span class="tag">高鐵+景點套票</span>
+      <span class="tag">外籍 HSR Pass</span>
+      <span class="tag tag-red">本地通勤非首選</span>
+    </div>
+    <p style="font-size:15px;">Klook 的方案對本地通勤族不是最划算的選項，但如果你的行程剛好有要搭配景點，打包買划算。<br>或者你有外國同事、客戶要來台灣出差——幫他們找 Klook 的 HSR Pass，是真的省很多。</p>
+    <p style="font-size:15px;margin-bottom:0;"><a href="https://linkgo.one/s/WpaT2" target="_blank" rel="noopener sponsored" style="color:var(--accent);">→ Klook 台灣高鐵優惠方案</a></p>
+  </div>
+
+  <h3>5. KKday 高鐵國旅聯票</h3>
+  <div class="method-card featured">
+    <div class="method-num">方案五 ★ 臨時出差首選</div>
+    <div class="method-title">KKday 高鐵國旅聯票</div>
+    <div class="method-price">全班次 85 折，晚鳥票 65 折起</div>
+    <div class="method-tags">
+      <span class="tag tag-green">不限身份</span>
+      <span class="tag tag-green">晚鳥比早鳥更低</span>
+      <span class="tag">優惠碼可疊加</span>
+      <span class="tag tag-red">無法指定座位</span>
+    </div>
+    <p style="font-size:15px;">KKday 跟高鐵官方合作推出「高鐵國旅聯票」，不限身份都可以購買，這點比部分平台更彈性。</p>
+    <ul style="font-size:15px;padding-left:20px;margin-bottom:16px;">
+      <li style="margin-bottom:6px;"><strong>全班次 85 折</strong>：不限車次，隨時都能享有</li>
+      <li style="margin-bottom:6px;"><strong>晚鳥票 65 折起</strong>：出發前 4 天內購買指定車次，折扣最深</li>
+      <li style="margin-bottom:6px;"><strong>優惠碼 <code style="background:var(--paper-warm);padding:1px 6px;border-radius:3px;">THSR26OF5</code></strong>：全站不限身份，滿額再打 95 折，可與其他折扣疊加</li>
+      <li style="margin-bottom:0;"><strong>限量加碼禮</strong>：旅電 2 日券、yoxi 搭車金、MITSUI OUTLET PARK 百元金</li>
+    </ul>
+    <div class="tip-box" style="margin:16px 0 16px;">
+      <div class="tip-title">購買注意</div>
+      <p style="margin:0;font-size:14px;">座位為系統自動派位，無法指定，同行多人不保證坐在一起。退票需在發車前 30 分鐘辦理，取票後退票收 NT$20 手續費。</p>
+    </div>
+    <p style="font-size:15px;margin-bottom:0;"><a href="https://afflink.one/s/LoVuC" target="_blank" rel="noopener sponsored" style="color:var(--accent);font-weight:600;">→ KKday 晚鳥高鐵票看這裡</a></p>
+  </div>
+
+  <h2>完整比較表</h2>
+  <div style="overflow-x:auto;">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>買法</th>
+          <th>台北↔台中單趟</th>
+          <th>彈性</th>
+          <th>適合頻率</th>
+          <th>備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>官網定價</td>
+          <td>NT$700</td>
+          <td><span class="stars">★★★★★</span></td>
+          <td>偶爾</td>
+          <td>可改退票</td>
+        </tr>
+        <tr>
+          <td>早鳥 7 折</td>
+          <td>NT$490</td>
+          <td><span class="stars">★</span></td>
+          <td>固定行程</td>
+          <td>35天前買，不可改退</td>
+        </tr>
+        <tr>
+          <td>回數票</td>
+          <td>約 NT$580</td>
+          <td><span class="stars">★★★</span></td>
+          <td>每月 4–8 次</td>
+          <td>依區間不同</td>
+        </tr>
+        <tr>
+          <td>定期票（月）</td>
+          <td>約 NT$245/趟</td>
+          <td><span class="stars">★★</span></td>
+          <td>每週 2 趟以上</td>
+          <td>限特定時段班次</td>
+        </tr>
+        <tr>
+          <td>Klook 國旅聯票</td>
+          <td>85 折起</td>
+          <td><span class="stars">★★★</span></td>
+          <td>含景點行程</td>
+          <td>可加購景點票券</td>
+        </tr>
+        <tr class="highlight">
+          <td><strong>KKday 國旅聯票</strong></td>
+          <td><strong>65–85 折</strong></td>
+          <td><span class="stars">★★★★</span></td>
+          <td><strong>臨時出差首選</strong></td>
+          <td><strong>不限身份、晚鳥更便宜、優惠碼可疊加</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>信用卡加乘：同樣的票，多省 5–12%</h2>
+  <p>買對信用卡，等於再打折一次。</p>
+  <ul style="padding-left:20px;margin-bottom:1.4em;">
+    <li style="margin-bottom:8px;"><strong>國泰世華 CUBE 卡</strong>：指定通路最高 3% 回饋，Klook 購票另有優惠碼加成</li>
+    <li style="margin-bottom:8px;"><strong>玉山 Pi 拍錢包信用卡</strong>：線上購物 2.8% 回饋，官網購票直接算</li>
+    <li style="margin-bottom:0;"><strong>台新 @GOGO 卡</strong>：網路購物 3% 回饋</li>
+  </ul>
+  <p>搭配 Klook 優惠碼使用 CUBE 卡，可以疊加折扣。我整理的最新優惠碼在這裡：<br>
+    <a href="https://comebacktraveler.com/#klook-offers" style="color:var(--accent);">→ Klook 最新信用卡優惠碼整理</a>
+  </p>
+
+  <h2>依頻率選方案：我的建議</h2>
+
+  <div class="freq-section">
+    <div class="freq-block active">
+      <div class="freq-label">每週固定 2 趟以上（真正通勤）</div>
+      <div class="freq-rec">→ 直接辦定期票</div>
+      <p style="font-size:15px;margin:0;">一個月設定好，之後掃卡上車，不用每次買票。</p>
+    </div>
+    <div class="freq-block">
+      <div class="freq-label">每月 3–6 趟（出差型）</div>
+      <div class="freq-rec">→ 早鳥購票為主</div>
+      <p style="font-size:15px;margin:0;">行程確定就提前 35 天買 7 折票，不確定的場次再搭官網原價。加一張好信用卡補回饋。</p>
+    </div>
+    <div class="freq-block active">
+      <div class="freq-label">臨時決定、4 天內要出發</div>
+      <div class="freq-rec">→ KKday 晚鳥票</div>
+      <p style="font-size:15px;margin:0;">這時候早鳥已經買不到，直接上 KKday 找晚鳥票，65 折起比官網便宜很多。結帳輸入優惠碼再折 95 折，疊完才是最低價。</p>
+    </div>
+    <div class="freq-block">
+      <div class="freq-label">偶爾臨時搭（不定期）</div>
+      <div class="freq-rec">→ 官網 + 好信用卡</div>
+      <p style="font-size:15px;margin:0;">官網原價沒辦法避免，把重點放在信用卡選擇，1–3% 回饋多少算多少。</p>
+    </div>
+    <div class="freq-block">
+      <div class="freq-label">有外國客戶要接待</div>
+      <div class="freq-rec">→ Klook HSR Pass</div>
+      <p style="font-size:15px;margin:0;">Klook 的 HSR Pass 幫他們買，你的聯盟連結放上去，客戶省錢，你還有佣金。雙贏。</p>
+    </div>
+  </div>
+
+  <div class="coupon-box">
+    <div class="coupon-code">THSR26OF5</div>
+    <div class="coupon-desc">
+      <strong>KKday 高鐵優惠碼</strong><br>
+      全站不限身份，滿額再打 95 折<br>
+      可與晚鳥 65 折、早鳥 85 折疊加使用
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <p>臨時決定出差、4 天內要出發？<br>晚鳥 65 折比早鳥 7 折還低，加優惠碼再折 95 折</p>
+    <a href="https://afflink.one/s/LoVuC" target="_blank" rel="noopener sponsored" class="cta-btn">查看 KKday 高鐵優惠 →</a>
+    <div class="cta-note">* 優惠碼 THSR26OF5，可與折扣疊加</div>
+  </div>
+
+  <h2>常見問題 FAQ</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">高鐵早鳥票真的一定便宜嗎？</div>
+    <p style="margin:0;font-size:15px;">不一定。熱門班次的早鳥票搶光了，剩下的折扣可能只有 85 折甚至原價。35 天前設好提醒，一出來馬上買才能搶到 7 折。</p>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">定期票在哪裡申請？</div>
+    <p style="margin:0;font-size:15px;">高鐵官網有線上申請，也可以去車站服務台辦理。要帶身份證，第一次申請需要填區間和使用時段。</p>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Klook 的高鐵票可以現場取票嗎？</div>
+    <p style="margin:0;font-size:15px;">Klook 的台灣高鐵方案通常是電子票或 QR Code，直接進站掃碼。部分方案需要在高鐵站取票機換票，購買前看清楚說明。</p>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">有沒有高鐵 + 住宿的套裝？</div>
+    <p style="margin:0;font-size:15px;">有，但性價比要個別算。KKday 偶爾有南台灣的高鐵 + 飯店套裝，節假日前可以比較看看。</p>
+  </div>
+
+  <div style="margin-top:52px;padding-top:32px;border-top:1px solid var(--border);text-align:center;color:var(--ink-light);font-family:var(--serif);font-size:15px;line-height:2;">
+    <p>高鐵票這件事，花一個小時搞清楚自己的搭乘頻率、找到最對的方式，設定好之後就不用再想了。</p>
+    <p>每個月少花幾百塊，一年下來就是一趟日本來回機票。那筆錢，拿去買值得的旅行，比較實在。</p>
+    <p style="margin-top:16px;"><em>走過彎路的人，才知道哪條路真的值得走。</em></p>
+  </div>
+
+  <div class="comment-section">
+    <h2 style="margin-top:0;">你的搭乘頻率是哪一種？</h2>
+    <p style="font-size:15px;color:var(--ink-light);">留言分享你的買票方式，或有什麼問題想問的</p>
+    <form
+      name="thsr-comments"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="comment-form"
+      id="comment-form"
+    >
+      <input type="hidden" name="form-name" value="thsr-comments" />
+      <p class="hidden"><label>不要填這個：<input name="bot-field" /></label></p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cf-name">名字 <span class="required">*</span></label>
+          <input type="text" id="cf-name" name="name" placeholder="你的稱呼" required />
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email <span class="required">*</span></label>
+          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cf-message">留言內容 <span class="required">*</span></label>
+        <textarea id="cf-message" name="message" rows="5" placeholder="想問什麼、或分享你的買票經驗..." required></textarea>
+      </div>
+      <div class="form-footer">
+        <p class="form-note">你的 email 只用於我回覆你，不會公開。</p>
+        <button type="submit" class="submit-btn">送出留言 →</button>
+      </div>
+    </form>
+    <div class="form-success" id="form-success" hidden>
+      <p>✓ 收到了！我會盡快回覆你。</p>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div style="margin-top:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+    <a href="/" style="color:var(--accent);text-decoration:none;font-size:13px;">← 回首頁</a>
+    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">eSIM 出國上網攻略</a>
+    <a href="/esim/japan" style="color:var(--accent);text-decoration:none;font-size:13px;">日本 eSIM 推薦</a>
+    <a href="/esim/korea" style="color:var(--accent);text-decoration:none;font-size:13px;">韓國 eSIM 推薦</a>
+  </div>
+</footer>
+
+<script>
+  var form = document.getElementById('comment-form');
+  var successMsg = document.getElementById('form-success');
+  if (form && successMsg) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var data = new FormData(form as HTMLFormElement);
+      await fetch('/', { method: 'POST', body: data });
+      (form as HTMLElement).hidden = true;
+      (successMsg as HTMLElement).hidden = false;
+    });
+  }
+</script>
+</body>
+</html>

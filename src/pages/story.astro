@@ -1,0 +1,332 @@
+---
+const title = "重新出發的故事｜越南十年、父親離世、信仰的轉變｜重來的旅人";
+const description = "文具工廠第二代、加拿大退學、越南副總、養蝦失敗、跑 Uber、父親肺癌——一個 40 幾歲台灣男人誠實的人生記錄，以及 2025 年重新找到方向的故事。";
+const canonical = "https://comebacktraveler.com/story";
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "dateModified": "2026-04-26"
+  })}</script>
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; font-family: var(--serif); }
+    p { margin-bottom: 1.6em; font-size: 17px; line-height: 1.95; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 24px; margin: 56px 0 18px; position: relative; padding-left: 16px; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+
+    .pull-quote { font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.6; color: var(--ink); border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); padding: 24px 0; margin: 40px 0; }
+
+    .chapter-marker { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 12px; margin-top: 52px; }
+
+    .timeline-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 10px; vertical-align: middle; }
+
+    .closing-box { background: var(--paper-warm); border: 2px solid var(--ink); border-radius: 8px; padding: 32px 36px; margin: 52px 0; font-family: var(--serif); font-size: 17px; line-height: 1.9; color: var(--ink); }
+    .closing-box strong { color: var(--accent); }
+
+    .related-articles { margin: 52px 0 0; padding: 32px 0; border-top: 1px solid var(--border); }
+    .related-title { font-family: var(--serif); font-weight: 900; font-size: 18px; margin-bottom: 20px; }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .related-card { border: 1.5px solid var(--border); border-radius: 6px; padding: 18px 20px; text-decoration: none; color: var(--ink); transition: border-color 0.15s; }
+    .related-card:hover { border-color: var(--accent); }
+    .related-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .related-card-title { font-family: var(--serif); font-weight: 700; font-size: 15px; line-height: 1.4; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+    .footer-nav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      .pull-quote { font-size: 18px; }
+      .closing-box { padding: 24px 20px; }
+      .related-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">作者 · 關於這個人</div>
+  <h1>這是我的故事<br>沒有修飾過的版本</h1>
+  <p class="subtitle">
+    文具工廠第二代、加拿大退學、越南十年、養蝦失敗、跑 Uber、父親離世。<br>
+    不是勵志故事。是一個誠實的記錄，和一個慢慢找回方向的人。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>這是我的故事 · 2026 年整理</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <div class="chapter-marker"><span class="timeline-dot"></span>章節一 · 阿嬤家長大</div>
+
+  <p>
+    我出生在一個傳統企業家庭，家裡是做文具加工的，我算是第二代。
+    國小以前的記憶其實不算太多，只記得父母非常忙碌，我和弟弟常常住在阿嬤家。
+  </p>
+
+  <p>
+    小時候印象最深的一句話，是阿嬤常說吃飯要把碗裡吃得很乾淨，不然臉上會長很多痘痘。
+    這樣帶著恐嚇意味的提醒，沒想到一路影響我到四十幾歲，甚至讓我出現一些強迫傾向。
+    不過即使如此，我心裡仍然很感謝阿嬤，因為她一直很照顧我。
+  </p>
+
+  <div class="chapter-marker"><span class="timeline-dot"></span>章節二 · 問題少年</div>
+
+  <p>
+    到了國中時期，我開始變成老師和家人眼中的問題人物，也交了不少不好的朋友。
+    那時候的我年輕氣盛、衝動叛逆，做過很多讓現在的自己回頭看都覺得很後悔的事。
+  </p>
+
+  <p>
+    有一次和客戶、朋友一起去唱歌喝酒，結果在 KTV 裡和人發生衝突，最後還受了傷住院。
+    那段時間，依然是阿嬤照顧我。現在回想起來，真的覺得自己很對不起家人。
+  </p>
+
+  <div class="chapter-marker"><span class="timeline-dot"></span>章節三 · 加拿大九個月</div>
+
+  <p>
+    後來父母覺得我繼續留在台灣，只會越走越偏，所以決定把我送去加拿大多倫多讀書，
+    希望換個環境，人生可以有些改變。
+  </p>
+
+  <p>
+    剛到加拿大的時候，人生地不熟，又遇上下雪，心裡真的非常想家，也很想念台灣。
+    只是那時候的我，雖然換了環境，卻沒有真正換掉裡面的自己。
+    我還是交了不好的朋友，做了很多荒唐的事，不專心讀書，也不成熟，
+    最後辜負了父母的期待。大概待了九個月，就被帶回台灣。
+  </p>
+
+  <div class="pull-quote">
+    現在回頭看，那段經歷雖然浪費了很多資源，<br>
+    卻也成了我後來反省人生的一個重要起點。
+  </div>
+
+  <div class="chapter-marker"><span class="timeline-dot"></span>章節四 · 基層工作與工廠</div>
+
+  <p>
+    回到台灣之後，我開始做一些基層工作，想學習一般勞工是怎麼為生活打拼的。
+    我做過加油站，也做過餐飲廚房的工作。那時候的我脾氣還是很衝，做事不成熟，
+    常常因為一點不順就起衝突。
+  </p>
+
+  <p>
+    現在回頭看，會發現那時候的自己其實不是在對抗別人，
+    而是在對抗內心那個混亂、空虛又沒有方向的自己。
+  </p>
+
+  <p>
+    之後，我回到家裡的工廠工作。那段日子，某種程度上也是我人生既荒唐又黃金的歲月。
+    感情起伏很多，也不太穩定。後來父親在越南設廠，要我過去幫忙管理。
+    當時台灣經濟還不錯，家裡在中國大陸也有十個合作加工廠。
+    於是我去了越南，也因此和原本較穩定交往的女友分開了。遠距離戀愛終究沒有走下去。
+  </p>
+
+  <div class="chapter-marker"><span class="timeline-dot"></span>章節五 · 越南十年</div>
+
+  <p>
+    剛到越南時，語言不通、文化不同，生活上常常吃虧，也常遇到被宰客或被騙的情況。
+    工作上，我擔任副總，開始接觸管理、廠務、外部應酬和商業合作。
+    那時身邊自然會有很多廠商、業務、合作對象主動靠近，也接觸了許多台商圈的人與事。
+  </p>
+
+  <p>
+    現在回頭看，那段日子表面上看起來風光，實際上卻隱藏了很多判斷不成熟與衝動決策的問題。
+  </p>
+
+  <p>
+    我曾經因為想拓展環保藥劑事業，在不夠了解市場與風險的情況下，
+    簽下本票與合約，每個月要支付高額款項，最後還是靠父親幫我善後。
+    那時的我大概二十八歲，自以為有衝勁、有想法，實際上卻太天真。
+  </p>
+
+  <p>
+    後來又陰錯陽差投入養殖業，甚至去養蝦，結果當然也是失敗收場。
+    明明家裡有穩定的工廠事業，自己卻總想證明可以闖出一片天，
+    最後才知道外面的世界不只是機會多，風險和代價也同樣真實。
+  </p>
+
+  <div class="pull-quote">
+    我曾經以為衝動就是勇氣，<br>
+    後來才知道那只是還沒被現實教訓夠。
+  </div>
+
+  <div class="chapter-marker"><span class="timeline-dot"></span>章節六 · 感情與家庭</div>
+
+  <p>
+    感情方面，我的人生也經歷了不少波折。
+    在越南時，曾與一位台灣女生交往、生子，後來離婚。
+    現在則有一位越南籍太太，育有兩個女兒。
+  </p>
+
+  <p>
+    我的感情與家庭之路並不完美，但也正因如此，我更深刻知道，
+    一個人若沒有真正改變自己，再多機會也很難真正過得穩定。
+  </p>
+
+  <div class="chapter-marker"><span class="timeline-dot"></span>章節七 · 回台灣，家道中落</div>
+
+  <p>
+    我在越南生活了十年，後來工廠停工，廠房改租給其他台商。
+    我和太太那時候可以說是活在福中不知福，總想著靠自己打拼，
+    不想被看成在家裡庇蔭下長大的孩子。直到真正走出去，才知道現實有多辛苦、多殘酷。
+  </p>
+
+  <p>
+    2018 年，我回到台灣。那時家裡的經濟狀況已經大不如前。
+    中國大陸那邊的工廠有些獨立出去、有些結束合作，供應鏈也不再穩定；
+    法國客戶的訂單減半；父親在越南投入的大型計畫，也因合作方沒有如期出資，
+    導致大量資金卡住、無法回收。家裡在台南安南區科技工業區的工廠甚至被拍賣。
+  </p>
+
+  <div class="pull-quote">
+    那段時間，真的像是從天堂掉到地獄。
+  </div>
+
+  <p>
+    之後，我們只能繼續努力找出路。父親仍持續招商，也在成功大學航太所租位子，
+    嘗試推動重金屬土壤處理的計畫。雖然曾經有少量資金進來，但最終還是沒有做起來。
+    那時父親承受很大壓力，睡眠很少，債務與責任都壓在他身上。
+    接著又遇上疫情爆發，整個世界幾乎停擺，原本就困難的處境變得更加艱難。
+  </p>
+
+  <p>
+    那幾年，我也開始兼差跑 Uber。
+  </p>
+
+  <div class="chapter-marker"><span class="timeline-dot"></span>章節八 · 父親的離開</div>
+
+  <p>
+    正當生活已經很辛苦的時候，外婆過世了，接著父親也病倒。
+    醫生診斷是肺癌末期，已經不適合再做化療。
+    那段時間，我和弟弟輪流照顧父親。
+  </p>
+
+  <p>
+    父親是一位很仁慈的人，對家人一直都很好，也不忍心讓我們太辛苦。
+    沒多久，他就安息了。對我來說，那是人生非常深的一個失落。
+  </p>
+
+  <p>
+    父親離開之後，媽媽開始一個人生活，家裡每個人的體力與健康似乎都慢慢走下坡。
+    我自己也是，以前跑 Uber 可以跑到天亮，後來身體狀況越來越差，
+    腰痛、臉部濕疹一直反覆存在。
+  </p>
+
+  <div class="chapter-marker"><span class="timeline-dot"></span>章節九 · 2025，遇見主</div>
+
+  <p>
+    直到 2025 年，我遇見了主耶穌，人生好像突然有了轉變。
+    我的皮膚問題改善了很多，目前只剩腰痛還沒有完全好。
+    但更重要的是，我重新找回了希望，也開始學著重新看待自己的人生。
+  </p>
+
+  <div class="pull-quote">
+    我不敢說自己已經變得多好，<br>
+    但我知道自己正在改變。
+  </div>
+
+  <p>
+    我曾經荒唐、叛逆、自以為是，也曾讓家人失望、讓自己跌得很深。
+    可是如今，我願意承認過去，也願意繼續往前走。
+  </p>
+
+  <div class="closing-box">
+    <strong>「重來的旅人」</strong>這個名字，是我自己取的。<br><br>
+    人生前半段有很多跌撞與虧欠，後半段希望能活得更清楚，<br>
+    也更對得起家人、對得起自己、對得起神。<br><br>
+    這個網站，是我把這些年踩過的坑整理成對你有用的東西。<br>
+    如果對你有用，那就是它最大的意義。<br><br>
+    <strong>我現在正在做的事情：</strong><br>
+    自媒體行銷 · Uber · 汽車駕駛教練 · 活力之泉生技有限公司 負責人<br><br>
+    <em>— Andy · 重來的旅人</em>
+  </div>
+
+  <div class="related-articles">
+    <div class="related-title">接著看這些</div>
+    <div class="related-grid">
+      <a href="/esim/japan" class="related-card">
+        <div class="related-tag">日本 eSIM</div>
+        <div class="related-card-title">日本 eSIM 推薦 2026｜只推這兩張</div>
+      </a>
+      <a href="/japan-guide" class="related-card">
+        <div class="related-tag">日本自由行</div>
+        <div class="related-card-title">東京、京都、大阪行程規劃</div>
+      </a>
+      <a href="/thsr-guide" class="related-card">
+        <div class="related-tag">高鐵省錢</div>
+        <div class="related-card-title">高鐵怎麼買最便宜？2026 完整攻略</div>
+      </a>
+      <a href="/#klook-offers" class="related-card">
+        <div class="related-tag">Klook 優惠碼</div>
+        <div class="related-card-title">2026 各大銀行 Klook 優惠碼整理</div>
+      </a>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div class="footer-nav">
+    <a href="/">← 回首頁</a>
+    <a href="/esim">eSIM 比較</a>
+    <a href="/japan-guide">日本攻略</a>
+    <a href="/korea-guide">韓國攻略</a>
+    <a href="/thsr-guide">高鐵省錢</a>
+  </div>
+</footer>
+
+</body>
+</html>

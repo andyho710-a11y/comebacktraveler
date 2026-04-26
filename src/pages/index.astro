@@ -63,12 +63,43 @@ const esimArticles = [
     label: '看大陸上網攻略 →',
   },
 ];
+
+const travelArticles = [
+  {
+    tag: '高鐵省錢攻略',
+    title: '高鐵怎麼買最便宜？2026 商務通勤族省錢攻略',
+    desc: '定期票、早鳥、KKday 晚鳥票完整比較，依你的搭乘頻率找最對的方案，一年省下 8,000 元以上。',
+    href: '/thsr-guide',
+    label: '看高鐵省錢攻略 →',
+  },
+  {
+    tag: '日本自由行 2026',
+    title: '日本自由行行程規劃｜東京、京都、大阪推薦',
+    desc: '東京必去景點、京都季節限定活動、大阪美食推薦，搭配 Klook 提前預訂，省錢又省時。',
+    href: '/japan-guide',
+    label: '看日本行程攻略 →',
+  },
+  {
+    tag: '韓國自由行 2026',
+    title: '韓國自由行行程規劃｜首爾、釜山完整攻略',
+    desc: '首爾景福宮、弘大購物、釜山海雲台，Klook 行程搶先預訂，現場排隊少一小時。',
+    href: '/korea-guide',
+    label: '看韓國行程攻略 →',
+  },
+  {
+    tag: '關於這個人',
+    title: '從越南副總到 Uber 司機：重新出發的故事',
+    desc: '越南工廠十年、養蝦失敗、跑 Uber、父親離世——那些跌跤的歲月，才是真正的養分。',
+    href: '/story',
+    label: '看作者的故事 →',
+  },
+];
 ---
 
 <BlogLayout
   title="重來的旅人｜出國上網攻略、省錢情報"
   description="一個在越南生活 10 年、跌過很多跤的台灣男人，把踩過的坑整理成攻略。eSIM 怎麼選、Klook 怎麼省，都在這裡。"
-  keywords="eSIM推薦,出國上網,日本eSIM,韓國eSIM,Klook優惠碼,重來的旅人"
+  keywords="eSIM推薦,出國上網,日本eSIM,韓國eSIM,Klook優惠碼,高鐵省錢,重來的旅人"
 >
   <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
   <link slot="head" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet" />
@@ -101,13 +132,15 @@ const esimArticles = [
     <div class="article">
       <div class="story-box">
         <strong>我不是什麼旅遊達人，也沒有光鮮亮麗的履歷。</strong><br><br>
-        我是家裡文具工廠的第二代，年輕時叛逆衝動，被送去加拿大九個月就被帶回來。
-        後來去越南幫父親管廠，一待就是十年。
-        做過養蝦、投資過環保藥劑事業，全部失敗。
-        2018 年回台灣，家道中落，工廠被拍賣，跑起了 Uber。
-        父親肺癌末期過世，那是人生最深的失落。<br><br>
-        2025 年，我重新找回了方向。
+        我是家裡文具工廠的第二代。國中叛逆、KTV 鬧事住院，被送去加拿大九個月帶回來。
+        後來去越南幫父親管廠，擔任副總一待就是十年。
+        養蝦失敗、環保藥劑事業失敗，靠父親收拾殘局。
+        2018 年回台灣，工廠被拍賣，跑起了 Uber。
+        外婆走了，父親肺癌末期也走了。那是人生最深的失落。<br><br>
+        2025 年，我遇見了主耶穌，重新找回了方向。
         這個網站，是我把這些年踩過的坑，整理成對你有用的東西。
+        <br><br>
+        <a href="/story" style="color:var(--accent);font-weight:600;font-size:15px;">→ 看完整的故事</a>
       </div>
 
       <!-- eSIM Articles -->
@@ -125,8 +158,26 @@ const esimArticles = [
         ))}
       </div>
 
+      <!-- Travel & Savings Articles -->
+      <h2>旅行省錢攻略</h2>
+      <p>
+        票怎麼買最便宜、行程怎麼搭最划算、哪個 Klook 活動值得提前訂——
+        跑過 Uber 的人，對每一塊錢都特別敏感。
+      </p>
+
+      <div class="card-grid">
+        {travelArticles.map((a) => (
+          <a href={a.href} class="article-card">
+            <div class="article-card-tag">{a.tag}</div>
+            <div class="article-card-title">{a.title}</div>
+            <p class="article-card-desc">{a.desc}</p>
+            <div class="article-card-link">{a.label}</div>
+          </a>
+        ))}
+      </div>
+
       <!-- Klook Section -->
-      <h2>Klook 省錢情報</h2>
+      <h2 id="klook-offers">Klook 省錢情報</h2>
       <p>
         整理 2026 年最新各大銀行 Klook 刷卡折扣。
         透過下方連結進入 Klook，結帳輸入優惠碼即享折扣。
@@ -163,16 +214,74 @@ const esimArticles = [
         </p>
       </div>
 
+      <!-- Email Subscribe -->
+      <div class="subscribe-box">
+        <div class="subscribe-inner">
+          <div class="subscribe-icon">✉</div>
+          <h3 class="subscribe-title">省錢情報，直接送到你的信箱</h3>
+          <p class="subscribe-desc">新優惠碼、Klook 限時折扣、高鐵票攻略更新——不定期整理，不灌水。</p>
+          <form
+            name="newsletter"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="subscribe-form"
+            id="subscribe-form"
+          >
+            <input type="hidden" name="form-name" value="newsletter" />
+            <p style="display:none;"><label>不要填：<input name="bot-field" /></label></p>
+            <div class="subscribe-row">
+              <input
+                type="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+                class="subscribe-input"
+              />
+              <button type="submit" class="subscribe-btn">訂閱 →</button>
+            </div>
+            <p class="subscribe-note">不會轉賣你的 email，任何時候都可以取消訂閱。</p>
+          </form>
+          <div class="subscribe-success" id="subscribe-success" hidden>
+            <p>✓ 已收到！我會把最新情報寄給你。</p>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- Footer -->
     <footer class="site-footer">
       <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-      <span>自媒體行銷 · 越南生活 10 年 · 現在重新出發</span>
+      <div class="footer-nav">
+        <a href="/esim">eSIM 比較</a>
+        <a href="/esim/japan">日本 eSIM</a>
+        <a href="/esim/korea">韓國 eSIM</a>
+        <a href="/japan-guide">日本攻略</a>
+        <a href="/korea-guide">韓國攻略</a>
+        <a href="/thsr-guide">高鐵省錢</a>
+        <a href="/story">作者故事</a>
+        <a href="/#klook-offers">Klook 優惠碼</a>
+      </div>
+      <span style="display:block;margin-top:10px;">自媒體行銷 · 越南生活 10 年 · 現在重新出發</span>
     </footer>
 
   </div>
 </BlogLayout>
+
+<script>
+  var form = document.getElementById('subscribe-form');
+  var success = document.getElementById('subscribe-success');
+  if (form && success) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var data = new FormData(form as HTMLFormElement);
+      await fetch('/', { method: 'POST', body: data });
+      (form as HTMLElement).hidden = true;
+      (success as HTMLElement).hidden = false;
+    });
+  }
+</script>
 
 <style>
   .root {
@@ -310,7 +419,7 @@ const esimArticles = [
   }
   .story-box strong { color: var(--ink); font-weight: 600; }
 
-  /* eSIM article cards */
+  /* Article cards */
   .card-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -437,6 +546,62 @@ const esimArticles = [
     margin-bottom: 8px;
   }
 
+  /* Subscribe box */
+  .subscribe-box {
+    margin: 56px 0 0;
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .subscribe-inner {
+    background: var(--ink);
+    padding: 36px 40px;
+    text-align: center;
+    color: var(--paper);
+  }
+  .subscribe-icon { font-size: 28px; margin-bottom: 12px; }
+  .subscribe-title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 22px;
+    color: var(--paper);
+    margin-bottom: 10px;
+  }
+  .subscribe-desc { font-size: 15px; color: #d4c9b0; margin-bottom: 24px; line-height: 1.6; }
+  .subscribe-form { max-width: 440px; margin: 0 auto; }
+  .subscribe-row { display: flex; gap: 10px; }
+  .subscribe-input {
+    flex: 1;
+    font-family: var(--sans);
+    font-size: 15px;
+    padding: 12px 16px;
+    border: 1.5px solid #4a3f2f;
+    border-radius: 4px;
+    background: #2c1f0f;
+    color: var(--paper);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .subscribe-input:focus { border-color: var(--accent); }
+  .subscribe-input::placeholder { color: #6b5a46; }
+  .subscribe-btn {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 24px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .subscribe-btn:hover { background: #a93226; }
+  .subscribe-note { font-size: 12px; color: #6b5a46; margin-top: 12px; margin-bottom: 0; }
+  .subscribe-success { padding: 16px; background: #1c5e15; border-radius: 4px; margin-top: 16px; }
+  .subscribe-success p { margin: 0; color: #d5e8d4; font-size: 15px; }
+
   /* Footer */
   .site-footer {
     border-top: 2px solid var(--ink);
@@ -446,12 +611,26 @@ const esimArticles = [
     color: var(--ink-light);
   }
   .site-footer strong { color: var(--ink); }
-  .site-footer span { display: block; margin-top: 6px; }
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    margin-top: 14px;
+  }
+  .footer-nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 13px;
+  }
+  .footer-nav a:hover { text-decoration: underline; }
 
   /* Responsive */
   @media (max-width: 700px) {
     .card-grid { grid-template-columns: 1fr; }
     .coupon-grid { grid-template-columns: 1fr; }
+    .subscribe-row { flex-direction: column; }
+    .subscribe-inner { padding: 28px 20px; }
   }
   @media (min-width: 701px) and (max-width: 900px) {
     .card-grid { grid-template-columns: repeat(2, 1fr); }

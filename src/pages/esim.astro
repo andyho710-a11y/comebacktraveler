@@ -383,10 +383,10 @@ const brands = [
   if (form && successMsg) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const data = new FormData(form);
+      const data = new FormData(form as HTMLFormElement);
       await fetch('/', { method: 'POST', body: data });
-      form.hidden = true;
-      successMsg.hidden = false;
+      (form as HTMLElement).hidden = true;
+      (successMsg as HTMLElement).hidden = false;
     });
   }
 
