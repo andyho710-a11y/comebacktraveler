@@ -1,5 +1,5 @@
 {
-  "name": "astro",
+  "name": "comeback-traveler",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -13,8 +13,9 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
-    "@tailwindcss/vite": "^4.2.2",
+    "@tailwindcss/vite": "4.2.4",
     "astro": "^6.1.7",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "4.2.4",
+    "vite": "6.1.1"
   }
 }
