@@ -87,6 +87,13 @@ const travelArticles = [
     label: '看韓國行程攻略 →',
   },
   {
+    tag: '越南旅遊 2026',
+    title: '越南旅遊省時攻略：帶小孩出國不崩潰！',
+    desc: '海關排隊 40 分鐘、小孩餓到抗議——住過越南十年的過來人，告訴你快速通關和 eSIM 怎麼準備。',
+    href: '/vietnam-guide',
+    label: '看越南旅遊攻略 →',
+  },
+  {
     tag: '關於這個人',
     title: '從越南副總到 Uber 司機：重新出發的故事',
     desc: '越南工廠十年、養蝦失敗、跑 Uber、父親離世——那些跌跤的歲月，才是真正的養分。',
@@ -143,38 +150,44 @@ const travelArticles = [
         <a href="/story" style="color:var(--accent);font-weight:600;font-size:15px;">→ 看完整的故事</a>
       </div>
 
-      <!-- eSIM Articles -->
-      <h2>出國上網攻略</h2>
-      <p>出門在外沒有網路，那種慌是真的。以下是我整理的 eSIM 選購指南，不業配，是用過才說。</p>
+    </div><!-- /article (story box) -->
 
-      <div class="card-grid">
-        {esimArticles.map((a) => (
-          <a href={a.href} class="article-card">
-            <div class="article-card-tag">{a.tag}</div>
-            <div class="article-card-title">{a.title}</div>
-            <p class="article-card-desc">{a.desc}</p>
-            <div class="article-card-link">{a.label}</div>
-          </a>
-        ))}
+    <!-- Two-column wide section -->
+    <div class="wide-wrap">
+
+      <div class="section-col">
+        <h2>出國上網攻略</h2>
+        <p class="section-desc">出門在外沒有網路，那種慌是真的。以下是我整理的 eSIM 選購指南，不業配，是用過才說。</p>
+        <div class="card-grid">
+          {esimArticles.map((a) => (
+            <a href={a.href} class="article-card">
+              <div class="article-card-tag">{a.tag}</div>
+              <div class="article-card-title">{a.title}</div>
+              <p class="article-card-desc">{a.desc}</p>
+              <div class="article-card-link">{a.label}</div>
+            </a>
+          ))}
+        </div>
       </div>
 
-      <!-- Travel & Savings Articles -->
-      <h2>旅行省錢攻略</h2>
-      <p>
-        票怎麼買最便宜、行程怎麼搭最划算、哪個 Klook 活動值得提前訂——
-        跑過 Uber 的人，對每一塊錢都特別敏感。
-      </p>
-
-      <div class="card-grid">
-        {travelArticles.map((a) => (
-          <a href={a.href} class="article-card">
-            <div class="article-card-tag">{a.tag}</div>
-            <div class="article-card-title">{a.title}</div>
-            <p class="article-card-desc">{a.desc}</p>
-            <div class="article-card-link">{a.label}</div>
-          </a>
-        ))}
+      <div class="section-col">
+        <h2>旅行省錢攻略</h2>
+        <p class="section-desc">票怎麼買最便宜、行程怎麼搭最划算、哪個 Klook 活動值得提前訂——跑過 Uber 的人，對每一塊錢都特別敏感。</p>
+        <div class="card-grid">
+          {travelArticles.map((a) => (
+            <a href={a.href} class="article-card">
+              <div class="article-card-tag">{a.tag}</div>
+              <div class="article-card-title">{a.title}</div>
+              <p class="article-card-desc">{a.desc}</p>
+              <div class="article-card-link">{a.label}</div>
+            </a>
+          ))}
+        </div>
       </div>
+
+    </div><!-- /wide-wrap -->
+
+    <div class="article"><!-- resume narrow -->
 
       <!-- Klook Section -->
       <h2 id="klook-offers">Klook 省錢情報</h2>
@@ -419,12 +432,26 @@ const travelArticles = [
   }
   .story-box strong { color: var(--ink); font-weight: 600; }
 
+  /* Wide two-column layout */
+  .wide-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 56px;
+    align-items: start;
+  }
+  .section-col { padding-bottom: 48px; }
+  .section-col h2 { margin-top: 52px; }
+  .section-desc { margin-bottom: 0; }
+
   /* Article cards */
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin: 28px 0 48px;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 20px 0 0;
   }
   .article-card {
     display: flex;
@@ -626,17 +653,22 @@ const travelArticles = [
   .footer-nav a:hover { text-decoration: underline; }
 
   /* Responsive */
+  @media (max-width: 900px) {
+    .wide-wrap {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 700px) {
     .card-grid { grid-template-columns: 1fr; }
     .coupon-grid { grid-template-columns: 1fr; }
     .subscribe-row { flex-direction: column; }
     .subscribe-inner { padding: 28px 20px; }
   }
-  @media (min-width: 701px) and (max-width: 900px) {
-    .card-grid { grid-template-columns: repeat(2, 1fr); }
-  }
   @media (max-width: 600px) {
     .hero, .article { padding: 0 16px; }
+    .wide-wrap { padding: 0 16px; }
     h1 { font-size: 28px; }
     .story-box { padding: 18px 20px; }
   }
