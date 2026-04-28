@@ -1,5 +1,6 @@
 ---
 import BlogLayout from '../layouts/BlogLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
 
 const AFFILIATE_LINK = 'https://onelink.one/s/PclP0';
 
@@ -104,9 +105,10 @@ const travelArticles = [
 ---
 
 <BlogLayout
-  title="重來的旅人｜出國上網攻略、省錢情報"
-  description="一個在越南生活 10 年、跌過很多跤的台灣男人，把踩過的坑整理成攻略。eSIM 怎麼選、Klook 怎麼省，都在這裡。"
-  keywords="eSIM推薦,出國上網,日本eSIM,韓國eSIM,Klook優惠碼,高鐵省錢,重來的旅人"
+  title="重來的旅人｜2026 出國上網 eSIM 比較、旅遊攻略與省錢指南"
+  description="提供 2026 最實用的日本、韓國、越南旅遊攻略。深度比較各大品牌 eSIM（JOYTEL、DJB、Klook），並分享高鐵與國旅省錢秘訣。把踩過的坑，變成你的攻略。"
+  keywords="eSIM推薦, 2026出國上網, 日本eSIM推薦, 韓國eSIM比較, Klook優惠碼, 高鐵省錢, 重來的旅人"
+  ogImage="/esim-cover.jpg"
 >
   <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
   <link slot="head" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet" />
@@ -279,6 +281,7 @@ const travelArticles = [
       <span style="display:block;margin-top:10px;">自媒體行銷 · 越南生活 10 年 · 現在重新出發</span>
     </footer>
 
+    <ContactForm />
   </div>
 </BlogLayout>
 
