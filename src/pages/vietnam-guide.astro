@@ -1,0 +1,247 @@
+---
+const title = "越南旅遊省時攻略：帶小孩出國不崩潰！｜重來的旅人";
+const description = "在越南海關排隊排到腿軟、小孩餓到抗議——一個住過越南十年的台灣人告訴你，快速通關和 eSIM 怎麼用，讓帶孩子出國不崩潰。";
+const canonical = "https://comebacktraveler.com/vietnam-guide";
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "dateModified": "2026-04-28",
+    "image": "https://comebacktraveler.com/vietnam-airport-queue.jpg"
+  })}</script>
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 52px 0 16px; position: relative; padding-left: 16px; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+
+    .article-photo { width: 100%; height: auto; border-radius: 6px; margin: 32px 0 8px; display: block; }
+    .photo-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 32px; font-style: italic; }
+
+    .recommend-card { border: 2px solid var(--border); border-radius: 8px; padding: 28px 32px; margin: 32px 0; }
+    .recommend-card.featured { border-color: var(--accent); background: #fef9f5; }
+    .card-num { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .card-title { font-family: var(--serif); font-weight: 900; font-size: 22px; margin-bottom: 12px; }
+    .card-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .tag { font-size: 12px; padding: 3px 10px; border-radius: 10px; background: var(--paper-warm); color: var(--ink-light); font-weight: 500; }
+    .tag-green { background: #d5e8d4; color: #1c5e15; }
+    .tag-red { background: #fde8e8; color: #8b1a1a; }
+    .card-body { font-size: 15px; line-height: 1.75; margin-bottom: 20px; }
+    .card-body li { margin-bottom: 6px; padding-left: 4px; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 13px 30px; border-radius: 4px; text-decoration: none; transition: background 0.15s; }
+    .cta-btn:hover { background: #a93226; }
+    .cta-btn.secondary { background: var(--ink); }
+    .cta-btn.secondary:hover { background: #2c1f0f; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+
+    .closing { margin-top: 52px; padding-top: 32px; border-top: 1px solid var(--border); font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .closing em { color: var(--ink); font-style: normal; font-weight: 600; }
+
+    .internal-links { margin: 40px 0 0; display: flex; gap: 20px; flex-wrap: wrap; }
+    .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .internal-links a:hover { text-decoration: underline; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+    .footer-nav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      .recommend-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">越南旅遊 · 親子出國攻略 2026</div>
+  <h1>越南旅遊省時攻略<br>帶小孩出國不崩潰！</h1>
+  <p class="subtitle">
+    在越南海關排了快一個小時，小孩又累又餓，大人腿也痠了。<br>
+    住過越南十年的過來人，告訴你哪兩樣東西出發前一定要準備好。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 4 月更新 · 越南生活 10 年 · 帶小孩出國的親身教訓</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <div class="story-box">
+    <strong>有一種崩潰，是帶著小孩在越南海關排隊 40 分鐘。</strong><br><br>
+    大人排到腿軟，小孩餓到抗議，隊伍卻看不到盡頭。<br>
+    那一刻我深刻體會到：時間就是金錢，帶孩子出國尤其如此。<br><br>
+    我在越南生活了整整十年，這次回去辦事，還是栽在這個坑裡。
+    事後研究了一下，其實有解。
+  </div>
+
+  <img
+    src="/vietnam-airport-queue.jpg"
+    alt="越南胡志明市新山一機場入境大廳排隊人潮"
+    class="article-photo"
+  />
+  <p class="photo-caption">這就是我們當時在海關排隊的盛況。胡志明市新山一機場，人多到讓人絕望。</p>
+
+  <p>
+    不是說越南不好玩，越南是我最熟悉的地方之一。
+    但每次入境那段時間，真的讓人頭大——尤其帶著孩子，更沒有耐心慢慢等。
+  </p>
+
+  <p>
+    這篇整理兩個我覺得出發前一定要準備好的東西，
+    讓你落地那一刻開始就省時省力，把精神留給真正值得的事。
+  </p>
+
+  <h2>1. 越南快速通關（Fast Track）</h2>
+
+  <div class="recommend-card featured">
+    <div class="card-num">推薦一 ★ 帶孩子必備</div>
+    <div class="card-title">越南機場快速通關服務</div>
+    <div class="card-tags">
+      <span class="tag tag-green">有專人帶路</span>
+      <span class="tag tag-green">直接跳過人龍</span>
+      <span class="tag">胡志明市、河內皆可</span>
+    </div>
+    <div class="card-body">
+      <p>快速通關（Fast Track）是一個機場地勤服務——有工作人員在出口等你，帶你走快速通道，
+      直接跳過普通隊伍，通關時間從 40–60 分鐘縮短到 10–15 分鐘以內。</p>
+      <p><strong>帶小孩特別值得：</strong></p>
+      <ul style="padding-left:20px;">
+        <li>孩子不用站著等，直接走人</li>
+        <li>行李多的話，有人協助推車</li>
+        <li>語言不通也沒關係，全程有人引導</li>
+        <li>費用通常 NT$500–900 左右，換算成省下的精力，超值</li>
+      </ul>
+    </div>
+    <a href="https://linkgo.one/s/eKT34" target="_blank" rel="noopener sponsored" class="cta-btn">查看快速通關方案 →</a>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-title">使用提醒</div>
+    <p style="margin:0;font-size:14px;">快速通關需要在抵達前預訂，通常要提供航班資訊。建議出發前 1–2 天完成預訂，確保有工作人員在等你。入境和出境通道各自獨立，要看清楚訂的是哪一段。</p>
+  </div>
+
+  <h2>2. 越南 eSIM 上網吃到飽</h2>
+
+  <div class="recommend-card">
+    <div class="card-num">推薦二 · 落地就用</div>
+    <div class="card-title">越南 eSIM 網路方案</div>
+    <div class="card-tags">
+      <span class="tag tag-green">落地即連線</span>
+      <span class="tag tag-green">不用換實體卡</span>
+      <span class="tag">胡志明市 / 河內 / 峴港全覆蓋</span>
+    </div>
+    <div class="card-body">
+      <p>以前去越南，第一件事是找迴紋針、找 SIM 卡托、找換卡的地方。
+      現在只要提前安裝 eSIM，飛機落地關掉飛行模式，直接就有網路。</p>
+      <p><strong>帶孩子出門更需要網路：</strong></p>
+      <ul style="padding-left:20px;">
+        <li>Google Maps 導航，不用問路</li>
+        <li>Grab（越南版 Uber）叫車，不用攔路邊計程車被坑</li>
+        <li>孩子無聊時有 YouTube 救場</li>
+        <li>緊急狀況可以馬上聯繫</li>
+      </ul>
+    </div>
+    <a href="https://onelink.one/s/5Jwg6" target="_blank" rel="noopener sponsored" class="cta-btn secondary">看 eSIM 越南方案 →</a>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-title">eSIM 安裝提醒</div>
+    <p style="margin:0;font-size:14px;">eSIM 需要在出發前掃 QR Code 安裝，不能到了越南才裝。建議在台灣有 Wi-Fi 的環境下完成設定，並確認手機是否支援 eSIM（iPhone XS 以後、Android 旗艦機大多支援）。
+    不確定怎麼裝？<a href="/esim/install" style="color:var(--accent);">eSIM 安裝圖解教學看這裡</a>。</p>
+  </div>
+
+  <h2>出發前的簡單清單</h2>
+  <ul style="padding-left:20px;margin-bottom:1.4em;">
+    <li style="margin-bottom:8px;"><strong>快速通關</strong>：提供航班資訊，出發前 1–2 天預訂完成</li>
+    <li style="margin-bottom:8px;"><strong>eSIM</strong>：在台灣安裝好，確認可以連線再出發</li>
+    <li style="margin-bottom:8px;"><strong>越南盾</strong>：機場 ATM 直接領，或在台灣先換好部分</li>
+    <li style="margin-bottom:8px;"><strong>Grab App</strong>：提前下載，越南機場外面的計程車很亂，Grab 叫車更安全</li>
+    <li style="margin-bottom:0;"><strong>孩子的零食</strong>：排隊的時候用得上。這條不是玩笑。</li>
+  </ul>
+
+  <div class="closing">
+    帶小孩出國，多花一點點預算買「舒服」和「效率」絕對值得。<br><br>
+    我在越南生活了十年，見過太多台灣旅客在機場那段路白白耗掉大半精神。<br>
+    快速通關 + eSIM，這兩樣先備齊，落地之後才有力氣好好玩。<br><br>
+    <em>祝你越南行順利，孩子也不鬧。</em>
+  </div>
+
+  <div class="internal-links">
+    <a href="/esim">→ eSIM 品牌完整比較</a>
+    <a href="/esim/install">→ eSIM 安裝圖解教學</a>
+    <a href="/story">→ 我在越南的十年故事</a>
+    <a href="/#klook-offers">→ Klook 優惠碼整理</a>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div class="footer-nav">
+    <a href="/">← 回首頁</a>
+    <a href="/esim">eSIM 比較</a>
+    <a href="/japan-guide">日本攻略</a>
+    <a href="/korea-guide">韓國攻略</a>
+    <a href="/thsr-guide">高鐵省錢</a>
+    <a href="/story">作者故事</a>
+  </div>
+</footer>
+
+</body>
+</html>
