@@ -1,4 +1,4 @@
-name: Deploy to Netlify
+name: Deploy to Firebase Hosting
 
 on:
   push:
@@ -23,8 +23,10 @@ jobs:
       - name: Check build output
         run: ls -R dist
 
-      - name: Deploy to Netlify
-        run: npx netlify-cli deploy --prod --dir=dist
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COMEBACK_TRAVELER_WEB }}
+          projectId: comeback-traveler-web
+          channelId: live
