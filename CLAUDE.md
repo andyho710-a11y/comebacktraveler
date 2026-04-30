@@ -15,13 +15,13 @@ No test runner or linter is configured. Node.js >=22.12.0 is required.
 
 ## Architecture
 
-This is an **Astro 6** static site for a Traditional Chinese travel blog ("重來的旅人" / Comeback Traveler) deployed to Netlify via GitHub Actions. The site focuses on eSIM comparisons and travel deal guides.
+This is an **Astro 6** static site for a Traditional Chinese travel blog ("重來的旅人" / Comeback Traveler) deployed to Firebase Hosting via GitHub Actions. The site focuses on eSIM comparisons and travel deal guides.
 
 **Key tech stack:**
 - Astro 6 with MDX and sitemap integrations
 - Tailwind CSS v4 (configured via `@tailwindcss/vite` Vite plugin — no `tailwind.config.js`)
 - Sharp for OG image generation (`generate-og.mjs`)
-- Deployment: `netlify deploy` via `.github/workflows/deploy.yml`
+- Deployment: `FirebaseExtended/action-hosting-deploy@v0` via `.github/workflows/deploy.yml`
 
 **No content collections** — all pages are `.astro` files under `src/pages/`. There is no `src/content/` directory.
 
@@ -42,4 +42,8 @@ All page-specific styles are written as `<style>` blocks inside the `.astro` fil
 
 Production site: `https://comebacktraveler.com` (configured in `astro.config.mjs`)
 
-CI/CD pushes to `main` branch trigger the GitHub Actions workflow which builds and deploys to Netlify. Manual deploys can be run with `netlify deploy --prod`.
+Firebase project: `comeback-traveler-web` (default `web.app` URL: `https://comeback-traveler-web.web.app`). Hosting config lives in `firebase.json` (publish dir: `dist`) and `.firebaserc`.
+
+CI/CD pushes to `main` branch trigger the GitHub Actions workflow which builds and deploys to Firebase Hosting using the `FIREBASE_SERVICE_ACCOUNT_COMEBACK_TRAVELER_WEB` repo secret. Manual deploys can be run with `firebase deploy --only hosting`.
+
+DNS is managed at Porkbun (NS: `*.ns.porkbun.com`) with apex A record pointing to `199.36.158.100` and `www` CNAME redirecting to apex via Firebase.
