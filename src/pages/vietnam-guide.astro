@@ -14,7 +14,7 @@ const canonical = "https://comebacktraveler.com/vietnam-guide";
   <link rel="canonical" href={canonical} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
-  <script is:inline type="application/ld+json">{JSON.stringify({
+  <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": title,
@@ -24,7 +24,7 @@ const canonical = "https://comebacktraveler.com/vietnam-guide";
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
     "dateModified": "2026-04-28",
     "image": "https://comebacktraveler.com/vietnam-airport-queue.jpg"
-  })}</script>
+  })} />
   <style>
     :root {
       --ink: #1a1208;

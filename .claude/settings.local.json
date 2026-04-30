@@ -12,7 +12,10 @@
       "Bash(curl -sI \"https://afflink.one/s/zf2Z8\")",
       "Bash(start \"\" \"https://afflink.one/s/zf2Z8\")",
       "Bash(netlify status *)",
-      "Bash(start \"\" \"https://cerulean-pie-07bb29.netlify.app/esim\")"
+      "Bash(start \"\" \"https://cerulean-pie-07bb29.netlify.app/esim\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321/services)",
+      "Bash(claude update *)",
+      "Bash(claude remote-control *)"
     ]
   }
 }

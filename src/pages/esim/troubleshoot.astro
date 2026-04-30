@@ -18,7 +18,7 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
   <meta property="og:description" content={description} />
   <meta property="og:url" content="https://comebacktraveler.com/esim/troubleshoot" />
   <meta property="og:locale" content="zh_TW" />
-  <script is:inline type="application/ld+json">{JSON.stringify({
+  <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "name": title,
@@ -26,7 +26,7 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
     "url": "https://comebacktraveler.com/esim/troubleshoot",
     "inLanguage": "zh-TW",
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
-  })}</script>
+  })} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
   <style>

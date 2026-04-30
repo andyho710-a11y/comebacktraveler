@@ -1,4 +1,8 @@
 {
-  "recommendations": ["astro-build.astro-vscode", "unifiedjs.vscode-mdx"],
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "unifiedjs.vscode-mdx",
+    "google.gemini-cli-vscode-ide-companion"
+  ],
   "unwantedRecommendations": []
 }
