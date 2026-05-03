@@ -15,7 +15,16 @@
       "Bash(start \"\" \"https://cerulean-pie-07bb29.netlify.app/esim\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321/services)",
       "Bash(claude update *)",
-      "Bash(claude remote-control *)"
+      "Bash(claude remote-control *)",
+      "Bash(git -C c:/Users/WIN10/OneDrive/Desktop/astro diff .gitignore .github/workflows/deploy.yml)",
+      "Bash(git -C c:/Users/WIN10/OneDrive/Desktop/astro add .github/workflows/deploy.yml .gitignore firebase.json .firebaserc package-lock.json)",
+      "Bash(git -C c:/Users/WIN10/OneDrive/Desktop/astro rm -f netlify.toml .netlify/state.json)",
+      "Bash(git -C c:/Users/WIN10/OneDrive/Desktop/astro commit -m ' *)",
+      "Bash(git -C c:/Users/WIN10/OneDrive/Desktop/astro push origin main)",
+      "Bash(git -C c:/Users/WIN10/OneDrive/Desktop/astro diff CLAUDE.md)",
+      "Bash(git -C c:/Users/WIN10/OneDrive/Desktop/astro add CLAUDE.md)",
+      "Bash(curl -sI https://comebacktraveler.com/_astro/)",
+      "PowerShell(wmux browser open http://localhost:4321/vietnam-jcb-lounge)"
     ]
   }
 }

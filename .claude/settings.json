@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nslookup comebacktraveler.com curitiba.ns.porkbun.com)",
+      "Bash(nslookup comebacktraveler.com 9.9.9.9)",
+      "Bash(nslookup comebacktraveler.com 208.67.222.222)",
+      "Bash(git -C c:/Users/WIN10/OneDrive/Desktop/astro remote -v)",
+      "Bash(curl -sI -H \"Host: comebacktraveler.com\" http://199.36.158.100/)",
+      "Bash(curl -sI --max-time 10 https://comebacktraveler.com/)",
+      "Bash(curl -s https://comebacktraveler.com/)",
+      "Bash(curl -sI https://comebacktraveler.com/esim/japan/)",
+      "Bash(openssl s_client -servername comebacktraveler.com -connect comebacktraveler.com:443)",
+      "Bash(openssl x509 *)",
+      "Bash(git -C c:/Users/WIN10/OneDrive/Desktop/astro status)"
+    ]
+  }
+}
