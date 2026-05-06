@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { title, description, keywords, ogImage } = Astro.props;
-const siteBase = Astro.site ?? new URL('https://cerulean-pie-07bb29.netlify.app');
+const siteBase = Astro.site ?? new URL('https://comebacktraveler.com');
 const canonicalURL = new URL(Astro.url.pathname, siteBase);
 const ogImageURL = ogImage
   ? ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteBase).toString()
