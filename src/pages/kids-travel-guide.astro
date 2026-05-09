@@ -1,8 +1,8 @@
 ---
 import SocialLinks from '../components/SocialLinks.astro';
 
-const title = "帶小孩出國 6 個眉角 2026｜過來人才知道的細節攻略｜重來的旅人";
-const description = "兒童護照效期、嬰兒搖籃位、航空兒童餐、快速通關、eSIM 救場、第一晚別排行程——一個帶娃飛過越南、日本、韓國的台灣爸爸，把那些攻略文不會寫的細節整理給你。";
+const title = "帶女兒第一次回越南：The Mira 五星飯店 + Lẩu Tôm 5 Ri 5 在地海鮮店｜重來的旅人";
+const description = "帶女兒回胡志明市，住 The Mira Central Park 五星飯店，落地當晚就殺去當地人最愛的 Lẩu Tôm 5 Ri 5 海鮮店——一個住越南 10 年的台灣爸爸，分享「住高檔、吃在地」的親子旅遊心法。";
 const canonical = "https://comebacktraveler.com/kids-travel-guide/";
 ---
 
@@ -19,12 +19,16 @@ const canonical = "https://comebacktraveler.com/kids-travel-guide/";
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
   <meta property="og:locale" content="zh_TW" />
+  <meta property="og:image" content="https://comebacktraveler.com/vietnam-mira-lobby.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://comebacktraveler.com/vietnam-mira-lobby.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
-  <script type="application/ld+json" set:html={JSON.stringify({
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": title,
@@ -33,7 +37,7 @@ const canonical = "https://comebacktraveler.com/kids-travel-guide/";
     "author": { "@type": "Person", "name": "重來的旅人" },
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
     "dateModified": "2026-05-09",
-    "image": "https://comebacktraveler.com/og-default.jpg"
+    "image": "https://comebacktraveler.com/vietnam-mira-lobby.jpg"
   })} />
   <style>
     :root {
@@ -66,10 +70,12 @@ const canonical = "https://comebacktraveler.com/kids-travel-guide/";
     p { margin-bottom: 1.4em; }
     h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 56px 0 16px; position: relative; padding-left: 16px; line-height: 1.4; }
     h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
-    h2 .num { color: var(--accent); margin-right: 8px; }
 
     .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
     .story-box strong { color: var(--ink); font-weight: 600; }
+
+    .article-photo { width: 100%; height: auto; border-radius: 6px; margin: 32px 0 8px; display: block; }
+    .photo-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 36px; font-style: italic; }
 
     .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
     .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
@@ -78,6 +84,10 @@ const canonical = "https://comebacktraveler.com/kids-travel-guide/";
     .check-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
     .check-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
     .check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+
+    .info-grid { display: grid; grid-template-columns: 100px 1fr; gap: 12px 20px; margin: 24px 0; padding: 20px 24px; background: var(--paper-warm); border-radius: 6px; font-size: 15px; }
+    .info-grid dt { font-weight: 600; color: var(--ink); }
+    .info-grid dd { color: var(--ink-light); margin: 0; }
 
     a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
     a.inline:hover { background: var(--paper-warm); }
@@ -96,6 +106,7 @@ const canonical = "https://comebacktraveler.com/kids-travel-guide/";
     @media (max-width: 600px) {
       .hero, .article { padding: 0 16px; }
       h2 { font-size: 22px; }
+      .info-grid { grid-template-columns: 80px 1fr; padding: 16px 18px; font-size: 14px; }
     }
   </style>
   <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
@@ -107,17 +118,18 @@ const canonical = "https://comebacktraveler.com/kids-travel-guide/";
 </header>
 
 <div class="hero">
-  <div class="category-tag">親子旅遊 · 過來人經驗 2026</div>
-  <h1>帶小孩出國<br>6 個過來人才知道的眉角</h1>
+  <div class="category-tag">越南親子旅遊紀錄 · 2026</div>
+  <h1>帶女兒第一次回越南<br>The Mira 五星飯店 + 5 Ri 5 在地海鮮店</h1>
   <p class="subtitle">
-    護照、機票、行李這些每篇攻略都會寫，但帶娃出國真正會「翻車」的細節通常不在那些清單裡。<br>
-    這篇整理 6 個我自己帶孩子飛越南、日本、韓國踩過的眉角，希望你不要再走我走過的冤枉路。
+    我在越南住了整整十年，但帶女兒回去這還是頭一次。<br>
+    第一晚住五星飯店、轉頭就帶她們殺去當地人最愛的海鮮熱炒店——<br>
+    「住高檔、吃在地」是我這幾年帶小孩出國摸索出來的核心策略。
   </p>
   <div class="meta">
     <div class="author-dot">旅</div>
     <div>
       <div class="meta-author">重來的旅人</div>
-      <div>2026 年 5 月更新 · 帶娃飛越南／日本／韓國的親身教訓</div>
+      <div>2026 年 5 月紀錄 · 越南生活 10 年 · 帶女兒胡志明市親子行</div>
     </div>
   </div>
 </div>
@@ -125,213 +137,210 @@ const canonical = "https://comebacktraveler.com/kids-travel-guide/";
 <article class="article">
 
   <div class="story-box">
-    <strong>「明明都按攻略文準備了，為什麼還是這麼狼狽？」</strong><br><br>
-    第一次帶女兒飛越南那年，我也以為自己準備得很周全。<br>
-    結果飛機餐沒小孩餐、嬰兒搖籃位被別家搶走、第一晚硬排了兩個景點直接讓孩子在計程車上崩潰大哭。<br><br>
-    後來再帶孩子飛日本、韓國，這幾個眉角才慢慢摸出來，整理在這篇給準備帶娃出國的爸媽。
+    <strong>「爸爸，我們下次什麼時候再去越南？」</strong><br><br>
+    這是兩個女兒從越南回到台灣後，每隔幾天就會問我一次的話。<br>
+    我在越南待了十年，看過太多台灣旅客把越南當成「便宜版日本」來玩——
+    住觀光區飯店、吃中文菜單餐廳、跟著旅行社走。<br><br>
+    這次帶女兒，我刻意換了個玩法：<strong>飯店住最好的，吃飯卻直接殺進當地人才會去的店</strong>。
+    結果這趟旅程，意外變成她們到現在最常拿出來講的回憶。
   </div>
 
   <p>
-    這篇不寫護照怎麼辦、簽證怎麼填那種事，網路上太多了。
-    要寫的是那些「攻略文不會寫，但你出發前真的要知道」的細節。
+    這篇紀錄第一天的安排——從機場接到小孩、入住 The Mira Central Park Hotel、
+    再帶她們去吃 Lẩu Tôm 5 Ri 5 這家當地連鎖海鮮店。
   </p>
 
   <p>
-    也不是什麼超級秘訣，就是過來人踩過坑之後才會記住的小事。
-    會講為什麼這樣做、不這樣做會怎樣、以及實際執行的時間點。
+    不是純遊記，文末會把「為什麼這樣安排」、「帶小孩去當地餐廳要注意什麼」這些實戰心得整理出來，
+    讓你下次帶娃出國也能複製這套組合。
   </p>
 
-  <h2><span class="num">1.</span>兒童護照效期不要只看「6 個月」</h2>
+  <h2>飯店：The Mira Central Park Hotel（第三郡）</h2>
+
+  <img
+    src="/vietnam-mira-lobby.jpg"
+    alt="The Mira Central Park Hotel 胡志明市五星級飯店大廳，女兒在大理石地板前擺姿勢拍照"
+    class="article-photo"
+  />
+  <p class="photo-caption">The Mira Central Park 大廳。雖然是五星，但櫃檯人員會講基本中文，女兒一進來就忍不住擺 pose。</p>
 
   <p>
-    所有攻略文都會說：「護照效期至少要 6 個月」。
-    但帶小孩出國，這條規則有個容易被忽略的細節——<strong>兒童護照的效期本來就比較短</strong>。
+    我選 The Mira Central Park 的理由很單純：<strong>位置在第三郡商業區，離景點不遠但飯店本身夠安靜</strong>。
+    很多人帶小孩會選范五老街附近的 boutique hotel，價格便宜但晚上吵到睡不著——
+    對小孩根本是災難。
   </p>
 
-  <p>
-    台灣 14 歲以下的兒童護照效期只有 5 年（成人是 10 年）。
-    很多爸媽印象停留在「上次辦才不久」，結果出發前一查發現只剩 4 個月、3 個月，趕著急件來不及就直接打掉旅程。
-  </p>
+  <dl class="info-grid">
+    <dt>位置</dt><dd>胡志明市第三郡，靠近 Central Park 與 Saigon Centre 商圈</dd>
+    <dt>房型</dt><dd>家庭房（兩張大床），實際空間比照片大</dd>
+    <dt>價位</dt><dd>NT$3,000–4,500/晚（旺季略高），含早餐</dd>
+    <dt>設施</dt><dd>頂樓泳池、健身房、自助早餐、免費 Wi-Fi</dd>
+    <dt>適合誰</dt><dd>帶小孩、預算中等偏上、想要五星規格但不想跑遠</dd>
+  </dl>
+
+  <img
+    src="/vietnam-mira-room.jpg"
+    alt="The Mira Central Park Hotel 家庭房內裝，兩個女兒在房間中間擺姿勢，旁邊有兩個行李箱"
+    class="article-photo"
+  />
+  <p class="photo-caption">房間實際樣貌。空間夠兩張大床 + 兩個 28 吋行李箱，浴室是玻璃隔間（小孩覺得很新奇），冷氣強到第一天還得調溫。</p>
 
   <p>
-    我自己的習慣是訂機票之前先翻全家護照，三本一起拍照存手機裡。
-    要訂下一年度的旅程，就用拍照的那張對照算一次。
-    這個小動作幫我躲過至少兩次「差點忘了續辦」的危機。
+    帶小孩住飯店，我會看三件事：<strong>房間夠大、冷氣夠強、浴室乾淨</strong>。
+    The Mira 這三點都過關。早餐是自助式的越南菜 + 西式 + 麵食吧，女兒最愛的是現煮河粉攤位，
+    每天下樓第一件事就是衝那邊。
   </p>
 
   <div class="tip-box">
-    <div class="tip-title">小提醒</div>
-    <p>有些國家像越南、印尼，要求入境時護照效期還要超過 6 個月。
-    若你的孩子護照剩下 6 個月又 1 週，越南海關理論上可放行，但實際看櫃檯心情。
-    保險起見，剩不到 8 個月就先續辦。</p>
+    <div class="tip-title">過來人提醒</div>
+    <p>訂房時記得 email 飯店「家庭入住、需要兩張大床」。
+    越南五星飯店的「Family Room」有時候是 1 大床 + 1 沙發床，沒先講會踩雷。
+    The Mira 我這次有提前 email，到現場直接給兩張大床的房型，差異很大。</p>
   </div>
 
-  <h2><span class="num">2.</span>嬰兒搖籃位（Bassinet）一定要打電話確認</h2>
+  <h2>晚餐：Lẩu Tôm 5 Ri 5（5 Ri 5 蝦火鍋）</h2>
+
+  <img
+    src="/vietnam-local-restaurant.jpg"
+    alt="胡志明市 Lẩu Tôm 5 Ri 5 海鮮店現場，越南國旗、Tiger 啤酒招牌、當地人聚會的熱炒店氛圍"
+    class="article-photo"
+  />
+  <p class="photo-caption">Lẩu Tôm 5 Ri 5 的現場氛圍。越南國旗、Tiger 啤酒、一群當地年輕人在聚會——這就是我想讓女兒看到的「真實的越南」。</p>
 
   <p>
-    2 歲以下的小孩飛長程，最關鍵的東西是<strong>機艙前排的嬰兒搖籃位</strong>。
-    睡得著、不用一直抱、爸媽終於可以吃完一頓飛機餐——有跟沒有完全是兩個世界。
+    Check-in 完，我沒帶女兒去濱城市場、也沒去范五老街。
+    叫了 Grab 直接殺到 <strong>Lẩu Tôm 5 Ri 5</strong>——這是胡志明市本地連鎖的海鮮熱炒店，
+    主打白蝦火鍋，但白灼蝦、炒空心菜、現開椰子也是基本必點。
   </p>
 
   <p>
-    但這件事很多人不知道：<strong>網路訂票系統勾選「需要嬰兒搖籃」幾乎都是無效的</strong>。
-    那只是「登記想要」，搖籃位是限量的，先打電話的先得。
+    為什麼選這家？因為這是<strong>當地越南人下班後真的會去的店</strong>，不是觀光區那種裝潢漂亮但味道普通的。
+    走進店裡放眼望去九成是越南本地客人，桌上幾乎都是 Tiger 啤酒、海鮮、鐵盤——
+    那種「在地真實感」是觀光區買不到的。
   </p>
 
+  <img
+    src="/vietnam-seafood-dinner.jpg"
+    alt="Lẩu Tôm 5 Ri 5 現場端上桌的白灼蝦、辣椒沾醬、清炒空心菜、Tiger 啤酒"
+    class="article-photo"
+  />
+  <p class="photo-caption">那一桌：白灼草蝦（tôm hấp）、清炒空心菜（rau muống xào tỏi）、辣椒鹽 + 檸檬沾醬、Tiger 啤酒。
+  四個人加飲料總共大約 NT$1,500，相當划算。</p>
+
   <p>
-    正確流程：
+    女兒第一次看到這麼大的越南草蝦，眼睛瞪超大。
+    教她們把蝦剝殼、沾辣椒鹽 + 擠檸檬的吃法後，她們連續吃了五六隻才停下來。
+    炒空心菜是越南最經典的家常菜，蒜頭爆香、清脆甘甜，孩子也很愛。
   </p>
 
-  <ul class="check-list">
-    <li>訂完機票當下，立刻打航空公司客服</li>
-    <li>講清楚航班、嬰兒姓名、出生日期、體重</li>
-    <li>請對方確認「已登錄 BSCT 服務」（搖籃位的代碼）</li>
-    <li>出發前 72 小時再打一次重新確認</li>
-  </ul>
+  <dl class="info-grid">
+    <dt>類型</dt><dd>越南本地連鎖海鮮熱炒店（蝦火鍋為招牌）</dd>
+    <dt>必點</dt><dd>白灼蝦、清炒空心菜、椰子水、蝦火鍋（4 人以上才划算）</dd>
+    <dt>價位</dt><dd>4 人約 NT$1,500–2,000，依點蝦量浮動</dd>
+    <dt>分店</dt><dd>胡志明市多家分店，建議選室外通風型、靠主要幹道的店</dd>
+    <dt>付款</dt><dd>多數分店收現金為主，部分接受 Visa／信用卡，建議先準備越南盾</dd>
+  </dl>
+
+  <h2>帶小孩去當地越南海鮮店，這幾件事先想清楚</h2>
 
   <p>
-    我有一次以為網路勾選就好，登機才發現整排前排都被有打過電話的人佔走，
-    那段 5 小時的飛行真的是身心俱疲。後來再也不敢偷懶。
-  </p>
-
-  <h2><span class="num">3.</span>航空兒童餐：訂票後再單獨選一次</h2>
-
-  <p>
-    跟搖籃位類似——訂機票時雖然有「特殊餐點」選項，但<strong>那只是預留意願，不等於確認</strong>。
-    訂完票後 72 小時內，要進航空公司會員專區（或打電話）正式預訂兒童餐。
-  </p>
-
-  <p>
-    沒事先預訂的話，飛機上的兒童餐通常只剩 2–3 份，你的孩子有沒有得吃就看籤運。
-    我帶女兒飛韓國那次就是這樣輸的，整整 3 小時航程她只能吃我便當裡的水果。
-  </p>
-
-  <p>
-    更慘的是有些低成本航空（像越捷、亞航）<strong>根本沒有兒童餐選項</strong>，要自己帶。
-    出發前先確認你坐的航空公司有沒有，是哪一種（CHML 兒童餐 / BBML 嬰兒餐 / VLML 嚴格素餐）。
-  </p>
-
-  <h2><span class="num">4.</span>快速通關 + eSIM：落地前就要備好</h2>
-
-  <p>
-    帶小孩入境，最怕的就是排隊。大人排到腿軟還能忍，小孩 30 分鐘就開始崩潰，
-    整個機場大廳都聽得到你家的尖叫，你還得一邊安撫、一邊維持隊形。
-  </p>
-
-  <p>
-    我自己現在飛任何東南亞國家都會做兩件事：
+    帶小孩跑當地餐廳是有風險的，尤其衛生跟辣度兩件事踩雷會直接毀了當晚。
+    我這次去 5 Ri 5 之前先想好了幾件事，分享給準備帶娃去越南的爸媽：
   </p>
 
   <ul class="check-list">
-    <li><strong>提前訂快速通關（Fast Track）</strong>：有專人在出口等你，直接走快速通道，
-    通關時間從 40–60 分鐘變 10–15 分鐘以內。費用大概 NT$500–900，換成省下的精力非常划算。
-    越南的細節我寫在 <a href="/vietnam-guide" class="inline">越南旅遊省時攻略</a> 裡。</li>
-    <li><strong>出發前裝好 eSIM</strong>：飛機落地關掉飛行模式，網路就直接通，可以馬上叫 Grab、開導航、聯絡接機。
-    不用在機場找 SIM 卡、不用換實體卡、孩子無聊時還能放 YouTube 救場。
-    各國 eSIM 比較整理在 <a href="/esim" class="inline">eSIM 品牌完整比較</a>，怎麼裝看 <a href="/esim/install" class="inline">eSIM 安裝圖解教學</a>。</li>
+    <li><strong>選「生意好、光線亮」的分店</strong>：當地人多代表翻桌快、食材新鮮。
+      光線亮代表廚房乾淨度可以目視確認。5 Ri 5 全分店都還算 OK，但選靠主要街道的會更穩。</li>
+    <li><strong>點菜先講「不辣」（không cay）</strong>：越南菜辣椒下手很重。
+      白灼蝦本身不辣，但沾醬會配辣椒鹽，跟店員說小孩吃就會給溫和的鹽 + 胡椒版本。</li>
+    <li><strong>蝦的處理示範一次給孩子看</strong>：剝殼、去頭、沾醬，第一隻你做給他看。
+      之後他會自己玩得很起勁，比平常吃飯還積極。</li>
+    <li><strong>濕紙巾自己帶</strong>：越南店家給的紙巾品質參差不齊，小孩剝蝦會弄一手。
+      包包永遠放一包濕紙巾不會錯。</li>
+    <li><strong>Google Translate 拍菜單</strong>：5 Ri 5 的菜單沒有英文，
+      用 Google Translate 鏡頭模式直接拍就有翻譯。
+      這就是為什麼出發前一定要把 <a href="/esim" class="inline">越南 eSIM</a> 裝好。</li>
   </ul>
 
   <div class="tip-box">
-    <div class="tip-title">過來人補充</div>
-    <p>有些信用卡（像 JCB 白金以上）可以免費進機場貴賓室。
-    等飛機那段時間帶小孩進貴賓室吃東西、洗熱水、換尿布，比擠在登機門前舒服一百倍。
-    越南胡志明市的實際使用紀錄看 <a href="/vietnam-jcb-lounge" class="inline">JCB 貴賓室攻略</a>。</p>
+    <div class="tip-title">語言補充</div>
+    <p>越南店員大多會基本英文單字（chicken / beer / rice / spicy / no spicy），
+    搭配比手畫腳完全可以點餐。<br>
+    女兒這次學會「cảm ơn（謝謝）」和「ngon（好吃）」兩句越南話，
+    每次跟店員說，店員笑得超開心，還多送了一盤水果。</p>
   </div>
 
-  <h2><span class="num">5.</span>eSIM 配兒童 YouTube 帳號：飛行救命包</h2>
+  <h2>「住高檔、吃在地」這個策略的邏輯</h2>
 
   <p>
-    這條是真的「過來人才會做」。帶小孩搭長程交通工具，
-    YouTube 是救命神器——但前提是<strong>網路要夠快、不會卡</strong>。
+    這幾年帶小孩出國，我慢慢摸出一個原則：
+    <strong>飯店錢省不得，餐飲錢可以省、而且省下來反而比較好玩</strong>。
   </p>
 
   <p>
-    用 eSIM 吃到飽方案，搭高鐵、搭飛機之間的接駁、搭 Grab 的時候，
-    iPad 連手機熱點看 YouTube Kids，整段路安靜如雞。
+    為什麼飯店要捨得花？因為帶小孩出國，<strong>飯店是你「補血」的地方</strong>。
+    白天再怎麼累、再怎麼曬，回到飯店有舒服的床、強冷的空調、夠大的浴室，
+    隔天才有體力繼續玩。住到差的飯店，等於每晚都在透支隔天的精神。
   </p>
 
   <p>
-    幾個小撇步：
-  </p>
-
-  <ul class="check-list">
-    <li>出發前先在家用 Wi-Fi 把孩子愛看的影片用 YouTube Premium「下載」起來，
-      這樣連網路都不用，飛機上也能播</li>
-    <li>把孩子的 Google 帳號設成「兒童帳號」，能自動過濾不適合的內容</li>
-    <li>帶一副小孩專用耳機（音量自動限制 85 分貝那種），別讓你家小孩在機艙裡用喇叭外放</li>
-  </ul>
-
-  <p>
-    這套組合在我帶孩子飛長榮去日本的那趟救了我整段旅程。
-    沒有它，3 小時的飛行可能變成 3 小時的災難。
-  </p>
-
-  <h2><span class="num">6.</span>第一晚別排行程：時差 + 中暑會打趴你</h2>
-
-  <p>
-    最後一個眉角，是我用兩次失敗換來的：<strong>抵達當天不要排任何景點</strong>。
+    為什麼餐飲反而要選在地？因為<strong>觀光區餐廳買不到「真實感」</strong>。
+    范五老街那種專賣外國人的店，端上桌的東西都調過給遊客吃，
+    味道不會差，但你也不會記得吃過什麼。<br>
+    反而像 5 Ri 5 這種當地店，孩子看到的是真實的越南人怎麼吃飯、怎麼聚會、怎麼喝酒大笑——
+    這些畫面才會留在她們的記憶裡。
   </p>
 
   <p>
-    大人覺得「飛 3 小時而已，下午到了還可以去走走」——
-    但小孩經過早起、過海關、坐飛機、領行李、坐車到飯店這一連串折騰，
-    身體已經到極限了。如果你還硬要拉去夜市、去看夕陽，孩子會在路上直接情緒崩潰，
-    然後你整晚都在收拾殘局。
+    這個組合的<strong>隱藏好處</strong>是：總預算其實不會比「中間級飯店 + 觀光區餐廳」多多少。
+    五星飯店一晚多 NT$1,500，但在地餐廳一餐省 NT$800–1,000，
+    一趟 4 天 3 夜下來，差距很小，體驗卻差很多。
   </p>
 
-  <p>
-    更慘的是去東南亞、沖繩這種高溫高濕的地方。
-    台灣初春出門 18 度，到峴港、胡志明、芭達雅下飛機就 33 度，
-    小孩體溫調節比大人慢，第一天就硬曬會直接中暑、發燒、嘔吐——
-    然後你整趟旅程都得照顧病人。
-  </p>
+  <h2>第一晚這樣安排的隱藏好處</h2>
 
   <p>
-    我現在的標準作業：
+    把「五星飯店 + 在地餐廳」的組合放在<strong>第一天晚上</strong>，是有原因的。
   </p>
 
   <ul class="check-list">
-    <li>第一晚就在飯店附近吃飯</li>
-    <li>讓小孩泡一下泳池或洗熱水澡放鬆</li>
-    <li>9 點前哄睡，把第一天當「適應日」</li>
-    <li>第二天才開始正式行程</li>
+    <li><strong>飯店補血</strong>：經過早起、過海關、坐飛機、坐車這一連串折騰，
+      晚上回到舒服的房間泡個熱水澡，孩子隔天才有力氣玩。</li>
+    <li><strong>在地餐廳震撼</strong>：第一天就帶她們看「真實的越南」，
+      之後幾天看任何東西都不會覺得衝擊太大，反而覺得有趣。</li>
+    <li><strong>建立信任</strong>：第一晚你帶她們安全完成「跨出舒適圈」這件事，
+      後面幾天提任何安排（吃路邊麵、坐摩托計程車、走小巷子）她們都會願意配合。</li>
   </ul>
 
   <p>
-    少玩一天感覺很可惜，但對比「整趟旅程毀了」，這個取捨非常划算。
+    當然，前提是你出發前把基本功課都做好——
+    <a href="/vietnam-guide" class="inline">越南快速通關</a>、
+    <a href="/esim" class="inline">eSIM</a>、
+    <a href="/esim/install" class="inline">eSIM 安裝</a>、
+    甚至 <a href="/vietnam-jcb-lounge" class="inline">機場 JCB 貴賓室</a>，
+    這些細節先備齊了，你才有餘裕去享受「住高檔、吃在地」這個組合。
   </p>
-
-  <h2>出發前的精簡清單</h2>
-
-  <ul class="check-list">
-    <li><strong>護照：</strong>全家三本拍照存手機，剩不到 8 個月就先續辦</li>
-    <li><strong>機票：</strong>訂完當天打電話確認搖籃位 + 兒童餐</li>
-    <li><strong>網路：</strong>出發前在家裝好 eSIM，順便下載好孩子的影片</li>
-    <li><strong>機場：</strong>有快速通關就訂，貴賓室能進就進</li>
-    <li><strong>第一晚：</strong>不排行程、不安排景點、好好睡一覺</li>
-    <li><strong>零食：</strong>包包裡永遠放孩子愛吃的小餅乾。這條不是玩笑。</li>
-  </ul>
 
   <div class="closing">
-    帶小孩出國跟一個人出國，根本是兩種旅遊。<br><br>
-    一個人時你可以衝、可以拚、可以省。<br>
-    帶小孩時你只能慢、只能準備、只能多花一點點預算買「不崩潰」。<br><br>
-    希望這 6 個眉角能讓你下次帶孩子出國，少一點狼狽，多一點笑聲。<br><br>
-    <em>祝旅途平安，孩子也別鬧。</em>
+    女兒從越南回來後最常掛在嘴邊的不是飯店泳池、也不是有冷氣的車。<br>
+    她記得的是<strong>那家掛滿越南國旗、大家在喝啤酒大笑的海鮮店</strong>，
+    記得自己學會剝蝦、學會說 cảm ơn、學會跟店員笑著說 ngon。<br><br>
+    帶小孩出國，最值得花的不是錢，是<em>讓他們真的看見一個世界</em>。<br><br>
+    <em>下次回越南，我已經在計畫帶她們去河內了。</em>
   </div>
 
   <SocialLinks
     heading="追蹤我｜Follow Me"
-    subheading="親子旅遊、eSIM、機場貴賓室省錢情報，會在 IG、FB、YouTube 同步分享"
+    subheading="越南親子旅遊、eSIM、機場貴賓室省錢情報，會在 IG、FB、YouTube 同步分享"
   />
 
   <div class="internal-links">
     <a href="/vietnam-guide">→ 越南帶小孩快速通關攻略</a>
-    <a href="/vietnam-jcb-lounge">→ JCB 貴賓室實戰紀錄</a>
+    <a href="/vietnam-jcb-lounge">→ 越南機場 JCB 貴賓室實戰</a>
     <a href="/esim">→ eSIM 品牌完整比較</a>
     <a href="/esim/install">→ eSIM 安裝圖解教學</a>
     <a href="/japan-guide">→ 日本自由行攻略</a>
-    <a href="/korea-guide">→ 韓國自由行攻略</a>
+    <a href="/story">→ 我在越南的十年故事</a>
   </div>
 
 </article>
