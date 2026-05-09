@@ -1,0 +1,354 @@
+---
+import SocialLinks from '../components/SocialLinks.astro';
+
+const title = "帶小孩出國 6 個眉角 2026｜過來人才知道的細節攻略｜重來的旅人";
+const description = "兒童護照效期、嬰兒搖籃位、航空兒童餐、快速通關、eSIM 救場、第一晚別排行程——一個帶娃飛過越南、日本、韓國的台灣爸爸，把那些攻略文不會寫的細節整理給你。";
+const canonical = "https://comebacktraveler.com/kids-travel-guide/";
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "dateModified": "2026-05-09",
+    "image": "https://comebacktraveler.com/og-default.jpg"
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 56px 0 16px; position: relative; padding-left: 16px; line-height: 1.4; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h2 .num { color: var(--accent); margin-right: 8px; }
+
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
+
+    .check-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
+    .check-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+
+    a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a.inline:hover { background: var(--paper-warm); }
+
+    .closing { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border); font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .closing em { color: var(--ink); font-style: normal; font-weight: 600; }
+
+    .internal-links { margin: 40px 0 0; display: flex; gap: 20px; flex-wrap: wrap; }
+    .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .internal-links a:hover { text-decoration: underline; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+    .footer-nav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      h2 { font-size: 22px; }
+    }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">親子旅遊 · 過來人經驗 2026</div>
+  <h1>帶小孩出國<br>6 個過來人才知道的眉角</h1>
+  <p class="subtitle">
+    護照、機票、行李這些每篇攻略都會寫，但帶娃出國真正會「翻車」的細節通常不在那些清單裡。<br>
+    這篇整理 6 個我自己帶孩子飛越南、日本、韓國踩過的眉角，希望你不要再走我走過的冤枉路。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 5 月更新 · 帶娃飛越南／日本／韓國的親身教訓</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <div class="story-box">
+    <strong>「明明都按攻略文準備了，為什麼還是這麼狼狽？」</strong><br><br>
+    第一次帶女兒飛越南那年，我也以為自己準備得很周全。<br>
+    結果飛機餐沒小孩餐、嬰兒搖籃位被別家搶走、第一晚硬排了兩個景點直接讓孩子在計程車上崩潰大哭。<br><br>
+    後來再帶孩子飛日本、韓國，這幾個眉角才慢慢摸出來，整理在這篇給準備帶娃出國的爸媽。
+  </div>
+
+  <p>
+    這篇不寫護照怎麼辦、簽證怎麼填那種事，網路上太多了。
+    要寫的是那些「攻略文不會寫，但你出發前真的要知道」的細節。
+  </p>
+
+  <p>
+    也不是什麼超級秘訣，就是過來人踩過坑之後才會記住的小事。
+    會講為什麼這樣做、不這樣做會怎樣、以及實際執行的時間點。
+  </p>
+
+  <h2><span class="num">1.</span>兒童護照效期不要只看「6 個月」</h2>
+
+  <p>
+    所有攻略文都會說：「護照效期至少要 6 個月」。
+    但帶小孩出國，這條規則有個容易被忽略的細節——<strong>兒童護照的效期本來就比較短</strong>。
+  </p>
+
+  <p>
+    台灣 14 歲以下的兒童護照效期只有 5 年（成人是 10 年）。
+    很多爸媽印象停留在「上次辦才不久」，結果出發前一查發現只剩 4 個月、3 個月，趕著急件來不及就直接打掉旅程。
+  </p>
+
+  <p>
+    我自己的習慣是訂機票之前先翻全家護照，三本一起拍照存手機裡。
+    要訂下一年度的旅程，就用拍照的那張對照算一次。
+    這個小動作幫我躲過至少兩次「差點忘了續辦」的危機。
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">小提醒</div>
+    <p>有些國家像越南、印尼，要求入境時護照效期還要超過 6 個月。
+    若你的孩子護照剩下 6 個月又 1 週，越南海關理論上可放行，但實際看櫃檯心情。
+    保險起見，剩不到 8 個月就先續辦。</p>
+  </div>
+
+  <h2><span class="num">2.</span>嬰兒搖籃位（Bassinet）一定要打電話確認</h2>
+
+  <p>
+    2 歲以下的小孩飛長程，最關鍵的東西是<strong>機艙前排的嬰兒搖籃位</strong>。
+    睡得著、不用一直抱、爸媽終於可以吃完一頓飛機餐——有跟沒有完全是兩個世界。
+  </p>
+
+  <p>
+    但這件事很多人不知道：<strong>網路訂票系統勾選「需要嬰兒搖籃」幾乎都是無效的</strong>。
+    那只是「登記想要」，搖籃位是限量的，先打電話的先得。
+  </p>
+
+  <p>
+    正確流程：
+  </p>
+
+  <ul class="check-list">
+    <li>訂完機票當下，立刻打航空公司客服</li>
+    <li>講清楚航班、嬰兒姓名、出生日期、體重</li>
+    <li>請對方確認「已登錄 BSCT 服務」（搖籃位的代碼）</li>
+    <li>出發前 72 小時再打一次重新確認</li>
+  </ul>
+
+  <p>
+    我有一次以為網路勾選就好，登機才發現整排前排都被有打過電話的人佔走，
+    那段 5 小時的飛行真的是身心俱疲。後來再也不敢偷懶。
+  </p>
+
+  <h2><span class="num">3.</span>航空兒童餐：訂票後再單獨選一次</h2>
+
+  <p>
+    跟搖籃位類似——訂機票時雖然有「特殊餐點」選項，但<strong>那只是預留意願，不等於確認</strong>。
+    訂完票後 72 小時內，要進航空公司會員專區（或打電話）正式預訂兒童餐。
+  </p>
+
+  <p>
+    沒事先預訂的話，飛機上的兒童餐通常只剩 2–3 份，你的孩子有沒有得吃就看籤運。
+    我帶女兒飛韓國那次就是這樣輸的，整整 3 小時航程她只能吃我便當裡的水果。
+  </p>
+
+  <p>
+    更慘的是有些低成本航空（像越捷、亞航）<strong>根本沒有兒童餐選項</strong>，要自己帶。
+    出發前先確認你坐的航空公司有沒有，是哪一種（CHML 兒童餐 / BBML 嬰兒餐 / VLML 嚴格素餐）。
+  </p>
+
+  <h2><span class="num">4.</span>快速通關 + eSIM：落地前就要備好</h2>
+
+  <p>
+    帶小孩入境，最怕的就是排隊。大人排到腿軟還能忍，小孩 30 分鐘就開始崩潰，
+    整個機場大廳都聽得到你家的尖叫，你還得一邊安撫、一邊維持隊形。
+  </p>
+
+  <p>
+    我自己現在飛任何東南亞國家都會做兩件事：
+  </p>
+
+  <ul class="check-list">
+    <li><strong>提前訂快速通關（Fast Track）</strong>：有專人在出口等你，直接走快速通道，
+    通關時間從 40–60 分鐘變 10–15 分鐘以內。費用大概 NT$500–900，換成省下的精力非常划算。
+    越南的細節我寫在 <a href="/vietnam-guide" class="inline">越南旅遊省時攻略</a> 裡。</li>
+    <li><strong>出發前裝好 eSIM</strong>：飛機落地關掉飛行模式，網路就直接通，可以馬上叫 Grab、開導航、聯絡接機。
+    不用在機場找 SIM 卡、不用換實體卡、孩子無聊時還能放 YouTube 救場。
+    各國 eSIM 比較整理在 <a href="/esim" class="inline">eSIM 品牌完整比較</a>，怎麼裝看 <a href="/esim/install" class="inline">eSIM 安裝圖解教學</a>。</li>
+  </ul>
+
+  <div class="tip-box">
+    <div class="tip-title">過來人補充</div>
+    <p>有些信用卡（像 JCB 白金以上）可以免費進機場貴賓室。
+    等飛機那段時間帶小孩進貴賓室吃東西、洗熱水、換尿布，比擠在登機門前舒服一百倍。
+    越南胡志明市的實際使用紀錄看 <a href="/vietnam-jcb-lounge" class="inline">JCB 貴賓室攻略</a>。</p>
+  </div>
+
+  <h2><span class="num">5.</span>eSIM 配兒童 YouTube 帳號：飛行救命包</h2>
+
+  <p>
+    這條是真的「過來人才會做」。帶小孩搭長程交通工具，
+    YouTube 是救命神器——但前提是<strong>網路要夠快、不會卡</strong>。
+  </p>
+
+  <p>
+    用 eSIM 吃到飽方案，搭高鐵、搭飛機之間的接駁、搭 Grab 的時候，
+    iPad 連手機熱點看 YouTube Kids，整段路安靜如雞。
+  </p>
+
+  <p>
+    幾個小撇步：
+  </p>
+
+  <ul class="check-list">
+    <li>出發前先在家用 Wi-Fi 把孩子愛看的影片用 YouTube Premium「下載」起來，
+      這樣連網路都不用，飛機上也能播</li>
+    <li>把孩子的 Google 帳號設成「兒童帳號」，能自動過濾不適合的內容</li>
+    <li>帶一副小孩專用耳機（音量自動限制 85 分貝那種），別讓你家小孩在機艙裡用喇叭外放</li>
+  </ul>
+
+  <p>
+    這套組合在我帶孩子飛長榮去日本的那趟救了我整段旅程。
+    沒有它，3 小時的飛行可能變成 3 小時的災難。
+  </p>
+
+  <h2><span class="num">6.</span>第一晚別排行程：時差 + 中暑會打趴你</h2>
+
+  <p>
+    最後一個眉角，是我用兩次失敗換來的：<strong>抵達當天不要排任何景點</strong>。
+  </p>
+
+  <p>
+    大人覺得「飛 3 小時而已，下午到了還可以去走走」——
+    但小孩經過早起、過海關、坐飛機、領行李、坐車到飯店這一連串折騰，
+    身體已經到極限了。如果你還硬要拉去夜市、去看夕陽，孩子會在路上直接情緒崩潰，
+    然後你整晚都在收拾殘局。
+  </p>
+
+  <p>
+    更慘的是去東南亞、沖繩這種高溫高濕的地方。
+    台灣初春出門 18 度，到峴港、胡志明、芭達雅下飛機就 33 度，
+    小孩體溫調節比大人慢，第一天就硬曬會直接中暑、發燒、嘔吐——
+    然後你整趟旅程都得照顧病人。
+  </p>
+
+  <p>
+    我現在的標準作業：
+  </p>
+
+  <ul class="check-list">
+    <li>第一晚就在飯店附近吃飯</li>
+    <li>讓小孩泡一下泳池或洗熱水澡放鬆</li>
+    <li>9 點前哄睡，把第一天當「適應日」</li>
+    <li>第二天才開始正式行程</li>
+  </ul>
+
+  <p>
+    少玩一天感覺很可惜，但對比「整趟旅程毀了」，這個取捨非常划算。
+  </p>
+
+  <h2>出發前的精簡清單</h2>
+
+  <ul class="check-list">
+    <li><strong>護照：</strong>全家三本拍照存手機，剩不到 8 個月就先續辦</li>
+    <li><strong>機票：</strong>訂完當天打電話確認搖籃位 + 兒童餐</li>
+    <li><strong>網路：</strong>出發前在家裝好 eSIM，順便下載好孩子的影片</li>
+    <li><strong>機場：</strong>有快速通關就訂，貴賓室能進就進</li>
+    <li><strong>第一晚：</strong>不排行程、不安排景點、好好睡一覺</li>
+    <li><strong>零食：</strong>包包裡永遠放孩子愛吃的小餅乾。這條不是玩笑。</li>
+  </ul>
+
+  <div class="closing">
+    帶小孩出國跟一個人出國，根本是兩種旅遊。<br><br>
+    一個人時你可以衝、可以拚、可以省。<br>
+    帶小孩時你只能慢、只能準備、只能多花一點點預算買「不崩潰」。<br><br>
+    希望這 6 個眉角能讓你下次帶孩子出國，少一點狼狽，多一點笑聲。<br><br>
+    <em>祝旅途平安，孩子也別鬧。</em>
+  </div>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="親子旅遊、eSIM、機場貴賓室省錢情報，會在 IG、FB、YouTube 同步分享"
+  />
+
+  <div class="internal-links">
+    <a href="/vietnam-guide">→ 越南帶小孩快速通關攻略</a>
+    <a href="/vietnam-jcb-lounge">→ JCB 貴賓室實戰紀錄</a>
+    <a href="/esim">→ eSIM 品牌完整比較</a>
+    <a href="/esim/install">→ eSIM 安裝圖解教學</a>
+    <a href="/japan-guide">→ 日本自由行攻略</a>
+    <a href="/korea-guide">→ 韓國自由行攻略</a>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div class="footer-nav">
+    <a href="/">← 回首頁</a>
+    <a href="/esim">eSIM 比較</a>
+    <a href="/vietnam-guide">越南攻略</a>
+    <a href="/japan-guide">日本攻略</a>
+    <a href="/korea-guide">韓國攻略</a>
+    <a href="/thsr-guide">高鐵省錢</a>
+    <a href="/story">作者故事</a>
+    <a href="/privacy">隱私權政策</a>
+  </div>
+</footer>
+
+</body>
+</html>
