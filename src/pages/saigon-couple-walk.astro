@@ -1,0 +1,395 @@
+---
+import SocialLinks from '../components/SocialLinks.astro';
+
+const title = "回越南最後一晚的胡志明夜遊｜紅教堂、中央郵政、Cộng Cà Phê｜重來的旅人";
+const description = "回台前最後一晚，把小孩交給外婆，我和老婆兩人進胡志明市區走夜路。紅教堂與中央郵政都已經關門、只看了外觀，加 Cộng Cà Phê 椰漿咖啡，回到一家「本體普通、頂樓景觀有救」的飯店。一個住越南 10 年的台灣老公，紀錄這場「沒有小孩」的夫妻夜遊。";
+const canonical = "https://comebacktraveler.com/saigon-couple-walk/";
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:image" content="https://comebacktraveler.com/saigon-central-post.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://comebacktraveler.com/saigon-central-post.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "dateModified": "2026-05-10",
+    "image": "https://comebacktraveler.com/saigon-central-post.jpg"
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 56px 0 16px; position: relative; padding-left: 16px; line-height: 1.4; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+
+    .article-photo { width: 100%; height: auto; border-radius: 6px; margin: 32px 0 8px; display: block; }
+    .photo-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 36px; font-style: italic; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
+
+    .check-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
+    .check-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+
+    .info-grid { display: grid; grid-template-columns: 100px 1fr; gap: 12px 20px; margin: 24px 0; padding: 20px 24px; background: var(--paper-warm); border-radius: 6px; font-size: 15px; }
+    .info-grid dt { font-weight: 600; color: var(--ink); }
+    .info-grid dd { color: var(--ink-light); margin: 0; }
+
+    a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a.inline:hover { background: var(--paper-warm); }
+
+    .closing { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border); font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .closing em { color: var(--ink); font-style: normal; font-weight: 600; }
+
+    .internal-links { margin: 40px 0 0; display: flex; gap: 20px; flex-wrap: wrap; }
+    .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .internal-links a:hover { text-decoration: underline; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+    .footer-nav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      h2 { font-size: 22px; }
+      .info-grid { grid-template-columns: 80px 1fr; padding: 16px 18px; font-size: 14px; }
+    }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">越南夫妻紀錄</div>
+  <h1>回越南最後一晚<br>胡志明市區夜遊半日</h1>
+  <p class="subtitle">
+    這篇沒有小孩。<br>
+    回台前的最後一晚，老婆把女兒交給外婆，過來陪我走一段胡志明的夜。<br>
+    紅教堂、中央郵政——晚上都關門了，我們只在外面拍照；
+    Cộng Cà Phê 喝杯椰漿咖啡，回到那家飯店本體普通、但頂樓景觀有救的旅館，<br>
+    天亮我搭上飛機回台。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2025 年 7 月紀錄 · 越南生活 10 年 · 回台前最後一晚的胡志明半日</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <div class="story-box">
+    <strong>「小孩交給我媽，今晚我陪你。」</strong><br><br>
+    回台前最後一個晚上，老婆把女兒留在外婆家，自己過來找我。<br>
+    這趟回越南整整一個多禮拜，幾乎所有行程都圍著女兒轉——
+    第一晚的<a href="/kids-travel-guide" class="inline">在地海鮮店</a>、那天的<a href="/kids-travel-amazing-bay" class="inline">水樂園</a>、
+    親戚家的家庭聚會——<strong>夫妻能單獨講十句話超過五分鐘的時刻幾乎沒有</strong>。<br><br>
+    所以這晚，老婆說：「沒有小孩，今天我們就走我們的。」
+  </div>
+
+  <p>
+    所以這篇紀錄三個地點 + 一家飯店：<strong>紅教堂（夜）、中央郵政（夜）、Cộng Cà Phê、那家頂樓景觀有救的飯店</strong>。
+    走的時候已經晚上 9 點多，紅教堂跟中央郵政都關門了，我們只在外面繞、拍照——
+    但其實這樣剛好，沒有觀光客排隊，整條街是我們兩個人的。
+  </p>
+
+  <h2>第一站：紅教堂（夜，全程鷹架中）</h2>
+
+  <img
+    src="/saigon-notre-dame.jpg"
+    alt="胡志明市紅教堂（西貢聖母聖殿）夜晚側面，外牆搭滿鷹架，圍籬上印有歷史照片壁畫，街道上機車燈光劃過"
+    class="article-photo"
+  />
+  <p class="photo-caption">紅教堂側面實況——整面牆都搭著鷹架。圍籬被改造成街頭藝廊，印滿教堂的歷史照片，騎機車經過會以為自己在逛戶外博物館。</p>
+
+  <p>
+    紅教堂越南文叫 <strong>Nhà thờ Đức Bà</strong>，正式名稱是「西貢聖母聖殿主教座堂」，
+    1863 年動工、1880 年完工，是法國殖民時期最具代表性的建築之一。
+    紅磚從法國馬賽進口、兩座 60 公尺高的哥德式鐘樓——
+    那個年代的法國人，是真的把胡志明當「東方巴黎」在蓋。
+  </p>
+
+  <p>
+    但你先別期待 IG 上那種「乾淨紅磚 + 藍天」的構圖——
+    <strong>教堂從 2017 年開始大規模整修，到我們這次去（2025 年中）為止整面外牆還搭滿鷹架</strong>。
+    工期一延再延、官方說會繼續延後到 2027 年才有機會完工。
+    這天我們是晚上 9 點多到的，正面廣場已經拉起圍籬，根本不能近拍。
+  </p>
+
+  <p>
+    意外的驚喜是：<strong>圍籬本身被印滿教堂的歷史照片、修建細節、宗教圖騰</strong>，
+    沿著圍籬走一圈相當於逛一場戶外露天展覽。我們繞了側面這條街，
+    機車燈光從我們腳邊劃過去——夜晚的紅教堂沒有觀光客，反而比白天耐看。
+  </p>
+
+  <dl class="info-grid">
+    <dt>位置</dt><dd>胡志明市第一郡 公社廣場（Công xã Paris, Quận 1）</dd>
+    <dt>整修狀態</dt><dd>截至 2025 年仍在大規模整修中，內部不開放、外牆搭滿鷹架</dd>
+    <dt>門票</dt><dd>免費（外觀拍照）</dd>
+    <dt>建議停留</dt><dd>20–30 分鐘（含繞圍籬展板與正面拍照）</dd>
+  </dl>
+
+  <div class="tip-box">
+    <div class="tip-title">想拍乾淨外觀？再等兩年</div>
+    <p>紅教堂目前所有照片都會有鷹架入鏡——這是事實，沒辦法。
+    如果你的目的是「拍那個經典紅磚 + 藍天 + 鐘樓」構圖，<strong>真的，等到 2027 年再來</strong>。
+    這次來反而換個角度欣賞：晚上沒人、燈光打在紅磚 + 鷹架上，有種廢墟感的另類美。</p>
+  </div>
+
+  <h2>第二站：中央郵政（晚上，只看外觀）</h2>
+
+  <img
+    src="/saigon-central-post.jpg"
+    alt="胡志明市中央郵政夜景，黃色法殖民時期建築正面打燈，正立面大鐘清晰可見、上方掛越南國旗"
+    class="article-photo"
+  />
+  <p class="photo-caption">中央郵政夜景。打燈把黃牆、白色雕花、大鐘這三層細節全照出來——比白天耐看。郵局這時候已經關門，鐵門拉下、只剩外觀。</p>
+
+  <p>
+    紅教堂正對面，過一條馬路就是<strong>胡志明市中央郵政</strong>（Bưu Điện Trung Tâm Sài Gòn）。
+    1886–1891 年法殖民時期建造，黃色外牆 + 拱形大窗 + 正立面那個招牌大鐘——
+    流傳很久的說法是 Gustave Eiffel（巴黎鐵塔的設計者）設計的，
+    但學界後來考據出來，<strong>真正的設計者其實是 Alfred Foulhoux</strong>。
+    Eiffel 那個傳說好聽，但已經被翻案了。
+  </p>
+
+  <p>
+    郵政白天是運作中的郵局、可以進去寫明信片——但<strong>我們去的時候已經是晚上 9 點多，鐵門早就拉下</strong>。
+    沒進去反而沒遺憾——夜晚的中央郵政打了燈、街上沒什麼人，
+    黃牆 + 大鐘 + 飄著的越南國旗，這個畫面白天反而被人潮擋掉。
+    我們在對面的台階上坐了 10 分鐘，老婆說：「其實這樣比較好，沒有觀光客我們才聽得到自己講話。」
+  </p>
+
+  <dl class="info-grid">
+    <dt>位置</dt><dd>第一郡 Đường Công xã Paris 2 號（紅教堂正對面）</dd>
+    <dt>營業</dt><dd>大致 07:30–18:00，週日縮短——白天才能進去寫明信片</dd>
+    <dt>門票</dt><dd>免費</dd>
+    <dt>夜拍</dt><dd>外觀打燈到深夜，不關燈，是夜間散步的必拍點</dd>
+    <dt>建議停留</dt><dd>白天進去 30–45 分鐘、晚上外觀拍照 10–15 分鐘</dd>
+  </dl>
+
+  <div class="tip-box">
+    <div class="tip-title">想進去？挑白天</div>
+    <p>內部那個挑高大廳、兩側的木製寫信桌、1892 年的西貢電報線地圖牆、上方胡志明畫像——
+    都只能白天進去看。<strong>晚上去就純粹拍夜景</strong>。
+    明信片寄回台灣大概 2–3 週才到，所以如果你規劃白天進去寄，<br>
+    記得抓在行程的前半段（不然小孩比明信片先回到台灣）。</p>
+  </div>
+
+  <h2>第三站：Cộng Cà Phê 椰漿咖啡（剛裝修完那家）</h2>
+
+  <p>
+    走完郵政往 Đồng Khởi 街方向走 5 分鐘，會走到 <strong>Cộng Cà Phê</strong>。
+    這是越南本地連鎖咖啡品牌，<strong>軍綠色制服、復古宣傳海報、北越時期軍事美學</strong>——
+    一整套視覺記憶點，現在是觀光客和年輕越南人都會去的咖啡店。
+  </p>
+
+  <p>
+    我們去的這間<strong>剛裝修完不久</strong>，招牌上還貼著「Sau một thời gian sửa chữa」——
+    越南文「歷經一段時間整修」的意思。木桌跟皮椅都是新的，
+    晚上九點多、冷氣強、人不算多，<strong>晚到反而是優點</strong>，
+    白天連假時段這家店是會排到隊伍排出店外的。
+  </p>
+
+  <p>
+    必點是 <strong>Cốt Dừa Cà Phê（椰漿咖啡）</strong>——
+    濃縮咖啡 + 椰漿冰沙打成一杯，上層咖啡苦、下層椰漿甜，
+    用湯匙挖著吃比用吸管喝更過癮。<strong>越南夏天，這杯就是冷氣的代用品</strong>。
+    一杯大概 65,000–85,000 VND（NT$85–110），跟台灣中價位手搖飲差不多。
+  </p>
+
+  <dl class="info-grid">
+    <dt>類型</dt><dd>越南本地連鎖咖啡店（軍事復古風）</dd>
+    <dt>必點</dt><dd>Cốt Dừa Cà Phê（椰漿咖啡）、Cốt Dừa Cacao（椰漿巧克力，給小孩喝）</dd>
+    <dt>價位</dt><dd>單杯 65,000–95,000 VND（約 NT$85–125）</dd>
+    <dt>營業</dt><dd>多數分店到深夜（晚上 10–11 點），晚上去人少冷氣足</dd>
+    <dt>分店</dt><dd>胡志明市區多家，紅教堂步行可達的有 Đồng Khởi、Lý Tự Trọng 兩條街上</dd>
+  </dl>
+
+  <h2>那家飯店：本體普通，但頂樓景觀有救</h2>
+
+  <img
+    src="/saigon-hotel-rooftop.jpg"
+    alt="胡志明市第一郡飯店頂樓泳池，玻璃圍欄外可看到胡志明市中心高樓群天際線，包含 Bitexco 與其他玻璃帷幕大樓"
+    class="article-photo"
+  />
+  <p class="photo-caption">飯店頂樓泳池實景。客房本身真的普通，但頂樓這個視角——胡志明第一郡的天際線一片攤開——
+    我覺得已經把一晚住宿的錢賺回來。</p>
+
+  <p>
+    回台前的最後一晚，我沒選五星——直接訂了胡志明市中心一間中價位飯店。<br>
+    說實話，<strong>客房本身真的普通</strong>：床略窄、浴室小、隔音不算好。
+    但這家飯店把資源全壓在頂樓——<strong>無邊際泳池 + 360 度市區景觀</strong>，
+    Bitexco、Lim Tower、Vietcombank 那群玻璃帷幕高樓一字排開，
+    白天看是天際線、晚上看是燈海。
+  </p>
+
+  <p>
+    這就是我這幾年訂胡志明飯店的一個原則：<strong>市中心的中價位 + 有頂樓泳池或天台，CP 比五星級更高</strong>。
+    在這個城市，房間裡沒什麼好看的——你需要的是「把胡志明攤在腳下」的那個視角。
+    我跟老婆隔天清晨上去頂樓看了一眼天際線，
+    她說這才是她記得的胡志明——不是觀光區的紅教堂、不是范五老街，
+    是這片密密麻麻、蓋了又蓋、沒有空隙的高樓。
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">選胡志明市區飯店</div>
+    <p>第一郡的中價位飯店（NT$1,500–2,500 一晚）有不少都備有頂樓泳池或天台 bar，
+    Booking、Agoda 直接用「rooftop pool」加篩選就找得到。<strong>挑「設施重於房間」這條路線</strong>——
+    在胡志明這個城市，房間裡留不住記憶、頂樓那一眼天際線會留你五年。</p>
+  </div>
+
+  <h2>為什麼這個晚上刻意只有我和老婆</h2>
+
+  <p>
+    跨國夫妻 + 帶兩個女兒回娘家——
+    這趟旅程的「主旋律」一定是小孩、是親戚、是長輩。
+    夫妻兩個人能單獨講話的時間，往往在小孩睡著之後、自己也快睡著的時候。
+  </p>
+
+  <p>
+    這晚不一樣。<strong>把女兒交給外婆、夫妻拿回一個晚上——
+    這是整趟回越南最重要的一段時間</strong>。
+    紅教堂、中央郵政、Cộng Cà Phê 這條路線之所以有效，
+    不是因為這三個地方多厲害（它們其實都是觀光區基本款），
+    而是因為這條路線剛好<strong>讓夫妻兩個人有事做、又有話講</strong>——
+    不會像窩在飯店那樣只剩滑手機。
+  </p>
+
+  <p>
+    我們在中央郵政對面的台階坐了一會兒，
+    在 Cộng Cà Phê 等咖啡的時候，沒講什麼大事，
+    就是聊女兒今天在外婆家做了什麼、聊接下來幾個月誰要回台灣誰要留越南、
+    聊一些小孩在的時候永遠插不進來的話題。
+  </p>
+
+  <h2>夫妻在親子旅程裡的「半夜漫步」公式</h2>
+
+  <p>
+    這幾年我自己摸出一個原則：<strong>帶小孩的旅程，一定要安排一次「沒有小孩」的時間</strong>。
+    不需要長，幾個小時就夠。重點是：
+  </p>
+
+  <ul class="check-list">
+    <li><strong>有個可以信任的人能顧小孩</strong>：外婆、阿姨、長輩、保母都可以，
+      重點是你跟另一半都「真的能放心」——心裡掛著就玩不開。</li>
+    <li><strong>路線要短、密度要高</strong>：胡志明市第一郡這套就是經典。
+      紅教堂 → 中央郵政 → Cộng Cà Phê 三站走路距離加總不到 600 公尺，
+      時間半天、體力消耗低、話題自然連得起來。</li>
+    <li><strong>挑「不需要規劃」的事情做</strong>：拍夜景、看打燈、喝咖啡——
+      這種事情不需要你動腦，腦力可以拿來跟另一半講話，這才是這晚的真正目的。</li>
+    <li><strong>不要想著「要 CP 高」</strong>：這晚的目的不是看新景點、不是拍 IG、
+      不是回去跟人炫耀。是<strong>讓夫妻關係在小孩夾擊中喘一口氣</strong>。
+      所以重複去過的景點、重複喝過的咖啡，都沒關係。</li>
+  </ul>
+
+  <div class="tip-box">
+    <div class="tip-title">交通建議</div>
+    <p>第一郡這條路線完全靠走路就行，不用 Grab。
+    從紅教堂走到郵政 30 秒、從郵政走到 Đồng Khởi 那家 Cộng Cà Phê 約 5 分鐘。
+    回程要回飯店再叫 Grab 即可。<br>
+    出發前一定要先把 <a href="/esim" class="inline">越南 eSIM</a> 開好，
+    Google Maps 與 Grab 都靠網路；越南太陽兇，建議帶水、帽子、防曬。</p>
+  </div>
+
+  <div class="closing">
+    那晚我們從 Cộng Cà Phê 走回飯店、上頂樓看了一眼夜景，<br>
+    隔天清晨我搭飛機回台灣，老婆轉身回外婆家陪女兒。<br>
+    <strong>整趟回越南，最捨不得的不是離開女兒，而是離開老婆</strong>。<br>
+    女兒過幾天會跟著媽媽回台灣，但那晚的紅教堂鷹架、打燈的中央郵政、那杯椰漿咖啡、頂樓的胡志明天際線，<br>
+    是這趟旅程<em>最沒有「父親身份」的一段時間</em>——也是我自己最想記下來的一段。<br><br>
+    <em>帶小孩出國的爸媽都該有一次這樣的晚上。</em>
+  </div>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="越南親子旅遊、夫妻散策、eSIM 與機場貴賓室省錢情報，會在 IG、FB、YouTube 同步分享"
+  />
+
+  <div class="internal-links">
+    <a href="/kids-travel-guide">→ 帶女兒第一次回越南：The Mira + 5 Ri 5 海鮮店</a>
+    <a href="/kids-travel-amazing-bay">→ The Amazing Bay 神奇海灣水樂園</a>
+    <a href="/vietnam-guide">→ 越南帶小孩快速通關攻略</a>
+    <a href="/vietnam-jcb-lounge">→ 越南機場 JCB 貴賓室實戰</a>
+    <a href="/esim">→ eSIM 品牌完整比較</a>
+    <a href="/story">→ 我在越南的十年故事</a>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div class="footer-nav">
+    <a href="/">← 回首頁</a>
+    <a href="/esim">eSIM 比較</a>
+    <a href="/vietnam-guide">越南攻略</a>
+    <a href="/japan-guide">日本攻略</a>
+    <a href="/korea-guide">韓國攻略</a>
+    <a href="/thsr-guide">高鐵省錢</a>
+    <a href="/story">作者故事</a>
+    <a href="/privacy">隱私權政策</a>
+  </div>
+</footer>
+
+</body>
+</html>
