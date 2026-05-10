@@ -1,0 +1,419 @@
+---
+import SocialLinks from '../components/SocialLinks.astro';
+
+const title = "帶女兒回越南：The Amazing Bay 神奇海灣水樂園｜邊和越南最大水樂園｜重來的旅人";
+const description = "The Amazing Bay（神奇海灣）是越南最大的水上樂園，就在邊和市，距離 The Mira 飯店 Grab 約 15 分鐘。一個住越南 10 年的台灣爸爸，紀錄家人去玩造浪池、拍 Tornado，以及在現場買票才發現台灣 Klook 訂便宜一半的踩雷實話。";
+const canonical = "https://comebacktraveler.com/kids-travel-amazing-bay/";
+const LINK_KLOOK = 'https://onelink.one/s/eoBIW';
+const LINK_KKDAY = 'https://onelink.one/s/SON7H';
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:image" content="https://comebacktraveler.com/vietnam-amazing-bay-entrance.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://comebacktraveler.com/vietnam-amazing-bay-entrance.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "dateModified": "2026-05-10",
+    "image": "https://comebacktraveler.com/vietnam-amazing-bay-entrance.jpg"
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 56px 0 16px; position: relative; padding-left: 16px; line-height: 1.4; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+
+    .article-photo { width: 100%; height: auto; border-radius: 6px; margin: 32px 0 8px; display: block; }
+    .photo-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 36px; font-style: italic; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
+
+    .check-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
+    .check-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+
+    .info-grid { display: grid; grid-template-columns: 100px 1fr; gap: 12px 20px; margin: 24px 0; padding: 20px 24px; background: var(--paper-warm); border-radius: 6px; font-size: 15px; }
+    .info-grid dt { font-weight: 600; color: var(--ink); }
+    .info-grid dd { color: var(--ink-light); margin: 0; }
+
+    a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a.inline:hover { background: var(--paper-warm); }
+
+    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 13px 30px; border-radius: 4px; text-decoration: none; transition: background 0.15s; margin: 8px 0 4px; }
+    .cta-btn:hover { background: #a93226; }
+    .cta-note { font-size: 12px; color: var(--ink-light); margin: 4px 0 28px; }
+
+    .booking-card { background: var(--paper-warm); border: 1.5px solid var(--border); border-radius: 8px; padding: 22px 24px; margin: 28px 0; }
+    .booking-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
+    .booking-title { font-family: var(--serif); font-weight: 700; font-size: 17px; margin-bottom: 10px; color: var(--ink); }
+    .booking-why { font-size: 14.5px; color: var(--ink-light); line-height: 1.7; margin-bottom: 14px; }
+    .booking-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .booking-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: 4px; text-decoration: none; transition: background 0.15s; }
+    .booking-btn.alt { background: #fff; color: var(--ink); border: 1.5px solid var(--ink); }
+    .booking-btn:hover { background: #a93226; color: #fff; border-color: transparent; }
+
+    .closing { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border); font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .closing em { color: var(--ink); font-style: normal; font-weight: 600; }
+
+    .internal-links { margin: 40px 0 0; display: flex; gap: 20px; flex-wrap: wrap; }
+    .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .internal-links a:hover { text-decoration: underline; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+    .footer-nav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      h2 { font-size: 22px; }
+      .info-grid { grid-template-columns: 80px 1fr; padding: 16px 18px; font-size: 14px; }
+    }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">越南親子旅遊紀錄</div>
+  <h1>帶女兒回越南<br>The Amazing Bay 神奇海灣水樂園</h1>
+  <p class="subtitle">
+    這趟回越南，The Amazing Bay 的行程我自己沒去。<br>
+    老婆帶兩個女兒，跟她那邊的親戚一起，整天泡在這座越南最大的水上樂園。<br>
+    這篇紀錄我為什麼推薦這裡、她們玩回來怎麼說，以及最讓我心痛的一件事——門票她們居然在現場買。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2025 年 7 月紀錄 · 越南生活 10 年 · 帶女兒重返越南親子行</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <div class="story-box">
+    <strong>「爸爸，這個比我們學校游泳池大一百倍。」</strong><br><br>
+    這是女兒事後跟我講的第一句話。<br>
+    我那天沒跟，<strong>老婆帶兩個女兒、跟她那邊的親戚一起去 The Amazing Bay</strong>，
+    我自己另有事在外面跑——這篇紀錄是綜合老婆當天傳的照片、影片，
+    以及女兒事後嘴上的吐槽拼出來的。<br><br>
+    這裡是越南最大的水上樂園，造浪池、漂漂河、Tornado 大滑水道一次到齊——
+    最關鍵的是，<strong>它就在邊和市，如果你住 The Mira，Grab 15 分鐘就到</strong>。
+    這天的行程我刻意不排「文化景點」，孩子需要的是<strong>能放電的一整天</strong>，
+    不是被父母拉著去濱城市場跟教堂打卡。
+  </div>
+
+  <p>
+    這篇是 <a href="/kids-travel-guide" class="inline">The Mira 飯店 + 5 Ri 5 海鮮店</a>那篇的延續——
+    同一趟回越南的另一段紀錄，家人整天泡在 The Amazing Bay 水樂園，
+    我那天為什麼決定把這個行程交給老婆 + 親戚去。
+  </p>
+
+  <h2>The Amazing Bay 是什麼？為什麼選這裡</h2>
+
+  <img
+    src="/vietnam-amazing-bay-entrance.jpg"
+    alt="The Amazing Bay 神奇海灣水樂園主入口大門，藍色海洋主題拱門上寫著大大的 The Amazing Bay 字樣，兩個女兒站在前面合照"
+    class="article-photo"
+  />
+  <p class="photo-caption">The Amazing Bay 主入口。藍色海豚 + 海洋主題的拱門很好認，女兒一進來就要求先拍一張。</p>
+
+  <p>
+    The Amazing Bay（越南文：Vịnh Kỳ Diệu，中譯神奇海灣）位於
+    <strong>邊和市山仙觀光區（Sơn Tiên Tourist Area）</strong>，
+    是<strong>越南目前規模最大的水上樂園</strong>。2022 年 4 月底正式開園，園區腹地約 25 公頃、整體做成海港 + 海盜城堡風格，
+    9 大遊樂區、30 道滑水道，光是拱門入口就有十幾公尺高。
+  </p>
+
+  <p>
+    我推薦這裡主要三個理由：<strong>地點集中在邊和、設施新、本地遊客為主</strong>。
+    胡志明市區當然也有水樂園（Đầm Sen、Suối Tiên），但都得進市區、車程一小時起跳，
+    帶小孩來回拉這個距離根本不划算。The Amazing Bay 跟 The Mira 飯店都在邊和市，
+    <strong>住 The Mira 的人 Grab 一趟 15 分鐘上下就到</strong>，行程組合起來最順。
+  </p>
+
+  <p>
+    另一個重點：這裡的客群九成是越南本地家庭，外國觀光客非常少。
+    這跟去越南過分熱門的觀光樂園很不一樣——<strong>排隊不會排到爆、價格也比較親民</strong>，
+    女兒在這玩了一整天，旁邊都是越南小孩，氛圍輕鬆很多。
+  </p>
+
+  <dl class="info-grid">
+    <dt>位置</dt><dd>邊和市山仙觀光區（Sơn Tiên Tourist Area, Biên Hòa）</dd>
+    <dt>距離</dt><dd>距 The Mira Central Park Hotel 約 10–15 分鐘車程，Grab 直接叫</dd>
+    <dt>門票</dt><dd>成人 450,000 VND（約 NT$580）、兒童依身高分級約 250,000–350,000 VND</dd>
+    <dt>營業</dt><dd>大致 09:00–17:00，週末延長，建議出發前先查官網或 Google 當日營業時間</dd>
+    <dt>適合</dt><dd>5 歲以上會基本水性的小孩；身高 110cm 以下大型滑水道無法上</dd>
+  </dl>
+
+  <div class="booking-card">
+    <div class="booking-label">這是我這趟最後悔的事</div>
+    <div class="booking-title">門票：可惜沒在台灣先買</div>
+    <p class="booking-why">
+      老婆當天現場買的，<strong>成人票一張 450,000 VND（約 NT$580）</strong>。
+      回台灣才發現，<strong>Klook、KKday 台灣站都有上架，電子票一張不到 NT$270</strong>——
+      等於每個大人多花了三百多塊。她們一行人是好幾個大人加小孩，差距是肉眼可見的便當錢。<br><br>
+      事後我自己對了兩家——Klook 和 KKday 偶爾會有閃購折扣互打，建議出發前兩家都點開比一下，挑當下便宜的那家。
+      電子票 QR Code 直接掃進場，<strong>不用換實體票</strong>，省掉現場排隊那段。
+    </p>
+    <div class="booking-row">
+      <a href={LINK_KLOOK} target="_blank" rel="noopener sponsored" class="booking-btn">Klook 看價格 →</a>
+      <a href={LINK_KKDAY} target="_blank" rel="noopener sponsored" class="booking-btn alt">KKday 看價格 →</a>
+    </div>
+  </div>
+  <p class="cta-note">（聯盟連結，透過此連結預訂不會增加您的價格，但會給作者一點小分潤，感謝支持。）</p>
+
+  <div class="tip-box">
+    <div class="tip-title">過來人提醒</div>
+    <p>飯店櫃檯可以幫忙叫 Grab，但價格透明的版本是直接用自己手機叫——
+    記得出發前先把 <a href="/esim" class="inline">越南 eSIM</a> 開好，
+    Grab App 沒網路就完全動不了。回程從水樂園叫車，午後 Grab 司機等待時間會比較長，建議玩到下午 4 點前就先開叫。</p>
+  </div>
+
+  <h2>造浪池：女兒一整天大半時間都泡在這裡</h2>
+
+  <img
+    src="/vietnam-amazing-bay-wave-pool.jpg"
+    alt="The Amazing Bay 造浪池前，兩個女兒穿著粉橘和藍色螢光泳衣合照，背景是巨大的 LED 海洋森林螢幕"
+    class="article-photo"
+  />
+  <p class="photo-caption">造浪池前合照。背景那塊巨大 LED 螢幕會輪播海洋、森林、瀑布的畫面，搭配定時造浪超有臨場感。</p>
+
+  <p>
+    老婆事後跟我說，姊妹倆<strong>大概有六成時間都泡在這個造浪池</strong>。
+    這池子最大的特色不是水深，而是後方那塊巨大的 LED 螢幕——
+    螢幕上會輪播熱帶森林、海洋、瀑布的影像，搭配每隔 15–20 分鐘啟動一次的人工浪。
+    老婆說，浪起來的時候整個池子的小孩會集體尖叫。
+  </p>
+
+  <p>
+    從她傳的影片看，這池子對小孩友善度很高：<strong>淺水區大概到大人小腿、深水區也只到女兒胸前</strong>，
+    救生員人數明顯比一般越南公共泳池多，每隔幾公尺一個。
+    女兒姊妹倆穿著粉橘 + 藍色螢光泳衣——事後老婆說這是英明選擇，
+    <strong>人多的時候從遠處一眼就找得到她們在哪</strong>，不用一直擠進池子裡撈人。
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">穿搭建議</div>
+    <p>給女兒穿<strong>螢光色或亮橘亮粉</strong>的長袖泳衣，比 navy / 黑色泳衣安全太多。
+    一來防曬、二來人多的時候你能在五十公尺外鎖定她們在哪。
+    越南太陽比台灣兇，短袖泳衣下午一定曬傷。</p>
+  </div>
+
+  <h2>Tornado 大滑水道：她們只負責拍照</h2>
+
+  <img
+    src="/vietnam-amazing-bay-tornado.jpg"
+    alt="The Amazing Bay 巨型藍色 Tornado 漏斗型滑水道，從高塔延伸出彎曲管道接到大型藍色漏斗"
+    class="article-photo"
+  />
+  <p class="photo-caption">園區地標——巨型藍色 Tornado。從上面那個塔頂滑下來、衝進這個漏斗左右晃幾下再掉進池裡。女兒看完直接搖頭：「我才不要。」</p>
+
+  <p>
+    這座 Tornado 是 The Amazing Bay 的招牌設施，從遠處進場就看得到。
+    塔頂高度大概有十幾公尺，從上面滑下來會先衝進一段彎管、再掉進這個藍色大漏斗左右擺盪兩三次，
+    最後墜入下方水池。<strong>我光看老婆傳來的影片就腳軟，女兒當場只說了一句：「我才不要。」</strong>
+  </p>
+
+  <p>
+    所以這站她們純粹是拍照打卡。實際上能玩的人也有限——
+    <strong>Tornado 大型滑水道有身高限制（多數園區 130cm 以上）</strong>，
+    再加上要兩到四人共乘大型橡皮艇，孩子體重也要夠才壓得住。
+    老婆說旁邊的中型滑水道女兒倒是上了兩次，刺激度恰到好處，下來就立刻想再排一次。
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">別硬逼小孩</div>
+    <p>大型水樂園必拍 Tornado 是很正常的，但小孩說不要就真的不要。
+    我看過幾組家長硬要把哭的小孩塞上去的，下來那種驚嚇表情就是整天毀掉的開始。
+    讓她們去拍照、玩中型的、回去吹噓「我看過那個漏斗」就夠了。</p>
+  </div>
+
+  <h2>園內覓食：早午餐 + 晚餐回飯店</h2>
+
+  <p>
+    The Amazing Bay 園內有食堂、小吃攤、便利商店，價格大概比園外貴 30–50%（這部分世界共通）。
+    主食像越南河粉、炒飯、雞排飯一份大約 80,000–120,000 VND（NT$100–150），
+    小吃像炸雞、薯條、霜淇淋有；台灣小孩普遍能接受。
+  </p>
+
+  <p>
+    我跟老婆出發前講好的策略是：<strong>早上飯店吃飽再出門、中午園內隨便吃一餐、晚上回飯店或市區好好吃</strong>。
+    園內餐飲是「為了補充體力」、不是「為了享受」。
+    特別是水樂園這種地方，孩子玩到肚子餓就是要立刻吃，講究不來——
+    園內食堂解決最快，吃完馬上回去玩。
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">寄物 + 防曬一定要做</div>
+    <p>園內有付費寄物櫃，建議手機、護照、現金、備用衣物全部鎖進去。
+    防曬乳出門前抹一遍，中午再補一次——越南太陽兇到中午一個小時就足夠曬傷。
+    這次老婆踩雷的是<strong>沒幫女兒準備泳鏡</strong>，造浪池水會嗆到眼睛，下次我們一定先準備。</p>
+  </div>
+
+  <h2>帶小孩來越南水樂園，這幾件事先想清楚</h2>
+
+  <ul class="check-list">
+    <li><strong>衛生標準的心理建設</strong>：越南水樂園換水頻率不會像日本、新加坡那樣明確公告。
+      看現場水色清不清、池底看不看得見就大致判斷得出來。The Amazing Bay 我這次去算 OK，
+      但回飯店第一件事一定是讓女兒把全身洗乾淨、沖耳朵跟眼睛。</li>
+    <li><strong>救生員 ≠ 大人能放手</strong>：越南救生員人數有比一般公共泳池多，
+      但帶小孩的大人還是必須自己盯著。造浪池起浪那幾分鐘特別危險，
+      浪一來小孩很容易被往深區帶。我跟老婆事先講好：<strong>起浪時大人一定下水跟著，不能在岸邊滑手機</strong>。</li>
+    <li><strong>身高限制要事前查</strong>：大型滑水道、漂漂河、兒童區各有身高門檻。
+      我這次到現場才發現 Tornado 進不去，但反正女兒本來就不想上，沒影響。
+      如果你的小孩剛好卡在身高邊緣，可以 email 園區先問清楚。</li>
+    <li><strong>太陽真的會殺人</strong>：越南南部午後紫外線比台灣強很多。
+      長袖泳衣 + 防曬乳 + 帽子 + 中午找有遮蔽的地方休息——四樣缺一不可。</li>
+    <li><strong>支付方式</strong>：園內購票、餐飲、寄物大多收現金 + 部分接受信用卡，
+      建議身上至少帶 1,000,000 VND 現金（約 NT$1,300），用不完帶走。</li>
+  </ul>
+
+  <h2>為什麼把水樂園交給家人單獨去？</h2>
+
+  <p>
+    可能會有人問：「你都回越南了，怎麼水樂園不一起去？」<br>
+    答案沒那麼浪漫——<strong>那天我自己有事在外面跑、加上這種行程爸爸真的不必在現場</strong>。
+  </p>
+
+  <p>
+    水樂園是消耗體力的<strong>最有效率工具</strong>——泡水的能量消耗大概是陸上活動的兩倍。
+    女兒當晚九點就睡死，隔天起來全程精神飽滿。對父母來說，
+    這種「能讓孩子放電到累攤」的行程，<strong>意義不在於陪伴、而在於把她們的精力倒空</strong>。
+    女兒玩、親戚看顧、媽媽照相，這個分工就完成了——爸爸在不在現場，其實沒差。
+  </p>
+
+  <p>
+    更現實的好處是：<strong>媽媽和娘家親戚有了一整天的相處時間</strong>。
+    孩子在水裡放電，大人就坐在岸邊喝飲料聊天——
+    這是夫妻一起去反而排擠掉的場景。我那天另有約、不在現場，
+    反而讓老婆能跟久未見面的親戚好好待一天。
+  </p>
+
+  <p>
+    最後一個我事後才意識到的好處：<strong>女兒回到飯店有「自己的故事」可以講</strong>。
+    她們嘴巴一張開講的不是「爸爸帶我們去哪」，而是「我們跟阿姨表姐怎麼樣」——
+    這種記憶比父母全程跟著還珍貴。
+  </p>
+
+  <p>
+    我事先唯一交代老婆的一件事：<strong>不要硬撐到園區關門</strong>。
+    16:00 前撤退，女兒精神還沒崩、Grab 也比較好叫、回飯店還來得及做晚上的緩和。
+    很多家長想把票錢玩到本，結果硬撐到 17:00 收園、孩子在計程車上崩潰大哭——
+    這個提醒事後證明值回機票錢。
+  </p>
+
+  <p>
+    另外一定要做的功課——
+    <a href="/vietnam-guide" class="inline">越南帶小孩快速通關</a>、
+    <a href="/esim" class="inline">eSIM</a>、
+    <a href="/esim/install" class="inline">eSIM 安裝</a>、
+    <a href="/vietnam-jcb-lounge" class="inline">機場 JCB 貴賓室</a>，
+    這些底層先備齊了，水樂園才玩得下去。
+  </p>
+
+  <div class="closing">
+    那天我自己沒去——是事後翻老婆傳的照片、聽女兒輪流嘴上吐槽 Tornado 多大、造浪池有多誇張，
+    才慢慢拼出這天的樣貌。<br>
+    講真的，<strong>有些行程父母不一定要全程跟著，反而才會有「她們跟親戚之間的故事」可以講</strong>。<br><br>
+    女兒從越南回來後，在學校跟同學講這趟旅行的時候，<br>
+    講最久的不是 The Mira 的泳池、也不是海鮮店那盤大蝦——<br>
+    是<strong>那塊「會跑出瀑布的牆」、那座「我們才不敢上」的藍色大漏斗</strong>。<br><br>
+    帶小孩出國，<em>記憶點不是大人覺得厲害的東西，是孩子自己覺得「這超扯」的場景</em>。<br>
+    我這次唯一的遺憾，就是<em>那張 450,000 越盾的成人票，本來可以在台灣 Klook 訂便宜一半</em>。<br><br>
+    <em>下一篇換場景——我和老婆把小孩交給外婆顧，兩個人進胡志明市區看紅教堂、爬中央郵政、坐下來喝杯滴漏咖啡。
+    那其實是我回台灣前的最後一晚，老婆專程飛來越南送我。</em>
+  </div>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="越南親子旅遊、eSIM、機場貴賓室省錢情報，會在 IG、FB、YouTube 同步分享"
+  />
+
+  <div class="internal-links">
+    <a href="/kids-travel-guide">← 上一篇：The Mira 飯店 + 5 Ri 5 海鮮店</a>
+    <a href="/vietnam-guide">→ 越南帶小孩快速通關攻略</a>
+    <a href="/vietnam-jcb-lounge">→ 越南機場 JCB 貴賓室實戰</a>
+    <a href="/esim">→ eSIM 品牌完整比較</a>
+    <a href="/esim/install">→ eSIM 安裝圖解教學</a>
+    <a href="/story">→ 我在越南的十年故事</a>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div class="footer-nav">
+    <a href="/">← 回首頁</a>
+    <a href="/esim">eSIM 比較</a>
+    <a href="/vietnam-guide">越南攻略</a>
+    <a href="/japan-guide">日本攻略</a>
+    <a href="/korea-guide">韓國攻略</a>
+    <a href="/thsr-guide">高鐵省錢</a>
+    <a href="/story">作者故事</a>
+    <a href="/privacy">隱私權政策</a>
+  </div>
+</footer>
+
+</body>
+</html>
