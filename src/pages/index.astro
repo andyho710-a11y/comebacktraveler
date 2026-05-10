@@ -257,40 +257,6 @@ const travelArticles = [
         </p>
       </div>
 
-      <!-- Email Subscribe -->
-      <div class="subscribe-box">
-        <div class="subscribe-inner">
-          <div class="subscribe-icon">✉</div>
-          <h3 class="subscribe-title">省錢情報，直接送到你的信箱</h3>
-          <p class="subscribe-desc">新優惠碼、Klook 限時折扣、高鐵票攻略更新——不定期整理，不灌水。</p>
-          <form
-            name="newsletter"
-            method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
-            class="subscribe-form"
-            id="subscribe-form"
-          >
-            <input type="hidden" name="form-name" value="newsletter" />
-            <p style="display:none;"><label>不要填：<input name="bot-field" /></label></p>
-            <div class="subscribe-row">
-              <input
-                type="email"
-                name="email"
-                placeholder="your@email.com"
-                required
-                class="subscribe-input"
-              />
-              <button type="submit" class="subscribe-btn">訂閱 →</button>
-            </div>
-            <p class="subscribe-note">不會轉賣你的 email，任何時候都可以取消訂閱。</p>
-          </form>
-          <div class="subscribe-success" id="subscribe-success" hidden>
-            <p>✓ 已收到！我會把最新情報寄給你。</p>
-          </div>
-        </div>
-      </div>
-
       <!-- Social Links -->
       <SocialLinks
         heading="追蹤我｜Follow Me"
