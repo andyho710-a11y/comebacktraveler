@@ -575,41 +575,6 @@ const JOYTEL_LINK = 'https://linkgo.one/s/I6wBM';
     subheading="eSIM 教學影片與更多旅遊筆記，會在 IG、FB、YouTube 同步分享"
   />
 
-  <div class="comment-section">
-    <h2>留言 / 問題</h2>
-    <form
-      name="install-comments"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      class="comment-form"
-      id="comment-form"
-    >
-      <input type="hidden" name="form-name" value="install-comments" />
-      <p class="hidden"><label>不要填這個：<input name="bot-field" /></label></p>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="cf-name">名字 <span class="required">*</span></label>
-          <input type="text" id="cf-name" name="name" placeholder="你的稱呼" required />
-        </div>
-        <div class="form-group">
-          <label for="cf-email">Email <span class="required">*</span></label>
-          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="cf-message">留言內容 <span class="required">*</span></label>
-        <textarea id="cf-message" name="message" rows="5" placeholder="哪個步驟卡關了？或是有其他手機型號想問..." required></textarea>
-      </div>
-      <div class="form-footer">
-        <p class="form-note">你的 email 只用於我回覆你，不會公開。</p>
-        <button type="submit" class="submit-btn">送出留言 →</button>
-      </div>
-    </form>
-    <div class="form-success" id="form-success" hidden>
-      <p>✓ 收到了！我會盡快回覆你。</p>
-    </div>
-  </div>
 
 </article>
 
@@ -637,18 +602,6 @@ const JOYTEL_LINK = 'https://linkgo.one/s/I6wBM';
       if (panel) panel.classList.add('active');
     });
   });
-
-  const form = document.getElementById('comment-form') as HTMLFormElement | null;
-  const successMsg = document.getElementById('form-success');
-  if (form && successMsg) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const data = new FormData(form as HTMLFormElement);
-      await fetch('/', { method: 'POST', body: data });
-      (form as HTMLElement).hidden = true;
-      (successMsg as HTMLElement).hidden = false;
-    });
-  }
 </script>
 
 </body>

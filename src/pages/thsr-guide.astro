@@ -416,42 +416,6 @@ const canonical = "https://comebacktraveler.com/thsr-guide/";
     subheading="高鐵、Klook、出國省錢情報，會在 IG、FB、YouTube 同步分享"
   />
 
-  <div class="comment-section">
-    <h2 style="margin-top:0;">你的搭乘頻率是哪一種？</h2>
-    <p style="font-size:15px;color:var(--ink-light);">留言分享你的買票方式，或有什麼問題想問的</p>
-    <form
-      name="thsr-comments"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      class="comment-form"
-      id="comment-form"
-    >
-      <input type="hidden" name="form-name" value="thsr-comments" />
-      <p class="hidden"><label>不要填這個：<input name="bot-field" /></label></p>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="cf-name">名字 <span class="required">*</span></label>
-          <input type="text" id="cf-name" name="name" placeholder="你的稱呼" required />
-        </div>
-        <div class="form-group">
-          <label for="cf-email">Email <span class="required">*</span></label>
-          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="cf-message">留言內容 <span class="required">*</span></label>
-        <textarea id="cf-message" name="message" rows="5" placeholder="想問什麼、或分享你的買票經驗..." required></textarea>
-      </div>
-      <div class="form-footer">
-        <p class="form-note">你的 email 只用於我回覆你，不會公開。</p>
-        <button type="submit" class="submit-btn">送出留言 →</button>
-      </div>
-    </form>
-    <div class="form-success" id="form-success" hidden>
-      <p>✓ 收到了！我會盡快回覆你。</p>
-    </div>
-  </div>
 
 </article>
 
@@ -466,18 +430,5 @@ const canonical = "https://comebacktraveler.com/thsr-guide/";
   </div>
 </footer>
 
-<script>
-  var form = document.getElementById('comment-form');
-  var successMsg = document.getElementById('form-success');
-  if (form && successMsg) {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      var data = new FormData(form as HTMLFormElement);
-      await fetch('/', { method: 'POST', body: data });
-      (form as HTMLElement).hidden = true;
-      (successMsg as HTMLElement).hidden = false;
-    });
-  }
-</script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 import SocialLinks from '../../components/SocialLinks.astro';
 
 const title = "去中國大陸用 eSIM｜哪些能用、GFW 封鎖哪些 App、常見問題解法";
-const description = "去中國大陸要買哪張 eSIM？一般日韓方案在大陸無效。本文說明大陸線路選擇、防火長城封鎖的 App 清單、常見連線問題解法。";
+const description = "去中國大陸要買哪張 eSIM？一般海外 eSIM 在大陸會被防火長城擋住、LINE 和 Google 全不能用。本文說明「免翻牆」eSIM 怎麼選、被封鎖的 App 清單、常見連線問題解法。";
 const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
 ---
 
@@ -175,12 +175,14 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
   </div>
 
   <div class="alert-box">
-    <div class="alert-title">重要提醒：一般日韓 eSIM 在大陸無效</div>
+    <div class="alert-title">重要提醒：去大陸要選「免翻牆」eSIM</div>
     <p style="margin:0;font-size:15px;">
-      如果你買的是 JOYTEL 日本方案、韓國方案，或任何只標示日韓東南亞的 eSIM，
-      這張 eSIM 在中國大陸<strong>無法使用</strong>。
-      這不是設定問題，是電信授權範圍的限制。
-      去大陸要另外購買「大陸方案」的 eSIM 或實體 SIM。
+      一般海外 eSIM（日韓、東南亞、全球漫遊）在大陸主要有兩種問題：
+      一是<strong>授權範圍不含大陸、根本連不上</strong>；
+      二是有訊號但<strong>會走進大陸防火長城</strong>，LINE、Google、IG、YouTube 全部封鎖。<br><br>
+      去大陸要直接挑「<strong>免翻牆</strong>」標示的 eSIM——
+      這種方案的訊號會繞道香港或新加坡出口，
+      連得到 LINE 和 Google，不用再裝 VPN。
     </p>
   </div>
 
@@ -460,42 +462,6 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
     subheading="去大陸、日韓的最新上網情報，會在 IG、FB、YouTube 同步分享"
   />
 
-  <div class="comment-section">
-    <h2>去大陸的問題</h2>
-    <p style="color:var(--ink-light);font-size:15px;">有去大陸遇到的網路問題，或是要問大陸 eSIM 選擇的，留言給我。</p>
-    <form
-      name="china-comments"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      class="comment-form"
-      id="comment-form"
-    >
-      <input type="hidden" name="form-name" value="china-comments" />
-      <p class="hidden"><label>不要填這個：<input name="bot-field" /></label></p>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="cf-name">名字 <span class="required">*</span></label>
-          <input type="text" id="cf-name" name="name" placeholder="你的稱呼" required />
-        </div>
-        <div class="form-group">
-          <label for="cf-email">Email <span class="required">*</span></label>
-          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="cf-message">留言內容 <span class="required">*</span></label>
-        <textarea id="cf-message" name="message" rows="5" placeholder="去大陸的行程、遇到的問題、想問的事..." required></textarea>
-      </div>
-      <div class="form-footer">
-        <p class="form-note">你的 email 只用於我回覆你，不會公開。</p>
-        <button type="submit" class="submit-btn">送出留言 →</button>
-      </div>
-    </form>
-    <div class="form-success" id="form-success" hidden>
-      <p>✓ 收到了！我會盡快回覆你。</p>
-    </div>
-  </div>
 
 </article>
 
@@ -510,19 +476,5 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
   </div>
 </footer>
 
-<script>
-  var form = /** @type {HTMLFormElement|null} */ (document.getElementById('comment-form'));
-  var successMsg = document.getElementById('form-success');
-  if (form && successMsg) {
-    var f = form, s = successMsg;
-    f.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      var data = new FormData(f);
-      await fetch('/', { method: 'POST', body: data });
-      f.hidden = true;
-      s.hidden = false;
-    });
-  }
-</script>
 </body>
 </html>

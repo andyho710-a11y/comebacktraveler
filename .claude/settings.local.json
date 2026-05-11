@@ -24,7 +24,15 @@
       "Bash(git -C c:/Users/WIN10/OneDrive/Desktop/astro diff CLAUDE.md)",
       "Bash(git -C c:/Users/WIN10/OneDrive/Desktop/astro add CLAUDE.md)",
       "Bash(curl -sI https://comebacktraveler.com/_astro/)",
-      "PowerShell(wmux browser open http://localhost:4321/vietnam-jcb-lounge)"
+      "PowerShell(wmux browser open http://localhost:4321/vietnam-jcb-lounge)",
+      "WebFetch(domain:comebacktraveler.com)",
+      "Bash(mv \"publicvietnam-mira-room.jpg\" \"vietnam-mira-room.jpg\")",
+      "Bash(mv \"publicvietnam-local-restaurant.jpg\" \"vietnam-local-restaurant.jpg\")",
+      "Bash(mv \"publicvietnam-seafood-dinner.jpg\" \"vietnam-seafood-dinner.jpg\")",
+      "Bash(mv \"publicvietnam-mira-lobby.jpg\" \"vietnam-mira-lobby.jpg\")",
+      "Bash(cd /c/Users/WIN10/OneDrive/Desktop/astro && ls -lh public/vietnam-*.jpg)",
+      "Read(//c/c/Users/WIN10/OneDrive/Desktop/astro/**)",
+      "Bash(node -e ' *)"
     ]
   }
 }

@@ -344,7 +344,7 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
       <li>確認上面的問題 03–06 全部都已設定正確</li>
       <li>去設定 → 行動服務 → 網路選擇，改為「自動」</li>
       <li>如果你在日本：確認 eSIM 的電信是否有覆蓋當前地點（Docomo 覆蓋最廣，KDDI 次之）</li>
-      <li>如果你去的是中國大陸：一般日韓 eSIM 在中國大陸無效，需要購買專門的大陸方案。看這篇：<a href="/esim/china" style="color:var(--accent);">去中國大陸要用什麼 eSIM？</a></li>
+      <li>如果你去的是中國大陸：一般海外 eSIM 在大陸會被防火長城擋住、LINE 和 Google 都用不了，需要挑「免翻牆」的大陸方案。看這篇：<a href="/esim/china" style="color:var(--accent);">去中國大陸要用什麼 eSIM？</a></li>
     </ol>
   </div>
 
@@ -435,42 +435,6 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
     subheading="更多 eSIM 排錯技巧與旅遊筆記，會在 IG、FB、YouTube 同步分享"
   />
 
-  <div class="comment-section">
-    <h2>你的問題是哪個？</h2>
-    <p style="color:var(--ink-light);font-size:15px;">如果你遇到的問題沒在上面 10 個裡面，留言告訴我，我盡量幫你查。</p>
-    <form
-      name="troubleshoot-comments"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      class="comment-form"
-      id="comment-form"
-    >
-      <input type="hidden" name="form-name" value="troubleshoot-comments" />
-      <p class="hidden"><label>不要填這個：<input name="bot-field" /></label></p>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="cf-name">名字 <span class="required">*</span></label>
-          <input type="text" id="cf-name" name="name" placeholder="你的稱呼" required />
-        </div>
-        <div class="form-group">
-          <label for="cf-email">Email <span class="required">*</span></label>
-          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="cf-message">你的問題 <span class="required">*</span></label>
-        <textarea id="cf-message" name="message" rows="5" placeholder="手機型號、eSIM 品牌、遇到的錯誤訊息、你已經試過的方法..." required></textarea>
-      </div>
-      <div class="form-footer">
-        <p class="form-note">你的 email 只用於我回覆你，不會公開。</p>
-        <button type="submit" class="submit-btn">送出問題 →</button>
-      </div>
-    </form>
-    <div class="form-success" id="form-success" hidden>
-      <p>✓ 收到了！我會盡快回覆你。</p>
-    </div>
-  </div>
 
 </article>
 
@@ -485,19 +449,5 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
   </div>
 </footer>
 
-<script>
-  var form = /** @type {HTMLFormElement|null} */ (document.getElementById('comment-form'));
-  var successMsg = document.getElementById('form-success');
-  if (form && successMsg) {
-    var f = form, s = successMsg;
-    f.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      var data = new FormData(f);
-      await fetch('/', { method: 'POST', body: data });
-      f.hidden = true;
-      s.hidden = false;
-    });
-  }
-</script>
 </body>
 </html>

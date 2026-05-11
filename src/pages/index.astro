@@ -5,12 +5,12 @@ import SocialLinks from '../components/SocialLinks.astro';
 const AFFILIATE_LINK = 'https://onelink.one/s/PclP0';
 
 const offers = [
-  { bank: '國泰世華 CUBE 信用卡', title: '星野集團日本飯店 85 折', badge: '15% OFF', code: 'CUBEHO2685' },
-  { bank: '國泰世華 CUBE 信用卡', title: '日本旅遊商品 88 折', badge: '12% OFF', code: 'CUBEJP268804' },
-  { bank: '玉山銀行公務人員國旅卡', title: '全站滿 $3,000 享 94 折', badge: '6% OFF', code: 'ESUNDC26Q294' },
-  { bank: '新光銀行 Visa 卡', title: '海外商品 93 折', badge: '7% OFF', code: 'VSKB269304' },
-  { bank: '中國信託 LINE Pay Visa', title: '台港澳飯店 12% 回饋', badge: '12% 回饋', code: 'CTBCLP26CH1' },
-  { bank: '中華郵政 VISA 金融卡', title: '高鐵國旅聯票滿 $1,000 折 $100', badge: '$100 OFF', code: 'POSTHS268504' },
+  { bank: '國泰世華 CUBE 信用卡', title: '星野集團日本飯店 85 折', badge: '15% OFF', code: 'CUBEHO2685', validUntil: '2026/06/30' },
+  { bank: '國泰世華 CUBE 信用卡', title: '日本旅遊商品 88 折', badge: '12% OFF', code: 'CUBEJP268804', validUntil: '2026/06/30' },
+  { bank: '玉山銀行公務人員國旅卡', title: '全站滿 $3,000 享 94 折', badge: '6% OFF', code: 'ESUNDC26Q294', validUntil: '2026/06/30' },
+  { bank: '新光銀行 Visa 卡', title: '海外商品 93 折', badge: '7% OFF', code: 'VSKB269304', validUntil: '2026/06/30' },
+  { bank: '中國信託 LINE Pay Visa', title: '台港澳飯店 12% 回饋', badge: '12% 回饋', code: 'CTBCLP26CH1', validUntil: '2026/12/31' },
+  { bank: '中華郵政 VISA 金融卡', title: '高鐵國旅聯票滿 $1,000 折 $100', badge: '$100 OFF', code: 'POSTHS268504', validUntil: '2026/06/30' },
 ];
 
 const esimArticles = [
@@ -59,7 +59,7 @@ const esimArticles = [
   {
     tag: '中國大陸上網',
     title: '去中國大陸用 eSIM｜GFW 封鎖哪些 App？',
-    desc: '一般日韓 eSIM 在大陸無效。大陸線路選擇、防火長城封鎖 App 清單、出發前準備清單，全整理好了。',
+    desc: '去大陸一定要選「免翻牆」eSIM，否則 LINE、Google、IG 全不能用。大陸線路選擇、防火長城封鎖 App 清單、出發前準備清單，全整理好了。',
     href: '/esim/china',
     label: '看大陸上網攻略 →',
   },
@@ -151,7 +151,7 @@ const travelArticles = [
     <!-- Hero -->
     <div class="hero">
       <div class="category-tag">關於這個網站</div>
-      <h1>前半生跌了很多跤<br>現在把坑，整理給你</h1>
+      <h1>前半生跌了很多跤，<br>現在把坑整理給你</h1>
       <p class="subtitle">
         我在越南工廠當過副總、養蝦失敗、跑過 Uber、父親走了之後才真正開始重新出發。<br>
         這個網站，是一個 40 幾歲台灣男人寫給自己、也寫給你的筆記。
@@ -160,7 +160,7 @@ const travelArticles = [
         <div class="author-dot">旅</div>
         <div>
           <div class="meta-author">重來的旅人</div>
-          <div>越南生活 10 年 · 自媒體行銷 · 2025 重新出發</div>
+          <div>越南生活 10 年 · 自媒體行銷 · 重新出發</div>
         </div>
       </div>
     </div>
@@ -241,6 +241,7 @@ const travelArticles = [
                 <div class="coupon-label">優惠碼</div>
                 <code class="coupon-code">{o.code}</code>
               </div>
+              <div class="coupon-expiry">效期至 {o.validUntil}</div>
             </div>
             <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" class="coupon-btn">
               前往 Klook 使用 →
@@ -548,6 +549,7 @@ const travelArticles = [
     border-radius: 4px;
     letter-spacing: 0.06em;
   }
+  .coupon-expiry { font-size: 12px; color: var(--ink-light); white-space: nowrap; padding-left: 12px; }
   .coupon-btn {
     display: block;
     text-align: center;
