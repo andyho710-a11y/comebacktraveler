@@ -1,6 +1,8 @@
 ---
 import SocialLinks from '../components/SocialLinks.astro';
 
+const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
+
 const title = "越南新山一機場免費貴賓室攻略 2026：JCB 白金卡進 Rose Business Lounge 全紀錄｜重來的旅人";
 const description = "搭廉航飛越南，也能用 JCB 白金卡免費進新山一機場的 Rose Business Lounge。住越南十年的過來人，把資格、位置、流程、踩雷重點整理清楚。";
 const canonical = "https://comebacktraveler.com/vietnam-jcb-lounge/";
@@ -141,6 +143,8 @@ const canonical = "https://comebacktraveler.com/vietnam-jcb-lounge/";
     .internal-links { margin: 40px 0 0; display: flex; gap: 20px; flex-wrap: wrap; }
     .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
     .internal-links a:hover { text-decoration: underline; }
+
+    .cta-label { font-size: 11px; color: #666; margin-top: 10px; }
 
     footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
     .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
@@ -291,6 +295,13 @@ const canonical = "https://comebacktraveler.com/vietnam-jcb-lounge/";
     <li>座位寬敞，有沙發區和商務桌</li>
   </ul>
 
+  <div class="tip-box">
+    <div class="tip-title">順帶一提</div>
+    <p style="margin:0;font-size:14px;">
+      離開貴賓室到了越南市區，機場 WiFi 就沒了。我自己常用的越南 eSIM 是 <a href={JOYTEL_LINK} target="_blank" rel="noopener" style="color:var(--accent);">JOYTEL</a>，台灣團隊中文客服、訊號落地就有。詳細的話可以看我寫的 <a href="/esim/joytel" style="color:var(--accent);">JOYTEL 評測</a>，這邊就不偏題了。
+    </p>
+  </div>
+
   <p style="margin-top:24px;"><strong>整體評分：</strong>★★★★☆（越南機場貴賓室的水準一向不差）</p>
 
   <p>自費進場大約 945,000 越南盾（約 NT$1,200）——如果是免費的，CP 值就直接滿分。</p>
@@ -356,7 +367,23 @@ const canonical = "https://comebacktraveler.com/vietnam-jcb-lounge/";
     <a href="/esim">→ eSIM 品牌完整比較</a>
     <a href="/esim/install">→ eSIM 安裝圖解教學</a>
     <a href="/story">→ 我在越南的十年故事</a>
-    <a href="/#klook-offers">→ Klook 優惠碼整理</a>
+  </div>
+
+  <div class="info-card featured" style="margin-top:32px;">
+    <div class="info-card-label">🎒 出發越南前，再帶兩樣東西</div>
+    <ul class="bullets">
+      <li>
+        <strong>越南上網：</strong>
+        <a href={JOYTEL_LINK} target="_blank" rel="noopener" style="color:var(--accent);">JOYTEL eSIM</a>
+        （台灣中文客服、落地即用）
+      </li>
+      <li>
+        <strong>當地行程訂票：</strong>
+        <a href="/#klook-offers" style="color:var(--accent);">Klook 優惠碼整理</a>
+        （每月更新各銀行刷卡折扣，最高 12% 回饋）
+      </li>
+    </ul>
+    <p class="cta-label">※ 本文含聯盟行銷連結，點擊後購買我會獲得少量佣金，不影響你的價格</p>
   </div>
 
 </article>
