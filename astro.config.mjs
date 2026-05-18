@@ -5,6 +5,10 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   site: 'https://comebacktraveler.com',
+  trailingSlash: 'never',
+  build: {
+    format: 'file',
+  },
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
