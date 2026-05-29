@@ -1,0 +1,441 @@
+---
+import SocialLinks from '../components/SocialLinks.astro';
+
+const title = "越南叫車 App 怎麼選?Grab、Be、Xanh SM 實測比較｜住越南十年的在地建議";
+const description = "住越南十年的在地建議：Grab、Be、Xanh SM 三大叫車 App 怎麼選？實測比較價格、車況、對外國人友善度，加上機場叫車避雷指南。一次告訴你手機要裝哪幾個 App、哪些雷千萬別踩。";
+const canonical = "https://comebacktraveler.com/vietnam-taxi-app-guide";
+const cover = "https://comebacktraveler.com/vietnam-taxi-app.jpg";
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:image" content={cover} />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="1500" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={cover} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "datePublished": "2026-05-29",
+    "dateModified": "2026-05-29",
+    "image": cover
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 56px 0 16px; position: relative; padding-left: 16px; line-height: 1.4; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; margin: 32px 0 10px; line-height: 1.5; color: var(--ink); }
+
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+
+    .article-photo { width: 100%; height: auto; border-radius: 6px; margin: 32px 0 8px; display: block; }
+    .photo-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 36px; font-style: italic; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
+
+    .check-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
+    .check-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+
+    .num-list { padding-left: 0; list-style: none; margin: 16px 0 24px; counter-reset: numlist; }
+    .num-list li { position: relative; padding-left: 36px; margin-bottom: 12px; font-size: 16px; counter-increment: numlist; }
+    .num-list li::before { content: counter(numlist); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: var(--accent); color: var(--paper); border-radius: 50%; font-family: var(--serif); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+
+    .compare-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 15px; background: var(--paper); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .compare-table thead { background: var(--paper-warm); }
+    .compare-table th, .compare-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    .compare-table th { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 14px; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tbody tr:nth-child(even) { background: rgba(242, 237, 224, 0.35); }
+    .compare-table td strong { color: var(--ink); }
+
+    .info-grid { display: grid; grid-template-columns: 100px 1fr; gap: 12px 20px; margin: 24px 0; padding: 20px 24px; background: var(--paper-warm); border-radius: 6px; font-size: 15px; }
+    .info-grid dt { font-weight: 600; color: var(--ink); }
+    .info-grid dd { color: var(--ink-light); margin: 0; }
+
+    a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a.inline:hover { background: var(--paper-warm); }
+
+    .closing { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border); font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .closing em { color: var(--ink); font-style: normal; font-weight: 600; }
+
+    .disclosure { margin-top: 36px; padding: 14px 18px; background: var(--paper-warm); border-radius: 6px; font-size: 13px; color: var(--ink-light); line-height: 1.7; font-style: italic; }
+
+    .internal-links { margin: 40px 0 0; display: flex; gap: 20px; flex-wrap: wrap; }
+    .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .internal-links a:hover { text-decoration: underline; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+    .footer-nav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      h2 { font-size: 22px; }
+      h3 { font-size: 17px; }
+      .info-grid { grid-template-columns: 80px 1fr; padding: 16px 18px; font-size: 14px; }
+      .compare-table { font-size: 13.5px; }
+      .compare-table th, .compare-table td { padding: 10px 10px; }
+    }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XW4LBK8PYF');
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">越南交通攻略</div>
+  <h1>越南叫車 App 怎麼選？<br>Grab、Be、Xanh SM 實測比較</h1>
+  <p class="subtitle">
+    住越南十年的在地建議。<br>
+    第一次去越南，落地就被機場攬客圍住——這篇直接告訴你手機要裝哪幾個 App、<br>
+    Grab / Be / Xanh SM 各自的優缺點，還有那次我被坑 50 萬越盾的機場叫車經驗。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 5 月更新 · 越南生活 10 年 · 三家叫車 App 親身實測</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <img
+    src="/vietnam-taxi-app.jpg"
+    alt="越南叫車 App 怎麼選封面：Grab、Be、Xanh SM 三大平台在地推薦，背景為胡志明市街景與手機叫車畫面"
+    class="article-photo"
+  />
+  <p class="photo-caption">三個 App 都裝著，看狀況切換，永遠有車可搭——這是我住越南十年摸出來的最簡單原則。</p>
+
+  <p>
+    第一次去越南，站在新山一機場的出境大廳，被一群喊著「Taxi! Taxi!」的人圍住——這個畫面，
+    大概是每個台灣旅客對越南交通的第一印象。
+  </p>
+
+  <p>
+    我在越南住了十年。從早期滿街跑的 Vinasun 計程車，到 Uber 進場又黯然退出，
+    再到現在 Grab、Be、Xanh SM 三強鼎立。這篇文章不講你 Google 一下就有的官方介紹，
+    我直接告訴你：<strong>現在去越南，手機裝哪幾個 App、各自的優缺點、哪些雷千萬別踩。</strong>
+  </p>
+
+  <div class="story-box">
+    如果你時間有限，先記一句話：<br><br>
+    <strong>越南叫車，認 App 不認路邊招手。</strong><br><br>
+    剩下的，我們慢慢說。
+  </div>
+
+  <h2>越南叫車市場的演變：我親眼看著它洗牌</h2>
+
+  <p>
+    2008 到 2018 年我住在越南那段時間，叫車市場整個翻了一輪。
+  </p>
+
+  <p>
+    一開始大家都搭 Vinasun、Mai Linh 這些傳統計程車，跳表計費。
+    後來 Uber 在 2016 年左右進場，滿街都是，價格透明又方便。
+    沒想到 2018 年 3 月，Uber 突然把整個東南亞業務賣給 Grab，換了 27.5% 股權就退場了——
+    從此 Grab 在越南一家獨大。
+  </p>
+
+  <p>
+    這幾年回越南，我發現市場又變了：本土的 Be 靠平價策略站穩腳步，
+    而 2023 年才出現的 Xanh SM 電動車隊，用全新車況和環保訴求，市占率成長飛快。
+  </p>
+
+  <p>
+    我講這段歷史不是要掉書袋，而是要讓你知道一件事：
+    <strong>越南的叫車資訊變化很快，你在網路上看到的舊文章，很可能已經過時了。</strong>
+    這也是為什麼我想用親身經驗，給你一份「現在就能用」的版本。
+  </p>
+
+  <h2>Grab：最穩、介面最友善，新手第一選擇</h2>
+
+  <p>
+    如果你是第一次去越南、不想花腦筋研究，<strong>直接裝 Grab 就對了。</strong>
+  </p>
+
+  <p>
+    Grab 是越南目前最大的叫車平台，優點很明確：
+  </p>
+
+  <ul class="check-list">
+    <li><strong>介面友善、有中英文</strong>：對外國旅客最友善，不用會越南文也能操作</li>
+    <li><strong>派車快、車多</strong>：大城市幾乎隨叫隨到，等待時間短</li>
+    <li><strong>不只叫車</strong>：還能叫機車（GrabBike）、外送（GrabFood），一個 App 全包</li>
+    <li><strong>價格透明</strong>：上車前就顯示總價，不用擔心被繞路或亂喊價</li>
+  </ul>
+
+  <p>
+    缺點是：<strong>價格通常是三家裡偏中高的</strong>，尖峰時段會加成。
+    但對求安心、求方便的旅客來說，這點錢花得值得。
+  </p>
+
+  <p>
+    <strong>我的建議</strong>：出國前先在台灣下載好、綁定信用卡或設定好付款方式。
+    落地後連上網路就能直接用，省去當地手忙腳亂。
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">叫車前先把網路準備好</div>
+    <p>Grab 要能用，前提是手機有網路。出發前先準備好越南 eSIM，落地開機就能叫車。
+    我另外寫過 <a href="/esim" class="inline">越南 eSIM 實測</a>，
+    包含 Joytel、Klook、Airalo 三家在胡志明、河內、峴港的實際速度比較，可以參考。</p>
+  </div>
+
+  <h2>Be：本土平價，預算有限的好選擇</h2>
+
+  <p>
+    Be 是越南本土的叫車 App，主打「比 Grab 便宜」。
+  </p>
+
+  <p>
+    實際用下來，同樣的路線，Be 通常比 Grab 便宜 20% 到 30% 左右。
+    對於要在越南待比較多天、每天都要移動的旅客，長期下來省下的車資相當可觀。
+  </p>
+
+  <p>但它也有取捨：</p>
+
+  <ul class="check-list">
+    <li><strong>車比較少</strong>：尖峰時段或偏一點的地方，有時候要等比較久</li>
+    <li><strong>司機英文較少</strong>：介面雖然有英文，但司機溝通可能比較吃力</li>
+    <li><strong>介面對外國人沒那麼直覺</strong>：第一次用需要稍微摸索</li>
+  </ul>
+
+  <p>
+    <strong>適合誰</strong>：預算敏感、待比較多天、不趕時間、願意稍微研究一下 App 的旅客。
+  </p>
+
+  <h2>Xanh SM：電動車隊，車況最新、最舒適</h2>
+
+  <p>
+    Xanh SM 是 2023 年才推出的新品牌，用的是全電動車隊。
+  </p>
+
+  <p>這幾年我回越南，搭過幾次 Xanh SM，印象很好：</p>
+
+  <ul class="check-list">
+    <li><strong>車況最新</strong>：全是新車，內裝乾淨、沒有二手菸味</li>
+    <li><strong>司機素質整齊</strong>：服務態度普遍不錯</li>
+    <li><strong>環保、安靜</strong>：電動車行駛安靜，坐起來舒服</li>
+    <li><strong>一看就認得</strong>：車身是辨識度很高的藍綠色</li>
+  </ul>
+
+  <p>
+    缺點是 <strong>車輛數量還在擴充中</strong>，某些區域或時段不一定叫得到車。
+    價格落在 Grab 和 Be 之間，算是中等。
+  </p>
+
+  <p>
+    <strong>適合誰</strong>：想坐好車、重視舒適度與環保、不介意偶爾要多等一下的旅客。
+  </p>
+
+  <h2>三大叫車 App 比較表</h2>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>App</th>
+        <th>價格</th>
+        <th>車輛數</th>
+        <th>對外國人友善度</th>
+        <th>適合誰</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Grab</strong></td>
+        <td>中高</td>
+        <td>最多</td>
+        <td>★★★★★</td>
+        <td>第一次去、求方便求安心</td>
+      </tr>
+      <tr>
+        <td><strong>Be</strong></td>
+        <td>最低</td>
+        <td>中</td>
+        <td>★★★</td>
+        <td>預算有限、待比較多天</td>
+      </tr>
+      <tr>
+        <td><strong>Xanh SM</strong></td>
+        <td>中</td>
+        <td>成長中</td>
+        <td>★★★★</td>
+        <td>想坐好車、重視舒適環保</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>我自己的用法</strong>：趕時間用 Grab，一般通勤用 Be，想坐好車就叫 Xanh SM。
+    三個 App 都裝著，看狀況切換，永遠有車可搭。
+  </p>
+
+  <h2>機場叫車避雷：我被坑過，所以特別提醒</h2>
+
+  <p>
+    這段是這篇文章最重要的部分，因為它牽涉到你的荷包，甚至安全。
+  </p>
+
+  <p>
+    我在越南住了十年，還是被坑過。有一次從新山一機場要去富美興，
+    一出關就被一群人圍住，推著我的行李往外走，半推半就就被塞進一台車。
+    關鍵是——<strong>那台車根本不跳表，上車前直接喊價 50 萬越盾</strong>
+    （正常跳表大概 15 到 20 萬）。當下人單勢孤，只能摸摸鼻子付錢。
+  </p>
+
+  <p>那次之後，我整理出幾個機場叫車的鐵則：</p>
+
+  <ol class="num-list">
+    <li><strong>出關後不要理任何主動搭話的人</strong>——越熱情越要警覺</li>
+    <li><strong>行李自己拉好</strong>——有人「好心」幫你推，你就很難脫身</li>
+    <li><strong>不跳表的車一律不要上</strong>——正規計程車一定按跳表</li>
+    <li><strong>直接走到 Grab / Be / Xanh SM 的 App 指定上車區叫車</strong>——價格透明、有紀錄</li>
+    <li><strong>真要搭傳統計程車，認綠色 Mai Linh、白色 Vinasun</strong>——這兩家相對有信譽</li>
+  </ol>
+
+  <p>
+    機場詐騙計程車最狠的不是貴，是<strong>讓你來不及反應</strong>。
+    落地後人生地不熟、又累又趕，正是他們下手的時機。
+    記住：寧可多花 5 分鐘打開 App 叫車，也不要省那幾分鐘被坑一次。
+  </p>
+
+  <h2>常見問題 FAQ</h2>
+
+  <h3>Q1：去越南只裝一個 App 的話，該裝哪個？</h3>
+  <p>
+    裝 Grab。它最穩、車最多、對外國人最友善，一個 App 能應付絕大多數情況。
+    行有餘力再加裝 Be 和 Xanh SM。
+  </p>
+
+  <h3>Q2：這些 App 可以用信用卡付款嗎？還是只能付現？</h3>
+  <p>
+    三家都支援綁定信用卡或電子支付，也都可以選現金付款。
+    建議綁好電子支付，省去找零和溝通的麻煩，金額也清楚。
+  </p>
+
+  <h3>Q3：不會越南文，叫車會不會有困難？</h3>
+  <p>
+    Grab 的介面對外國人最友善，基本上靠 App 操作就能完成，不太需要跟司機講話。
+    上車前在 App 設定好上下車地點，司機照導航走，溝通需求很低。
+  </p>
+
+  <h3>Q4：在越南叫機車（摩托車）安全嗎？</h3>
+  <p>
+    GrabBike 這類叫車機車是越南很普遍的交通方式，適合短程、趕時間、避開塞車。
+    平台會提供安全帽。但如果你不習慣騎機車穿梭車陣，或帶著行李，
+    還是建議叫四輪車比較安心。
+  </p>
+
+  <div class="closing">
+    在越南旅行，交通是每天都會遇到的事。把這篇重點濃縮成三句話：<br><br>
+    <strong>第一次去、求方便，裝 Grab 準沒錯</strong><br>
+    <strong>待多天、想省錢，加裝 Be</strong><br>
+    <strong>想坐好車、重視舒適，試試 Xanh SM</strong><br><br>
+    而最重要的一條：<em>永遠用 App 叫車，不要在機場或路邊隨便上不跳表的車。</em>
+    這是我用一次被坑 50 萬越盾的經驗，換來的教訓。<br><br>
+    走過彎路的人，才知道哪條路真的值得走。<br>
+    希望這份在地經驗，能讓你的越南行少踩一個雷、多一點安心。
+  </div>
+
+  <p class="disclosure">
+    本文部分連結為聯盟連結，若你透過連結購買，我會獲得一點分潤，但不影響你的價格。
+    所有推薦都是我自己用過、真心覺得實用的東西。
+  </p>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="越南親子旅遊、夫妻散策、eSIM 與機場貴賓室省錢情報，會在 IG、FB、YouTube 同步分享"
+  />
+
+  <div class="internal-links">
+    <a href="/esim">→ eSIM 品牌完整比較</a>
+    <a href="/vietnam-guide">→ 越南帶小孩快速通關攻略</a>
+    <a href="/vietnam-jcb-lounge">→ 越南機場 JCB 貴賓室實戰</a>
+    <a href="/saigon-couple-walk">→ 胡志明夫妻夜遊：紅教堂、中央郵政</a>
+    <a href="/kids-travel-guide">→ 帶女兒第一次回越南：The Mira + 5 Ri 5 海鮮</a>
+    <a href="/story">→ 我在越南的十年故事</a>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div class="footer-nav">
+    <a href="/">← 回首頁</a>
+    <a href="/esim">eSIM 比較</a>
+    <a href="/vietnam-guide">越南攻略</a>
+    <a href="/japan-guide">日本攻略</a>
+    <a href="/korea-guide">韓國攻略</a>
+    <a href="/thsr-guide">高鐵省錢</a>
+    <a href="/story">作者故事</a>
+    <a href="/privacy">隱私權政策</a>
+  </div>
+</footer>
+
+</body>
+</html>
