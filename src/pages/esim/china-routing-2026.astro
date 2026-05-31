@@ -1,0 +1,391 @@
+---
+import SocialLinks from '../../components/SocialLinks.astro';
+
+const title = "2026 eSIM 還能買嗎？「封包送中」爭議 + 防詐宣導，過來人完整解析";
+const description = "2026 年 5 月爆出旅遊 eSIM「封包繞道中國」爭議，加上政府防詐宣導，讓很多人不敢買 eSIM。住國外十年的過來人帶你看懂這波在吵什麼、教你自己判斷手上的 eSIM 安不安全、以及到底該怎麼選。";
+const VIETNAM_LINK = 'https://afflink.one/s/SNmCj';
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="eSIM封包送中,eSIM繞道中國,eSIM安全嗎,eSIM防詐,旅遊eSIM資安,改APN新加坡,原生eSIM,漫遊eSIM,eSIM怎麼選,出國上網安全" />
+  <link rel="canonical" href="https://comebacktraveler.com/esim/china-routing-2026" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content="https://comebacktraveler.com/esim/china-routing-2026/" />
+  <meta property="og:locale" content="zh_TW" />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "url": "https://comebacktraveler.com/esim/china-routing-2026/",
+    "inLanguage": "zh-TW",
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
+  })} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --green: #1D9E75;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 52px 0 16px; position: relative; padding-left: 16px; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 20px; margin: 32px 0 10px; }
+
+    .alert-box { border: 2px solid var(--accent); border-radius: 6px; padding: 20px 24px; margin: 32px 0; background: #fef5f4; }
+    .alert-title { font-family: var(--serif); font-weight: 900; font-size: 16px; color: var(--accent); margin-bottom: 8px; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+
+    table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 14px; }
+    th { font-family: var(--serif); font-weight: 600; background: var(--ink); color: var(--paper); padding: 12px 14px; text-align: left; }
+    td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    tr:nth-child(even) td { background: var(--paper-warm); }
+    td:first-child { font-weight: 500; }
+
+    .checklist-box { border: 1.5px solid var(--border); border-radius: 8px; padding: 24px 28px; margin: 32px 0; }
+    .checklist-title { font-family: var(--serif); font-weight: 900; font-size: 18px; margin-bottom: 16px; }
+    .checklist { list-style: none; padding: 0; counter-reset: step; }
+    .checklist li { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px dashed var(--border); font-size: 15px; }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist-num { counter-increment: step; flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+    .checklist-num::before { content: counter(step); }
+
+    .cta-box { background: var(--ink); color: var(--paper); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
+    .cta-box p { color: #d4c9b0; margin-bottom: 20px; font-size: 16px; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
+    .cta-btn:hover { background: #a93226; }
+    .cta-label { font-size: 11px; color: #666; margin-top: 10px; }
+
+    .related-links { border-top: 1px solid var(--border); margin-top: 56px; padding-top: 32px; }
+    .related-links h3 { font-family: var(--serif); font-weight: 600; font-size: 17px; margin-bottom: 16px; color: var(--ink-light); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .related-item { border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; text-decoration: none; color: var(--ink); transition: border-color 0.15s; }
+    .related-item:hover { border-color: var(--accent); }
+    .related-item-tag { font-size: 11px; color: var(--accent); font-weight: 500; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .related-item-title { font-size: 14px; font-weight: 500; line-height: 1.5; }
+
+    .disclosure { font-size: 13px; color: var(--ink-light); font-style: italic; border-top: 1px solid var(--border); margin-top: 40px; padding-top: 24px; line-height: 1.8; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      .related-grid { grid-template-columns: 1fr; }
+      table { font-size: 13px; }
+      th, td { padding: 9px 10px; }
+    }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XW4LBK8PYF');
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">eSIM 資安 · 封包送中爭議解析</div>
+  <h1>2026 eSIM 還能買嗎？<br>「封包送中」爭議 +<br>防詐宣導，過來人完整解析</h1>
+
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 5 月 · 住國外十年、出入境數不清的過來人</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <p>
+    最近你是不是也看到那些新聞——「出國買便宜 eSIM，個資全被中國看光」、「封包繞道中國移動」、「連 ChatGPT 都打不開」？然後本來想買張 eSIM 出國上網，現在卻不敢下手了。
+  </p>
+  <p>
+    我懂這種感覺。一邊是政府的防詐宣導叫你小心，一邊是新聞說便宜網卡會把你的資料送中國，搞得好像買 eSIM 是什麼高風險的事。
+  </p>
+  <p>
+    我在國外住了十年，出入境次數多到自己都數不清。這篇我用過來人的角度，把這件事一次講清楚：<strong>這波到底在吵什麼、你手上的 eSIM 到底有沒有問題、以及看完之後你該怎麼選。</strong>
+  </p>
+
+  <div class="story-box">
+    先講結論，免得你看半天還是焦慮：<br>
+    <strong>別因為這波新聞就不用 eSIM 了，但也別貪小便宜亂買。重點不是「用不用」，是「會不會挑」。</strong>
+  </div>
+
+  <h2>這波爭議到底在吵什麼？</h2>
+  <p>
+    2026 年 5 月，有科技業者公開示警，引用美國大學的研究指出：市面上不少便宜的旅遊 eSIM，使用者的網路封包會先繞道到中國的電信核心網路，再轉送到你的目的地。
+  </p>
+  <p>
+    白話講就是——你人在日本、在越南、在歐洲上網，但你的連線資料（像是你的設備識別碼、位置、瀏覽紀錄這些）可能先經過中國的系統，才送出去。在中國的法規框架下，這些資料就有被掌握的疑慮。
+  </p>
+  <p>
+    這件事為什麼會發生？其中一個原因是台灣的法規。目前台灣把 eSIM 用跟實體 SIM 卡一樣嚴格的防詐規則在管——要本人臨櫃辦、要付設定費、不能線上轉移。這導致本土電信業者很難推出「純上網、不綁門號、掃碼即用」的旅遊 eSIM。消費者在沒什麼好選擇的情況下，只好去買那些便宜、隨買隨用的境外 eSIM——而其中一部分，就是會繞道的那種。
+  </p>
+  <p>
+    所以這不是單純「便宜沒好貨」，而是一個「<strong>消費者被夾在中間</strong>」的結構問題。
+  </p>
+
+  <h2>重點來了：改 APN 切新加坡，真的有用嗎？</h2>
+  <p>
+    這段你一定要看，因為這是最多人搞錯的地方。
+  </p>
+  <p>
+    有些便宜 eSIM 業者，會在客服頁面教你「把 APN 改成某個設定、把 IP 切到新加坡」，這樣就能用 ChatGPT 了。很多人改完發現 ChatGPT 能開了，就以為「安全了」。
+  </p>
+
+  <div class="alert-box">
+    <div class="alert-title">但這其實是個誤會</div>
+    <p style="margin:0;font-size:15px;">
+      打個比方：改 APN 就像你寄信時，把「寄件地址」改成新加坡。收信的人（ChatGPT）看到新加坡地址，就放行了。但問題是——<strong>這封信還是先經過中國的郵局分揀，才送出去的。</strong>
+      改 APN 改的是「最後的出口」，不是「整條路徑的起點」。
+    </p>
+  </div>
+
+  <p>
+    你的設備資訊、位置、連線紀錄，從你開機連網那一刻，就已經先進到 eSIM 發行商的核心網路了。如果那個核心網路在中國，改 APN 也救不回來——前面那一大段路，早就走完了。
+  </p>
+  <p>
+    <strong>所以「能開 ChatGPT」不等於「安全」。</strong> 這點要記住。
+  </p>
+
+  <h2>怎麼自己判斷手上的 eSIM 有沒有問題？</h2>
+  <p>
+    與其聽別人嚇你，不如自己會判斷。這裡教你幾個過來人的檢查方法，不用懂技術也能做：
+  </p>
+
+  <h3>方法一：落地後試開 ChatGPT 或 Google AI</h3>
+  <p>
+    如果你的 eSIM 連上網後，ChatGPT、Gemini 這類 AI 工具打不開、或一直說「你所在地區不支援」，那就要警覺——你的 IP 很可能被判定為中港澳，代表線路繞道了。能正常開，是個好徵兆（但不是絕對保證，見方法二）。
+  </p>
+
+  <h3>方法二：查自己的對外 IP</h3>
+  <p>
+    落地連上網後，Google 搜尋「what is my IP」，看跳出來的 IP 歸屬在哪個國家、哪間電信商。如果你人在日本，IP 卻顯示是中國移動香港、或登記在中國的電信商名下，那就是繞道了。如果顯示的是當地或合理的國際電信商，相對安心。
+  </p>
+
+  <h3>方法三：看產品標示「原生」還是「漫遊」</h3>
+  <div class="tip-box">
+    <div class="tip-title">原生 vs 漫遊</div>
+    <p style="margin:0;font-size:15px;">
+      <strong>原生（當地電信直接發行）：</strong>用的是目的地國家當地電信的線路，網路身分就是當地的，最不容易繞道。<br><br>
+      <strong>漫遊（第三方整合的多國卡）：</strong>一張卡到處能用，方便，但線路怎麼走你不知道，繞道風險較高。
+    </p>
+  </div>
+  <p>
+    便宜的「一卡多國」漫遊卡最方便，但也最常是繞道的那種。<strong>方便和安全，這裡要做取捨。</strong>
+  </p>
+
+  <h2>那到底該怎麼選？三種方案比較</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>方案</th>
+        <th>安全性</th>
+        <th>價格</th>
+        <th>方便度</th>
+        <th>適合誰</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>台灣電信原號漫遊</td>
+        <td>最高</td>
+        <td>最貴</td>
+        <td>最方便（不用設定）</td>
+        <td>短天數、重視安全、不想麻煩</td>
+      </tr>
+      <tr>
+        <td>當地原生 eSIM</td>
+        <td>高</td>
+        <td>中</td>
+        <td>中（要設定）</td>
+        <td>待比較多天、要省錢又要安全</td>
+      </tr>
+      <tr>
+        <td>便宜境外漫遊卡</td>
+        <td>風險高</td>
+        <td>最便宜</td>
+        <td>方便</td>
+        <td>不建議，除非你確認過線路</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    專家給的建議其實很明確：<strong>優先選台灣電信的原號漫遊，或目的地國家的「當地原生 eSIM」。</strong>
+  </p>
+  <p>
+    原號漫遊最安全但貴；當地原生 eSIM 是「安全」和「省錢」之間的甜蜜點——這也是我自己這幾年的主要選擇。
+  </p>
+
+  <h2>eSIM 新手最常踩的 5 個雷（不只資安）</h2>
+  <p>
+    除了繞道問題，eSIM 還有幾個新手很容易踩的雷，一起提醒你：
+  </p>
+
+  <div class="checklist-box">
+    <div class="checklist-title">新手最常踩的 5 個雷</div>
+    <ul class="checklist">
+      <li>
+        <span class="checklist-num"></span>
+        <span><strong>手機根本不支援。</strong>iPhone XR 之前的舊機、部分舊款 Android、還有被電信商鎖卡的機子（SIM Locked），可能根本裝不了 eSIM。買之前一定先查自己的手機型號支不支援，不然就是白買。</span>
+      </li>
+      <li>
+        <span class="checklist-num"></span>
+        <span><strong>刪掉就回不來。</strong>eSIM 跟實體卡不一樣——大多數一旦刪除，就無法重新安裝，也不能跨手機轉移，而且通常沒有退貨。安裝前看清楚教學，別手殘亂刪。</span>
+      </li>
+      <li>
+        <span class="checklist-num"></span>
+        <span><strong>網速「假原生」。</strong>有些便宜卡標榜原生，實際是漫遊，結果延遲超高、人多的地方（像日本環球影城、地下鐵）直接卡死。這也是為什麼要看清楚是不是真原生。</span>
+      </li>
+      <li>
+        <span class="checklist-num"></span>
+        <span><strong>收不到 OTP 簡訊。</strong>這是 eSIM 最大的硬傷。純上網的 eSIM 沒有電話號碼，收不到銀行、登入網站的 OTP 驗證簡訊。如果你旅途中需要收簡訊驗證（轉帳、登入），要事先想好辦法（例如保留原門號開漫遊收簡訊）。</span>
+      </li>
+      <li>
+        <span class="checklist-num"></span>
+        <span><strong>貪便宜買到繞道卡。</strong>就是這篇講的主題——最便宜的那種，風險也最高。</span>
+      </li>
+    </ul>
+  </div>
+
+  <h2>過來人的結論</h2>
+  <p>
+    這波爭議，我覺得最可惜的是——<strong>它讓很多人因噎廢食，乾脆不用 eSIM 了。</strong> 但 eSIM 本身是好東西，出國上網又方便又省錢，問題從來不是 eSIM，而是「你會不會挑」。
+  </p>
+  <p>
+    記住三件事就好：
+  </p>
+
+  <div class="checklist-box">
+    <div class="checklist-title">記住這三件事</div>
+    <ul class="checklist">
+      <li>
+        <span class="checklist-num"></span>
+        <span><strong>別只看價格</strong>——最便宜的常常是繞道卡。</span>
+      </li>
+      <li>
+        <span class="checklist-num"></span>
+        <span><strong>認明「當地原生線路」</strong>——這是安全和省錢的平衡點。</span>
+      </li>
+      <li>
+        <span class="checklist-num"></span>
+        <span><strong>落地自己檢查</strong>——查 IP、試開 AI 工具，自己驗證最實在。</span>
+      </li>
+    </ul>
+  </div>
+
+  <p>
+    不要被防詐宣導嚇到不敢出門，也不要貪小便宜把自己的資料送出去。中間那條路——<strong>懂得挑的人走的路</strong>——一直都在。
+  </p>
+
+  <div class="cta-box">
+    <p>
+      說到「當地原生」，我下個月要回越南，手邊正好有一張 <strong>JOYTEL 越南 Viettel 原生 eSIM</strong> 準備實測。<br>
+      我會親自驗證它的對外 IP 在哪、能不能正常開 ChatGPT、實際網速如何，把完整實測結果跟大家報告。
+    </p>
+    <a class="cta-btn" href={VIETNAM_LINK} target="_blank" rel="noopener sponsored">
+      看 JOYTEL 越南原生 eSIM →
+    </a>
+    <p class="cta-label">※ 本文含聯盟行銷連結，點擊後購買我會獲得少量佣金，不影響你的價格</p>
+  </div>
+
+  <p>
+    實測文出來後，我會回來這篇補上連結，讓你看到「過來人親自驗證」的結果，而不是只聽廠商說。
+  </p>
+
+  <div class="related-links">
+    <h3>延伸閱讀</h3>
+    <div class="related-grid">
+      <a href="/esim" class="related-item">
+        <div class="related-item-tag">品牌比較</div>
+        <div class="related-item-title">6 家 eSIM 品牌比較總表</div>
+      </a>
+      <a href="/esim/joytel" class="related-item">
+        <div class="related-item-tag">JOYTEL 評測</div>
+        <div class="related-item-title">JOYTEL eSIM 深度評測：速度、客服、優缺點</div>
+      </a>
+      <a href="/esim/china" class="related-item">
+        <div class="related-item-tag">中國大陸上網</div>
+        <div class="related-item-title">去中國大陸用 eSIM｜GFW 封鎖哪些 App？</div>
+      </a>
+      <a href="/esim/troubleshoot" class="related-item">
+        <div class="related-item-tag">問題排解</div>
+        <div class="related-item-title">eSIM 設定失敗怎麼辦？10 個常見問題</div>
+      </a>
+    </div>
+  </div>
+
+  <p class="disclosure">
+    本文部分連結為聯盟連結，若你透過連結購買，我會獲得一點分潤，但不影響你的價格。所有推薦都是我會親自使用、驗證過的東西。實測結果若與預期不符，我會誠實告訴你。
+  </p>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="出國上網的最新情報與實測，會在 IG、FB、YouTube 同步分享"
+  />
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div style="margin-top:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">← eSIM 比較總表</a>
+    <a href="/esim/joytel" style="color:var(--accent);text-decoration:none;font-size:13px;">JOYTEL 評測</a>
+    <a href="/esim/china" style="color:var(--accent);text-decoration:none;font-size:13px;">中國 eSIM</a>
+    <a href="/esim/troubleshoot" style="color:var(--accent);text-decoration:none;font-size:13px;">設定問題</a>
+    <a href="/privacy" style="color:var(--accent);text-decoration:none;font-size:13px;">隱私權政策</a>
+  </div>
+</footer>
+
+</body>
+</html>
