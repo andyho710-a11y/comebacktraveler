@@ -1,0 +1,442 @@
+---
+import SocialLinks from '../components/SocialLinks.astro';
+
+const title = "越南旅遊必備小物推薦｜住越南十年，我推薦你帶這幾樣";
+const description = "第一次去越南該帶什麼？住越南十年的重來的旅人，從炎熱天氣、220V 電壓到飛車搶劫的角度，整理出該準備的旅遊小物與精選商品。防曬、防蚊、充電器、防盜包，幫你出發前一次備齊不踩雷。";
+const canonical = "https://comebacktraveler.com/vietnam-travel-essentials";
+const cover = "https://comebacktraveler.com/vietnam-airport-queue.jpg";
+
+// 聯盟商品卡片資料
+const products = [
+  {
+    img: "/vietnam-ess-anessa.png",
+    name: "安耐曬 金鑽高效防曬乳",
+    spec: "SPF50+ / PA++++ ‧ 防水防汗",
+    why: "去東南亞的人幾乎人手一瓶，主打耐水耐汗、係數高，正好對付越南那種曬到出汗的環境。",
+    href: "https://coupa.ng/cnc3Dz?abTestInfo=100412_group_A",
+    cta: "在 Coupang 看價格",
+  },
+  {
+    img: "/vietnam-ess-dintin.png",
+    name: "叮嚀 派卡瑞丁 10H 小黑蚊防蚊液",
+    spec: "Picaridin 派卡瑞丁 ‧ 主打長效",
+    why: "派卡瑞丁成分，專治越南濕熱環境的小黑蚊與蚊子。不嗆鼻、不黏膩，小孩也能用。",
+    href: "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A",
+    cta: "在 Coupang 看價格",
+  },
+  {
+    img: "/vietnam-ess-cyke.png",
+    name: "CYKE 65W 氮化鎵充電器",
+    spec: "65W GaN ‧ 多孔快充 ‧ 支援萬國電壓",
+    why: "支援萬國電壓，一顆就能充手機、平板、筆電。體積小、出國帶一顆抵一包插頭。",
+    href: "https://coupa.ng/cnc3yV?abTestInfo=100412_group_A",
+    cta: "在 Coupang 看價格",
+  },
+  {
+    img: "/vietnam-ess-travelon.png",
+    name: "TRAVELON 輕便防盜斜背包",
+    spec: "防割肩帶 ‧ 防盜拉鍊 ‧ 前背好顧",
+    why: "美國防盜包老牌子，防割肩帶、防盜拉鍊，可斜背、包在胸前，正好對付越南的飛車搶。",
+    href: "https://coupa.ng/cnc3qG?abTestInfo=100412_group_A",
+    cta: "在 Coupang 看價格",
+  },
+];
+
+const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront";
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:image" content={cover} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={cover} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "datePublished": "2026-06-02",
+    "dateModified": "2026-06-02",
+    "image": cover
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 56px 0 16px; position: relative; padding-left: 16px; line-height: 1.4; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; margin: 32px 0 10px; line-height: 1.5; color: var(--ink); }
+
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+
+    .article-photo { width: 100%; height: auto; border-radius: 6px; margin: 32px 0 8px; display: block; }
+    .photo-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 36px; font-style: italic; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
+
+    .check-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
+    .check-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+
+    .num-list { padding-left: 0; list-style: none; margin: 16px 0 24px; counter-reset: numlist; }
+    .num-list li { position: relative; padding-left: 36px; margin-bottom: 12px; font-size: 16px; counter-increment: numlist; }
+    .num-list li::before { content: counter(numlist); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: var(--accent); color: var(--paper); border-radius: 50%; font-family: var(--serif); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+
+    /* 聯盟商品卡片 */
+    .product-card { display: flex; gap: 20px; align-items: center; border: 1.5px solid var(--border); border-radius: 10px; padding: 18px 20px; margin: 24px 0; background: #fffdf8; transition: box-shadow 0.2s, border-color 0.2s; }
+    .product-card:hover { box-shadow: 0 6px 20px rgba(26, 18, 8, 0.08); border-color: var(--gold); }
+    .product-card-img { width: 120px; height: 120px; flex-shrink: 0; object-fit: contain; background: #fff; border-radius: 8px; border: 1px solid var(--border); padding: 6px; }
+    .product-card-body { flex: 1; min-width: 0; }
+    .product-card-name { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); margin-bottom: 4px; line-height: 1.4; }
+    .product-card-spec { font-size: 12.5px; letter-spacing: 0.04em; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+    .product-card-why { font-size: 14.5px; color: var(--ink-light); line-height: 1.7; margin-bottom: 14px; }
+    .product-card-cta { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; text-decoration: none; font-size: 14.5px; font-weight: 500; padding: 9px 18px; border-radius: 6px; transition: background 0.2s; }
+    .product-card-cta:hover { background: #9e2c1f; }
+
+    .shopee-banner { display: block; text-align: center; border: 1.5px dashed var(--gold); border-radius: 10px; padding: 24px; margin: 32px 0; background: var(--paper-warm); text-decoration: none; color: var(--ink); transition: background 0.2s; }
+    .shopee-banner:hover { background: #ece4d2; }
+    .shopee-banner strong { display: block; font-family: var(--serif); font-size: 18px; color: var(--ink); margin-bottom: 6px; }
+    .shopee-banner span { font-size: 14px; color: var(--ink-light); }
+    .shopee-banner .shopee-go { display: inline-block; margin-top: 12px; color: var(--accent); font-weight: 600; font-size: 14.5px; }
+
+    a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a.inline:hover { background: var(--paper-warm); }
+
+    .closing { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border); font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .closing em { color: var(--ink); font-style: normal; font-weight: 600; }
+
+    .disclosure { margin-top: 36px; padding: 14px 18px; background: var(--paper-warm); border-radius: 6px; font-size: 13px; color: var(--ink-light); line-height: 1.7; font-style: italic; }
+
+    .internal-links { margin: 40px 0 0; display: flex; gap: 20px; flex-wrap: wrap; }
+    .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .internal-links a:hover { text-decoration: underline; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+    .footer-nav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      h2 { font-size: 22px; }
+      h3 { font-size: 17px; }
+      .product-card { flex-direction: column; align-items: stretch; text-align: left; }
+      .product-card-img { width: 100%; height: 180px; }
+      .product-card-cta { justify-content: center; }
+    }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XW4LBK8PYF');
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">越南旅遊好物</div>
+  <h1>越南旅遊必備小物推薦<br>住越南十年，我推薦你帶這幾樣</h1>
+  <p class="subtitle">
+    每次有朋友要去越南，第一句問我的幾乎都是：「該帶什麼？」<br>
+    這篇用過來人的角度，從越南真實環境出發，告訴你該帶哪幾類東西、為什麼要帶——
+    炎熱天氣、3C 充電、防身安全，三個方向一次說清楚。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 6 月更新 · 越南生活 10 年 · 在地經驗推薦</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <img
+    src="/vietnam-airport-queue.jpg"
+    alt="越南旅遊必備小物：行李打包與機場準備，住越南十年的在地推薦清單"
+    class="article-photo"
+  />
+  <p class="photo-caption">越南大部分東西當地都買得到，但有幾樣沒帶到，會讓你整趟都不舒服。</p>
+
+  <p>
+    每次有朋友要去越南，第一句問我的幾乎都是：「該帶什麼？」
+  </p>
+
+  <p>
+    我在越南住了十年。說實話，越南大部分東西當地都買得到，真的不用大包小包。
+    但有幾樣東西，<strong>沒帶到會讓你整趟越用越不舒服</strong>——不是買不到，
+    是你人在當地、又熱又累，根本懶得花時間找。
+  </p>
+
+  <p>
+    這篇我用過來人的角度，從越南真實環境出發，告訴你
+    <strong>該帶哪幾類東西、為什麼我會要你帶</strong>。我把它分成三個越南旅人最容易遇到的情境：
+    炎熱天氣、3C 充電、防身安全。
+  </p>
+
+  <div class="story-box">
+    先說在前頭：<br><br>
+    下面推薦的商品，是我根據「越南旅遊的真實情況」加上「選品原則（評價高、有實拍、規格對）」幫你篩過的方向。
+    重點是<strong>規格要對</strong>——對了就是這支幫你的。你也可以照同樣的邏輯自己找。
+  </div>
+
+  <h2>一、對付炎熱天氣：防曬 + 防蚊</h2>
+
+  <p>
+    越南的太陽，跟台灣不是同一個等級。尤其南越（胡志明、富國島）幾乎全年炎熱，
+    中午的紫外線會讓你曬到懷疑人生。
+  </p>
+
+  <p>
+    更重要的是——<strong>越南是全年有登革熱風險的地方，蚊子又多又兇。</strong>
+    這不只是怕你，是當地生活的日常。防蚊在越南不是「可有可無」，是「一定要」。
+  </p>
+
+  <h3>防曬：選「高係數 + 耐曬耐汗」</h3>
+
+  <p>
+    越南炎熱會狂流汗，一般防曬擦了等於沒擦。挑防曬就抓兩個重點：
+    <strong>SPF50＋／PA++++</strong>（係數要夠）、<strong>耐水耐汗</strong>（一遇流汗就掉的別買）。
+  </p>
+
+  <div class="product-card">
+    <img class="product-card-img" src={products[0].img} alt={products[0].name} loading="lazy" />
+    <div class="product-card-body">
+      <div class="product-card-name">{products[0].name}</div>
+      <div class="product-card-spec">{products[0].spec}</div>
+      <p class="product-card-why">{products[0].why}</p>
+      <a class="product-card-cta" href={products[0].href} target="_blank" rel="sponsored nofollow noopener">{products[0].cta} →</a>
+    </div>
+  </div>
+
+  <h3>防蚊：認明「派卡瑞丁（Picaridin）」成分</h3>
+
+  <p>
+    防蚊液成分差很大。<strong>派卡瑞丁（Picaridin）</strong> 對付越南的小黑蚊、一般蚊子效果好，
+    而且不像傳統 DEET 那麼嗆鼻、不黏膩、不傷塑膠，小孩也能用。挑的時候直接看成分標示。
+  </p>
+
+  <div class="product-card">
+    <img class="product-card-img" src={products[1].img} alt={products[1].name} loading="lazy" />
+    <div class="product-card-body">
+      <div class="product-card-name">{products[1].name}</div>
+      <div class="product-card-spec">{products[1].spec}</div>
+      <p class="product-card-why">{products[1].why}</p>
+      <a class="product-card-cta" href={products[1].href} target="_blank" rel="sponsored nofollow noopener">{products[1].cta} →</a>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-title">過來人提醒</div>
+    <p>防曬和防蚊越南當地也買得到（像 Soffel、Remos 都是當地好用的牌子），
+    但能在台灣先備好就先備好——落地直接用，省得當天你又熱又懶得去藥妝店翻。</p>
+  </div>
+
+  <h2>二、對付 220V 電壓：充電設備</h2>
+
+  <p>
+    這段很重要，因為<strong>最多人搞錯</strong>。
+  </p>
+
+  <p>
+    先破除一個迷思：<strong>越南插座是 A、C 型，跟台灣的扁頭大多相容，所以你不一定需要轉接頭。</strong>
+    真正要注意的不是「插不插得進去」，是<strong>電壓</strong>。
+  </p>
+
+  <p>
+    越南是 <strong>220V</strong>，台灣是 <strong>110V</strong>。這代表：
+  </p>
+
+  <ul class="check-list">
+    <li><strong>手機、充電器、行動電源</strong>：現在大多支援 100–240V（像 iPhone 原廠充電器），可以直接用，看一下變壓器上的標示確認</li>
+    <li><strong>吹風機、電捲棒這種發熱的電器</strong>：如果只支援 110V，接上越南 220V 會直接燒掉。要先確認支援雙電壓，要不就用飯店的</li>
+  </ul>
+
+  <p>
+    所以充電設備的重點是：<strong>帶一顆支援 220V、多孔的充電器，一顆抵一包雜亂的插頭。</strong>
+  </p>
+
+  <div class="product-card">
+    <img class="product-card-img" src={products[2].img} alt={products[2].name} loading="lazy" />
+    <div class="product-card-body">
+      <div class="product-card-name">{products[2].name}</div>
+      <div class="product-card-spec">{products[2].spec}</div>
+      <p class="product-card-why">{products[2].why}</p>
+      <a class="product-card-cta" href={products[2].href} target="_blank" rel="sponsored nofollow noopener">{products[2].cta} →</a>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-title">過來人提醒</div>
+    <p>選電器一定要看「輸入電壓」標示。有寫 100–240V 的，就全球通用；只寫 110V，出國就放著別帶。
+    出發前花一分鐘翻一下變壓器上的小字，省得到當地燒一支。</p>
+  </div>
+
+  <h2>三、對付偷竊扒手：防身包</h2>
+
+  <p>
+    這點我必須老實講，因為它牽涉到你的安全。
+  </p>
+
+  <p>
+    越南整體治安還可以，但大城市（尤其胡志明）<strong>偶有「飛車搶」、扒手的情況</strong>。
+    常見的場景是：你在路邊低頭滑手機、手機或包包掛在身側，機車呼嘯而過，東西就不見了。
+  </p>
+
+  <p>
+    所以在越南，<strong>防身包的選擇很關鍵。</strong>我自己的三個重點：
+  </p>
+
+  <ol class="num-list">
+    <li><strong>能斜背、能包在胸前</strong>（不要單肩，容易被扯走）</li>
+    <li><strong>防割材質</strong>（割不開肩帶與包身）</li>
+    <li><strong>有防盜的設計</strong>（拉鍊不好開）</li>
+  </ol>
+
+  <div class="product-card">
+    <img class="product-card-img" src={products[3].img} alt={products[3].name} loading="lazy" />
+    <div class="product-card-body">
+      <div class="product-card-name">{products[3].name}</div>
+      <div class="product-card-spec">{products[3].spec}</div>
+      <p class="product-card-why">{products[3].why}</p>
+      <a class="product-card-cta" href={products[3].href} target="_blank" rel="sponsored nofollow noopener">{products[3].cta} →</a>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-title">過來人提醒</div>
+    <p>在越南的大城、用手機時，盡量避免靠近車道、站在店家門檻裡、或側背離身。
+    這個習慣比任何裝備都有用。</p>
+  </div>
+
+  <h2>更多越南必備小物（精選清單）</h2>
+
+  <p>
+    除了上面幾樣，我也整理了一個越南旅遊必備小物的蝦皮選品清單，裡面有更多炎熱天氣、收納、防身的實用小東西，
+    一樣是照「評價高、有實拍、規格對」的原則挑的：
+  </p>
+
+  <a class="shopee-banner" href={shopeeUrl} target="_blank" rel="sponsored nofollow noopener">
+    <strong>越南旅遊必備小物・蝦皮精選清單</strong>
+    <span>炎熱天氣、收納、防身一次看，照選品原則幫你篩好</span>
+    <span class="shopee-go">→ 打開蝦皮選品清單</span>
+  </a>
+
+  <div class="tip-box">
+    <div class="tip-title">出發前先把網路準備好</div>
+    <p>東西帶齊了，別忘了最關鍵的一樣：網路。越南落地沒網路，叫車、導航、查資料全卡住。
+    我另外寫過 <a href="/esim" class="inline">越南 eSIM 怎麼選不踩雷</a>，
+    包含各家在胡志明、河內、峴港的實際速度比較，出發前可以一起看。</p>
+  </div>
+
+  <h2>過來人的總結</h2>
+
+  <p>
+    去越南要帶什麼，其實不複雜，記住三個方向就好：
+  </p>
+
+  <ol class="num-list">
+    <li><strong>防曬防蚊一定要</strong>——越南炎熱、登革熱全年風險，這是剛性需求</li>
+    <li><strong>充電器看電壓</strong>——認明支援 220V，發熱的電器另外確認雙電壓</li>
+    <li><strong>防身包要防盜</strong>——對付飛車搶，斜背、防割、包前面</li>
+  </ol>
+
+  <div class="closing">
+    越南是個很好玩、很有人情味的地方，別讓一些小東西沒準備好，壞了你的旅程。
+    出發前花十分鐘備齊，落地就能輕鬆地享受所有美好。<br><br>
+    走過彎路的人，才知道哪些東西真的值得帶。<br>
+    希望這份在地清單，能讓你的越南行少一點手忙腳亂、多一點安心。<br><br>
+    關於越南上網的部分，我另外寫過 <em>eSIM 怎麼選不踩雷</em>，出發前也可以一起看。
+  </div>
+
+  <p class="disclosure">
+    本文部分連結為聯盟連結，若你透過連結購買，我會獲得一點分潤，但不影響你的價格。
+    以上是我根據越南旅遊實際需要、為你整理的選品方向與精選商品，你也可以照同樣的邏輯自行挑選適合的商品。
+  </p>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="越南親子旅遊、夫妻散策、eSIM 與機場貴賓室省錢情報，會在 IG、FB、YouTube 同步分享"
+  />
+
+  <div class="internal-links">
+    <a href="/esim">→ eSIM 品牌完整比較</a>
+    <a href="/vietnam-taxi-app-guide">→ 越南叫車 App 怎麼選</a>
+    <a href="/vietnam-guide">→ 越南帶小孩快速通關攻略</a>
+    <a href="/vietnam-jcb-lounge">→ 越南機場 JCB 貴賓室實戰</a>
+    <a href="/saigon-couple-walk">→ 胡志明夫妻夜遊：紅教堂、中央郵政</a>
+    <a href="/story">→ 我在越南的十年故事</a>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div class="footer-nav">
+    <a href="/">← 回首頁</a>
+    <a href="/esim">eSIM 比較</a>
+    <a href="/vietnam-guide">越南攻略</a>
+    <a href="/japan-guide">日本攻略</a>
+    <a href="/korea-guide">韓國攻略</a>
+    <a href="/thsr-guide">高鐵省錢</a>
+    <a href="/story">作者故事</a>
+    <a href="/privacy">隱私權政策</a>
+  </div>
+</footer>
+
+</body>
+</html>
