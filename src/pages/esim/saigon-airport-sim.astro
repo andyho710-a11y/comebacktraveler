@@ -1,0 +1,395 @@
+---
+import SocialLinks from '../../components/SocialLinks.astro';
+
+const title = "胡志明市機場 SIM 卡值得買嗎？住越南十年的過來人真心建議（2026）";
+const description = "剛下飛機站在新山一機場，到底該不該在現場買 SIM 卡？在越南住過十年、胡志明進出無數次的過來人，幫你算清楚機場買、線上買、蝦皮買的真實差異，落地不再手忙腳亂。";
+const canonical = "https://comebacktraveler.com/esim/saigon-airport-sim";
+const cover = "https://comebacktraveler.com/vietnam-airport-queue.jpg";
+const VIETTEL_ESIM_LINK = "https://linkgo.one/s/qG9cT";
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="胡志明市機場SIM卡,新山一機場SIM卡,越南eSIM,Viettel eSIM,越南上網,胡志明市上網,越南自由行,越南SIM卡推薦" />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:image" content={cover} />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="1500" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={cover} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "datePublished": "2026-06-07",
+    "dateModified": "2026-06-07",
+    "image": cover,
+    "inLanguage": "zh-TW"
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --green: #1d7f5f;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 56px 0 16px; position: relative; padding-left: 16px; line-height: 1.4; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; margin: 32px 0 10px; line-height: 1.5; color: var(--ink); }
+
+    .article-photo { width: 100%; height: auto; border-radius: 6px; margin: 32px 0 8px; display: block; }
+    .photo-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 36px; font-style: italic; }
+
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
+
+    .compare-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 15px; background: var(--paper); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .compare-table thead { background: var(--paper-warm); }
+    .compare-table th, .compare-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .compare-table th { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 14px; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tbody tr:nth-child(even) { background: rgba(242, 237, 224, 0.35); }
+    .compare-table td strong { color: var(--ink); }
+
+    .check-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
+    .check-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+
+    .cta-box { background: var(--ink); color: var(--paper); padding: 30px 32px; border-radius: 8px; margin: 44px 0; text-align: center; }
+    .cta-box strong { display: block; font-family: var(--serif); font-weight: 900; font-size: 20px; margin-bottom: 10px; }
+    .cta-box p { color: #d4c9b0; margin-bottom: 20px; font-size: 15px; }
+    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 13px 30px; border-radius: 4px; text-decoration: none; transition: background 0.15s; }
+    .cta-btn:hover { background: #a93226; }
+    .cta-note { color: #b9ad95; font-size: 12px; margin-top: 12px; line-height: 1.6; }
+
+    a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a.inline:hover { background: var(--paper-warm); }
+
+    .faq-item { border-top: 1px solid var(--border); padding-top: 22px; margin-top: 22px; }
+    .faq-item h3 { margin-top: 0; }
+
+    .closing { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border); font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .closing em { color: var(--ink); font-style: normal; font-weight: 600; }
+
+    .related-links { border-top: 1px solid var(--border); margin-top: 56px; padding-top: 32px; }
+    .related-links h3 { font-family: var(--serif); font-weight: 600; font-size: 17px; margin-bottom: 16px; color: var(--ink-light); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .related-item { border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px; text-decoration: none; color: var(--ink); transition: border-color 0.15s; }
+    .related-item:hover { border-color: var(--accent); }
+    .related-item-tag { font-size: 11px; color: var(--accent); font-weight: 500; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .related-item-title { font-size: 14px; font-weight: 500; line-height: 1.5; }
+
+    .disclosure { margin-top: 36px; padding: 14px 18px; background: var(--paper-warm); border-radius: 6px; font-size: 13px; color: var(--ink-light); line-height: 1.7; font-style: italic; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+    .footer-nav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      h2 { font-size: 22px; }
+      h3 { font-size: 17px; }
+      .compare-table { font-size: 13.5px; }
+      .compare-table th, .compare-table td { padding: 10px 10px; }
+      .cta-box { padding: 24px 20px; }
+      .related-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XW4LBK8PYF');
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">越南上網 · 新山一機場攻略 2026</div>
+  <h1>胡志明市機場 SIM 卡<br>值得現場買嗎？</h1>
+  <p class="subtitle">
+    剛下飛機站在新山一機場，到底該不該現場買 SIM 卡？<br>
+    住越南十年的過來人，幫你把機場買、線上 eSIM、實體 SIM 的真實差異講清楚。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 6 月更新 · 越南生活 10 年 · 胡志明市進出經驗整理</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <img
+    src="/vietnam-airport-queue.jpg"
+    alt="胡志明市新山一機場入境大廳排隊人潮與 SIM 卡購買建議"
+    class="article-photo"
+  />
+  <p class="photo-caption">落地後第一小時越順，整趟旅程越穩。上網這件事，我會建議出發前先處理好。</p>
+
+  <p>
+    你大概是這樣搜到這篇的：行程訂好了、機票買了，但「<strong>到了胡志明市機場再買 SIM 卡就好吧？</strong>」這個念頭一直在腦中打轉。
+  </p>
+
+  <p>
+    我懂這種猶豫。畢竟出國上網的選擇太多，很多人乾脆想「落地再說」。但我必須先給你一句過來人的結論：
+    <strong>胡志明市新山一機場（Tân Sơn Nhất）現場買 SIM 卡，可以，但通常不是最划算、最省事的選擇。</strong>
+  </p>
+
+  <p>
+    我在越南住了十年，胡志明市進出無數次；娶了越南太太之後，這幾年又常因為探親、旅行往返兩地。
+    新山一機場那個入境大廳，我熟到大概知道哪裡有 SIM 卡櫃台、哪裡換錢、哪裡叫車。
+    這篇就用我的實際經驗，幫你把「機場買 vs 出發前先買」算清楚，讓你落地那一刻不用站在領行李轉盤旁邊手忙腳亂。
+  </p>
+
+  <div class="story-box">
+    如果你時間有限，先記這句就好：<br><br>
+    <strong>手機支援 eSIM 的話，出發前先買、先裝好；機場 SIM 卡留給臨時沒準備的人。</strong><br><br>
+    不是機場不能買，而是你剛落地最累、最急、最沒有心情比價。那不是做決定的好時機。
+  </div>
+
+  <h2>機場現場買 SIM 卡：可以，但有三個現實</h2>
+
+  <p>
+    新山一機場入境大廳，確實有電信櫃位和小販賣 SIM 卡。臨時要用不是不行，但有三件事你要先有心理準備。
+  </p>
+
+  <h3>1. 價格通常比線上貴</h3>
+  <p>
+    機場是「最後一哩路」的生意，定價空間大。同樣看起來是 Viettel 或越南上網方案，現場售價往往比你在台灣線上先買貴一截。
+    觀光客人在現場、又急著上網，比較沒有比價餘地。這是全世界機場 SIM 卡的通則，越南也一樣。
+  </p>
+
+  <h3>2. 排隊和溝通成本很真實</h3>
+  <p>
+    剛下飛機、拖著行李、又累又想趕快出關，這時候還要排隊、跟櫃台用英文或比手畫腳溝通方案、等對方幫你裝卡設定，
+    體感比你想像的累。尖峰時段櫃位前排一串人，也不是什麼稀奇的事。
+  </p>
+
+  <h3>3. 方案不一定看得懂</h3>
+  <p>
+    現場推給你的方案，未必是最適合你天數和用量的。語言不通的情況下，很容易買到「比較貴、用不完」的方案，
+    或是搞不清楚到底幾 GB、幾天、能不能熱點分享。
+  </p>
+
+  <h2>出發前先買好：我們家現在都這樣做</h2>
+
+  <p>
+    這幾年陪太太回越南，我們的做法很固定：<strong>出發前在台灣就把上網搞定，落地直接用。</strong>
+  </p>
+
+  <p>
+    原因很簡單。現在越南 eSIM 在台灣線上就買得到，價格透明、可以慢慢比，又不用到現場排隊。
+    落地開機就有網路，省下的時間和力氣，比省那一點點價差更值得。
+  </p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>方式</th>
+        <th>怎麼買</th>
+        <th>適合誰</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>eSIM</strong></td>
+        <td>線上買，出發前掃碼安裝</td>
+        <td>手機支援 eSIM、想最省事的人</td>
+      </tr>
+      <tr>
+        <td><strong>實體 SIM 卡</strong></td>
+        <td>蝦皮或旅遊平台寄到家</td>
+        <td>手機不支援 eSIM、習慣換實體卡的人</td>
+      </tr>
+      <tr>
+        <td><strong>機場現場買</strong></td>
+        <td>落地後在櫃台買</td>
+        <td>臨時沒準備、不在意多花時間和預算的人</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>手機支援 eSIM 的話，我會直接建議用 eSIM。</strong>
+    不用換卡、不怕弄丟、出發前在家就裝好，落地開機即用。這也是我們家現在的固定做法。
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">怎麼確認手機支援 eSIM</div>
+    <p>
+      最快的方法是撥號輸入 <strong>*#06#</strong>，如果畫面跳出 <strong>EID</strong> 條碼，就代表支援。
+      或者看手機設定裡有沒有「加入 eSIM／加入行動方案」。第一次安裝可以搭配
+      <a href="/esim/install" class="inline">eSIM 安裝圖解教學</a>一起看。
+    </p>
+  </div>
+
+  <h2>越南上網，電信怎麼選？我會優先看 Viettel</h2>
+
+  <p>
+    不管你最後在哪裡買，<strong>電信線路的選擇比通路更重要。</strong>
+    這點在越南住過的人大多有共識：如果你希望訊號穩、覆蓋範圍廣，我會優先看 Viettel。
+  </p>
+
+  <p>
+    Viettel 在越南覆蓋範圍很廣，胡志明市區、河內、峴港這些大城市基本不用太擔心。
+    如果你的行程不只待在胡志明市，還會去美奈、大叻、富國島這些地方，線路穩定度就更重要。
+  </p>
+
+  <p>
+    其他像 Mobifone、Vinaphone 也都能用，價格有時候更便宜。但若你最在意「到哪都有訊號」，
+    我會把價格放第二順位，先看線路和評價。
+  </p>
+
+  <div class="cta-box">
+    <strong>想先把越南上網處理好？</strong>
+    <p>手機支援 eSIM 的話，可以先參考越南 Viettel 5G 原生 eSIM。出發前在 Wi-Fi 環境安裝好，落地後再啟用數據。</p>
+    <a href={VIETTEL_ESIM_LINK} target="_blank" rel="noopener sponsored nofollow" class="cta-btn">查看越南 Viettel 5G eSIM →</a>
+    <div class="cta-note">方案天數、流量與價格會變動，下單前請以購買頁面最新資訊為準。</div>
+  </div>
+
+  <h2>常見問題 FAQ</h2>
+
+  <div class="faq-item">
+    <h3>Q1：胡志明市機場一定要買 SIM 卡嗎？</h3>
+    <p>
+      不一定。如果你出發前已經在台灣買好 eSIM 或實體卡，落地開機就能用，完全不需要在機場排隊買。
+      機場買比較適合「完全沒準備」的臨時情況。
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Q2：eSIM 要在台灣裝，還是到越南裝？</h3>
+    <p>
+      建議在台灣有 Wi-Fi 的環境先安裝好，但先不要把它設成主要行動數據。
+      到越南下飛機後，再到手機設定裡開啟 eSIM 的行動數據和數據漫遊。這樣一落地就有網路，不會在機場手忙腳亂。
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Q3：我想要一個越南當地門號可以嗎？</h3>
+    <p>
+      純上網的 eSIM 通常不含當地門號。如果你需要越南門號，例如某些 App 要當地簡訊驗證，
+      可以入境後持護照到正規電信門市辦理。若只是要收原本台灣門號的簡訊，保留原門號開漫遊即可，跟 eSIM 不衝突。
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Q4：落地後要叫 Grab，eSIM 夠用嗎？</h3>
+    <p>
+      夠用。對旅客來說，落地最重要的就是有網路叫車、聯絡飯店、查地圖。
+      我會建議出發前先下載好 Grab，付款方式也先設定好。越南叫車 App 的差異，可以看
+      <a href="/vietnam-taxi-app-guide" class="inline">越南 Grab、Be、Xanh SM 實測比較</a>。
+    </p>
+  </div>
+
+  <div class="closing">
+    走過彎路的人，才知道哪條路真的值得走。<br><br>
+    出國旅遊，落地的第一個小時其實很關鍵。順順出關、有網路叫車、查得到路，整趟旅程的心情就穩了；
+    反之，一下飛機就卡在 SIM 卡櫃台前手忙腳亂，那股煩躁感會跟著你一整天。<br><br>
+    胡志明機場的 SIM 卡不是不能買，但<strong>出發前花十分鐘先買好，落地直接用</strong>，是我們家試過最省心的方式。
+    把麻煩留在家裡解決，把美好留給西貢。<br><br>
+    <em>祝你旅途順利、網路順暢。</em>
+  </div>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="越南、日韓旅遊筆記與省錢情報，會在 IG、FB、YouTube 同步分享"
+  />
+
+  <div class="related-links">
+    <h3>下一篇可以接著看</h3>
+    <div class="related-grid">
+      <a href="/esim/overseas-internet-guide" class="related-item">
+        <div class="related-item-tag">出國上網</div>
+        <div class="related-item-title">eSIM、WiFi 機、漫遊該選哪個？</div>
+      </a>
+      <a href="/esim/install" class="related-item">
+        <div class="related-item-tag">安裝教學</div>
+        <div class="related-item-title">eSIM 怎麼安裝？iPhone + Android 圖解</div>
+      </a>
+      <a href="/vietnam-taxi-app-guide" class="related-item">
+        <div class="related-item-tag">落地交通</div>
+        <div class="related-item-title">越南叫車 App 怎麼選？Grab、Be、Xanh SM</div>
+      </a>
+      <a href="/vietnam-guide" class="related-item">
+        <div class="related-item-tag">越南入境</div>
+        <div class="related-item-title">越南旅遊省時攻略：快速通關 + eSIM</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="disclosure">
+    本文部分連結為聯盟連結，若你透過連結購買，我會獲得一點分潤，但不影響你的價格。文中資訊整理於 2026 年 6 月，實際方案與價格請以購買頁面為準。
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div class="footer-nav">
+    <a href="/">← 回首頁</a>
+    <a href="/esim">eSIM 比較</a>
+    <a href="/vietnam-guide">越南攻略</a>
+    <a href="/vietnam-taxi-app-guide">越南叫車</a>
+    <a href="/japan-guide">日本攻略</a>
+    <a href="/korea-guide">韓國攻略</a>
+    <a href="/privacy">隱私權政策</a>
+  </div>
+</footer>
+
+</body>
+</html>
