@@ -145,6 +145,23 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
     .shopee-banner span { font-size: 14px; color: var(--ink-light); }
     .shopee-banner .shopee-go { display: inline-block; margin-top: 12px; color: var(--accent); font-weight: 600; font-size: 14.5px; }
 
+    .shopee-block {
+      border: 1px solid #ee4d2d;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      background: #fff7f5;
+    }
+    .shopee-eyebrow { color: #ee4d2d; font-weight: 700; font-size: 0.9rem; margin: 0 0 0.5rem; }
+    .shopee-title { margin: 0 0 0.75rem; font-size: 1.15rem; }
+    .shopee-desc { margin: 0 0 1.25rem; line-height: 1.7; }
+    .shopee-btn {
+      display: inline-block; background: #ee4d2d; color: #fff; font-weight: 700;
+      padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none;
+    }
+    .shopee-btn:hover { background: #d63e1f; }
+    .shopee-note { margin: 0.75rem 0 0; font-size: 0.85rem; color: #888; }
+
     a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
     a.inline:hover { background: var(--paper-warm); }
 
@@ -363,18 +380,23 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
     這個習慣比任何裝備都有用。</p>
   </div>
 
-  <h2>更多越南必備小物（精選清單）</h2>
+  <div class="shopee-block">
+    <p class="shopee-eyebrow">🛒 越南必備小物・蝦皮精選清單</p>
+    <h3 class="shopee-title">習慣用蝦皮的，這份清單一次幫你備齊</h3>
+    <p class="shopee-desc">
+      上面三類商品我給的是酷澎連結，但如果你平常習慣用蝦皮、想集中一次下單湊免運，我另外整理了一份蝦皮選品清單。一樣是照「評價高、有實拍、規格對」的原則幫你篩過的——防曬、防蚊、充電、收納、防身的實用小物都在裡面，對應你越南行真正會用到的東西。
+    </p>
+    <a class="shopee-btn" href="https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront" target="_blank" rel="nofollow noopener">
+      👉 打開蝦皮越南必備清單
+    </a>
+    <p class="shopee-note">蝦皮 App 內開啟可直接加購物車，追蹤效期較長，慢慢逛也算數。</p>
+  </div>
+
+  <h2>更多越南必備小物</h2>
 
   <p>
-    除了上面幾樣，我也整理了一個越南旅遊必備小物的蝦皮選品清單，裡面有更多炎熱天氣、收納、防身的實用小東西，
-    一樣是照「評價高、有實拍、規格對」的原則挑的：
+    如果還想看更多，完整的蝦皮選品清單在這裡：<a class="inline" href={shopeeUrl} target="_blank" rel="sponsored nofollow noopener">越南旅遊必備小物・蝦皮精選清單 →</a>
   </p>
-
-  <a class="shopee-banner" href={shopeeUrl} target="_blank" rel="sponsored nofollow noopener">
-    <strong>越南旅遊必備小物・蝦皮精選清單</strong>
-    <span>炎熱天氣、收納、防身一次看，照選品原則幫你篩好</span>
-    <span class="shopee-go">→ 打開蝦皮選品清單</span>
-  </a>
 
   <div class="tip-box">
     <div class="tip-title">出發前先把網路準備好</div>
