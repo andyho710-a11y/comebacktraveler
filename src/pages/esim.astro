@@ -3,6 +3,7 @@ import BlogLayout from '../layouts/BlogLayout.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 
 const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
+const KKDAY_LINK = 'https://onelink.one/s/nnjWf';
 
 const brands = [
   {
@@ -53,6 +54,7 @@ const brands = [
   },
   {
     name: 'KKday',
+    url: KKDAY_LINK,
     badges: [{ label: '平台型', cls: 'badge-platform' }],
     coverage: '日、韓、東南亞等',
     price: 'NT$295–623',
@@ -209,7 +211,11 @@ const brands = [
               {brands.map((b) => (
                 <tr class={b.featured ? 'featured' : ''} data-tags={b.tags}>
                   <td>
-                    <div class="brand-name">{b.name}</div>
+                    <div class="brand-name">
+                      {b.url
+                        ? <a href={b.url} target="_blank" rel="nofollow noopener">{b.name}</a>
+                        : b.name}
+                    </div>
                     {b.badges.map((badge) => (
                       <span class={`badge ${badge.cls}`}>{badge.label}</span>
                     ))}
@@ -273,6 +279,18 @@ const brands = [
         </a>
         <p class="cta-label">※ 本文含聯盟行銷連結，點擊後購買我會獲得少量佣金，不影響你的價格</p>
       </div>
+
+      <h3>需要當地門號接簡訊？可以看 KKday</h3>
+      <p>
+        JOYTEL 是我的首選，但如果你的需求是「要一個能收當地簡訊的門號」（例如要註冊當地 App、收 OTP 驗證碼），那 KKday 有提供「含門號」的方案，這點是純上網 eSIM 做不到的。
+      </p>
+      <p>
+        KKday 是大家熟悉的旅遊平台，eSIM 方案選擇多、常跟著旅遊活動有優惠，剛好遇到 618 這種購物檔期可以留意折扣。
+      </p>
+      <p>
+        <a href={KKDAY_LINK} target="_blank" rel="nofollow noopener" style="color:var(--accent);font-weight:500;">前往 KKday 查看 eSIM 方案 →</a>
+      </p>
+      <p class="table-note">※ 本段為聯盟連結，點擊購買我會獲得少量佣金，不影響你的價格</p>
 
       <div class="tip-box" style="margin:48px 0 0;">
         <div class="tip-title">eSIM 買了，不知道怎麼安裝？</div>
