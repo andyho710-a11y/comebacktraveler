@@ -1,0 +1,395 @@
+---
+import SocialLinks from '../components/SocialLinks.astro';
+
+const title = "越南自由行行李清單｜住越南十年，教你帶多少、怎麼裝、什麼上手提";
+const description = "越南自由行行李怎麼打包？住越南十年的過來人，從帶多少、怎麼裝箱、手提行李 vs 託運怎麼分，整理出一份不超重、不漏帶、不被海關卡的越南行李清單。";
+const canonical = "https://comebacktraveler.com/vietnam-packing-list";
+const cover = "https://comebacktraveler.com/vietnam-airport-queue.jpg";
+
+const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront";
+
+const faqs = [
+  {
+    q: "越南自由行帶幾公斤行李剛好？",
+    a: "5 天行程，含回程戰利品大約 15–18 公斤很夠。越南衣物薄、當地好買，重點是回程預留空間給咖啡、零食這些伴手禮。",
+  },
+  {
+    q: "行動電源可以帶上越南的飛機嗎？",
+    a: "可以，但只能隨身手提、禁止託運，且容量需符合航空規定（一般 100Wh 以下無虞）。越南內陸航班檢查較嚴，務必放隨身包。",
+  },
+  {
+    q: "越南需要帶轉接頭嗎？",
+    a: "插座大多與台灣扁頭相容，不一定需要轉接頭。真正要注意的是電壓——越南 220V、台灣 110V，發熱電器要確認支援雙電壓。",
+  },
+];
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:image" content={cover} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={cover} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "datePublished": "2026-06-12",
+    "dateModified": "2026-06-12",
+    "image": cover
+  })} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 56px 0 16px; position: relative; padding-left: 16px; line-height: 1.4; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; margin: 32px 0 10px; line-height: 1.5; color: var(--ink); }
+
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+
+    .article-photo { width: 100%; height: auto; border-radius: 6px; margin: 32px 0 8px; display: block; }
+    .photo-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 36px; font-style: italic; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
+    .tip-box.warn { border-color: #e6b8a8; background: #fdf3f0; }
+    .tip-box.warn .tip-title { color: var(--accent); }
+
+    .check-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
+    .check-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+
+    .cross-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
+    .cross-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .cross-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--gold); font-weight: 700; }
+
+    .num-list { padding-left: 0; list-style: none; margin: 16px 0 24px; counter-reset: numlist; }
+    .num-list li { position: relative; padding-left: 36px; margin-bottom: 12px; font-size: 16px; counter-increment: numlist; }
+    .num-list li::before { content: counter(numlist); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: var(--accent); color: var(--paper); border-radius: 50%; font-family: var(--serif); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+
+    /* 蝦皮精選區塊 */
+    .shopee-block {
+      border: 1px solid #ee4d2d;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      background: #fff7f5;
+    }
+    .shopee-eyebrow { color: #ee4d2d; font-weight: 700; font-size: 0.9rem; margin: 0 0 0.5rem; }
+    .shopee-title { margin: 0 0 0.75rem; font-size: 1.15rem; }
+    .shopee-desc { margin: 0 0 1.25rem; line-height: 1.7; }
+    .shopee-btn {
+      display: inline-block; background: #ee4d2d; color: #fff; font-weight: 700;
+      padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none;
+    }
+    .shopee-btn:hover { background: #d63e1f; }
+    .shopee-note { margin: 0.75rem 0 0; font-size: 0.85rem; color: #888; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .faq-q { font-family: var(--serif); font-weight: 600; font-size: 17px; color: var(--ink); margin-bottom: 8px; }
+    .faq-a { font-size: 15.5px; color: var(--ink-light); line-height: 1.8; margin: 0; }
+
+    a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a.inline:hover { background: var(--paper-warm); }
+
+    .closing { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border); font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .closing em { color: var(--ink); font-style: normal; font-weight: 600; }
+
+    .disclosure { margin-top: 36px; padding: 14px 18px; background: var(--paper-warm); border-radius: 6px; font-size: 13px; color: var(--ink-light); line-height: 1.7; font-style: italic; }
+
+    .internal-links { margin: 40px 0 0; display: flex; gap: 20px; flex-wrap: wrap; }
+    .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .internal-links a:hover { text-decoration: underline; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+    .footer-nav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      h2 { font-size: 22px; }
+      h3 { font-size: 17px; }
+    }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XW4LBK8PYF');
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">越南自由行 · 行李打包</div>
+  <h1>越南自由行行李清單<br>住越南十年，教你帶多少、怎麼裝、什麼上手提</h1>
+  <p class="subtitle">
+    越南自由行的行李，最常出兩個錯：帶太多、回程超重被罰；該放手提的塞進託運，落地最需要的東西反而拿不到。<br>
+    這篇用過來人的角度，只講三件事——帶多少、怎麼裝、什麼該上手提，讓你出發前一次打包到位。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 6 月更新 · 越南生活 10 年 · 在地經驗推薦</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <p>
+    每次有朋友要去越南，問完「該帶什麼」之後，下一句通常是：「那這些東西到底怎麼裝？要帶多大的行李箱？」
+  </p>
+
+  <p>
+    說真的，越南自由行的行李，最常出兩個錯：一是帶太多，到當地才發現一半用不到、回程還超重被罰錢；
+    二是該放手提的塞進託運，落地第一個小時最需要的東西反而拿不到。我在越南住了十年，來回飛了不知道幾趟，
+    這篇不講「要帶哪些小物」（那篇我另外寫過），只講一件事——<strong>帶多少、怎麼裝、什麼該上手提</strong>，
+    讓你出發前一次打包到位。
+  </p>
+
+  <h2>一、先決定行李箱大小：別被「天數」騙了</h2>
+
+  <p>
+    很多人用天數決定箱子大小，這是錯的。越南天氣熱、衣服薄、當地什麼都買得到，
+    <strong>衣物體積比你想的小很多</strong>。
+  </p>
+
+  <p>我的實際建議：</p>
+
+  <ul class="check-list">
+    <li><strong>5 天以內</strong>：20–24 吋登機箱就夠，甚至能直接手提登機、省託運時間</li>
+    <li><strong>6–10 天</strong>：26 吋一咖，留三成空間給回程戰利品（越南咖啡、腰果、零食真的會讓你失心瘋）</li>
+    <li><strong>帶小孩或長輩</strong>：行李會暴增，建議大箱 + 一個輕便後背包分裝</li>
+  </ul>
+
+  <p>
+    越南內陸航班（像飛富國島、峴港）對行李限重比國際線嚴格，廉航更是斤斤計較。
+    <strong>出發前一定要量行李重量</strong>，這是最常被忽略、卻最容易花冤枉錢的地方。
+  </p>
+
+  <p>
+    一個行李秤幾百塊，罰一次超重就回不來了。我習慣回程在飯店先秤一次，心裡有底：
+  </p>
+
+  <div class="shopee-block">
+    <p class="shopee-eyebrow">🛒 越南打包小物・蝦皮精選清單</p>
+    <h3 class="shopee-title">習慣用蝦皮的，行李秤、收納袋這類打包小物都在這</h3>
+    <p class="shopee-desc">
+      行李秤、壓縮袋、收納方塊這類打包小物，我整理在這份蝦皮選品清單裡，一樣是照「評價高、有實拍、規格對」的原則幫你篩過的，慢慢逛也算數。
+    </p>
+    <a class="shopee-btn" href={shopeeUrl} target="_blank" rel="nofollow noopener">
+      👉 打開蝦皮越南必備清單
+    </a>
+    <p class="shopee-note">蝦皮 App 內開啟可直接加購物車，追蹤效期較長。</p>
+  </div>
+
+  <h2>二、怎麼裝：壓縮 + 分裝，箱子才不會像戰場</h2>
+
+  <p>
+    越南行李打包的核心，就兩個字：<strong>分裝</strong>。熱帶旅遊流汗多、換洗頻繁，
+    東西散裝在箱子裡，第三天就變一團亂。
+  </p>
+
+  <p>我的裝箱邏輯：</p>
+
+  <ol class="num-list">
+    <li><strong>衣物用壓縮袋或收納方塊</strong>——薄衣物壓縮後體積少一半，乾淨／換洗分開裝</li>
+    <li><strong>3C 線材集中收一個小包</strong>——充電線、行動電源、轉接頭全放一起，不要散在各角落</li>
+    <li><strong>液體類獨立防漏袋</strong>——越南熱，防曬乳、洗髮精容易因氣壓滲漏，獨立裝免得毀掉整箱衣服</li>
+    <li><strong>回程預留一個空收納袋</strong>——專門裝戰利品和待洗衣物</li>
+  </ol>
+
+  <p>
+    收納方塊和壓縮袋是越南這種熱帶行程的隱形功臣，幾十塊的東西，整趟行李整齊度差很多。
+    酷澎和蝦皮都有，挑容量分級的組合包最實用。
+  </p>
+
+  <h2>三、手提 vs 託運：這條線分錯，落地會很狼狽</h2>
+
+  <p>
+    這是最多人忽略、卻最影響旅途順暢的一步。原則很簡單：
+    <strong>落地一小時內會用到的、貴的、不能摔的，全部上手提。</strong>
+  </p>
+
+  <h3>一定要上手提的：</h3>
+
+  <ul class="check-list">
+    <li><strong>護照、簽證文件、現金／信用卡</strong>——這不用解釋</li>
+    <li><strong>行動電源</strong>——這是規定，行動電源「禁止託運」，只能隨身。容量超過規定還可能被攔</li>
+    <li><strong>手機充電器、轉接頭</strong>——落地要叫車、導航，手機沒電最慌</li>
+    <li><strong>一套輕便換洗 + 防曬防蚊</strong>——萬一託運行李延誤，至少能撐一天</li>
+    <li><strong>常備藥、貴重 3C（相機、筆電）</strong></li>
+  </ul>
+
+  <h3>可以安心託運的：</h3>
+
+  <ul class="cross-list">
+    <li>大部分衣物、鞋子</li>
+    <li>盥洗用品、保養品（液體超過 100ml 一定要託運，這是安檢規定）</li>
+    <li>防盜包、雨具等到當地才用的東西</li>
+  </ul>
+
+  <div class="tip-box warn">
+    <div class="tip-title">特別提醒：行動電源</div>
+    <p>越南內陸航班和廉航對行動電源檢查很嚴，一定隨身、不要塞進託運箱，否則輕則被攔、重則整顆沒收。
+    出發前確認容量標示在合規範圍內（一般 100Wh 以下無虞）。</p>
+  </div>
+
+  <p>
+    行動電源、轉接頭這類「一定要上手提」的 3C，規格選對最重要。萬國轉接頭、支援雙電壓的充電器要怎麼挑，
+    我在另一篇有實際推薦的款式：
+    <a href="/vietnam-travel-essentials" class="inline">越南旅遊必備小物推薦</a>。
+  </p>
+
+  <h2>四、越南專屬的打包重點（其他國家用不到的）</h2>
+
+  <p>越南有幾個跟日韓很不一樣的地方，打包時要特別想到：</p>
+
+  <ul class="check-list">
+    <li><strong>220V 電壓</strong>：發熱電器（吹風機、電捲棒）只支援 110V 的會燒掉，確認雙電壓或用飯店的</li>
+    <li><strong>全年炎熱 + 登革熱</strong>：防曬防蚊是剛性需求，不是可有可無</li>
+    <li><strong>大城市偶有飛車搶</strong>：防盜斜背包比一般包重要</li>
+  </ul>
+
+  <p>
+    這三點我在另一篇講得更細——什麼牌子、什麼規格、為什麼——可以搭配看：
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">延伸閱讀</div>
+    <p>👉 <a href="/vietnam-travel-essentials" class="inline">越南旅遊必備小物推薦｜住越南十年，我推薦你帶這幾樣</a></p>
+  </div>
+
+  <h2>五、出發前最後一步：別忘了網路</h2>
+
+  <p>
+    行李打包好了，最容易忘的反而是最重要的一樣——<strong>網路</strong>。越南落地沒網路，叫車、導航、查資料全卡住。
+  </p>
+
+  <p>
+    eSIM 出發前在家掃 QR Code 就裝好，落地直接開網路，連換卡都省了。
+    哪一家適合你、各家在胡志明河內峴港的實際速度，我整理在這篇：
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">出發前先把網路準備好</div>
+    <p>👉 <a href="/esim" class="inline">出國 eSIM 怎麼選？住越南十年的台灣人幫你整理好了</a></p>
+  </div>
+
+  <h2>常見問題 FAQ</h2>
+
+  {faqs.map((f) => (
+    <div class="faq-item">
+      <div class="faq-q">Q：{f.q}</div>
+      <p class="faq-a">A：{f.a}</p>
+    </div>
+  ))}
+
+  <div class="closing">
+    越南自由行的行李，記住三句話就好：<em>箱子別貪大、東西要分裝、貴重上手提。</em><br>
+    帶得剛好、裝得整齊、該隨身的不漏，落地那一刻就能輕鬆開始玩，而不是手忙腳亂翻箱子。<br><br>
+    走過彎路的人，才知道哪些東西真的值得帶、哪些重量根本是多餘的。<br>
+    希望這份在地打包清單，讓你的越南行從第一步就順。
+  </div>
+
+  <p class="disclosure">
+    💡 透明聲明：本文部分連結為聯盟行銷連結。你透過連結購買，我會獲得少許佣金，但不影響你的價格與我的建議立場。
+  </p>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="越南親子旅遊、夫妻散策、eSIM 與機場貴賓室省錢情報，會在 IG、FB、YouTube 同步分享"
+  />
+
+  <div class="internal-links">
+    <a href="/vietnam-travel-essentials">→ 越南必備小物推薦</a>
+    <a href="/esim">→ eSIM 品牌完整比較</a>
+    <a href="/vietnam-taxi-app-guide">→ 越南叫車 App 怎麼選</a>
+    <a href="/vietnam-guide">→ 越南帶小孩快速通關攻略</a>
+    <a href="/vietnam-jcb-lounge">→ 越南機場 JCB 貴賓室實戰</a>
+    <a href="/story">→ 我在越南的十年故事</a>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div class="footer-nav">
+    <a href="/">← 回首頁</a>
+    <a href="/esim">eSIM 比較</a>
+    <a href="/vietnam-travel-essentials">越南必備小物</a>
+    <a href="/vietnam-guide">越南攻略</a>
+    <a href="/japan-guide">日本攻略</a>
+    <a href="/korea-guide">韓國攻略</a>
+    <a href="/story">作者故事</a>
+    <a href="/privacy">隱私權政策</a>
+  </div>
+</footer>
+
+</body>
+</html>
