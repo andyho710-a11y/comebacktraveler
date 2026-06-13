@@ -167,6 +167,14 @@ export const travelArticles = [
     pubDate: '2026-06-02',
   },
   {
+    tag: '越南女生旅行 2026',
+    title: '越南女生旅行必帶物品｜住越南十年，這幾樣沒帶你會後悔',
+    desc: '越南女生旅行要帶什麼？住越南十年的在地人整理：防曬、防蚊、私密處護理、安全防身、美妝保養，哪些台灣帶、哪些當地買，一篇說清楚。',
+    href: '/vietnam-girls-packing',
+    label: '看女生必帶清單 →',
+    pubDate: '2026-06-13',
+  },
+  {
     tag: '關於這個人',
     title: '從越南副總到 Uber 司機：重新出發的故事',
     desc: '越南工廠十年、養蝦失敗、跑 Uber、父親離世——那些跌跤的歲月，才是真正的養分。',
@@ -185,14 +193,6 @@ export const extraArticles = [
     href: '/vietnam-packing-list',
     label: '看行李清單 →',
     pubDate: '2026-06-12',
-  },
-  {
-    tag: '越南女生旅行 2026',
-    title: '越南女生旅行必帶物品｜住越南十年，這幾樣沒帶你會後悔',
-    desc: '越南女生旅行要帶什麼？住越南十年的在地人整理：防曬、防蚊、私密處護理、安全防身、美妝保養，哪些台灣帶、哪些當地買，一篇說清楚。',
-    href: '/vietnam-girls-packing',
-    label: '看女生必帶清單 →',
-    pubDate: '2026-06-13',
   },
 ];
 
