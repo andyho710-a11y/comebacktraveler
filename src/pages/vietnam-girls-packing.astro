@@ -1,0 +1,425 @@
+---
+import SocialLinks from '../components/SocialLinks.astro';
+
+const title = "越南女生旅行必帶物品｜住越南十年，這幾樣沒帶你會後悔";
+const description = "越南女生旅行要帶什麼？住越南十年的在地人整理：防曬、防蚊、私密處護理、安全防身、美妝保養，哪些台灣帶、哪些當地買，一篇說清楚。含蝦皮／酷澎選品清單。";
+const canonical = "https://comebacktraveler.com/vietnam-girls-packing";
+const cover = "https://comebacktraveler.com/vietnam-airport-queue.jpg";
+
+const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront";
+
+const faqs = [
+  {
+    q: "越南女生旅行一個人安全嗎？",
+    a: "主要觀光城市（胡志明、河內、峴港、會安）整體安全，單獨女生旅行沒問題，但要注意包包別背後側、避免深夜獨行偏僻巷弄、機車招手攬客要謹慎。有防盜包 + 注意動線，放心去。",
+  },
+  {
+    q: "越南當地買得到台灣的保養品嗎？",
+    a: "知名國際品牌（Biore、資生堂等）在大城市百貨有，但台灣熟悉的小品牌、藥妝通路不一定找得到，而且價格比台灣貴。日常慣用的防曬、保養建議從台灣帶足。",
+  },
+  {
+    q: "越南需要準備多少現金？",
+    a: "胡志明市、河內大部分餐廳、商場可刷卡，但夜市、路邊攤、機車計程車（Xe Om）只收現金。建議備 200-300 萬越南盾現金（約台幣 2,600-4,000 元）作為日常零用，大額消費用信用卡。",
+  },
+];
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:image" content={cover} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={cover} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "datePublished": "2026-06-13",
+    "dateModified": "2026-06-13",
+    "image": cover
+  })} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .site-header { border-bottom: 2px solid var(--ink); padding: 18px 0; text-align: center; background: var(--paper); position: sticky; top: 0; z-index: 100; }
+    .site-name { font-family: var(--serif); font-weight: 900; font-size: 20px; letter-spacing: 0.12em; color: var(--ink); text-decoration: none; }
+    .site-name span { color: var(--accent); }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 56px 0 16px; position: relative; padding-left: 16px; line-height: 1.4; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; margin: 32px 0 10px; line-height: 1.5; color: var(--ink); }
+
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+
+    .article-photo { width: 100%; height: auto; border-radius: 6px; margin: 32px 0 8px; display: block; }
+    .photo-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 36px; font-style: italic; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
+    .tip-box.warn { border-color: #e6b8a8; background: #fdf3f0; }
+    .tip-box.warn .tip-title { color: var(--accent); }
+
+    .check-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
+    .check-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+
+    .cross-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
+    .cross-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .cross-list li::before { content: '✗'; position: absolute; left: 0; top: 0; color: var(--ink-light); font-weight: 700; }
+
+    .num-list { padding-left: 0; list-style: none; margin: 16px 0 24px; counter-reset: numlist; }
+    .num-list li { position: relative; padding-left: 36px; margin-bottom: 12px; font-size: 16px; counter-increment: numlist; }
+    .num-list li::before { content: counter(numlist); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: var(--accent); color: var(--paper); border-radius: 50%; font-family: var(--serif); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+
+    /* 蝦皮精選區塊 */
+    .shopee-block {
+      border: 1px solid #ee4d2d;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      background: #fff7f5;
+    }
+    .shopee-eyebrow { color: #ee4d2d; font-weight: 700; font-size: 0.9rem; margin: 0 0 0.5rem; }
+    .shopee-title { margin: 0 0 0.75rem; font-size: 1.15rem; }
+    .shopee-desc { margin: 0 0 1.25rem; line-height: 1.7; }
+    .shopee-btn {
+      display: inline-block; background: #ee4d2d; color: #fff; font-weight: 700;
+      padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none;
+    }
+    .shopee-btn:hover { background: #d63e1f; }
+    .shopee-note { margin: 0.75rem 0 0; font-size: 0.85rem; color: #888; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .faq-q { font-family: var(--serif); font-weight: 600; font-size: 17px; color: var(--ink); margin-bottom: 8px; }
+    .faq-a { font-size: 15.5px; color: var(--ink-light); line-height: 1.8; margin: 0; }
+
+    a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a.inline:hover { background: var(--paper-warm); }
+
+    .closing { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border); font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .closing em { color: var(--ink); font-style: normal; font-weight: 600; }
+
+    .disclosure { margin-top: 36px; padding: 14px 18px; background: var(--paper-warm); border-radius: 6px; font-size: 13px; color: var(--ink-light); line-height: 1.7; font-style: italic; }
+
+    .internal-links { margin: 40px 0 0; display: flex; gap: 20px; flex-wrap: wrap; }
+    .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .internal-links a:hover { text-decoration: underline; }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+    .footer-nav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      h2 { font-size: 22px; }
+      h3 { font-size: 17px; }
+    }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XW4LBK8PYF');
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-name">重來的<span>旅人</span></a>
+</header>
+
+<div class="hero">
+  <div class="category-tag">越南自由行 · 女生必帶</div>
+  <h1>越南女生旅行必帶物品<br>住越南十年，這幾樣沒帶你會後悔</h1>
+  <p class="subtitle">
+    去越南玩，最常聽到女生回來說的不是「好好玩」，而是「好熱」「好曬」「那個蚊子⋯⋯」。<br>
+    我在越南住了十年，見過太多女生到了當地才後悔沒多帶一樣東西——這篇就是要讓你出發前一次帶對，不要靠運氣。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 6 月更新 · 越南生活 10 年 · 在地經驗推薦</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <p>
+    去越南玩，最常聽到女生回來說的話不是「好好玩」，而是「好熱」「好曬」「那個蚊子⋯⋯」
+  </p>
+
+  <p>
+    越南大城市（胡志明、河內）有 Circle K、FamilyMart，但進了峴港以外的二線城市、郊區、海島，便利商店就基本消失了。
+    就算在胡志明找得到防曬，你習慣的牌子、成分、防水等級，也九成九對不上——在地賣的是越南或韓國品牌，
+    不是你在台灣藥妝店熟悉的那幾罐。我在越南住了十年，見過太多女生到了當地才後悔沒多帶一樣東西——
+    這篇就是要讓你出發前一次帶對，不要靠運氣。
+  </p>
+
+  <h2>一、防曬是剛需，不是選配</h2>
+
+  <p>
+    越南全年高溫，紫外線強度是台灣的 1.5 倍以上，尤其海邊（峴港、富國島、會安）更是曬到懷疑人生。
+    台灣帶過去的防曬「用完沒得補」才是最大問題——當地有防曬賣，但你習慣的牌子、成分、防水等級，
+    九成九找不到一模一樣的。
+  </p>
+
+  <h3>選品邏輯：</h3>
+
+  <ul class="check-list">
+    <li><strong>SPF50+ PA++++ 是基本</strong>，低於這個在越南等於沒擦</li>
+    <li><strong>一定要耐汗防水</strong>——越南的汗不是台灣的汗，一出門就濕透</li>
+    <li><strong>推薦備兩罐</strong>：臉部用（輕薄不悶）+ 身體用（大容量好補擦）</li>
+  </ul>
+
+  <p>
+    防曬是這趟行李裡最不能省的。台灣出發前備齊，不要賭當地買得到：
+  </p>
+
+  <div class="shopee-block">
+    <p class="shopee-eyebrow">🛒 越南旅遊必備小物・蝦皮精選</p>
+    <h3 class="shopee-title">防曬精選清單，照「評價高、有實拍、規格對」幫你篩過</h3>
+    <p class="shopee-desc">
+      SPF50+、耐汗防水的防曬，我整理在這份蝦皮選品清單裡，臉部用、身體用都有，出發前先在台灣備齊。
+    </p>
+    <a class="shopee-btn" href={shopeeUrl} target="_blank" rel="nofollow noopener">
+      👉 打開蝦皮越南必備清單
+    </a>
+  </div>
+
+  <h2>二、防蚊不只是「怕癢」的問題</h2>
+
+  <p>
+    越南全年有登革熱風險，不是旱季就安全，雨季更嚴重。蚊子在越南不是煩人的小事，
+    是真的要認真防的健康問題。
+  </p>
+
+  <h3>成分要看清楚：</h3>
+
+  <ul class="check-list">
+    <li><strong>派卡瑞丁（Picaridin）</strong>：對皮膚刺激性低，適合長時間使用，適合女生和敏感肌</li>
+    <li><strong>DEET（敵避）</strong>：效果強但濃度高，長時間用對皮膚有負擔，適合叢林或高風險區</li>
+    <li>一般香茅、精油配方在越南效果有限，認真防蚊要選前兩種成分</li>
+  </ul>
+
+  <p>
+    防蚊液建議帶隨身小瓶裝，放包包隨時補噴，餐廳戶外座位、市場、夜市都是高風險場景。
+  </p>
+
+  <h2>三、女生必備但常被忽略的：私密處護理</h2>
+
+  <p>
+    這段男生不寫，但對女生來說去越南是大事。
+  </p>
+
+  <p>
+    越南天氣熱、濕度高，整天穿合身衣物容易悶出問題。加上飲食油膩、換洗頻繁，
+    私密處護理用品<strong>一定要從台灣帶，不要臨時在當地找</strong>。
+  </p>
+
+  <h3>帶什麼：</h3>
+
+  <ul class="check-list">
+    <li>私密清潔慕斯或潔膚濕巾（弱酸性，旅途中隨時清潔用）</li>
+    <li>私密益生菌膠囊（長途旅行、飲食不規律容易菌叢失衡）</li>
+    <li>透氣棉質內褲多帶幾件——越南氣候真的不適合穿合成纖維</li>
+  </ul>
+
+  <p>
+    這幾樣當地買不到你習慣的，帶夠比較安心。
+  </p>
+
+  <h2>四、安全防身：不是嚇你，是真的要準備</h2>
+
+  <p>
+    胡志明市和河內部分區域有飛車搶包的情況，特別是外觀明顯的觀光客。
+    女生單獨出行，包包的選擇直接影響安全感。
+  </p>
+
+  <h3>包包選法：</h3>
+
+  <ul class="check-list">
+    <li>斜背包要背在<strong>身體前側</strong>，不要背後——這是當地人的基本動作</li>
+    <li>選有防割材質的包，或至少避免只用拉鍊朝外的設計</li>
+    <li>手機不要邊走邊滑，特別是路邊、紅綠燈口</li>
+  </ul>
+
+  <div class="tip-box">
+    <div class="tip-title">延伸閱讀</div>
+    <p>防盜斜背包我在越南小物文講過了，這裡直接導過去：
+    👉 <a href="/vietnam-travel-essentials" class="inline">越南旅遊必備小物推薦｜住越南十年，我推薦你帶這幾樣</a></p>
+  </div>
+
+  <h2>五、美妝保養：哪些帶、哪些不用帶</h2>
+
+  <p>
+    越南天氣熱，保養邏輯跟台灣冬天完全不同，很多人帶了一堆用不到。
+  </p>
+
+  <h3>建議帶的：</h3>
+
+  <ul class="check-list">
+    <li>輕薄保濕化妝水 + 乳液（越南室內冷氣強，皮膚反而容易乾）</li>
+    <li>卸妝濕巾（流汗多、方便隨時補妝或快速卸妝）</li>
+    <li>唇膏 + 防曬護唇膏（嘴唇也會曬傷）</li>
+    <li>隨身小鏡 + 補妝粉餅（戶外活動多，補妝頻率比在台灣高）</li>
+  </ul>
+
+  <h3>不用特別帶的：</h3>
+
+  <ul class="cross-list">
+    <li>厚重精華液、晚霜——越南晚上也熱，皮膚吸收差，塗了也是悶</li>
+    <li>大罐卸妝油——液體超過 100ml 要託運，買旅行裝就好</li>
+    <li>多套正式妝備用——越南旅遊以輕鬆外出為主，簡單日妝就夠</li>
+  </ul>
+
+  <h2>六、衛生相關：這幾樣一定要帶夠</h2>
+
+  <p>
+    越南部分地區（特別是非觀光區餐廳）的廁所備品不穩定，公廁不一定有衛生紙。
+  </p>
+
+  <h3>帶夠帶好：</h3>
+
+  <ul class="check-list">
+    <li><strong>隨身衛生紙</strong>：不嫌多，越南公廁不一定有</li>
+    <li><strong>濕紙巾</strong>：吃路邊攤、逛夜市，沒地方洗手就靠它</li>
+    <li><strong>個人藥品</strong>：止瀉藥、腸胃藥、退燒藥——越南路邊攤吃多難免腸胃不適，當地藥局找到你需要的牌子要靠運氣</li>
+    <li><strong>創可貼 + 消毒酒精棉片</strong>：騎機車或走舊城區石板路，小擦傷很常見</li>
+  </ul>
+
+  <div class="shopee-block">
+    <p class="shopee-eyebrow">🛒 蝦皮旅行必備清單</p>
+    <h3 class="shopee-title">衛生、隨身收納這類打包小物都在這份清單裡</h3>
+    <p class="shopee-desc">
+      隨身衛生紙、濕紙巾、收納袋這類旅行小物，我整理在這份蝦皮選品清單裡，慢慢逛也算數。
+    </p>
+    <a class="shopee-btn" href={shopeeUrl} target="_blank" rel="nofollow noopener">
+      👉 越南旅遊必備小物・蝦皮精選
+    </a>
+  </div>
+
+  <h2>七、出發前最後確認：網路備好了嗎？</h2>
+
+  <p>
+    行李都備齊了，最容易忘的是<strong>網路</strong>。越南落地沒網路，叫 Grab（越南版 Uber）、導航、訂餐廳全卡住。
+  </p>
+
+  <p>
+    eSIM 是最省事的選擇，出發前在家設好，落地直接開，不用換實體卡、不用排機場攤位。
+    哪家速度快、哪家在胡志明河內峴港實測穩，我整理在這篇：
+  </p>
+
+  <div class="tip-box">
+    <div class="tip-title">出發前先把網路準備好</div>
+    <p>👉 <a href="/esim" class="inline">出國 eSIM 怎麼選？住越南十年的台灣人幫你整理好了</a></p>
+  </div>
+
+  <h2>常見問題 FAQ</h2>
+
+  {faqs.map((f) => (
+    <div class="faq-item">
+      <div class="faq-q">Q：{f.q}</div>
+      <p class="faq-a">A：{f.a}</p>
+    </div>
+  ))}
+
+  <div class="closing">
+    越南是一個只要準備對了，玩起來非常舒服的地方。<em>熱是真的熱，但你備好防曬防蚊、包包背對位置、網路弄好、腸胃藥放口袋，其他的就讓自己好好玩。</em><br><br>
+    走過彎路的人，才知道哪些東西真的值得帶、哪些重量可以省。<br>
+    希望這份清單讓你的越南行從打包那一刻就對。
+  </div>
+
+  <p class="disclosure">
+    💡 透明聲明：本文部分連結為聯盟行銷連結。你透過連結購買，我會獲得少許佣金，不影響你的價格與我的建議立場。
+  </p>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="越南親子旅遊、夫妻散策、eSIM 與機場貴賓室省錢情報，會在 IG、FB、YouTube 同步分享"
+  />
+
+  <div class="internal-links">
+    <a href="/vietnam-travel-essentials">→ 越南必備小物推薦</a>
+    <a href="/vietnam-packing-list">→ 越南行李打包清單</a>
+    <a href="/esim">→ eSIM 品牌完整比較</a>
+    <a href="/vietnam-taxi-app-guide">→ 越南叫車 App 怎麼選</a>
+    <a href="/vietnam-guide">→ 越南帶小孩快速通關攻略</a>
+    <a href="/story">→ 我在越南的十年故事</a>
+  </div>
+
+</article>
+
+<footer>
+  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+  <div class="footer-nav">
+    <a href="/">← 回首頁</a>
+    <a href="/esim">eSIM 比較</a>
+    <a href="/vietnam-travel-essentials">越南必備小物</a>
+    <a href="/vietnam-packing-list">行李打包清單</a>
+    <a href="/vietnam-guide">越南攻略</a>
+    <a href="/japan-guide">日本攻略</a>
+    <a href="/korea-guide">韓國攻略</a>
+    <a href="/story">作者故事</a>
+    <a href="/privacy">隱私權政策</a>
+  </div>
+</footer>
+
+</body>
+</html>
