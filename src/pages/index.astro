@@ -121,11 +121,14 @@ const offers = [
             <div class="coupon-bottom">
               <div>
                 <div class="coupon-label">優惠碼</div>
-                <code class="coupon-code">{o.code}</code>
+                <button type="button" class="coupon-code copy-code" data-code={o.code} aria-label={`複製優惠碼 ${o.code}`}>
+                  <span class="code-text">{o.code}</span>
+                  <span class="copy-hint">複製</span>
+                </button>
               </div>
               <div class="coupon-expiry">效期至 {o.validUntil}</div>
             </div>
-            <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer" class="coupon-btn">
+            <a href={o.url ?? AFFILIATE_LINK} target="_blank" rel="noopener noreferrer sponsored" class="coupon-btn">
               前往 Klook 使用 →
             </a>
           </div>
@@ -173,6 +176,35 @@ const offers = [
 
   </div>
 </BlogLayout>
+
+<script>
+  // 一鍵複製優惠碼：複製後給視覺回饋，降低使用者手動選取的摩擦
+  document.querySelectorAll('.copy-code').forEach(function (btn) {
+    btn.addEventListener('click', async function () {
+      var code = btn.getAttribute('data-code') || '';
+      try {
+        await navigator.clipboard.writeText(code);
+      } catch (err) {
+        var ta = document.createElement('textarea');
+        ta.value = code;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      var hint = btn.querySelector('.copy-hint');
+      if (hint) {
+        var prev = hint.textContent;
+        hint.textContent = '已複製 ✓';
+        btn.classList.add('copied');
+        setTimeout(function () {
+          hint.textContent = prev;
+          btn.classList.remove('copied');
+        }, 1600);
+      }
+    });
+  });
+</script>
 
 <script>
   var form = document.getElementById('subscribe-form');
@@ -426,6 +458,9 @@ const offers = [
   .coupon-bottom { display: flex; align-items: center; justify-content: space-between; }
   .coupon-label { font-size: 11px; color: var(--ink-light); margin-bottom: 4px; }
   .coupon-code {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     background: var(--paper-warm);
     color: var(--ink);
     font-family: monospace;
@@ -433,7 +468,20 @@ const offers = [
     padding: 4px 10px;
     border-radius: 4px;
     letter-spacing: 0.06em;
+    border: 1px dashed var(--border);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
   }
+  .coupon-code:hover { background: #ece3cf; border-color: var(--accent); }
+  .coupon-code .copy-hint {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .coupon-code.copied { border-color: #1c5e15; }
+  .coupon-code.copied .copy-hint { color: #1c5e15; }
   .coupon-expiry { font-size: 12px; color: var(--ink-light); white-space: nowrap; padding-left: 12px; }
   .coupon-btn {
     display: block;
