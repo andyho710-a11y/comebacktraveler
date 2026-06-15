@@ -1,6 +1,6 @@
 ---
 const title = "服務項目｜重來的旅人 Comeback Traveler";
-const description = "網站架設、網頁設計、自動交易程式開發、智慧家庭安裝施工——每一項都親力親為，不假手外包。";
+const description = "網站架設、網頁設計、自動交易程式開發——每一項都親力親為，不假手外包。";
 const canonical = "https://comebacktraveler.com/services";
 ---
 
@@ -11,7 +11,7 @@ const canonical = "https://comebacktraveler.com/services";
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <meta name="keywords" content="架設網站,網頁設計,自動交易程式,智慧家庭,台灣接案" />
+  <meta name="keywords" content="架設網站,網頁設計,自動交易程式,單頁網站,台灣接案" />
   <link rel="canonical" href={canonical} />
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
@@ -277,10 +277,11 @@ const canonical = "https://comebacktraveler.com/services";
     /* ── PLANS ── */
     .plans-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       margin-bottom: 48px;
     }
+    @media (max-width: 860px) { .plans-row { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 600px) { .plans-row { grid-template-columns: 1fr; } }
     .plan-card {
       background: var(--paper);
@@ -526,7 +527,7 @@ const canonical = "https://comebacktraveler.com/services";
   <header class="hero">
     <p class="hero-label">重來的旅人 · Comeback Traveler</p>
     <h1>走過彎路的人，<br><em>更知道怎麼幫你</em></h1>
-    <p class="hero-sub">旅遊以外，我也提供網站架設、網頁設計、自動交易程式開發與智慧家庭安裝——每一項都親力親為，不假手外包。</p>
+    <p class="hero-sub">旅遊以外，我也提供網站架設、網頁設計與自動交易程式開發——每一項都親力親為，不假手外包。</p>
     <div class="hero-contact-strip">
       <span>📞 <a href="tel:0986410888">0986-410-888</a></span>
       <span>✉️ <a href="mailto:andyho710@gmail.com">andyho710@gmail.com</a></span>
@@ -544,7 +545,7 @@ const canonical = "https://comebacktraveler.com/services";
         <div class="service-num">01</div>
         <div class="service-icon">🌐</div>
         <h3 class="service-name">架設網站</h3>
-        <p class="service-desc">從網域申請、主機選擇、到網站上線，一條龍包辦。Astro 靜態高效能站或 WordPress 動態管理站，依需求選擇。含 SSL、每日備份與教學。</p>
+        <p class="service-desc">從網域申請、主機選擇、到網站上線，一條龍包辦。Astro 靜態高效能站或 WordPress 動態管理站，依需求選擇。含 SSL、每日備份與教學。（你現在看的這個 comebacktraveler.com，就是我用 Astro 親手架設的。）</p>
         <div class="service-tags">
           <span class="tag">Astro</span>
           <span class="tag">WordPress</span>
@@ -572,7 +573,7 @@ const canonical = "https://comebacktraveler.com/services";
         <div class="service-num">03</div>
         <div class="service-icon">📈</div>
         <h3 class="service-name">自動交易程式開發</h3>
-        <p class="service-desc">客製化量化交易策略程式開發，支援 TradingView Pine Script、MT4/MT5 Expert Advisor 或 Python Bot。依策略邏輯規格報價，免費先諮詢。</p>
+        <p class="service-desc">客製化量化交易策略程式開發，支援 TradingView Pine Script、MT4/MT5 Expert Advisor 或 Python Bot。依策略邏輯規格報價，免費先諮詢。（我自己長期運行著 OKX 交易監控 bot 與 Telegram 自動化工具，都是實際運作中的作品。）</p>
         <div class="service-tags">
           <span class="tag">Pine Script</span>
           <span class="tag">MT4/MT5</span>
@@ -580,20 +581,6 @@ const canonical = "https://comebacktraveler.com/services";
           <span class="tag">回測優化</span>
         </div>
         <a href="mailto:andyho710@gmail.com" class="service-cta">免費諮詢 →</a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-num">04</div>
-        <div class="service-icon">🏠</div>
-        <h3 class="service-name">智慧家庭安裝施工</h3>
-        <p class="service-desc">智慧燈控、門鎖、攝影機、語音助理、全屋自動化情境設定。到府評估後提供施工報價，安裝完成提供使用教學與後續支援。</p>
-        <div class="service-tags">
-          <span class="tag">智慧燈控</span>
-          <span class="tag">門禁系統</span>
-          <span class="tag">監控攝影</span>
-          <span class="tag">Home Automation</span>
-        </div>
-        <a href="tel:0986410888" class="service-cta">電話詢問 →</a>
       </div>
     </div>
 
@@ -615,6 +602,18 @@ const canonical = "https://comebacktraveler.com/services";
         <!-- Plans -->
         <p class="sub-label" style="margin-bottom:16px">選擇方案</p>
         <div class="plans-row">
+          <div class="plan-card">
+            <h3 class="plan-name">方案入門｜單頁形象站</h3>
+            <p class="plan-subtitle">Astro 單頁網站 + 雲端託管</p>
+            <div class="plan-price">NT$ 16,800</div>
+            <p class="plan-price-note">適合個人品牌、活動頁、作品集</p>
+            <ul class="plan-items">
+              <li>Astro 單頁式網站開發（Landing Page，SEO 優化）</li>
+              <li>雲端主機代管 1 年（含 SSL）</li>
+              <li>國際通用網域申請代辦 (.com)</li>
+              <li>網站原始碼、操作說明交付</li>
+            </ul>
+          </div>
           <div class="plan-card">
             <h3 class="plan-name">方案 A｜高效形象組</h3>
             <p class="plan-subtitle">Astro 靜態網站 + 雲端託管</p>
@@ -658,6 +657,13 @@ const canonical = "https://comebacktraveler.com/services";
           </thead>
           <tbody>
             <tr>
+              <td>0</td>
+              <td>單頁形象站開發</td>
+              <td>Astro 單頁式 Landing Page，SEO 優化，適合個人品牌、活動頁</td>
+              <td>1 式</td>
+              <td>$14,000</td>
+            </tr>
+            <tr>
               <td>1</td>
               <td>網站主體開發</td>
               <td>Astro 靜態網站，高效能 / SEO 優化<br><small style="color:#999">無後台管理，適合品牌形象、單頁活動頁</small></td>
@@ -695,7 +701,7 @@ const canonical = "https://comebacktraveler.com/services";
           </tbody>
         </table>
         <div class="table-note">
-          ⚠️ 以上金額僅供參考，實際總額視最終選定方案而定。自動交易程式開發、智慧家庭安裝施工另行洽詢報價。
+          ⚠️ 以上金額僅供參考，實際總額視最終選定方案而定。自動交易程式開發另行洽詢報價。
         </div>
 
         <!-- Process -->
@@ -749,7 +755,7 @@ const canonical = "https://comebacktraveler.com/services";
           <li>素材準備由客戶提供品牌 LOGO、圖片、文案等素材。若需代為撰寫或購買版權圖，費用另計。</li>
           <li>本報價不含第三方付費外掛、API 調用費用及專業攝影服務。</li>
           <li>若第二年不續約主機 / 網域，網站將無法正常瀏覽，我方將於到期前 30 日提醒。</li>
-          <li>自動交易程式開發及智慧家庭安裝施工，請直接聯繫我進行免費諮詢評估。</li>
+          <li>自動交易程式開發，請直接聯繫我進行免費諮詢評估。</li>
         </ul>
 
       </div>
@@ -762,7 +768,7 @@ const canonical = "https://comebacktraveler.com/services";
   <!-- CTA -->
   <footer class="cta-block fade-in">
     <h2>有想法，<em>就來聊聊</em></h2>
-    <p class="cta-sub">不管是網站、程式開發還是智慧家庭，先聊清楚需求再報價——免費諮詢，沒有壓力。</p>
+    <p class="cta-sub">不管是網站還是程式開發，先聊清楚需求再報價——免費諮詢，沒有壓力。</p>
     <div class="cta-contacts">
       <a href="mailto:andyho710@gmail.com" class="btn btn-primary">✉️ 寄信詢問</a>
       <a href="tel:0986410888" class="btn btn-outline">📞 0986-410-888</a>
