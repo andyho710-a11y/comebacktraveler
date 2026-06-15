@@ -1,5 +1,7 @@
 ---
 import SocialLinks from '../components/SocialLinks.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 
 const title = "日本自由行完整攻略 2026｜東京、京都、大阪行程規劃";
 const description = "從東京到京阪奈，一個在越南住過 10 年、踩過無數坑的台灣人，把日本自由行的行程、省錢技巧、Klook 值得訂的活動整理成這篇。";
@@ -27,8 +29,10 @@ const LINK_JRPASS = 'https://linkgo.one/s/fK2k4';
     "headline": title,
     "description": description,
     "url": canonical,
-    "author": { "@type": "Person", "name": "重來的旅人" },
+    "mainEntityOfPage": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "datePublished": "2026-04-26",
     "dateModified": "2026-04-26"
   })} />
   <style>
@@ -133,9 +137,7 @@ const LINK_JRPASS = 'https://linkgo.one/s/fK2k4';
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav current="japan" />
 
 <div class="hero">
   <div class="category-tag">日本自由行 · 行程攻略 2026</div>
@@ -271,6 +273,64 @@ const LINK_JRPASS = 'https://linkgo.one/s/fK2k4';
     <a href={LINK_JRPASS} target="_blank" rel="noopener sponsored" class="klook-btn">Klook 買 JR Pass →</a>
   </div>
 
+  <h2>第一次去日本，幾天才夠？</h2>
+  <p>
+    這題沒有標準答案，但我自己的經驗法則是：<strong>單一城市深度玩，5 天剛剛好；想跨城市，至少 7 天起跳</strong>。
+    很多人第一次去就貪心排「東京＋京都＋大阪＋富士山＋北海道」，結果一半時間花在拉車和拖行李，
+    每個地方都只是「到此一遊」。
+  </p>
+  <ul style="padding-left:20px;margin-bottom:1.4em;">
+    <li style="margin-bottom:8px;"><strong>5 天</strong>：專心玩東京（含近郊一日遊），或專心玩京阪奈，二選一。</li>
+    <li style="margin-bottom:8px;"><strong>7 天</strong>：東京 3 天 + 新幹線到京都、大阪各 2 天，是最經典的黃金路線。</li>
+    <li style="margin-bottom:8px;"><strong>10 天以上</strong>：才有餘裕加入富士山、金澤、廣島，或冬天的北海道滑雪。</li>
+  </ul>
+
+  <h2>日本自由行大概要花多少錢？</h2>
+  <p>
+    旺季（櫻花、紅葉、過年）和淡季的價差非常大，但抓個體感範圍給你參考。
+    機票來回大約 NT$10,000–20,000；住宿一晚雙人房從青年旅館 NT$1,500 到商務旅館 NT$3,000–5,000 都有；
+    一天三餐＋交通＋門票，省著玩抓 NT$1,500–2,500，吃好一點 NT$3,000 以上很正常。
+  </p>
+  <p>
+    換句話說，<strong>7 天的日本自由行，一個人抓 NT$35,000–55,000 是常見區間</strong>。
+    真正能省的不是餐費，而是「提前訂」省下的票券差價、和「避開旺季」省下的住宿暴漲。
+    這也是我每篇都在強調提前規劃的原因。
+  </p>
+
+  <h2>新手最常踩的三個坑</h2>
+  <h3>1. 把行程排到分秒必爭</h3>
+  <p>日本大眾運輸很準時，但轉乘、走路、排隊都吃時間。一天排 3–4 個點就很滿了，留白才玩得舒服。</p>
+  <h3>2. 忽略「現金」這件事</h3>
+  <p>日本刷卡普及度比想像中低，很多老店、小餐館、神社授與所只收現金。身上隨時留一點日圓現金，別全押在信用卡上。</p>
+  <h3>3. 旺季才訂京都住宿</h3>
+  <p>京都的櫻花季、紅葉季，好地點的房間 2–3 個月前就被掃光。想去這兩季，住宿一定要最先訂，其他再慢慢喬。</p>
+
+  <h2>日本旅遊常見問題</h2>
+  <p><strong>Q：日本需要簽證嗎？</strong><br>持台灣護照赴日觀光目前享免簽待遇，停留天數與規定請以日本官方公告為準。</p>
+  <p><strong>Q：Google Maps 在日本好用嗎？</strong><br>非常好用，路線、轉乘、票價都很準，是日本自助的主力工具——前提是你要有網路，所以 eSIM 幾乎是必備。</p>
+  <p><strong>Q：JR Pass 一定要買嗎？</strong><br>不一定。只待單一城市時，地鐵一日券＋IC 卡通常更省；跨城市搭新幹線才划算。算法我寫在上面的「交通票券怎麼選」。</p>
+
+  <h2>吃飯、購物、退稅的實用提醒</h2>
+  <p>
+    行程之外，這幾件「日常瑣事」最容易讓第一次去的人手忙腳亂，先知道就會順很多。
+  </p>
+  <h3>餐廳：先看門口有沒有食券機</h3>
+  <p>
+    很多拉麵店、定食店是「先在門口的食券機買票，再把票交給店員」。
+    機台多半有中文或圖片，不用緊張。熱門名店中午會排隊，想省時間就避開 12–13 點的尖峰，
+    或選晚一點的午餐時段。居酒屋則常收「お通し」（小菜費），那不是被坑，是日本的習慣。
+  </p>
+  <h3>購物：免稅與退稅怎麼運作</h3>
+  <p>
+    在貼有「Tax-Free」標示的店家，同一天同一店通常消費滿一定金額（常見是 5,000 日圓以上）即可當場免稅，
+    結帳時出示護照辦理，免稅商品會封袋、原則上要帶出境。藥妝店、電器行幾乎都有，記得隨身帶護照。
+  </p>
+  <h3>現金與付款：留一點零錢</h3>
+  <p>
+    大城市刷卡、IC 卡、行動支付都通，但神社、小店、部分餐館只收現金。
+    身上備個 1–2 萬日圓現金最安心。IC 卡（Suica/ICOCA）除了搭車，便利商店、自動販賣機也能直接嗶，超方便。
+  </p>
+
   <h2>出發前的清單</h2>
   <ul style="padding-left:20px;margin-bottom:1.4em;">
     <li style="margin-bottom:8px;"><strong>eSIM 上網</strong>：落地就有網路，不用換實體 SIM。<a href="/esim/japan" style="color:var(--accent);">日本 eSIM 推薦看這裡</a>。</li>
@@ -295,17 +355,7 @@ const LINK_JRPASS = 'https://linkgo.one/s/fK2k4';
 
 </article>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div class="footer-nav">
-    <a href="/">← 回首頁</a>
-    <a href="/esim/japan">日本 eSIM</a>
-    <a href="/korea-guide">韓國攻略</a>
-    <a href="/thsr-guide">高鐵省錢</a>
-    <a href="/#klook-offers">Klook 優惠碼</a>
-    <a href="/privacy">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 </body>
 </html>

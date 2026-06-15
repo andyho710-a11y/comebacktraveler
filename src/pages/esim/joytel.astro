@@ -1,4 +1,6 @@
 ---
+import SiteNav from '../../components/SiteNav.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 
 const title = "JOYTEL eSIM 評測 2026｜速度實測、客服體驗、值不值得買？";
@@ -32,7 +34,9 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
       "name": "JOYTEL eSIM",
       "brand": { "@type": "Brand", "name": "JOYTEL" }
     },
-    "author": { "@type": "Person", "name": "重來的旅人" },
+    "datePublished": "2026-04-25",
+    "dateModified": "2026-04-25",
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
   })} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -158,9 +162,7 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav />
 
 <div class="hero">
   <div class="category-tag">eSIM 評測 · JOYTEL 2026</div>
@@ -475,17 +477,7 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
 
 </article>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div style="margin-top:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
-    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">← eSIM 比較總表</a>
-    <a href="/esim/japan" style="color:var(--accent);text-decoration:none;font-size:13px;">日本 eSIM</a>
-    <a href="/esim/korea" style="color:var(--accent);text-decoration:none;font-size:13px;">韓國 eSIM</a>
-    <a href="/esim/install" style="color:var(--accent);text-decoration:none;font-size:13px;">安裝教學</a>
-    <a href="/esim/troubleshoot" style="color:var(--accent);text-decoration:none;font-size:13px;">設定問題</a>
-    <a href="/privacy" style="color:var(--accent);text-decoration:none;font-size:13px;">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 </body>
 </html>

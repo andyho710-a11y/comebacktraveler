@@ -1,4 +1,6 @@
 ---
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 
 const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
@@ -33,8 +35,9 @@ const canonical = "https://comebacktraveler.com/vietnam-jcb-lounge";
     "headline": title,
     "description": description,
     "url": canonical,
-    "author": { "@type": "Person", "name": "重來的旅人" },
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "datePublished": "2026-05-04",
     "dateModified": "2026-05-04",
     "image": "https://comebacktraveler.com/vietnam-jcb-lounge-bar.jpg"
   })} />
@@ -168,9 +171,7 @@ const canonical = "https://comebacktraveler.com/vietnam-jcb-lounge";
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav />
 
 <div class="hero">
   <div class="category-tag">越南旅遊 · 機場貴賓室攻略 2026</div>
@@ -388,19 +389,7 @@ const canonical = "https://comebacktraveler.com/vietnam-jcb-lounge";
 
 </article>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div class="footer-nav">
-    <a href="/">← 回首頁</a>
-    <a href="/vietnam-guide">越南快速通關</a>
-    <a href="/esim">eSIM 比較</a>
-    <a href="/japan-guide">日本攻略</a>
-    <a href="/korea-guide">韓國攻略</a>
-    <a href="/thsr-guide">高鐵省錢</a>
-    <a href="/story">作者故事</a>
-    <a href="/privacy">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 </body>
 </html>

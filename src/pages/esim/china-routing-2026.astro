@@ -1,4 +1,6 @@
 ---
+import SiteNav from '../../components/SiteNav.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 
 const title = "2026 eSIM 還能買嗎？「封包送中」爭議 + 防詐宣導，過來人完整解析";
@@ -27,7 +29,9 @@ const VIETNAM_LINK = 'https://afflink.one/s/SNmCj';
     "description": description,
     "url": "https://comebacktraveler.com/esim/china-routing-2026/",
     "inLanguage": "zh-TW",
-    "author": { "@type": "Person", "name": "重來的旅人" },
+    "datePublished": "2026-05-31",
+    "dateModified": "2026-05-31",
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
   })} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -128,9 +132,7 @@ const VIETNAM_LINK = 'https://afflink.one/s/SNmCj';
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav />
 
 <div class="hero">
   <div class="category-tag">eSIM 資安 · 封包送中爭議解析</div>
@@ -389,16 +391,7 @@ const VIETNAM_LINK = 'https://afflink.one/s/SNmCj';
 
 </article>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div style="margin-top:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
-    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">← eSIM 比較總表</a>
-    <a href="/esim/joytel" style="color:var(--accent);text-decoration:none;font-size:13px;">JOYTEL 評測</a>
-    <a href="/esim/china" style="color:var(--accent);text-decoration:none;font-size:13px;">中國 eSIM</a>
-    <a href="/esim/troubleshoot" style="color:var(--accent);text-decoration:none;font-size:13px;">設定問題</a>
-    <a href="/privacy" style="color:var(--accent);text-decoration:none;font-size:13px;">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 </body>
 </html>

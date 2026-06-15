@@ -1,4 +1,6 @@
 ---
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 
 const title = "高鐵怎麼買最便宜？2026 商務通勤族完整省錢攻略";
@@ -22,8 +24,9 @@ const canonical = "https://comebacktraveler.com/thsr-guide";
     "headline": title,
     "description": description,
     "url": canonical,
-    "author": { "@type": "Person", "name": "重來的旅人" },
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "datePublished": "2026-04-26",
     "dateModified": "2026-04-26"
   })} />
   <style>
@@ -155,9 +158,7 @@ const canonical = "https://comebacktraveler.com/thsr-guide";
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav />
 
 <div class="hero">
   <div class="category-tag">台灣交通 · 高鐵省錢攻略 2026</div>
@@ -427,16 +428,7 @@ const canonical = "https://comebacktraveler.com/thsr-guide";
 
 </article>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div style="margin-top:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
-    <a href="/" style="color:var(--accent);text-decoration:none;font-size:13px;">← 回首頁</a>
-    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">eSIM 出國上網攻略</a>
-    <a href="/esim/japan" style="color:var(--accent);text-decoration:none;font-size:13px;">日本 eSIM 推薦</a>
-    <a href="/esim/korea" style="color:var(--accent);text-decoration:none;font-size:13px;">韓國 eSIM 推薦</a>
-    <a href="/privacy" style="color:var(--accent);text-decoration:none;font-size:13px;">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 </body>
 </html>

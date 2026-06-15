@@ -1,4 +1,6 @@
 ---
+import SiteNav from '../../components/SiteNav.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 
 const title = "胡志明市機場 SIM 卡值得買嗎？住越南十年的過來人真心建議（2026）";
@@ -37,7 +39,7 @@ const VIETTEL_ESIM_LINK = "https://linkgo.one/s/qG9cT";
     "headline": title,
     "description": description,
     "url": canonical,
-    "author": { "@type": "Person", "name": "重來的旅人" },
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
     "datePublished": "2026-06-07",
     "dateModified": "2026-06-07",
@@ -151,9 +153,7 @@ const VIETTEL_ESIM_LINK = "https://linkgo.one/s/qG9cT";
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav />
 
 <div class="hero">
   <div class="category-tag">越南上網 · 新山一機場攻略 2026</div>
@@ -371,18 +371,7 @@ const VIETTEL_ESIM_LINK = "https://linkgo.one/s/qG9cT";
 
 </article>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div class="footer-nav">
-    <a href="/">← 回首頁</a>
-    <a href="/esim">eSIM 比較</a>
-    <a href="/vietnam-guide">越南攻略</a>
-    <a href="/vietnam-taxi-app-guide">越南叫車</a>
-    <a href="/japan-guide">日本攻略</a>
-    <a href="/korea-guide">韓國攻略</a>
-    <a href="/privacy">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 </body>
 </html>

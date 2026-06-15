@@ -1,6 +1,7 @@
 ---
 import BlogLayout from '../layouts/BlogLayout.astro';
 import SocialLinks from '../components/SocialLinks.astro';
+import SiteNav from '../components/SiteNav.astro';
 import { esimArticles, travelArticles } from '../data/articles.js';
 
 const AFFILIATE_LINK = 'https://onelink.one/s/Rkzvi';
@@ -26,9 +27,7 @@ const offers = [
   <div class="root">
 
     <!-- Header -->
-    <header class="site-header">
-      <a href="/" class="site-name">重來的<span>旅人</span></a>
-    </header>
+    <SiteNav />
 
     <!-- Hero -->
     <div class="hero">
@@ -63,6 +62,38 @@ const offers = [
       </div>
 
     </div><!-- /article (story box) -->
+
+    <!-- Intro content: 提升首頁原創內容與 E-E-A-T -->
+    <div class="article intro-content">
+      <h2>這個網站在幫你解決什麼</h2>
+      <p>
+        我寫的東西，都繞著一個主題：<strong>第一次出國、或久久才出一次國的人，怎麼少踩一點坑。</strong>
+        我在越南住了十年，從工廠副總到回台灣跑 Uber，這些年自己訂票、自己找路、自己被海關和路邊計程車坑過，
+        才慢慢摸出哪些錢該省、哪些錢省不得。這個網站，就是把那些教訓寫成你能直接拿去用的筆記。
+      </p>
+      <p>目前內容分成三塊，你可以從上方選單或下面的卡片進去：</p>
+      <ul class="intro-list">
+        <li>
+          <strong>出國上網 eSIM</strong>：原生線路和漫遊線路差在哪、哪家有中文客服、安裝失敗怎麼救、
+          甚至「封包送中」資安爭議到底在吵什麼，我都用白話拆給你看。完全不業配，只比規格和實際體驗。
+        </li>
+        <li>
+          <strong>日韓越旅遊攻略</strong>：不是觀光局那種「十大必去」，而是哪個時段去人最少、
+          哪個景點現場排隊要等多久、哪些票提前訂才划算。越南的部分尤其是我的主場——機場、叫車、親子、行李，
+          都是住了十年累積下來的真實經驗。
+        </li>
+        <li>
+          <strong>旅遊省錢情報</strong>：高鐵怎麼買最便宜、各家銀行 Klook 刷卡折扣、信用卡海外回饋怎麼疊。
+          跑過 Uber 的人，對每一塊錢都特別敏感。
+        </li>
+      </ul>
+      <p class="intro-note">
+        說明一下：本站部分連結是聯盟行銷連結，你透過它們購買，我會拿到一點分潤，但<strong>不會影響你的價格</strong>。
+        我只放自己用過、或評估後真心覺得對你有幫助的東西。更完整的揭露寫在
+        <a href="/privacy">隱私權政策</a>，想多認識我可以看
+        <a href="/about">關於我</a>。
+      </p>
+    </div>
 
     <!-- Two-column wide section -->
     <div class="wide-wrap">
@@ -175,7 +206,9 @@ const offers = [
         <a href="/vietnam-jcb-lounge">越南貴賓室</a>
         <a href="/kids-travel-guide">親子旅遊</a>
         <a href="/thsr-guide">高鐵省錢</a>
+        <a href="/about">關於</a>
         <a href="/story">作者故事</a>
+        <a href="/contact">聯絡我</a>
         <a href="/#klook-offers">Klook 優惠碼</a>
         <a href="/services">站長服務</a>
         <a href="/privacy">隱私權政策</a>
@@ -364,6 +397,30 @@ const offers = [
     line-height: 1.9;
   }
   .story-box strong { color: var(--ink); font-weight: 600; }
+
+  /* Intro content block */
+  .intro-content { padding-bottom: 0; }
+  .intro-content h2 { margin-top: 8px; }
+  .intro-content p { font-size: 16px; color: var(--ink-light); }
+  .intro-content strong { color: var(--ink); font-weight: 600; }
+  .intro-list { margin: 0 0 1.4em; padding-left: 0; list-style: none; }
+  .intro-list li {
+    font-size: 15.5px;
+    color: var(--ink-light);
+    line-height: 1.8;
+    padding: 14px 0 14px 18px;
+    border-left: 3px solid var(--border);
+    margin-bottom: 12px;
+  }
+  .intro-list li strong { color: var(--ink); }
+  .intro-note {
+    font-size: 14px;
+    color: var(--ink-light);
+    background: var(--paper-warm);
+    border-radius: 6px;
+    padding: 16px 20px;
+  }
+  .intro-note a { color: var(--accent); }
 
   /* Wide two-column layout */
   .wide-wrap {

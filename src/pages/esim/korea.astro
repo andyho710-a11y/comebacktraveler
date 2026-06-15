@@ -1,4 +1,6 @@
 ---
+import SiteNav from '../../components/SiteNav.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 
 const title = "韓國 eSIM 推薦 2026｜住越南 10 年的台灣人，只推這兩張";
@@ -13,6 +15,19 @@ const description = "去韓國不用再找換錢所換 SIM 卡了。從日本到
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href="https://comebacktraveler.com/esim/korea" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "url": "https://comebacktraveler.com/esim/korea",
+    "mainEntityOfPage": "https://comebacktraveler.com/esim/korea",
+    "inLanguage": "zh-TW",
+    "datePublished": "2026-04-20",
+    "dateModified": "2026-04-20",
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
+  })} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -112,9 +127,7 @@ const description = "去韓國不用再找換錢所換 SIM 卡了。從日本到
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav />
 
 <div class="hero">
   <div class="category-tag">韓國上網 · eSIM 推薦 2026</div>
@@ -332,19 +345,7 @@ const description = "去韓國不用再找換錢所換 SIM 卡了。從日本到
 
 </article>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div style="margin-top:12px;display:flex;justify-content:center;gap:16px 24px;flex-wrap:wrap;">
-    <a href="/" style="color:var(--accent);text-decoration:none;font-size:13px;">← 回首頁</a>
-    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">eSIM 比較總表</a>
-    <a href="/esim/japan" style="color:var(--accent);text-decoration:none;font-size:13px;">日本 eSIM 推薦</a>
-    <a href="/esim/install" style="color:var(--accent);text-decoration:none;font-size:13px;">eSIM 安裝教學</a>
-    <a href="/korea-guide" style="color:var(--accent);text-decoration:none;font-size:13px;">韓國自由行攻略</a>
-    <a href="/thsr-guide" style="color:var(--accent);text-decoration:none;font-size:13px;">高鐵省錢攻略</a>
-    <a href="/#klook-offers" style="color:var(--accent);text-decoration:none;font-size:13px;">Klook 優惠碼</a>
-    <a href="/privacy" style="color:var(--accent);text-decoration:none;font-size:13px;">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 </body>
 </html>

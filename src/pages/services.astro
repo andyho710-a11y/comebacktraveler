@@ -1,4 +1,6 @@
 ---
+import SiteNav from '../components/SiteNav.astro';
+
 const title = "服務項目｜重來的旅人 Comeback Traveler";
 const description = "網站架設、網頁設計、自動交易程式開發——每一項都親力親為，不假手外包。";
 const canonical = "https://comebacktraveler.com/services";
@@ -512,7 +514,7 @@ const canonical = "https://comebacktraveler.com/services";
       .details-body { padding: 28px 20px 36px; }
     }
   </style>
-  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+  <!-- 本頁為自有服務銷售頁，刻意不載入 AdSense 廣告（純商業頁面不適合掛廣告） -->
   <!-- Google tag (gtag.js) -->
   <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
   <script is:inline>
@@ -525,11 +527,7 @@ const canonical = "https://comebacktraveler.com/services";
 <body>
 
   <!-- NAV -->
-  <nav class="site-nav">
-    <a href="/">重來的旅人</a>
-    <span class="nav-sep">/</span>
-    <span>服務項目</span>
-  </nav>
+  <SiteNav current="services" />
 
   <!-- HERO -->
   <header class="hero">

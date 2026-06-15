@@ -1,0 +1,161 @@
+---
+import SocialLinks from '../components/SocialLinks.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const title = "聯絡我｜重來的旅人 Comeback Traveler";
+const description = "聯絡「重來的旅人」：Email、LINE、社群與合作方式。內容回饋、合作邀約、網站架設與程式開發諮詢，都歡迎來信 andyho710@gmail.com。";
+const canonical = "https://comebacktraveler.com/contact";
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": title,
+    "description": description,
+    "url": canonical,
+    "inLanguage": "zh-TW",
+    "publisher": {
+      "@type": "Organization",
+      "name": "重來的旅人",
+      "url": "https://comebacktraveler.com",
+      "email": "andyho710@gmail.com"
+    }
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .hero { max-width: 740px; margin: 56px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(28px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 40px; line-height: 1.7; }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 24px; margin: 48px 0 14px; position: relative; padding-left: 16px; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    strong { color: var(--ink); }
+    a { color: var(--accent); }
+
+    .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 24px 0; }
+    .contact-card { border: 1.5px solid var(--border); border-radius: 8px; padding: 22px 24px; background: var(--paper); }
+    .contact-card .label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .contact-card .value { font-size: 16px; font-weight: 500; word-break: break-all; }
+    .contact-card .value a { color: var(--accent); text-decoration: none; }
+    .contact-card .note { font-size: 13px; color: var(--ink-light); margin-top: 6px; }
+
+    .reasons { list-style: none; padding: 0; margin: 8px 0 1.4em; }
+    .reasons li { padding: 10px 0 10px 18px; border-left: 3px solid var(--border); margin-bottom: 8px; font-size: 15.5px; color: var(--ink-light); }
+    .reasons li strong { color: var(--ink); }
+
+    footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
+    .footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; margin-top: 14px; }
+    .footer-nav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XW4LBK8PYF');
+  </script>
+</head>
+<body>
+
+<SiteNav current="contact" />
+
+<div class="hero">
+  <div class="category-tag">聯絡我</div>
+  <h1>有問題、有想法，<br>都歡迎找我聊聊</h1>
+  <p class="subtitle">
+    我是「重來的旅人」，本名何先生。下面是聯絡我的幾種方式——<br>
+    我一個人經營這個網站，回覆可能不會秒回，但每一封信我都會看。
+  </p>
+</div>
+
+<article class="article">
+
+  <h2>聯絡方式</h2>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="label">Email（最推薦）</div>
+      <div class="value"><a href="mailto:andyho710@gmail.com">andyho710@gmail.com</a></div>
+      <div class="note">合作、回饋、諮詢都用這個最穩，通常 1–3 個工作天內回覆。</div>
+    </div>
+    <div class="contact-card">
+      <div class="label">LINE</div>
+      <div class="value"><a href="https://line.me/ti/p/u2SqCZ0lid" target="_blank" rel="noopener">點此加我 LINE</a></div>
+      <div class="note">想快速問問題、討論接案需求的話，LINE 比較即時。</div>
+    </div>
+    <div class="contact-card">
+      <div class="label">電話</div>
+      <div class="value"><a href="tel:0986410888">0986-410-888</a></div>
+      <div class="note">主要用於網站架設、程式開發等案子的洽談。</div>
+    </div>
+    <div class="contact-card">
+      <div class="label">社群</div>
+      <div class="value"><a href="https://www.instagram.com/comebacktraveler" target="_blank" rel="noopener">Instagram</a> · <a href="http://www.youtube.com/@AndyFeverDream" target="_blank" rel="noopener">YouTube</a></div>
+      <div class="note">旅遊筆記與生活分享，會在這裡同步更新。</div>
+    </div>
+  </div>
+
+  <h2>什麼事可以找我</h2>
+  <ul class="reasons">
+    <li><strong>內容回饋與勘誤</strong>：文章寫錯了、資訊過期了，請務必告訴我，我會盡快更正。</li>
+    <li><strong>合作與邀約</strong>：旅遊、eSIM、3C 相關的合作，請來信附上需求與形式。</li>
+    <li><strong>網站架設與程式開發</strong>：我也提供架站、網頁設計與自動交易程式開發，細節可參考 <a href="/services">服務項目</a>。</li>
+    <li><strong>越南旅遊問題</strong>：住越南十年，胡志明市相關的問題都可以問，知道的我會盡量回。</li>
+  </ul>
+
+  <p>
+    想多認識我和這個網站，可以先看 <a href="/about">關於頁</a> 或 <a href="/story">我的完整故事</a>。
+    資料如何被使用，寫在 <a href="/privacy">隱私權政策</a>。
+  </p>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="IG、FB、YouTube 上會分享更多旅遊踩坑筆記與省錢情報"
+  />
+
+</article>
+
+<SiteFooter />
+
+</body>
+</html>

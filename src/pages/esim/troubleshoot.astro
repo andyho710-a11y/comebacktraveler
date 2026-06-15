@@ -1,4 +1,6 @@
 ---
+import SiteNav from '../../components/SiteNav.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 
 const title = "eSIM 裝不起來怎麼辦？10 個常見問題完整解法";
@@ -27,6 +29,9 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
     "description": description,
     "url": "https://comebacktraveler.com/esim/troubleshoot/",
     "inLanguage": "zh-TW",
+    "datePublished": "2026-04-25",
+    "dateModified": "2026-04-25",
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
   })} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -150,9 +155,7 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav />
 
 <div class="hero">
   <div class="category-tag">eSIM 問題排解 · 完整指南</div>
@@ -446,16 +449,7 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
 
 </article>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div style="margin-top:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
-    <a href="/esim" style="color:var(--accent);text-decoration:none;font-size:13px;">← eSIM 比較總表</a>
-    <a href="/esim/install" style="color:var(--accent);text-decoration:none;font-size:13px;">安裝教學</a>
-    <a href="/esim/joytel" style="color:var(--accent);text-decoration:none;font-size:13px;">JOYTEL 評測</a>
-    <a href="/esim/china" style="color:var(--accent);text-decoration:none;font-size:13px;">大陸上網</a>
-    <a href="/privacy" style="color:var(--accent);text-decoration:none;font-size:13px;">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 </body>
 </html>

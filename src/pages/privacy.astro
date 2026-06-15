@@ -1,4 +1,6 @@
 ---
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 const title = "隱私權政策｜重來的旅人";
 const description = "重來的旅人（comebacktraveler.com）的隱私權政策，說明本網站如何蒐集、使用與保護資料，並揭露 Google AdSense 等第三方廣告 Cookie 的使用方式。";
 const canonical = "https://comebacktraveler.com/privacy";
@@ -127,9 +129,7 @@ const canonical = "https://comebacktraveler.com/privacy";
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav />
 
 <main>
   <h1>隱私權政策</h1>
@@ -181,15 +181,7 @@ const canonical = "https://comebacktraveler.com/privacy";
   <p>對本政策有任何疑問或建議，請來信：<a href="mailto:andyho710@gmail.com">andyho710@gmail.com</a></p>
 </main>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div class="footer-nav">
-    <a href="/">← 回首頁</a>
-    <a href="/esim">eSIM 比較</a>
-    <a href="/story">作者故事</a>
-    <a href="/privacy">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 </body>
 </html>

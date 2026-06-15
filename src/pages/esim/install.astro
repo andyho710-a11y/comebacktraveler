@@ -1,4 +1,6 @@
 ---
+import SiteNav from '../../components/SiteNav.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 
 const title = "eSIM 怎麼安裝？iPhone + Android 圖解教學｜重來的旅人";
@@ -20,6 +22,19 @@ const JOYTEL_LINK = 'https://linkgo.one/s/I6wBM';
   <meta property="og:description" content={description} />
   <meta property="og:url" content="https://comebacktraveler.com/esim/install/" />
   <meta property="og:locale" content="zh_TW" />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "url": "https://comebacktraveler.com/esim/install",
+    "mainEntityOfPage": "https://comebacktraveler.com/esim/install",
+    "inLanguage": "zh-TW",
+    "datePublished": "2026-04-22",
+    "dateModified": "2026-04-22",
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
+  })} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -164,9 +179,7 @@ const JOYTEL_LINK = 'https://linkgo.one/s/I6wBM';
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav />
 
 <div class="hero">
   <div class="category-tag">eSIM 教學 · iPhone + Android</div>
@@ -586,15 +599,7 @@ const JOYTEL_LINK = 'https://linkgo.one/s/I6wBM';
 
 </article>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略
-  <div class="footer-links">
-    <a href="/esim">← eSIM 比較總表</a>
-    <a href="/esim/japan">日本 eSIM 推薦</a>
-    <a href="/esim/korea">韓國 eSIM 推薦</a>
-    <a href="/privacy">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 <script>
   const tabs = document.querySelectorAll<HTMLButtonElement>('.os-tab');

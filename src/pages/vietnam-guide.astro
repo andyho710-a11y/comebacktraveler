@@ -1,5 +1,7 @@
 ---
 import SocialLinks from '../components/SocialLinks.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 
 const title = "越南旅遊省時攻略：帶小孩出國不崩潰！｜重來的旅人";
 const description = "在越南海關排隊排到腿軟、小孩餓到抗議——一個住過越南十年的台灣人告訴你，快速通關和 eSIM 怎麼用，讓帶孩子出國不崩潰。";
@@ -22,8 +24,10 @@ const canonical = "https://comebacktraveler.com/vietnam-guide";
     "headline": title,
     "description": description,
     "url": canonical,
-    "author": { "@type": "Person", "name": "重來的旅人" },
+    "mainEntityOfPage": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "datePublished": "2026-04-28",
     "dateModified": "2026-04-28",
     "image": "https://comebacktraveler.com/vietnam-airport-queue.jpg"
   })} />
@@ -111,9 +115,7 @@ const canonical = "https://comebacktraveler.com/vietnam-guide";
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav current="vietnam" />
 
 <div class="hero">
   <div class="category-tag">越南旅遊 · 親子出國攻略 2026</div>
@@ -217,6 +219,84 @@ const canonical = "https://comebacktraveler.com/vietnam-guide";
     不確定怎麼裝？<a href="/esim/install" style="color:var(--accent);">eSIM 安裝圖解教學看這裡</a>。</p>
   </div>
 
+  <h2>新山一機場入境，到底會卡多久？</h2>
+  <p>
+    先講最多人問的：胡志明市新山一機場（Tân Sơn Nhất, SGN）入境到底要排多久？
+    我的經驗是——<strong>沒有標準答案，全看你的航班撞到什麼時段</strong>。
+    台灣飛胡志明市的航班，很多落在傍晚到晚上，剛好和其他國際線一起湧進來，
+    那段時間入境大廳的隊伍可以從審查櫃台一路拐到大門口。我這次回去就是晚上到，硬生生站了快 40 分鐘。
+  </p>
+  <p>
+    如果是清晨或中午的離峰航班，順的話 15 分鐘就能過。所以訂機票時，
+    若行程允許，<strong>避開晚上 6–9 點的入境尖峰</strong>會輕鬆很多。
+    真的避不開、又帶著小孩或長輩，快速通關就是花小錢買回時間和耐性的選項。
+  </p>
+
+  <h2>落地之後：換錢、上網、叫車的順序</h2>
+  <p>
+    很多人一出關就慌，被路邊拉客的計程車帶走。我的建議順序很簡單：
+  </p>
+  <ul style="padding-left:20px;margin-bottom:1.4em;">
+    <li style="margin-bottom:8px;"><strong>① 上網</strong>：如果出發前已裝好 eSIM，關掉飛行模式就有訊號，這步直接跳過。這也是我強烈建議先裝 eSIM 的原因——落地第一件事就能叫車、查路。</li>
+    <li style="margin-bottom:8px;"><strong>② 換錢</strong>：機場匯率不漂亮，建議只換「夠用到市區、夠付當晚」的小額越南盾，其餘進市區找金店或用提款機。台幣現鈔在市區金店換通常比機場好。</li>
+    <li style="margin-bottom:8px;"><strong>③ 叫車</strong>：用 Grab（越南版 Uber）叫車，價格透明、不用議價。新山一機場有專屬的網約車上車點，跟著「Grab / Ride-hailing」指標走，別理大廳裡主動湊過來的人。</li>
+  </ul>
+  <div class="tip-box">
+    <div class="tip-title">在地提醒：機場計程車陷阱</div>
+    <p style="margin:0;font-size:14px;">
+      新山一機場外最常見的坑，就是有人主動幫你提行李、帶你上「跳錶很快」的車。
+      我住越南十年，看過太多台灣旅客一趟市區被收到天價。
+      請認明 Grab、Xanh SM（電動車隊）或 Vinasun、Mai Linh 這類有信譽的車行，
+      其餘來路不明、開口就喊高價的，一律拒絕。叫車的細節我另外整理在
+      <a href="/vietnam-taxi-app-guide" style="color:var(--accent);">越南叫車 App 攻略</a>。
+    </p>
+  </div>
+
+  <h2>帶小孩的越南行程，節奏怎麼抓</h2>
+  <p>
+    胡志明市很熱、很潮濕，中午的太陽不是開玩笑的。帶孩子玩，最忌諱排太滿。
+    我自己帶女兒回去的經驗是：<strong>上午一個點、下午回飯店午休、傍晚再出門</strong>，比硬撐整天有效率得多。
+    孩子睡飽、不中暑，全家的脾氣都會好很多。
+  </p>
+  <ul style="padding-left:20px;margin-bottom:1.4em;">
+    <li style="margin-bottom:8px;"><strong>上午</strong>：紅教堂、中央郵政、戰爭遺跡博物館這類市區景點，趁太陽還沒太毒。</li>
+    <li style="margin-bottom:8px;"><strong>中午到下午</strong>：回飯店吹冷氣、午睡、游泳。越南五星飯店相對便宜，泳池是帶小孩的大加分。</li>
+    <li style="margin-bottom:8px;"><strong>傍晚到晚上</strong>：濱城市場、咖啡廳、河邊散步。天氣涼下來，孩子也比較有電。</li>
+  </ul>
+  <p>
+    如果帶孩子想找個能放電一整天的地方，邊和市的 The Amazing Bay 水樂園是個選擇，
+    我家這次就去玩了一整天，實際心得寫在
+    <a href="/kids-travel-amazing-bay" style="color:var(--accent);">這篇水樂園紀錄</a>。
+    至於住宿與在地吃飯的搭配，可以看
+    <a href="/kids-travel-guide" style="color:var(--accent);">帶女兒回越南的親子紀錄</a>。
+  </p>
+
+  <h2>越南旅遊常見問題</h2>
+  <p><strong>Q：越南需要簽證嗎？</strong><br>
+  台灣護照去越南目前多數情況需要事先辦理電子簽證或落地簽，且規定會變動。出發前務必上越南官方移民署網站或委託代辦確認最新規定，別到了機場才發現沒辦。</p>
+  <p><strong>Q：越南治安好嗎？</strong><br>
+  整體可以，但胡志明市的「飛車搶劫」（騎機車搶手機、包包）是真實存在的。走在路邊手機別拿太外面、包包背在身體內側，這幾個習慣養成就能避掉大半風險。防盜的細節我寫在<a href="/vietnam-travel-essentials" style="color:var(--accent);">越南旅遊必備小物</a>。</p>
+  <p><strong>Q：可以只刷卡不帶現金嗎？</strong><br>
+  大飯店、連鎖餐廳、超市可以刷卡，但市場、路邊攤、小店幾乎只收現金。建議現金與信用卡都備著。</p>
+  <p><strong>Q：自來水能喝嗎？</strong><br>
+  不建議生飲，買瓶裝水最保險。帶小孩的話尤其注意，連刷牙都建議用瓶裝水。</p>
+
+  <h2>越南的消費與議價文化，先有個底</h2>
+  <p>
+    越南整體物價比台灣低，但「外國人價」確實存在，尤其在觀光區的市場和路邊攤。
+    住越南十年，我給你幾個心法，讓你不會花冤枉錢、也不會為了幾十塊跟人鬧得不愉快。
+  </p>
+  <ul style="padding-left:20px;margin-bottom:1.4em;">
+    <li style="margin-bottom:8px;"><strong>市場可以議價，商場不行</strong>：濱城市場、安東市場這種觀光市場，開價砍一半是常態；但連鎖超市、百貨、有標價的店就是定價，別在那邊殺價。</li>
+    <li style="margin-bottom:8px;"><strong>先用 Grab 比一下行情</strong>：同一段路 Grab 的車資是透明的，可以拿來當「合理價」的參考基準，路邊喊價高太多就知道被當盤子。</li>
+    <li style="margin-bottom:8px;"><strong>小鈔分開放</strong>：越南盾面額大、零的數量多，剛來很容易把 50 萬看成 5 萬。建議把大鈔和零錢分開放，付錢前看清楚位數。</li>
+    <li style="margin-bottom:8px;"><strong>小費不是硬規矩</strong>：越南沒有強制小費文化，但飯店行李員、按摩、餐廳服務給個一兩萬盾的小費，對方會很開心，也是一種善意。</li>
+  </ul>
+  <p>
+    最後一個提醒：越南人其實很熱情、也很願意幫忙，遇到語言不通，手機翻譯加上比手畫腳通常都能解決。
+    把「被坑」的防備心拿捏在剛剛好的程度，別因為怕被騙就對所有人都擺臭臉——那樣反而玩得不開心。
+  </p>
+
   <h2>出發前的簡單清單</h2>
   <ul style="padding-left:20px;margin-bottom:1.4em;">
     <li style="margin-bottom:8px;"><strong>快速通關</strong>：提供航班資訊，出發前 1–2 天預訂完成</li>
@@ -247,18 +327,7 @@ const canonical = "https://comebacktraveler.com/vietnam-guide";
 
 </article>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div class="footer-nav">
-    <a href="/">← 回首頁</a>
-    <a href="/esim">eSIM 比較</a>
-    <a href="/japan-guide">日本攻略</a>
-    <a href="/korea-guide">韓國攻略</a>
-    <a href="/thsr-guide">高鐵省錢</a>
-    <a href="/story">作者故事</a>
-    <a href="/privacy">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 </body>
 </html>

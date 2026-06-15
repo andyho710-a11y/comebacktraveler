@@ -1,4 +1,6 @@
 ---
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 
 const title = "越南自由行行李清單｜住越南十年，教你帶多少、怎麼裝、什麼上手提";
@@ -50,7 +52,7 @@ const faqs = [
     "headline": title,
     "description": description,
     "url": canonical,
-    "author": { "@type": "Person", "name": "重來的旅人" },
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
     "datePublished": "2026-06-12",
     "dateModified": "2026-06-12",
@@ -179,9 +181,7 @@ const faqs = [
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav />
 
 <div class="hero">
   <div class="category-tag">越南自由行 · 行李打包</div>
@@ -266,7 +266,7 @@ const faqs = [
 
   <p>
     收納方塊和壓縮袋是越南這種熱帶行程的隱形功臣，幾十塊的東西，整趟行李整齊度差很多。
-    酷澎和蝦皮都有，挑容量分級的組合包最實用。
+    這類打包小物建議先看蝦皮清單，款式多、能一起湊免運；酷澎只適合拿來補充比價。
   </p>
 
   <h2>三、手提 vs 託運：這條線分錯，落地會很狼狽</h2>
@@ -367,6 +367,7 @@ const faqs = [
   />
 
   <div class="internal-links">
+    <a href="/vietnam-travel-essentials">→ 蝦皮越南旅遊用品清單</a>
     <a href="/vietnam-travel-essentials">→ 越南必備小物推薦</a>
     <a href="/esim">→ eSIM 品牌完整比較</a>
     <a href="/vietnam-taxi-app-guide">→ 越南叫車 App 怎麼選</a>
@@ -377,19 +378,7 @@ const faqs = [
 
 </article>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div class="footer-nav">
-    <a href="/">← 回首頁</a>
-    <a href="/esim">eSIM 比較</a>
-    <a href="/vietnam-travel-essentials">越南必備小物</a>
-    <a href="/vietnam-guide">越南攻略</a>
-    <a href="/japan-guide">日本攻略</a>
-    <a href="/korea-guide">韓國攻略</a>
-    <a href="/story">作者故事</a>
-    <a href="/privacy">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 </body>
 </html>

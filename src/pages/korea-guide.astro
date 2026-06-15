@@ -1,5 +1,7 @@
 ---
 import SocialLinks from '../components/SocialLinks.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 
 const title = "韓國自由行完整攻略 2026｜首爾、釜山行程規劃";
 const description = "首爾景福宮、弘大購物街、釜山海雲台——一個台灣人的韓國旅遊筆記，哪裡值得去、哪個 Klook 行程真的省事，整理在這裡。";
@@ -26,8 +28,10 @@ const LINK_KTX = 'https://linkgo.one/s/dWtAb';
     "headline": title,
     "description": description,
     "url": canonical,
-    "author": { "@type": "Person", "name": "重來的旅人" },
+    "mainEntityOfPage": canonical,
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "datePublished": "2026-04-26",
     "dateModified": "2026-04-26"
   })} />
   <style>
@@ -132,9 +136,7 @@ const LINK_KTX = 'https://linkgo.one/s/dWtAb';
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="site-name">重來的<span>旅人</span></a>
-</header>
+<SiteNav current="korea" />
 
 <div class="hero">
   <div class="category-tag">韓國自由行 · 行程攻略 2026</div>
@@ -259,6 +261,66 @@ const LINK_KTX = 'https://linkgo.one/s/dWtAb';
     <a href={LINK_KTX} target="_blank" rel="noopener sponsored" class="klook-btn">Klook 買列車票 →</a>
   </div>
 
+  <h2>韓國自由行，幾天最剛好？</h2>
+  <p>
+    首爾本身就夠玩 4–5 天，景點集中、地鐵發達，是非常適合新手的自由行城市。
+    我的建議是：<strong>第一次去，5 天全待首爾；去過一次或有 7 天以上，再加釜山</strong>。
+    首爾跟釜山的氣質完全不同——首爾是快節奏的都會，釜山是慢下來的海港，搭 KTX 約 2.5–3 小時就能切換。
+  </p>
+  <ul style="padding-left:20px;margin-bottom:1.4em;">
+    <li style="margin-bottom:8px;"><strong>4–5 天</strong>：純首爾。一天一區（景福宮、弘大、漢江、明洞、東大門），不趕路。</li>
+    <li style="margin-bottom:8px;"><strong>7 天</strong>：首爾 5 天 + 釜山 2 天，搭 KTX 來回，行李可以寄放在首爾飯店。</li>
+    <li style="margin-bottom:8px;"><strong>想滑雪</strong>：冬天加排江原道（如平昌、洪川）的雪場一日遊，從首爾當天來回可行。</li>
+  </ul>
+
+  <h2>韓國自由行的花費抓多少</h2>
+  <p>
+    台北飛首爾機票來回大約 NT$8,000–16,000，淡旺季差很多。住宿首爾雙人房一晚 NT$2,000–4,000 是常見區間，
+    弘大、明洞一帶選擇最多。吃的部分，街邊小吃、紫菜飯捲、部隊鍋都很親民，
+    一天餐費＋交通＋門票，省著玩 NT$1,200–2,000 就能過得不錯。
+  </p>
+  <p>
+    韓國比較容易爆預算的地方是<strong>購物</strong>——保養品、衣服、咖啡廳很燒錢。
+    建議出發前先抓一個「購物預算上限」，逛街才不會回國看帳單心痛。
+  </p>
+
+  <h2>去韓國前，先知道這幾件事</h2>
+  <h3>1. Naver Map ＆ Kakao Map 比 Google 好用</h3>
+  <p>Google Maps 在韓國的路線（尤其公車、步行）常常不準。當地人都用 Naver Map 或 Kakao Map，導航準確度高很多，出發前先裝好——當然，前提是手機要有網路。</p>
+  <h3>2. 保養品在 Olive Young 通常比明洞划算</h3>
+  <p>明洞店家會主動發試用品、拉客，但價格不一定最低。連鎖的 Olive Young 經常有買一送一、會員價，掃貨前可以先比一下。</p>
+  <h3>3. 韓國的「外送文化」很強</h3>
+  <p>住宿如果有廚房或想省錢，韓國外送非常方便（炸雞、辣炒年糕都能送）。但多數外送 App 對外國信用卡和語言不太友善，可以請住宿幫忙或用現金。</p>
+
+  <h2>韓國旅遊常見問題</h2>
+  <p><strong>Q：韓國需要事前申請 K-ETA 嗎？</strong><br>K-ETA（電子旅行許可）的適用對象與免除期間政策時有調整，出發前務必到韓國官方 K-ETA 網站確認當下規定，別漏辦。</p>
+  <p><strong>Q：T-money 卡哪裡買？</strong><br>機場、地鐵站、便利商店都能買，也能在便利商店加值。它幾乎通吃地鐵、公車和部分計程車，是首爾移動的必備。</p>
+  <p><strong>Q：韓國插座和台灣一樣嗎？</strong><br>不一樣，韓國是圓柱兩孔（220V），台灣電器要帶轉接頭。電壓 220V，購買電器前先確認支援。</p>
+
+  <h2>韓國必吃：別只記得烤肉</h2>
+  <p>
+    很多人去韓國只衝烤肉和炸雞，其實韓國的庶民美食才是性價比之王。
+    列幾樣我覺得一定要試、而且不貴的：
+  </p>
+  <ul style="padding-left:20px;margin-bottom:1.4em;">
+    <li style="margin-bottom:8px;"><strong>紫菜飯捲（김밥）＋辣炒年糕（떡볶이）</strong>：分食店或路邊小吃店的經典組合，一餐百來塊台幣就吃很飽。</li>
+    <li style="margin-bottom:8px;"><strong>部隊鍋</strong>：火腿、泡麵、起司一鍋煮，最適合一群人圍著吃，冷天必點。</li>
+    <li style="margin-bottom:8px;"><strong>韓式炸雞配啤酒（치맥）</strong>：外送點一份配漢江夜景，是韓國人自己的日常浪漫。</li>
+    <li style="margin-bottom:8px;"><strong>市場小吃</strong>：廣藏市場的綠豆煎餅、生牛肉，札嘎其市場的現殺海鮮，都是道地體驗。</li>
+  </ul>
+  <p>
+    點餐小技巧：很多店的菜單有照片或數字，真的不會講，就用 Naver Map 找店、看別人的照片再指給店員看。
+    韓國的小菜（반찬）多半免費續，吃完招呼一聲通常會再幫你補。
+  </p>
+
+  <h2>購物與退稅：先搞懂兩種退稅</h2>
+  <p>
+    韓國退稅分「現場退稅（即時折抵）」和「機場退稅」兩種。在有 Tax Free 標示的店家，
+    單筆消費達門檻、結帳時出示護照，金額不大時常能當場折抵；金額較大或沒當場退的，
+    就保留退稅單，到機場的退稅機或櫃台辦理。建議把護照隨身帶著、退稅單收好別弄丟，
+    時間抓寬鬆一點——機場退稅櫃台旺季也是會排隊的。
+  </p>
+
   <h2>出發前的清單</h2>
   <ul style="padding-left:20px;margin-bottom:1.4em;">
     <li style="margin-bottom:8px;"><strong>韓國 eSIM</strong>：落地就有網路，Naver Map 才能正常跑。<a href="/esim/korea" style="color:var(--accent);">韓國 eSIM 推薦看這裡</a>。</li>
@@ -283,17 +345,7 @@ const LINK_KTX = 'https://linkgo.one/s/dWtAb';
 
 </article>
 
-<footer>
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
-  <div class="footer-nav">
-    <a href="/">← 回首頁</a>
-    <a href="/esim/korea">韓國 eSIM</a>
-    <a href="/japan-guide">日本攻略</a>
-    <a href="/thsr-guide">高鐵省錢</a>
-    <a href="/#klook-offers">Klook 優惠碼</a>
-    <a href="/privacy">隱私權政策</a>
-  </div>
-</footer>
+<SiteFooter />
 
 </body>
 </html>

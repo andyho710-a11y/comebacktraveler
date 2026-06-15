@@ -1,0 +1,130 @@
+---
+// 全站共用頂部導航。各頁原本只有置中 Logo 的 .site-header，
+// 改用本元件以提供分類選單（AdSense 審核重視「清楚的站內導航」）。
+interface Props {
+  current?: string;
+}
+const { current = '' } = Astro.props;
+
+const links = [
+  { href: '/esim', label: 'eSIM 比較', key: 'esim' },
+  { href: '/japan-guide', label: '日本', key: 'japan' },
+  { href: '/korea-guide', label: '韓國', key: 'korea' },
+  { href: '/vietnam-guide', label: '越南', key: 'vietnam' },
+  { href: '/thsr-guide', label: '高鐵省錢', key: 'thsr' },
+  { href: '/about', label: '關於', key: 'about' },
+  { href: '/services', label: '服務', key: 'services' },
+];
+---
+
+<header class="cbt-nav">
+  <div class="cbt-nav-inner">
+    <a href="/" class="cbt-logo">重來的<span>旅人</span></a>
+    <button class="cbt-nav-toggle" aria-label="開啟選單" aria-expanded="false">≡</button>
+    <nav class="cbt-nav-links" aria-label="主選單">
+      {links.map((l) => (
+        <a href={l.href} class:list={['cbt-nav-link', { 'is-active': current === l.key }]}>{l.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .cbt-nav {
+    --nav-ink: #1a1208;
+    --nav-accent: #c0392b;
+    --nav-paper: #faf8f3;
+    --nav-border: #d4c9b0;
+    border-bottom: 2px solid var(--nav-ink);
+    background: var(--nav-paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  .cbt-nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .cbt-logo {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    color: var(--nav-ink);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .cbt-logo span { color: var(--nav-accent); }
+
+  .cbt-nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    align-items: center;
+  }
+  .cbt-nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--nav-ink);
+    text-decoration: none;
+    padding: 4px 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .cbt-nav-link:hover { color: var(--nav-accent); }
+  .cbt-nav-link.is-active {
+    color: var(--nav-accent);
+    border-bottom-color: var(--nav-accent);
+  }
+
+  .cbt-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--nav-ink);
+    cursor: pointer;
+    padding: 0 4px;
+  }
+
+  @media (max-width: 720px) {
+    .cbt-nav-toggle { display: block; }
+    .cbt-nav-links {
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+    .cbt-nav-links.is-open { max-height: 420px; }
+    .cbt-nav-link {
+      width: 100%;
+      padding: 10px 2px;
+      border-bottom: 1px solid var(--nav-border);
+    }
+    .cbt-nav-link.is-active { border-bottom-color: var(--nav-accent); }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var toggle = document.querySelector('.cbt-nav-toggle');
+    var links = document.querySelector('.cbt-nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', function () {
+        var open = links.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
