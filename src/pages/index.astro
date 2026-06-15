@@ -149,6 +149,14 @@ const offers = [
         subheading="IG、FB、YouTube 上會分享更多旅遊踩坑筆記與省錢情報"
       />
 
+      <!-- Services promo card -->
+      <a href="/services" class="service-promo">
+        <div class="service-promo-tag">站長服務</div>
+        <div class="service-promo-title">需要架站、網頁設計或自動交易程式？</div>
+        <p class="service-promo-desc">你現在看的這個網站，就是我用 Astro 親手架的。網站架設、SEO 網頁設計、量化交易 Bot 開發——單頁形象站 NT$16,800 起，方案與報價都整理好了。</p>
+        <div class="service-promo-link">看服務與報價 →</div>
+      </a>
+
     </div>
 
     <!-- Footer -->
@@ -169,6 +177,7 @@ const offers = [
         <a href="/thsr-guide">高鐵省錢</a>
         <a href="/story">作者故事</a>
         <a href="/#klook-offers">Klook 優惠碼</a>
+        <a href="/services">站長服務</a>
         <a href="/privacy">隱私權政策</a>
       </div>
       <span style="display:block;margin-top:10px;">自媒體行銷 · 越南生活 10 年 · 現在重新出發</span>
@@ -512,6 +521,49 @@ const offers = [
     color: var(--gold);
     text-transform: uppercase;
     margin-bottom: 8px;
+  }
+
+  /* Services promo card */
+  .service-promo {
+    display: block;
+    margin: 40px 0 0;
+    padding: 28px 30px;
+    border: 2px solid var(--ink);
+    border-radius: 10px;
+    background: var(--paper-warm);
+    text-decoration: none;
+    color: var(--ink);
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .service-promo:hover {
+    box-shadow: 0 6px 20px rgba(26,18,8,0.12);
+    transform: translateY(-2px);
+  }
+  .service-promo-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .service-promo-title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .service-promo-desc {
+    font-size: 14.5px;
+    color: var(--ink-light);
+    line-height: 1.7;
+    margin-bottom: 14px !important;
+  }
+  .service-promo-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
   }
 
   /* Subscribe box */
