@@ -2,17 +2,7 @@
 import BlogLayout from '../layouts/BlogLayout.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import SiteNav from '../components/SiteNav.astro';
-import { esimArticles, travelArticles } from '../data/articles.js';
-
-const AFFILIATE_LINK = 'https://onelink.one/s/Rkzvi';
-
-const offers = [
-  { bank: '玉山銀行公務人員國旅卡', title: '全站滿 $3,000 享 94 折', badge: '6% OFF', code: 'ESUNDC26Q294', validUntil: '2026/06/30' },
-  { bank: '中華郵政 VISA 金融卡', title: '高鐵國旅聯票滿 $1,000 折 $100', badge: '$100 OFF', code: 'POSTHS268505', validUntil: '2026/06/30' },
-  { bank: '新光銀行 Visa 卡', title: '海外商品 93 折', badge: '7% OFF', code: 'VSKB269305', validUntil: '2026/06/30' },
-  { bank: '彰化銀行', title: '海外商品 95 折', badge: '5% OFF', code: 'CHB269505', validUntil: '2026/06/30' },
-  { bank: '中國信託 LINE Pay Visa', title: '台港澳飯店 12% LINE POINTS 回饋', badge: '12% 回饋', code: 'CTBCLP26CH2', validUntil: '2026/12/31' },
-];
+import { esimArticles, travelArticles, lifeArticles } from '../data/articles.js';
 ---
 
 <BlogLayout
@@ -95,6 +85,22 @@ const offers = [
       </p>
     </div>
 
+    <!-- Life notes -->
+    <div class="article life-section">
+      <h2>人生筆記</h2>
+      <p class="section-desc">旅遊與省錢之外，偶爾也寫一點中年重新出發的體悟與思考。</p>
+      <div class="card-grid life-grid">
+        {lifeArticles.map((a) => (
+          <a href={a.href} class="article-card">
+            <div class="article-card-tag">{a.tag}</div>
+            <div class="article-card-title">{a.title}</div>
+            <p class="article-card-desc">{a.desc}</p>
+            <div class="article-card-link">{a.label}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+
     <!-- Two-column wide section -->
     <div class="wide-wrap">
 
@@ -132,61 +138,19 @@ const offers = [
 
     <div class="article"><!-- resume narrow -->
 
-      <!-- Klook Section -->
-      <h2 id="klook-offers">Klook 省錢情報</h2>
+      <!-- Klook 省錢情報（明細移至獨立頁，首頁僅保留導引）-->
+      <h2>旅遊省錢情報</h2>
       <p>
-        整理 2026 年最新各大銀行 Klook 刷卡折扣。
-        透過下方連結進入 Klook，結帳輸入優惠碼即享折扣。
+        出國訂門票、交通和行程前，記得先看一下手上的信用卡有沒有折扣。
+        各大銀行的 Klook 刷卡優惠碼我整理在這頁，會不定期更新：
+        <a href="/klook-deals" style="color:var(--accent);font-weight:600;">Klook 銀行優惠碼整理 →</a>
       </p>
-
-      <div class="coupon-grid">
-        {offers.map((o) => (
-          <div class="coupon-card">
-            <div class="coupon-top">
-              <div>
-                <div class="coupon-bank">{o.bank}</div>
-                <div class="coupon-title">{o.title}</div>
-              </div>
-              <span class="coupon-badge">{o.badge}</span>
-            </div>
-            <div class="coupon-bottom">
-              <div>
-                <div class="coupon-label">優惠碼</div>
-                <button type="button" class="coupon-code copy-code" data-code={o.code} aria-label={`複製優惠碼 ${o.code}`}>
-                  <span class="code-text">{o.code}</span>
-                  <span class="copy-hint">複製</span>
-                </button>
-              </div>
-              <div class="coupon-expiry">效期至 {o.validUntil}</div>
-            </div>
-            <a href={o.url ?? AFFILIATE_LINK} target="_blank" rel="noopener noreferrer sponsored" class="coupon-btn">
-              前往 Klook 使用 →
-            </a>
-          </div>
-        ))}
-      </div>
-
-      <div class="tip-box">
-        <div class="tip-title">注意事項</div>
-        <p style="margin:0;font-size:14px;color:var(--ink-light);">
-          優惠數量有限，依結帳順序為準。各優惠碼適用商品與低消門檻不同，請詳閱各活動說明。
-          優惠期限以 Klook 官方公告為準。本頁含聯盟行銷連結，透過連結購買不影響你的價格。
-        </p>
-      </div>
 
       <!-- Social Links -->
       <SocialLinks
         heading="追蹤我｜Follow Me"
         subheading="IG、FB、YouTube 上會分享更多旅遊踩坑筆記與省錢情報"
       />
-
-      <!-- Services promo card -->
-      <a href="/services" class="service-promo">
-        <div class="service-promo-tag">站長服務</div>
-        <div class="service-promo-title">需要架站、網頁設計或自動交易程式？</div>
-        <p class="service-promo-desc">你現在看的這個網站，就是我用 Astro 親手架的。網站架設、SEO 網頁設計、量化交易 Bot 開發——單頁形象站 NT$16,800 起，方案與報價都整理好了。</p>
-        <div class="service-promo-link">看服務與報價 →</div>
-      </a>
 
     </div>
 
@@ -209,7 +173,8 @@ const offers = [
         <a href="/about">關於</a>
         <a href="/story">作者故事</a>
         <a href="/contact">聯絡我</a>
-        <a href="/#klook-offers">Klook 優惠碼</a>
+        <a href="/klook-deals">Klook 優惠碼</a>
+        <a href="/life-restart-naval">人生筆記</a>
         <a href="/services">站長服務</a>
         <a href="/privacy">隱私權政策</a>
       </div>
@@ -218,35 +183,6 @@ const offers = [
 
   </div>
 </BlogLayout>
-
-<script>
-  // 一鍵複製優惠碼：複製後給視覺回饋，降低使用者手動選取的摩擦
-  document.querySelectorAll('.copy-code').forEach(function (btn) {
-    btn.addEventListener('click', async function () {
-      var code = btn.getAttribute('data-code') || '';
-      try {
-        await navigator.clipboard.writeText(code);
-      } catch (err) {
-        var ta = document.createElement('textarea');
-        ta.value = code;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-      }
-      var hint = btn.querySelector('.copy-hint');
-      if (hint) {
-        var prev = hint.textContent;
-        hint.textContent = '已複製 ✓';
-        btn.classList.add('copied');
-        setTimeout(function () {
-          hint.textContent = prev;
-          btn.classList.remove('copied');
-        }, 1600);
-      }
-    });
-  });
-</script>
 
 <script>
   var form = document.getElementById('subscribe-form');
@@ -421,6 +357,11 @@ const offers = [
     padding: 16px 20px;
   }
   .intro-note a { color: var(--accent); }
+
+  /* Life notes section */
+  .life-section { padding-top: 0; padding-bottom: 24px; }
+  .life-section h2 { margin-top: 8px; }
+  .life-grid { grid-template-columns: 1fr; max-width: 620px; }
 
   /* Wide two-column layout */
   .wide-wrap {

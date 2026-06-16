@@ -184,6 +184,18 @@ export const travelArticles = [
   },
 ];
 
+// 人生筆記：中年重新出發的觀點與體悟。零導購的個人原創內容。
+export const lifeArticles = [
+  {
+    tag: '人生重來',
+    title: '人生不是一次選對，而是不斷修正：我從 Naval 學到的 5 個重來提醒',
+    desc: '重新開始不可怕，可怕的是明知道方向不對，卻因為面子、習慣和分心一直停在原地。從 Naval Ravikant 整理的 5 個提醒：選擇、驕傲、疊代、靈感與注意力。',
+    href: '/life-restart-naval',
+    label: '看這篇人生筆記 →',
+    pubDate: '2026-06-16',
+  },
+];
+
 // 已上線、但尚未列進首頁卡片的文章。仍要收進 RSS（全站文章）。
 export const extraArticles = [
   {
@@ -197,4 +209,4 @@ export const extraArticles = [
 ];
 
 // 全站文章（含未上首頁者）。RSS 用此清單。
-export const allArticles = [...esimArticles, ...travelArticles, ...extraArticles];
+export const allArticles = [...esimArticles, ...travelArticles, ...lifeArticles, ...extraArticles];
