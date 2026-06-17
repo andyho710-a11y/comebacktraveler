@@ -1,0 +1,410 @@
+---
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const title = "eSIM 決策樹｜30 秒測出你的出國上網方案（日本・韓國・越南）";
+const description = "不知道出國該用 eSIM、WiFi 機還是當地 SIM？回答 4 個問題，依人數、通話需求與天數，幫你選對日本、韓國、越南的上網方案，並推薦合適的 eSIM。中立工具，附完整文字版選購建議。";
+const canonical = "https://comebacktraveler.com/esim-quiz";
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="eSIM 推薦,出國上網,WiFi機,當地SIM卡,日本eSIM,韓國eSIM,越南eSIM,上網方案選擇" />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "eSIM 決策樹｜出國上網方案測驗",
+    "description": description,
+    "url": canonical,
+    "applicationCategory": "TravelApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "zh-TW",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "TWD" },
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .hero { max-width: 760px; margin: 56px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(27px, 4.5vw, 40px); line-height: 1.4; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 8px; line-height: 1.75; }
+
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* Quiz */
+    .quiz { margin: 40px 0 0; }
+    .q { border: 1.5px solid var(--border); border-radius: 10px; padding: 22px 24px; margin-bottom: 16px; background: var(--paper); }
+    .q-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+    .q-num { font-family: var(--serif); font-weight: 900; font-size: 14px; color: var(--accent); flex-shrink: 0; }
+    .q-title { font-family: var(--serif); font-weight: 700; font-size: 18px; color: var(--ink); }
+    .options { display: flex; flex-wrap: wrap; gap: 10px; }
+    .opt {
+      font-family: var(--sans); font-size: 15px; color: var(--ink);
+      background: var(--paper-warm); border: 1.5px solid var(--border);
+      border-radius: 999px; padding: 9px 18px; cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .opt:hover { border-color: var(--accent); }
+    .opt.selected { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 500; }
+
+    .quiz-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 24px; }
+    .quiz-submit {
+      font-family: var(--serif); font-weight: 600; font-size: 16px; color: #fff;
+      background: var(--ink); border: none; border-radius: 6px; padding: 13px 32px; cursor: pointer;
+      transition: background 0.15s, opacity 0.15s;
+    }
+    .quiz-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+    .quiz-submit:not(:disabled):hover { background: #2c1f0f; }
+    .quiz-hint { font-size: 13px; color: var(--ink-light); }
+    .quiz-reset { background: none; border: none; color: var(--accent); font-size: 14px; cursor: pointer; text-decoration: underline; padding: 0; font-family: var(--sans); }
+
+    /* Result */
+    .result { margin-top: 28px; }
+    .result[hidden] { display: none; }
+    .result-card { border: 2px solid var(--accent); border-radius: 12px; padding: 28px 30px; background: #fef9f5; }
+    .result-label { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .result-title { font-family: var(--serif); font-weight: 900; font-size: 23px; color: var(--ink); margin-bottom: 12px; line-height: 1.4; }
+    .result-summary { font-size: 16px; color: var(--ink-light); margin-bottom: 14px; }
+    .result-note { font-size: 14px; color: var(--ink-light); background: var(--paper-warm); border-radius: 6px; padding: 12px 16px; margin-bottom: 16px; }
+    .result-sub { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase; margin: 18px 0 8px; }
+    .result-reading { list-style: none; padding: 0; margin: 0 0 18px; }
+    .result-reading li { padding: 5px 0; }
+    .result-reading a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .result-reading a:hover { text-decoration: underline; }
+    .result-cta {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-family: var(--serif); font-weight: 600; font-size: 15px;
+      padding: 12px 26px; border-radius: 6px; text-decoration: none;
+    }
+    .result-cta.alt { background: var(--ink); }
+    .result-cta:hover { background: #a93226; }
+    .result-cta.alt:hover { background: #2c1f0f; }
+    .result-disclosure { font-size: 12px; color: var(--ink-light); margin-top: 10px; }
+    .reset-row { margin-top: 16px; text-align: center; }
+
+    /* Static prose */
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 24px; margin: 56px 0 16px; position: relative; padding-left: 16px; line-height: 1.4; }
+    h2::before { content: ''; position: absolute; left: 0; top: 5px; width: 4px; height: 78%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 700; font-size: 18px; margin: 28px 0 8px; }
+    .prose p { margin-bottom: 1.3em; }
+    .prose strong { color: var(--ink); }
+    .prose a { color: var(--accent); }
+    .plan-list { list-style: none; padding: 0; margin: 8px 0 1.3em; }
+    .plan-list li { padding: 12px 0 12px 18px; border-left: 3px solid var(--border); margin-bottom: 10px; font-size: 15.5px; color: var(--ink-light); line-height: 1.75; }
+    .plan-list li strong { color: var(--ink); }
+    .internal-links { margin: 44px 0 0; padding-top: 28px; border-top: 1px solid var(--border); display: flex; gap: 20px; flex-wrap: wrap; }
+    .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+
+    @media (max-width: 600px) { .hero, .wrap { padding: 0 18px; } }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XW4LBK8PYF');
+  </script>
+</head>
+<body>
+
+<SiteNav current="esim" />
+
+<div class="hero">
+  <div class="category-tag">出國上網 · 互動工具</div>
+  <h1>出國上網該用哪一種？<br>30 秒測出你的方案</h1>
+  <p class="subtitle">
+    eSIM、WiFi 機、還是當地 SIM 卡？回答下面 4 個問題，
+    我會依你的人數、通話需求和天數，給你一個合理的建議——
+    日本、韓國、越南都適用。這是中立工具，不會不管你怎麼選都推同一家。
+  </p>
+</div>
+
+<div class="wrap">
+
+  <!-- Interactive quiz -->
+  <div class="quiz" id="quiz">
+    <div class="q" data-q="dest">
+      <div class="q-head"><span class="q-num">Q1</span><span class="q-title">你要去哪裡？</span></div>
+      <div class="options">
+        <button class="opt" data-val="jp">日本</button>
+        <button class="opt" data-val="kr">韓國</button>
+        <button class="opt" data-val="vn">越南</button>
+      </div>
+    </div>
+
+    <div class="q" data-q="days">
+      <div class="q-head"><span class="q-num">Q2</span><span class="q-title">待幾天？</span></div>
+      <div class="options">
+        <button class="opt" data-val="short">1–4 天</button>
+        <button class="opt" data-val="mid">5–8 天</button>
+        <button class="opt" data-val="long">9 天以上</button>
+      </div>
+    </div>
+
+    <div class="q" data-q="people">
+      <div class="q-head"><span class="q-num">Q3</span><span class="q-title">幾個人一起用這個網路？</span></div>
+      <div class="options">
+        <button class="opt" data-val="solo">只有我自己</button>
+        <button class="opt" data-val="two">2 人共用</button>
+        <button class="opt" data-val="group">3 人以上（家庭、團體）</button>
+      </div>
+    </div>
+
+    <div class="q" data-q="care">
+      <div class="q-head"><span class="q-num">Q4</span><span class="q-title">你最在意什麼？</span></div>
+      <div class="options">
+        <button class="opt" data-val="cheap">便宜就好</button>
+        <button class="opt" data-val="stable">穩定不斷線、有中文客服</button>
+        <button class="opt" data-val="call">要講電話或當地號碼</button>
+      </div>
+    </div>
+
+    <div class="quiz-actions">
+      <button class="quiz-submit" id="quiz-submit" disabled>看我的推薦 →</button>
+      <span class="quiz-hint" id="quiz-hint">請先回答 4 個問題</span>
+    </div>
+  </div>
+
+  <div class="result" id="result" hidden aria-live="polite"></div>
+
+  <!-- Static text version (for SEO crawlers; not hidden behind interaction) -->
+  <h2>不想點？這裡直接講選購邏輯</h2>
+  <div class="prose">
+    <p>
+      上面的測驗只是把下面這套判斷濃縮成幾個按鈕。怕你嫌麻煩，我把完整邏輯用文字寫一遍——
+      這也是我自己幫朋友決定上網方案時，腦袋裡跑的順序。
+    </p>
+
+    <h3>第一步：先決定「方案類型」</h3>
+    <p>不是一開始就挑品牌，而是先確定你該用 eSIM、WiFi 機還是當地 SIM。判斷的優先順序是：<strong>人數 ＞ 通話需求 ＞ 天數</strong>。</p>
+    <ul class="plan-list">
+      <li><strong>3 人以上一起用 → WiFi 機（分享器）</strong>：一台機器多人分享，平均每人成本最低，全家或團體出遊最划算。缺點是要充電、要有人保管、隔天要記得帶出門。</li>
+      <li><strong>1～2 人、不需要講電話 → eSIM</strong>：免換實體卡、免歸還、開機即用，單人或情侶/夫妻最方便。手機要支援 eSIM（iPhone XS 以後、近年的 Android 旗艦大多支援）。</li>
+      <li><strong>需要講電話或當地門號 → 當地實體 SIM 卡</strong>：旅遊用 eSIM 多半只給「數據」，沒有當地號碼可以撥打電話。若你要打給當地飯店、餐廳訂位、或工作需要當地門號，落地辦一張實體 SIM 最直接。</li>
+      <li><strong>只待 1～4 天、又只在意便宜 → eSIM 小流量方案</strong>：短天數不值得租 WiFi 機，買一個小流量的 eSIM 包就夠用，最省。</li>
+    </ul>
+
+    <h3>第二步：eSIM 要選哪一張？（依國家）</h3>
+    <p>只有結果是 eSIM 時，才需要挑品牌。我的建議跟站上每一篇 eSIM 文章一致：</p>
+    <ul class="plan-list">
+      <li><strong>日本</strong>：在意穩定、要中文客服 → <strong>JOYTEL 日本原生線路</strong>；預算優先、已熟悉 eSIM → <strong>WaySim 威訊</strong>（原生線路、價格較親民）。完整比較見 <a href="/esim/japan">日本 eSIM 推薦</a>。</li>
+      <li><strong>韓國</strong>：在意穩定、要中文客服 → <strong>JOYTEL 韓國原生線路</strong>；預算優先 → <strong>WaySim 威訊</strong>（適合日韓連著玩）。完整比較見 <a href="/esim/korea">韓國 eSIM 推薦</a>。</li>
+      <li><strong>越南</strong>：優先選 <strong>Viettel 原生 eSIM</strong>（越南最大電信，覆蓋廣、訊號穩）。在台灣線上先買，通常比胡志明市新山一機場現場買便宜一截。細節見 <a href="/esim/saigon-airport-sim">胡志明機場 SIM 卡建議</a>。</li>
+    </ul>
+
+    <h3>還是不確定？先看這幾篇</h3>
+    <p>
+      如果你連 eSIM、WiFi 機、漫遊的差別都還沒搞懂，建議先讀
+      <a href="/esim/overseas-internet-guide">出國上網三種方案完整比較</a>，再回來測一次會更有感。
+      想看各品牌規格一次攤開，看 <a href="/esim">eSIM 品牌比較表</a>。
+    </p>
+  </div>
+
+  <div class="internal-links">
+    <a href="/esim">→ eSIM 品牌比較表</a>
+    <a href="/esim/japan">→ 日本 eSIM 推薦</a>
+    <a href="/esim/korea">→ 韓國 eSIM 推薦</a>
+    <a href="/esim/saigon-airport-sim">→ 越南上網建議</a>
+  </div>
+
+</div>
+
+<SiteFooter />
+
+<script>
+  // ── eSIM 決策樹：純前端、state 僅存記憶體，不使用 localStorage/sessionStorage ──
+  const AFF = {
+    joytelJp: 'https://onelink.one/s/z4xjt?sub_id=quiz',
+    joytelKr: 'https://onelink.one/s/LsI9l?sub_id=quiz',
+    joytelVn: 'https://afflink.one/s/SNmCj?sub_id=quiz',
+    viettelVn: 'https://linkgo.one/s/qG9cT?sub_id=quiz',
+  };
+  const READ = { jp: '/esim/japan', kr: '/esim/korea', vn: '/esim/saigon-airport-sim' };
+  const GUIDE = { jp: '/japan-guide', kr: '/korea-guide', vn: '/vietnam-guide' };
+  const OVERSEAS = '/esim/overseas-internet-guide';
+
+  const L = {
+    dest: { jp: '日本', kr: '韓國', vn: '越南' },
+    days: { short: '1–4 天', mid: '5–8 天', long: '9 天以上' },
+    people: { solo: '自己一個人', two: '兩人共用', group: '三人以上一起' },
+    care: { cheap: '便宜就好', stable: '穩定不斷線、有中文客服', call: '要講電話或當地號碼' },
+  };
+
+  const answers = { dest: null, days: null, people: null, care: null };
+
+  const quiz = document.getElementById('quiz');
+  const submitBtn = document.getElementById('quiz-submit');
+  const hint = document.getElementById('quiz-hint');
+  const resultEl = document.getElementById('result');
+
+  quiz.querySelectorAll('.q').forEach(function (group) {
+    const key = group.getAttribute('data-q');
+    group.querySelectorAll('.opt').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        answers[key] = btn.getAttribute('data-val');
+        group.querySelectorAll('.opt').forEach(function (b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        refresh();
+      });
+    });
+  });
+
+  function allAnswered() {
+    return answers.dest && answers.days && answers.people && answers.care;
+  }
+  function refresh() {
+    const done = allAnswered();
+    submitBtn.disabled = !done;
+    hint.textContent = done ? '可以看結果了' : '請先回答 4 個問題';
+  }
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  function brandFor(dest, care) {
+    // care 在此只會是 cheap 或 stable（call 已在第一步分流到實體 SIM）
+    const stable = care === 'stable';
+    if (dest === 'jp') {
+      return stable
+        ? { name: 'JOYTEL 日本原生線路', reason: 'JOYTEL 走日本當地原生線路，速度穩、有中文 LINE 真人客服，第一次自助、怕斷線的人最安心。', cta: { href: AFF.joytelJp, label: '查看 JOYTEL 日本方案 →', aff: true } }
+        : { name: 'WaySim 威訊（日本原生）', reason: '同樣是原生線路但價格較親民，適合預算優先、已經熟悉 eSIM 操作的人。我把它和 JOYTEL 的差異整理在日本 eSIM 推薦文裡。', cta: { href: READ.jp, label: '看 JOYTEL vs WaySim 完整比較 →', aff: false } };
+    }
+    if (dest === 'kr') {
+      return stable
+        ? { name: 'JOYTEL 韓國原生線路', reason: 'JOYTEL 走韓國原生線路，Naver Map 導航、中文 LINE 客服都到位，求穩的人選它。', cta: { href: AFF.joytelKr, label: '查看 JOYTEL 韓國方案 →', aff: true } }
+        : { name: 'WaySim 威訊（韓國原生）', reason: '原生線路、價格較親民，若你打算日韓連著玩也方便。詳細差異看韓國 eSIM 推薦文。', cta: { href: READ.kr, label: '看 JOYTEL vs WaySim 完整比較 →', aff: false } };
+    }
+    // vn
+    return stable
+      ? { name: 'Viettel 原生 eSIM（JOYTEL）', reason: 'Viettel 是越南最大電信，覆蓋廣、訊號穩，胡志明、河內、峴港都不太需要擔心。要穩就選原生 Viettel。', cta: { href: AFF.joytelVn, label: '查看越南 Viettel 原生 eSIM →', aff: true } }
+      : { name: 'Viettel 原生 eSIM（線上先買）', reason: '越南上網我一律優先看 Viettel。重點不是換品牌，而是「在台灣線上先買」通常比新山一機場現場買便宜一截。', cta: { href: AFF.viettelVn, label: '查看越南 Viettel 5G eSIM →', aff: true } };
+  }
+
+  function recommend(a) {
+    const destL = L.dest[a.dest], daysL = L.days[a.days], peopleL = L.people[a.people], careL = L.care[a.care];
+    const base = '你' + peopleL + '、去' + destL + daysL + '、最在意「' + careL + '」——';
+
+    // 第一步：方案類型（人數 > 通話 > 天數）
+    let plan;
+    if (a.people === 'group') plan = 'wifi';
+    else if (a.care === 'call') plan = 'sim';
+    else plan = 'esim';
+
+    if (plan === 'wifi') {
+      return {
+        title: '建議用 WiFi 機（分享器）',
+        summary: base + '人多的時候，一台 WiFi 機分享給大家最划算，平均每人成本最低。',
+        note: '小提醒：WiFi 機要充電、要有人保管，出門前記得帶。如果其中有人會單獨行動，那個人可以另外加一張 eSIM。',
+        reading: [
+          { href: OVERSEAS, label: '出國上網三種方案完整比較' },
+          { href: GUIDE[a.dest], label: destL + '自由行攻略' },
+        ],
+        cta: null,
+      };
+    }
+    if (plan === 'sim') {
+      const reading = [{ href: a.dest === 'vn' ? READ.vn : OVERSEAS, label: a.dest === 'vn' ? '胡志明機場 SIM 卡建議' : '出國上網三種方案完整比較' }];
+      return {
+        title: '建議辦當地實體 SIM 卡',
+        summary: base + '旅遊用 eSIM 多半只給數據、沒有當地號碼。你要講電話或需要當地門號，落地辦一張實體 SIM 最直接。',
+        note: a.dest === 'vn'
+          ? '越南的話，機場現場辦最快，但價格通常比線上貴；可參考下面那篇先比一下。'
+          : '若你其實只是要上網、不一定要通話，回上面把 Q4 改成「穩定」或「便宜」，eSIM 會更方便。',
+        reading: reading,
+        cta: null,
+      };
+    }
+
+    // eSIM
+    const brand = brandFor(a.dest, a.care);
+    const smallData = (a.days === 'short' && a.care === 'cheap');
+    return {
+      title: '建議用 eSIM — ' + brand.name,
+      summary: base + brand.reason,
+      note: smallData ? '你天數短又想省，買「小流量方案」就夠用，不用買大包流量。' : null,
+      reading: [
+        { href: READ[a.dest], label: destL + ' eSIM 推薦與比較' },
+        { href: GUIDE[a.dest], label: destL + '自由行攻略' },
+      ],
+      cta: brand.cta,
+    };
+  }
+
+  function render(r) {
+    let html = '';
+    html += '<div class="result-card">';
+    html += '<div class="result-label">你的推薦</div>';
+    html += '<h3 class="result-title">' + esc(r.title) + '</h3>';
+    html += '<p class="result-summary">' + esc(r.summary) + '</p>';
+    if (r.note) html += '<div class="result-note">' + esc(r.note) + '</div>';
+
+    html += '<div class="result-sub">延伸閱讀</div><ul class="result-reading">';
+    r.reading.forEach(function (item) {
+      html += '<li><a href="' + esc(item.href) + '">' + esc(item.label) + ' →</a></li>';
+    });
+    html += '</ul>';
+
+    if (r.cta) {
+      const rel = r.cta.aff ? 'noopener sponsored' : 'noopener';
+      const target = r.cta.aff ? ' target="_blank"' : '';
+      const cls = r.cta.aff ? 'result-cta' : 'result-cta alt';
+      html += '<a class="' + cls + '" href="' + esc(r.cta.href) + '"' + target + ' rel="' + rel + '">' + esc(r.cta.label) + '</a>';
+      if (r.cta.aff) html += '<p class="result-disclosure">本連結為聯盟連結，你透過它購買我會獲得少量分潤，但不影響你的價格。</p>';
+    }
+
+    html += '</div>';
+    html += '<div class="reset-row"><button class="quiz-reset" id="quiz-reset">↻ 重新測驗</button></div>';
+    resultEl.innerHTML = html;
+    resultEl.hidden = false;
+
+    document.getElementById('quiz-reset').addEventListener('click', resetQuiz);
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function resetQuiz() {
+    answers.dest = answers.days = answers.people = answers.care = null;
+    quiz.querySelectorAll('.opt.selected').forEach(function (b) { b.classList.remove('selected'); });
+    resultEl.hidden = true;
+    resultEl.innerHTML = '';
+    refresh();
+    quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  submitBtn.addEventListener('click', function () {
+    if (!allAnswered()) return;
+    render(recommend(answers));
+  });
+</script>
+
+</body>
+</html>
