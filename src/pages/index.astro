@@ -107,6 +107,7 @@ import { esimArticles, travelArticles, lifeArticles } from '../data/articles.js'
       <div class="section-col">
         <h2>出國上網攻略</h2>
         <p class="section-desc">出門在外沒有網路，那種慌是真的。以下 eSIM 選購指南依各家官方規格、線路類型與客服管道彙整，不業配。</p>
+        <a href="/esim-quiz" class="quiz-cta">🧭 30 秒測出你該用哪種上網方案 →</a>
         <div class="card-grid">
           {esimArticles.map((a) => (
             <a href={a.href} class="article-card">
@@ -376,6 +377,21 @@ import { esimArticles, travelArticles, lifeArticles } from '../data/articles.js'
   .section-col { padding-bottom: 48px; }
   .section-col h2 { margin-top: 52px; }
   .section-desc { margin-bottom: 0; }
+
+  .quiz-cta {
+    display: inline-block;
+    margin: 16px 0 0;
+    padding: 12px 18px;
+    border: 1.5px solid var(--accent);
+    border-radius: 8px;
+    background: #fef9f5;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 14.5px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .quiz-cta:hover { background: #fbeee6; }
 
   /* Article cards */
   .card-grid {
