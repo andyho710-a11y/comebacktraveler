@@ -1,0 +1,157 @@
+---
+// 文章朗讀按鈕：用瀏覽器原生 Web Speech API（speechSynthesis）朗讀正文。
+// 純前端、無 API 成本、不存任何資料。只朗讀 target 容器內的 h2/h3/p/li，
+// 並跳過社群、延伸閱讀等非正文區塊。裝置若無中文語音則自動隱藏按鈕（漸進增強）。
+interface Props {
+  target?: string;
+}
+const { target = '.article' } = Astro.props;
+---
+
+<div class="read-aloud" data-target={target} hidden>
+  <button class="ra-btn" type="button" aria-pressed="false" aria-label="朗讀這篇文章">
+    <span class="ra-icon" aria-hidden="true">▶</span>
+    <span class="ra-label">朗讀這篇</span>
+  </button>
+  <span class="ra-status" aria-live="polite"></span>
+</div>
+
+<style>
+  .read-aloud {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 0 0 28px;
+  }
+  .ra-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #c0392b;
+    background: #fef9f5;
+    border: 1.5px solid #c0392b;
+    border-radius: 999px;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .ra-btn:hover { background: #c0392b; color: #fff; }
+  .ra-btn[aria-pressed="true"] { background: #c0392b; color: #fff; }
+  .ra-icon { font-size: 12px; line-height: 1; }
+  .ra-status { font-size: 13px; color: #4a3f2f; }
+</style>
+
+<script>
+  (function () {
+    const root = document.querySelector('.read-aloud');
+    if (!root || !('speechSynthesis' in window)) return;
+
+    const synth = window.speechSynthesis;
+    const targetSel = root.getAttribute('data-target') || '.article';
+    const btn = root.querySelector('.ra-btn');
+    const label = root.querySelector('.ra-label');
+    const icon = root.querySelector('.ra-icon');
+    const status = root.querySelector('.ra-status');
+
+    const EXCLUDE = '.social-links, .more-reading, .internal-links, .related-articles, [data-noread]';
+
+    let state = 'idle'; // idle | playing | paused
+    let chunks = [];
+    let idx = 0;
+    let keepAlive = null;
+
+    function zhVoices() {
+      return synth.getVoices().filter(function (v) { return /^zh/i.test(v.lang); });
+    }
+    function pickVoice() {
+      const vs = synth.getVoices();
+      return vs.find(function (v) { return /zh[-_]?tw/i.test(v.lang); })
+        || vs.find(function (v) { return /zh[-_]?(hant|hk)/i.test(v.lang); })
+        || vs.find(function (v) { return /^zh/i.test(v.lang); })
+        || null;
+    }
+    function maybeShow() {
+      if (zhVoices().length > 0) root.hidden = false;
+    }
+    maybeShow();
+    synth.addEventListener && synth.addEventListener('voiceschanged', maybeShow);
+
+    function collect() {
+      const container = document.querySelector(targetSel);
+      if (!container) return [];
+      const out = [];
+      container.querySelectorAll('h2, h3, p, li').forEach(function (el) {
+        if (el.closest(EXCLUDE)) return;
+        // 若該元素內含被收集的子元素（如 li > p）則交給子元素，避免重複朗讀
+        if (el.querySelector('p, li')) return;
+        const t = (el.textContent || '').trim().replace(/\s+/g, ' ');
+        if (t) out.push(t);
+      });
+      return out;
+    }
+
+    function setState(s) {
+      state = s;
+      if (s === 'playing') { icon.textContent = '⏸'; label.textContent = '暫停'; btn.setAttribute('aria-pressed', 'true'); }
+      else if (s === 'paused') { icon.textContent = '▶'; label.textContent = '繼續朗讀'; btn.setAttribute('aria-pressed', 'true'); }
+      else { icon.textContent = '▶'; label.textContent = '朗讀這篇'; btn.setAttribute('aria-pressed', 'false'); status.textContent = ''; }
+    }
+
+    function speakNext() {
+      if (idx >= chunks.length) { stop(); return; }
+      const u = new SpeechSynthesisUtterance(chunks[idx]);
+      u.lang = 'zh-TW';
+      const v = pickVoice();
+      if (v) u.voice = v;
+      u.rate = 1.0;
+      u.pitch = 1.0;
+      u.onend = function () {
+        idx++;
+        if (state === 'playing') status.textContent = '朗讀中… ' + Math.min(idx, chunks.length) + '/' + chunks.length;
+        speakNext();
+      };
+      u.onerror = function () { idx++; speakNext(); };
+      synth.speak(u);
+    }
+
+    function start() {
+      chunks = collect();
+      if (!chunks.length) return;
+      idx = 0;
+      synth.cancel();
+      setState('playing');
+      startKeepAlive();
+      speakNext();
+    }
+    function stop() {
+      synth.cancel();
+      stopKeepAlive();
+      setState('idle');
+      idx = 0;
+    }
+    // 對抗 Chrome 長文約 15 秒自動停止的已知問題
+    function startKeepAlive() {
+      stopKeepAlive();
+      keepAlive = setInterval(function () { if (state === 'playing') synth.resume(); }, 8000);
+    }
+    function stopKeepAlive() {
+      if (keepAlive) { clearInterval(keepAlive); keepAlive = null; }
+    }
+
+    btn.addEventListener('click', function () {
+      if (state === 'idle') start();
+      else if (state === 'playing') { synth.pause(); setState('paused'); }
+      else if (state === 'paused') { synth.resume(); setState('playing'); }
+    });
+
+    // 離開頁面 / 切到背景時，停止或暫停，避免聲音殘留
+    window.addEventListener('pagehide', stop);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden && state === 'playing') { synth.pause(); setState('paused'); }
+    });
+  })();
+</script>
