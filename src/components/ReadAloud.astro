@@ -67,11 +67,19 @@ const { target = '.article' } = Astro.props;
     function zhVoices() {
       return synth.getVoices().filter(function (v) { return /^zh/i.test(v.lang); });
     }
+    // 已知的中文「男聲」語音名稱關鍵字（Edge/Azure 神經語音為主）。
+    // Web Speech API 沒有性別欄位，只能用語音名稱猜；挑不到就退回一般中文語音。
+    const MALE_HINTS = /(yunjhe|雲哲|yunze|yunxi|yunyang|yunjian|yunfeng|yunhao|kangkang|male|男)/i;
+    function isZh(v) { return /^zh/i.test(v.lang); }
+    function isZhTw(v) { return /zh[-_]?(tw|hant)/i.test(v.lang); }
     function pickVoice() {
       const vs = synth.getVoices();
-      return vs.find(function (v) { return /zh[-_]?tw/i.test(v.lang); })
-        || vs.find(function (v) { return /zh[-_]?(hant|hk)/i.test(v.lang); })
-        || vs.find(function (v) { return /^zh/i.test(v.lang); })
+      const male = vs.filter(function (v) { return isZh(v) && MALE_HINTS.test(v.name); });
+      return male.find(isZhTw)            // 台灣中文男聲（理想，如 YunJhe 雲哲）
+        || male[0]                         // 其他中文男聲
+        || vs.find(isZhTw)                 // 退回：台灣中文（不分性別）
+        || vs.find(function (v) { return /zh[-_]?hk/i.test(v.lang); })
+        || vs.find(isZh)                   // 退回：任何中文語音
         || null;
     }
     function maybeShow() {
@@ -107,8 +115,8 @@ const { target = '.article' } = Astro.props;
       u.lang = 'zh-TW';
       const v = pickVoice();
       if (v) u.voice = v;
-      u.rate = 1.0;
-      u.pitch = 1.0;
+      u.rate = 0.95;   // 稍慢，聽起來更穩重
+      u.pitch = 0.9;   // 壓低音高，偏中年男聲的理性沉穩感
       u.onend = function () {
         idx++;
         if (state === 'playing') status.textContent = '朗讀中… ' + Math.min(idx, chunks.length) + '/' + chunks.length;
