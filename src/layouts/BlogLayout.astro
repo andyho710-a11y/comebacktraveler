@@ -12,7 +12,10 @@ interface Props {
 
 const { title, description, keywords, ogImage, datePublished, dateModified } = Astro.props;
 const siteBase = Astro.site ?? new URL('https://comebacktraveler.com');
-const canonicalURL = new URL(Astro.url.pathname, siteBase);
+// build.format:'file' 會讓 Astro.url.pathname 變成 /esim.html、/index.html，
+// 需正規化成乾淨網址（/esim、/）才能與 sitemap 一致，避免 canonical 訊號打架。
+const cleanPath = Astro.url.pathname.replace(/index\.html$/, '').replace(/\.html$/, '');
+const canonicalURL = new URL(cleanPath, siteBase);
 const ogImageURL = ogImage
   ? ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteBase).toString()
   : undefined;
