@@ -44,6 +44,25 @@
 
 ---
 
+## E. 索引加速（Google Search Console）
+
+> 「已找到 – 目前尚未建立索引」對 AdSense 審核不會擋（AdSense 用自己的爬蟲看內容），
+> 主要是新站、權重低、爬蟲預算少所致，會隨時間索引。以下可加速：
+
+- ☐ 對重點頁做「網址審查 → 要求建立索引」：首頁、`/esim`、`/esim-quiz`、`/klook-deals`、`/life-restart-naval`、`/about`、`/contact`
+- ☐ **首頁與 `/esim` 修正 canonical 後務必重送索引**（見下方備註）
+- ☐ 一天別送太多，挑最重要的優先
+- ☐ 多做外部曝光（FB／IG／YouTube 連回文章），提升爬蟲抓取意願——新站最有效
+- ☐ 給它時間：新站索引常需數天到數週
+
+### 備註：canonical 帶 .html 的坑（已修，2026-06-20）
+`astro.config.mjs` 用 `build.format:'file'`，會讓用 BlogLayout 的頁面（首頁、`/esim`）
+的 `Astro.url.pathname` 變成 `/index.html`、`/esim.html`，canonical 因此與 sitemap（`/`、`/esim`）
+不一致、訊號打架，可能造成「已找到未索引」。BlogLayout 已正規化為乾淨網址。
+**若日後再新增用 BlogLayout 的頁面，記得用下方指令確認沒有 `.html` canonical。**
+
+---
+
 ## 快速重新驗證指令（每次送審前可重跑）
 
 ```bash
@@ -62,4 +81,6 @@ for f in dist/*.html dist/esim/*.html; do
 done
 # 3) services 不應有廣告（理想輸出 0）
 grep -c 'adsbygoogle' dist/services.html
+# 4) 不應有 canonical 帶 .html（理想無輸出）
+grep -l 'rel="canonical" href="[^"]*\.html"' dist/*.html dist/esim/*.html
 ```
