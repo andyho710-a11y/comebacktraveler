@@ -444,83 +444,6 @@ import { esimArticles, travelArticles, lifeArticles } from '../data/articles.js'
     margin-top: auto;
   }
 
-  /* Coupon cards */
-  .coupon-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    margin: 28px 0 32px;
-  }
-  .coupon-card {
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    padding: 18px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    background: var(--paper);
-  }
-  .coupon-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  .coupon-bank { font-size: 11px; color: var(--ink-light); margin-bottom: 4px; }
-  .coupon-title { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.4; }
-  .coupon-badge {
-    flex-shrink: 0;
-    background: #fde8e8;
-    color: #8b1a1a;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 10px;
-    white-space: nowrap;
-  }
-  .coupon-bottom { display: flex; align-items: center; justify-content: space-between; }
-  .coupon-label { font-size: 11px; color: var(--ink-light); margin-bottom: 4px; }
-  .coupon-code {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--paper-warm);
-    color: var(--ink);
-    font-family: monospace;
-    font-size: 13px;
-    padding: 4px 10px;
-    border-radius: 4px;
-    letter-spacing: 0.06em;
-    border: 1px dashed var(--border);
-    cursor: pointer;
-    transition: background 0.15s, border-color 0.15s;
-  }
-  .coupon-code:hover { background: #ece3cf; border-color: var(--accent); }
-  .coupon-code .copy-hint {
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 0;
-    color: var(--accent);
-    font-weight: 500;
-  }
-  .coupon-code.copied { border-color: #1c5e15; }
-  .coupon-code.copied .copy-hint { color: #1c5e15; }
-  .coupon-expiry { font-size: 12px; color: var(--ink-light); white-space: nowrap; padding-left: 12px; }
-  .coupon-btn {
-    display: block;
-    text-align: center;
-    background: var(--ink);
-    color: var(--paper);
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 13px;
-    padding: 10px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-  .coupon-btn:hover { background: #2c1f0f; }
-
   /* Tip box */
   .tip-box {
     border: 1.5px solid var(--border);
@@ -535,49 +458,6 @@ import { esimArticles, travelArticles, lifeArticles } from '../data/articles.js'
     color: var(--gold);
     text-transform: uppercase;
     margin-bottom: 8px;
-  }
-
-  /* Services promo card */
-  .service-promo {
-    display: block;
-    margin: 40px 0 0;
-    padding: 28px 30px;
-    border: 2px solid var(--ink);
-    border-radius: 10px;
-    background: var(--paper-warm);
-    text-decoration: none;
-    color: var(--ink);
-    transition: box-shadow 0.15s, transform 0.15s;
-  }
-  .service-promo:hover {
-    box-shadow: 0 6px 20px rgba(26,18,8,0.12);
-    transform: translateY(-2px);
-  }
-  .service-promo-tag {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-  .service-promo-title {
-    font-family: var(--serif);
-    font-weight: 900;
-    font-size: 20px;
-    line-height: 1.4;
-    margin-bottom: 10px;
-  }
-  .service-promo-desc {
-    font-size: 14.5px;
-    color: var(--ink-light);
-    line-height: 1.7;
-    margin-bottom: 14px !important;
-  }
-  .service-promo-link {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--accent);
   }
 
   /* Subscribe box */
@@ -669,7 +549,6 @@ import { esimArticles, travelArticles, lifeArticles } from '../data/articles.js'
   }
   @media (max-width: 700px) {
     .card-grid { grid-template-columns: 1fr; }
-    .coupon-grid { grid-template-columns: 1fr; }
     .subscribe-row { flex-direction: column; }
     .subscribe-inner { padding: 28px 20px; }
   }
