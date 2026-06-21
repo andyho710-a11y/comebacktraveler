@@ -49,7 +49,7 @@
 > 「已找到 – 目前尚未建立索引」對 AdSense 審核不會擋（AdSense 用自己的爬蟲看內容），
 > 主要是新站、權重低、爬蟲預算少所致，會隨時間索引。以下可加速：
 
-- ☐ 對重點頁做「網址審查 → 要求建立索引」：首頁、`/esim`、`/esim-quiz`、`/klook-deals`、`/life-restart-naval`、`/about`、`/contact`
+- ☐ 對重點頁做「網址審查 → 要求建立索引」：首頁、`/esim`、`/esim-quiz`、`/klook-deals`、`/life-restart-naval`、`/drink-a-glass-of-water`、`/about`、`/contact`
 - ☐ **首頁與 `/esim` 修正 canonical 後務必重送索引**（見下方備註）
 - ☐ 一天別送太多，挑最重要的優先
 - ☐ 多做外部曝光（FB／IG／YouTube 連回文章），提升爬蟲抓取意願——新站最有效
