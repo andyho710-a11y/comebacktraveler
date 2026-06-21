@@ -1,0 +1,293 @@
+---
+import SocialLinks from '../components/SocialLinks.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ReadAloud from '../components/ReadAloud.astro';
+
+const title = "為了喝一杯水，我要先把世界擦乾淨｜重來的旅人";
+const description = "一個中年男人誠實記錄自己與強迫症（OCD）共處的日子：為了喝一杯水，得先把桌子、環境、身體都擦乾淨，連感謝神都怕自己不夠潔淨。寫給同樣被強迫、潔癖與罪咎感困住的你——你不是壞人，你只是生病了，也正在努力。";
+const canonical = "https://comebacktraveler.com/drink-a-glass-of-water";
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="強迫症,OCD,潔癖,焦慮,信仰,心理健康,重來的旅人" />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "為了喝一杯水，我要先把世界擦乾淨",
+    "description": description,
+    "url": canonical,
+    "mainEntityOfPage": canonical,
+    "inLanguage": "zh-TW",
+    "datePublished": "2026-06-21",
+    "dateModified": "2026-06-21",
+    "articleSection": "人生重來",
+    "keywords": "強迫症, OCD, 潔癖, 焦慮, 信仰, 心理健康",
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.85; font-size: 17px; }
+
+    .hero { max-width: 720px; margin: 56px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(27px, 4.5vw, 40px); line-height: 1.4; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.75; }
+    .meta { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 42px; height: 42px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
+    .article p { margin-bottom: 1.5em; }
+    .lead { font-size: 18px; color: var(--ink); }
+    strong { color: var(--ink); font-weight: 600; }
+    .article a { color: var(--accent); }
+    hr { border: none; border-top: 1px solid var(--border); margin: 44px 0; }
+
+    blockquote { margin: 24px 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--border); color: var(--ink-light); font-family: var(--serif); }
+    blockquote p { margin-bottom: 0.6em; }
+
+    .reflect { background: var(--paper-warm); border-left: 4px solid var(--accent); border-radius: 0 6px 6px 0; padding: 24px 28px; margin: 44px 0 0; font-family: var(--serif); line-height: 1.9; }
+    .reflect p { margin-bottom: 0.6em; color: var(--ink); }
+    .reflect p:last-child { margin-bottom: 0; }
+
+    .helpline { margin: 32px 0 0; padding: 16px 20px; border: 1px solid var(--border); background: #f4f7f3; border-radius: 8px; font-size: 14px; line-height: 1.8; color: var(--ink-light); }
+    .helpline strong { color: var(--accent); }
+
+    .more-reading { margin: 44px 0 0; padding-top: 28px; border-top: 1px solid var(--border); display: flex; gap: 20px; flex-wrap: wrap; }
+    .more-reading a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .more-reading a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) { .hero, .article { padding: 0 18px; } }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XW4LBK8PYF');
+  </script>
+</head>
+<body>
+
+<SiteNav />
+
+<div class="hero">
+  <div class="category-tag">人生筆記 · 我還走不出來的紀錄</div>
+  <h1>為了喝一杯水，<br>我要先把世界擦乾淨</h1>
+  <p class="subtitle">
+    一段我與強迫症（OCD）共處、還沒走出來的誠實紀錄。<br>
+    寫給同樣被強迫、潔癖與罪咎感困住的你。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 6 月 21 日 · 越南生活 10 年 · 現在重新出發</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+  <ReadAloud />
+
+  <p class="lead">你們知道強迫症嗎？</p>
+
+  <p>不是一般人說的「我有點龜毛」、「我比較愛乾淨」那種。</p>
+
+  <p>我說的強迫症，是當你早上起床，明明口乾舌燥，很想喝一杯水，可是在喝水以前，腦子裡卻像有一道看不見的規矩，逼你先完成一連串前置作業。</p>
+
+  <p>對我來說，喝一杯水，從來不是拿起杯子喝下去那麼簡單。</p>
+
+  <p>桌子要先擦乾淨。</p>
+
+  <p>而且不能隨便拿一條布擦，一定要用「擦桌子專用的布」。如果拿錯布，我心裡就會不安，覺得這樣不乾淨，不可以。</p>
+
+  <p>環境也要乾淨。</p>
+
+  <p>地上不能有髒污，最好要先吸塵，該擦的地方要擦乾淨。身體也要乾淨，臉要洗乾淨，手要洗乾淨，腳也要乾淨。甚至我還會覺得，要換上比較正式、可以外出的衣服，才比較安心。</p>
+
+  <p>做完這些，我才比較敢感謝，然後喝水。</p>
+
+  <p>如果沒有照著這些步驟做，我心裡就會很不安。</p>
+
+  <p>那種不安不是普通的不舒服，而是好像自己做錯了什麼，好像會被懲罰，好像我不夠潔淨，不配喝這杯水，也不配向神感謝。</p>
+
+  <p>我知道這聽起來很奇怪。但這就是我目前的狀況。</p>
+
+  <hr />
+
+  <p>不只是喝水，吃飯也是一樣。</p>
+
+  <p>吃飯以前，也要覺得自己是乾淨的。手要洗乾淨，環境要乾淨，要感謝以後才敢吃。</p>
+
+  <p>吃飯的時候，碗盤一定要吃得很乾淨。不能有飯粒，不能有菜渣，不能留下沾黏的湯汁。只要碗裡還有一點點東西，我就會覺得良心不安，好像自己浪費食物，好像這樣會被懲罰。</p>
+
+  <p>所以我會把碗刮得很乾淨，有時候甚至會把沾在碗盤上的東西舔乾淨。</p>
+
+  <p>在外面吃飯時，別人看到可能會覺得我好像很餓，或者很奇怪。但他們不知道，我不是因為貪吃，而是因為我心裡有一種很深的不安。</p>
+
+  <p>我害怕沒有吃乾淨。我害怕浪費。我害怕自己沒有做到某個標準。</p>
+
+  <hr />
+
+  <p>這些症狀大概是在 2025 年 7、8 月左右開始變明顯的。現在已經是 2026 年 6 月底了。我有時候回頭想，都不知道自己是怎麼撐過來的。</p>
+
+  <p>我剛遇見耶穌的時候，不是這樣的。</p>
+
+  <p>那時候我感覺到的是自由，是醫治，是覺醒。好像自己終於可以成為新造的人，開始願意對人付出愛，也開始對生命有新的盼望。</p>
+
+  <p>可是後來，不知道從什麼時候開始，事情慢慢變了。</p>
+
+  <p>信仰沒有讓我更自由，反而變成一條又一條規矩。</p>
+
+  <p>我開始到處設定界線。</p>
+
+  <p>出門在外，看到哪裡髒，我就不敢去。吃飯以前一定要洗手。摸到別人摸過的東西，也想洗手。誰坐過的椅子，我也會開始挑。洗手洗到指甲好像都快要和肉分開了，還是停不下來。</p>
+
+  <p>家人也被我連累。</p>
+
+  <p>有時候家人在我面前衣衫不整，我心裡就會覺得不潔淨，甚至不敢感謝、不敢禱告。明明我知道這樣對家人不公平，可是那個不安感一來，我就好像被抓住了。</p>
+
+  <p>我一直問自己：</p>
+  <blockquote>
+    <p>這到底是誰教我的？</p>
+    <p>這些規矩到底是從哪裡來的？</p>
+    <p>教會有這樣教我嗎？</p>
+  </blockquote>
+  <p>好像沒有。可是我卻不知道為什麼，腦子裡就是生出了這麼多規矩。</p>
+
+  <p>我只能想起一些零碎的印象。</p>
+
+  <p>小時候，阿嬤常常說，碗盤要吃乾淨，不然會怎麼樣。那句話在我心裡留下很深的痕跡。</p>
+
+  <p>在越南的時候，我也聽過一些觀念，比如拜拜前要洗手、衣服要穿得正式。老婆也曾說過，月經來的時候不可以到廟裡拜拜。</p>
+
+  <p>這些印象，可能一個一個都不完整，也不一定是誰真的要害我。但不知道為什麼，它們好像被我的大腦混在一起，變成一套很混亂、很嚴格、很可怕的規矩。</p>
+
+  <p>我明明信的是耶穌。我明明知道耶穌帶來的應該是恩典，不是恐懼。</p>
+
+  <p>可是我的腦子卻一直告訴我：</p>
+  <blockquote>
+    <p>你還不夠乾淨。</p>
+    <p>你還沒有準備好。</p>
+    <p>你這樣不可以感謝。</p>
+    <p>你這樣不可以禱告。</p>
+    <p>你這樣可能會被懲罰。</p>
+  </blockquote>
+  <p>有時候我真的覺得自己像個神經病。</p>
+
+  <p>以前剛信主的時候，沒有這樣的症狀。可是後來進了教會，這些症狀反而慢慢出現。奇怪的是，我回頭想，教會好像也沒有這樣教。那我到底是怎麼變成這樣的？</p>
+
+  <hr />
+
+  <p>我去看過精神科醫師。</p>
+
+  <p>醫師說這是 OCD，也就是強迫症，建議我吃藥半年。</p>
+
+  <p>我回家後吃了兩天，結果腸胃很不舒服，我就停了。後來我也只好去問其他教會朋友，想知道這到底是怎麼回事。</p>
+
+  <p>我現在真的變得很潔癖。</p>
+
+  <p>我不是單純愛乾淨，而是被一種看不見的恐懼控制。很多事情明明知道不合理，卻還是會去做。因為不做，心裡就會很不安，好像有什麼災難會發生，好像神會不喜悅我，好像我犯了什麼錯。</p>
+
+  <p>可是我也知道，真正的神應該不是這樣。</p>
+
+  <p>耶穌不是要人被規條壓垮。</p>
+
+  <p>耶穌不是要我喝一杯水以前，先把桌子擦乾淨、地板弄乾淨、手腳洗乾淨、換好衣服，才配得感謝祂。</p>
+
+  <p>如果信仰讓我越來越害怕，越來越不敢生活，越來越不敢靠近家人，甚至連喝水、吃飯都變成一場考驗，那我想，這裡面一定有什麼地方出了問題。</p>
+
+  <hr />
+
+  <p>我還沒有完全走出來。</p>
+
+  <p>到目前為止，我還是常常被這些規矩困住。</p>
+
+  <p>我還是會洗手，還是會在意乾不乾淨，還是會害怕碗盤沒有吃乾淨，還是會在禱告以前覺得自己必須先符合某個標準。</p>
+
+  <p>但我想先把這段過程記錄下來。</p>
+
+  <p>不是因為我已經得勝了。而是因為我正在經歷。</p>
+
+  <p>也許有一天，當我回頭看，會知道這段路到底是怎麼走過來的。也許有一天，這些文字也能讓另一個被強迫、潔癖、罪咎感困住的人知道：</p>
+  <blockquote>
+    <p>你不是故意的。</p>
+    <p>你不是不愛神。</p>
+    <p>你不是壞人。</p>
+    <p>你只是生病了，也正在受苦。</p>
+  </blockquote>
+
+  <p>我還在學習分辨，什麼是真正的信仰，什麼是恐懼包裝成的規矩。</p>
+
+  <p>我也還在學習相信，神要給人的不是奴僕的心，仍舊害怕；而是兒子的心，可以慢慢回到祂面前。</p>
+
+  <p>我不知道自己什麼時候會完全好。</p>
+
+  <p>但至少今天，我想誠實承認：</p>
+
+  <div class="reflect">
+    <p>我很累。</p>
+    <p>我很困惑。</p>
+    <p>我也很想自由。</p>
+    <p>我希望有一天，我可以早上起床，口渴的時候，就單純地拿起一杯水，感謝神，然後喝下去。</p>
+    <p>不用先把整個世界擦乾淨。</p>
+    <p>不用先證明自己夠潔淨。</p>
+    <p>不用再害怕被懲罰。</p>
+    <p>只是像一個被愛的人那樣，安靜地喝一杯水。</p>
+  </div>
+
+  <div class="helpline" data-noread>
+    💛 如果你也正被強迫、焦慮或潔癖困住，你不孤單，也值得被幫助。在台灣，可撥
+    <strong>1925</strong>（依舊愛我）安心專線，24 小時免費；或尋求身心科／精神科的專業協助。
+    強迫症是可以治療的，求助不是軟弱。
+  </div>
+
+  <div class="more-reading">
+    <a href="/story">→ 我為什麼會「重來」：完整的故事</a>
+    <a href="/life-restart-naval">→ 人生不是一次選對，而是不斷修正</a>
+    <a href="/about">→ 關於這個網站與我</a>
+  </div>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="人生筆記與旅遊踩坑紀錄，會在 IG、FB、YouTube 同步分享"
+  />
+
+</article>
+
+<SiteFooter />
+
+</body>
+</html>
