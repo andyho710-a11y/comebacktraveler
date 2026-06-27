@@ -23,16 +23,17 @@ jobs:
       - name: Check build output
         run: ls -R dist
 
-      # 用服務帳戶（GOOGLE_APPLICATION_CREDENTIALS）直接以 firebase-tools v13 部署。
-      # 另：firebase-tools v14/v15 的 deploy 會在發布後重複 release，
-      # 撞到「supplied version is the current active version」(FAILED_PRECONDITION)，
-      # 但此時內容其實已成功上線，故將此特定錯誤視為成功；其餘錯誤照常失敗。
+      # 用服務帳戶（GOOGLE_APPLICATION_CREDENTIALS）以 firebase-tools 部署。
+      # 須用 latest：v13 不吃 GOOGLE_APPLICATION_CREDENTIALS（會 Failed to authenticate）；
+      # v14/v15 驗證正常，但 deploy 會在發布後重複 release，撞到
+      # 「supplied version is the current active version」(FAILED_PRECONDITION)，
+      # 此時內容其實已成功上線，故將此特定錯誤視為成功；其餘錯誤照常失敗。
       - name: Deploy to Firebase Hosting
         run: |
           printf '%s' "$FIREBASE_SA" > "$GITHUB_WORKSPACE/firebase-sa.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$GITHUB_WORKSPACE/firebase-sa.json"
           set +e
-          OUT=$(npx -y firebase-tools@13.x deploy --only hosting --project comeback-traveler-web --non-interactive 2>&1)
+          OUT=$(npx -y firebase-tools@latest deploy --only hosting --project comeback-traveler-web --non-interactive 2>&1)
           CODE=$?
           echo "$OUT"
           rm -f "$GITHUB_WORKSPACE/firebase-sa.json"
