@@ -1,0 +1,275 @@
+---
+import SocialLinks from '../components/SocialLinks.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const title = "第一次出國行李清單：久久才出國一次的人不要漏帶｜重來的旅人";
+const description = "久久才出國一次，最怕的不是花錢，是少帶了重要的東西。住越南十年、進出機場上百次的過來人，把第一次出國前要確認的事、文件、3C、衣物、藥品、安全用品整理成一份不漏帶的行李清單。";
+const canonical = "https://comebacktraveler.com/first-trip-packing-list";
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="第一次出國,出國行李清單,出國必備,行李打包,出國準備,新手出國" />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "第一次出國行李清單：久久才出國一次的人不要漏帶",
+    "description": description,
+    "url": canonical,
+    "mainEntityOfPage": canonical,
+    "inLanguage": "zh-TW",
+    "datePublished": "2026-06-23",
+    "dateModified": "2026-06-23",
+    "articleSection": "出國準備",
+    "keywords": "第一次出國, 出國行李清單, 出國必備, 行李打包, 出國準備",
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" }
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --green: #1c7c4a;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.85; font-size: 17px; }
+
+    .hero { max-width: 740px; margin: 56px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(27px, 4.5vw, 40px); line-height: 1.4; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.75; }
+    .meta { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 42px; height: 42px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    .article p { margin-bottom: 1.4em; }
+    .lead { font-size: 18px; color: var(--ink); }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 23px; margin: 52px 0 16px; position: relative; padding-left: 16px; line-height: 1.4; }
+    h2::before { content: ''; position: absolute; left: 0; top: 5px; width: 4px; height: 76%; background: var(--accent); border-radius: 2px; }
+    strong { color: var(--ink); font-weight: 600; }
+    .article a { color: var(--accent); }
+    hr { border: none; border-top: 1px solid var(--border); margin: 44px 0; }
+
+    ol.steps { margin: 8px 0 1.4em; padding-left: 22px; }
+    ol.steps li { margin-bottom: 10px; line-height: 1.7; }
+
+    ul.check { list-style: none; padding: 0; margin: 12px 0 1.4em; }
+    ul.check li { position: relative; padding: 7px 0 7px 28px; border-bottom: 1px solid var(--border); font-size: 15.5px; line-height: 1.6; }
+    ul.check li:last-child { border-bottom: none; }
+    ul.check li::before { content: '✓'; position: absolute; left: 2px; top: 7px; color: var(--green); font-weight: 700; }
+
+    .exp { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 18px 0; font-size: 15px; color: var(--ink-light); line-height: 1.8; }
+    .exp strong { color: var(--ink); }
+
+    .inline-link { display: block; margin: 18px 0; font-size: 15px; }
+
+    .more-reading { margin: 44px 0 0; padding-top: 28px; border-top: 1px solid var(--border); display: flex; gap: 20px; flex-wrap: wrap; }
+    .more-reading a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .more-reading a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) { .hero, .article { padding: 0 18px; } }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XW4LBK8PYF');
+  </script>
+</head>
+<body>
+
+<SiteNav />
+
+<div class="hero">
+  <div class="category-tag">出國準備 · 行李清單</div>
+  <h1>第一次出國行李清單：<br>久久才出國一次的人不要漏帶</h1>
+  <p class="subtitle">
+    久久才出國一次，最怕的不是花錢，是少帶了重要的東西。<br>
+    住越南十年、進出機場上百次的過來人，幫你把重要的一項一項列好。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 6 月 23 日 · 越南生活 10 年 · 進出機場上百次</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <p class="lead">久久才出國一次，最怕的不是花錢，是少帶了重要的東西。</p>
+
+  <p>我在越南住了十年，出入機場上百次。但我發現，真正會出包的，從來不是每個月飛的人，而是久久才飛一次的人——因為你上次出國可能是三年前，那時候的規矩、習慣，現在全變了。</p>
+
+  <p>這篇清單寫給「久久才飛一次」的你。不用帶很多，但重要的不能漏。</p>
+
+  <hr />
+
+  <h2>第一次出國前，先確認這 5 件事</h2>
+
+  <p>先別急著打包。出發前兩週，把這 5 件事確認好：</p>
+  <ol class="steps">
+    <li><strong>護照效期夠不夠</strong>——很多國家要求離境日起算 6 個月以上。剩 5 個月，照樣被擋。</li>
+    <li><strong>要不要簽證</strong>——免簽、電子簽、落地簽，出發前查清楚。</li>
+    <li><strong>網路怎麼解決</strong>——eSIM、實體 SIM、還是漫遊？越早決定越好。</li>
+    <li><strong>保險買了沒</strong>——一張機票錢，就能換班機延誤、行李遺失、海外醫療的保障。</li>
+    <li><strong>錢怎麼帶</strong>——現金、信用卡、外幣怎麼分散，別全放一個地方。</li>
+  </ol>
+  <p>這 5 件確認完，才是打包的開始。</p>
+
+  <hr />
+
+  <h2>護照、簽證、機票、保險：文件類清單</h2>
+
+  <p>文件類是「漏了就出不了國」的等級，最優先。</p>
+  <ul class="check">
+    <li>護照（效期 6 個月以上）</li>
+    <li>簽證 / 電子簽證列印本</li>
+    <li>機票訂位代號（截圖 + 列印一份）</li>
+    <li>旅遊保險保單</li>
+    <li>飯店訂房確認信</li>
+    <li>護照影本 2 份（正本影本分開放）</li>
+    <li>大頭照 2 張（護照遺失補辦用）</li>
+  </ul>
+  <div class="exp">
+    <strong>我的真實教訓</strong>：在越南有次朋友護照掉了，沒帶影本也沒帶照片，補辦卡了三天，行程全毀。影本和照片不佔重量，但能救命。
+  </div>
+
+  <h2>手機上網、eSIM、充電線、行動電源：3C 類清單</h2>
+
+  <p>3C 類是現代出國最容易出包的一塊。手機沒網路，你連 Google 地圖都打不開。</p>
+
+  <p>先講網路。我自己住越南那十年都用當地 SIM 卡，但現在情況不同了——對久久飛一次、又懶得到當地排隊辦卡的人，<strong>eSIM 是最省事的選擇</strong>：落地不用找櫃台、不用換卡，掃個 QR Code 就能上網。</p>
+
+  <ul class="check">
+    <li>eSIM（出發前先買好，落地直接開通）</li>
+    <li>手機 + 充電線（多帶一條備用，線最容易壞）</li>
+    <li>行動電源（10000mAh 以上，但別超過 20000，超過不能上飛機）</li>
+    <li>充電頭</li>
+    <li>耳機</li>
+  </ul>
+  <p class="inline-link">📱 第一次用 eSIM 不知道怎麼選、怎麼裝？我寫過一篇完整教學 → <a href="/esim/install">eSIM 安裝圖解教學</a>（也可以先用 <a href="/esim-quiz">30 秒測驗</a> 看看你該用哪種上網方案）</p>
+
+  <h2>轉接頭、延長線、充電器怎麼準備</h2>
+
+  <p>這塊最多人踩雷。帶了一堆 3C，結果插頭插不進當地插座，全變磚塊。</p>
+  <ul class="check">
+    <li>萬國轉接頭（一個就夠，建議帶有 USB 孔的）</li>
+    <li>短延長線（一個轉接頭 + 延長線 = 全部設備一起充）</li>
+    <li>多孔 USB 充電器（一個頭充手機、平板、行動電源）</li>
+  </ul>
+  <div class="exp">
+    <strong>生活化提醒</strong>：飯店插座常常只有一兩個，還在床頭搆不到的地方。帶一條延長線，等於把整個充電站搬到床邊。這是我每次出國 CP 值最高的小東西之一。
+  </div>
+
+  <h2>衣物、盥洗用品、拖鞋、收納袋怎麼帶</h2>
+
+  <p>衣物原則只有一個：<strong>寧可少帶，不要多帶。</strong>久久飛一次的人最容易犯的錯，就是「以防萬一」把整個衣櫃搬出國。</p>
+  <ul class="check">
+    <li>衣物（用天數 +1 套估算，真的不夠當地買）</li>
+    <li>盥洗用品（分裝瓶，每瓶不超過 100ml）</li>
+    <li>拖鞋（飯店不一定有，長途飛機也好用）</li>
+    <li>收納袋 / 壓縮袋（分類衣物，行李箱不會像被翻過）</li>
+    <li>摺疊環保袋（回程東西變多，當第二個袋子）</li>
+  </ul>
+  <div class="exp">
+    <strong>我的習慣</strong>：用收納袋把衣服分成「上衣、褲子、內衣襪子」三包，找東西不用整箱翻，回國也好分類。
+  </div>
+  <p class="inline-link">👉 關於旅行小物怎麼挑、哪些真的用得到，我整理在這篇 → <a href="/vietnam-travel-essentials">越南旅遊必備小物推薦</a></p>
+
+  <h2>藥品、防蚊、腸胃藥、OK 繃：健康類清單</h2>
+
+  <p>健康類最容易被忽略，但出事最麻煩。很多國家成藥要醫生處方才能買，臨時生病只能乾等。</p>
+  <ul class="check">
+    <li>個人慢性病藥（帶足天數 + 處方箋影本）</li>
+    <li>腸胃藥（換水土、吃當地食物，腸胃最先抗議）</li>
+    <li>感冒藥、退燒藥、止痛藥</li>
+    <li>防蚊液（東南亞尤其重要，當地蚊子很兇）</li>
+    <li>OK 繃、消毒棉片</li>
+    <li>暈車暈船藥（搭船、長途巴士用得到）</li>
+  </ul>
+  <div class="exp">
+    <strong>越南十年的經驗</strong>：東南亞的蚊子是真的會傳病的，登革熱不是開玩笑。一瓶有效的防蚊液很重要，選有「敵避 DEET」或「派卡瑞丁」成分的，效果差很多。
+  </div>
+
+  <h2>防盜包、證件包、行李箱吊牌：安全類清單</h2>
+
+  <p>在越南那十年，我看過太多台灣人被偷、被搶。安全類的東西，平常用不到，用到就救你一次。</p>
+  <ul class="check">
+    <li>防盜包 / 防割背包（扒手多的地方必備）</li>
+    <li>證件腰包（貼身放護照、現金）</li>
+    <li>行李箱吊牌（寫名字電話，掉了找得回）</li>
+    <li>行李箱綁帶（轉機託運不會散）</li>
+    <li>TSA 密碼鎖（去美國一定要）</li>
+    <li>防盜拉鍊扣（背包拉鍊扣住，扒手秒放棄）</li>
+  </ul>
+  <div class="exp">
+    <strong>真實提醒</strong>：機車搶包在東南亞很常見，包包一定背在身體內側、遠離車道那邊。一個防盜扣、一個貼身腰包，就能擋掉大部分風險。
+  </div>
+
+  <h2>長輩、親子、女生出國要多準備什麼</h2>
+
+  <p><strong>帶長輩</strong>：慢性病藥帶雙倍分開放、輕便折疊椅或拐杖、保暖小外套（機艙室內都冷）。</p>
+  <p><strong>帶小孩</strong>：常備藥退燒貼、零食安撫小物（飛機上救命）、濕紙巾備用衣物。</p>
+  <p><strong>女生出國</strong>：生理用品（當地不一定買得到習慣的牌子）、保養品分裝、個人清潔護理用品。</p>
+  <p class="inline-link">👉 女生出國的細節準備，我另外寫了一篇更完整的 → <a href="/vietnam-girls-packing">越南女生旅行必帶物品</a></p>
+
+  <h2>常見問題 FAQ</h2>
+  <p><strong>Q：行動電源可以帶上飛機嗎？</strong><br>可以，但只能放手提行李、不能託運。大多限制 100Wh 以下（約 20000mAh），超過要先問航空公司。</p>
+  <p><strong>Q：藥品可以帶出國嗎？</strong><br>個人用藥可以，慢性病藥建議帶處方箋影本。有些國家對特定成分管制嚴格，出發前查目的地規定最保險。</p>
+  <p><strong>Q：eSIM 和當地 SIM 卡哪個好？</strong><br>久久飛一次、懶得排隊辦卡的人，eSIM 比較省事；長住或重度用網路的人，當地 SIM 可能更划算。</p>
+  <p><strong>Q：行李箱買大的還小的？</strong><br>第一次出國、天數不長，中型（24–26 吋）就夠。太大容易超重，回程還要塞戰利品。</p>
+
+  <h2>結論：不用帶很多，但重要的不能漏</h2>
+
+  <p>出國這件事，東西帶太多是負擔，帶太少是災難。</p>
+
+  <p>護照、網路、藥品、安全用品——這四類漏了最麻煩，其他的當地都買得到。把這篇清單存起來，出發前一項一項打勾，你就不會在機場、在飯店、在藥局才捶心肝。</p>
+
+  <p>走過彎路的人，才知道哪條路真的值得走。祝你第一次出國，順順利利。</p>
+
+  <div class="more-reading">
+    <a href="/vietnam-travel-essentials">→ 越南旅遊必備小物推薦</a>
+    <a href="/vietnam-girls-packing">→ 越南女生旅行必帶物品</a>
+    <a href="/esim-quiz">→ 30 秒測你該用哪種出國上網方案</a>
+  </div>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="更多出國準備與旅遊踩坑筆記，會在 IG、FB、YouTube 同步分享"
+  />
+
+</article>
+
+<SiteFooter />
+
+</body>
+</html>

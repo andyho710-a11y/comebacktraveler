@@ -87,6 +87,14 @@ export const esimArticles = [
 
 export const travelArticles = [
   {
+    tag: '出國準備 · 行李清單',
+    title: '第一次出國行李清單：久久才出國一次的人不要漏帶',
+    desc: '久久才飛一次最容易出包。住越南十年、進出機場上百次的過來人，把出發前要確認的事、文件、3C、衣物、藥品、安全用品整理成一份不漏帶的清單。',
+    href: '/first-trip-packing-list',
+    label: '看完整行李清單 →',
+    pubDate: '2026-06-23',
+  },
+  {
     tag: '高鐵省錢攻略',
     title: '高鐵怎麼買最便宜？2026 商務通勤族省錢攻略',
     desc: '定期票、早鳥、KKday 晚鳥票完整比較，依你的搭乘頻率找最對的方案，一年省下 8,000 元以上。',
