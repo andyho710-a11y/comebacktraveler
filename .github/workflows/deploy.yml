@@ -23,16 +23,23 @@ jobs:
       - name: Check build output
         run: ls -R dist
 
-      # 直接用 firebase-tools v13 + 服務帳戶部署，繞過 FirebaseExtended/action-hosting-deploy@v0。
-      # 該 action 搭配 firebase-tools v14/v15 會在 release 後多做一次發布，
-      # 撞到 FAILED_PRECONDITION（supplied version is the current active version），
-      # 結果「內容已上線但指令 exit 1」導致 CI 顯示失敗。
-      - name: Write Firebase service account
-        run: printf '%s' "$FIREBASE_SA" > "$RUNNER_TEMP/firebase-sa.json"
+      # 用服務帳戶（GOOGLE_APPLICATION_CREDENTIALS）直接以 firebase-tools v13 部署。
+      # 另：firebase-tools v14/v15 的 deploy 會在發布後重複 release，
+      # 撞到「supplied version is the current active version」(FAILED_PRECONDITION)，
+      # 但此時內容其實已成功上線，故將此特定錯誤視為成功；其餘錯誤照常失敗。
+      - name: Deploy to Firebase Hosting
+        run: |
+          printf '%s' "$FIREBASE_SA" > "$GITHUB_WORKSPACE/firebase-sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$GITHUB_WORKSPACE/firebase-sa.json"
+          set +e
+          OUT=$(npx -y firebase-tools@13.x deploy --only hosting --project comeback-traveler-web --non-interactive 2>&1)
+          CODE=$?
+          echo "$OUT"
+          rm -f "$GITHUB_WORKSPACE/firebase-sa.json"
+          if [ $CODE -ne 0 ] && echo "$OUT" | grep -q "is the current active version"; then
+            echo "::warning::內容已是線上最新版本（firebase-tools 重複發布的已知誤報），視為部署成功。"
+            exit 0
+          fi
+          exit $CODE
         env:
           FIREBASE_SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COMEBACK_TRAVELER_WEB }}
-
-      - name: Deploy to Firebase Hosting
-        run: npx -y firebase-tools@13.x deploy --only hosting --project comeback-traveler-web --non-interactive
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-sa.json
