@@ -23,13 +23,16 @@ jobs:
       - name: Check build output
         run: ls -R dist
 
+      # 直接用 firebase-tools v13 + 服務帳戶部署，繞過 FirebaseExtended/action-hosting-deploy@v0。
+      # 該 action 搭配 firebase-tools v14/v15 會在 release 後多做一次發布，
+      # 撞到 FAILED_PRECONDITION（supplied version is the current active version），
+      # 結果「內容已上線但指令 exit 1」導致 CI 顯示失敗。
+      - name: Write Firebase service account
+        run: printf '%s' "$FIREBASE_SA" > "$RUNNER_TEMP/firebase-sa.json"
+        env:
+          FIREBASE_SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COMEBACK_TRAVELER_WEB }}
+
       - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COMEBACK_TRAVELER_WEB }}
-          projectId: comeback-traveler-web
-          channelId: live
-          # 釘在 firebase-tools v13：v14/v15 搭配 action-hosting-deploy@v0
-          # 會在 release 步驟誤報 FAILED_PRECONDITION（supplied version is the current active version）
-          firebaseToolsVersion: "13.x"
+        run: npx -y firebase-tools@13.x deploy --only hosting --project comeback-traveler-web --non-interactive
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-sa.json
