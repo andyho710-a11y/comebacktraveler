@@ -30,3 +30,6 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COMEBACK_TRAVELER_WEB }}
           projectId: comeback-traveler-web
           channelId: live
+          # 釘在 firebase-tools v13：v14/v15 搭配 action-hosting-deploy@v0
+          # 會在 release 步驟誤報 FAILED_PRECONDITION（supplied version is the current active version）
+          firebaseToolsVersion: "13.x"
