@@ -6,8 +6,8 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
 ---
 
 <BlogLayout
-  title="重來的旅人｜久久才出國一次的小資旅人：出國準備、旅遊省錢與越南避坑筆記"
-  description="寫給久久才出國一次的小資旅人：出國前行李清單與必備小物、日本／韓國／越南旅遊攻略、越南在地避坑、高鐵與 Klook 省錢，還有出國上網方案整理。把踩過的坑，變成你的攻略。"
+  title="重來的旅人｜久久才出國一次的小資旅人出國準備與避坑筆記"
+  description="重來的旅人整理出國準備、旅遊省錢、越南避坑與人生重來筆記，寫給第一次出國或久久才出國一次的小資旅人。"
   keywords="出國準備, 第一次出國行李清單, 越南旅遊, 越南必備小物, 旅遊省錢, 出國上網, eSIM, 重來的旅人"
   ogImage="/esim-cover.jpg"
 >
@@ -85,7 +85,7 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
       </ul>
       <p class="intro-note">
         說明一下：本站部分連結是聯盟行銷連結，你透過它們購買，我會拿到一點分潤，但<strong>不會影響你的價格</strong>。
-        我只放自己用過、或評估後真心覺得對你有幫助的東西。更完整的揭露寫在
+        部分內容來自親身經驗，部分是依公開資訊、官方頁面與使用情境整理，我會盡量標示清楚，不把資料整理寫成親測。更完整的揭露寫在
         <a href="/privacy">隱私權政策</a>，想多認識我可以看
         <a href="/about">關於我</a>。
       </p>
@@ -93,8 +93,8 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
 
     <!-- 出國前準備（首頁第一主軸）-->
     <div class="home-section">
-      <h2>久久才出國一次，先看這些</h2>
-      <p class="section-desc">出發前最容易漏掉的行李、必備小物與打包眉角，都整理在這裡。</p>
+      <h2>出國前準備</h2>
+      <p class="section-desc">久久才出國一次，先看這些——出發前最容易漏掉的行李、必備小物與打包眉角，都整理在這裡。</p>
       <div class="home-grid">
         {prepArticles.map((a) => (
           <a href={a.href} class="article-card">
@@ -125,7 +125,7 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
 
     <!-- 出國上網 eSIM（後段，屬出國準備的一項，非主角）-->
     <div class="home-section">
-      <h2>出國上網 eSIM / 方案</h2>
+      <h2>出國上網整理</h2>
       <p class="section-desc">上網只是出國準備的其中一項。以下依各家官方規格、線路類型與使用情境整理，不業配、非每張親自實測。</p>
       <a href="/esim-quiz" class="quiz-cta">🧭 30 秒測出你該用哪種上網方案 →</a>
       <div class="home-grid">
@@ -138,20 +138,6 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
           </a>
         ))}
       </div>
-    </div>
-
-    <!-- 省錢工具：單一導引卡，首頁不直接列優惠碼與外部連結 -->
-    <div class="article">
-      <h2>旅行省錢工具</h2>
-      <p>
-        出國訂門票、交通和行程前，記得先看一下手上的信用卡有沒有折扣。
-        我把高鐵、Klook、票券、信用卡的省錢資訊整理成獨立頁，會不定期更新——首頁就不列一堆優惠碼和外部連結了。
-      </p>
-      <a href="/klook-deals" class="tool-card">
-        <div class="tool-card-title">Klook 銀行優惠碼整理</div>
-        <div class="tool-card-desc">各大信用卡的 Klook 刷卡折扣、折扣型 vs 回饋型怎麼分、怎麼挑卡，一頁看懂。</div>
-        <div class="tool-card-link">看 Klook 省錢整理 →</div>
-      </a>
     </div>
 
     <!-- Life notes -->
@@ -197,7 +183,6 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
         <a href="/about">關於</a>
         <a href="/story">作者故事</a>
         <a href="/contact">聯絡我</a>
-        <a href="/klook-deals">Klook 優惠碼</a>
         <a href="/life-restart-naval">人生筆記</a>
         <a href="/services">站長服務</a>
         <a href="/privacy">隱私權政策</a>

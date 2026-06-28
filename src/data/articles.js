@@ -32,20 +32,20 @@ export const prepArticles = [
     pubDate: '2026-06-12',
   },
   {
-    tag: '越南防蚊準備 2026',
-    title: '越南防蚊用品怎麼準備？住越南十年的在地經驗整理',
-    desc: '去越南怕被蚊子叮、又擔心登革熱？Picaridin 與 DEET 差在哪、防蚊貼能不能當主力、不同行程與不同人怎麼搭配，住越南十年的在地經驗一次整理。',
-    href: '/vietnam-mosquito-repellent-guide',
-    label: '看防蚊準備 →',
-    pubDate: '2026-06-15',
-  },
-  {
     tag: '越南女生旅行 2026',
     title: '越南女生旅行必帶物品｜住越南十年，這幾樣沒帶你會後悔',
     desc: '越南女生旅行要帶什麼？住越南十年的在地人整理：防曬、防蚊、私密處護理、安全防身、美妝保養，哪些台灣帶、哪些當地買，一篇說清楚。',
     href: '/vietnam-girls-packing',
     label: '看女生必帶清單 →',
     pubDate: '2026-06-13',
+  },
+  {
+    tag: '越南防蚊準備 2026',
+    title: '越南防蚊用品怎麼準備？住越南十年的在地經驗整理',
+    desc: '去越南怕被蚊子叮、又擔心登革熱？Picaridin 與 DEET 差在哪、防蚊貼能不能當主力、不同行程與不同人怎麼搭配，住越南十年的在地經驗一次整理。',
+    href: '/vietnam-mosquito-repellent-guide',
+    label: '看防蚊準備 →',
+    pubDate: '2026-06-15',
   },
 ];
 
