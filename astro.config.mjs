@@ -9,7 +9,12 @@ export default defineConfig({
   build: {
     format: 'file',
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // 暫時隱藏的草稿頁不列入 sitemap。
+      filter: (page) => !page.includes('/drink-a-glass-of-water'),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

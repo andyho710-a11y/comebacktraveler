@@ -17,6 +17,8 @@ const canonical = "https://comebacktraveler.com/drink-a-glass-of-water";
   <title>{title}</title>
   <meta name="description" content={description} />
   <meta name="keywords" content="強迫症,OCD,潔癖,焦慮,信仰,心理健康,重來的旅人" />
+  <!-- 暫時隱藏：不被搜尋引擎收錄，也不列入首頁/RSS/sitemap。想公開時移除這行並把文章移回 lifeArticles。 -->
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="canonical" href={canonical} />
   <meta property="og:type" content="article" />
   <meta property="og:title" content={title} />

@@ -2,6 +2,7 @@
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SocialLinks from '../components/SocialLinks.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 
 const title = "越南旅遊必備小物推薦｜住越南十年，我推薦你帶這幾樣";
 const description = "第一次去越南該帶什麼？住越南十年的重來的旅人，從炎熱天氣、220V 電壓到飛車搶劫的角度，整理出該準備的旅遊小物與精選商品。防曬、防蚊、充電器、防盜包，幫你出發前一次備齊不踩雷。";
@@ -245,6 +246,16 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
     炎熱天氣、3C 充電、防身安全。
   </p>
 
+  <aside style="border:1px solid #d4c9b0;background:#f2ede0;border-radius:8px;padding:14px 18px;margin:20px 0;font-size:14px;line-height:1.75;">
+    <strong>行李清單系列｜看你要的是哪一種：</strong>
+    <ul style="margin:8px 0 0;padding-left:18px;">
+      <li><a href="/first-trip-packing-list" style="color:#c0392b;">第一次出國行李清單</a>——通用、不分國家：證件、3C、藥品基本款。</li>
+      <li><a href="/vietnam-packing-list" style="color:#c0392b;">越南行李清單</a>——帶多少、怎麼裝、什麼該上手提。</li>
+      <li><strong>越南必備小物推薦（你正在看這篇）</strong>——要帶哪些物品、為什麼。</li>
+      <li><a href="/vietnam-girls-packing" style="color:#c0392b;">越南女生旅行必帶</a>——女生專屬：防曬、私密護理、防身、美妝。</li>
+    </ul>
+  </aside>
+
   <div class="story-box">
     先說在前頭：<br><br>
     下面推薦的商品，是我根據「越南旅遊的真實情況」加上「選品原則（評價高、有實拍、規格對）」幫你篩過的方向。
@@ -269,6 +280,8 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
     越南炎熱會狂流汗，一般防曬擦了等於沒擦。挑防曬就抓兩個重點：
     <strong>SPF50＋／PA++++</strong>（係數要夠）、<strong>耐水耐汗</strong>（一遇流汗就掉的別買）。
   </p>
+
+  <AffiliateDisclosure />
 
   <div class="product-card">
     <img class="product-card-img" src={products[0].img} alt={products[0].name} loading="lazy" />

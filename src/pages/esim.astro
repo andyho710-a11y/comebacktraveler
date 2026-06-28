@@ -2,6 +2,7 @@
 import SiteNav from '../components/SiteNav.astro';
 import BlogLayout from '../layouts/BlogLayout.astro';
 import SocialLinks from '../components/SocialLinks.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 
 const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
 const KKDAY_LINK = 'https://onelink.one/s/nnjWf';
@@ -276,6 +277,8 @@ const brands = [
         立場只有一個：幫帶著家人出門的台灣旅客，少在機場慌亂換卡。」
       </div>
 
+      <AffiliateDisclosure />
+
       <!-- CTA -->
       <div class="cta-box">
         <p>想試試 JOYTEL？<br />下方連結可以直接查看日本、東南亞、韓國各方案</p>
@@ -347,6 +350,21 @@ const brands = [
           就選有 LINE 客服的台灣品牌，心裡比較踏實。
         </p>
       </div>
+
+      <h2>eSIM 常見問題</h2>
+      <p><strong>Q：eSIM 和實體 SIM、WiFi 機差在哪？</strong><br>
+        eSIM 不用換卡、不用帶針，掃 QR Code 就能裝，落地切換即用；WiFi 機要租還、要充電、多人共用一台。
+        三種方案完整比較看
+        <a href="/esim/overseas-internet-guide" style="color:var(--accent);">出國上網懶人包</a>。</p>
+      <p><strong>Q：一支手機可以同時用原本門號和 eSIM 嗎？</strong><br>
+        可以。多數近年的 iPhone / Android 支援雙 SIM，原門號保留接電話、eSIM 走數據，
+        前提是手機支援 eSIM（舊機型請先確認）。</p>
+      <p><strong>Q：要去中國大陸，這些 eSIM 能用嗎？</strong><br>
+        大陸有防火長城，要選「免翻牆」的大陸專用方案，一般日韓卡不適用。看
+        <a href="/esim/china" style="color:var(--accent);">中國大陸 eSIM 怎麼挑</a>。</p>
+      <p><strong>Q：裝了之後沒網路怎麼辦？</strong><br>
+        9 成是設定問題（APN、行動數據切換），先看
+        <a href="/esim/troubleshoot" style="color:var(--accent);">eSIM 設定失敗 10 個常見問題</a>。</p>
 
       <h2>最後</h2>
       <p>
