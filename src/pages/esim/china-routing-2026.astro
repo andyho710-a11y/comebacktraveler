@@ -3,6 +3,7 @@ import SiteNav from '../../components/SiteNav.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import ContentDisclaimer from '../../components/ContentDisclaimer.astro';
 
 const title = "2026 eSIM 還能買嗎？「封包送中」爭議 + 防詐宣導，過來人完整解析";
 const description = "2026 年 5 月爆出旅遊 eSIM「封包繞道中國」爭議，加上政府防詐宣導，讓很多人不敢買 eSIM。住國外十年的過來人帶你看懂這波在吵什麼、教你自己判斷手上的 eSIM 安不安全、以及到底該怎麼選。";
@@ -149,6 +150,8 @@ const VIETNAM_LINK = 'https://afflink.one/s/SNmCj';
 </div>
 
 <article class="article">
+
+  <ContentDisclaimer />
 
   <p>
     最近你是不是也看到那些新聞——「出國買便宜 eSIM，個資全被中國看光」、「封包繞道中國移動」、「連 ChatGPT 都打不開」？然後本來想買張 eSIM 出國上網，現在卻不敢下手了。
@@ -348,8 +351,8 @@ const VIETNAM_LINK = 'https://afflink.one/s/SNmCj';
 
   <div class="cta-box">
     <p>
-      說到「當地原生」，我下個月要回越南，手邊正好有一張 <strong>JOYTEL 越南 Viettel 原生 eSIM</strong> 準備實測。<br>
-      我會親自驗證它的對外 IP 在哪、能不能正常開 ChatGPT、實際網速如何，把完整實測結果跟大家報告。
+      說到「當地原生」，我下個月要回越南，手邊正好有一張 <strong>JOYTEL 越南 Viettel 原生 eSIM</strong> 打算實際試用。<br>
+      我會親自驗證它的對外 IP 在哪、能不能正常開 ChatGPT、實際網速如何，把完整使用結果跟大家報告。
     </p>
     <a class="cta-btn" href={VIETNAM_LINK} target="_blank" rel="noopener sponsored">
       看 JOYTEL 越南原生 eSIM →
@@ -358,7 +361,7 @@ const VIETNAM_LINK = 'https://afflink.one/s/SNmCj';
   </div>
 
   <p>
-    實測文出來後，我會回來這篇補上連結，讓你看到「過來人親自驗證」的結果，而不是只聽廠商說。
+    使用心得出來後，我會回來這篇補上連結，讓你看到「過來人親自驗證」的結果，而不是只聽廠商說。
   </p>
 
   <div class="related-links">
@@ -369,8 +372,8 @@ const VIETNAM_LINK = 'https://afflink.one/s/SNmCj';
         <div class="related-item-title">6 家 eSIM 品牌比較總表</div>
       </a>
       <a href="/esim/joytel" class="related-item">
-        <div class="related-item-tag">JOYTEL 評測</div>
-        <div class="related-item-title">JOYTEL eSIM 深度評測：速度、客服、優缺點</div>
+        <div class="related-item-tag">JOYTEL 選購整理</div>
+        <div class="related-item-title">JOYTEL eSIM 選購整理：規格、客服、優缺點</div>
       </a>
       <a href="/esim/china" class="related-item">
         <div class="related-item-tag">中國大陸上網</div>
@@ -384,12 +387,12 @@ const VIETNAM_LINK = 'https://afflink.one/s/SNmCj';
   </div>
 
   <p class="disclosure">
-    本文部分連結為聯盟連結，若你透過連結購買，我會獲得一點分潤，但不影響你的價格。所有推薦都是我會親自使用、驗證過的東西。實測結果若與預期不符，我會誠實告訴你。
+    本文部分連結為聯盟連結，若你透過連結購買，我會獲得一點分潤，但不影響你的價格。我只整理依官方資訊與使用情境評估後值得參考的選項；會親自試用的我會另外標註，使用結果若與預期不符，我會誠實告訴你。
   </p>
 
   <SocialLinks
     heading="追蹤我｜Follow Me"
-    subheading="出國上網的最新情報與實測，會在 IG、FB、YouTube 同步分享"
+    subheading="出國上網的最新情報與使用心得，會在 IG、FB、YouTube 同步分享"
   />
 
 </article>

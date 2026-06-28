@@ -2,13 +2,13 @@
 import BlogLayout from '../layouts/BlogLayout.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import SiteNav from '../components/SiteNav.astro';
-import { esimArticles, travelArticles, lifeArticles } from '../data/articles.js';
+import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../data/articles.js';
 ---
 
 <BlogLayout
-  title="重來的旅人｜2026 出國上網 eSIM 比較、旅遊攻略與省錢指南"
-  description="提供 2026 最實用的日本、韓國、越南旅遊攻略。深度比較各大品牌 eSIM（JOYTEL、DJB、Klook），並分享高鐵與國旅省錢秘訣。把踩過的坑，變成你的攻略。"
-  keywords="eSIM推薦, 2026出國上網, 日本eSIM推薦, 韓國eSIM比較, Klook優惠碼, 高鐵省錢, 重來的旅人"
+  title="重來的旅人｜久久才出國一次的小資旅人：出國準備、旅遊省錢與越南避坑筆記"
+  description="寫給久久才出國一次的小資旅人：出國前行李清單與必備小物、日本／韓國／越南旅遊攻略、越南在地避坑、高鐵與 Klook 省錢，還有出國上網方案整理。把踩過的坑，變成你的攻略。"
+  keywords="出國準備, 第一次出國行李清單, 越南旅遊, 越南必備小物, 旅遊省錢, 出國上網, eSIM, 重來的旅人"
   ogImage="/esim-cover.jpg"
 >
   <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,26 +55,32 @@ import { esimArticles, travelArticles, lifeArticles } from '../data/articles.js'
 
     <!-- Intro content: 提升首頁原創內容與 E-E-A-T -->
     <div class="article intro-content">
-      <h2>這個網站在幫你解決什麼</h2>
+      <h2>這個網站幫誰？</h2>
       <p>
-        我寫的東西，都繞著一個主題：<strong>第一次出國、或久久才出一次國的人，怎麼少踩一點坑。</strong>
-        我在越南住了十年，從工廠副總到回台灣跑 Uber，這些年自己訂票、自己找路、自己被海關和路邊計程車坑過，
-        才慢慢摸出哪些錢該省、哪些錢省不得。這個網站，就是把那些教訓寫成你能直接拿去用的筆記。
+        這個網站只寫給一種人：<strong>久久才出國一次的小資旅人。</strong>
+        不是每個月飛的空中飛人，而是可能上次出國已經是好幾年前、規矩和習慣都變了、
+        最怕「漏帶東西」和「被當盤子坑」的你。
       </p>
-      <p>目前內容分成三塊，你可以從上方選單或下面的卡片進去：</p>
+      <p>
+        我在越南住了十年，從工廠副總到回台灣跑 Uber，這些年自己訂票、自己找路、自己被海關和路邊計程車坑過，
+        才慢慢摸出哪些東西非帶不可、哪些錢該省、哪些坑要避。這個網站，就是把那些教訓寫成你能直接拿去用的筆記。
+      </p>
+      <p>內容分成幾塊，你可以從上方選單或下面的卡片進去：</p>
       <ul class="intro-list">
         <li>
-          <strong>出國上網 eSIM</strong>：原生線路和漫遊線路差在哪、哪家有中文客服、安裝失敗怎麼救、
-          甚至「封包送中」資安爭議到底在吵什麼，我都用白話拆給你看。完全不業配，只比規格和實際體驗。
+          <strong>出國前準備</strong>：第一次出國行李清單、必備小物、防曬防蚊、防盜包、轉接頭——
+          久久才飛一次最容易漏掉的，都先幫你列好。
         </li>
         <li>
-          <strong>日韓越旅遊攻略</strong>：不是觀光局那種「十大必去」，而是哪個時段去人最少、
-          哪個景點現場排隊要等多久、哪些票提前訂才划算。越南的部分尤其是我的主場——機場、叫車、親子、行李，
-          都是住了十年累積下來的真實經驗。
+          <strong>旅遊攻略與越南避坑</strong>：不是觀光局那種「十大必去」，而是機場、叫車、親子、貴賓室，
+          住越南十年累積下來的真實經驗。
         </li>
         <li>
-          <strong>旅遊省錢情報</strong>：高鐵怎麼買最便宜、各家銀行 Klook 刷卡折扣、信用卡海外回饋怎麼疊。
-          跑過 Uber 的人，對每一塊錢都特別敏感。
+          <strong>旅遊省錢</strong>：高鐵怎麼買最便宜、各家銀行 Klook 刷卡折扣、信用卡海外回饋怎麼疊。
+        </li>
+        <li>
+          <strong>出國上網 eSIM</strong>：原生 vs 漫遊差在哪、哪家有中文客服、安裝失敗怎麼救。
+          完全不業配，<strong>依官方規格與使用情境整理，不是每張都親自實測，我會誠實標註</strong>。
         </li>
       </ul>
       <p class="intro-note">
@@ -85,11 +91,74 @@ import { esimArticles, travelArticles, lifeArticles } from '../data/articles.js'
       </p>
     </div>
 
+    <!-- 出國前準備（首頁第一主軸）-->
+    <div class="home-section">
+      <h2>久久才出國一次，先看這些</h2>
+      <p class="section-desc">出發前最容易漏掉的行李、必備小物與打包眉角，都整理在這裡。</p>
+      <div class="home-grid">
+        {prepArticles.map((a) => (
+          <a href={a.href} class="article-card">
+            <div class="article-card-tag">{a.tag}</div>
+            <div class="article-card-title">{a.title}</div>
+            <p class="article-card-desc">{a.desc}</p>
+            <div class="article-card-link">{a.label}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- 旅遊攻略與越南避坑 -->
+    <div class="home-section">
+      <h2>旅遊攻略與越南避坑</h2>
+      <p class="section-desc">住越南十年的真實經驗——機場通關、叫車、親子、貴賓室、夜遊與日韓行程規劃。</p>
+      <div class="home-grid">
+        {travelArticles.map((a) => (
+          <a href={a.href} class="article-card">
+            <div class="article-card-tag">{a.tag}</div>
+            <div class="article-card-title">{a.title}</div>
+            <p class="article-card-desc">{a.desc}</p>
+            <div class="article-card-link">{a.label}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- 出國上網 eSIM（後段，屬出國準備的一項，非主角）-->
+    <div class="home-section">
+      <h2>出國上網 eSIM / 方案</h2>
+      <p class="section-desc">上網只是出國準備的其中一項。以下依各家官方規格、線路類型與使用情境整理，不業配、非每張親自實測。</p>
+      <a href="/esim-quiz" class="quiz-cta">🧭 30 秒測出你該用哪種上網方案 →</a>
+      <div class="home-grid">
+        {esimArticles.map((a) => (
+          <a href={a.href} class="article-card">
+            <div class="article-card-tag">{a.tag}</div>
+            <div class="article-card-title">{a.title}</div>
+            <p class="article-card-desc">{a.desc}</p>
+            <div class="article-card-link">{a.label}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- 省錢工具：單一導引卡，首頁不直接列優惠碼與外部連結 -->
+    <div class="article">
+      <h2>旅行省錢工具</h2>
+      <p>
+        出國訂門票、交通和行程前，記得先看一下手上的信用卡有沒有折扣。
+        我把高鐵、Klook、票券、信用卡的省錢資訊整理成獨立頁，會不定期更新——首頁就不列一堆優惠碼和外部連結了。
+      </p>
+      <a href="/klook-deals" class="tool-card">
+        <div class="tool-card-title">Klook 銀行優惠碼整理</div>
+        <div class="tool-card-desc">各大信用卡的 Klook 刷卡折扣、折扣型 vs 回饋型怎麼分、怎麼挑卡，一頁看懂。</div>
+        <div class="tool-card-link">看 Klook 省錢整理 →</div>
+      </a>
+    </div>
+
     <!-- Life notes -->
-    <div class="article life-section">
+    <div class="home-section">
       <h2>人生筆記</h2>
       <p class="section-desc">旅遊與省錢之外，偶爾也寫一點中年重新出發的體悟與思考。</p>
-      <div class="card-grid life-grid">
+      <div class="home-grid life-grid">
         {lifeArticles.map((a) => (
           <a href={a.href} class="article-card">
             <div class="article-card-tag">{a.tag}</div>
@@ -101,58 +170,12 @@ import { esimArticles, travelArticles, lifeArticles } from '../data/articles.js'
       </div>
     </div>
 
-    <!-- Two-column wide section -->
-    <div class="wide-wrap">
-
-      <div class="section-col">
-        <h2>出國上網攻略</h2>
-        <p class="section-desc">出門在外沒有網路，那種慌是真的。以下 eSIM 選購指南依各家官方規格、線路類型與客服管道彙整，不業配。</p>
-        <a href="/esim-quiz" class="quiz-cta">🧭 30 秒測出你該用哪種上網方案 →</a>
-        <div class="card-grid">
-          {esimArticles.map((a) => (
-            <a href={a.href} class="article-card">
-              <div class="article-card-tag">{a.tag}</div>
-              <div class="article-card-title">{a.title}</div>
-              <p class="article-card-desc">{a.desc}</p>
-              <div class="article-card-link">{a.label}</div>
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <div class="section-col">
-        <h2>旅行省錢攻略</h2>
-        <p class="section-desc">票怎麼買最便宜、行程怎麼搭最划算、哪個 Klook 活動值得提前訂——跑過 Uber 的人，對每一塊錢都特別敏感。</p>
-        <div class="card-grid">
-          {travelArticles.map((a) => (
-            <a href={a.href} class="article-card">
-              <div class="article-card-tag">{a.tag}</div>
-              <div class="article-card-title">{a.title}</div>
-              <p class="article-card-desc">{a.desc}</p>
-              <div class="article-card-link">{a.label}</div>
-            </a>
-          ))}
-        </div>
-      </div>
-
-    </div><!-- /wide-wrap -->
-
     <div class="article"><!-- resume narrow -->
-
-      <!-- Klook 省錢情報（明細移至獨立頁，首頁僅保留導引）-->
-      <h2>旅遊省錢情報</h2>
-      <p>
-        出國訂門票、交通和行程前，記得先看一下手上的信用卡有沒有折扣。
-        各大銀行的 Klook 刷卡優惠碼我整理在這頁，會不定期更新：
-        <a href="/klook-deals" style="color:var(--accent);font-weight:600;">Klook 銀行優惠碼整理 →</a>
-      </p>
-
       <!-- Social Links -->
       <SocialLinks
         heading="追蹤我｜Follow Me"
         subheading="IG、FB、YouTube 上會分享更多旅遊踩坑筆記與省錢情報"
       />
-
     </div>
 
     <!-- Footer -->
@@ -392,6 +415,33 @@ import { esimArticles, travelArticles, lifeArticles } from '../data/articles.js'
     transition: background 0.15s;
   }
   .quiz-cta:hover { background: #fbeee6; }
+
+  /* Home full-width sections (出國前準備 / 旅遊 / eSIM / 人生筆記) */
+  .home-section { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .home-section > h2 { margin-top: 52px; }
+  .home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+    margin: 20px 0 8px;
+  }
+  .home-grid.life-grid { grid-template-columns: 1fr; max-width: 640px; }
+
+  /* Single tool card (省錢工具導引，取代首頁優惠碼明細) */
+  .tool-card {
+    display: block;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 24px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.15s, box-shadow 0.15s;
+    margin-top: 8px;
+  }
+  .tool-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(192,57,43,0.08); }
+  .tool-card-title { font-family: var(--serif); font-weight: 900; font-size: 18px; margin-bottom: 8px; color: var(--ink); }
+  .tool-card-desc { font-size: 14px; color: var(--ink-light); line-height: 1.7; margin-bottom: 12px; }
+  .tool-card-link { font-size: 14px; font-weight: 500; color: var(--accent); }
 
   /* Article cards */
   .card-grid {

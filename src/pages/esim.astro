@@ -3,6 +3,7 @@ import SiteNav from '../components/SiteNav.astro';
 import BlogLayout from '../layouts/BlogLayout.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import ContentDisclaimer from '../components/ContentDisclaimer.astro';
 
 const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
 const KKDAY_LINK = 'https://onelink.one/s/nnjWf';
@@ -149,6 +150,8 @@ const brands = [
 
     <!-- Article -->
     <article class="article">
+
+      <ContentDisclaimer />
 
       <div class="story-box">
         <strong>先說說我自己</strong>——我不是旅遊達人，也不是網紅。<br />
@@ -380,7 +383,7 @@ const brands = [
 
       <SocialLinks
         heading="追蹤我｜Follow Me"
-        subheading="新優惠碼、eSIM 評測更新、踩坑筆記，會在 IG、FB、YouTube 同步分享"
+        subheading="新優惠碼、eSIM 選購整理更新、踩坑筆記，會在 IG、FB、YouTube 同步分享"
       />
 
 

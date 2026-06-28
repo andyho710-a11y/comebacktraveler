@@ -3,6 +3,7 @@ import SiteNav from '../../components/SiteNav.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+import ContentDisclaimer from '../../components/ContentDisclaimer.astro';
 
 const title = "eSIM 裝不起來怎麼辦？10 個常見問題完整解法";
 const description = "JOYTEL、DJB 等 eSIM 裝不起來、QR Code 掃不了、安裝失敗、沒有訊號、APN 錯誤——10 個問題逐一解法，一篇全搞定。";
@@ -176,6 +177,8 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
 </div>
 
 <article class="article">
+
+  <ContentDisclaimer />
 
   <div class="story-box">
     <strong>「裝起來了，但沒有網路」是最常見的情況。</strong><br>
@@ -369,7 +372,7 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
       <li>用 Speedtest 測試速度，若下載低於 1 Mbps 代表可能已降速</li>
       <li>晚上 7–10 點日本都心地鐵站內的速度會比較慢，這是電信網路壅塞問題，非 eSIM 故障</li>
       <li>隔一段時間斷線可能是手機電池優化把行動數據背景關掉，去設定 → 電池 → 確認沒有限制行動數據</li>
-      <li>如果懷疑是漫遊線路造成的延遲問題，看這篇了解原生 vs 漫遊線路的差異：<a href="/esim/joytel" style="color:var(--accent);">JOYTEL eSIM 評測（含原生線路說明）</a></li>
+      <li>如果懷疑是漫遊線路造成的延遲問題，看這篇了解原生 vs 漫遊線路的差異：<a href="/esim/joytel" style="color:var(--accent);">JOYTEL eSIM 選購整理（含原生線路說明）</a></li>
     </ol>
   </div>
 
@@ -430,8 +433,8 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
         <div class="related-item-title">eSIM 怎麼安裝？iPhone + Android 圖解</div>
       </a>
       <a href="/esim/joytel" class="related-item">
-        <div class="related-item-tag">JOYTEL 評測</div>
-        <div class="related-item-title">JOYTEL eSIM 深度評測：速度、客服、優缺點</div>
+        <div class="related-item-tag">JOYTEL 選購整理</div>
+        <div class="related-item-title">JOYTEL eSIM 選購整理：規格、客服、優缺點</div>
       </a>
       <a href="/esim/china" class="related-item">
         <div class="related-item-tag">大陸上網</div>

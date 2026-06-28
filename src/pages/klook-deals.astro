@@ -3,6 +3,7 @@ import SocialLinks from '../components/SocialLinks.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import ContentDisclaimer from '../components/ContentDisclaimer.astro';
 
 const title = "Klook 銀行優惠碼整理 2026｜各大信用卡刷卡折扣｜重來的旅人";
 const description = "整理 2026 年各大銀行的 Klook 刷卡優惠碼與折扣：玉山國旅卡、中華郵政、新光、彰銀、中信 LINE Pay。附適用情境、怎麼挑卡、使用方式與常見問題，出國訂行程前先看一眼。";
@@ -132,6 +133,8 @@ const offers = [
 
 <article class="article">
 
+  <ContentDisclaimer />
+
   <p>
     很多人訂 Klook 行程時，忘了自己手上的信用卡其實有折扣或回饋。
     這頁整理 2026 年常見的銀行 Klook 優惠碼——<strong>進入 Klook、把商品加入購物車後，於結帳頁輸入對應優惠碼即可折抵</strong>。
@@ -178,7 +181,7 @@ const offers = [
           <div class="coupon-expiry">效期至 {o.validUntil}</div>
         </div>
         {o.note && <p class="coupon-note">{o.note}</p>}
-        <a href={o.url ?? AFFILIATE_LINK} target="_blank" rel="noopener noreferrer sponsored" class="coupon-btn">
+        <a href={AFFILIATE_LINK} target="_blank" rel="noopener noreferrer sponsored" class="coupon-btn">
           前往 Klook 使用 →
         </a>
       </div>

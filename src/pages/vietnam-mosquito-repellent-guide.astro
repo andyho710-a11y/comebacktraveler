@@ -1,0 +1,441 @@
+---
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import ContentDisclaimer from '../components/ContentDisclaimer.astro';
+
+const title = "越南防蚊用品怎麼準備？住越南十年的在地經驗整理（2026）";
+const description = "去越南自由行要帶哪種防蚊用品？住越南十年的重來的旅人，從登革熱風險、胡志明蚊蟲環境、Picaridin 與 DEET 差異，到防蚊液、防蚊貼、防蚊衣與房間防蚊，整理真正適合越南旅行的防蚊清單與適合誰、不適合誰。";
+const canonical = "https://comebacktraveler.com/vietnam-mosquito-repellent-guide";
+const cover = "https://comebacktraveler.com/vietnam-mosquito-guide.png";
+
+// 聯盟連結（主入口為蝦皮；酷澎僅作單品補充比價）
+const SHOPEE_URL = "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront";
+const COUPANG_PICARIDIN = "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A";
+
+// 防蚊用品快速清單
+const quickList = [
+  { rank: "1", item: "Picaridin 防蚊液", scene: "一般自由行、親子、白天戶外", buy: "蝦皮主推 / 酷澎補充比價" },
+  { rank: "2", item: "DEET 防蚊液", scene: "郊區、雨季、蚊子很多的行程", buy: "蝦皮主推 / 酷澎補充比價" },
+  { rank: "3", item: "防蚊貼 / 防蚊手環", scene: "小孩輔助、短時間室內外移動", buy: "蝦皮" },
+  { rank: "4", item: "薄長袖 / 防蚊衣", scene: "水樂園、郊區、戶外餐廳", buy: "蝦皮" },
+  { rank: "5", item: "房間防蚊 + 止癢藥膏", scene: "民宿、老飯店、郊區住宿", buy: "蝦皮主推 / 酷澎補充比價" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="越南防蚊用品,越南防蚊液,Picaridin,DEET,越南登革熱,越南必備小物,越南親子旅遊,防蚊衣" />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:image" content={cover} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={cover} />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "url": canonical,
+    "mainEntityOfPage": canonical,
+    "inLanguage": "zh-TW",
+    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
+    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
+    "datePublished": "2026-06-15",
+    "dateModified": "2026-06-15",
+    "image": cover
+  })} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "去越南一定要帶防蚊液嗎？", "acceptedAnswer": { "@type": "Answer", "text": "建議一定要帶。越南蚊蟲多且有登革熱風險，就算只在胡志明市區活動，戶外餐廳、夜晚等車、飯店庭院都可能被叮。" } },
+      { "@type": "Question", "name": "Picaridin 和 DEET 哪個比較適合越南？", "acceptedAnswer": { "@type": "Answer", "text": "一般自由行、親子旅行可先選 Picaridin，味道和膚感較容易接受。郊區、雨季、蚊子很多的行程可考慮 DEET，但要注意濃度、年齡限制與使用方式。" } },
+      { "@type": "Question", "name": "防蚊貼有用嗎？", "acceptedAnswer": { "@type": "Answer", "text": "可以當輔助，但不建議當主力。防蚊貼保護範圍有限，越南旅行仍建議以有效成分清楚的防蚊液為主。" } },
+      { "@type": "Question", "name": "小孩去越南要怎麼防蚊？", "acceptedAnswer": { "@type": "Answer", "text": "先看產品標示的適用年齡，通常可用兒童適用防蚊液，搭配防蚊貼、薄長袖與止癢藥膏。不要噴在手掌、眼周與傷口。" } },
+      { "@type": "Question", "name": "越南當地買防蚊用品方便嗎？", "acceptedAnswer": { "@type": "Answer", "text": "市區藥局、超市通常買得到，但品牌、成分與標示不一定熟悉。第一次去越南，建議台灣先準備好。" } }
+    ]
+  })} />
+  <style>
+    :root {
+      --ink: #1a1208;
+      --ink-light: #4a3f2f;
+      --paper: #faf8f3;
+      --paper-warm: #f2ede0;
+      --accent: #c0392b;
+      --gold: #b8860b;
+      --border: #d4c9b0;
+      --serif: 'Noto Serif TC', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.8; font-size: 17px; }
+
+    .hero { max-width: 740px; margin: 60px auto 0; padding: 0 24px; }
+    .category-tag { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 20px; }
+    h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
+    .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
+    .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
+
+    .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
+    p { margin-bottom: 1.4em; }
+    h2 { font-family: var(--serif); font-weight: 900; font-size: 26px; margin: 56px 0 16px; position: relative; padding-left: 16px; line-height: 1.4; }
+    h2::before { content: ''; position: absolute; left: 0; top: 4px; width: 4px; height: 80%; background: var(--accent); border-radius: 2px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; margin: 32px 0 10px; line-height: 1.5; color: var(--ink); }
+
+    .story-box { background: var(--paper-warm); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 40px 0; border-radius: 0 6px 6px 0; font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .story-box strong { color: var(--ink); font-weight: 600; }
+
+    .hero-poster { display: block; width: 100%; max-width: 460px; height: auto; margin: 8px auto 6px; border-radius: 10px; border: 1px solid var(--border); }
+    .hero-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 32px; font-style: italic; }
+
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
+    .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+    .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
+
+    .mini-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+    .mini-table th { background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 600; padding: 10px 12px; text-align: left; }
+    .mini-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .mini-table tr:nth-child(even) td { background: var(--paper-warm); }
+    .mini-table td:first-child { text-align: center; font-weight: 700; color: var(--accent); white-space: nowrap; }
+
+    .check-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
+    .check-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+
+    .x-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
+    .x-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .x-list li::before { content: '✕'; position: absolute; left: 0; top: 0; color: #999; font-weight: 700; }
+
+    .num-list { padding-left: 0; list-style: none; margin: 16px 0 24px; counter-reset: numlist; }
+    .num-list li { position: relative; padding-left: 36px; margin-bottom: 12px; font-size: 16px; counter-increment: numlist; }
+    .num-list li::before { content: counter(numlist); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: var(--accent); color: var(--paper); border-radius: 50%; font-family: var(--serif); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+
+    /* 聯盟商品卡片 */
+    .product-card { display: flex; gap: 20px; align-items: center; border: 1.5px solid var(--border); border-radius: 10px; padding: 18px 20px; margin: 24px 0; background: #fffdf8; transition: box-shadow 0.2s, border-color 0.2s; }
+    .product-card:hover { box-shadow: 0 6px 20px rgba(26, 18, 8, 0.08); border-color: var(--gold); }
+    .product-card-img { width: 120px; height: 120px; flex-shrink: 0; object-fit: contain; background: #fff; border-radius: 8px; border: 1px solid var(--border); padding: 6px; }
+    .product-card-body { flex: 1; min-width: 0; }
+    .product-card-name { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); margin-bottom: 4px; line-height: 1.4; }
+    .product-card-spec { font-size: 12.5px; letter-spacing: 0.04em; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+    .product-card-why { font-size: 14.5px; color: var(--ink-light); line-height: 1.7; margin-bottom: 14px; }
+    .product-card-cta { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; text-decoration: none; font-size: 14.5px; font-weight: 500; padding: 9px 18px; border-radius: 6px; transition: background 0.2s; }
+    .product-card-cta:hover { background: #9e2c1f; }
+
+    .shopee-block { border: 1px solid #ee4d2d; border-radius: 12px; padding: 1.25rem 1.5rem; margin: 2rem 0; background: #fff7f5; }
+    .shopee-eyebrow { color: #ee4d2d; font-weight: 700; font-size: 0.9rem; margin: 0 0 0.5rem; }
+    .shopee-title { margin: 0 0 0.75rem; font-size: 1.15rem; }
+    .shopee-desc { margin: 0 0 1.25rem; line-height: 1.7; }
+    .shopee-btn { display: inline-block; background: #ee4d2d; color: #fff; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; }
+    .shopee-btn:hover { background: #d63e1f; }
+    .shopee-note { margin: 0.75rem 0 0; font-size: 0.85rem; color: #888; }
+
+    a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a.inline:hover { background: var(--paper-warm); }
+
+    .closing { margin-top: 60px; padding-top: 32px; border-top: 1px solid var(--border); font-family: var(--serif); font-size: 16px; color: var(--ink-light); line-height: 1.9; }
+    .closing em { color: var(--ink); font-style: normal; font-weight: 600; }
+
+    .disclosure { margin-top: 36px; padding: 14px 18px; background: var(--paper-warm); border-radius: 6px; font-size: 13px; color: var(--ink-light); line-height: 1.7; font-style: italic; }
+
+    .internal-links { margin: 40px 0 0; display: flex; gap: 20px; flex-wrap: wrap; }
+    .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .internal-links a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .hero, .article { padding: 0 16px; }
+      h2 { font-size: 22px; }
+      h3 { font-size: 17px; }
+      .product-card { flex-direction: column; align-items: stretch; text-align: left; }
+      .product-card-img { width: 100%; height: 180px; }
+      .product-card-cta { justify-content: center; }
+      .mini-table { font-size: 13px; }
+      .mini-table th, .mini-table td { padding: 8px 9px; }
+    }
+  </style>
+  <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XW4LBK8PYF');
+  </script>
+</head>
+<body>
+
+<SiteNav />
+
+<div class="hero">
+  <div class="category-tag">越南旅遊好物 · 防蚊準備</div>
+  <h1>越南防蚊用品怎麼準備？<br>住越南十年的在地經驗整理</h1>
+  <p class="subtitle">
+    去越南怕被蚊子叮、又擔心登革熱？<br>
+    這篇從越南真實的蚊蟲環境出發，告訴你 Picaridin 與 DEET 差在哪、
+    防蚊貼能不能當主力，以及不同行程、不同人該怎麼搭配。
+  </p>
+  <div class="meta">
+    <div class="author-dot">旅</div>
+    <div>
+      <div class="meta-author">重來的旅人</div>
+      <div>2026 年 6 月更新 · 越南生活 10 年 · 在地經驗整理</div>
+    </div>
+  </div>
+</div>
+
+<article class="article">
+
+  <ContentDisclaimer />
+
+  <img
+    src="/vietnam-mosquito-guide.png"
+    alt="越南防蚊用品怎麼準備：防蚊液、薄長袖、收納包與行李箱，住越南十年的在地清單"
+    class="hero-poster"
+    loading="eager"
+  />
+  <p class="hero-caption">第一次去越南前，先看這份防蚊準備清單。</p>
+
+  <p>
+    如果你問我第一次去越南要不要帶防蚊用品，我的答案很直接：<strong>要，而且不要只帶防蚊貼。</strong>
+  </p>
+
+  <p>
+    越南的蚊子不是只有晚上才有。胡志明市、邊和、湄公河三角洲、會安、峴港周邊，
+    只要遇到雨季、積水、戶外餐廳、樹多的飯店庭院，白天也可能被叮。
+    更麻煩的是，越南一直都有<strong>登革熱風險</strong>——你不一定會碰上，但只要碰上一次，旅程就不是「很癢」而已。
+  </p>
+
+  <p>
+    我在越南住過十年，最常看到台灣旅客踩的雷是：出發前只買可愛防蚊貼，
+    或只帶一罐味道很香、但有效成分很弱的噴霧。結果到當地吃一頓戶外海鮮、晚上等 Grab、
+    或帶小孩去水樂園，就開始整晚抓到睡不著。這篇就用越南實際旅行情境，幫你把防蚊用品一次整理清楚。
+  </p>
+
+  <div class="story-box">
+    先說結論：<br><br>
+    <strong>至少帶一瓶有效成分清楚的防蚊液（Picaridin 或 DEET），再搭配防蚊貼或薄長袖當輔助。</strong><br><br>
+    防蚊貼不要當主力，它比較像輔助道具。下面的選品方向，是我依越南真實環境＋
+    「成分對、評價高、適合親子」的原則幫你篩過的，你也可以照同樣邏輯自己找。
+  </div>
+
+  <h2>越南防蚊用品快速清單</h2>
+
+  <table class="mini-table">
+    <thead>
+      <tr>
+        <th>優先級</th>
+        <th>防蚊用品</th>
+        <th>適合情境</th>
+        <th>建議購買</th>
+      </tr>
+    </thead>
+    <tbody>
+      {quickList.map((r) => (
+        <tr>
+          <td>{r.rank}</td>
+          <td>{r.item}</td>
+          <td>{r.scene}</td>
+          <td>{r.buy}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+
+  <h2>這篇適合誰看？</h2>
+  <ul class="check-list">
+    <li>第一次去越南、不確定防蚊要準備到什麼程度的人</li>
+    <li>帶小孩或長輩去越南，怕防蚊液太刺激的家庭</li>
+    <li>會去水樂園、湄公河、古芝、郊區等戶外行程的人</li>
+    <li>很容易被蚊子叮、被叮就腫一大包的體質</li>
+  </ul>
+  <p>如果你只在市區大飯店、幾乎不出戶外，那帶一瓶防蚊液＋止癢藥膏就夠，不用全部都買。</p>
+
+  <AffiliateDisclosure />
+
+  <h2>一、Picaridin 防蚊液：最適合多數越南旅客</h2>
+
+  <p>
+    Picaridin（派卡瑞丁）是現在很多旅人會優先選的防蚊成分，
+    味道通常比 DEET 溫和、膚感也比較容易接受。對一般胡志明、峴港、河內自由行來說，
+    我會把 Picaridin 當第一選擇。它適合這些情境：
+  </p>
+  <ul class="check-list">
+    <li>帶小孩去越南</li>
+    <li>女生旅行，不想防蚊液味道太重</li>
+    <li>白天逛市區、咖啡廳、戶外市集</li>
+    <li>晚上吃路邊攤、海鮮店、河邊餐廳</li>
+    <li>不想皮膚黏膩到整天不舒服</li>
+  </ul>
+  <p>
+    購買時不要只看「天然」「草本」「精油」這些字，請先看<strong>有效成分與濃度</strong>。
+    越南又熱、流汗快，只是香香的精油噴霧通常撐不了多久。出門前先噴一次，
+    尤其小腿、腳踝、手臂外側——越南很多蚊子不是飛到臉旁邊，而是直接攻擊腳踝。
+  </p>
+
+  <div class="product-card">
+    <img class="product-card-img" src="/vietnam-ess-dintin.png" alt="叮嚀 派卡瑞丁 10H 小黑蚊防蚊液" loading="lazy" />
+    <div class="product-card-body">
+      <div class="product-card-name">叮嚀 派卡瑞丁 10H 小黑蚊防蚊液</div>
+      <div class="product-card-spec">Picaridin 派卡瑞丁 ‧ 主打長效</div>
+      <p class="product-card-why">派卡瑞丁成分，專治越南濕熱環境的小黑蚊與蚊子。不嗆鼻、不黏膩，小孩也能用，是這篇的首選方向。</p>
+      <a class="product-card-cta" href={COUPANG_PICARIDIN} target="_blank" rel="sponsored nofollow noopener">酷澎補充比價 →</a>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-title">怎麼用比較實際</div>
+    <p>如果當天是水樂園、古芝地道、湄公河一日遊、會安晚上散步這類戶外行程，記得<strong>中間補噴</strong>。
+    防蚊液不是噴一次就無敵，流汗、擦手、下雨都會讓效果下降。</p>
+  </div>
+
+  <h2>二、DEET 防蚊液：郊區、雨季、蚊子多時更有感</h2>
+
+  <p>
+    DEET 是老牌有效成分，防蚊效果強，但氣味和膚感比較多人不喜歡。
+    去越南若只是市區旅遊，不一定要用到很高濃度；但如果你會去
+    <strong>郊區、雨季行程、樹林、河邊、鄉下親戚家</strong>，我會認真考慮帶一瓶。
+  </p>
+  <p>使用 DEET 要注意：小孩使用先看產品標示，避免噴到手掌、眼周、傷口；
+    大人也不要當香水狂噴，該補再補就好。另外 DEET 可能影響部分塑膠材質
+    （墨鏡、相機、手機殼、錶帶），噴完最好等皮膚乾一點再碰這些東西。</p>
+
+  <h2>三、防蚊貼與防蚊手環：可以帶，但別只靠它</h2>
+
+  <p>
+    防蚊貼、防蚊手環好處是方便，尤其小孩比較願意接受，貼在衣服、推車、背包上，
+    也能降低家長一直補噴的壓力。但<strong>它的保護範圍有限</strong>——
+    蚊子不會因為你手臂貼了一片，就放過你的腳踝。比較合理的用法是：
+  </p>
+  <ul class="check-list">
+    <li>防蚊液當主力</li>
+    <li>防蚊貼貼在衣服、背包、推車當輔助</li>
+    <li>晚上戶外餐廳或水樂園行程加強使用</li>
+  </ul>
+
+  <h2>四、薄長袖與防蚊衣：越南戶外行程很好用</h2>
+
+  <p>
+    很多人想到越南只想到熱，完全不想帶長袖。但如果你會去水樂園、郊區、河邊、夜市，
+    薄長袖其實很實用——<strong>防蚊液流汗後會掉，衣服至少能提供物理阻隔</strong>。建議帶一件：
+  </p>
+  <ul class="check-list">
+    <li>薄、透氣、快乾</li>
+    <li>淺色、不要太貼身</li>
+    <li>能防曬也能減少叮咬，小孩去水樂園特別好用</li>
+  </ul>
+
+  <h2>五、房間防蚊與止癢藥膏：老飯店、民宿、郊區要準備</h2>
+
+  <p>
+    住市中心新飯店，房間蚊子問題通常不大；但住民宿、郊區、老飯店、海邊小旅館，
+    房間防蚊就有價值，可以考慮小型電蚊香、防蚊噴霧。
+    而<strong>止癢藥膏我覺得一定要帶</strong>——防蚊做得再好也不可能完全不被叮，
+    尤其小孩被叮後抓破皮，後面幾天會很麻煩。
+  </p>
+  <p>行李空間有限時，優先順序是：<strong>防蚊液 → 止癢藥膏 → 防蚊貼</strong>，電蚊香看住宿類型再決定。</p>
+
+  <h2>不同情境怎麼搭配</h2>
+  <h3>胡志明市區 3 天 2 夜</h3>
+  <p>一瓶 Picaridin 防蚊液＋一條止癢藥膏就很夠。晚上去戶外餐廳、步行街、露天咖啡座時補噴。</p>
+  <h3>親子越南自由行</h3>
+  <p>Picaridin 防蚊液、防蚊貼、止癢藥膏都帶。小孩不一定願意一直補噴，防蚊貼當輔助。</p>
+  <h3>水樂園、郊區、湄公河</h3>
+  <p>Picaridin 或 DEET 防蚊液，加薄長袖或防蚊衣。這類行程不要只靠防蚊貼。</p>
+  <h3>女生越南旅行</h3>
+  <p>除了防蚊液，建議帶薄外套或薄襯衫：白天防曬、晚上防蚊，進冷氣很強的咖啡廳或車上也用得到。</p>
+
+  <h2>誰適合、誰可以省</h2>
+  <p><strong>建議認真準備的人：</strong></p>
+  <ul class="check-list">
+    <li>帶小孩、長輩，或本身就是被叮體質</li>
+    <li>行程有水樂園、郊區、河邊、戶外餐廳</li>
+    <li>雨季（大約 5–10 月）去越南</li>
+  </ul>
+  <p><strong>可以簡單帶就好的人：</strong></p>
+  <ul class="x-list">
+    <li>只待市區大飯店、幾乎不安排戶外行程</li>
+    <li>停留 1–2 天的轉機、短停</li>
+    <li>本身不太會被蚊子叮——但止癢藥膏還是建議放一條</li>
+  </ul>
+
+  <div class="shopee-block">
+    <p class="shopee-eyebrow">🛒 越南防蚊用品・蝦皮一次備齊</p>
+    <h3 class="shopee-title">習慣用蝦皮的，照這份清單一次買齊</h3>
+    <p class="shopee-desc">
+      蝦皮是這篇的主要購買入口：把防蚊液、防蚊貼、止癢藥膏、薄長袖、防蚊手環整理在一份清單，
+      適合想集中下單、慢慢比價、湊免運的人。上方酷澎連結只作為單品補充比價，
+      真正要備齊越南防蚊用品，建議從這份蝦皮清單開始。
+    </p>
+    <a class="shopee-btn" href={SHOPEE_URL} target="_blank" rel="sponsored nofollow noopener">
+      👉 打開蝦皮越南防蚊用品清單
+    </a>
+    <p class="shopee-note">建議出發前 7–10 天購買，保留收貨、退換貨與補買時間。</p>
+  </div>
+
+  <h2>常見問題 FAQ</h2>
+  <p><strong>Q：去越南一定要帶防蚊液嗎？</strong><br>
+    建議一定要帶。越南蚊蟲多且有登革熱風險，就算只在胡志明市區活動，戶外餐廳、夜晚等車、飯店庭院都可能被叮。</p>
+  <p><strong>Q：Picaridin 和 DEET 哪個比較適合越南？</strong><br>
+    一般自由行、親子旅行可先選 Picaridin，味道和膚感較容易接受；郊區、雨季、蚊子很多的行程可考慮 DEET，但要注意濃度、年齡限制與使用方式。</p>
+  <p><strong>Q：防蚊貼有用嗎？</strong><br>
+    可以當輔助，但不建議當主力。防蚊貼保護範圍有限，越南旅行仍建議以有效成分清楚的防蚊液為主。</p>
+  <p><strong>Q：小孩去越南要怎麼防蚊？</strong><br>
+    先看產品標示的適用年齡，通常可用兒童適用防蚊液，搭配防蚊貼、薄長袖與止癢藥膏。不要噴在手掌、眼周與傷口。</p>
+  <p><strong>Q：越南當地買防蚊用品方便嗎？</strong><br>
+    市區藥局、超市通常買得到（Soffel、Remos 都是當地常見品牌），但成分與標示不一定熟悉。第一次去越南，建議台灣先準備好。</p>
+
+  <div class="tip-box">
+    <div class="tip-title">出發前也別忘了網路</div>
+    <p>東西帶齊了，別忘了最關鍵的一樣：網路。越南落地沒網路，叫車、導航、查資料全卡住。
+    我另外寫過 <a href="/esim/saigon-airport-sim" class="inline">胡志明機場 SIM 卡值不值得買</a> 與
+    <a href="/esim" class="inline">越南 eSIM 怎麼選</a>，出發前可以一起看。</p>
+  </div>
+
+  <div class="closing">
+    防蚊在越南不是「怕癢」而已，是讓你能安心吃戶外海鮮、安心帶小孩玩水的基本準備。<br><br>
+    走過彎路的人，才知道哪些東西真的值得帶。<br>
+    希望這份在地整理，能讓你的越南行少抓幾個包、多睡幾個好覺。
+  </div>
+
+  <p class="disclosure">
+    本文部分連結為聯盟連結，若你透過蝦皮、酷澎或其他推薦連結購買，我可能獲得少量分潤，但不影響你的購買價格。
+    本文以越南實際旅行情境、防蚊有效性、親子使用便利性與出發前準備效率為優先，並非每項商品都親自實測。
+  </p>
+
+  <SocialLinks
+    heading="追蹤我｜Follow Me"
+    subheading="越南親子旅遊、必備小物、eSIM 與機場省錢情報，會在 IG、FB、YouTube 同步分享"
+  />
+
+  <div class="internal-links">
+    <a href="/vietnam-travel-essentials">→ 越南旅遊必備小物推薦</a>
+    <a href="/vietnam-girls-packing">→ 越南女生旅行必帶物品</a>
+    <a href="/vietnam-packing-list">→ 越南自由行行李清單</a>
+    <a href="/first-trip-packing-list">→ 第一次出國行李清單</a>
+    <a href="/vietnam-guide">→ 越南帶小孩快速通關攻略</a>
+    <a href="/kids-travel-amazing-bay">→ The Amazing Bay 神奇海灣水樂園</a>
+  </div>
+
+</article>
+
+<SiteFooter />
+
+</body>
+</html>
