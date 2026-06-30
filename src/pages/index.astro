@@ -3,12 +3,20 @@ import BlogLayout from '../layouts/BlogLayout.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import SiteNav from '../components/SiteNav.astro';
 import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../data/articles.js';
+
+const vietnamTravelArticles = travelArticles.filter((a) =>
+  ['/vietnam-guide', '/vietnam-taxi-app-guide', '/vietnam-jcb-lounge', '/kids-travel-guide', '/kids-travel-amazing-bay', '/saigon-couple-walk'].includes(a.href)
+);
+const lowerPriorityArticles = [
+  ...travelArticles.filter((a) => ['/japan-guide', '/korea-guide', '/thsr-guide', '/story'].includes(a.href)),
+  ...lifeArticles,
+];
 ---
 
 <BlogLayout
-  title="重來的旅人｜久久才出國一次的小資旅人出國準備與避坑筆記"
-  description="重來的旅人整理出國準備、旅遊省錢、越南避坑與人生重來筆記，寫給第一次出國或久久才出國一次的小資旅人。"
-  keywords="出國準備, 第一次出國行李清單, 越南旅遊, 越南必備小物, 旅遊省錢, 出國上網, eSIM, 重來的旅人"
+  title="重來的旅人｜越南旅遊準備與出國用品清單"
+  description="重來的旅人整理越南旅遊準備、出國用品、防蚊、防盜、轉接頭、打包清單與省錢避坑資訊，寫給第一次去越南或久久才出國一次的台灣旅人。"
+  keywords="越南旅遊準備, 出國用品清單, 越南行李清單, 越南必備小物, 越南防蚊, 防盜包, 轉接頭, 越南自由行"
   ogImage="/esim-cover.jpg"
 >
   <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,17 +29,17 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
 
     <!-- Hero -->
     <div class="hero">
-      <div class="category-tag">關於這個網站</div>
-      <h1>前半生跌了很多跤，<br>現在把坑整理給你</h1>
+      <div class="category-tag">越南旅遊準備 · 出國用品清單</div>
+      <h1>第一次去越南，<br>出發前先把東西備齊</h1>
       <p class="subtitle">
-        我在越南工廠當過副總、養蝦失敗、跑過 Uber、父親走了之後才真正開始重新出發。<br>
-        這個網站，是一個 40 幾歲台灣男人寫給自己、也寫給你的筆記。
+        我在越南住了十年，最常被朋友問的不是景點，而是「到底要帶什麼」。<br>
+        這裡把越南防蚊、防曬、防盜、轉接頭、打包清單與落地避坑整理成出發前能直接照看的清單。
       </p>
       <div class="meta">
         <div class="author-dot">旅</div>
         <div>
           <div class="meta-author">重來的旅人</div>
-          <div>越南生活 10 年 · 自媒體行銷 · 重新出發</div>
+          <div>越南生活 10 年 · 出國用品整理 · 省錢避坑</div>
         </div>
       </div>
     </div>
@@ -39,53 +47,45 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
     <!-- Author Story -->
     <div class="article">
       <div class="story-box">
-        <strong>我不是什麼旅遊達人，也沒有光鮮亮麗的履歷。</strong><br><br>
-        我是家裡文具工廠的第二代。國中叛逆、KTV 鬧事住院，被送去加拿大九個月帶回來。
-        後來去越南幫父親管廠，擔任副總一待就是十年。
-        養蝦失敗、環保藥劑事業失敗，靠父親收拾殘局。
-        2018 年回台灣，工廠被拍賣，跑起了 Uber。
-        外婆走了，父親肺癌末期也走了。那是人生最深的失落。<br><br>
-        直到遇見主耶穌，重新找回了方向。
-        這個網站，是我把這些年踩過的坑，整理成對你有用的東西。
+        <strong>這不是觀光景點大全，而是出發前準備站。</strong><br><br>
+        如果你久久才出國一次，最怕的通常不是少玩一個景點，而是落地才發現沒網路、沒防蚊、充電器不能用、
+        包包背錯邊、行李塞了一堆用不到的東西。我把越南生活十年的經驗，拆成一份份可以直接檢查的清單。
         <br><br>
-        <a href="/story" style="color:var(--accent);font-weight:600;font-size:15px;">→ 看完整的故事</a>
+        <a href="/vietnam-travel-essentials" style="color:var(--accent);font-weight:600;font-size:15px;">→ 先看越南出國用品清單</a>
       </div>
 
     </div><!-- /article (story box) -->
 
     <!-- Intro content: 提升首頁原創內容與 E-E-A-T -->
     <div class="article intro-content">
-      <h2>這個網站幫誰？</h2>
+      <h2>這個網站幫誰準備？</h2>
       <p>
-        這個網站只寫給一種人：<strong>久久才出國一次的小資旅人。</strong>
-        不是每個月飛的空中飛人，而是可能上次出國已經是好幾年前、規矩和習慣都變了、
-        最怕「漏帶東西」和「被當盤子坑」的你。
+        這個網站主軸很單純：<strong>越南旅遊準備與出國用品清單。</strong>
+        寫給第一次去越南、或久久才出國一次的台灣旅人。你不需要先懂一堆品牌和票券，
+        只要知道哪些東西該從台灣帶、哪些可以到當地買、哪些錢不要在機場臨時花。
       </p>
       <p>
-        我在越南住了十年，從工廠副總到回台灣跑 Uber，這些年自己訂票、自己找路、自己被海關和路邊計程車坑過，
-        才慢慢摸出哪些東西非帶不可、哪些錢該省、哪些坑要避。這個網站，就是把那些教訓寫成你能直接拿去用的筆記。
+        我在越南住了十年，自己訂票、自己找路，也被機場和路邊計程車坑過。現在我把那些經驗寫成可操作的準備筆記：
+        防蚊、防曬、防盜、220V 電壓、行李打包、女生旅行用品、機場上網和叫車順序。
       </p>
       <p>內容分成幾塊，你可以從上方選單或下面的卡片進去：</p>
       <ul class="intro-list">
         <li>
-          <strong>出國前準備</strong>：第一次出國行李清單、必備小物、防曬防蚊、防盜包、轉接頭——
-          久久才飛一次最容易漏掉的，都先幫你列好。
+          <strong>越南出國用品</strong>：防曬、防蚊、充電器、防盜包、收納袋與常備藥，先用清單把行李備齊。
         </li>
         <li>
-          <strong>旅遊攻略與越南避坑</strong>：不是觀光局那種「十大必去」，而是機場、叫車、親子、貴賓室，
-          住越南十年累積下來的真實經驗。
+          <strong>打包與女生旅行</strong>：行李箱大小、手提與託運怎麼分、女生防曬防蚊與個人用品怎麼準備。
         </li>
         <li>
-          <strong>旅遊省錢</strong>：高鐵怎麼買最便宜、各家銀行 Klook 刷卡折扣、信用卡海外回饋怎麼疊。
+          <strong>越南落地避坑</strong>：機場通關、上網、叫車、貴賓室與親子行程，優先寫真正在越南會遇到的問題。
         </li>
         <li>
-          <strong>出國上網 eSIM</strong>：原生 vs 漫遊差在哪、哪家有中文客服、安裝失敗怎麼救。
-          完全不業配，<strong>依官方規格與使用情境整理，不是每張都親自實測，我會誠實標註</strong>。
+          <strong>出國上網整理</strong>：eSIM、WiFi 機、漫遊與越南機場 SIM 卡怎麼選，依官方規格與使用情境整理。
         </li>
       </ul>
       <p class="intro-note">
         說明一下：本站部分連結是聯盟行銷連結，你透過它們購買，我會拿到一點分潤，但<strong>不會影響你的價格</strong>。
-        部分內容來自親身經驗，部分是依公開資訊、官方頁面與使用情境整理，我會盡量標示清楚，不把資料整理寫成親測。更完整的揭露寫在
+        部分內容來自親身經驗，部分是依公開資訊、官方頁面與使用情境整理，我會盡量標示清楚，不把資料整理寫成個人使用心得。更完整的揭露寫在
         <a href="/privacy">隱私權政策</a>，想多認識我可以看
         <a href="/about">關於我</a>。
       </p>
@@ -93,8 +93,8 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
 
     <!-- 出國前準備（首頁第一主軸）-->
     <div class="home-section">
-      <h2>出國前準備</h2>
-      <p class="section-desc">久久才出國一次，先看這些——出發前最容易漏掉的行李、必備小物與打包眉角，都整理在這裡。</p>
+      <h2>越南旅遊準備與用品清單</h2>
+      <p class="section-desc">第一次去越南，先看這些——行李、出國用品、防蚊、防盜、女生旅行與打包眉角，都整理在這裡。</p>
       <div class="home-grid">
         {prepArticles.map((a) => (
           <a href={a.href} class="article-card">
@@ -109,10 +109,10 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
 
     <!-- 旅遊攻略與越南避坑 -->
     <div class="home-section">
-      <h2>旅遊攻略與越南避坑</h2>
-      <p class="section-desc">住越南十年的真實經驗——機場通關、叫車、親子、貴賓室、夜遊與日韓行程規劃。</p>
+      <h2>越南落地避坑與行程筆記</h2>
+      <p class="section-desc">住越南十年的真實經驗——機場通關、叫車、親子、貴賓室、水樂園與胡志明市區筆記。</p>
       <div class="home-grid">
-        {travelArticles.map((a) => (
+        {vietnamTravelArticles.map((a) => (
           <a href={a.href} class="article-card">
             <div class="article-card-tag">{a.tag}</div>
             <div class="article-card-title">{a.title}</div>
@@ -126,7 +126,7 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
     <!-- 出國上網 eSIM（後段，屬出國準備的一項，非主角）-->
     <div class="home-section">
       <h2>出國上網整理</h2>
-      <p class="section-desc">上網只是出國準備的其中一項。以下依各家官方規格、線路類型與使用情境整理，不業配、非每張親自實測。</p>
+      <p class="section-desc">上網只是越南旅遊準備的其中一項。以下依各家官方規格、線路類型與使用情境整理，幫你先判斷 eSIM、WiFi 機、漫遊或機場 SIM 哪個合適。</p>
       <a href="/esim-quiz" class="quiz-cta">🧭 30 秒測出你該用哪種上網方案 →</a>
       <div class="home-grid">
         {esimArticles.map((a) => (
@@ -140,12 +140,12 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
       </div>
     </div>
 
-    <!-- Life notes -->
+    <!-- Lower priority links -->
     <div class="home-section">
-      <h2>人生筆記</h2>
-      <p class="section-desc">旅遊與省錢之外，偶爾也寫一點中年重新出發的體悟與思考。</p>
+      <h2>其他延伸閱讀</h2>
+      <p class="section-desc">日本、韓國、高鐵與作者故事先放在後段；本站首頁優先服務越南旅遊準備。</p>
       <div class="home-grid life-grid">
-        {lifeArticles.map((a) => (
+        {lowerPriorityArticles.map((a) => (
           <a href={a.href} class="article-card">
             <div class="article-card-tag">{a.tag}</div>
             <div class="article-card-title">{a.title}</div>
@@ -160,13 +160,13 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
       <!-- Social Links -->
       <SocialLinks
         heading="追蹤我｜Follow Me"
-        subheading="IG、FB、YouTube 上會分享更多旅遊踩坑筆記與省錢情報"
+        subheading="IG、FB、YouTube 上會分享更多越南旅遊準備、出國用品與避坑筆記"
       />
     </div>
 
     <!-- Footer -->
     <footer class="site-footer">
-      <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略<br>
+      <strong>重來的旅人</strong> · 越南旅遊準備與出國用品清單<br>
       <div class="footer-nav">
         <a href="/esim">eSIM 比較</a>
         <a href="/esim/japan">日本 eSIM</a>
@@ -187,7 +187,7 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
         <a href="/services">站長服務</a>
         <a href="/privacy">隱私權政策</a>
       </div>
-      <span style="display:block;margin-top:10px;">自媒體行銷 · 越南生活 10 年 · 現在重新出發</span>
+      <span style="display:block;margin-top:10px;">越南生活 10 年 · 出國用品整理 · 省錢避坑</span>
     </footer>
 
   </div>
@@ -412,7 +412,7 @@ import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../dat
   }
   .home-grid.life-grid { grid-template-columns: 1fr; max-width: 640px; }
 
-  /* Single tool card (省錢工具導引，取代首頁優惠碼明細) */
+  /* Single tool card (省錢工具導引，取代首頁折扣明細) */
   .tool-card {
     display: block;
     border: 2px solid var(--border);
