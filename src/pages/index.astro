@@ -4,13 +4,44 @@ import SocialLinks from '../components/SocialLinks.astro';
 import SiteNav from '../components/SiteNav.astro';
 import { prepArticles, travelArticles, esimArticles, lifeArticles } from '../data/articles.js';
 
-const vietnamTravelArticles = travelArticles.filter((a) =>
-  ['/vietnam-guide', '/vietnam-taxi-app-guide', '/vietnam-jcb-lounge', '/kids-travel-guide', '/kids-travel-amazing-bay', '/saigon-couple-walk'].includes(a.href)
+const articleByHref = new Map(
+  [...prepArticles, ...travelArticles, ...esimArticles, ...lifeArticles].map((a) => [a.href, a])
 );
-const lowerPriorityArticles = [
-  ...travelArticles.filter((a) => ['/japan-guide', '/korea-guide', '/thsr-guide', '/story'].includes(a.href)),
-  ...lifeArticles,
-];
+const pickArticles = (hrefs) => hrefs.map((href) => articleByHref.get(href)).filter(Boolean);
+
+const vietnamPrepArticles = pickArticles([
+  '/vietnam-travel-essentials',
+  '/vietnam-packing-list',
+  '/vietnam-mosquito-repellent-guide',
+  '/vietnam-guide',
+  '/vietnam-taxi-app-guide',
+  '/esim/saigon-airport-sim',
+]);
+const packingListArticles = pickArticles([
+  '/first-trip-packing-list',
+  '/vietnam-girls-packing',
+  '/kids-travel-guide',
+  '/kids-travel-amazing-bay',
+  '/saigon-couple-walk',
+  '/vietnam-jcb-lounge',
+]);
+const internetArticles = pickArticles([
+  '/esim/overseas-internet-guide',
+  '/esim/saigon-airport-sim',
+  '/esim',
+  '/esim/install',
+  '/esim/troubleshoot',
+]);
+const otherPrepArticles = pickArticles([
+  '/japan-guide',
+  '/korea-guide',
+  '/esim/japan',
+  '/esim/korea',
+  '/esim/china',
+  '/esim/china-routing-2026',
+  '/thsr-guide',
+]);
+const restartNoteArticles = pickArticles(['/story', ...lifeArticles.map((a) => a.href)]);
 ---
 
 <BlogLayout
@@ -44,7 +75,7 @@ const lowerPriorityArticles = [
       </div>
     </div>
 
-    <!-- Author Story -->
+    <!-- Author note -->
     <div class="article">
       <div class="story-box">
         <strong>這不是觀光景點大全，而是出發前準備站。</strong><br><br>
@@ -52,6 +83,8 @@ const lowerPriorityArticles = [
         包包背錯邊、行李塞了一堆用不到的東西。我把越南生活十年的經驗，拆成一份份可以直接檢查的清單。
         <br><br>
         <a href="/vietnam-travel-essentials" style="color:var(--accent);font-weight:600;font-size:15px;">→ 先看越南出國用品清單</a>
+        <span class="story-link-sep">／</span>
+        <a href="/about" style="color:var(--accent);font-weight:600;font-size:15px;">認識作者</a>
       </div>
 
     </div><!-- /article (story box) -->
@@ -89,14 +122,21 @@ const lowerPriorityArticles = [
         <a href="/privacy">隱私權政策</a>，想多認識我可以看
         <a href="/about">關於我</a>。
       </p>
+      <nav class="category-nav" aria-label="首頁分類">
+        <a href="#vietnam-prep">越南旅遊準備</a>
+        <a href="#packing-list">出國用品清單</a>
+        <a href="#internet-prep">出國上網整理</a>
+        <a href="#other-prep">其他出國準備</a>
+        <a href="#restart-notes">重來筆記</a>
+      </nav>
     </div>
 
-    <!-- 出國前準備（首頁第一主軸）-->
-    <div class="home-section">
-      <h2>越南旅遊準備與用品清單</h2>
-      <p class="section-desc">第一次去越南，先看這些——行李、出國用品、防蚊、防盜、女生旅行與打包眉角，都整理在這裡。</p>
+    <!-- 越南旅遊準備（首頁第一主軸）-->
+    <div id="vietnam-prep" class="home-section">
+      <h2>越南旅遊準備</h2>
+      <p class="section-desc">第一次去越南先看這裡。防蚊、防盜、叫車、機場上網與落地避坑，先把最容易出錯的地方排好。</p>
       <div class="home-grid">
-        {prepArticles.map((a) => (
+        {vietnamPrepArticles.map((a) => (
           <a href={a.href} class="article-card">
             <div class="article-card-tag">{a.tag}</div>
             <div class="article-card-title">{a.title}</div>
@@ -107,12 +147,12 @@ const lowerPriorityArticles = [
       </div>
     </div>
 
-    <!-- 旅遊攻略與越南避坑 -->
-    <div class="home-section">
-      <h2>越南落地避坑與行程筆記</h2>
-      <p class="section-desc">住越南十年的真實經驗——機場通關、叫車、親子、貴賓室、水樂園與胡志明市區筆記。</p>
+    <!-- 出國用品清單（首頁第二主軸）-->
+    <div id="packing-list" class="home-section">
+      <h2>出國用品清單</h2>
+      <p class="section-desc">行李箱、手提行李、女生旅行用品、親子出遊與貴賓室準備，整理成出發前可以逐項檢查的清單。</p>
       <div class="home-grid">
-        {vietnamTravelArticles.map((a) => (
+        {packingListArticles.map((a) => (
           <a href={a.href} class="article-card">
             <div class="article-card-tag">{a.tag}</div>
             <div class="article-card-title">{a.title}</div>
@@ -124,12 +164,12 @@ const lowerPriorityArticles = [
     </div>
 
     <!-- 出國上網 eSIM（後段，屬出國準備的一項，非主角）-->
-    <div class="home-section">
+    <div id="internet-prep" class="home-section">
       <h2>出國上網整理</h2>
-      <p class="section-desc">上網只是越南旅遊準備的其中一項。以下依各家官方規格、線路類型與使用情境整理，幫你先判斷 eSIM、WiFi 機、漫遊或機場 SIM 哪個合適。</p>
+      <p class="section-desc">上網只是出國準備的一項。這裡優先放通用上網選擇、越南機場 SIM、eSIM 安裝與問題排解。</p>
       <a href="/esim-quiz" class="quiz-cta">🧭 30 秒測出你該用哪種上網方案 →</a>
       <div class="home-grid">
-        {esimArticles.map((a) => (
+        {internetArticles.map((a) => (
           <a href={a.href} class="article-card">
             <div class="article-card-tag">{a.tag}</div>
             <div class="article-card-title">{a.title}</div>
@@ -140,18 +180,30 @@ const lowerPriorityArticles = [
       </div>
     </div>
 
-    <!-- Lower priority links -->
-    <div class="home-section">
-      <h2>其他延伸閱讀</h2>
-      <p class="section-desc">日本、韓國、高鐵與作者故事先放在後段；本站首頁優先服務越南旅遊準備。</p>
-      <div class="home-grid life-grid">
-        {lowerPriorityArticles.map((a) => (
+    <!-- 其他出國準備參考 -->
+    <div id="other-prep" class="home-section">
+      <h2>其他出國準備</h2>
+      <p class="section-desc">日本、韓國、中國大陸與高鐵省錢文章保留在這裡，作為越南以外的出國準備參考。</p>
+      <div class="home-grid">
+        {otherPrepArticles.map((a) => (
           <a href={a.href} class="article-card">
             <div class="article-card-tag">{a.tag}</div>
             <div class="article-card-title">{a.title}</div>
             <p class="article-card-desc">{a.desc}</p>
             <div class="article-card-link">{a.label}</div>
           </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- 重來筆記（低權重作者內容）-->
+    <div id="restart-notes" class="home-section restart-section">
+      <h2>重來筆記</h2>
+      <p class="section-desc">這裡只保留一小段作者與重新出發的背景。想知道我為什麼寫這個站，可以從關於我或重來筆記慢慢看。</p>
+      <div class="restart-links">
+        <a href="/about">關於我</a>
+        {restartNoteArticles.map((a) => (
+          <a href={a.href}>{a.title}</a>
         ))}
       </div>
     </div>
@@ -342,6 +394,7 @@ const lowerPriorityArticles = [
     line-height: 1.9;
   }
   .story-box strong { color: var(--ink); font-weight: 600; }
+  .story-link-sep { color: var(--border); margin: 0 8px; }
 
   /* Intro content block */
   .intro-content { padding-bottom: 0; }
@@ -366,6 +419,29 @@ const lowerPriorityArticles = [
     padding: 16px 20px;
   }
   .intro-note a { color: var(--accent); }
+  .category-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 22px 0 0;
+  }
+  .category-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 6px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    color: var(--ink);
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    background: #fffdf9;
+  }
+  .category-nav a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 
   /* Life notes section */
   .life-section { padding-top: 0; padding-bottom: 24px; }
@@ -411,6 +487,23 @@ const lowerPriorityArticles = [
     margin: 20px 0 8px;
   }
   .home-grid.life-grid { grid-template-columns: 1fr; max-width: 640px; }
+  .restart-section {
+    max-width: 740px;
+    padding-bottom: 48px;
+  }
+  .restart-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .restart-links a {
+    color: var(--accent);
+    font-size: 14.5px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .restart-links a:hover { text-decoration: underline; }
 
   /* Single tool card (省錢工具導引，取代首頁折扣明細) */
   .tool-card {
