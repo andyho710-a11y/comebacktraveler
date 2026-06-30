@@ -2,6 +2,7 @@
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SocialLinks from '../components/SocialLinks.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import ContentDisclaimer from '../components/ContentDisclaimer.astro';
 
 const title = "越南女生旅行用品清單｜防曬、防蚊、個人用品怎麼準備";
@@ -10,6 +11,57 @@ const canonical = "https://comebacktraveler.com/vietnam-girls-packing";
 const cover = "https://comebacktraveler.com/vietnam-airport-queue.jpg";
 
 const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront";
+
+const products = [
+  {
+    img: "/vietnam-ess-anessa.png",
+    name: "安耐曬 金鑽高效防曬乳",
+    spec: "SPF50+ / PA++++ ‧ 防水防汗",
+    why: "越南太陽強、流汗快，防曬要優先選高係數又耐汗的。這類防曬適合放在行李第一順位，臉部與身體都要記得補擦。",
+    href: "https://coupa.ng/cnc3Dz?abTestInfo=100412_group_A",
+    cta: "酷澎補充比價",
+  },
+  {
+    img: "/vietnam-ess-dintin.png",
+    name: "叮嚀 派卡瑞丁 10H 小黑蚊防蚊液",
+    spec: "Picaridin 派卡瑞丁 ‧ 主打長效",
+    why: "女生旅行常會穿裙裝、短褲或涼鞋，戶外座位、夜市、市場都容易被叮。派卡瑞丁配方比精油型更適合認真防蚊。",
+    href: "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A",
+    cta: "酷澎補充比價",
+  },
+  {
+    img: "/caela-feminine-wash-foam.webp",
+    name: "Caela 女性私密處清潔液 旅行組 陽光梨綠",
+    spec: "旅行組 ‧ 女性私密清潔 ‧ 酷澎補充比價",
+    why: "我推薦酷澎！越南天氣濕熱，女生旅行私密清潔用品建議從台灣先帶習慣的小容量旅行組，不要到當地臨時找。",
+    href: "https://coupa.ng/cnKCOY?abTestInfo=100412_group_A",
+    cta: "看 Caela 旅行組",
+  },
+  {
+    img: "/vietnam-ess-cyke.png",
+    name: "CYKE 65W 氮化鎵充電器",
+    spec: "65W GaN ‧ 多孔快充 ‧ 支援萬國電壓",
+    why: "手機、相機、行動電源、補光燈都要充電時，多孔快充比帶一堆豆腐頭實用，也能避開越南 220V 電壓踩雷。",
+    href: "https://coupa.ng/cnc3yV?abTestInfo=100412_group_A",
+    cta: "酷澎補充比價",
+  },
+  {
+    img: "/vietnam-ess-travelon.png",
+    name: "TRAVELON 輕便防盜斜背包",
+    spec: "防割肩帶 ‧ 防盜拉鍊 ‧ 前背好顧",
+    why: "女生一個人或兩人旅行時，包包最好能斜背在身體前側。防割肩帶、防盜拉鍊對胡志明市、河內市區移動很有幫助。",
+    href: "https://coupa.ng/cnc3qG?abTestInfo=100412_group_A",
+    cta: "酷澎補充比價",
+  },
+  {
+    img: "/edl-wet-toilet-paper.webp",
+    name: "兒樂 超純水濕式衛生紙",
+    spec: "可沖馬桶 ‧ 加厚柔韌 ‧ 隨身清潔",
+    why: "越南公廁備品不一定穩定，路邊攤、夜市和親子行程也常需要隨手清潔。這類濕式衛生紙適合放一小包在隨身包，補足一般衛生紙不方便的時候。",
+    href: "https://coupa.ng/cnKD7Q?abTestInfo=100412_group_A",
+    cta: "看濕式衛生紙",
+  },
+];
 
 const faqs = [
   {
@@ -125,6 +177,17 @@ const faqs = [
     .num-list li { position: relative; padding-left: 36px; margin-bottom: 12px; font-size: 16px; counter-increment: numlist; }
     .num-list li::before { content: counter(numlist); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: var(--accent); color: var(--paper); border-radius: 50%; font-family: var(--serif); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
 
+    /* 聯盟商品卡片 */
+    .product-card { display: flex; gap: 20px; align-items: center; border: 1.5px solid var(--border); border-radius: 10px; padding: 18px 20px; margin: 24px 0; background: #fffdf8; transition: box-shadow 0.2s, border-color 0.2s; }
+    .product-card:hover { box-shadow: 0 6px 20px rgba(26, 18, 8, 0.08); border-color: var(--gold); }
+    .product-card-img { width: 120px; height: 120px; flex-shrink: 0; object-fit: contain; background: #fff; border-radius: 8px; border: 1px solid var(--border); padding: 6px; }
+    .product-card-body { flex: 1; min-width: 0; }
+    .product-card-name { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); margin-bottom: 4px; line-height: 1.4; }
+    .product-card-spec { font-size: 12.5px; letter-spacing: 0.04em; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+    .product-card-why { font-size: 14.5px; color: var(--ink-light); line-height: 1.7; margin-bottom: 14px; }
+    .product-card-cta { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; text-decoration: none; font-size: 14.5px; font-weight: 500; padding: 9px 18px; border-radius: 6px; transition: background 0.2s; }
+    .product-card-cta:hover { background: #9e2c1f; }
+
     /* 蝦皮精選區塊 */
     .shopee-block {
       border: 1px solid #ee4d2d;
@@ -168,6 +231,9 @@ const faqs = [
       .hero, .article { padding: 0 16px; }
       h2 { font-size: 22px; }
       h3 { font-size: 17px; }
+      .product-card { flex-direction: column; align-items: stretch; text-align: left; }
+      .product-card-img { width: 100%; height: 180px; }
+      .product-card-cta { justify-content: center; }
     }
   </style>
   <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
@@ -251,6 +317,18 @@ const faqs = [
     防曬是這趟行李裡最不能省的。台灣出發前備齊，不要賭當地買得到：
   </p>
 
+  <AffiliateDisclosure />
+
+  <div class="product-card">
+    <img class="product-card-img" src={products[0].img} alt={products[0].name} loading="lazy" />
+    <div class="product-card-body">
+      <div class="product-card-name">{products[0].name}</div>
+      <div class="product-card-spec">{products[0].spec}</div>
+      <p class="product-card-why">{products[0].why}</p>
+      <a class="product-card-cta" href={products[0].href} target="_blank" rel="sponsored nofollow noopener">{products[0].cta} →</a>
+    </div>
+  </div>
+
   <div class="shopee-block">
     <p class="shopee-eyebrow">🛒 越南旅遊必備小物・蝦皮精選</p>
     <h3 class="shopee-title">防曬精選清單，照「評價高、有實拍、規格對」幫你篩過</h3>
@@ -281,6 +359,16 @@ const faqs = [
     防蚊液建議帶隨身小瓶裝，放包包隨時補噴，餐廳戶外座位、市場、夜市都是高風險場景。
   </p>
 
+  <div class="product-card">
+    <img class="product-card-img" src={products[1].img} alt={products[1].name} loading="lazy" />
+    <div class="product-card-body">
+      <div class="product-card-name">{products[1].name}</div>
+      <div class="product-card-spec">{products[1].spec}</div>
+      <p class="product-card-why">{products[1].why}</p>
+      <a class="product-card-cta" href={products[1].href} target="_blank" rel="sponsored nofollow noopener">{products[1].cta} →</a>
+    </div>
+  </div>
+
   <h2>三、女生必備但常被忽略的：私密處護理</h2>
 
   <p>
@@ -304,6 +392,16 @@ const faqs = [
     這幾樣當地買不到你習慣的，帶夠比較安心。
   </p>
 
+  <div class="product-card">
+    <img class="product-card-img" src={products[2].img} alt={products[2].name} loading="lazy" />
+    <div class="product-card-body">
+      <div class="product-card-name">我推薦酷澎！{products[2].name}</div>
+      <div class="product-card-spec">{products[2].spec}</div>
+      <p class="product-card-why">{products[2].why}</p>
+      <a class="product-card-cta" href={products[2].href} target="_blank" rel="sponsored nofollow noopener">{products[2].cta} →</a>
+    </div>
+  </div>
+
   <h2>四、安全防盜：包包背法比包包品牌重要</h2>
 
   <p>
@@ -323,6 +421,16 @@ const faqs = [
     <div class="tip-title">延伸閱讀</div>
     <p>防盜斜背包我在越南小物文講過了，這裡直接導過去：
     👉 <a href="/vietnam-travel-essentials" class="inline">越南旅遊必備小物推薦｜住越南十年，我推薦你帶這幾樣</a></p>
+  </div>
+
+  <div class="product-card">
+    <img class="product-card-img" src={products[4].img} alt={products[4].name} loading="lazy" />
+    <div class="product-card-body">
+      <div class="product-card-name">{products[4].name}</div>
+      <div class="product-card-spec">{products[4].spec}</div>
+      <p class="product-card-why">{products[4].why}</p>
+      <a class="product-card-cta" href={products[4].href} target="_blank" rel="sponsored nofollow noopener">{products[4].cta} →</a>
+    </div>
   </div>
 
   <h2>五、美妝保養：哪些帶、哪些不用帶</h2>
@@ -362,6 +470,33 @@ const faqs = [
     <li><strong>個人藥品</strong>：止瀉藥、腸胃藥、退燒藥——越南路邊攤吃多難免腸胃不適，當地藥局找到你需要的牌子要靠運氣</li>
     <li><strong>創可貼 + 消毒酒精棉片</strong>：騎機車或走舊城區石板路，小擦傷很常見</li>
   </ul>
+
+  <div class="product-card">
+    <img class="product-card-img" src={products[5].img} alt={products[5].name} loading="lazy" />
+    <div class="product-card-body">
+      <div class="product-card-name">{products[5].name}</div>
+      <div class="product-card-spec">{products[5].spec}</div>
+      <p class="product-card-why">{products[5].why}</p>
+      <a class="product-card-cta" href={products[5].href} target="_blank" rel="sponsored nofollow noopener">{products[5].cta} →</a>
+    </div>
+  </div>
+
+  <h3>3C 充電也先確認：越南是 220V</h3>
+
+  <p>
+    女生旅行常會多帶吹風機、電棒、行動電源或相機配件，出發前先看清楚電壓標示。
+    手機充電器多半支援 100–240V，但發熱類電器不一定；如果要少帶一堆插頭，一顆多孔快充會比較省事。
+  </p>
+
+  <div class="product-card">
+    <img class="product-card-img" src={products[3].img} alt={products[3].name} loading="lazy" />
+    <div class="product-card-body">
+      <div class="product-card-name">{products[3].name}</div>
+      <div class="product-card-spec">{products[3].spec}</div>
+      <p class="product-card-why">{products[3].why}</p>
+      <a class="product-card-cta" href={products[3].href} target="_blank" rel="sponsored nofollow noopener">{products[3].cta} →</a>
+    </div>
+  </div>
 
   <div class="shopee-block">
     <p class="shopee-eyebrow">🛒 蝦皮旅行必備清單</p>
