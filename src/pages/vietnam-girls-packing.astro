@@ -19,7 +19,7 @@ const products = [
     spec: "SPF50+ / PA++++ ‧ 防水防汗",
     why: "越南太陽強、流汗快，防曬要優先選高係數又耐汗的。這類防曬適合放在行李第一順位，臉部與身體都要記得補擦。",
     href: "https://coupa.ng/cnc3Dz?abTestInfo=100412_group_A",
-    cta: "酷澎補充比價",
+    cta: "酷澎優先查看",
   },
   {
     img: "/vietnam-ess-dintin.png",
@@ -27,12 +27,12 @@ const products = [
     spec: "Picaridin 派卡瑞丁 ‧ 主打長效",
     why: "女生旅行常會穿裙裝、短褲或涼鞋，戶外座位、夜市、市場都容易被叮。派卡瑞丁配方比精油型更適合認真防蚊。",
     href: "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A",
-    cta: "酷澎補充比價",
+    cta: "酷澎優先查看",
   },
   {
     img: "/caela-feminine-wash-foam.webp",
     name: "Caela 女性私密處清潔液 旅行組 陽光梨綠",
-    spec: "旅行組 ‧ 女性私密清潔 ‧ 酷澎補充比價",
+    spec: "旅行組 ‧ 女性私密清潔 ‧ 酷澎優先查看",
     why: "越南天氣濕熱，女生旅行私密清潔用品建議從台灣先帶習慣的小容量旅行組，不要到當地臨時找。",
     href: "https://coupa.ng/cnKCOY?abTestInfo=100412_group_A",
     cta: "看 Caela 旅行組",
@@ -43,7 +43,7 @@ const products = [
     spec: "65W GaN ‧ 多孔快充 ‧ 支援萬國電壓",
     why: "手機、相機、行動電源、補光燈都要充電時，多孔快充比帶一堆豆腐頭實用，也能避開越南 220V 電壓踩雷。",
     href: "https://coupa.ng/cnc3yV?abTestInfo=100412_group_A",
-    cta: "酷澎補充比價",
+    cta: "酷澎優先查看",
   },
   {
     img: "/vietnam-ess-travelon.png",
@@ -51,7 +51,7 @@ const products = [
     spec: "防割肩帶 ‧ 防盜拉鍊 ‧ 前背好顧",
     why: "女生一個人或兩人旅行時，包包最好能斜背在身體前側。防割肩帶、防盜拉鍊對胡志明市、河內市區移動很有幫助。",
     href: "https://coupa.ng/cnc3qG?abTestInfo=100412_group_A",
-    cta: "酷澎補充比價",
+    cta: "酷澎優先查看",
   },
   {
     img: "/edl-wet-toilet-paper.webp",
@@ -187,6 +187,17 @@ const faqs = [
     .product-card-why { font-size: 14.5px; color: var(--ink-light); line-height: 1.7; margin-bottom: 14px; }
     .product-card-cta { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; text-decoration: none; font-size: 14.5px; font-weight: 500; padding: 9px 18px; border-radius: 6px; transition: background 0.2s; }
     .product-card-cta:hover { background: #9e2c1f; }
+    .buyer-fit {
+      margin: 16px 0;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fffdfa;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .buyer-fit p { margin: 0 0 4px; }
+    .buyer-fit p:last-child { margin-bottom: 0; }
 
     /* 蝦皮精選區塊 */
     .shopee-block {
@@ -292,6 +303,7 @@ const faqs = [
     <ul style="margin:8px 0 0;padding-left:18px;">
       <li><a href="/first-trip-packing-list" style="color:#c0392b;">第一次出國行李清單</a>——通用、不分國家：證件、3C、藥品基本款。</li>
       <li><a href="/vietnam-packing-list" style="color:#c0392b;">越南行李清單</a>——帶多少、怎麼裝、什麼該上手提。</li>
+      <li><a href="/vietnam-mosquito-repellent" style="color:#c0392b;">越南防蚊用品怎麼準備</a>——防蚊液成分、使用場景與防蚊小物。</li>
       <li><a href="/vietnam-travel-essentials" style="color:#c0392b;">越南必備小物推薦</a>——男女通用，要帶哪些物品、為什麼。</li>
       <li><strong>越南女生旅行用品（你正在看這篇）</strong>——女生專屬：防曬、個人清潔、防盜、美妝。</li>
     </ul>
@@ -319,24 +331,30 @@ const faqs = [
 
   <AffiliateDisclosure />
 
+  <div class="buyer-fit">
+    <p><strong>適合誰：</strong>會去海邊、戶外行程多、容易曬黑或曬傷的人。</p>
+    <p><strong>不適合誰：</strong>只在飯店與室內商場移動，且已經有慣用防曬的人。</p>
+    <p><strong>挑選重點：</strong>先看 SPF50+ PA++++、耐汗防水與膚感，再用蝦皮清單補充比價或找備品。</p>
+  </div>
+
   <div class="product-card">
     <img class="product-card-img" src={products[0].img} alt={products[0].name} loading="lazy" />
     <div class="product-card-body">
       <div class="product-card-name">{products[0].name}</div>
       <div class="product-card-spec">{products[0].spec}</div>
       <p class="product-card-why">{products[0].why}</p>
-      <a class="product-card-cta" href={products[0].href} target="_blank" rel="sponsored nofollow noopener">{products[0].cta} →</a>
+      <a class="product-card-cta" href={products[0].href} target="_blank" rel="sponsored noopener noreferrer">{products[0].cta} →</a>
     </div>
   </div>
 
   <div class="shopee-block">
-    <p class="shopee-eyebrow">🛒 越南旅遊必備小物・蝦皮精選</p>
-    <h3 class="shopee-title">防曬精選清單，照「評價高、有實拍、規格對」幫你篩過</h3>
+    <p class="shopee-eyebrow">🛒 酷澎優先看單品・蝦皮補充清單</p>
+    <h3 class="shopee-title">如果想一次逛防曬備品，蝦皮清單作為補充</h3>
     <p class="shopee-desc">
-      SPF50+、耐汗防水的防曬，我整理在這份蝦皮選品清單裡，臉部用、身體用都有，出發前先在台灣備齊。
+      這篇以酷澎單品作為優先入口；如果你想順手比較臉部、身體用防曬或多買備品，再用這份蝦皮選品清單補充。
     </p>
-    <a class="shopee-btn" href={shopeeUrl} target="_blank" rel="nofollow noopener">
-      👉 打開蝦皮越南必備清單
+    <a class="shopee-btn" href={shopeeUrl} target="_blank" rel="sponsored noopener noreferrer">
+      👉 打開蝦皮補充清單
     </a>
   </div>
 
@@ -359,13 +377,19 @@ const faqs = [
     防蚊液建議帶隨身小瓶裝，放包包隨時補噴，餐廳戶外座位、市場、夜市都是高風險場景。
   </p>
 
+  <div class="buyer-fit">
+    <p><strong>適合誰：</strong>會逛夜市、市場、戶外餐廳，或本來就容易被蚊子叮的人。</p>
+    <p><strong>不適合誰：</strong>行程幾乎都在室內，且同行者已經有準備足量防蚊液的人。</p>
+    <p><strong>挑選重點：</strong>優先看 Picaridin 或 DEET 成分、有效時長與隨身容量，不要只看香味。</p>
+  </div>
+
   <div class="product-card">
     <img class="product-card-img" src={products[1].img} alt={products[1].name} loading="lazy" />
     <div class="product-card-body">
       <div class="product-card-name">{products[1].name}</div>
       <div class="product-card-spec">{products[1].spec}</div>
       <p class="product-card-why">{products[1].why}</p>
-      <a class="product-card-cta" href={products[1].href} target="_blank" rel="sponsored nofollow noopener">{products[1].cta} →</a>
+      <a class="product-card-cta" href={products[1].href} target="_blank" rel="sponsored noopener noreferrer">{products[1].cta} →</a>
     </div>
   </div>
 
@@ -392,13 +416,19 @@ const faqs = [
     這幾樣當地買不到你習慣的，帶夠比較安心。
   </p>
 
+  <div class="buyer-fit">
+    <p><strong>適合誰：</strong>長時間旅行、容易悶熱不適，或想帶慣用品降低旅途焦慮的人。</p>
+    <p><strong>不適合誰：</strong>已經有固定旅行組，或對新清潔產品容易敏感的人。</p>
+    <p><strong>挑選重點：</strong>以小容量、好密封、成分熟悉為主，先避免旅途中第一次嘗試陌生產品。</p>
+  </div>
+
   <div class="product-card">
     <img class="product-card-img" src={products[2].img} alt={products[2].name} loading="lazy" />
     <div class="product-card-body">
       <div class="product-card-name">{products[2].name}</div>
       <div class="product-card-spec">{products[2].spec}</div>
       <p class="product-card-why">{products[2].why}</p>
-      <a class="product-card-cta" href={products[2].href} target="_blank" rel="sponsored nofollow noopener">{products[2].cta} →</a>
+      <a class="product-card-cta" href={products[2].href} target="_blank" rel="sponsored noopener noreferrer">{products[2].cta} →</a>
     </div>
   </div>
 
@@ -423,13 +453,19 @@ const faqs = [
     👉 <a href="/vietnam-travel-essentials" class="inline">越南旅遊必備小物推薦｜住越南十年，我推薦你帶這幾樣</a></p>
   </div>
 
+  <div class="buyer-fit">
+    <p><strong>適合誰：</strong>一個人或兩個女生移動、會搭機車叫車、常在市區步行的人。</p>
+    <p><strong>不適合誰：</strong>全程包車、只在飯店或度假村內活動，且已有好用斜背包的人。</p>
+    <p><strong>挑選重點：</strong>比起品牌，優先看前背好不好拿、防盜拉鍊與背帶是否穩固。</p>
+  </div>
+
   <div class="product-card">
     <img class="product-card-img" src={products[4].img} alt={products[4].name} loading="lazy" />
     <div class="product-card-body">
       <div class="product-card-name">{products[4].name}</div>
       <div class="product-card-spec">{products[4].spec}</div>
       <p class="product-card-why">{products[4].why}</p>
-      <a class="product-card-cta" href={products[4].href} target="_blank" rel="sponsored nofollow noopener">{products[4].cta} →</a>
+      <a class="product-card-cta" href={products[4].href} target="_blank" rel="sponsored noopener noreferrer">{products[4].cta} →</a>
     </div>
   </div>
 
@@ -471,13 +507,19 @@ const faqs = [
     <li><strong>創可貼 + 消毒酒精棉片</strong>：騎機車或走舊城區石板路，小擦傷很常見</li>
   </ul>
 
+  <div class="buyer-fit">
+    <p><strong>適合誰：</strong>會吃路邊攤、逛夜市、搭長途車，或對廁所備品比較在意的人。</p>
+    <p><strong>不適合誰：</strong>全程住高級飯店、只去商場餐廳，且不想增加隨身包重量的人。</p>
+    <p><strong>挑選重點：</strong>小包裝、好抽取、好密封最重要；濕式用品記得放託運或控管容量。</p>
+  </div>
+
   <div class="product-card">
     <img class="product-card-img" src={products[5].img} alt={products[5].name} loading="lazy" />
     <div class="product-card-body">
       <div class="product-card-name">{products[5].name}</div>
       <div class="product-card-spec">{products[5].spec}</div>
       <p class="product-card-why">{products[5].why}</p>
-      <a class="product-card-cta" href={products[5].href} target="_blank" rel="sponsored nofollow noopener">{products[5].cta} →</a>
+      <a class="product-card-cta" href={products[5].href} target="_blank" rel="sponsored noopener noreferrer">{products[5].cta} →</a>
     </div>
   </div>
 
@@ -488,24 +530,30 @@ const faqs = [
     手機充電器多半支援 100–240V，但發熱類電器不一定；如果要少帶一堆插頭，一顆多孔快充會比較省事。
   </p>
 
+  <div class="buyer-fit">
+    <p><strong>適合誰：</strong>會帶手機、相機、行動電源、補光燈或多人共用充電器的人。</p>
+    <p><strong>不適合誰：</strong>只帶一支手機、一條線，且住宿充電孔足夠的人。</p>
+    <p><strong>挑選重點：</strong>先確認支援 100-240V，再看瓦數、孔數與是否需要額外轉接頭。</p>
+  </div>
+
   <div class="product-card">
     <img class="product-card-img" src={products[3].img} alt={products[3].name} loading="lazy" />
     <div class="product-card-body">
       <div class="product-card-name">{products[3].name}</div>
       <div class="product-card-spec">{products[3].spec}</div>
       <p class="product-card-why">{products[3].why}</p>
-      <a class="product-card-cta" href={products[3].href} target="_blank" rel="sponsored nofollow noopener">{products[3].cta} →</a>
+      <a class="product-card-cta" href={products[3].href} target="_blank" rel="sponsored noopener noreferrer">{products[3].cta} →</a>
     </div>
   </div>
 
   <div class="shopee-block">
-    <p class="shopee-eyebrow">🛒 蝦皮旅行必備清單</p>
-    <h3 class="shopee-title">衛生、隨身收納這類打包小物都在這份清單裡</h3>
+    <p class="shopee-eyebrow">🛒 酷澎優先看單品・蝦皮補充清單</p>
+    <h3 class="shopee-title">衛生、隨身收納這類小物，用蝦皮作為補充入口</h3>
     <p class="shopee-desc">
-      隨身衛生紙、濕紙巾、收納袋這類旅行小物，我整理在這份蝦皮選品清單裡，慢慢逛也算數。
+      這篇仍以酷澎單品優先，蝦皮清單只用來補充逛隨身衛生紙、濕紙巾、收納袋等小物，避免每個品項都塞多個外部連結。
     </p>
-    <a class="shopee-btn" href={shopeeUrl} target="_blank" rel="nofollow noopener">
-      👉 越南旅遊必備小物・蝦皮精選
+    <a class="shopee-btn" href={shopeeUrl} target="_blank" rel="sponsored noopener noreferrer">
+      👉 越南旅遊小物・蝦皮補充清單
     </a>
   </div>
 
@@ -552,7 +600,9 @@ const faqs = [
   <div class="internal-links">
     <a href="/vietnam-travel-essentials">→ 蝦皮越南旅遊用品清單</a>
     <a href="/vietnam-travel-essentials">→ 越南出國用品清單</a>
+    <a href="/vietnam-mosquito-repellent">→ 越南防蚊用品怎麼準備</a>
     <a href="/vietnam-packing-list">→ 越南行李打包清單</a>
+    <a href="/first-trip-packing-list">→ 第一次出國行李清單</a>
     <a href="/esim">→ eSIM 品牌完整比較</a>
     <a href="/vietnam-taxi-app-guide">→ 越南叫車 App 怎麼選</a>
     <a href="/vietnam-guide">→ 越南帶小孩快速通關攻略</a>

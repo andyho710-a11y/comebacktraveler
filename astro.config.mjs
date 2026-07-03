@@ -12,7 +12,9 @@ export default defineConfig({
   integrations: [
     sitemap({
       // 暫時隱藏的草稿頁不列入 sitemap。
-      filter: (page) => !page.includes('/drink-a-glass-of-water'),
+      filter: (page) =>
+        !page.includes('/drink-a-glass-of-water') &&
+        !page.endsWith('/vietnam-mosquito-repellent'),
     }),
   ],
   vite: {
