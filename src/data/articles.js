@@ -43,7 +43,7 @@ export const prepArticles = [
     tag: '越南旅遊準備',
     title: '越南防蚊用品怎麼準備？住越南十年的在地經驗整理',
     desc: '去越南怕被蚊子叮、又擔心登革熱？Picaridin 與 DEET 差在哪、防蚊貼能不能當主力、不同行程與不同人怎麼搭配，住越南十年的在地經驗一次整理。',
-    href: '/vietnam-mosquito-repellent-guide',
+    href: '/vietnam-mosquito-repellent',
     label: '看防蚊準備 →',
     pubDate: '2026-06-15',
   },
