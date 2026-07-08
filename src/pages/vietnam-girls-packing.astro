@@ -199,6 +199,65 @@ const faqs = [
     .buyer-fit p { margin: 0 0 4px; }
     .buyer-fit p:last-child { margin-bottom: 0; }
 
+    .quick-prepare-block {
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 32px 0;
+      background: #fffdf8;
+    }
+    .quick-prepare-eyebrow {
+      margin: 0 0 6px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+    .quick-prepare-block h2 { margin-top: 0; }
+    .quick-prepare-intro {
+      margin: 0 0 18px;
+      color: var(--ink-light);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .quick-prepare-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .quick-prepare-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+    }
+    .quick-prepare-card h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 17px;
+      color: var(--ink);
+    }
+    .quick-prepare-card p {
+      margin: 0;
+      color: var(--ink-light);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .quick-prepare-card a {
+      margin-top: auto;
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    @media (max-width: 860px) {
+      .quick-prepare-grid { grid-template-columns: 1fr; }
+      .quick-prepare-block { padding: 20px; }
+    }
     /* 蝦皮精選區塊 */
     .shopee-block {
       border: 1px solid #ee4d2d;
@@ -309,6 +368,40 @@ const faqs = [
     </ul>
   </aside>
 
+  <section class="quick-prepare-block" aria-labelledby="quick-prepare-title">
+    <p class="quick-prepare-eyebrow">先抓方向，不用一次買齊</p>
+    <h2 id="quick-prepare-title">如果你懶得慢慢挑，先從這 5 類準備</h2>
+    <p class="quick-prepare-intro">
+      女生去越南最容易漏的不是衣服，而是會直接影響舒適度的小物。先看家裡有沒有類似的，沒有再補；不用買最貴，重點是成分、尺寸和使用情境要對。
+    </p>
+    <div class="quick-prepare-grid">
+      <article class="quick-prepare-card">
+        <h3>防曬用品</h3>
+        <p>越南熱、太陽直，防曬先看 SPF50+、耐汗與你自己願不願意補擦。家裡已有慣用品就先帶，沒有再比價。</p>
+        <a href={products[0].href} target="_blank" rel="sponsored noopener noreferrer">可以先比價防曬</a>
+      </article>
+      <article class="quick-prepare-card">
+        <h3>防蚊用品</h3>
+        <p>戶外餐廳、夜市、市場比較容易被叮。先選看得懂有效成分的防蚊液，防蚊貼當輔助就好。</p>
+        <a href={products[1].href} target="_blank" rel="sponsored noopener noreferrer">家裡沒有再補防蚊</a>
+      </article>
+      <article class="quick-prepare-card">
+        <h3>生理用品與收納包</h3>
+        <p>悶熱天氣加上行程走動多，個人清潔用品和小收納袋會讓包包整齊很多。慣用品牌建議台灣先準備。</p>
+        <a href={products[2].href} target="_blank" rel="sponsored noopener noreferrer">先看個人清潔用品</a>
+      </article>
+      <article class="quick-prepare-card">
+        <h3>行動電源與充電線</h3>
+        <p>地圖、叫車、拍照都靠手機，充電線和行動電源先檢查規格。能支援 220V 的充電器比較省心。</p>
+        <a href={products[3].href} target="_blank" rel="sponsored noopener noreferrer">確認充電配件</a>
+      </article>
+      <article class="quick-prepare-card">
+        <h3>防盜小包或手機掛繩</h3>
+        <p>人多的市場、路邊叫車和夜市，手機與錢包最好固定在身上。小包不用花俏，拉鍊順、背法穩比較重要。</p>
+        <a href={products[4].href} target="_blank" rel="sponsored noopener noreferrer">看看防盜小包</a>
+      </article>
+    </div>
+  </section>
   <h2>一、防曬是剛需，不是選配</h2>
 
   <p>
