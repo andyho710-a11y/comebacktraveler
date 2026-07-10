@@ -1,0 +1,56 @@
+<script is:inline>
+  (function () {
+    if (window.__cbtAffiliateClickTracker) return;
+    window.__cbtAffiliateClickTracker = true;
+
+    var affiliateSelector = [
+      'a[rel~="sponsored"]',
+      'a[href*="coupa.ng"]',
+      'a[href*="collshp.com"]',
+      'a[href*="afflink.one"]',
+      'a[href*="onelink.one"]',
+      'a[data-affiliate]'
+    ].join(',');
+
+    function getAffiliateNetwork(link, href) {
+      var explicit = link.getAttribute('data-affiliate');
+      if (explicit) return explicit;
+
+      var hostname = '';
+      try {
+        hostname = new URL(href, window.location.href).hostname;
+      } catch (error) {
+        return 'unknown';
+      }
+
+      if (hostname.indexOf('coupa.ng') !== -1) return 'coupang';
+      if (hostname.indexOf('collshp.com') !== -1) return 'shopee';
+      if (hostname.indexOf('afflink.one') !== -1) return 'affiliates_one';
+      if (hostname.indexOf('onelink.one') !== -1) return 'affiliates_one';
+      return 'affiliate';
+    }
+
+    function getButtonText(link) {
+      var label = link.getAttribute('aria-label') || link.textContent || '';
+      return label.replace(/\s+/g, ' ').trim().slice(0, 120);
+    }
+
+    document.addEventListener('click', function (event) {
+      var target = event.target;
+      if (!target || !target.closest) return;
+
+      var link = target.closest(affiliateSelector);
+      if (!link || !link.href || typeof window.gtag !== 'function') return;
+
+      window.gtag('event', 'affiliate_click', {
+        page_path: window.location.pathname,
+        page_title: document.title,
+        button_text: getButtonText(link),
+        link_url: link.href,
+        category: 'affiliate',
+        affiliate_network: getAffiliateNetwork(link, link.href),
+        transport_type: 'beacon'
+      });
+    }, true);
+  })();
+</script>

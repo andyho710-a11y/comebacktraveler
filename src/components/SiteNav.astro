@@ -1,4 +1,6 @@
 ---
+import AffiliateClickTracker from './AffiliateClickTracker.astro';
+
 // 全站共用頂部導航。各頁原本只有置中 Logo 的 .site-header，
 // 改用本元件以提供分類選單（AdSense 審核重視「清楚的站內導航」）。
 interface Props {
@@ -28,6 +30,8 @@ const links = [
     </nav>
   </div>
 </header>
+
+<AffiliateClickTracker />
 
 <style>
   .cbt-nav {
