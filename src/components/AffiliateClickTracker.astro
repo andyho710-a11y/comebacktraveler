@@ -12,16 +12,20 @@
       'a[data-affiliate]'
     ].join(',');
 
+    function getAffiliateDomain(href) {
+      try {
+        return new URL(href, window.location.href).hostname;
+      } catch (error) {
+        return '';
+      }
+    }
+
     function getAffiliateNetwork(link, href) {
       var explicit = link.getAttribute('data-affiliate');
       if (explicit) return explicit;
 
-      var hostname = '';
-      try {
-        hostname = new URL(href, window.location.href).hostname;
-      } catch (error) {
-        return 'unknown';
-      }
+      var hostname = getAffiliateDomain(href);
+      if (!hostname) return 'unknown';
 
       if (hostname.indexOf('coupa.ng') !== -1) return 'coupang';
       if (hostname.indexOf('collshp.com') !== -1) return 'shopee';
@@ -47,6 +51,7 @@
         page_title: document.title,
         button_text: getButtonText(link),
         link_url: link.href,
+        link_domain: getAffiliateDomain(link.href),
         category: 'affiliate',
         affiliate_network: getAffiliateNetwork(link, link.href),
         transport_type: 'beacon'
