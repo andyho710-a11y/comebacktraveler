@@ -39,6 +39,25 @@
       return label.replace(/\s+/g, ' ').trim().slice(0, 120);
     }
 
+    function getTrackingValue(link, attribute) {
+      return (link.getAttribute(attribute) || '').trim().slice(0, 120);
+    }
+
+    function getCtaPosition(link) {
+      var explicit = getTrackingValue(link, 'data-cta-position');
+      if (explicit) return explicit;
+
+      if (link.closest('.product-card')) return 'product_card';
+      if (link.closest('.shopee-block')) return 'primary_list';
+      if (link.classList.contains('inline')) return 'inline';
+
+      var documentHeight = document.documentElement.scrollHeight || 1;
+      var ratio = (window.scrollY + link.getBoundingClientRect().top) / documentHeight;
+      if (ratio < 0.33) return 'article_top';
+      if (ratio > 0.66) return 'article_bottom';
+      return 'article_body';
+    }
+
     document.addEventListener('click', function (event) {
       var target = event.target;
       if (!target || !target.closest) return;
@@ -50,6 +69,9 @@
         page_path: window.location.pathname,
         page_title: document.title,
         button_text: getButtonText(link),
+        product_name: getTrackingValue(link, 'data-affiliate-product') || getButtonText(link),
+        product_category: getTrackingValue(link, 'data-affiliate-category') || 'uncategorized',
+        cta_position: getCtaPosition(link),
         link_url: link.href,
         link_domain: getAffiliateDomain(link.href),
         category: 'affiliate',

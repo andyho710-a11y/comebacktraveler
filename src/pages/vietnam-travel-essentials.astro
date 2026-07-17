@@ -78,7 +78,7 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
     "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
     "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
     "datePublished": "2026-06-02",
-    "dateModified": "2026-06-02",
+    "dateModified": "2026-07-17",
     "image": cover
   })} />
   <style>
@@ -123,6 +123,14 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
     .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
     .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
     .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
+
+    .update-note { border-left: 3px solid var(--gold); background: #fdf8ee; color: var(--ink-light); padding: 12px 16px; margin: 20px 0 28px; border-radius: 6px; font-size: 14px; line-height: 1.75; }
+    .update-note strong { color: var(--ink); }
+    .decision-table-wrap { overflow-x: auto; margin: 24px 0; border: 1px solid var(--border); border-radius: 8px; }
+    .decision-table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 14.5px; }
+    .decision-table th, .decision-table td { text-align: left; vertical-align: top; padding: 14px 16px; border-bottom: 1px solid var(--border); line-height: 1.65; }
+    .decision-table th { background: var(--paper-warm); font-family: var(--serif); font-weight: 600; }
+    .decision-table tr:last-child td { border-bottom: 0; }
 
     .check-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
     .check-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
@@ -217,7 +225,7 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
     <div class="author-dot">旅</div>
     <div>
       <div class="meta-author">重來的旅人</div>
-      <div>2026 年 6 月更新 · 越南生活 10 年 · 在地經驗推薦</div>
+      <div>2026 年 7 月更新 · 越南生活 10 年 · 在地經驗推薦</div>
     </div>
   </div>
 </div>
@@ -225,6 +233,10 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
 <article class="article">
 
   <ContentDisclaimer />
+
+  <aside class="update-note">
+    <strong>本次更新（2026 年 7 月）</strong>：重新檢查了清單的選購理由、補上不適合的情境與出發前檢查方式。商品價格、庫存與規格會變動；下單前請以品牌或平台的當日資訊為準。
+  </aside>
 
   <img
     src="/vietnam-airport-queue.jpg"
@@ -265,6 +277,29 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
     重點是<strong>規格要對</strong>——對了就是這支幫你的。你也可以照同樣的邏輯自己找。
   </div>
 
+  <h2>先用這張表判斷：你真的需要買什麼？</h2>
+
+  <p>
+    這不是把所有旅行用品都塞進行李箱的清單。我用越南的天氣、移動方式與住宿條件，先把「多數人會用到」和「看行程再決定」分開。已經有同類用品的人，不必為了湊清單重複買。
+  </p>
+
+  <div class="decision-table-wrap">
+    <table class="decision-table">
+      <thead>
+        <tr><th>情境</th><th>優先準備</th><th>可以先不買</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>市區自由行、會走戶外景點</td><td>高係數防曬、防蚊液</td><td>厚重防蚊衣；除非行程有郊區或夜間戶外活動</td></tr>
+        <tr><td>手機、相機或筆電一起帶</td><td>標示 100–240V 的多孔充電器</td><td>只支援 110V 的延長線或舊電器</td></tr>
+        <tr><td>會背包走夜市、搭機車或在人多處移動</td><td>可前背、拉鍊可收好的小包</td><td>為了「防盜」買很重的大包；背法和收納更重要</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    下單前再確認三件事：防曬是否有清楚標示 SPF／PA 與耐水需求、充電器輸入電壓是否涵蓋 100–240V、包包能不能貼身前背並把護照與手機分開收。這三項比品牌名或折扣更能避免出發後才發現買錯。
+  </p>
+
   <h2>一、對付炎熱天氣：防曬 + 防蚊</h2>
 
   <p>
@@ -292,7 +327,7 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
       <div class="product-card-name">{products[0].name}</div>
       <div class="product-card-spec">{products[0].spec}</div>
       <p class="product-card-why">{products[0].why}</p>
-      <a class="product-card-cta" href={products[0].href} target="_blank" rel="sponsored nofollow noopener">{products[0].cta} →</a>
+      <a class="product-card-cta" href={products[0].href} target="_blank" rel="sponsored nofollow noopener" data-affiliate-product={products[0].name} data-affiliate-category="sunscreen" data-cta-position="product_card">{products[0].cta} →</a>
     </div>
   </div>
 
@@ -309,7 +344,7 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
       <div class="product-card-name">{products[1].name}</div>
       <div class="product-card-spec">{products[1].spec}</div>
       <p class="product-card-why">{products[1].why}</p>
-      <a class="product-card-cta" href={products[1].href} target="_blank" rel="sponsored nofollow noopener">{products[1].cta} →</a>
+      <a class="product-card-cta" href={products[1].href} target="_blank" rel="sponsored nofollow noopener" data-affiliate-product={products[1].name} data-affiliate-category="mosquito_repellent" data-cta-position="product_card">{products[1].cta} →</a>
     </div>
   </div>
 
@@ -349,7 +384,7 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
       <div class="product-card-name">{products[2].name}</div>
       <div class="product-card-spec">{products[2].spec}</div>
       <p class="product-card-why">{products[2].why}</p>
-      <a class="product-card-cta" href={products[2].href} target="_blank" rel="sponsored nofollow noopener">{products[2].cta} →</a>
+      <a class="product-card-cta" href={products[2].href} target="_blank" rel="sponsored nofollow noopener" data-affiliate-product={products[2].name} data-affiliate-category="gan_charger" data-cta-position="product_card">{products[2].cta} →</a>
     </div>
   </div>
 
@@ -386,7 +421,7 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
       <div class="product-card-name">{products[3].name}</div>
       <div class="product-card-spec">{products[3].spec}</div>
       <p class="product-card-why">{products[3].why}</p>
-      <a class="product-card-cta" href={products[3].href} target="_blank" rel="sponsored nofollow noopener">{products[3].cta} →</a>
+      <a class="product-card-cta" href={products[3].href} target="_blank" rel="sponsored nofollow noopener" data-affiliate-product={products[3].name} data-affiliate-category="anti_theft_bag" data-cta-position="product_card">{products[3].cta} →</a>
     </div>
   </div>
 
@@ -402,7 +437,7 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
     <p class="shopee-desc">
       蝦皮會是這篇的主要購買入口：我把防曬、防蚊、充電、收納、防身的實用小物整理成一份選品清單，適合想集中一次下單、慢慢比價、湊免運的人。上方酷澎連結只作為單品補充比價，真正要備齊越南旅遊用品，建議先從這份蝦皮清單開始。
     </p>
-    <a class="shopee-btn" href="https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront" target="_blank" rel="sponsored noopener noreferrer">
+    <a class="shopee-btn" href="https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-product="越南旅遊必備清單" data-affiliate-category="travel_essentials" data-cta-position="primary_list">
       👉 打開蝦皮越南必備清單
     </a>
     <p class="shopee-note">蝦皮 App 內開啟可直接加購物車，追蹤效期較長，慢慢逛也算數。</p>
