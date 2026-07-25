@@ -9,13 +9,16 @@ const canonical = "https://comebacktraveler.com/contact";
 ---
 
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
+  <link rel="alternate" hreflang="zh-TW" href={canonical} />
+  <link rel="alternate" hreflang="en" href="https://comebacktraveler.com/en/contact" />
+  <link rel="alternate" hreflang="x-default" href="https://comebacktraveler.com/en/contact" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -93,12 +96,12 @@ const canonical = "https://comebacktraveler.com/contact";
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XW4LBK8PYF');
+    gtag('config', 'G-XW4LBK8PYF', { content_language: 'zh-TW' });
   </script>
 </head>
 <body>
 
-<SiteNav current="contact" />
+<SiteNav current="contact" alternateHref="/en/contact" />
 
 <div class="hero">
   <div class="category-tag">聯絡我</div>
@@ -155,7 +158,7 @@ const canonical = "https://comebacktraveler.com/contact";
 
 </article>
 
-<SiteFooter />
+<SiteFooter alternateHref="/en/contact" />
 
 </body>
 </html>

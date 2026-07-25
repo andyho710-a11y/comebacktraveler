@@ -1,23 +1,47 @@
 ---
-// 全站共用頁尾。統一頁尾導航（含 /about、/contact），
-// 取代各頁原本手寫、連結不一致的 footer。
+interface Props {
+  language?: 'zh-TW' | 'en';
+  alternateHref?: string;
+}
+
+const { language = 'zh-TW', alternateHref } = Astro.props;
+const isEnglish = language === 'en';
+const languageHref = alternateHref ?? (isEnglish ? '/' : '/en');
+const links = isEnglish
+  ? [
+      { href: '/en', label: 'Home' },
+      { href: '/en/vietnam-travel-prep', label: 'Vietnam prep' },
+      { href: '/en/travel-gear', label: 'Travel gear' },
+      { href: '/en/connectivity', label: 'Connectivity' },
+      { href: '/en/about', label: 'About' },
+      { href: '/en/contact', label: 'Contact' },
+      { href: '/en/privacy', label: 'Privacy' },
+      { href: '/en/affiliate-disclosure', label: 'Affiliate disclosure' },
+    ]
+  : [
+      { href: '/', label: '首頁' },
+      { href: '/esim', label: 'eSIM 比較' },
+      { href: '/esim-quiz', label: 'eSIM 測驗' },
+      { href: '/japan-guide', label: '日本攻略' },
+      { href: '/korea-guide', label: '韓國攻略' },
+      { href: '/vietnam-guide', label: '越南攻略' },
+      { href: '/thsr-guide', label: '高鐵省錢' },
+      { href: '/about', label: '關於' },
+      { href: '/contact', label: '聯絡我' },
+      { href: '/privacy', label: '隱私權政策' },
+    ];
 ---
 
 <footer class="cbt-footer">
-  <strong>重來的旅人</strong> · 把踩過的坑，變成你的攻略
-  <nav class="cbt-footer-nav" aria-label="頁尾選單">
-    <a href="/">首頁</a>
-    <a href="/esim">eSIM 比較</a>
-    <a href="/esim-quiz">eSIM 測驗</a>
-    <a href="/japan-guide">日本攻略</a>
-    <a href="/korea-guide">韓國攻略</a>
-    <a href="/vietnam-guide">越南攻略</a>
-    <a href="/thsr-guide">高鐵省錢</a>
-    <a href="/about">關於</a>
-    <a href="/contact">聯絡我</a>
-    <a href="/privacy">隱私權政策</a>
+  <strong>{isEnglish ? 'Comeback Traveler' : '重來的旅人'}</strong>
+  {isEnglish ? ' · Practical travel planning notes' : ' · 把踩過的坑，變成你的攻略'}
+  <nav class="cbt-footer-nav" aria-label={isEnglish ? 'Footer navigation' : '頁尾選單'}>
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    <a href={languageHref} lang={isEnglish ? 'zh-TW' : 'en'}>{isEnglish ? '繁中' : 'English'}</a>
   </nav>
-  <small class="cbt-footer-copy">© 2026 重來的旅人 Comeback Traveler · 越南生活 10 年 · 現在重新出發</small>
+  <small class="cbt-footer-copy">
+    {isEnglish ? '© 2026 Comeback Traveler · Travel planning and practical guides' : '© 2026 重來的旅人 Comeback Traveler · 越南生活 10 年 · 現在重新出發'}
+  </small>
 </footer>
 
 <style>

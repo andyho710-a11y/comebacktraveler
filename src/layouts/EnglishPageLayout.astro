@@ -1,0 +1,74 @@
+---
+import BlogLayout from './BlogLayout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  current?: string;
+  alternatePath?: string;
+  alternateHref?: string;
+}
+
+const { title, description, current, alternatePath, alternateHref } = Astro.props;
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  language="en"
+  alternatePath={alternatePath}
+  authorName="Comeback Traveler"
+>
+  <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
+  <link slot="head" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet" />
+
+  <div class="en-page">
+    <SiteNav language="en" current={current} alternateHref={alternateHref} />
+    <main class="en-content">
+      <slot />
+    </main>
+    <SiteFooter language="en" alternateHref={alternateHref} />
+  </div>
+</BlogLayout>
+
+<style is:global>
+  .en-page {
+    --en-ink: #1a1208;
+    --en-muted: #5d5549;
+    --en-paper: #faf8f3;
+    --en-warm: #f2ede0;
+    --en-accent: #c0392b;
+    --en-border: #d4c9b0;
+    min-height: 100vh;
+    background: var(--en-paper);
+    color: var(--en-ink);
+    font-family: 'DM Sans', Arial, sans-serif;
+    line-height: 1.75;
+  }
+  .en-content { max-width: 820px; margin: 0 auto; padding: 64px 24px 88px; }
+  .en-content h1, .en-content h2, .en-content h3 { font-family: 'Source Serif 4', Georgia, serif; line-height: 1.2; }
+  .en-content h1 { max-width: 760px; margin: 0 0 20px; font-size: clamp(2.25rem, 6vw, 4.6rem); letter-spacing: -0.035em; }
+  .en-content h2 { margin: 48px 0 14px; font-size: clamp(1.65rem, 4vw, 2.25rem); }
+  .en-content h3 { margin: 0 0 8px; font-size: 1.3rem; }
+  .en-content p, .en-content li { font-size: 1.05rem; }
+  .en-content p { max-width: 720px; margin: 0 0 1.25rem; color: var(--en-muted); }
+  .en-content a { color: var(--en-accent); }
+  .en-eyebrow { margin: 0 0 14px !important; color: var(--en-accent) !important; font-size: .77rem !important; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+  .en-lead { max-width: 700px; font-size: 1.24rem !important; line-height: 1.65; }
+  .en-rule { height: 1px; margin: 36px 0; background: var(--en-border); }
+  .en-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 32px 0; }
+  .en-card { display: block; min-height: 170px; padding: 24px; border: 1px solid var(--en-border); border-radius: 10px; background: #fffdf9; color: inherit !important; text-decoration: none; transition: transform .15s ease, border-color .15s ease; }
+  .en-card:hover { transform: translateY(-2px); border-color: var(--en-accent); }
+  .en-card p { margin: 0; font-size: .96rem; }
+  .en-card-label { margin: 0 0 8px !important; color: var(--en-accent) !important; font-size: .72rem !important; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .en-note { margin-top: 30px; padding: 20px 22px; border-left: 4px solid var(--en-accent); background: var(--en-warm); }
+  .en-note p { margin: 0; }
+  .en-list { padding-left: 1.2rem; }
+  .en-list li { margin: .5rem 0; color: var(--en-muted); }
+  @media (max-width: 640px) {
+    .en-content { padding: 44px 20px 64px; }
+    .en-grid { grid-template-columns: 1fr; }
+  }
+</style>

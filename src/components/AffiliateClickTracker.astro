@@ -9,6 +9,8 @@
       'a[href*="collshp.com"]',
       'a[href*="afflink.one"]',
       'a[href*="onelink.one"]',
+      'a[href*="amazon.com"]',
+      'a[href*="amzn.to"]',
       'a[data-affiliate]'
     ].join(',');
 
@@ -31,6 +33,8 @@
       if (hostname.indexOf('collshp.com') !== -1) return 'shopee';
       if (hostname.indexOf('afflink.one') !== -1) return 'affiliates_one';
       if (hostname.indexOf('onelink.one') !== -1) return 'affiliates_one';
+      if (hostname.indexOf('amazon.com') !== -1) return 'amazon';
+      if (hostname.indexOf('amzn.to') !== -1) return 'amazon';
       return 'affiliate';
     }
 
@@ -68,6 +72,7 @@
       window.gtag('event', 'affiliate_click', {
         page_path: window.location.pathname,
         page_title: document.title,
+        content_language: document.documentElement.lang || 'unknown',
         button_text: getButtonText(link),
         product_name: getTrackingValue(link, 'data-affiliate-product') || getButtonText(link),
         product_category: getTrackingValue(link, 'data-affiliate-category') || 'uncategorized',

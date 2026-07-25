@@ -7,13 +7,16 @@ const canonical = "https://comebacktraveler.com/privacy";
 ---
 
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
+  <link rel="alternate" hreflang="zh-TW" href={canonical} />
+  <link rel="alternate" hreflang="en" href="https://comebacktraveler.com/en/privacy" />
+  <link rel="alternate" hreflang="x-default" href="https://comebacktraveler.com/en/privacy" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -32,7 +35,7 @@ const canonical = "https://comebacktraveler.com/privacy";
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XW4LBK8PYF');
+    gtag('config', 'G-XW4LBK8PYF', { content_language: 'zh-TW' });
   </script>
   <style>
     :root {
@@ -129,7 +132,7 @@ const canonical = "https://comebacktraveler.com/privacy";
 </head>
 <body>
 
-<SiteNav />
+<SiteNav alternateHref="/en/privacy" />
 
 <main>
   <h1>隱私權政策</h1>
@@ -181,7 +184,7 @@ const canonical = "https://comebacktraveler.com/privacy";
   <p>對本政策有任何疑問或建議，請來信：<a href="mailto:andyho710@gmail.com">andyho710@gmail.com</a></p>
 </main>
 
-<SiteFooter />
+<SiteFooter alternateHref="/en/privacy" />
 
 </body>
 </html>

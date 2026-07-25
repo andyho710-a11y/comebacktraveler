@@ -8,21 +8,28 @@ interface Props {
   ogImage?: string;
   datePublished?: string;
   dateModified?: string;
+  language?: 'zh-TW' | 'en';
+  alternatePath?: string;
+  authorName?: string;
 }
 
-const { title, description, keywords, ogImage, datePublished, dateModified } = Astro.props;
+const { title, description, keywords, ogImage, datePublished, dateModified, language = 'zh-TW', alternatePath, authorName } = Astro.props;
 const siteBase = Astro.site ?? new URL('https://comebacktraveler.com');
 // build.format:'file' 會讓 Astro.url.pathname 變成 /esim.html、/index.html，
 // 需正規化成乾淨網址（/esim、/）才能與 sitemap 一致，避免 canonical 訊號打架。
 const cleanPath = Astro.url.pathname.replace(/index\.html$/, '').replace(/\.html$/, '');
 const canonicalURL = new URL(cleanPath, siteBase);
+const alternateURL = alternatePath ? new URL(alternatePath, siteBase) : undefined;
+const counterpartLanguage = language === 'en' ? 'zh-TW' : 'en';
+const defaultLanguageURL = language === 'en' ? canonicalURL : alternateURL ?? canonicalURL;
+const ogLocale = language === 'en' ? 'en_US' : 'zh_TW';
 const ogImageURL = ogImage
   ? ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteBase).toString()
   : undefined;
 ---
 
 <!doctype html>
-<html lang="zh-TW">
+<html lang={language}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,18 +43,21 @@ const ogImageURL = ogImage
     <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
     <!-- Google tag (gtag.js) -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
-    <script is:inline>
+    <script define:vars={{ language }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XW4LBK8PYF');
+      gtag('config', 'G-XW4LBK8PYF', { content_language: language });
     </script>
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang={language} href={canonicalURL} />
+    {alternateURL && <link rel="alternate" hreflang={counterpartLanguage} href={alternateURL} />}
+    <link rel="alternate" hreflang="x-default" href={defaultLanguageURL} />
     <meta property="og:type" content="article" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:locale" content={ogLocale} />
     {ogImageURL && <meta property="og:image" content={ogImageURL} />}
     {ogImageURL && <meta property="og:image:width" content="1200" />}
     {ogImageURL && <meta property="og:image:height" content="630" />}
@@ -62,13 +72,13 @@ const ogImageURL = ogImage
       "description": description,
       "url": canonicalURL.toString(),
       "mainEntityOfPage": canonicalURL.toString(),
-      "inLanguage": "zh-TW",
+      "inLanguage": language,
       ...(ogImageURL ? { "image": ogImageURL } : {}),
       ...(datePublished ? { "datePublished": datePublished } : {}),
       ...(dateModified ?? datePublished ? { "dateModified": dateModified ?? datePublished } : {}),
       "author": {
         "@type": "Person",
-        "name": "重來的旅人",
+        "name": authorName ?? "重來的旅人",
         "url": "https://comebacktraveler.com/about"
       },
       "publisher": {

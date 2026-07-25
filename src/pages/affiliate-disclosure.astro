@@ -1,0 +1,35 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+
+<BlogLayout
+  title="聯盟揭露聲明｜重來的旅人"
+  description="重來的旅人如何揭露聯盟連結與商業合作關係。"
+  alternatePath="/en/affiliate-disclosure"
+>
+  <SiteNav alternateHref="/en/affiliate-disclosure" />
+  <main class="disclosure-page">
+    <p class="eyebrow">透明揭露</p>
+    <h1>聯盟揭露聲明</h1>
+    <p class="lead">本站部分連結可能為聯盟連結。讀者透過符合資格的連結完成交易時，本站可能獲得佣金，讀者不會因此支付額外費用。</p>
+    <h2>我們的原則</h2>
+    <ul>
+      <li>在相關推薦與連結附近，以清楚方式揭露合作關係。</li>
+      <li>商業合作不取代編輯判斷；內容仍應說明適用情境與限制。</li>
+      <li>未來若新增其他聯盟計畫，會在實際刊登連結前更新相應揭露。</li>
+    </ul>
+  </main>
+  <SiteFooter alternateHref="/en/affiliate-disclosure" />
+</BlogLayout>
+
+<style>
+  .disclosure-page { max-width: 760px; margin: 0 auto; padding: 64px 24px 80px; color: #1a1208; font-family: 'Noto Sans TC', sans-serif; line-height: 1.85; }
+  .eyebrow { color: #c0392b; font-size: 12px; font-weight: 700; letter-spacing: .15em; }
+  h1, h2 { font-family: 'Noto Serif TC', serif; line-height: 1.35; }
+  h1 { font-size: clamp(32px, 5vw, 48px); margin: 10px 0 20px; }
+  h2 { margin-top: 44px; font-size: 25px; }
+  .lead { color: #4a3f2f; font-size: 18px; }
+  li { margin: 10px 0; color: #4a3f2f; }
+</style>
