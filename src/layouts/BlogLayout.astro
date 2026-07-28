@@ -11,9 +11,10 @@ interface Props {
   language?: 'zh-TW' | 'en';
   alternatePath?: string;
   authorName?: string;
+  robots?: string;
 }
 
-const { title, description, keywords, ogImage, datePublished, dateModified, language = 'zh-TW', alternatePath, authorName } = Astro.props;
+const { title, description, keywords, ogImage, datePublished, dateModified, language = 'zh-TW', alternatePath, authorName, robots } = Astro.props;
 const siteBase = Astro.site ?? new URL('https://comebacktraveler.com');
 // build.format:'file' 會讓 Astro.url.pathname 變成 /esim.html、/index.html，
 // 需正規化成乾淨網址（/esim、/）才能與 sitemap 一致，避免 canonical 訊號打架。
@@ -38,6 +39,7 @@ const ogImageURL = ogImage
     <title>{title}</title>
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
+    {robots && <meta name="robots" content={robots} />}
     <meta name="google-site-verification" content="Tew8sawgTRGXNPfGDO3PNQRC0mVNRmPvyvCwGSa0joQ" />
     <meta name="p:domain_verify" content="705f8c3c64a17552025dd31077a84f1e" />
     <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>

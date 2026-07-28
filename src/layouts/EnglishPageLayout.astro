@@ -9,9 +9,10 @@ interface Props {
   current?: string;
   alternatePath?: string;
   alternateHref?: string;
+  robots?: string;
 }
 
-const { title, description, current, alternatePath, alternateHref } = Astro.props;
+const { title, description, current, alternatePath, alternateHref, robots } = Astro.props;
 ---
 
 <BlogLayout
@@ -20,6 +21,7 @@ const { title, description, current, alternatePath, alternateHref } = Astro.prop
   language="en"
   alternatePath={alternatePath}
   authorName="Comeback Traveler"
+  robots={robots}
 >
   <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
   <link slot="head" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet" />
