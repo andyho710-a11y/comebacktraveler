@@ -12,9 +12,22 @@ interface Props {
   alternatePath?: string;
   authorName?: string;
   robots?: string;
+  schemaType?: 'BlogPosting' | 'WebPage' | 'CollectionPage';
 }
 
-const { title, description, keywords, ogImage, datePublished, dateModified, language = 'zh-TW', alternatePath, authorName, robots } = Astro.props;
+const {
+  title,
+  description,
+  keywords,
+  ogImage,
+  datePublished,
+  dateModified,
+  language = 'zh-TW',
+  alternatePath,
+  authorName,
+  robots,
+  schemaType = 'BlogPosting',
+} = Astro.props;
 const siteBase = Astro.site ?? new URL('https://comebacktraveler.com');
 // build.format:'file' 會讓 Astro.url.pathname 變成 /esim.html、/index.html，
 // 需正規化成乾淨網址（/esim、/）才能與 sitemap 一致，避免 canonical 訊號打架。
@@ -55,7 +68,7 @@ const ogImageURL = ogImage
     <link rel="alternate" hreflang={language} href={canonicalURL} />
     {alternateURL && <link rel="alternate" hreflang={counterpartLanguage} href={alternateURL} />}
     <link rel="alternate" hreflang="x-default" href={defaultLanguageURL} />
-    <meta property="og:type" content="article" />
+    <meta property="og:type" content={schemaType === 'BlogPosting' ? 'article' : 'website'} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
@@ -69,25 +82,39 @@ const ogImageURL = ogImage
     {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
     <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": title,
+      "@type": schemaType,
+      "@id": `${canonicalURL.toString()}#webpage`,
+      "name": title,
       "description": description,
       "url": canonicalURL.toString(),
-      "mainEntityOfPage": canonicalURL.toString(),
       "inLanguage": language,
       ...(ogImageURL ? { "image": ogImageURL } : {}),
-      ...(datePublished ? { "datePublished": datePublished } : {}),
-      ...(dateModified ?? datePublished ? { "dateModified": dateModified ?? datePublished } : {}),
-      "author": {
-        "@type": "Person",
-        "name": authorName ?? "重來的旅人",
-        "url": "https://comebacktraveler.com/about"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "重來的旅人",
-        "url": "https://comebacktraveler.com"
-      }
+      ...(schemaType === 'BlogPosting' ? {
+        "headline": title,
+        "mainEntityOfPage": canonicalURL.toString(),
+        ...(datePublished ? { "datePublished": datePublished } : {}),
+        ...(dateModified ?? datePublished ? { "dateModified": dateModified ?? datePublished } : {}),
+        "author": {
+          "@type": "Person",
+          "@id": "https://comebacktraveler.com/about#author",
+          "name": authorName ?? "重來的旅人",
+          "url": "https://comebacktraveler.com/about"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://comebacktraveler.com/#organization",
+          "name": "重來的旅人",
+          "url": "https://comebacktraveler.com"
+        }
+      } : {
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://comebacktraveler.com/#website",
+          "name": "重來的旅人 Comeback Traveler",
+          "url": "https://comebacktraveler.com"
+        },
+        ...(dateModified ? { "dateModified": dateModified } : {})
+      })
     })} />
     <slot name="head" />
   </head>

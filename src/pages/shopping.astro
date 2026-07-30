@@ -1,0 +1,281 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import { shoppingGuides } from '../data/shopping-guides';
+
+const title = '旅行購物指南｜越南用品、eSIM、充電與行李怎麼選';
+const description = '用使用情境整理旅行用品：越南防曬、防蚊、GaN 充電器、防盜斜背包、行李收納與 eSIM。先判斷需不需要，再看規格與購買入口。';
+const canonical = 'https://comebacktraveler.com/shopping';
+const updated = '2026-07-30';
+
+const faq = [
+  {
+    question: '越南自由行最值得先準備哪三樣？',
+    answer: '先處理落地網路、防曬與防蚊。若只帶一支手機，通常不必另外買多孔充電器；既有隨身包能貼身且拉鍊安全，也不必為了「防盜」標籤重買。',
+  },
+  {
+    question: '購物指南的商品排名是怎麼決定的？',
+    answer: '本站先按使用情境、是否能解決明確問題、規格是否可核對來排序，不以佣金高低或商店廣告排序。',
+  },
+  {
+    question: '為什麼頁面不直接寫死價格？',
+    answer: '電商價格、折扣與庫存會變動。本站只保留可長期核對的規格與選購原則，最後價格以連到的商店頁面為準。',
+  },
+  {
+    question: '聯盟連結會影響推薦結果嗎？',
+    answer: '不會。部分外部購買連結可能產生分潤，但不增加讀者價格；沒有合適商品時，指南會直接建議沿用家中現有用品。',
+  },
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ItemList',
+      '@id': `${canonical}#guide-list`,
+      name: '旅行購物決策清單',
+      numberOfItems: shoppingGuides.length,
+      itemListElement: shoppingGuides.map((guide, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'WebPage',
+          '@id': new URL(guide.guideHref, canonical).toString(),
+          name: guide.choice,
+          description: guide.shortAnswer,
+        },
+      })),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: '首頁',
+          item: 'https://comebacktraveler.com/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: '購物指南',
+          item: canonical,
+        },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
+    },
+  ],
+};
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  keywords="旅行用品推薦, 越南旅遊必備, eSIM 比較, GaN 充電器, 防蚊液, 防曬, 防盜包"
+  ogImage="/esim-cover.jpg"
+  dateModified={updated}
+  schemaType="CollectionPage"
+>
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
+  <link slot="head" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <div class="shopping-page">
+    <SiteNav current="shopping" />
+
+    <main>
+      <nav class="breadcrumb" aria-label="麵包屑">
+        <a href="/">首頁</a><span aria-hidden="true">›</span><span>購物指南</span>
+      </nav>
+
+      <header class="hero">
+        <p class="eyebrow">TRAVEL SHOPPING GUIDE</p>
+        <h1>旅行用品不是買越多越安心，<br />而是每一件都知道為什麼帶</h1>
+        <p class="lead">
+          這裡不是商品目錄，而是旅行購物決策中心。先用行程、使用者與現有裝備判斷「需不需要」，
+          再比較規格與購買入口，避免為了湊清單買回用不到的東西。
+        </p>
+        <p class="updated">最後更新：2026 年 7 月 30 日</p>
+      </header>
+
+      <section class="quick-answer" aria-labelledby="quick-answer-title">
+        <p class="section-label">30 秒結論</p>
+        <h2 id="quick-answer-title">第一次去越南，先處理網路、防曬、防蚊</h2>
+        <p>
+          這三項會直接影響落地後的行動、戶外舒適度與健康風險。充電器、收納袋、防盜包都先檢查家裡現有用品；
+          規格合用就沿用，不必為旅行重新買一套。
+        </p>
+      </section>
+
+      <section aria-labelledby="comparison-title">
+        <p class="section-label">情境比較</p>
+        <h2 id="comparison-title">六類旅行用品怎麼選</h2>
+        <p class="section-intro">以下每一列都對應一篇完整指南，清楚標示適用情境、排除條件與核對規格。</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>類別</th>
+                <th>優先選擇</th>
+                <th>適合誰</th>
+                <th>購買前先核對</th>
+              </tr>
+            </thead>
+            <tbody>
+              {shoppingGuides.map((guide) => (
+                <tr>
+                  <td><a href={`#${guide.id}`}>{guide.category}</a></td>
+                  <td>{guide.choice}</td>
+                  <td>{guide.bestFor}</td>
+                  <td>{guide.checkBeforeBuying}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="guide-grid" aria-label="旅行用品決策指南">
+        {shoppingGuides.map((guide) => (
+          <article class="guide-card" id={guide.id}>
+            <p class="card-category">{guide.category}</p>
+            <h2>{guide.choice}</h2>
+            <p class="card-answer">{guide.shortAnswer}</p>
+            <dl>
+              <div>
+                <dt>適合</dt>
+                <dd>{guide.bestFor}</dd>
+              </div>
+              <div>
+                <dt>先不要買</dt>
+                <dd>{guide.skipWhen}</dd>
+              </div>
+              <div>
+                <dt>核對規格</dt>
+                <dd>{guide.checkBeforeBuying}</dd>
+              </div>
+            </dl>
+            <a class="guide-link" href={guide.guideHref}>{guide.guideLabel} →</a>
+          </article>
+        ))}
+      </section>
+
+      <section class="method" aria-labelledby="method-title">
+        <p class="section-label">編輯方法</p>
+        <h2 id="method-title">本站如何整理購物建議</h2>
+        <ol>
+          <li><strong>先看問題：</strong>用品必須解決行程中可說明的需求。</li>
+          <li><strong>再看規格：</strong>只使用成分、功率、容量、線路等可核對資訊。</li>
+          <li><strong>說明不適合誰：</strong>家裡已有合用品時，直接建議不要重買。</li>
+          <li><strong>價格保持新鮮：</strong>不把短期促銷寫成固定價格，最後以商店頁為準。</li>
+          <li><strong>分潤不決定排序：</strong>推薦順序以使用情境為主，沒有合適選項就不放連結。</li>
+        </ol>
+      </section>
+
+      <section class="faq" aria-labelledby="faq-title">
+        <p class="section-label">常見問題</p>
+        <h2 id="faq-title">旅行購物快速問答</h2>
+        {faq.map((item) => (
+          <details>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </section>
+
+      <AffiliateDisclosure compact />
+    </main>
+
+    <SiteFooter />
+  </div>
+</BlogLayout>
+
+<style>
+  .shopping-page {
+    --ink: #1a1208;
+    --ink-light: #514638;
+    --paper: #faf8f3;
+    --paper-warm: #f2ede0;
+    --accent: #c0392b;
+    --gold: #9a6d08;
+    --border: #d4c9b0;
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans TC', sans-serif;
+    line-height: 1.8;
+  }
+  main { max-width: 1080px; margin: 0 auto; padding: 28px 24px 88px; }
+  .breadcrumb { display: flex; gap: 9px; align-items: center; color: var(--ink-light); font-size: 13px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .hero { max-width: 850px; padding: 64px 0 54px; }
+  .eyebrow, .section-label, .card-category {
+    margin: 0 0 10px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .16em;
+  }
+  h1, h2 { font-family: 'Noto Serif TC', serif; }
+  h1 { margin: 0 0 24px; font-size: clamp(34px, 6vw, 64px); line-height: 1.25; letter-spacing: -.035em; }
+  h2 { margin: 0 0 14px; font-size: clamp(24px, 4vw, 34px); line-height: 1.4; }
+  .lead { max-width: 760px; margin: 0 0 18px; color: var(--ink-light); font-size: 19px; }
+  .updated { margin: 0; color: var(--ink-light); font-size: 13px; }
+  .quick-answer {
+    margin-bottom: 72px;
+    padding: 30px 34px;
+    border-left: 5px solid var(--accent);
+    background: var(--paper-warm);
+  }
+  .quick-answer p:last-child { max-width: 820px; margin: 0; }
+  .section-intro { max-width: 760px; margin: 0 0 24px; color: var(--ink-light); }
+  .table-wrap { overflow-x: auto; margin-bottom: 56px; border: 1px solid var(--border); background: #fffdf8; }
+  table { width: 100%; min-width: 780px; border-collapse: collapse; }
+  th, td { padding: 16px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  th { background: var(--paper-warm); font-size: 13px; }
+  td { font-size: 14px; }
+  td a { color: var(--accent); font-weight: 700; }
+  .guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .guide-card {
+    scroll-margin-top: 100px;
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fffdf8;
+  }
+  .guide-card h2 { font-size: 25px; }
+  .card-answer { min-height: 58px; color: var(--ink-light); }
+  dl { margin: 24px 0; }
+  dl div { display: grid; grid-template-columns: 82px 1fr; gap: 12px; padding: 11px 0; border-top: 1px solid var(--border); }
+  dt { font-size: 13px; font-weight: 700; color: var(--gold); }
+  dd { margin: 0; font-size: 14px; color: var(--ink-light); }
+  .guide-link { color: var(--accent); font-weight: 700; text-decoration: none; }
+  .method, .faq { max-width: 820px; margin-top: 80px; }
+  .method ol { padding-left: 1.4rem; }
+  .method li { margin: 10px 0; color: var(--ink-light); }
+  details { border-top: 1px solid var(--border); padding: 18px 0; }
+  details:last-of-type { border-bottom: 1px solid var(--border); }
+  summary { cursor: pointer; font-family: 'Noto Serif TC', serif; font-size: 18px; font-weight: 600; }
+  details p { margin: 12px 0 0; color: var(--ink-light); }
+  @media (max-width: 720px) {
+    main { padding: 20px 18px 64px; }
+    .hero { padding: 42px 0; }
+    .hero br { display: none; }
+    .guide-grid { grid-template-columns: 1fr; }
+    .quick-answer, .guide-card { padding: 24px; }
+    dl div { grid-template-columns: 72px 1fr; }
+  }
+</style>
