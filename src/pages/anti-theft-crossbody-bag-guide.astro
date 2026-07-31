@@ -1,0 +1,304 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
+import ContentDisclaimer from '../components/ContentDisclaimer.astro';
+
+const title = '防盜斜背包怎麼選？越南自由行的前背、拉鍊與背帶檢查指南';
+const description = '防盜斜背包不是有標籤就安全。用前背方式、拉鍊位置、背帶固定、容量與重量，判斷現有包能不能沿用，並整理越南自由行的使用原則。';
+const canonical = 'https://comebacktraveler.com/anti-theft-crossbody-bag-guide';
+const published = '2026-07-31';
+const shopeeUrl = 'https://s.shopee.tw/Lm4PqAlxr';
+
+const criteria = [
+  {
+    name: '能不能穩定前背',
+    pass: '走路、搭車與排隊時，包體能貼在胸前或身體前側。',
+    warning: '包體一直滑到背後，或背帶長度無法快速調整。',
+  },
+  {
+    name: '主袋拉鍊的位置',
+    pass: '拉鍊頭在視線內，或能扣住、藏進包體邊緣。',
+    warning: '開口朝外，陌生人從身後就能直接拉開。',
+  },
+  {
+    name: '背帶與包體固定',
+    pass: '連接點紮實、背帶寬度足夠，背著不會大幅晃動。',
+    warning: '只靠細繩或鬆動扣環承重，手機與行動電源一放就下墜。',
+  },
+  {
+    name: '容量與重量',
+    pass: '放得下手機、護照影本、少量現金與行動電源，仍能貼身。',
+    warning: '為了大容量塞得太滿，反而變成容易被拉扯的突出物。',
+  },
+  {
+    name: '材質與防割宣稱',
+    pass: '頁面清楚寫出材質、夾層或測試方式，且不影響日常使用。',
+    warning: '只寫「防盜、防割」但沒有材質資訊；這種標示不能取代正確背法。',
+  },
+];
+
+const faqs = [
+  {
+    question: '去越南一定要買防盜包嗎？',
+    answer: '不一定。現有斜背包若能穩定前背、主袋拉鍊在視線內、背帶連接牢固，而且容量不會讓包體向外凸出，就可以先沿用。',
+  },
+  {
+    question: '防割材質是不是最重要？',
+    answer: '不是。對多數自由行旅客，能前背、拉鍊不朝外、手機不在路側使用，比單一防割標示更直接。材質是加分項，不是安全保證。',
+  },
+  {
+    question: '有 USB 充電孔的包比較值得買嗎？',
+    answer: 'USB 孔與防盜沒有直接關係。先看背法、拉鍊、背帶與重量；真的會把行動電源放在包內並常用外接線，再把 USB 孔列為便利功能。',
+  },
+  {
+    question: '搭機車或走在路邊時，包要背在哪一側？',
+    answer: '盡量放在身體前側，手機操作時退到離車道較遠的位置。靠道路的一側不要垂掛手機、相機或鬆動背帶。',
+  },
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首頁', item: 'https://comebacktraveler.com/' },
+        { '@type': 'ListItem', position: 2, name: '購物指南', item: 'https://comebacktraveler.com/shopping' },
+        { '@type': 'ListItem', position: 3, name: '防盜斜背包指南', item: canonical },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    },
+  ],
+};
+---
+
+<BlogLayout
+  title={title}
+  description={description}
+  keywords="防盜斜背包, 防盜包推薦, 越南自由行安全, 防割包, 旅行斜背包"
+  datePublished={published}
+  dateModified={published}
+  schemaType="BlogPosting"
+>
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
+  <link slot="head" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <div class="guide-page">
+    <SiteNav current="shopping" />
+
+    <main>
+      <nav class="breadcrumb" aria-label="麵包屑">
+        <a href="/">首頁</a><span aria-hidden="true">›</span>
+        <a href="/shopping">購物指南</a><span aria-hidden="true">›</span>
+        <span>防盜斜背包</span>
+      </nav>
+
+      <header class="hero">
+        <p class="eyebrow">ANTI-THEFT CROSSBODY BAG GUIDE</p>
+        <h1>防盜斜背包怎麼選？<br />先看背法，再看「防盜」標籤</h1>
+        <p class="lead">
+          越南自由行真正需要的不是一個看起來很厲害的包，而是一個能穩定前背、拉鍊在視線內、
+          放入手機與護照後仍不會晃動的隨身包。先檢查家裡現有的包，符合條件就不用重買。
+        </p>
+        <p class="updated">發布與核對：2026 年 7 月 31 日</p>
+      </header>
+
+      <AffiliateDisclosure />
+      <ContentDisclaimer />
+
+      <section class="quick-answer" aria-labelledby="quick-answer-title">
+        <p class="section-label">30 秒結論</p>
+        <h2 id="quick-answer-title">先用四個問題決定要不要買</h2>
+        <ol>
+          <li>走路、排隊和搭車時，能不能一直把包放在身體前側？</li>
+          <li>主袋拉鍊是否在視線內，不會從背後被直接拉開？</li>
+          <li>裝入手機、行動電源後，背帶與連接點是否仍然穩定？</li>
+          <li>容量是否剛好，而不是裝滿後向外突出、一直晃動？</li>
+        </ol>
+        <p><strong>四項都通過：</strong>沿用現有包即可。只要有一項明顯不合，再考慮換包。</p>
+      </section>
+
+      <section aria-labelledby="risk-title">
+        <p class="section-label">先分清楚風險</p>
+        <h2 id="risk-title">扒竊與飛車搶奪，防法不完全一樣</h2>
+        <div class="risk-grid">
+          <article>
+            <h3>人潮中的扒竊</h3>
+            <p>常發生在市場、夜市、車站與排隊動線。重點是讓主袋開口留在視線內，不把手機或錢包放外側開放口袋。</p>
+          </article>
+          <article>
+            <h3>靠路側的搶奪</h3>
+            <p>重點是不要在車流旁伸手操作手機，也不要讓包體或相機垂在靠道路一側。退到店內或牆邊再看地圖。</p>
+          </article>
+        </div>
+        <p class="note">任何包都不能保證不被偷或不被搶；包只是降低暴露與延遲開啟的工具，行走位置與使用習慣更重要。</p>
+      </section>
+
+      <section aria-labelledby="criteria-title">
+        <p class="section-label">選購檢查表</p>
+        <h2 id="criteria-title">五個條件，比品牌名稱更值得看</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>檢查項目</th><th>合格訊號</th><th>需要留意</th></tr>
+            </thead>
+            <tbody>
+              {criteria.map((item) => (
+                <tr>
+                  <th scope="row">{item.name}</th>
+                  <td>{item.pass}</td>
+                  <td>{item.warning}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="decision" aria-labelledby="reuse-title">
+        <p class="section-label">先檢查現有用品</p>
+        <h2 id="reuse-title">這三種情況，不必另外買</h2>
+        <ul class="check-list">
+          <li>現有小包能前背，縮短背帶後不會一路滑到背後。</li>
+          <li>主袋有拉鍊，而且開口能轉向胸前或用小扣環固定。</li>
+          <li>放入手機、少量現金與行動電源後仍輕巧，不需要塞滿。</li>
+        </ul>
+        <p>缺少拉鍊固定時，可以先測試小型登山扣是否不妨礙緊急取物；不要為了「鎖得很牢」讓自己每次付款都得翻找很久。</p>
+      </section>
+
+      <section aria-labelledby="option-title">
+        <p class="section-label">可進一步比較的選項</p>
+        <h2 id="option-title">OZUKO 機能防盜單肩包</h2>
+        <div class="product-card">
+          <div class="product-copy">
+            <p class="store-label">以下為賣場標示，本站未實際測試</p>
+            <h3>幾何立體機能防盜單肩包</h3>
+            <p>
+              賣場標題標示「防割、防水、USB 充電」等功能。這些字樣只能當初步篩選；
+              下單前仍要在商品頁確認材質、尺寸、背帶固定方式、拉鍊位置與最新買家回饋。
+            </p>
+            <ul>
+              <li><strong>適合先看：</strong>現有包無法前背、拉鍊開口朝外，或背帶連接明顯不穩。</li>
+              <li><strong>不必買：</strong>家中已有能貼身前背、拉鍊安全且容量合適的包。</li>
+              <li><strong>不要為此加價：</strong>USB 孔不是防盜功能，沒有使用需求可以忽略。</li>
+            </ul>
+            <a
+              class="product-cta"
+              href={shopeeUrl}
+              target="_blank"
+              rel="sponsored nofollow noopener noreferrer"
+              data-affiliate="shopee"
+              data-affiliate-product="OZUKO 機能防盜單肩包"
+              data-affiliate-category="anti_theft_bag"
+              data-cta-position="primary_product"
+            >前往蝦皮查看目前規格與價格 →</a>
+            <p class="price-note">價格、折扣、庫存與賣場內容可能變動，以開啟後的商品頁為準。</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="use-title">
+        <p class="section-label">買了也要用對</p>
+        <h2 id="use-title">越南市區移動的五個使用原則</h2>
+        <ol class="number-list">
+          <li><strong>走到路口前先收手機：</strong>要看地圖就退到牆邊、店內或遠離車道的位置。</li>
+          <li><strong>包體放在胸前：</strong>市場、夜市與大眾運輸中，不把主袋留在背後。</li>
+          <li><strong>護照正本少拿出來：</strong>依行程與規定攜帶，平常付款不要和零錢放在同一層。</li>
+          <li><strong>不要把所有支付方式集中：</strong>少量現金與備用卡分開，手機遺失時仍有回住宿處的方案。</li>
+          <li><strong>飯店房門前先找好房卡：</strong>避免站在走廊或街邊長時間翻包，讓開口與物品全部外露。</li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="faq-title">
+        <p class="section-label">常見問題</p>
+        <h2 id="faq-title">防盜斜背包 FAQ</h2>
+        <div class="faq-list">
+          {faqs.map((item) => (
+            <details>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <aside class="next-step">
+        <p class="section-label">繼續準備</p>
+        <h2>把安全用品放回完整行李清單</h2>
+        <p>包包確認後，再一次核對防曬、防蚊、充電與網路，避免為了買單一商品漏掉更重要的準備。</p>
+        <div class="next-links">
+          <a href="/vietnam-travel-essentials">看越南旅遊必備小物</a>
+          <a href="/vietnam-packing-list">看越南自由行行李清單</a>
+          <a href="/shopping">回旅行購物指南</a>
+        </div>
+      </aside>
+    </main>
+
+    <SiteFooter />
+  </div>
+</BlogLayout>
+
+<style>
+  :global(body) { margin: 0; background: #faf8f3; color: #1a1208; }
+  .guide-page { --ink: #1a1208; --muted: #5d5141; --paper: #faf8f3; --warm: #f2ede0; --accent: #a33428; --gold: #9a6a08; --border: #d4c9b0; font-family: 'Noto Sans TC', sans-serif; line-height: 1.85; }
+  main { max-width: 900px; margin: 0 auto; padding: 0 24px 72px; }
+  .breadcrumb { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 24px 0; color: var(--muted); font-size: 14px; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; }
+  .hero { padding: 46px 0 30px; border-bottom: 2px solid var(--ink); }
+  .eyebrow, .section-label { margin: 0 0 8px; color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .14em; }
+  h1, h2, h3 { font-family: 'Noto Serif TC', serif; line-height: 1.35; }
+  h1 { margin: 0 0 20px; font-size: clamp(34px, 6vw, 58px); letter-spacing: -.02em; }
+  h2 { margin: 0 0 16px; font-size: clamp(27px, 4vw, 38px); }
+  h3 { margin: 0 0 10px; font-size: 21px; }
+  p { color: var(--muted); }
+  .lead { max-width: 760px; margin: 0; font-size: 19px; }
+  .updated { margin: 18px 0 0; font-size: 13px; }
+  section, .next-step { margin-top: 64px; }
+  .quick-answer { padding: 28px; background: var(--warm); border: 1px solid var(--border); border-left: 5px solid var(--accent); border-radius: 8px; }
+  .quick-answer ol { margin: 14px 0 18px; padding-left: 24px; }
+  .risk-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .risk-grid article { padding: 22px; border: 1px solid var(--border); border-radius: 8px; background: #fffdf8; }
+  .note { padding: 14px 18px; border-left: 3px solid var(--gold); background: #fdf8ee; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; }
+  table { width: 100%; border-collapse: collapse; min-width: 700px; background: #fffdf8; }
+  th, td { padding: 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+  thead th { background: var(--ink); color: white; }
+  tbody th { width: 18%; color: var(--ink); }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  .decision { padding: 28px; border: 1px solid var(--border); border-radius: 8px; }
+  .check-list { padding: 0; list-style: none; }
+  .check-list li { position: relative; padding: 8px 0 8px 32px; }
+  .check-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .product-card { padding: 30px; border: 2px solid var(--ink); border-radius: 10px; background: #fffdf8; box-shadow: 7px 7px 0 var(--warm); }
+  .store-label { display: inline-block; margin: 0 0 12px; padding: 4px 9px; color: #6e4b05; background: #fff1c7; border-radius: 4px; font-size: 12px; font-weight: 700; }
+  .product-copy ul { padding-left: 22px; color: var(--muted); }
+  .product-cta { display: inline-block; margin-top: 12px; padding: 14px 20px; color: #fff; background: var(--accent); border-radius: 5px; font-weight: 700; text-decoration: none; }
+  .product-cta:hover { background: #84281f; }
+  .price-note { margin: 12px 0 0; font-size: 12px; }
+  .number-list { padding-left: 24px; }
+  .number-list li { padding: 7px 0; color: var(--muted); }
+  .faq-list { border-top: 1px solid var(--border); }
+  details { border-bottom: 1px solid var(--border); padding: 18px 0; }
+  summary { cursor: pointer; color: var(--ink); font-weight: 700; }
+  details p { margin: 12px 0 0; }
+  .next-step { padding: 30px; color: white; background: var(--ink); border-radius: 8px; }
+  .next-step h2, .next-step p { color: white; }
+  .next-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .next-links a { padding: 9px 13px; color: white; border: 1px solid #cfc4ad; border-radius: 4px; text-decoration: none; }
+  @media (max-width: 680px) {
+    main { padding: 0 18px 52px; }
+    .hero { padding-top: 28px; }
+    .risk-grid { grid-template-columns: 1fr; }
+    .quick-answer, .decision, .product-card, .next-step { padding: 22px; }
+  }
+</style>

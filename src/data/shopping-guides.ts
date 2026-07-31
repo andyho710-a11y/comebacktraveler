@@ -63,8 +63,8 @@ export const shoppingGuides: ShoppingGuide[] = [
     bestFor: '市場、夜市、大眾運輸與人潮密集景點。',
     skipWhen: '已有尺寸合適、可貼身背且開口安全的隨身包。',
     checkBeforeBuying: '背帶固定方式、拉鍊位置、容量、重量與護照收納層。',
-    guideHref: '/vietnam-travel-essentials',
-    guideLabel: '查看隨身包挑選原則',
+    guideHref: '/anti-theft-crossbody-bag-guide',
+    guideLabel: '查看防盜斜背包完整指南',
   },
   {
     id: 'packing',

@@ -7,6 +7,7 @@
       'a[rel~="sponsored"]',
       'a[href*="coupa.ng"]',
       'a[href*="collshp.com"]',
+      'a[href*="s.shopee.tw"]',
       'a[href*="afflink.one"]',
       'a[href*="onelink.one"]',
       'a[href*="amazon.com"]',
@@ -31,6 +32,7 @@
 
       if (hostname.indexOf('coupa.ng') !== -1) return 'coupang';
       if (hostname.indexOf('collshp.com') !== -1) return 'shopee';
+      if (hostname.indexOf('s.shopee.tw') !== -1) return 'shopee';
       if (hostname.indexOf('afflink.one') !== -1) return 'affiliates_one';
       if (hostname.indexOf('onelink.one') !== -1) return 'affiliates_one';
       if (hostname.indexOf('amazon.com') !== -1) return 'amazon';
