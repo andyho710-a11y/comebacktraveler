@@ -40,6 +40,68 @@ const ogLocale = language === 'en' ? 'en_US' : 'zh_TW';
 const ogImageURL = ogImage
   ? ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteBase).toString()
   : undefined;
+const pageId = `${canonicalURL.toString()}#webpage`;
+const organizationId = 'https://comebacktraveler.com/#organization';
+const websiteId = 'https://comebacktraveler.com/#website';
+const isHomepage = cleanPath === '/' || cleanPath === '';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': organizationId,
+      name: '重來的旅人',
+      alternateName: 'Comeback Traveler',
+      url: 'https://comebacktraveler.com',
+      description: '由在越南生活十年的台灣旅人整理的越南旅遊準備、出國用品與上網攻略。',
+      sameAs: [
+        'https://www.instagram.com/comebacktraveler',
+        'https://www.youtube.com/@AndyFeverDream',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      name: '重來的旅人 Comeback Traveler',
+      url: 'https://comebacktraveler.com',
+      inLanguage: language,
+      publisher: { '@id': organizationId },
+    },
+    {
+      '@type': schemaType,
+      '@id': pageId,
+      name: title,
+      description,
+      url: canonicalURL.toString(),
+      inLanguage: language,
+      isPartOf: { '@id': websiteId },
+      ...(ogImageURL ? { image: ogImageURL } : {}),
+      ...(schemaType === 'BlogPosting' ? {
+        headline: title,
+        mainEntityOfPage: { '@id': canonicalURL.toString() },
+        ...(datePublished ? { datePublished } : {}),
+        ...(dateModified ?? datePublished ? { dateModified: dateModified ?? datePublished } : {}),
+        author: {
+          '@type': 'Person',
+          '@id': 'https://comebacktraveler.com/about#author',
+          name: authorName ?? '重來的旅人',
+          url: 'https://comebacktraveler.com/about',
+        },
+        publisher: { '@id': organizationId },
+      } : {
+        ...(dateModified ? { dateModified } : {}),
+      }),
+    },
+    ...(!isHomepage ? [{
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalURL.toString()}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: language === 'en' ? 'Home' : '首頁', item: 'https://comebacktraveler.com/' },
+        { '@type': 'ListItem', position: 2, name: title, item: canonicalURL.toString() },
+      ],
+    }] : []),
+  ],
+};
 ---
 
 <!doctype html>
@@ -80,42 +142,7 @@ const ogImageURL = ogImage
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
-    <script is:inline type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": schemaType,
-      "@id": `${canonicalURL.toString()}#webpage`,
-      "name": title,
-      "description": description,
-      "url": canonicalURL.toString(),
-      "inLanguage": language,
-      ...(ogImageURL ? { "image": ogImageURL } : {}),
-      ...(schemaType === 'BlogPosting' ? {
-        "headline": title,
-        "mainEntityOfPage": canonicalURL.toString(),
-        ...(datePublished ? { "datePublished": datePublished } : {}),
-        ...(dateModified ?? datePublished ? { "dateModified": dateModified ?? datePublished } : {}),
-        "author": {
-          "@type": "Person",
-          "@id": "https://comebacktraveler.com/about#author",
-          "name": authorName ?? "重來的旅人",
-          "url": "https://comebacktraveler.com/about"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "@id": "https://comebacktraveler.com/#organization",
-          "name": "重來的旅人",
-          "url": "https://comebacktraveler.com"
-        }
-      } : {
-        "isPartOf": {
-          "@type": "WebSite",
-          "@id": "https://comebacktraveler.com/#website",
-          "name": "重來的旅人 Comeback Traveler",
-          "url": "https://comebacktraveler.com"
-        },
-        ...(dateModified ? { "dateModified": dateModified } : {})
-      })
-    })} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <slot name="head" />
   </head>
   <body class="bg-slate-50 text-gray-800 antialiased">

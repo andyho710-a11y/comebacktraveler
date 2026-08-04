@@ -9,6 +9,64 @@ const title = "越南旅遊必備小物推薦｜住越南十年，我推薦你�
 const description = "第一次去越南該帶什麼？住越南十年的重來的旅人，從炎熱天氣、220V 電壓到飛車搶劫的角度，整理出該準備的旅遊小物與精選商品。防曬、防蚊、充電器、防盜包，幫你出發前一次備齊不踩雷。";
 const canonical = "https://comebacktraveler.com/vietnam-travel-essentials";
 const cover = "https://comebacktraveler.com/vietnam-airport-queue.jpg";
+const faqs = [
+  {
+    question: '第一次去越南要帶什麼？',
+    answer: '先準備防曬、防蚊、支援 100–240V 的充電設備，以及能前背並收好護照與手機的包；再依自己的行程補上行李與上網方案。',
+  },
+  {
+    question: '越南需要帶變壓器嗎？',
+    answer: '越南電壓為 220V。手機、筆電與多數 USB 充電器若標示支援 100–240V 通常可直接使用；只支援 110V 的吹風機、電捲棒等發熱電器則不應直接插用。',
+  },
+  {
+    question: '去越南防盜包怎麼背比較安全？',
+    answer: '在人多或靠近道路時，把包前背並讓主袋開口留在視線內；不要把手機或錢包放外側口袋，也避免在車流旁操作手機。',
+  },
+];
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://comebacktraveler.com/#organization',
+      name: '重來的旅人',
+      alternateName: 'Comeback Traveler',
+      url: 'https://comebacktraveler.com',
+    },
+    {
+      '@type': 'Article',
+      '@id': `${canonical}#article`,
+      headline: title,
+      description,
+      url: canonical,
+      mainEntityOfPage: { '@id': canonical },
+      inLanguage: 'zh-TW',
+      author: { '@type': 'Person', '@id': 'https://comebacktraveler.com/about#author', name: '重來的旅人', url: 'https://comebacktraveler.com/about' },
+      publisher: { '@id': 'https://comebacktraveler.com/#organization' },
+      datePublished: '2026-06-02',
+      dateModified: '2026-07-17',
+      image: cover,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${canonical}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首頁', item: 'https://comebacktraveler.com/' },
+        { '@type': 'ListItem', position: 2, name: '越南旅遊準備', item: 'https://comebacktraveler.com/#vietnam-prep' },
+        { '@type': 'ListItem', position: 3, name: title, item: canonical },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${canonical}#faq`,
+      mainEntity: faqs.map(({ question, answer }) => ({
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: { '@type': 'Answer', text: answer },
+      })),
+    },
+  ],
+};
 
 // 聯盟商品卡片資料
 const products = [
@@ -69,18 +127,7 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
   <meta name="twitter:image" content={cover} />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
-  <script is:inline type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": title,
-    "description": description,
-    "url": canonical,
-    "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
-    "publisher": { "@type": "Organization", "name": "重來的旅人", "url": "https://comebacktraveler.com" },
-    "datePublished": "2026-06-02",
-    "dateModified": "2026-07-17",
-    "image": cover
-  })} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   <style>
     :root {
       --ink: #1a1208;
@@ -234,6 +281,12 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
 <article class="article">
 
   <ContentDisclaimer />
+
+  <section class="tip-box" aria-labelledby="essentials-quick-answer">
+    <div id="essentials-quick-answer" class="tip-title">先說結論：越南旅遊必備什麼？</div>
+    <p><strong>先備防曬、防蚊、可用於 220V 環境的充電設備，以及能前背的防盜包。</strong>這四類能處理越南常見的炎熱、蚊蟲、充電與隨身安全情境；已有同類用品就不必為了清單重複買。</p>
+    <p style="margin-bottom:0;">接著依需要查看 <a href="/vietnam-packing-list" class="inline">越南行李清單</a>、<a href="/esim" class="inline">出國 eSIM 比較</a>與<a href="/anti-theft-crossbody-bag-guide" class="inline">防盜斜背包選擇指南</a>。</p>
+  </section>
 
   <aside class="update-note">
     <strong>本次更新（2026 年 7 月）</strong>：重新檢查了清單的選購理由、補上不適合的情境與出發前檢查方式。商品價格、庫存與規格會變動；下單前請以品牌或平台的當日資訊為準。
@@ -421,6 +474,11 @@ const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel
     <li><strong>防割材質</strong>（割不開肩帶與包身）</li>
     <li><strong>有防盜的設計</strong>（拉鍊不好開）</li>
   </ol>
+
+  <h2>越南旅遊常見問題</h2>
+  {faqs.map((faq) => (
+    <p><strong>Q：{faq.question}</strong><br />A：{faq.answer}</p>
+  ))}
 
   <p>
     如果你正在判斷家裡的包能不能沿用，可先看

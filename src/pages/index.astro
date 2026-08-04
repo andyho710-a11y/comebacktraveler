@@ -43,6 +43,30 @@ const otherPrepArticles = pickArticles([
   '/thsr-guide',
 ]);
 const restartNoteArticles = pickArticles(['/story', ...lifeArticles.map((a) => a.href)]);
+const homeFaqs = [
+  {
+    question: '第一次去越南要帶什麼？',
+    answer: '先準備防曬、防蚊、支援 100–240V 的充電器或轉接設備，以及能前背、收好護照與手機的包。再依天數補上行李清單與落地上網方案，不必為了湊清單重複買用品。',
+  },
+  {
+    question: '越南旅遊出發前最容易漏掉什麼？',
+    answer: '最常漏掉的是防蚊、防曬、充電設備電壓與落地上網。這四項會直接影響剛抵達時能否叫車、導航與舒適移動，建議在出發前一週逐項確認。',
+  },
+  {
+    question: '越南旅遊網路要選 eSIM、實體 SIM 還是 WiFi 機？',
+    answer: '手機支援 eSIM、想保留台灣門號並在落地就能上網的人，通常適合 eSIM；多人共用且不介意充電與租還可考慮 WiFi 機；手機不支援 eSIM 或想在當地門市處理時再選實體 SIM。',
+  },
+];
+const homeStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://comebacktraveler.com/#faq',
+  mainEntity: homeFaqs.map(({ question, answer }) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
+};
 ---
 
 <BlogLayout
@@ -53,6 +77,7 @@ const restartNoteArticles = pickArticles(['/story', ...lifeArticles.map((a) => a
   alternatePath="/en"
   schemaType="WebPage"
 >
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(homeStructuredData)} />
   <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
   <link slot="head" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet" />
 
@@ -134,6 +159,22 @@ const restartNoteArticles = pickArticles(['/story', ...lifeArticles.map((a) => a
         <a href="#restart-notes">重來筆記</a>
       </nav>
     </div>
+
+    <section class="article ai-answer" aria-labelledby="quick-answers-title">
+      <h2 id="quick-answers-title">先說結論：越南旅遊怎麼準備？</h2>
+      <p><strong>第一次去越南，先處理防曬、防蚊、充電設備、防盜收納與落地上網。</strong>這五件事比買一長串用品更重要；先依自己的天數、城市與同行者刪減，再補需要的項目。</p>
+      <div class="answer-grid">
+        {homeFaqs.map((faq) => (
+          <div class="answer-card">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+      <p class="answer-links">
+        從這裡開始：<a href="/vietnam-travel-essentials">越南必備小物清單</a>、<a href="/vietnam-packing-list">越南行李清單</a>、<a href="/esim">出國 eSIM 比較</a>、<a href="/esim/troubleshoot">eSIM 設定排解</a>。
+      </p>
+    </section>
 
     <!-- 越南旅遊準備（首頁第一主軸）-->
     <div id="vietnam-prep" class="home-section">
@@ -364,6 +405,13 @@ const restartNoteArticles = pickArticles(['/story', ...lifeArticles.map((a) => a
     padding: 0 24px 80px;
   }
   .article p { margin-bottom: 1.4em; }
+  .ai-answer { padding-top: 0; }
+  .answer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 20px 0; }
+  .answer-card { border: 1px solid var(--border); border-radius: 8px; background: #fffdf8; padding: 18px; }
+  .answer-card h3 { font-family: var(--serif); font-size: 16px; margin: 0 0 8px; }
+  .answer-card p { font-size: 14px; line-height: 1.7; margin: 0; color: var(--ink-light); }
+  .answer-links { font-size: 15px; }
+  .answer-links a { color: var(--accent); font-weight: 600; }
 
   h2 {
     font-family: var(--serif);
@@ -685,6 +733,7 @@ const restartNoteArticles = pickArticles(['/story', ...lifeArticles.map((a) => a
   }
   @media (max-width: 600px) {
     .hero, .article { padding: 0 16px; }
+    .answer-grid { grid-template-columns: 1fr; }
     .wide-wrap { padding: 0 16px; }
     h1 { font-size: 28px; }
     .story-box { padding: 18px 20px; }

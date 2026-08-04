@@ -7,6 +7,30 @@ import ContentDisclaimer from '../components/ContentDisclaimer.astro';
 
 const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
 const KKDAY_LINK = 'https://onelink.one/s/nnjWf';
+const esimFaqs = [
+  {
+    question: 'eSIM 和實體 SIM、WiFi 機差在哪？',
+    answer: 'eSIM 不用換實體卡，出發前掃描 QR Code 安裝，落地後切換行動數據即可使用；實體 SIM 需要換卡；WiFi 機適合多人共用，但需要租還與充電。',
+  },
+  {
+    question: '一支手機可以同時用原本門號和 eSIM 嗎？',
+    answer: '多數近年的雙 SIM 手機可以保留原本門號接電話或簡訊，並把 eSIM 設為行動數據；出發前仍要確認自己的機型支援 eSIM。',
+  },
+  {
+    question: 'eSIM 裝了卻沒網路怎麼辦？',
+    answer: '先確認 eSIM 已啟用、行動數據已切到 eSIM，並依業者指示檢查數據漫遊與 APN。若仍無法上網，再依序排查安裝、網路與裝置設定。',
+  },
+];
+const esimStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': 'https://comebacktraveler.com/esim#faq',
+  mainEntity: esimFaqs.map(({ question, answer }) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
+};
 
 const brands = [
   {
@@ -111,6 +135,7 @@ const brands = [
   keywords="eSIM推薦,出國上網,JOYTEL,日本eSIM,韓國eSIM,東南亞eSIM,eSIM比較,台灣eSIM"
   ogImage="/esim-cover.jpg"
 >
+  <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(esimStructuredData)} />
   <link
     slot="head"
     rel="preconnect"
@@ -152,6 +177,12 @@ const brands = [
     <article class="article">
 
       <ContentDisclaimer />
+
+      <section class="tip-box" aria-labelledby="esim-quick-answer">
+        <div id="esim-quick-answer" class="tip-title">先說結論：出國 eSIM 怎麼選？</div>
+        <p class="tip-body"><strong>手機支援 eSIM、想在落地就能上網並保留原門號的人，優先選 eSIM。</strong>先確認手機支援、目的地、天數、是否需要分享網路與客服語言；若多人共用再考慮 WiFi 機，手機不支援 eSIM 才考慮實體 SIM。</p>
+        <p class="tip-body" style="margin-bottom:0;">需要進一步判斷時，可先看 <a href="/esim-quiz" style="color:var(--accent);font-weight:600;">30 秒上網方案測驗</a>，或遇到安裝問題直接看 <a href="/esim/troubleshoot" style="color:var(--accent);font-weight:600;">eSIM 設定排解</a>。</p>
+      </section>
 
       <div class="story-box">
         <strong>先說說我自己</strong>——我不是旅遊達人，也不是網紅。<br />

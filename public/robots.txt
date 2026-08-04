@@ -4,6 +4,12 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: *
 Allow: /
 Sitemap: https://comebacktraveler.com/sitemap-index.xml
