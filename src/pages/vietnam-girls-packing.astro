@@ -16,6 +16,7 @@ const products = [
   {
     img: "/vietnam-ess-anessa.png",
     name: "安耐曬 金鑽高效防曬乳",
+    category: "sunscreen",
     spec: "SPF50+ / PA++++ ‧ 防水防汗",
     why: "越南太陽強、流汗快，防曬要優先選高係數又耐汗的。這類防曬適合放在行李第一順位，臉部與身體都要記得補擦。",
     href: "https://coupa.ng/cnc3Dz?abTestInfo=100412_group_A",
@@ -24,6 +25,7 @@ const products = [
   {
     img: "/vietnam-ess-dintin.png",
     name: "叮嚀 派卡瑞丁 10H 小黑蚊防蚊液",
+    category: "mosquito_repellent",
     spec: "Picaridin 派卡瑞丁 ‧ 主打長效",
     why: "女生旅行常會穿裙裝、短褲或涼鞋，戶外座位、夜市、市場都容易被叮。派卡瑞丁配方比精油型更適合認真防蚊。",
     href: "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A",
@@ -32,6 +34,7 @@ const products = [
   {
     img: "/caela-feminine-wash-foam.webp",
     name: "Caela 女性私密處清潔液 旅行組 陽光梨綠",
+    category: "personal_care",
     spec: "旅行組 ‧ 女性私密清潔 ‧ 酷澎優先查看",
     why: "越南天氣濕熱，女生旅行私密清潔用品建議從台灣先帶習慣的小容量旅行組，不要到當地臨時找。",
     href: "https://coupa.ng/cnKCOY?abTestInfo=100412_group_A",
@@ -40,6 +43,7 @@ const products = [
   {
     img: "/vietnam-ess-cyke.png",
     name: "CYKE 65W 氮化鎵充電器",
+    category: "gan_charger",
     spec: "65W GaN ‧ 多孔快充 ‧ 支援萬國電壓",
     why: "手機、相機、行動電源、補光燈都要充電時，多孔快充比帶一堆豆腐頭實用，也能避開越南 220V 電壓踩雷。",
     href: "https://coupa.ng/cnc3yV?abTestInfo=100412_group_A",
@@ -48,6 +52,7 @@ const products = [
   {
     img: "/vietnam-ess-travelon.png",
     name: "TRAVELON 輕便防盜斜背包",
+    category: "anti_theft_bag",
     spec: "防割肩帶 ‧ 防盜拉鍊 ‧ 前背好顧",
     why: "女生一個人或兩人旅行時，包包最好能斜背在身體前側。防割肩帶、防盜拉鍊對胡志明市、河內市區移動很有幫助。",
     href: "https://coupa.ng/cnc3qG?abTestInfo=100412_group_A",
@@ -56,6 +61,7 @@ const products = [
   {
     img: "/edl-wet-toilet-paper.webp",
     name: "兒樂 超純水濕式衛生紙",
+    category: "hygiene",
     spec: "可沖馬桶 ‧ 加厚柔韌 ‧ 隨身清潔",
     why: "越南公廁備品不一定穩定，路邊攤、夜市和親子行程也常需要隨手清潔。這類濕式衛生紙適合放一小包在隨身包，補足一般衛生紙不方便的時候。",
     href: "https://coupa.ng/cnKD7Q?abTestInfo=100412_group_A",
@@ -378,27 +384,27 @@ const faqs = [
       <article class="quick-prepare-card">
         <h3>防曬用品</h3>
         <p>越南熱、太陽直，防曬先看 SPF50+、耐汗與你自己願不願意補擦。家裡已有慣用品就先帶，沒有再比價。</p>
-        <a href={products[0].href} target="_blank" rel="sponsored noopener noreferrer">可以先比價防曬</a>
+        <a href={products[0].href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="coupang" data-affiliate-product={products[0].name} data-affiliate-category={products[0].category} data-cta-position="quick_prepare">可以先比價防曬</a>
       </article>
       <article class="quick-prepare-card">
         <h3>防蚊用品</h3>
         <p>戶外餐廳、夜市、市場比較容易被叮。先選看得懂有效成分的防蚊液，防蚊貼當輔助就好。</p>
-        <a href={products[1].href} target="_blank" rel="sponsored noopener noreferrer">家裡沒有再補防蚊</a>
+        <a href={products[1].href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="coupang" data-affiliate-product={products[1].name} data-affiliate-category={products[1].category} data-cta-position="quick_prepare">家裡沒有再補防蚊</a>
       </article>
       <article class="quick-prepare-card">
         <h3>生理用品與收納包</h3>
         <p>悶熱天氣加上行程走動多，個人清潔用品和小收納袋會讓包包整齊很多。慣用品牌建議台灣先準備。</p>
-        <a href={products[2].href} target="_blank" rel="sponsored noopener noreferrer">先看個人清潔用品</a>
+        <a href={products[2].href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="coupang" data-affiliate-product={products[2].name} data-affiliate-category={products[2].category} data-cta-position="quick_prepare">先看個人清潔用品</a>
       </article>
       <article class="quick-prepare-card">
         <h3>行動電源與充電線</h3>
         <p>地圖、叫車、拍照都靠手機，充電線和行動電源先檢查規格。能支援 220V 的充電器比較省心。</p>
-        <a href={products[3].href} target="_blank" rel="sponsored noopener noreferrer">確認充電配件</a>
+        <a href={products[3].href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="coupang" data-affiliate-product={products[3].name} data-affiliate-category={products[3].category} data-cta-position="quick_prepare">確認充電配件</a>
       </article>
       <article class="quick-prepare-card">
         <h3>防盜小包或手機掛繩</h3>
         <p>人多的市場、路邊叫車和夜市，手機與錢包最好固定在身上。小包不用花俏，拉鍊順、背法穩比較重要。</p>
-        <a href={products[4].href} target="_blank" rel="sponsored noopener noreferrer">看看防盜小包</a>
+        <a href={products[4].href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="coupang" data-affiliate-product={products[4].name} data-affiliate-category={products[4].category} data-cta-position="quick_prepare">看看防盜小包</a>
       </article>
     </div>
   </section>
@@ -436,7 +442,7 @@ const faqs = [
       <div class="product-card-name">{products[0].name}</div>
       <div class="product-card-spec">{products[0].spec}</div>
       <p class="product-card-why">{products[0].why}</p>
-      <a class="product-card-cta" href={products[0].href} target="_blank" rel="sponsored noopener noreferrer">{products[0].cta} →</a>
+      <a class="product-card-cta" href={products[0].href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="coupang" data-affiliate-product={products[0].name} data-affiliate-category={products[0].category} data-cta-position="product_card">{products[0].cta} →</a>
     </div>
   </div>
 
@@ -446,7 +452,7 @@ const faqs = [
     <p class="shopee-desc">
       這篇以酷澎單品作為優先入口；如果你想順手比較臉部、身體用防曬或多買備品，再用這份蝦皮選品清單補充。
     </p>
-    <a class="shopee-btn" href={shopeeUrl} target="_blank" rel="sponsored noopener noreferrer">
+    <a class="shopee-btn" href={shopeeUrl} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="shopee" data-affiliate-product="越南女生防曬補充清單" data-affiliate-category="sunscreen" data-cta-position="category_list">
       👉 打開蝦皮補充清單
     </a>
   </div>
@@ -482,7 +488,7 @@ const faqs = [
       <div class="product-card-name">{products[1].name}</div>
       <div class="product-card-spec">{products[1].spec}</div>
       <p class="product-card-why">{products[1].why}</p>
-      <a class="product-card-cta" href={products[1].href} target="_blank" rel="sponsored noopener noreferrer">{products[1].cta} →</a>
+      <a class="product-card-cta" href={products[1].href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="coupang" data-affiliate-product={products[1].name} data-affiliate-category={products[1].category} data-cta-position="product_card">{products[1].cta} →</a>
     </div>
   </div>
 
@@ -521,7 +527,7 @@ const faqs = [
       <div class="product-card-name">{products[2].name}</div>
       <div class="product-card-spec">{products[2].spec}</div>
       <p class="product-card-why">{products[2].why}</p>
-      <a class="product-card-cta" href={products[2].href} target="_blank" rel="sponsored noopener noreferrer">{products[2].cta} →</a>
+      <a class="product-card-cta" href={products[2].href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="coupang" data-affiliate-product={products[2].name} data-affiliate-category={products[2].category} data-cta-position="product_card">{products[2].cta} →</a>
     </div>
   </div>
 
@@ -558,7 +564,7 @@ const faqs = [
       <div class="product-card-name">{products[4].name}</div>
       <div class="product-card-spec">{products[4].spec}</div>
       <p class="product-card-why">{products[4].why}</p>
-      <a class="product-card-cta" href={products[4].href} target="_blank" rel="sponsored noopener noreferrer">{products[4].cta} →</a>
+      <a class="product-card-cta" href={products[4].href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="coupang" data-affiliate-product={products[4].name} data-affiliate-category={products[4].category} data-cta-position="product_card">{products[4].cta} →</a>
     </div>
   </div>
 
@@ -612,7 +618,7 @@ const faqs = [
       <div class="product-card-name">{products[5].name}</div>
       <div class="product-card-spec">{products[5].spec}</div>
       <p class="product-card-why">{products[5].why}</p>
-      <a class="product-card-cta" href={products[5].href} target="_blank" rel="sponsored noopener noreferrer">{products[5].cta} →</a>
+      <a class="product-card-cta" href={products[5].href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="coupang" data-affiliate-product={products[5].name} data-affiliate-category={products[5].category} data-cta-position="product_card">{products[5].cta} →</a>
     </div>
   </div>
 
@@ -635,7 +641,7 @@ const faqs = [
       <div class="product-card-name">{products[3].name}</div>
       <div class="product-card-spec">{products[3].spec}</div>
       <p class="product-card-why">{products[3].why}</p>
-      <a class="product-card-cta" href={products[3].href} target="_blank" rel="sponsored noopener noreferrer">{products[3].cta} →</a>
+      <a class="product-card-cta" href={products[3].href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="coupang" data-affiliate-product={products[3].name} data-affiliate-category={products[3].category} data-cta-position="product_card">{products[3].cta} →</a>
     </div>
   </div>
 
@@ -645,7 +651,7 @@ const faqs = [
     <p class="shopee-desc">
       這篇仍以酷澎單品優先，蝦皮清單只用來補充逛隨身衛生紙、濕紙巾、收納袋等小物，避免每個品項都塞多個外部連結。
     </p>
-    <a class="shopee-btn" href={shopeeUrl} target="_blank" rel="sponsored noopener noreferrer">
+    <a class="shopee-btn" href={shopeeUrl} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="shopee" data-affiliate-product="越南女生旅行小物清單" data-affiliate-category="travel_essentials" data-cta-position="article_bottom">
       👉 越南旅遊小物・蝦皮補充清單
     </a>
   </div>
