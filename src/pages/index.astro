@@ -160,6 +160,18 @@ const homeStructuredData = {
       </nav>
     </div>
 
+    <aside class="shopping-entry" aria-labelledby="shopping-entry-title">
+      <div>
+        <p class="shopping-entry-label">旅行購物決策</p>
+        <h2 id="shopping-entry-title">先判斷需不需要，再決定去哪裡買</h2>
+        <p>把防曬、防蚊、充電與防盜用品依旅行情境整理好；先看挑選原則與替代方案，不用照著清單重複購買。</p>
+      </div>
+      <div class="shopping-entry-actions">
+        <a class="shopping-entry-primary" href="/shopping">進入旅行購物指南 →</a>
+        <a href="/anti-theft-crossbody-bag-guide">先看防盜斜背包怎麼選</a>
+      </div>
+    </aside>
+
     <section class="article ai-answer" aria-labelledby="quick-answers-title">
       <h2 id="quick-answers-title">先說結論：越南旅遊怎麼準備？</h2>
       <p><strong>第一次去越南，先處理防曬、防蚊、充電設備、防盜收納與落地上網。</strong>這五件事比買一長串用品更重要；先依自己的天數、城市與同行者刪減，再補需要的項目。</p>
@@ -493,6 +505,58 @@ const homeStructuredData = {
     border-color: var(--accent);
     color: var(--accent);
   }
+  .shopping-entry {
+    max-width: 740px;
+    margin: 28px auto 48px;
+    padding: 26px 28px;
+    border: 1.5px solid var(--border);
+    border-left: 5px solid var(--accent);
+    border-radius: 8px;
+    background: #fffdf8;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: center;
+  }
+  .shopping-entry-label {
+    margin: 0 0 6px;
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+  .shopping-entry h2 {
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 22px;
+  }
+  .shopping-entry h2::before { display: none; }
+  .shopping-entry p:not(.shopping-entry-label) {
+    margin: 0;
+    color: var(--ink-light);
+    font-size: 14.5px;
+    line-height: 1.75;
+  }
+  .shopping-entry-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 190px;
+  }
+  .shopping-entry-actions a {
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .shopping-entry-actions .shopping-entry-primary {
+    display: inline-flex;
+    padding: 11px 15px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
 
   /* Life notes section */
   .life-section { padding-top: 0; padding-bottom: 24px; }
@@ -730,6 +794,12 @@ const homeStructuredData = {
     .card-grid { grid-template-columns: 1fr; }
     .subscribe-row { flex-direction: column; }
     .subscribe-inner { padding: 28px 20px; }
+    .shopping-entry {
+      grid-template-columns: 1fr;
+      margin: 24px 16px 40px;
+      padding: 22px 20px;
+    }
+    .shopping-entry-actions { min-width: 0; }
   }
   @media (max-width: 600px) {
     .hero, .article { padding: 0 16px; }
