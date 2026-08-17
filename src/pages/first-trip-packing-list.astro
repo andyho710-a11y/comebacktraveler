@@ -3,10 +3,12 @@ import SocialLinks from '../components/SocialLinks.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ContentDisclaimer from '../components/ContentDisclaimer.astro';
+import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 
 const title = "第一次出國行李清單：久久才出國一次的人不要漏帶｜重來的旅人";
 const description = "久久才出國一次，最怕的不是花錢，是少帶了重要的東西。住越南十年、進出機場上百次的過來人，把第一次出國前要確認的事、文件、3C、衣物、藥品、安全用品整理成一份不漏帶的行李清單。";
 const canonical = "https://comebacktraveler.com/first-trip-packing-list";
+const momoLuggageUrl = "https://s.momoshop.com.tw/s/llZBggFG";
 ---
 
 <!DOCTYPE html>
@@ -37,7 +39,7 @@ const canonical = "https://comebacktraveler.com/first-trip-packing-list";
     "mainEntityOfPage": canonical,
     "inLanguage": "zh-TW",
     "datePublished": "2026-06-23",
-    "dateModified": "2026-06-23",
+    "dateModified": "2026-08-17",
     "articleSection": "出國準備",
     "keywords": "第一次出國, 出國行李清單, 出國必備, 行李打包, 出國準備",
     "author": { "@type": "Person", "name": "重來的旅人", "url": "https://comebacktraveler.com/about" },
@@ -89,6 +91,13 @@ const canonical = "https://comebacktraveler.com/first-trip-packing-list";
 
     .inline-link { display: block; margin: 18px 0; font-size: 15px; }
 
+    .product-option { margin: 24px 0 40px; padding: 24px; border: 1.5px solid var(--border); border-left: 5px solid var(--accent); border-radius: 8px; background: #fffdf8; }
+    .product-option-label { margin: 0 0 8px; color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; }
+    .product-option h3 { margin: 0 0 10px; font-family: var(--serif); font-size: 20px; }
+    .product-option ul { margin: 0 0 18px; padding-left: 22px; color: var(--ink-light); font-size: 15px; }
+    .product-option-cta { display: inline-block; padding: 11px 17px; border-radius: 6px; background: var(--accent); color: #fff !important; font-size: 14px; font-weight: 700; text-decoration: none; }
+    .product-option-note { margin: 12px 0 0 !important; color: var(--ink-light); font-size: 12.5px; }
+
     .more-reading { margin: 44px 0 0; padding-top: 28px; border-top: 1px solid var(--border); display: flex; gap: 20px; flex-wrap: wrap; }
     .more-reading a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
     .more-reading a:hover { text-decoration: underline; }
@@ -119,7 +128,7 @@ const canonical = "https://comebacktraveler.com/first-trip-packing-list";
     <div class="author-dot">旅</div>
     <div>
       <div class="meta-author">重來的旅人</div>
-      <div>2026 年 6 月 23 日 · 越南生活 10 年 · 進出機場上百次</div>
+      <div>2026 年 8 月 17 日更新 · 越南生活 10 年 · 進出機場上百次</div>
     </div>
   </div>
 </div>
@@ -127,6 +136,7 @@ const canonical = "https://comebacktraveler.com/first-trip-packing-list";
 <article class="article">
 
   <ContentDisclaimer />
+  <AffiliateDisclosure />
 
   <p class="lead">久久才出國一次，最怕的不是花錢，是少帶了重要的東西。</p>
 
@@ -260,6 +270,30 @@ const canonical = "https://comebacktraveler.com/first-trip-packing-list";
   <p><strong>Q：藥品可以帶出國嗎？</strong><br>個人用藥可以，慢性病藥建議帶處方箋影本。有些國家對特定成分管制嚴格，出發前查目的地規定最保險。</p>
   <p><strong>Q：eSIM 和當地 SIM 卡哪個好？</strong><br>久久飛一次、懶得排隊辦卡的人，eSIM 比較省事；長住或重度用網路的人，當地 SIM 可能更划算。</p>
   <p><strong>Q：行李箱買大的還小的？</strong><br>第一次出國、天數不長，中型（24–26 吋）就夠。太大容易超重，回程還要塞戰利品。</p>
+
+  <h2>24 吋前開行李箱，適合第一次出國嗎？</h2>
+  <p>24 吋通常要託運，適合已購買託運額度、想替回程戰利品留空間的人；若只有短天數、沒有託運額度，先用符合航空公司尺寸限制的登機箱即可，不必為了第一次出國直接買新箱。</p>
+
+  <aside class="product-option" aria-labelledby="eminent-luggage-title">
+    <p class="product-option-label">MOMO 品牌行李箱選項｜賣場資訊，本站未實測</p>
+    <h3 id="eminent-luggage-title">eminent 萬國通路 KK60 24 吋前開行李箱</h3>
+    <ul>
+      <li><strong>賣場標示：</strong>拜耳 PC 材料、TSA 海關鎖、三段式鋁合金拉桿與 360 度旋轉輪。</li>
+      <li><strong>適合先看：</strong>確定會託運，並重視前開取物與品牌保固資訊的人。</li>
+      <li><strong>先不用買：</strong>家裡已有輪況、拉桿與箱體都正常的 24–26 吋行李箱。</li>
+    </ul>
+    <a
+      class="product-option-cta"
+      href={momoLuggageUrl}
+      target="_blank"
+      rel="sponsored nofollow noopener noreferrer"
+      data-affiliate="momo"
+      data-affiliate-product="eminent 萬國通路 KK60 24吋前開行李箱"
+      data-affiliate-category="luggage"
+      data-cta-position="first_trip_luggage_option"
+    >到 momo 查看目前顏色、規格與價格 →</a>
+    <p class="product-option-note">2026-08-17 賣場可見促銷價為 NT$7,650；價格、贈品、庫存與活動可能變動，以開啟後頁面為準。本文含聯盟連結，不影響你的購買價格。</p>
+  </aside>
 
   <h2>結論：不用帶很多，但重要的不能漏</h2>
 

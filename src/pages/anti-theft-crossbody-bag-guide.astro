@@ -9,7 +9,9 @@ const title = '防盜斜背包怎麼選？越南自由行的前背、拉鍊與�
 const description = '防盜斜背包不是有標籤就安全。用前背方式、拉鍊位置、背帶固定、容量與重量，判斷現有包能不能沿用，並整理越南自由行的使用原則。';
 const canonical = 'https://comebacktraveler.com/anti-theft-crossbody-bag-guide';
 const published = '2026-07-31';
+const modified = '2026-08-17';
 const shopeeUrl = 'https://s.shopee.tw/Lm4PqAlxr';
+const momoPacsafeUrl = 'https://s.momoshop.com.tw/s/HoLv7ksQ';
 
 const criteria = [
   {
@@ -86,7 +88,7 @@ const structuredData = {
   description={description}
   keywords="防盜斜背包, 防盜包推薦, 越南自由行安全, 防割包, 旅行斜背包"
   datePublished={published}
-  dateModified={published}
+  dateModified={modified}
   schemaType="BlogPosting"
 >
   <script slot="head" is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
@@ -110,7 +112,7 @@ const structuredData = {
           越南自由行真正需要的不是一個看起來很厲害的包，而是一個能穩定前背、拉鍊在視線內、
           放入手機與護照後仍不會晃動的隨身包。先檢查家裡現有的包，符合條件就不用重買。
         </p>
-        <p class="updated">發布與核對：2026 年 7 月 31 日</p>
+        <p class="updated">發布：2026 年 7 月 31 日｜商品核對：2026 年 8 月 17 日</p>
       </header>
 
       <AffiliateDisclosure />
@@ -178,7 +180,34 @@ const structuredData = {
 
       <section aria-labelledby="option-title">
         <p class="section-label">可進一步比較的選項</p>
-        <h2 id="option-title">OZUKO 機能防盜單肩包</h2>
+        <h2 id="option-title">品牌規格型與平價機能型，差別在哪裡？</h2>
+        <div class="product-card">
+          <div class="product-copy">
+            <p class="store-label">以下為 momo 賣場標示，本站未實際測試</p>
+            <h3>Pacsafe V 防盜城市斜肩包 5L</h3>
+            <p>
+              賣場標示容量 5L、可收納 11 吋平板，並使用「防偷、防搶、防割」等描述。
+              這些仍是賣場宣稱；下單前要確認實際重量、背帶長度、拉鍊固定方式與退換貨條件。
+            </p>
+            <ul>
+              <li><strong>適合先看：</strong>想要明確容量規格、會放平板，且預算可接受品牌價位。</li>
+              <li><strong>不必買：</strong>現有包已能穩定前背、拉鍊可固定，且不需要放 11 吋平板。</li>
+              <li><strong>不要只看標籤：</strong>任何「防盜」字樣都不能取代正確背法與遠離車道的使用習慣。</li>
+            </ul>
+            <a
+              class="product-cta"
+              href={momoPacsafeUrl}
+              target="_blank"
+              rel="sponsored nofollow noopener noreferrer"
+              data-affiliate="momo"
+              data-affiliate-product="Pacsafe V 防盜城市斜肩包 5L"
+              data-affiliate-category="anti_theft_bag"
+              data-cta-position="branded_product"
+            >前往 momo 查看目前規格與價格 →</a>
+            <p class="price-note">2026-08-17 賣場可見促銷價為 NT$3,312；價格、折扣、庫存與賣場內容可能變動，以開啟後頁面為準。</p>
+          </div>
+        </div>
+
         <div class="product-card">
           <div class="product-copy">
             <p class="store-label">以下為賣場標示，本站未實際測試</p>
@@ -280,6 +309,7 @@ const structuredData = {
   .check-list li { position: relative; padding: 8px 0 8px 32px; }
   .check-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
   .product-card { padding: 30px; border: 2px solid var(--ink); border-radius: 10px; background: #fffdf8; box-shadow: 7px 7px 0 var(--warm); }
+  .product-card + .product-card { margin-top: 26px; }
   .store-label { display: inline-block; margin: 0 0 12px; padding: 4px 9px; color: #6e4b05; background: #fff1c7; border-radius: 4px; font-size: 12px; font-weight: 700; }
   .product-copy ul { padding-left: 22px; color: var(--muted); }
   .product-cta { display: inline-block; margin-top: 12px; padding: 14px 20px; color: #fff; background: var(--accent); border-radius: 5px; font-weight: 700; text-decoration: none; }
