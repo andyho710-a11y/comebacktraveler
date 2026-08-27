@@ -105,6 +105,7 @@ const products = [
 ];
 
 const shopeeUrl = "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront";
+const shopeeBagUrl = "https://s.shopee.tw/Lm4PqAlxr";
 const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
 ---
 
@@ -199,11 +200,17 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
     .product-card-cta { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; text-decoration: none; font-size: 14.5px; font-weight: 500; padding: 9px 18px; border-radius: 6px; transition: background 0.2s; }
     .product-card-cta:hover { background: #9e2c1f; }
 
-    .shopee-banner { display: block; text-align: center; border: 1.5px dashed var(--gold); border-radius: 10px; padding: 24px; margin: 32px 0; background: var(--paper-warm); text-decoration: none; color: var(--ink); transition: background 0.2s; }
-    .shopee-banner:hover { background: #ece4d2; }
-    .shopee-banner strong { display: block; font-family: var(--serif); font-size: 18px; color: var(--ink); margin-bottom: 6px; }
-    .shopee-banner span { font-size: 14px; color: var(--ink-light); }
-    .shopee-banner .shopee-go { display: inline-block; margin-top: 12px; color: var(--accent); font-weight: 600; font-size: 14.5px; }
+    .buying-paths { margin: 32px 0; padding: 24px; border: 1.5px solid var(--gold); border-radius: 12px; background: var(--paper-warm); }
+    .buying-paths h2 { margin: 0 0 8px; font-size: 21px; }
+    .buying-paths-intro { margin: 0 0 18px; color: var(--ink-light); font-size: 14.5px; }
+    .buying-paths-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .buying-path { display: flex; flex-direction: column; align-items: flex-start; border: 1px solid var(--border); border-radius: 9px; padding: 18px; background: #fffdf8; }
+    .buying-path-label { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; }
+    .buying-path strong { margin: 5px 0 7px; font-family: var(--serif); font-size: 17px; }
+    .buying-path p { margin: 0 0 14px; color: var(--ink-light); font-size: 13.5px; line-height: 1.65; }
+    .buying-path a { margin-top: auto; display: inline-flex; justify-content: center; width: 100%; padding: 10px 14px; border-radius: 7px; background: var(--accent); color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; }
+    .buying-path a:hover { background: #9e2c1f; }
+    .buying-paths-more { margin: 16px 0 0; text-align: center; font-size: 14px; }
 
     .shopee-block {
       border: 1px solid #ee4d2d;
@@ -245,6 +252,8 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
       .product-card { flex-direction: column; align-items: stretch; text-align: left; }
       .product-card-img { width: 100%; height: 180px; }
       .product-card-cta { justify-content: center; }
+      .buying-paths { padding: 18px; }
+      .buying-paths-grid { grid-template-columns: 1fr; }
       .momo-picks-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -274,7 +283,7 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
     <div class="author-dot">旅</div>
     <div>
       <div class="meta-author">重來的旅人</div>
-      <div>2026 年 8 月 17 日更新 · 越南生活 10 年 · 在地經驗推薦</div>
+      <div>2026 年 8 月 27 日更新 · 越南生活 10 年 · 在地經驗推薦</div>
     </div>
   </div>
 </div>
@@ -355,11 +364,25 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
     下單前再確認三件事：防曬是否有清楚標示 SPF／PA 與耐水需求、充電器輸入電壓是否涵蓋 100–240V、包包能不能貼身前背並把護照與手機分開收。這三項比品牌名或折扣更能避免出發後才發現買錯。
   </p>
 
-  <a class="shopee-banner" href={shopeeUrl} target="_blank" rel="sponsored noopener noreferrer" data-affiliate-product="越南旅遊必備清單" data-affiliate-category="travel_essentials" data-cta-position="article_top">
-    <strong>先逛蝦皮越南旅遊必備清單</strong>
-    <span>防蚊、收納、充電與防身小物集中比較；已有同類用品就不必重複買。</span>
-    <span class="shopee-go">打開清單，依自己的行程挑選 →</span>
-  </a>
+  <section class="buying-paths" aria-labelledby="buying-paths-title">
+    <h2 id="buying-paths-title">先選需求，不用在十幾樣商品裡慢慢找</h2>
+    <p class="buying-paths-intro">夜市、車站與機車移動較多的人，先處理隨身包即可。以下兩款是不同平台與規格取向的直接入口；價格、庫存與賣家資訊請以下單頁為準。</p>
+    <div class="buying-paths-grid">
+      <div class="buying-path">
+        <span class="buying-path-label">機能取向・蝦皮</span>
+        <strong>OZUKO 機能防盜單肩包</strong>
+        <p>適合想找可前背、拉鍊收口與分層收納的人；商品規格與實際防盜結構需在下單頁再次確認。</p>
+        <a href={shopeeBagUrl} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate="shopee" data-affiliate-product="OZUKO 機能防盜單肩包" data-affiliate-category="anti_theft_bag" data-cta-position="decision_primary_shopee">查看蝦皮商品 →</a>
+      </div>
+      <div class="buying-path">
+        <span class="buying-path-label">品牌規格取向・momo</span>
+        <strong>Pacsafe V 防盜城市斜肩包 5L</strong>
+        <p>適合重視品牌防盜設計、5L 容量與 11 吋平板收納的人；實際尺寸、顏色與庫存以下單頁為準。</p>
+        <a href={momoPacsafeUrl} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate="momo" data-affiliate-product="Pacsafe V 防盜城市斜肩包 5L" data-affiliate-category="anti_theft_bag" data-cta-position="decision_primary_momo">查看 momo 商品 →</a>
+      </div>
+    </div>
+    <p class="buying-paths-more">還要找防蚊、充電或收納用品？<a class="inline" href={shopeeUrl} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate="shopee" data-affiliate-product="越南旅遊必備清單" data-affiliate-category="travel_essentials" data-cta-position="decision_secondary_list">再打開完整蝦皮清單</a></p>
+  </section>
 
   <h2>一、對付炎熱天氣：防曬 + 防蚊</h2>
 
@@ -388,7 +411,7 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
       <div class="product-card-name">{products[0].name}</div>
       <div class="product-card-spec">{products[0].spec}</div>
       <p class="product-card-why">{products[0].why}</p>
-      <a class="product-card-cta" href={products[0].href} target="_blank" rel="sponsored nofollow noopener" data-affiliate-product={products[0].name} data-affiliate-category="sunscreen" data-cta-position="product_card">{products[0].cta} →</a>
+      <a class="product-card-cta" href={products[0].href} target="_blank" rel="sponsored nofollow noopener" data-affiliate="coupang" data-affiliate-product={products[0].name} data-affiliate-category="sunscreen" data-cta-position="product_card">{products[0].cta} →</a>
     </div>
   </div>
 
@@ -405,7 +428,7 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
       <div class="product-card-name">{products[1].name}</div>
       <div class="product-card-spec">{products[1].spec}</div>
       <p class="product-card-why">{products[1].why}</p>
-      <a class="product-card-cta" href={products[1].href} target="_blank" rel="sponsored nofollow noopener" data-affiliate-product={products[1].name} data-affiliate-category="mosquito_repellent" data-cta-position="product_card">{products[1].cta} →</a>
+      <a class="product-card-cta" href={products[1].href} target="_blank" rel="sponsored nofollow noopener" data-affiliate="coupang" data-affiliate-product={products[1].name} data-affiliate-category="mosquito_repellent" data-cta-position="product_card">{products[1].cta} →</a>
     </div>
   </div>
 
@@ -445,7 +468,7 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
       <div class="product-card-name">{products[2].name}</div>
       <div class="product-card-spec">{products[2].spec}</div>
       <p class="product-card-why">{products[2].why}</p>
-      <a class="product-card-cta" href={products[2].href} target="_blank" rel="sponsored nofollow noopener" data-affiliate-product={products[2].name} data-affiliate-category="gan_charger" data-cta-position="product_card">{products[2].cta} →</a>
+      <a class="product-card-cta" href={products[2].href} target="_blank" rel="sponsored nofollow noopener" data-affiliate="coupang" data-affiliate-product={products[2].name} data-affiliate-category="gan_charger" data-cta-position="product_card">{products[2].cta} →</a>
     </div>
   </div>
 
@@ -493,7 +516,7 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
       <div class="product-card-name">{products[3].name}</div>
       <div class="product-card-spec">{products[3].spec}</div>
       <p class="product-card-why">{products[3].why}</p>
-      <a class="product-card-cta" href={products[3].href} target="_blank" rel="sponsored nofollow noopener" data-affiliate-product={products[3].name} data-affiliate-category="anti_theft_bag" data-cta-position="product_card">{products[3].cta} →</a>
+      <a class="product-card-cta" href={products[3].href} target="_blank" rel="sponsored nofollow noopener" data-affiliate="coupang" data-affiliate-product={products[3].name} data-affiliate-category="anti_theft_bag" data-cta-position="product_card">{products[3].cta} →</a>
     </div>
   </div>
 
@@ -541,18 +564,18 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
     <p class="shopee-eyebrow">🛒 越南必備小物・蝦皮精選清單</p>
     <h3 class="shopee-title">習慣用蝦皮的，這份清單一次幫你備齊</h3>
     <p class="shopee-desc">
-      蝦皮會是這篇的主要購買入口：我把防曬、防蚊、充電、收納、防身的實用小物整理成一份選品清單，適合想集中一次下單、慢慢比價、湊免運的人。上方酷澎連結只作為單品補充比價，真正要備齊越南旅遊用品，建議先從這份蝦皮清單開始。
+      我把防曬、防蚊、充電、收納、防身的實用小物整理成一份選品清單，適合已經知道自己缺哪一類、想集中比價的人。若只缺一件，先用上方的直接商品入口，避免進入清單後買到不需要的東西。
     </p>
-    <a class="shopee-btn" href="https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront" target="_blank" rel="sponsored noopener noreferrer" data-affiliate-product="越南旅遊必備清單" data-affiliate-category="travel_essentials" data-cta-position="primary_list">
+    <a class="shopee-btn" href={shopeeUrl} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate="shopee" data-affiliate-product="越南旅遊必備清單" data-affiliate-category="travel_essentials" data-cta-position="secondary_list">
       👉 打開蝦皮越南必備清單
     </a>
-    <p class="shopee-note">蝦皮 App 內開啟可直接加購物車，追蹤效期較長，慢慢逛也算數。</p>
+    <p class="shopee-note">開啟後請再次確認商品、賣家、規格、價格與庫存；不要只看折扣幅度決定。</p>
   </div>
 
   <h2>更多越南必備小物</h2>
 
   <p>
-    如果還想看更多，完整的蝦皮選品清單在這裡：<a class="inline" href={shopeeUrl} target="_blank" rel="sponsored noopener noreferrer">越南旅遊必備小物・蝦皮精選清單 →</a>
+    如果還想看更多，完整的蝦皮選品清單在這裡：<a class="inline" href={shopeeUrl} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate="shopee" data-affiliate-product="越南旅遊必備清單" data-affiliate-category="travel_essentials" data-cta-position="article_bottom_list">越南旅遊必備小物・蝦皮精選清單 →</a>
   </p>
 
   <div class="tip-box">
