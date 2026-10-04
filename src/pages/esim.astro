@@ -4,9 +4,11 @@ import BlogLayout from '../layouts/BlogLayout.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
 import ContentDisclaimer from '../components/ContentDisclaimer.astro';
+import AffiliateRecommendations from '../components/AffiliateRecommendations.astro';
+import { esimAffiliateUrls, esimRecommendations } from '../data/esim-recommendations';
 
-const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
-const KKDAY_LINK = 'https://onelink.one/s/nnjWf';
+const JOYTEL_LINK = esimAffiliateUrls.joytelCatalog;
+const KKDAY_LINK = esimAffiliateUrls.kkdayVietnam;
 const esimFaqs = [
   {
     question: 'eSIM 和實體 SIM、WiFi 機差在哪？',
@@ -37,10 +39,9 @@ const brands = [
     name: 'JOYTEL',
     badges: [{ label: '台灣品牌', cls: 'badge-tw' }, { label: '首推', cls: 'badge-rec' }],
     coverage: '日、韓、東南亞、歐洲、美加',
-    price: 'NT$299–799',
     priceNote: '原生/漫遊皆有',
-    line: '原生線路',
-    lineNote: 'Docomo/SoftBank/KDDI',
+    line: '依商品分原生／漫遊',
+    lineNote: '本頁三電信方案為漫遊',
     hotspot: true,
     support: true,
     supportNote: 'LINE 全年無休',
@@ -52,7 +53,6 @@ const brands = [
     name: 'DJB',
     badges: [{ label: '聲量 No.1', cls: 'badge-rec' }],
     coverage: '全球 90+ 國',
-    price: 'NT$450–650',
     priceNote: '暢日卡PLUS',
     line: '漫遊',
     lineNote: '多國電信合作',
@@ -67,7 +67,6 @@ const brands = [
     name: 'Klook',
     badges: [{ label: '平台型', cls: 'badge-platform' }],
     coverage: '日、韓、東南亞、澳洲等',
-    price: 'NT$350–550',
     priceNote: '吃到飽不降速',
     line: '漫遊',
     lineNote: '',
@@ -84,7 +83,6 @@ const brands = [
     url: KKDAY_LINK,
     badges: [{ label: '平台型', cls: 'badge-platform' }],
     coverage: '日、韓、東南亞等',
-    price: 'NT$295–623',
     priceNote: '含/不含門號',
     line: '漫遊',
     lineNote: '',
@@ -99,7 +97,6 @@ const brands = [
     name: 'WaySim 威訊',
     badges: [{ label: 'CP值高', cls: 'badge-cp' }],
     coverage: '日本、韓國等',
-    price: 'NT$289–549',
     priceNote: 'SK/Softbank 原生',
     line: '原生線路',
     lineNote: '5G 支援',
@@ -114,7 +111,6 @@ const brands = [
     name: 'Airalo',
     badges: [{ label: '國際品牌', cls: 'badge-intl' }],
     coverage: '全球 190+ 國',
-    price: 'NT$280–500',
     priceNote: '依方案不同',
     line: '漫遊',
     lineNote: '',
@@ -184,6 +180,16 @@ const brands = [
         <p class="tip-body" style="margin-bottom:0;">需要進一步判斷時，可先看 <a href="/esim-quiz" style="color:var(--accent);font-weight:600;">30 秒上網方案測驗</a>，或遇到安裝問題直接看 <a href="/esim/troubleshoot" style="color:var(--accent);font-weight:600;">eSIM 設定排解</a>。</p>
       </section>
 
+      <AffiliateDisclosure />
+      <AffiliateRecommendations
+        id="esim-quick-decision"
+        heading="30 秒選出適合你的 eSIM"
+        intro="先看你要去哪裡，再選想查看的品牌。手機已確認支援 eSIM，再往下挑就好。"
+        article="/esim"
+        placement="esim_quick_decision"
+        recommendations={esimRecommendations}
+      />
+
       <div class="story-box">
         <strong>先說說我自己</strong>——我不是旅遊達人，也不是網紅。<br />
         我是一個在越南工廠當副總、養蝦失敗、跑過 Uber、
@@ -221,7 +227,7 @@ const brands = [
       <h2>六家 eSIM 品牌完整比較</h2>
       <p>
         以下是我整理的主要品牌比較，以<strong>台灣旅客最常去的日本、韓國、東南亞</strong>為主要參考方向。
-        價格以「日本 5 天」為基準，僅供參考，實際以各家官網為準。
+        價格與方案以官方頁面為準，購買前請依自己的旅遊天數確認。
       </p>
 
       <!-- Table -->
@@ -240,7 +246,7 @@ const brands = [
               <tr>
                 <th>品牌</th>
                 <th>覆蓋地區</th>
-                <th>日本5天參考價</th>
+                <th>價格與方案</th>
                 <th>線路</th>
                 <th>熱點分享</th>
                 <th>中文客服</th>
@@ -262,7 +268,7 @@ const brands = [
                   </td>
                   <td>{b.coverage}</td>
                   <td>
-                    {b.price}
+                    以官方頁面為準
                     {b.priceNote && <div class="cell-note">{b.priceNote}</div>}
                   </td>
                   <td>
@@ -287,7 +293,7 @@ const brands = [
             </tbody>
           </table>
         </div>
-        <p class="table-note">※ 價格為參考區間，以各官網最新方案為準。</p>
+        <p class="table-note">※ 價格與方案以官方頁面為準。</p>
       </div>
 
       <h2>為什麼這篇推薦 JOYTEL？</h2>
@@ -301,36 +307,35 @@ const brands = [
         多數人需要的不是等 email 回覆，是馬上有人能用中文講清楚怎麼處理。
       </p>
       <p>
-        另外，JOYTEL 在日本提供<strong>真正的原生線路</strong>（Docomo / SoftBank / KDDI），
-        不是漫遊繞一圈，延遲低、速度穩，這對用 Google Maps 導航或視訊的人差異很明顯。
+        另外，JOYTEL 日本商品有原生與漫遊等不同方案。
+        <strong>上方的日本三電信 eSIM 是漫遊線路</strong>，別把「使用當地電信」直接當成「原生線路」；
+        購買前仍要看清楚該商品的線路與限制。
       </p>
 
       <div class="story-box">
         「這篇不是替任何品牌背書。<br>
-        本站的比較表都是依各品牌官方公告的線路類型、客服管道、價格區間整理，<br>
+        本站的比較表都是依各品牌官方公告的線路類型、客服管道與方案資訊整理，<br>
         立場只有一個：幫帶著家人出門的台灣旅客，少在機場慌亂換卡。」
       </div>
 
-      <AffiliateDisclosure />
-
       <!-- CTA -->
       <div class="cta-box">
-        <p>想試試 JOYTEL？<br />下方連結可以直接查看日本、東南亞、韓國各方案</p>
-        <a class="cta-btn" href={JOYTEL_LINK} target="_blank" rel="noopener noreferrer sponsored">
-          前往 JOYTEL 查看方案 →
+        <p>還想多了解 JOYTEL？<br />先看線路、客服與選購重點，再決定是否適合這趟旅行。</p>
+        <a class="cta-btn" href={JOYTEL_LINK || '/esim/joytel'} target={JOYTEL_LINK ? '_blank' : undefined} rel={JOYTEL_LINK ? 'sponsored noopener noreferrer' : undefined}>
+          {JOYTEL_LINK ? '前往 JOYTEL 查看方案' : '看 JOYTEL 選購重點'} →
         </a>
-        <p class="cta-label">※ 本文含聯盟行銷連結，點擊後購買我會獲得少量佣金，不影響你的價格</p>
+        {JOYTEL_LINK && <p class="cta-label">※ 本文含聯盟行銷連結，點擊後購買我會獲得少量佣金，不影響你的價格</p>}
       </div>
 
-      <h3>需要當地門號接簡訊？可以看 KKday</h3>
+      <h3>去越南，可以看 KKday 的單國方案</h3>
       <p>
-        JOYTEL 是我的首選，但如果你的需求是「要一個能收當地簡訊的門號」（例如要註冊當地 App、收 OTP 驗證碼），那 KKday 有提供「含門號」的方案，這點是純上網 eSIM 做不到的。
+        下方連結是 KKday 的越南 eSIM 商品，適合只去越南的行程。是否含門號、能否通話與收簡訊，請依所選方案的商品說明確認。
       </p>
       <p>
-        KKday 是大家熟悉的旅遊平台，eSIM 方案選擇多、常跟著旅遊活動有優惠，剛好遇到 618 這種購物檔期可以留意折扣。
+        如果是為了註冊當地 App 或收 OTP 驗證碼，不能只看到「含門號」就認為能用；這個商品的注意事項列明不支援接收當地 App 驗證簡訊。
       </p>
       <p>
-        <a href={KKDAY_LINK} target="_blank" rel="sponsored noopener noreferrer" style="color:var(--accent);font-weight:500;">前往 KKday 查看 eSIM 方案 →</a>
+        <a href={KKDAY_LINK} target="_blank" rel="sponsored noopener noreferrer" style="color:var(--accent);font-weight:500;">前往 KKday 查看越南 eSIM 方案 →</a>
       </p>
       <p class="table-note">※ 本段為聯盟連結，點擊購買我會獲得少量佣金，不影響你的價格</p>
 
@@ -352,7 +357,8 @@ const brands = [
         </p>
       </div>
 
-      <h2>挑選 eSIM 的三個重點</h2>
+      <h2 id="esim-buying-checklist" tabindex="-1">挑選 eSIM 的三個重點</h2>
+      <p>多國／跨洲行程先列出每一站與停留天數，核對方案是否全部涵蓋、有效期是否足夠、流量是共用或每日重置，再比較區域／全球方案與分國購買的總價。</p>
 
       <h3>1. 原生線路 vs 漫遊線路</h3>
       <p>
@@ -372,8 +378,8 @@ const brands = [
       <h3>3. 購買時間</h3>
       <p>
         eSIM 大多下單後 5 分鐘到幾小時內寄出 QR Code，
-        建議<strong>出發前 1–3 天購買</strong>，在家 WiFi 環境下完成安裝，
-        落地後只需切換啟用，最省心。
+        可以<strong>出發前先買好</strong>，但安裝與啟用時間要依商品指示，
+        部分方案掃描後就開始計算天數；先確認再安裝，才不會提早用掉有效期。
       </p>
 
       <div class="tip-box">
@@ -447,6 +453,8 @@ const brands = [
 </script>
 
 <style>
+  #esim-buying-checklist { scroll-margin-top: 96px; }
+
   .esim-root {
     --ink: #1a1208;
     --ink-light: #4a3f2f;
