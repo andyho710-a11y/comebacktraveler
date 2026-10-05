@@ -24,12 +24,9 @@ interface Props {
   article: string;
   placement: string;
   recommendations: Recommendation[];
-  priceNote?: string;
 }
 
-const { id, heading, intro, article, placement, recommendations,
-  priceNote = '價格與方案以官方頁面為準；付款前再確認手機相容性、使用天數、涵蓋國家與熱點限制。',
-} = Astro.props;
+const { id, heading, intro, article, placement, recommendations } = Astro.props;
 // Missing partner URLs use real internal guidance links, never empty/# purchase CTAs.
 for (const item of recommendations) {
   for (const offer of item.offers) {
@@ -82,7 +79,7 @@ for (const item of recommendations) {
       </li>
     ))}
   </ul>
-  <p class="price-note">{priceNote}</p>
+  <p class="price-note">價格與方案以官方頁面為準；付款前再確認手機相容性、使用天數、涵蓋國家與熱點限制。</p>
 </section>
 
 <style>

@@ -6,7 +6,7 @@
 
 - 「衣物、盥洗用品、拖鞋、收納袋怎麼帶」的小建議與原有延伸閱讀後，新增 BAGSMART 推薦。
 - 「24 吋前開行李箱，適合第一次出國嗎？」後，將原有單一 momo 推薦換成 KK60 的 momo／蝦皮選項。
-- 沿用 AffiliateRecommendations；只新增可選 priceNote，eSIM 預設文案與元件 CSS 均不變。沒有建立另一套 UI 或 tracking。
+- 為保護 eSIM baseline，AffiliateRecommendations 完全恢復 origin/main 原版；packing 使用簡單的專用 PackingRecommendation 呈現既有文案與四個 CTA。價格提醒只由 packing 專用元件呈現，tracking 沿用 SiteNav 既有 AffiliateClickTracker，沒有另一套事件系統。
 - 移除本篇旧 momo URL、固定價格與不再使用的 product-option CSS。其餘段落、SEO、schema、canonical、sitemap 與原有站內連結保留。
 
 ## 正式 CTA 與 tracking
@@ -33,7 +33,7 @@ BAGSMART 名稱與款式依使用者正式商品資料，明列 6 件組與 BLAS
 - `ASTRO_TELEMETRY_DISABLED=1 npm run build`：44 頁通過。
 - `node --experimental-strip-types --test tests/affiliate-click-tracker.test.mjs tests/packing-affiliate.test.mjs`：11/11 通過。新測試以建置後 HTML 的真實 CTA 屬性執行既有 tracker，驗證四個事件與正確放置位置。
 - title、meta、canonical、JSON-LD、sitemap 與原有站內連結比對不變。
-- `/esim` 頁面／data／tracker 未修改；排除 Astro CSS 打包位置差異後，建置 HTML 相同；推薦元件 CSS 原文不變。新增元件引用使 Astro 將部分共用 CSS 由外部檔移為 inline，不是功能或版面變更。
+- `/esim` 頁面／data／tracker／共用推薦元件未修改；以最新 origin/main 重新建置，比較完整 HTML、外部 CSS 內容與 inline 狀態，確認 baseline 一致。
 - 可見瀏覽器检查 320px、390px、1280px：手機 CTA 垂直排列、間距與文字正常，Tab／Shift+Tab 可移動，焦點外框清楚。未對正式商品 CTA 製造測試点击，事件以隔離的測試驗證；不代表 GA4 production 收件或聯盟訂單歸因已驗證。
 - repo 無 lint script；未新增 type-check dependency。
 

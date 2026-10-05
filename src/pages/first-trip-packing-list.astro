@@ -4,8 +4,8 @@ import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ContentDisclaimer from '../components/ContentDisclaimer.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
-import AffiliateRecommendations from '../components/AffiliateRecommendations.astro';
-import { luggageRecommendations, organizerRecommendations, packingArticle, packingPriceNote } from '../data/first-trip-packing-recommendations';
+import PackingRecommendation from '../components/PackingRecommendation.astro';
+import { luggageRecommendations, organizerRecommendations, packingArticle } from '../data/first-trip-packing-recommendations';
 
 const title = "第一次出國行李清單：久久才出國一次的人不要漏帶｜重來的旅人";
 const description = "久久才出國一次，最怕的不是花錢，是少帶了重要的東西。住越南十年、進出機場上百次的過來人，把第一次出國前要確認的事、文件、3C、衣物、藥品、安全用品整理成一份不漏帶的行李清單。";
@@ -226,14 +226,13 @@ const canonical = "https://comebacktraveler.com/first-trip-packing-list";
   </div>
   <p class="inline-link">👉 關於旅行小物怎麼挑、哪些真的用得到，我整理在這篇 → <a href="/vietnam-travel-essentials">越南旅遊必備小物推薦</a></p>
 
-  <AffiliateRecommendations
+  <PackingRecommendation
     id="packing-recommendation"
     heading="衣服較多，想把行李整理得更整齊？"
     intro="不用為了打包多買一堆小物；需要分類衣物時，再挑尺寸合適的收納袋。"
     article={packingArticle}
     placement="packing-recommendation"
-    recommendations={organizerRecommendations}
-    priceNote={packingPriceNote}
+    recommendation={organizerRecommendations[0]}
   />
 
   <h2>藥品、防蚊、腸胃藥、OK 繃：健康類清單</h2>
@@ -282,14 +281,13 @@ const canonical = "https://comebacktraveler.com/first-trip-packing-list";
   <h2>24 吋前開行李箱，適合第一次出國嗎？</h2>
   <p>24 吋通常要託運，適合已購買託運額度、想替回程戰利品留空間的人；若只有短天數、沒有託運額度，先用符合航空公司尺寸限制的登機箱即可，不必為了第一次出國直接買新箱。</p>
 
-  <AffiliateRecommendations
+  <PackingRecommendation
     id="luggage-recommendation"
     heading="想一次買到位的 24 吋前開式行李箱"
     intro="先確認這趟需不需要託運，再決定是否買新箱；同款在兩個平台查看，也別忘了核對規格與運費。"
     article={packingArticle}
     placement="luggage-recommendation"
-    recommendations={luggageRecommendations}
-    priceNote={packingPriceNote}
+    recommendation={luggageRecommendations[0]}
   />
 
   <h2>結論：不用帶很多，但重要的不能漏</h2>
