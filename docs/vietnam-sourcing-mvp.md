@@ -1,5 +1,7 @@
 # Vietnam Sourcing MVP — implementation and handoff
 
+> Historical frontend snapshot at `8f58bbf6c89dca636cca336041c6b52ddf95f972`. The backend connection, current behavior and deployment requirements are documented in [vietnam-sourcing-backend.md](./vietnam-sourcing-backend.md).
+
 ## Audit and baseline (2026-10-06)
 
 - Production base: local `main` and cached `origin/main` at `79e1735cef5e25864bb13707b54e81f76238ffe0`. No network fetch, push, merge or deployment performed.

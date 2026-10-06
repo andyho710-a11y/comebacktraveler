@@ -17,6 +17,7 @@ export interface RFQ {
   schema_version: 1;
   rfq_id: string;
   created_at: string;
+  updated_at: string;
   company: { name: string; tax_id: string; website: string };
   contact: { name: string; title: string; email: string; phone: string; line_id: string };
   product: { name: string; category: keyof typeof CATEGORIES; purpose: string };
@@ -82,12 +83,12 @@ export function validateIntake(input: IntakeInput): ValidationResult {
   if (input.consent !== true) errors.consent = '請勾選同意後再提交。';
   return { valid: Object.keys(errors).length === 0, spam: false, errors };
 }
-export function serializeRFQ(input: IntakeInput, search = '', id = crypto.randomUUID(), now = new Date().toISOString()): RFQ {
+export function serializeRFQ(input: IntakeInput, search = '', id: string = crypto.randomUUID(), now = new Date().toISOString()): RFQ {
   if (!validateIntake(input).valid) throw new Error('Invalid RFQ');
   const params = new URLSearchParams(search);
   const attribution = (name: string) => (params.get(name) ?? '').slice(0, 200);
   return {
-    schema_version: 1, rfq_id: id, created_at: now,
+    schema_version: 1, rfq_id: id, created_at: now, updated_at: now,
     company: { name: input.company_name.trim(), tax_id: input.tax_id, website: input.website },
     contact: { name: input.contact_name.trim(), title: input.title, email: input.email, phone: input.phone, line_id: input.line_id },
     product: { name: input.product_name, category: input.product_category as RFQ['product']['category'], purpose: input.purpose },
@@ -104,19 +105,42 @@ export type SourcingEvent = 'vietnam_sourcing_view' | 'vietnam_sourcing_cta_clic
 export function analyticsDimensions(category = '', services: readonly string[] = []) {
   return { page_path: '/vietnam-sourcing', product_category: Object.hasOwn(CATEGORIES, category) ? category : 'unspecified', services_requested: [...new Set(services.filter(key => Object.hasOwn(SERVICES, key)))].join(',') || 'none' };
 }
-export type SubmissionResult = { ok: true; rfq_id: string } | { ok: false; code: 'not_configured' | 'network' | 'rejected' };
-export type RFQTransport = (payload: RFQ) => Promise<SubmissionResult>;
+export const ATTRIBUTION_FIELDS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const;
+export interface RFQSubmission {
+  schema_version: 1;
+  submission_id: string;
+  input: IntakeInput;
+  attribution: Record<typeof ATTRIBUTION_FIELDS[number], string>;
+}
+export function submissionEnvelope(payload: RFQ, honeypot = ''): RFQSubmission {
+  return {
+    schema_version: 1, submission_id: payload.rfq_id,
+    input: {
+      company_name: payload.company.name, tax_id: payload.company.tax_id, website: payload.company.website,
+      contact_name: payload.contact.name, title: payload.contact.title, email: payload.contact.email, phone: payload.contact.phone, line_id: payload.contact.line_id,
+      product_name: payload.product.name, product_category: payload.product.category, purpose: payload.product.purpose,
+      specifications: payload.specifications, quantity: payload.quantity, frequency: payload.frequency, target_price: payload.target_price, moq: payload.moq,
+      oem: payload.oem, odm: payload.odm, private_label: payload.private_label, certifications: payload.certifications, order_timeline: payload.order_timeline,
+      existing_supplier_status: payload.existing_supplier_status, services_requested: payload.services_requested, additional_notes: payload.additional_notes,
+      consent: payload.consent.accepted, website_confirmation: honeypot,
+    },
+    attribution: Object.fromEntries(ATTRIBUTION_FIELDS.map(key => [key, payload[key]])) as RFQSubmission['attribution'],
+  };
+}
+export type SubmissionResult = { ok: true; rfq_id: string } | { ok: false; code: 'not_configured' | 'network' | 'rejected' | 'rate_limited' };
+export type RFQTransport = (payload: RFQ, honeypot?: string) => Promise<SubmissionResult>;
 /** TODO: inject a transport backed by durable server storage. Never fake success. */
 export const unavailableTransport: RFQTransport = async () => ({ ok: false, code: 'not_configured' });
 /** Future same-origin endpoint contract: acknowledge only after durable storage. */
 export function createHttpTransport(endpoint: string, request: typeof fetch = fetch): RFQTransport {
   if (!/^\/api\/[a-z0-9/-]+$/i.test(endpoint)) throw new Error('A same-origin /api/ endpoint is required');
-  return async payload => {
+  return async (payload, honeypot = '') => {
     try {
-      const response = await request(endpoint, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': payload.rfq_id }, body: JSON.stringify(payload), signal: AbortSignal.timeout(15000) });
+      const response = await request(endpoint, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': payload.rfq_id }, body: JSON.stringify(submissionEnvelope(payload, honeypot)), signal: AbortSignal.timeout(15000) });
+      if (response.status === 429) return { ok: false, code: 'rate_limited' };
       if (!response.ok) return { ok: false, code: 'rejected' };
       const receipt = await response.json();
-      return receipt?.stored === true && receipt.rfq_id === payload.rfq_id ? { ok: true, rfq_id: receipt.rfq_id } : { ok: false, code: 'rejected' };
+      return receipt?.stored === true && receipt.submission_id === payload.rfq_id && /^RFQ-\d{8}-[a-f0-9]{32}$/.test(receipt.rfq_id) ? { ok: true, rfq_id: receipt.rfq_id } : { ok: false, code: 'rejected' };
     } catch { return { ok: false, code: 'network' }; }
   };
 }

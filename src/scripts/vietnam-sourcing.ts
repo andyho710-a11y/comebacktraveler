@@ -1,4 +1,4 @@
-import { analyticsDimensions, createSubmissionGate, readIntake, serializeRFQ, unavailableTransport, validateIntake } from '../lib/vietnam-sourcing/rfq';
+import { analyticsDimensions, createHttpTransport, createSubmissionGate, readIntake, serializeRFQ, validateIntake } from '../lib/vietnam-sourcing/rfq';
 import type { RFQ, SourcingEvent } from '../lib/vietnam-sourcing/rfq';
 
 const form = document.querySelector<HTMLFormElement>('#sourcing-form');
@@ -6,8 +6,7 @@ const button = document.querySelector<HTMLButtonElement>('#rfq-submit');
 const feedback = document.querySelector<HTMLElement>('#rfq-feedback');
 if (form && button && feedback) {
   const landingSearch = window.location.search;
-  // TODO: replace only this transport after the endpoint and privacy review pass.
-  const submit = createSubmissionGate(unavailableTransport);
+  const submit = createSubmissionGate(createHttpTransport('/api/vietnam-sourcing'));
   let pending: RFQ | undefined;
   let pendingFingerprint = '';
   let started = false;
@@ -64,6 +63,7 @@ if (form && button && feedback) {
     button.disabled = true;
     button.textContent = '正在處理需求…';
     form.setAttribute('aria-busy', 'true');
+    form.setAttribute('inert', '');
     try {
       const fingerprint = JSON.stringify(input);
       if (!pending || pendingFingerprint !== fingerprint) { pending = serializeRFQ(input, landingSearch); pendingFingerprint = fingerprint; }
@@ -72,19 +72,20 @@ if (form && button && feedback) {
       if (result.ok) {
         complete = true;
         track('vietnam_sourcing_form_success');
-        feedback.textContent = '您的採購需求已收到。我們將透過您提供的聯絡方式進行需求確認。';
+        feedback.textContent = '需求已成功送出。我們將透過您提供的聯絡方式進行需求確認。';
         form.reset();
         pending = undefined;
         pendingFingerprint = '';
       } else {
-        feedback.textContent = result.code === 'not_configured' ? '線上需求接收功能尚未開通，資料尚未送出或保存。您填寫的內容仍保留在此頁，請使用現有聯絡方式與我們聯絡。' : '資料尚未確認收到，請稍後再試或使用現有聯絡方式。';
+        feedback.textContent = result.code === 'rate_limited' ? '提交次數較多，目前未能確認需求收到。請約 10 分鐘後再試或使用現有聯絡方式。' : '目前未能確認需求已成功送出。您填寫的內容仍保留在此頁，請稍後重試或使用現有聯絡方式。';
       }
-    } catch { feedback.textContent = '無法處理需求，資料尚未送出，請稍後再試。'; }
+    } catch { feedback.textContent = '目前未能確認需求已成功送出，請稍後重試。'; }
     finally {
       busy = false;
       button.disabled = complete;
-      button.textContent = complete ? '需求已收到' : '提交採購需求（接收功能準備中）';
+      button.textContent = complete ? '需求已成功送出' : '提交採購需求';
       form.removeAttribute('aria-busy');
+      form.removeAttribute('inert');
       feedback.focus();
     }
   });

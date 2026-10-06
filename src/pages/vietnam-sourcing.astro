@@ -29,7 +29,7 @@ const structuredData = {
   ],
 };
 ---
-<BlogLayout title={title} description={description} schemaType="WebPage">
+<BlogLayout title={title} description={description} schemaType="WebPage" sensitiveIntake>
   <Fragment slot="head">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,7 +46,7 @@ const structuredData = {
         <h1 id="hero-title">尋找越南工廠，<br />不必先飛越南一家一家找</h1>
         <p class="vs-lead">告訴我們您要採購的產品與規格，我們協助尋找、初步篩選並聯繫合適的越南供應商。</p>
         <div class="vs-actions"><a class="vs-primary" href="#rfq" data-sourcing-cta="rfq">提交採購需求</a><a class="vs-secondary" href="#process" data-sourcing-cta="process">了解服務流程</a></div>
-        <p class="vs-caption">為台灣企業提供人工主導的尋源協助 · 線上 RFQ 接收功能準備中</p>
+        <p class="vs-caption">為台灣企業提供人工主導的尋源協助</p>
       </section>
       <section class="vs-trust" aria-labelledby="trust-title"><h2 id="trust-title">先線上篩選，再實地確認</h2><p>我們採取「先線上篩選、再實地確認」的方式，先透過公開企業資料、工廠資訊、直接聯繫、報價與視訊等方式縮小候選範圍；只有在具體採購需求與候選供應商值得進一步確認時，再安排實地訪廠。</p><p>您提出需求，我們協助整理候選資訊與聯繫；採購決策及商品交易由買方與供應商確認。</p></section>
       <section id="process" tabindex="-1" aria-labelledby="process-title"><p class="vs-eyebrow">HOW IT WORKS</p><h2 id="process-title">從需求到供應商，分五步進行</h2><ol class="vs-steps">{steps.map(([name, detail], index) => <li><span class="vs-step-number">0{index + 1}</span><h3>{name}</h3><p>{detail}</p></li>)}</ol><p class="vs-callout">商品貨款原則上由買方直接支付供應商，本服務不代收商品貨款。</p></section>

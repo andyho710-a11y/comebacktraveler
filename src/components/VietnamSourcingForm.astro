@@ -22,9 +22,9 @@ const productFields = [
 ];
 ---
 <form id="sourcing-form" novalidate aria-describedby="rfq-availability rfq-required" method="post">
-  <p id="rfq-availability" class="vs-notice">線上需求接收功能準備中。您可以先整理需求並檢查欄位，目前表單不會送出或保存資料。如需聯絡，請使用<a href="/contact">現有聯絡方式</a>。</p>
+  <p id="rfq-availability" class="vs-notice">提交後，我們會依您提供的資料評估需求並進行聯絡。若尚未看到「需求已成功送出」，請稍後重試，或使用<a href="/contact">現有聯絡方式</a>。</p>
   <p id="rfq-required">標示 * 為必填。請先提供足以初步評估的資訊，機密圖面可待需求確認後再提供。</p>
-  <noscript><p class="vs-notice">此表單需要 JavaScript 才能檢查欄位；目前尚未開放線上提交，請使用<a href="/contact">聯絡頁</a>。</p></noscript>
+  <noscript><p class="vs-notice">此表單需要 JavaScript 才能檢查與提交資料，請啟用 JavaScript 或使用<a href="/contact">聯絡頁</a>。</p></noscript>
   <div class="vs-honeypot" aria-hidden="true"><label for="website_confirmation">保留欄位，請勿填寫</label><input id="website_confirmation" name="website_confirmation" tabindex="-1" autocomplete="off" /></div>
   <fieldset><legend>01 · 公司與聯絡資料</legend><div class="vs-fields">
     {companyFields.map(field => <div class="vs-field"><label for={field.name}>{field.label}{field.required && ' *'}</label><input id={field.name} name={field.name} type={field.type ?? 'text'} required={field.required} autocomplete={field.autocomplete} inputmode={field.inputmode} maxlength="300" aria-describedby={`${field.name}-error`} /><span id={`${field.name}-error`} class="vs-error"></span></div>)}
@@ -42,8 +42,8 @@ const productFields = [
   <label class="vs-check vs-consent" for="consent"><input type="checkbox" id="consent" name="consent" value="yes" required aria-describedby="consent-error" />我同意為本次採購需求提供上述資料，以便進行需求確認與聯絡。 *</label>
   <p><a href="/privacy">閱讀現有隱私權政策</a></p><span id="consent-error" class="vs-error"></span>
   <div id="rfq-feedback" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></div>
-  <button id="rfq-submit" type="submit" disabled>提交採購需求（接收功能準備中）</button>
-  <p class="vs-small">送出前會檢查必填資料；接收功能未開通前，不會建立案件或顯示提交成功。</p>
+  <button id="rfq-submit" type="submit" disabled>提交採購需求</button>
+  <p class="vs-small">只有接收服務確認需求已保存後，才會顯示提交成功。重試同一份需求不會重複建立案件。</p>
 </form>
 <script>
   import '../scripts/vietnam-sourcing';

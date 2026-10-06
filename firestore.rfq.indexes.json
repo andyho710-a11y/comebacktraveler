@@ -1,0 +1,9 @@
+{
+  "indexes": [],
+  "fieldOverrides": [
+    { "collectionGroup": "rfqs", "fieldPath": "*", "indexes": [] },
+    { "collectionGroup": "_rfq_receipts", "fieldPath": "*", "indexes": [] },
+    { "collectionGroup": "_rfq_abuse", "fieldPath": "*", "indexes": [] },
+    { "collectionGroup": "_rfq_abuse", "fieldPath": "expires_at", "ttl": true, "indexes": [] }
+  ]
+}

@@ -1,0 +1,4 @@
+# Non-secret deployment parameters. Copy to .env.<project ID> after human review.
+# Intake deliberately defaults off. Do not enable until rules/IAM/endpoint QA pass.
+RFQ_INTAKE_ENABLED=false
+RFQ_SERVICE_ACCOUNT=rfq-intake@comeback-traveler-web.iam.gserviceaccount.com

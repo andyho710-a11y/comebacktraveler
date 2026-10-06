@@ -7,6 +7,23 @@
       "**/node_modules/**"
     ],
     "cleanUrls": true,
-    "trailingSlash": false
+    "trailingSlash": false,
+    "rewrites": [
+      { "source": "/api/vietnam-sourcing", "function": { "functionId": "vietnamSourcingIntake", "region": "asia-east1" } }
+    ]
+  },
+  "functions": [
+    { "source": "functions", "codebase": "rfq-intake", "runtime": "nodejs22", "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run build"], "ignore": ["node_modules", ".git", "tests", "emulator-tests", "*.log", ".env.local"] }
+  ],
+  "firestore": [
+    { "database": "rfq-intake", "location": "asia-east1", "rules": "firestore.rfq.rules", "indexes": "firestore.rfq.indexes.json" }
+  ],
+  "emulators": {
+    "hosting": { "host": "127.0.0.1", "port": 5000 },
+    "functions": { "host": "127.0.0.1", "port": 5001 },
+    "firestore": { "host": "127.0.0.1", "port": 8080 },
+    "auth": { "host": "127.0.0.1", "port": 9099 },
+    "ui": { "enabled": false },
+    "singleProjectMode": true
   }
 }

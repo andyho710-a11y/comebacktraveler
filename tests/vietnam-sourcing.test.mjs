@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { analyticsDimensions, createHttpTransport, createSubmissionGate, readIntake, serializeRFQ, unavailableTransport, validateIntake, REQUIRED_FIELDS, RFQ_STATUSES } from '../src/lib/vietnam-sourcing/rfq.ts';
+import vm from 'node:vm';
+import { analyticsDimensions, createHttpTransport, createSubmissionGate, readIntake, serializeRFQ, submissionEnvelope, unavailableTransport, validateIntake, REQUIRED_FIELDS, RFQ_STATUSES } from '../src/lib/vietnam-sourcing/rfq.ts';
 
 function validData() {
   const data = new FormData();
@@ -49,15 +50,17 @@ test('unconfigured transport never fakes success', async () => {
 });
 test('HTTP transport requires matching durable receipt and idempotency key', async () => {
   const payload = serializeRFQ(validInput()); let seen;
-  const transport = createHttpTransport('/api/vietnam-sourcing', async (url, options) => { seen = { url, options }; return new Response(JSON.stringify({ stored: true, rfq_id: payload.rfq_id })); });
-  assert.deepEqual(await transport(payload), { ok: true, rfq_id: payload.rfq_id });
-  assert.equal(seen.options.headers['Idempotency-Key'], payload.rfq_id); assert.deepEqual(JSON.parse(seen.options.body), payload);
+  const serverId = 'RFQ-20261006-' + 'a'.repeat(32);
+  const transport = createHttpTransport('/api/vietnam-sourcing', async (url, options) => { seen = { url, options }; return new Response(JSON.stringify({ stored: true, submission_id: payload.rfq_id, rfq_id: serverId })); });
+  assert.deepEqual(await transport(payload), { ok: true, rfq_id: serverId });
+  assert.equal(seen.options.headers['Idempotency-Key'], payload.rfq_id); assert.deepEqual(JSON.parse(seen.options.body), submissionEnvelope(payload));
+  for (const field of ['rfq_id', 'created_at', 'updated_at', 'status', 'attachments']) assert.ok(!(field in JSON.parse(seen.options.body)));
   for (const body of [{ ok: true }, { stored: true, rfq_id: 'different' }, { stored: false, rfq_id: payload.rfq_id }]) assert.equal((await createHttpTransport('/api/rfq', async () => new Response(JSON.stringify(body)))(payload)).ok, false);
   assert.throws(() => createHttpTransport('https://external.example/api'), /same-origin/);
 });
 test('HTTP transport handles server errors, invalid JSON and network failures', async () => {
   const payload = serializeRFQ(validInput());
-  assert.equal((await createHttpTransport('/api/rfq', async () => new Response('{}', { status: 429 }))(payload)).code, 'rejected');
+  assert.equal((await createHttpTransport('/api/rfq', async () => new Response('{}', { status: 429 }))(payload)).code, 'rate_limited');
   assert.equal((await createHttpTransport('/api/rfq', async () => new Response('invalid'))(payload)).code, 'network');
   assert.equal((await createHttpTransport('/api/rfq', async () => { throw new Error('offline'); })(payload)).code, 'network');
 });
@@ -74,7 +77,8 @@ test('submission gate blocks concurrent attempts, cooldown and repeat after succ
 });
 test('rendered page has truthful offline notice, labeled fields and real SEO/FAQ', () => {
   const html = readFileSync(new URL('../dist/vietnam-sourcing.html', import.meta.url), 'utf8');
-  assert.match(html, /線上需求接收功能準備中/); assert.match(html, /目前不接收檔案/);
+  assert.match(html, /只有接收服務確認需求已保存/); assert.match(html, /目前不接收檔案/);
+  assert.ok(!html.includes('cdn.adotone.com')); assert.ok(!html.includes('pagead2.googlesyndication.com'));
   assert.match(html, /href="https:\/\/comebacktraveler.com\/vietnam-sourcing"/);
   const schemas = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)].map(match => JSON.parse(match[1]));
   const nodes = schemas.flatMap(schema => schema['@graph'] ?? [schema]);
@@ -85,4 +89,14 @@ test('rendered page has truthful offline notice, labeled fields and real SEO/FAQ
   assert.ok(!html.includes('type="file"')); assert.ok(!html.includes('action='));
   assert.match(html, /id="consent"[^>]*required/); assert.match(html, /href="\/privacy"/);
   assert.match(html, /G-XW4LBK8PYF/);
+});
+test('rendered sensitive layout exposes gtag and localhost queues without loading production GA', () => {
+  const html = readFileSync(new URL('../dist/vietnam-sourcing.html', import.meta.url), 'utf8');
+  const script = [...html.matchAll(/<script[^>]*>(.*?)<\/script>/gs)].map(match => match[1]).find(script => script.includes('window.gtag = function'));
+  assert.ok(script, 'the compiled layout must expose window.gtag');
+  const window = { location: { hostname: '127.0.0.1' } };
+  const document = { createElement() { throw new Error('localhost must not load GA'); }, head: { appendChild() { throw new Error('localhost must not load GA'); } } };
+  vm.runInNewContext(script, { window, document });
+  assert.equal(typeof window.gtag, 'function'); window.gtag('event', 'vietnam_sourcing_view', analyticsDimensions());
+  assert.equal(window.dataLayer.length, 1); assert.equal(window.dataLayer[0][1], 'vietnam_sourcing_view');
 });

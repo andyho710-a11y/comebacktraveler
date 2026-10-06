@@ -12,7 +12,9 @@
     "astro": "astro",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "typecheck": "astro check",
-    "typecheck:sourcing": "astro check --tsconfig tsconfig.sourcing.json"
+    "typecheck:sourcing": "astro check --tsconfig tsconfig.sourcing.json",
+    "test:backend": "npm --prefix functions test",
+    "build:backend": "npm --prefix functions run build"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
