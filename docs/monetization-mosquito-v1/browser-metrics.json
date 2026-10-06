@@ -1,0 +1,326 @@
+[
+  {
+    "bodyWidth": 305,
+    "ctas": [
+      {
+        "height": 48,
+        "key": "dintin_picaridin_10h",
+        "left": 36.79999923706055,
+        "right": 221.02500534057617,
+        "width": 184.2250061035156
+      },
+      {
+        "height": 85.20000457763672,
+        "key": "collection_vietnam_travel_essentials",
+        "left": 40.79999923706055,
+        "right": 263.99999618530273,
+        "width": 223.1999969482422
+      }
+    ],
+    "disclosureCount": 1,
+    "disclosureFont": "13.5px",
+    "faq": true,
+    "internalLinks": [
+      "/vietnam-travel-essentials",
+      "/shopping",
+      "/anti-theft-crossbody-bag-guide",
+      "/vietnam-girls-packing",
+      "/vietnam-packing-list",
+      "/first-trip-packing-list",
+      "/vietnam-guide",
+      "/kids-travel-amazing-bay"
+    ],
+    "scrollWidth": 305,
+    "sections": [
+      {
+        "height": 484.1000061035156,
+        "left": 0,
+        "right": 304.8000183105469,
+        "selector": "hero",
+        "width": 304.8000183105469,
+        "y": 141.599609375
+      },
+      {
+        "height": 591.4000244140625,
+        "left": 16,
+        "right": 288.8000183105469,
+        "selector": "mini-table",
+        "width": 272.8000183105469,
+        "y": 2530.224609375
+      },
+      {
+        "height": 505.3999938964844,
+        "left": 16,
+        "right": 288.8000183105469,
+        "selector": "quick-decision",
+        "width": 272.8000183105469,
+        "y": 5211.89990234375
+      },
+      {
+        "height": 1387.4124755859375,
+        "left": 16,
+        "right": 288.8000183105469,
+        "selector": "commercial-decision",
+        "width": 272.8000183105469,
+        "y": 5773.2998046875
+      },
+      {
+        "height": 186.25,
+        "left": 16,
+        "right": 288.8000183105469,
+        "selector": "aff-disclosure",
+        "width": 272.8000183105469,
+        "y": 5935.69970703125
+      },
+      {
+        "height": 561.6500244140625,
+        "left": 16,
+        "right": 288.8000183105469,
+        "selector": "product-card",
+        "width": 272.8000183105469,
+        "y": 6145.94970703125
+      },
+      {
+        "height": 364.8125,
+        "left": 16,
+        "right": 288.8000183105469,
+        "selector": "shopee-block",
+        "width": 272.8000183105469,
+        "y": 6739.60009765625
+      },
+      {
+        "height": 309,
+        "left": 16,
+        "right": 288.8000183105469,
+        "selector": "internal-links",
+        "width": 272.8000183105469,
+        "y": 11828.987518310549
+      },
+      {
+        "height": 289.8000183105469,
+        "left": 0,
+        "right": 304.8000183105469,
+        "selector": "cbt-footer",
+        "width": 304.8000183105469,
+        "y": 12137.987487792969
+      }
+    ],
+    "width": 320
+  },
+  {
+    "bodyWidth": 375,
+    "ctas": [
+      {
+        "height": 48,
+        "key": "dintin_picaridin_10h",
+        "left": 36.79999923706055,
+        "right": 221.02500534057617,
+        "width": 184.2250061035156
+      },
+      {
+        "height": 54.60000228881836,
+        "key": "collection_vietnam_travel_essentials",
+        "left": 40.79999923706055,
+        "right": 312.1500053405762,
+        "width": 271.3500061035156
+      }
+    ],
+    "disclosureCount": 1,
+    "disclosureFont": "13.5px",
+    "faq": true,
+    "internalLinks": [
+      "/vietnam-travel-essentials",
+      "/shopping",
+      "/anti-theft-crossbody-bag-guide",
+      "/vietnam-girls-packing",
+      "/vietnam-packing-list",
+      "/first-trip-packing-list",
+      "/vietnam-guide",
+      "/kids-travel-amazing-bay"
+    ],
+    "scrollWidth": 375,
+    "sections": [
+      {
+        "height": 385,
+        "left": 0,
+        "right": 375.2000122070313,
+        "selector": "hero",
+        "width": 375.2000122070313,
+        "y": 141.599609375
+      },
+      {
+        "height": 451,
+        "left": 16,
+        "right": 359.20001220703125,
+        "selector": "mini-table",
+        "width": 343.20001220703125,
+        "y": 2329.89990234375
+      },
+      {
+        "height": 419,
+        "left": 16,
+        "right": 359.20001220703125,
+        "selector": "quick-decision",
+        "width": 343.20001220703125,
+        "y": 4602.599609375
+      },
+      {
+        "height": 1224.5125732421875,
+        "left": 16,
+        "right": 359.20001220703125,
+        "selector": "commercial-decision",
+        "width": 343.20001220703125,
+        "y": 5077.599609375
+      },
+      {
+        "height": 163.3000030517578,
+        "left": 16,
+        "right": 359.20001220703125,
+        "selector": "aff-disclosure",
+        "width": 343.20001220703125,
+        "y": 5209.39990234375
+      },
+      {
+        "height": 511.8000183105469,
+        "left": 16,
+        "right": 359.20001220703125,
+        "selector": "product-card",
+        "width": 343.20001220703125,
+        "y": 5396.69970703125
+      },
+      {
+        "height": 305.3125,
+        "left": 16,
+        "right": 359.20001220703125,
+        "selector": "shopee-block",
+        "width": 343.20001220703125,
+        "y": 5940.499755859375
+      },
+      {
+        "height": 215,
+        "left": 16,
+        "right": 359.20001220703125,
+        "selector": "internal-links",
+        "width": 343.20001220703125,
+        "y": 10325.162322998049
+      },
+      {
+        "height": 260.3999938964844,
+        "left": 0,
+        "right": 375.2000122070313,
+        "selector": "cbt-footer",
+        "width": 375.2000122070313,
+        "y": 10540.162292480469
+      }
+    ],
+    "width": 390
+  },
+  {
+    "bodyWidth": 1265,
+    "ctas": [
+      {
+        "height": 48,
+        "key": "dintin_picaridin_10h",
+        "left": 447.2000122070313,
+        "right": 631.4250183105469,
+        "width": 184.2250061035156
+      },
+      {
+        "height": 54.60000228881836,
+        "key": "collection_vietnam_travel_essentials",
+        "left": 311.20001220703125,
+        "right": 582.5500183105469,
+        "width": 271.3500061035156
+      }
+    ],
+    "disclosureCount": 1,
+    "disclosureFont": "13.5px",
+    "faq": true,
+    "internalLinks": [
+      "/vietnam-travel-essentials",
+      "/shopping",
+      "/anti-theft-crossbody-bag-guide",
+      "/vietnam-girls-packing",
+      "/vietnam-packing-list",
+      "/first-trip-packing-list",
+      "/vietnam-guide",
+      "/kids-travel-amazing-bay"
+    ],
+    "scrollWidth": 1265,
+    "sections": [
+      {
+        "height": 375.8999938964844,
+        "left": 262.3999938964844,
+        "right": 1002.3999938964844,
+        "selector": "hero",
+        "width": 740,
+        "y": 125.599609375
+      },
+      {
+        "height": 350.8000183105469,
+        "left": 286.3999938964844,
+        "right": 978.3999938964844,
+        "selector": "mini-table",
+        "width": 692,
+        "y": 2071.94970703125
+      },
+      {
+        "height": 281.3000183105469,
+        "left": 286.3999938964844,
+        "right": 978.3999938964844,
+        "selector": "quick-decision",
+        "width": 692,
+        "y": 3756.499755859375
+      },
+      {
+        "height": 825.7125244140625,
+        "left": 286.3999938964844,
+        "right": 978.3999938964844,
+        "selector": "commercial-decision",
+        "width": 692,
+        "y": 4093.7998046875
+      },
+      {
+        "height": 94.45000457763672,
+        "left": 286.3999938964844,
+        "right": 978.3999938964844,
+        "selector": "aff-disclosure",
+        "width": 692,
+        "y": 4200.599853515625
+      },
+      {
+        "height": 264.6499938964844,
+        "left": 286.3999938964844,
+        "right": 978.3999938964844,
+        "selector": "product-card",
+        "width": 692,
+        "y": 4319.0498046875
+      },
+      {
+        "height": 247.5124969482422,
+        "left": 286.3999938964844,
+        "right": 978.3999938964844,
+        "selector": "shopee-block",
+        "width": 692,
+        "y": 4615.699951171875
+      },
+      {
+        "height": 121,
+        "left": 286.3999938964844,
+        "right": 978.3999938964844,
+        "selector": "internal-links",
+        "width": 692,
+        "y": 8085.33740234375
+      },
+      {
+        "height": 180,
+        "left": 0,
+        "right": 1264.800048828125,
+        "selector": "cbt-footer",
+        "width": 1264.800048828125,
+        "y": 8286.33740234375
+      }
+    ],
+    "width": 1280
+  }
+]

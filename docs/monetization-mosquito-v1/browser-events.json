@@ -1,0 +1,98 @@
+{
+  "affiliateHrefs": [
+    "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A",
+    "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront"
+  ],
+  "events": [
+    {
+      "event": "page_language_view",
+      "parameters": {
+        "content_language": "zh-Hant",
+        "page_path": "/vietnam-mosquito-repellent",
+        "page_title": "越南防蚊用品怎麼準備？住越南十年的在地經驗整理（2026）",
+        "transport_type": "beacon"
+      }
+    },
+    {
+      "event": "affiliate_cta_view",
+      "parameters": {
+        "affiliate_network": "coupang",
+        "cta_position": "decision_primary",
+        "experiment_id": "mosquito_monetization_v1",
+        "merchant": "coupang",
+        "page_location": "http://127.0.0.1:4337/vietnam-mosquito-repellent",
+        "page_path": "/vietnam-mosquito-repellent",
+        "page_referrer": "",
+        "product_category": "mosquito_repellent",
+        "product_key": "dintin_picaridin_10h",
+        "product_name": "叮寧 派卡瑞丁 10H 小黑蚊防蚊液",
+        "transport_type": "beacon"
+      }
+    },
+    {
+      "event": "affiliate_cta_view",
+      "parameters": {
+        "affiliate_network": "shopee",
+        "cta_position": "decision_collection",
+        "experiment_id": "mosquito_monetization_v1",
+        "merchant": "shopee",
+        "page_location": "http://127.0.0.1:4337/vietnam-mosquito-repellent",
+        "page_path": "/vietnam-mosquito-repellent",
+        "page_referrer": "",
+        "product_category": "travel_essentials",
+        "product_key": "collection_vietnam_travel_essentials",
+        "product_name": "越南防蚊用品蝦皮清單",
+        "transport_type": "beacon"
+      }
+    },
+    {
+      "event": "affiliate_click",
+      "parameters": {
+        "affiliate_network": "coupang",
+        "article": "/vietnam-mosquito-repellent",
+        "brand": "unknown",
+        "category": "affiliate",
+        "content_language": "zh-Hant",
+        "cta_position": "decision_primary",
+        "destination": "unspecified",
+        "experiment_id": "mosquito_monetization_v1",
+        "link_domain": "coupa.ng",
+        "link_url": "https://coupa.ng/cnc3H4",
+        "merchant": "coupang",
+        "page_location": "http://127.0.0.1:4337/vietnam-mosquito-repellent",
+        "page_path": "/vietnam-mosquito-repellent",
+        "page_referrer": "",
+        "placement": "decision_primary",
+        "product_category": "mosquito_repellent",
+        "product_key": "dintin_picaridin_10h",
+        "product_name": "叮寧 派卡瑞丁 10H 小黑蚊防蚊液",
+        "transport_type": "beacon"
+      }
+    },
+    {
+      "event": "affiliate_click",
+      "parameters": {
+        "affiliate_network": "shopee",
+        "article": "/vietnam-mosquito-repellent",
+        "brand": "unknown",
+        "category": "affiliate",
+        "content_language": "zh-Hant",
+        "cta_position": "decision_collection",
+        "destination": "unspecified",
+        "experiment_id": "mosquito_monetization_v1",
+        "link_domain": "collshp.com",
+        "link_url": "https://collshp.com",
+        "merchant": "shopee",
+        "page_location": "http://127.0.0.1:4337/vietnam-mosquito-repellent",
+        "page_path": "/vietnam-mosquito-repellent",
+        "page_referrer": "",
+        "placement": "decision_collection",
+        "product_category": "travel_essentials",
+        "product_key": "collection_vietnam_travel_essentials",
+        "product_name": "越南防蚊用品蝦皮清單",
+        "transport_type": "beacon"
+      }
+    }
+  ],
+  "url": "http://127.0.0.1:4337/vietnam-mosquito-repellent"
+}
