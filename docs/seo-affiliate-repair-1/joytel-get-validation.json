@@ -1,0 +1,90 @@
+{
+  "timestamp_utc": "2026-10-06T16:07:19.956648+00:00",
+  "method": "GET; HTTP redirects only; no JS/browser execution",
+  "checks": [
+    {
+      "requested": "https://afflink.one/s/zf2Z8",
+      "url": "https://shrturl.shop/track/clicks/8561/c627c2bc9b0127dbf88cec23d62e9e45216d49ce63b2a0f90f65b40471401de3c021e7e5593c99616c",
+      "status": 200,
+      "chain": [
+        {
+          "url": "https://afflink.one/s/zf2Z8",
+          "status": 301,
+          "location": "https://shrturl.shop/track/clicks/8561/c627c2bc9b0127dbf88cec23d62e9e45216d49ce63b2a0f90f65b40471401de3c021e7e5593c99616c"
+        },
+        {
+          "url": "https://shrturl.shop/track/clicks/8561/c627c2bc9b0127dbf88cec23d62e9e45216d49ce63b2a0f90f65b40471401de3c021e7e5593c99616c",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "title": "shrturl.shop&nbsp;-&nbsp;该网站正在出售！&nbsp;-&nbsp;shrturl 资源和信息。",
+      "verified_good": false,
+      "merchant_references_in_html": [],
+      "client_redirect_detected": false
+    },
+    {
+      "requested": "https://onelink.one/s/z4xjt",
+      "url": "https://shrturl.info/track/clicks/8561/c627c2bc9b0127dbf88cec23d62e9e45216d49ce63b2a0f90f65b40471401de3c021e7e5593c99616c?subid_1=%E9%83%A8%E8%90%BD%E6%A0%BC&subid_2=%E6%97%A5%E6%9C%ACESIM&subid_3=0422&t=https%253A%252F%252Fwww.joytel-tw.com%252Fcategories%252Fjapan",
+      "status": 200,
+      "chain": [
+        {
+          "url": "https://onelink.one/s/z4xjt",
+          "status": 301,
+          "location": "https://shrturl.info/track/clicks/8561/c627c2bc9b0127dbf88cec23d62e9e45216d49ce63b2a0f90f65b40471401de3c021e7e5593c99616c?subid_1=%E9%83%A8%E8%90%BD%E6%A0%BC&subid_2=%E6%97%A5%E6%9C%ACESIM&subid_3=0422&t=https%253A%252F%252Fwww.joytel-tw.com%252Fcategories%252Fjapan"
+        },
+        {
+          "url": "https://shrturl.info/track/clicks/8561/c627c2bc9b0127dbf88cec23d62e9e45216d49ce63b2a0f90f65b40471401de3c021e7e5593c99616c?subid_1=%E9%83%A8%E8%90%BD%E6%A0%BC&subid_2=%E6%97%A5%E6%9C%ACESIM&subid_3=0422&t=https%253A%252F%252Fwww.joytel-tw.com%252Fcategories%252Fjapan",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "title": "shrturl.info&nbsp;-&nbsp;该网站正在出售！&nbsp;-&nbsp;shrturl 资源和信息。",
+      "verified_good": false,
+      "merchant_references_in_html": [],
+      "client_redirect_detected": false
+    },
+    {
+      "requested": "https://onelink.one/s/z4xjt?sub_id=quiz",
+      "url": "https://shrturl.info/track/clicks/8561/c627c2bc9b0127dbf88cec23d62e9e45216d49ce63b2a0f90f65b40471401de3c021e7e5593c99616c?subid_1=%E9%83%A8%E8%90%BD%E6%A0%BC&subid_2=%E6%97%A5%E6%9C%ACESIM&subid_3=0422&t=https%253A%252F%252Fwww.joytel-tw.com%252Fcategories%252Fjapan",
+      "status": 200,
+      "chain": [
+        {
+          "url": "https://onelink.one/s/z4xjt?sub_id=quiz",
+          "status": 301,
+          "location": "https://shrturl.info/track/clicks/8561/c627c2bc9b0127dbf88cec23d62e9e45216d49ce63b2a0f90f65b40471401de3c021e7e5593c99616c?subid_1=%E9%83%A8%E8%90%BD%E6%A0%BC&subid_2=%E6%97%A5%E6%9C%ACESIM&subid_3=0422&t=https%253A%252F%252Fwww.joytel-tw.com%252Fcategories%252Fjapan"
+        },
+        {
+          "url": "https://shrturl.info/track/clicks/8561/c627c2bc9b0127dbf88cec23d62e9e45216d49ce63b2a0f90f65b40471401de3c021e7e5593c99616c?subid_1=%E9%83%A8%E8%90%BD%E6%A0%BC&subid_2=%E6%97%A5%E6%9C%ACESIM&subid_3=0422&t=https%253A%252F%252Fwww.joytel-tw.com%252Fcategories%252Fjapan",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "title": "shrturl.info&nbsp;-&nbsp;该网站正在出售！&nbsp;-&nbsp;shrturl 资源和信息。",
+      "verified_good": false,
+      "merchant_references_in_html": [],
+      "client_redirect_detected": false
+    },
+    {
+      "requested": "https://afflink.one/s/5SmIS",
+      "url": "https://vbtrax.com/track/clicks/8561/c627c2bc9b0127dbf88cec23d62e9e45216d49ce63b2a0f90f65b40471401de3c021e7e5593c99616c?t=https%253A%252F%252Fwww.joytel-tw.com%252Fproducts%252Fjapan-esim%253Futm_source%253Dchatgpt.com",
+      "status": 202,
+      "chain": [
+        {
+          "url": "https://afflink.one/s/5SmIS",
+          "status": 301,
+          "location": "https://vbtrax.com/track/clicks/8561/c627c2bc9b0127dbf88cec23d62e9e45216d49ce63b2a0f90f65b40471401de3c021e7e5593c99616c?t=https%253A%252F%252Fwww.joytel-tw.com%252Fproducts%252Fjapan-esim%253Futm_source%253Dchatgpt.com"
+        },
+        {
+          "url": "https://vbtrax.com/track/clicks/8561/c627c2bc9b0127dbf88cec23d62e9e45216d49ce63b2a0f90f65b40471401de3c021e7e5593c99616c?t=https%253A%252F%252Fwww.joytel-tw.com%252Fproducts%252Fjapan-esim%253Futm_source%253Dchatgpt.com",
+          "status": 202,
+          "location": null
+        }
+      ],
+      "title": "",
+      "verified_good": false,
+      "merchant_references_in_html": [],
+      "client_redirect_detected": false
+    }
+  ]
+}

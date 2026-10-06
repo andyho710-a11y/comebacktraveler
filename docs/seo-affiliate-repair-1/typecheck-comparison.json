@@ -1,0 +1,15 @@
+{
+  "baseline": {
+    "errors": 59,
+    "warnings": 0,
+    "hints": 1
+  },
+  "after": {
+    "errors": 59,
+    "warnings": 0,
+    "hints": 1
+  },
+  "comparison": "file, severity, TypeScript code, primary diagnostic message; ignore line/column shifts",
+  "added": [],
+  "removed": []
+}

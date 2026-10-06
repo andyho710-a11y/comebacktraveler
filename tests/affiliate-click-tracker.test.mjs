@@ -56,6 +56,8 @@ test('nested CTA click emits one affiliate event with the four reporting dimensi
   assert.equal(data.product_category, 'esim');
   assert.equal(data.cta_position, data.placement);
   assert.equal(data.link_url, cta.href);
+  assert.equal(data.product_key, 'unspecified');
+  assert.equal(data.merchant, 'unknown');
   assert.equal(data.transport_type, 'beacon');
 });
 

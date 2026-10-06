@@ -11,10 +11,11 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      // 暫時隱藏的草稿頁不列入 sitemap。
+      // 刻意 noindex 的草稿、遷移頁與英文預留頁不列入 sitemap。
       filter: (page) =>
         !page.includes('/drink-a-glass-of-water') &&
-        !page.endsWith('/vietnam-mosquito-repellent-guide'),
+        !page.endsWith('/vietnam-mosquito-repellent-guide') &&
+        !['/en/connectivity', '/en/travel-gear', '/en/vietnam-travel-prep'].includes(new URL(page).pathname),
     }),
   ],
   vite: {

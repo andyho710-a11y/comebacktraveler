@@ -10,6 +10,8 @@
       'a[href*="s.shopee.tw"]',
       'a[href*="afflink.one"]',
       'a[href*="onelink.one"]',
+      'a[href*="linkgo.one"]',
+      'a[href*="s.momoshop.com.tw"]',
       'a[href*="amazon.com"]',
       'a[href*="amzn.to"]',
       'a[data-affiliate]'
@@ -23,34 +25,73 @@
       }
     }
 
+    function isDomain(hostname, domain) {
+      return hostname === domain || hostname.endsWith('.' + domain);
+    }
+
     function getAffiliateNetwork(link, href) {
-      var explicit = link.getAttribute('data-affiliate');
-      if (explicit) return explicit;
+      var explicit = getTrackingValue(link, 'data-affiliate');
+      if (['coupang', 'shopee', 'momo', 'affiliates_one', 'amazon'].includes(explicit)) return explicit;
 
       var hostname = getAffiliateDomain(href);
       if (!hostname) return 'unknown';
 
-      if (hostname.indexOf('coupa.ng') !== -1) return 'coupang';
-      if (hostname.indexOf('collshp.com') !== -1) return 'shopee';
-      if (hostname.indexOf('s.shopee.tw') !== -1) return 'shopee';
-      if (hostname.indexOf('afflink.one') !== -1) return 'affiliates_one';
-      if (hostname.indexOf('onelink.one') !== -1) return 'affiliates_one';
-      if (hostname.indexOf('amazon.com') !== -1) return 'amazon';
-      if (hostname.indexOf('amzn.to') !== -1) return 'amazon';
+      if (isDomain(hostname, 'coupa.ng')) return 'coupang';
+      if (isDomain(hostname, 'collshp.com') || isDomain(hostname, 'shopee.tw')) return 'shopee';
+      if (isDomain(hostname, 'momoshop.com.tw')) return 'momo';
+      if (['afflink.one', 'onelink.one', 'linkgo.one'].some(function (domain) { return isDomain(hostname, domain); })) return 'affiliates_one';
+      if (isDomain(hostname, 'amazon.com') || isDomain(hostname, 'amzn.to')) return 'amazon';
       return 'affiliate';
     }
 
-    function getButtonText(link) {
-      var label = link.getAttribute('aria-label') || link.textContent || '';
-      return label.replace(/\s+/g, ' ').trim().slice(0, 120);
+    function getMerchant(link, href) {
+      var explicit = getTrackingValue(link, 'data-affiliate-merchant');
+      if (['coupang', 'shopee', 'momo', 'joytel', 'klook', 'kkday', 'trip_com', 'booking_com', 'amazon'].includes(explicit)) return explicit;
+      var hostname = getAffiliateDomain(href);
+      if (isDomain(hostname, 'coupa.ng') || isDomain(hostname, 'coupang.com')) return 'coupang';
+      if (isDomain(hostname, 'collshp.com') || isDomain(hostname, 'shopee.tw')) return 'shopee';
+      if (isDomain(hostname, 'momoshop.com.tw')) return 'momo';
+      // A short-link network does not establish which merchant it leads to.
+      return 'unknown';
     }
 
     function getTrackingValue(link, attribute) {
       return (link.getAttribute(attribute) || '').trim().slice(0, 120);
     }
 
+    function getMachineValue(link, attribute, fallback) {
+      var value = getTrackingValue(link, attribute);
+      return /^[a-z][a-z0-9_-]{0,79}$/i.test(value) ? value : fallback;
+    }
+
+    function getProductName(link) {
+      // Editorial metadata only: never read button labels, form values or search text.
+      var value = getTrackingValue(link, 'data-affiliate-product');
+      return value && !/[@\r\n]|https?:|\d{7,}/i.test(value) ? value : 'unspecified';
+    }
+
+    function getPagePath(path) {
+      return /^\/(?:[a-z0-9-]+\/?)*$/.test(path) && !/\d{7,}/.test(path) ? path : '/';
+    }
+
+    function getAnalyticsUrl(href, keepShortPath) {
+      try {
+        var url = new URL(href, window.location.href);
+        if (!['https:', 'http:'].includes(url.protocol)) return '';
+        var host = url.hostname;
+        var shortPath = /^\/s\/[a-z0-9]{1,32}$/i.test(url.pathname) &&
+          ['afflink.one', 'onelink.one', 'linkgo.one', 's.momoshop.com.tw'].includes(host);
+        var codePath = /^\/[a-z0-9]{1,32}$/i.test(url.pathname) && /[a-z]/i.test(url.pathname) &&
+          ['coupa.ng', 's.shopee.tw', 'amzn.to'].includes(host);
+        // Strip ALL query/hash/userinfo. Unknown or session-bearing paths become origin only.
+        return url.origin + (keepShortPath && (shortPath || codePath) ? url.pathname : '');
+      } catch (error) {
+        return '';
+      }
+    }
+
     function getCtaPosition(link) {
-      var explicit = getTrackingValue(link, 'data-cta-position');
+      var explicit = getMachineValue(link, 'data-cta-position', '');
       if (explicit) return explicit;
 
       if (link.closest('.product-card')) return 'product_card';
@@ -71,19 +112,24 @@
       var link = target.closest(affiliateSelector);
       if (!link || !link.href || typeof window.gtag !== 'function') return;
 
+      var pagePath = getPagePath(window.location.pathname);
+
       window.gtag('event', 'affiliate_click', {
-        page_path: window.location.pathname,
-        page_title: document.title,
+        page_path: pagePath,
+        // Override GA4's default location/referrer so URL query cannot re-enter this event.
+        page_location: getAnalyticsUrl(window.location.href, false) + pagePath,
+        page_referrer: document.referrer ? getAnalyticsUrl(document.referrer, false) : '',
         content_language: document.documentElement.lang || 'unknown',
-        button_text: getButtonText(link),
-        product_name: getTrackingValue(link, 'data-affiliate-product') || getButtonText(link),
-        product_category: getTrackingValue(link, 'data-affiliate-category') || 'uncategorized',
+        merchant: getMerchant(link, link.href),
+        product_key: getMachineValue(link, 'data-affiliate-product-key', 'unspecified'),
+        product_name: getProductName(link),
+        product_category: getMachineValue(link, 'data-affiliate-category', 'uncategorized'),
         cta_position: getCtaPosition(link),
-        brand: getTrackingValue(link, 'data-affiliate-brand') || 'unknown',
-        placement: getTrackingValue(link, 'data-affiliate-placement') || getCtaPosition(link),
-        destination: getTrackingValue(link, 'data-affiliate-destination') || 'unspecified',
-        article: getTrackingValue(link, 'data-affiliate-article') || window.location.pathname,
-        link_url: link.href,
+        brand: ['JOYTEL', 'Klook', 'KKday', 'Airalo', 'eminent', 'BAGSMART'].includes(getTrackingValue(link, 'data-affiliate-brand')) ? getTrackingValue(link, 'data-affiliate-brand') : 'unknown',
+        placement: getMachineValue(link, 'data-affiliate-placement', getCtaPosition(link)),
+        destination: getMachineValue(link, 'data-affiliate-destination', 'unspecified'),
+        article: getPagePath(getTrackingValue(link, 'data-affiliate-article') || pagePath),
+        link_url: getAnalyticsUrl(link.href, true),
         link_domain: getAffiliateDomain(link.href),
         category: 'affiliate',
         affiliate_network: getAffiliateNetwork(link, link.href),
