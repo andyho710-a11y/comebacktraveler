@@ -1,0 +1,37 @@
+✔ nested CTA click emits one affiliate event with the four reporting dimensions (3.0567ms)
+✔ legacy affiliate links keep their network and position fields (0.8624ms)
+✔ repeated tracker initialization does not double-count clicks (0.5789ms)
+✔ missing analytics, non-affiliate links and non-element targets are harmless (0.7087ms)
+✔ recommendations never publish known parked partner URLs or empty guidance links (0.3264ms)
+✔ Japan and Korea preserve all four owner-supplied URLs and distinct attribution (3.373ms)
+✔ rendered momo luggage CTA preserves URL, external attributes and emits affiliate_click (3.3035ms)
+✔ rendered shopee luggage CTA preserves URL, external attributes and emits affiliate_click (0.8675ms)
+✔ rendered shopee packing-organizer CTA preserves URL, external attributes and emits affiliate_click (0.7721ms)
+✔ rendered momo packing-organizer CTA preserves URL, external attributes and emits affiliate_click (0.6987ms)
+✔ packing recommendations remain beside their relevant article sections without stale pricing (0.2633ms)
+✔ Hosting adds exactly the requested uppercase 301 and retains existing URL normalization (4.6018ms)
+✔ three English placeholders stay present and noindex while sitemap removes only their URLs (3.9207ms)
+✔ rendered explicit metadata emits six stable reporting dimensions: /vietnam-mosquito-repellent (4.1003ms)
+✔ rendered explicit metadata emits six stable reporting dimensions: /vietnam-packing-list (2.5241ms)
+✔ rendered explicit metadata emits six stable reporting dimensions: /anti-theft-crossbody-bag-guide (2.5672ms)
+✔ rendered explicit metadata emits six stable reporting dimensions: /esim/joytel (1.0308ms)
+✔ rendered explicit metadata emits six stable reporting dimensions: /esim/saigon-airport-sim (3.1861ms)
+✔ quiz Japan is a safe internal fallback; three remaining affiliate variants preserve navigation and metadata (8.2149ms)
+✔ storefront and catalog CTA keys are explicitly collection keys, never a single item (5.7341ms)
+✔ linkgo classifies as Affiliates.One; explicit KKday merchant is distinct; lookalike domains do not match (2.3818ms)
+✔ affiliate payload strips PII/session/search/order queries, hash and userinfo without mutating href (1.2216ms)
+✔ unsafe metadata and session-bearing paths cannot copy personal text into payload (0.915ms)
+✔ every remaining static affiliate href and page placement order matches baseline byte-for-byte (36.9206ms)
+✔ all ten static parked CTAs become internal navigation without affiliate attributes or click events (10.0855ms)
+✔ JOYTEL rendered content remains unchanged except authorized CTA anchors, transparency note and responsive styles (2.3668ms)
+✔ packing exact disclosure appears once before first commercial CTA (1.0993ms)
+✔ requested core production routes and protected JOYTEL head/body/schema remain intact (8.2462ms)
+✔ real case-sensitive Hosting uppercase -> 301 -> lowercase 200 and existing aliases do not loop (828.5365ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1069.9127

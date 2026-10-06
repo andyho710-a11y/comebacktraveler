@@ -1,0 +1,68 @@
+{
+  "checked_utc": "2026-10-06T16:52:41.998230+00:00",
+  "checks": [
+    {
+      "path": "/vietnam-jCB-lounge",
+      "chain": [
+        {
+          "url": "https://comeback-traveler-web--seo-affiliate-repair-1-1-div4t0iz.web.app/vietnam-jCB-lounge",
+          "status": 301,
+          "location": "/vietnam-jcb-lounge",
+          "canonical_lowercase": false
+        },
+        {
+          "url": "https://comeback-traveler-web--seo-affiliate-repair-1-1-div4t0iz.web.app/vietnam-jcb-lounge",
+          "status": 200,
+          "location": null,
+          "canonical_lowercase": true
+        }
+      ]
+    },
+    {
+      "path": "/vietnam-jcb-lounge",
+      "chain": [
+        {
+          "url": "https://comeback-traveler-web--seo-affiliate-repair-1-1-div4t0iz.web.app/vietnam-jcb-lounge",
+          "status": 200,
+          "location": null,
+          "canonical_lowercase": true
+        }
+      ]
+    },
+    {
+      "path": "/vietnam-jcb-lounge/",
+      "chain": [
+        {
+          "url": "https://comeback-traveler-web--seo-affiliate-repair-1-1-div4t0iz.web.app/vietnam-jcb-lounge/",
+          "status": 301,
+          "location": "/vietnam-jcb-lounge",
+          "canonical_lowercase": false
+        },
+        {
+          "url": "https://comeback-traveler-web--seo-affiliate-repair-1-1-div4t0iz.web.app/vietnam-jcb-lounge",
+          "status": 200,
+          "location": null,
+          "canonical_lowercase": true
+        }
+      ]
+    },
+    {
+      "path": "/vietnam-jcb-lounge.html",
+      "chain": [
+        {
+          "url": "https://comeback-traveler-web--seo-affiliate-repair-1-1-div4t0iz.web.app/vietnam-jcb-lounge.html",
+          "status": 301,
+          "location": "/vietnam-jcb-lounge",
+          "canonical_lowercase": false
+        },
+        {
+          "url": "https://comeback-traveler-web--seo-affiliate-repair-1-1-div4t0iz.web.app/vietnam-jcb-lounge",
+          "status": 200,
+          "location": null,
+          "canonical_lowercase": true
+        }
+      ]
+    }
+  ],
+  "pass": true
+}

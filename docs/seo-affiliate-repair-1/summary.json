@@ -1,0 +1,24 @@
+{
+  "cta_total": 83,
+  "static": 79,
+  "dynamic": 4,
+  "affiliate_href_changed": 0,
+  "coverage_before": {
+    "product": 35,
+    "product_key": 0,
+    "merchant": 0,
+    "category": 35,
+    "position": 35
+  },
+  "coverage_after": {
+    "product": 45,
+    "product_key": 13,
+    "merchant": 13,
+    "category": 45,
+    "position": 45
+  },
+  "sitemap_before": 42,
+  "sitemap_after": 39,
+  "editorial_equal": 44,
+  "risk_cta_count": 11
+}

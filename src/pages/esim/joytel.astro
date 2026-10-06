@@ -7,7 +7,6 @@ import ContentDisclaimer from '../../components/ContentDisclaimer.astro';
 
 const title = "JOYTEL eSIM 選購整理 2026｜原生線路、客服、值不值得買？";
 const description = "JOYTEL eSIM 選購整理。依官方線路規格、日韓原生網路標準速率、LINE 客服 SLA 與 DJB、WaySim 完整對比，10 分鐘看完再決定要不要買。數據來源於文中標明。";
-const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
 ---
 
 <!DOCTYPE html>
@@ -144,7 +143,7 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
       .related-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .form-footer { flex-direction: column; align-items: flex-start; }
-      table { font-size: 13px; }
+      table { display: block; max-width: 100%; overflow-x: auto; font-size: 13px; }
       th, td { padding: 9px 10px; }
     }
   </style>
@@ -312,7 +311,7 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
 
   <AffiliateDisclosure />
 
-  <p><a href={JOYTEL_LINK} target="_blank" rel="noopener sponsored" style="color:var(--accent);font-weight:600;">前往 JOYTEL 查看方案與目前優惠 →</a></p>
+  <p><a href="/esim" style="color:var(--accent);font-weight:600;">查看目前可用的 eSIM 方案 →</a></p>
 
   <h2>JOYTEL vs DJB vs WaySim 對比</h2>
   <p>
@@ -428,10 +427,8 @@ const JOYTEL_LINK = 'https://afflink.one/s/zf2Z8';
 
   <div class="cta-box">
     <p>原生線路 + LINE 中文真人客服<br>這就是 JOYTEL 在台灣站穩腳步的原因</p>
-    <a class="cta-btn" href={JOYTEL_LINK} target="_blank" rel="noopener sponsored">
-      查看 JOYTEL 方案與目前優惠 →
-    </a>
-    <p class="cta-label">※ 本文含聯盟行銷連結，點擊後購買我會獲得少量佣金，不影響你的價格</p>
+    <a class="cta-btn" href="/esim">查看目前可用的 eSIM 方案 →</a>
+    <p class="cta-label">JOYTEL 購買連結更新中，可先查看其他可用方案。</p>
   </div>
 
   <h2>總結</h2>

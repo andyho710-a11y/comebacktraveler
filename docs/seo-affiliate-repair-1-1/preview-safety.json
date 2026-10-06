@@ -1,0 +1,13 @@
+{
+  "live_release_before": "projects/comeback-traveler-web/sites/comeback-traveler-web/channels/live/releases/1791174500394000",
+  "live_release_after": "projects/comeback-traveler-web/sites/comeback-traveler-web/channels/live/releases/1791174500394000",
+  "live_version_before": "projects/comeback-traveler-web/sites/comeback-traveler-web/versions/85758aab1eb942e2",
+  "live_version_after": "projects/comeback-traveler-web/sites/comeback-traveler-web/versions/85758aab1eb942e2",
+  "live_unchanged": true,
+  "preview_channel": "projects/comeback-traveler-web/sites/comeback-traveler-web/channels/seo-affiliate-repair-1-1",
+  "preview_version": "projects/comeback-traveler-web/sites/comeback-traveler-web/versions/6dacc39d22273244",
+  "preview_url": "https://comeback-traveler-web--seo-affiliate-repair-1-1-div4t0iz.web.app",
+  "expire_time": "2026-10-07T04:41:50.214086008Z",
+  "expire_taipei": "2026-10-07T12:41:50.214086+08:00",
+  "authorized_domain_sync": false
+}

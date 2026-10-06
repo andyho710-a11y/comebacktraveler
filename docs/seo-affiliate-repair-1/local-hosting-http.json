@@ -1,0 +1,64 @@
+{
+  "cli": "15.32.1",
+  "platform": "Windows; case-insensitive filesystem",
+  "hosting_config": "exact production hosting settings, local demo project; emulator port 5123",
+  "checks": [
+    {
+      "path": "/vietnam-jCB-lounge",
+      "chain": [
+        {
+          "url": "http://127.0.0.1:5123/vietnam-jCB-lounge",
+          "status": 200,
+          "location": null,
+          "canonical_lowercase": true
+        }
+      ]
+    },
+    {
+      "path": "/vietnam-jcb-lounge",
+      "chain": [
+        {
+          "url": "http://127.0.0.1:5123/vietnam-jcb-lounge",
+          "status": 200,
+          "location": null,
+          "canonical_lowercase": true
+        }
+      ]
+    },
+    {
+      "path": "/vietnam-jcb-lounge/",
+      "chain": [
+        {
+          "url": "http://127.0.0.1:5123/vietnam-jcb-lounge/",
+          "status": 301,
+          "location": "/vietnam-jcb-lounge",
+          "canonical_lowercase": false
+        },
+        {
+          "url": "http://127.0.0.1:5123/vietnam-jcb-lounge",
+          "status": 200,
+          "location": null,
+          "canonical_lowercase": true
+        }
+      ]
+    },
+    {
+      "path": "/vietnam-jcb-lounge.html",
+      "chain": [
+        {
+          "url": "http://127.0.0.1:5123/vietnam-jcb-lounge.html",
+          "status": 301,
+          "location": "/vietnam-jcb-lounge",
+          "canonical_lowercase": false
+        },
+        {
+          "url": "http://127.0.0.1:5123/vietnam-jcb-lounge",
+          "status": 200,
+          "location": null,
+          "canonical_lowercase": true
+        }
+      ]
+    }
+  ],
+  "uppercase_gate": "FAILED: actual 200, expected 301. Deployment redirect remains unverified; static config test passed."
+}
