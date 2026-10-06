@@ -4,7 +4,7 @@ Experiment ID: `mosquito_monetization_v1`
 Page: `/vietnam-mosquito-repellent`  
 Main baseline: `74f6d6d73e8d0888322175c227c1ded0d7f3158a`  
 Branch: `codex/monetization-mosquito-v1`  
-experiment_start_date: **TBD — production deployment date**
+experiment_start_date: **2026-10-07T06:16:52.314+08:00 (Asia/Taipei)**
 
 ## 已知流量 baseline
 
@@ -31,7 +31,7 @@ Secondary：本頁 affiliate clicks / 本頁 page sessions，分產品及合計�
 
 ## 觀察時間與樣本
 
-Production 上線日由 owner 填入，Preview QA 不計入正式實驗。至少觀察 28 天；先以每個主要 CTA 100 個 qualifying views 作初步檢視門檻，這是操作上的最小樣本門檻，不是統計顯著性的保證。樣本不足時延長觀察；不因 3–5 個 clicks 宣布 winner。每週列 view、click、CTR、page sessions 和各自樣本量，沒有資料就標「尚無資料」。
+正式開始時間已按首次 production deployment timestamp 記錄，Preview QA 不計入正式實驗。至少觀察 28 天；先以每個主要 CTA 100 個 qualifying views 作初步檢視門檻，這是操作上的最小樣本門檻，不是統計顯著性的保證。樣本不足時延長觀察；不因 3–5 個 clicks 宣布 winner。每週列 view、click、CTR、page sessions 和各自樣本量，沒有資料就標「尚無資料」。
 
 ## Owner 人工補成交資料
 
@@ -42,6 +42,16 @@ Production 上線日由 owner 填入，Preview QA 不計入正式實驗。至少
 
 在 merchant 報表能對上相同期間、商品與歸因範圍時，再計 orders / attributable clicks 與 commission / attributable clicks（EPC）。若商家只能提供帳戶總單量，不可硬配到這兩個 CTA。記錄歸因窗、退款、幣別、資料延遲；沒有成交 API 假設，也沒有程式自動抓訂單。
 
-## 上線前人工事項
+## 上線後人工事項
 
-Review Preview 和目的地證據，確認商品名稱及 collection 內容；另行批准 production release。Owner 可在現有 GA4 報表檢查事件維度是否可查詢，本輪沒有建立 custom dimensions 或修改 GA4 account config。正式發布後填開始日期，建立相同期間的 GA4 與 merchant 人工紀錄。
+Production 已依 owner 授權發布。Owner 可在現有 GA4 報表檢查事件維度是否可查詢，本輪沒有建立 custom dimensions 或修改 GA4 account config。依已記錄的開始時間，建立相同期間的 GA4 與 merchant 人工紀錄，並排除 Preview／驗證流量。
+
+## 正式上線與 28 天實驗凍結
+
+首次 Hosting production release：`1791325012314000`，version：`1c0643db66b98c1e`。UTC deployment timestamp：`2026-10-06T22:16:52.314Z`；正式開始時間以首次公開此實驗的 production release 為準，後續相同內容的 CI 再發布不重設開始日。
+
+凍結期間：2026-10-07T06:16:52.314+08:00 至 2026-11-04T06:16:52.314+08:00（Asia/Taipei，28 天）。此為操作規則，沒有程式自動停止，也沒有自動排程修改。
+
+除 dead affiliate link、法規／安全錯誤、tracking failure 或 layout bug 外，期間內不修改商品、CTA 文案／position、product_key、merchant、tracking logic、title/meta/H1 或 commercial section。保持既有兩個商品意圖及曝光／點擊口徑，避免污染實驗。
+
+GA4 live receipt pending：已驗證正式頁 DOM metadata、事件程式與隔離 stub；尚未在 GA4 後台確認收件，沒有為此修改 account config。成交與收入仍由 owner 人工補記。
