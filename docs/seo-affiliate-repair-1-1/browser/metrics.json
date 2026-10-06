@@ -1,0 +1,974 @@
+[
+  {
+    "route": "/vietnam-packing-list",
+    "viewport": 320,
+    "clientWidth": 305,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "17px",
+        "height": 85.20000457763672,
+        "href": "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront",
+        "left": 40.79999923706055,
+        "right": 263.99999618530273,
+        "text": "👉 打開蝦皮越南必備清單",
+        "visibility": "visible",
+        "width": 223.1999969482422
+      }
+    ],
+    "disclosure": {
+      "beforeFirstCTA": true,
+      "display": "block",
+      "font": "13px",
+      "height": 94.3000030517578,
+      "href": null,
+      "left": 16,
+      "right": 288.8000183105469,
+      "text": "💡 透明聲明：本文部分連結為聯盟行銷連結。你透過連結購買，我會獲得少許佣金，但不影響你的價格與我的建議立場。",
+      "visibility": "visible",
+      "width": 272.8000183105469
+    },
+    "fallbacks": [],
+    "footer": true,
+    "h1": "越南自由行行李清單\n住越南十年，教你帶多少、怎麼裝、什麼上手提",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "route": "/vietnam-mosquito-repellent",
+    "viewport": 320,
+    "clientWidth": 305,
+    "ctas": [
+      {
+        "display": "inline-flex",
+        "font": "14.5px",
+        "height": 44.10000228881836,
+        "href": "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A",
+        "left": 36.79999923706055,
+        "right": 177.53750228881836,
+        "text": "酷澎補充比價 →",
+        "visibility": "visible",
+        "width": 140.7375030517578
+      },
+      {
+        "display": "inline-block",
+        "font": "17px",
+        "height": 85.20000457763672,
+        "href": "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront",
+        "left": 40.79999923706055,
+        "right": 263.99999618530273,
+        "text": "👉 打開蝦皮越南防蚊用品清單",
+        "visibility": "visible",
+        "width": 223.1999969482422
+      }
+    ],
+    "disclosure": {
+      "beforeFirstCTA": false,
+      "display": "block",
+      "font": "13px",
+      "height": 160.60000610351562,
+      "href": null,
+      "left": 16,
+      "right": 288.8000183105469,
+      "text": "本文部分連結為聯盟連結，若你透過蝦皮、酷澎或其他推薦連結購買，我可能獲得少量分潤，但不影響你的購買價格。\n    本文以越南旅行情境、防蚊有效性、親子使用便利性與出發前準備效率為優",
+      "visibility": "visible",
+      "width": 272.8000183105469
+    },
+    "fallbacks": [],
+    "footer": true,
+    "h1": "越南防蚊用品怎麼準備？\n住越南十年的在地經驗整理",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "route": "/anti-theft-crossbody-bag-guide",
+    "viewport": 320,
+    "clientWidth": 305,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 87.20000457763672,
+        "href": "https://s.momoshop.com.tw/s/HoLv7ksQ",
+        "left": 41.60000228881836,
+        "right": 263.200008392334,
+        "text": "前往 momo 查看目前規格與價格 →",
+        "visibility": "visible",
+        "width": 221.6000061035156
+      },
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 87.20000457763672,
+        "href": "https://s.shopee.tw/Lm4PqAlxr",
+        "left": 41.60000228881836,
+        "right": 263.200008392334,
+        "text": "前往蝦皮查看目前規格與價格 →",
+        "visibility": "visible",
+        "width": 221.6000061035156
+      }
+    ],
+    "disclosure": null,
+    "fallbacks": [],
+    "footer": true,
+    "h1": "防盜斜背包怎麼選？\n先看背法，再看「防盜」標籤",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "route": "/esim/japan",
+    "viewport": 320,
+    "clientWidth": 305,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 85.5999984741211,
+        "href": "/esim/japan",
+        "left": 36,
+        "right": 268.8000030517578,
+        "text": "比較其他日本 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 232.8000030517578
+      }
+    ],
+    "disclosure": null,
+    "fallbacks": [
+      {
+        "affiliateAttributes": [],
+        "display": "inline",
+        "font": "17px",
+        "height": 24.80000114440918,
+        "href": "/esim/japan",
+        "left": 16,
+        "rel": "",
+        "right": 219.3500061035156,
+        "text": "比較其他日本 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 203.3500061035156
+      },
+      {
+        "affiliateAttributes": [],
+        "display": "inline-block",
+        "font": "16px",
+        "height": 85.5999984741211,
+        "href": "/esim/japan",
+        "left": 36,
+        "rel": "",
+        "right": 268.8000030517578,
+        "text": "比較其他日本 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 232.8000030517578
+      }
+    ],
+    "footer": true,
+    "h1": "日本 eSIM 推薦 2026\n中文客服 + 原生線路\n精選兩張",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "route": "/esim/korea",
+    "viewport": 320,
+    "clientWidth": 305,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 85.5999984741211,
+        "href": "https://onelink.one/s/LsI9l",
+        "left": 36,
+        "right": 268.8000030517578,
+        "text": "查看 JOYTEL 韓國 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 232.8000030517578
+      }
+    ],
+    "disclosure": null,
+    "fallbacks": [],
+    "footer": true,
+    "h1": "韓國 eSIM 推薦 2026\n中文客服 + 原生線路\n精選兩張",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "route": "/esim-quiz",
+    "viewport": 320,
+    "clientWidth": 305,
+    "ctas": [],
+    "disclosure": null,
+    "fallbacks": [],
+    "footer": true,
+    "h1": "出國上網該用哪一種？\n30 秒測出你的方案",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "route": "/vietnam-jcb-lounge",
+    "viewport": 320,
+    "clientWidth": 305,
+    "ctas": [],
+    "disclosure": null,
+    "fallbacks": [
+      {
+        "affiliateAttributes": [],
+        "display": "inline",
+        "font": "14px",
+        "height": 45.20000076293945,
+        "href": "/esim",
+        "left": 40.79999923706055,
+        "rel": "",
+        "right": 239.2499961853027,
+        "text": "JOYTEL（比較目前可用 eSIM 方案）",
+        "visibility": "visible",
+        "width": 198.4499969482422
+      },
+      {
+        "affiliateAttributes": [],
+        "display": "inline",
+        "font": "17px",
+        "height": 55.400001525878906,
+        "href": "/esim",
+        "left": 63.60000228881836,
+        "rel": "",
+        "right": 254.41250228881836,
+        "text": "查看目前可用的 eSIM 方案",
+        "visibility": "visible",
+        "width": 190.8125
+      }
+    ],
+    "footer": true,
+    "h1": "越南新山一機場免費貴賓室攻略\nJCB 白金卡進 Rose Business Lounge 全紀錄",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "route": "/vietnam-packing-list",
+    "viewport": 390,
+    "clientWidth": 375,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "17px",
+        "height": 54.60000228881836,
+        "href": "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront",
+        "left": 40.79999923706055,
+        "right": 285.97500228881836,
+        "text": "👉 打開蝦皮越南必備清單",
+        "visibility": "visible",
+        "width": 245.1750030517578
+      }
+    ],
+    "disclosure": {
+      "beforeFirstCTA": true,
+      "display": "block",
+      "font": "13px",
+      "height": 94.3000030517578,
+      "href": null,
+      "left": 16,
+      "right": 359.20001220703125,
+      "text": "💡 透明聲明：本文部分連結為聯盟行銷連結。你透過連結購買，我會獲得少許佣金，但不影響你的價格與我的建議立場。",
+      "visibility": "visible",
+      "width": 343.20001220703125
+    },
+    "fallbacks": [],
+    "footer": true,
+    "h1": "越南自由行行李清單\n住越南十年，教你帶多少、怎麼裝、什麼上手提",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 375,
+    "table": null,
+    "width": 390
+  },
+  {
+    "route": "/vietnam-mosquito-repellent",
+    "viewport": 390,
+    "clientWidth": 375,
+    "ctas": [
+      {
+        "display": "inline-flex",
+        "font": "14.5px",
+        "height": 44.10000228881836,
+        "href": "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A",
+        "left": 36.79999923706055,
+        "right": 177.53750228881836,
+        "text": "酷澎補充比價 →",
+        "visibility": "visible",
+        "width": 140.7375030517578
+      },
+      {
+        "display": "inline-block",
+        "font": "17px",
+        "height": 54.60000228881836,
+        "href": "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront",
+        "left": 40.79999923706055,
+        "right": 319.9750175476074,
+        "text": "👉 打開蝦皮越南防蚊用品清單",
+        "visibility": "visible",
+        "width": 279.1750183105469
+      }
+    ],
+    "disclosure": {
+      "beforeFirstCTA": false,
+      "display": "block",
+      "font": "13px",
+      "height": 138.5,
+      "href": null,
+      "left": 16,
+      "right": 359.20001220703125,
+      "text": "本文部分連結為聯盟連結，若你透過蝦皮、酷澎或其他推薦連結購買，我可能獲得少量分潤，但不影響你的購買價格。\n    本文以越南旅行情境、防蚊有效性、親子使用便利性與出發前準備效率為優",
+      "visibility": "visible",
+      "width": 343.20001220703125
+    },
+    "fallbacks": [],
+    "footer": true,
+    "h1": "越南防蚊用品怎麼準備？\n住越南十年的在地經驗整理",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 375,
+    "table": {
+      "client": 343,
+      "overflow": "visible",
+      "scroll": 343
+    },
+    "width": 390
+  },
+  {
+    "route": "/anti-theft-crossbody-bag-guide",
+    "viewport": 390,
+    "clientWidth": 375,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 87.20000457763672,
+        "href": "https://s.momoshop.com.tw/s/HoLv7ksQ",
+        "left": 41.60000228881836,
+        "right": 333.60000228881836,
+        "text": "前往 momo 查看目前規格與價格 →",
+        "visibility": "visible",
+        "width": 292
+      },
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 57.60000228881836,
+        "href": "https://s.shopee.tw/Lm4PqAlxr",
+        "left": 41.60000228881836,
+        "right": 309.2375144958496,
+        "text": "前往蝦皮查看目前規格與價格 →",
+        "visibility": "visible",
+        "width": 267.63751220703125
+      }
+    ],
+    "disclosure": null,
+    "fallbacks": [],
+    "footer": true,
+    "h1": "防盜斜背包怎麼選？\n先看背法，再看「防盜」標籤",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 375,
+    "table": {
+      "client": 700,
+      "overflow": "visible",
+      "scroll": 700
+    },
+    "width": 390
+  },
+  {
+    "route": "/esim/joytel",
+    "viewport": 390,
+    "clientWidth": 375,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 85.5999984741211,
+        "href": "/esim",
+        "left": 52,
+        "right": 323.20001220703125,
+        "text": "查看目前可用的 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 271.20001220703125
+      }
+    ],
+    "disclosure": null,
+    "fallbacks": [
+      {
+        "affiliateAttributes": [],
+        "display": "inline",
+        "font": "17px",
+        "height": 24.80000114440918,
+        "href": "/esim",
+        "left": 16,
+        "rel": "",
+        "right": 236.3500061035156,
+        "text": "查看目前可用的 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 220.3500061035156
+      },
+      {
+        "affiliateAttributes": [],
+        "display": "inline-block",
+        "font": "16px",
+        "height": 85.5999984741211,
+        "href": "/esim",
+        "left": 52,
+        "rel": "",
+        "right": 323.20001220703125,
+        "text": "查看目前可用的 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 271.20001220703125
+      }
+    ],
+    "footer": true,
+    "h1": "JOYTEL eSIM 選購整理 2026\n原生線路、客服\n值不值得買？",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 375,
+    "table": {
+      "client": 343,
+      "overflow": "auto",
+      "scroll": 343
+    },
+    "width": 390
+  },
+  {
+    "route": "/esim/japan",
+    "viewport": 390,
+    "clientWidth": 375,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 56.79999923706055,
+        "href": "/esim/japan",
+        "left": 53.13750076293945,
+        "right": 322.0500068664551,
+        "text": "比較其他日本 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 268.9125061035156
+      }
+    ],
+    "disclosure": null,
+    "fallbacks": [
+      {
+        "affiliateAttributes": [],
+        "display": "inline",
+        "font": "17px",
+        "height": 24.80000114440918,
+        "href": "/esim/japan",
+        "left": 16,
+        "rel": "",
+        "right": 219.3500061035156,
+        "text": "比較其他日本 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 203.3500061035156
+      },
+      {
+        "affiliateAttributes": [],
+        "display": "inline-block",
+        "font": "16px",
+        "height": 56.79999923706055,
+        "href": "/esim/japan",
+        "left": 53.13750076293945,
+        "rel": "",
+        "right": 322.0500068664551,
+        "text": "比較其他日本 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 268.9125061035156
+      }
+    ],
+    "footer": true,
+    "h1": "日本 eSIM 推薦 2026\n中文客服 + 原生線路\n精選兩張",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 375,
+    "table": null,
+    "width": 390
+  },
+  {
+    "route": "/esim/korea",
+    "viewport": 390,
+    "clientWidth": 375,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 85.5999984741211,
+        "href": "https://onelink.one/s/LsI9l",
+        "left": 36,
+        "right": 339.20001220703125,
+        "text": "查看 JOYTEL 韓國 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 303.20001220703125
+      }
+    ],
+    "disclosure": null,
+    "fallbacks": [],
+    "footer": true,
+    "h1": "韓國 eSIM 推薦 2026\n中文客服 + 原生線路\n精選兩張",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 375,
+    "table": null,
+    "width": 390
+  },
+  {
+    "route": "/esim-quiz",
+    "viewport": 390,
+    "clientWidth": 375,
+    "ctas": [],
+    "disclosure": null,
+    "fallbacks": [],
+    "footer": true,
+    "h1": "出國上網該用哪一種？\n30 秒測出你的方案",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 375,
+    "table": null,
+    "width": 390
+  },
+  {
+    "route": "/vietnam-jcb-lounge",
+    "viewport": 390,
+    "clientWidth": 375,
+    "ctas": [],
+    "disclosure": null,
+    "fallbacks": [
+      {
+        "affiliateAttributes": [],
+        "display": "inline",
+        "font": "14px",
+        "height": 45.20000076293945,
+        "href": "/esim",
+        "left": 40.79999923706055,
+        "rel": "",
+        "right": 326.3874931335449,
+        "text": "JOYTEL（比較目前可用 eSIM 方案）",
+        "visibility": "visible",
+        "width": 285.5874938964844
+      },
+      {
+        "affiliateAttributes": [],
+        "display": "inline",
+        "font": "17px",
+        "height": 55.400001525878906,
+        "href": "/esim",
+        "left": 63.60000228881836,
+        "rel": "",
+        "right": 333.93749618530273,
+        "text": "查看目前可用的 eSIM 方案",
+        "visibility": "visible",
+        "width": 270.3374938964844
+      }
+    ],
+    "footer": true,
+    "h1": "越南新山一機場免費貴賓室攻略\nJCB 白金卡進 Rose Business Lounge 全紀錄",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 375,
+    "table": null,
+    "width": 390
+  },
+  {
+    "route": "/vietnam-packing-list",
+    "viewport": 1280,
+    "clientWidth": 1265,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "17px",
+        "height": 54.60000228881836,
+        "href": "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront",
+        "left": 311.20001220703125,
+        "right": 556.3750152587891,
+        "text": "👉 打開蝦皮越南必備清單",
+        "visibility": "visible",
+        "width": 245.1750030517578
+      }
+    ],
+    "disclosure": {
+      "beforeFirstCTA": true,
+      "display": "block",
+      "font": "13px",
+      "height": 72.20000457763672,
+      "href": null,
+      "left": 286.3999938964844,
+      "right": 978.3999938964844,
+      "text": "💡 透明聲明：本文部分連結為聯盟行銷連結。你透過連結購買，我會獲得少許佣金，但不影響你的價格與我的建議立場。",
+      "visibility": "visible",
+      "width": 692
+    },
+    "fallbacks": [],
+    "footer": true,
+    "h1": "越南自由行行李清單\n住越南十年，教你帶多少、怎麼裝、什麼上手提",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 1265,
+    "table": null,
+    "width": 1280
+  },
+  {
+    "route": "/vietnam-mosquito-repellent",
+    "viewport": 1280,
+    "clientWidth": 1265,
+    "ctas": [
+      {
+        "display": "inline-flex",
+        "font": "14.5px",
+        "height": 44.10000228881836,
+        "href": "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A",
+        "left": 447.2000122070313,
+        "right": 587.9375152587891,
+        "text": "酷澎補充比價 →",
+        "visibility": "visible",
+        "width": 140.7375030517578
+      },
+      {
+        "display": "inline-block",
+        "font": "17px",
+        "height": 54.60000228881836,
+        "href": "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront",
+        "left": 311.20001220703125,
+        "right": 590.3750305175781,
+        "text": "👉 打開蝦皮越南防蚊用品清單",
+        "visibility": "visible",
+        "width": 279.1750183105469
+      }
+    ],
+    "disclosure": {
+      "beforeFirstCTA": false,
+      "display": "block",
+      "font": "13px",
+      "height": 94.3000030517578,
+      "href": null,
+      "left": 286.3999938964844,
+      "right": 978.3999938964844,
+      "text": "本文部分連結為聯盟連結，若你透過蝦皮、酷澎或其他推薦連結購買，我可能獲得少量分潤，但不影響你的購買價格。\n    本文以越南旅行情境、防蚊有效性、親子使用便利性與出發前準備效率為優",
+      "visibility": "visible",
+      "width": 692
+    },
+    "fallbacks": [],
+    "footer": true,
+    "h1": "越南防蚊用品怎麼準備？\n住越南十年的在地經驗整理",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 1265,
+    "table": {
+      "client": 692,
+      "overflow": "visible",
+      "scroll": 692
+    },
+    "width": 1280
+  },
+  {
+    "route": "/anti-theft-crossbody-bag-guide",
+    "viewport": 1280,
+    "clientWidth": 1265,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 57.60000228881836,
+        "href": "https://s.momoshop.com.tw/s/HoLv7ksQ",
+        "left": 238,
+        "right": 531.7875061035156,
+        "text": "前往 momo 查看目前規格與價格 →",
+        "visibility": "visible",
+        "width": 293.7875061035156
+      },
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 57.60000228881836,
+        "href": "https://s.shopee.tw/Lm4PqAlxr",
+        "left": 238,
+        "right": 505.6375122070313,
+        "text": "前往蝦皮查看目前規格與價格 →",
+        "visibility": "visible",
+        "width": 267.63751220703125
+      }
+    ],
+    "disclosure": null,
+    "fallbacks": [],
+    "footer": true,
+    "h1": "防盜斜背包怎麼選？\n先看背法，再看「防盜」標籤",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 1265,
+    "table": {
+      "client": 850,
+      "overflow": "visible",
+      "scroll": 850
+    },
+    "width": 1280
+  },
+  {
+    "route": "/esim/joytel",
+    "viewport": 1280,
+    "clientWidth": 1265,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 56.79999923706055,
+        "href": "/esim",
+        "left": 489.9375,
+        "right": 774.8500061035156,
+        "text": "查看目前可用的 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 284.9125061035156
+      }
+    ],
+    "disclosure": null,
+    "fallbacks": [
+      {
+        "affiliateAttributes": [],
+        "display": "inline",
+        "font": "17px",
+        "height": 24.80000114440918,
+        "href": "/esim",
+        "left": 286.3999938964844,
+        "rel": "",
+        "right": 506.75,
+        "text": "查看目前可用的 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 220.3500061035156
+      },
+      {
+        "affiliateAttributes": [],
+        "display": "inline-block",
+        "font": "16px",
+        "height": 56.79999923706055,
+        "href": "/esim",
+        "left": 489.9375,
+        "rel": "",
+        "right": 774.8500061035156,
+        "text": "查看目前可用的 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 284.9125061035156
+      }
+    ],
+    "footer": true,
+    "h1": "JOYTEL eSIM 選購整理 2026\n原生線路、客服\n值不值得買？",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 1265,
+    "table": {
+      "client": 692,
+      "overflow": "visible",
+      "scroll": 692
+    },
+    "width": 1280
+  },
+  {
+    "route": "/esim/japan",
+    "viewport": 1280,
+    "clientWidth": 1265,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 56.79999923706055,
+        "href": "/esim/japan",
+        "left": 497.9375,
+        "right": 766.8500061035156,
+        "text": "比較其他日本 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 268.9125061035156
+      }
+    ],
+    "disclosure": null,
+    "fallbacks": [
+      {
+        "affiliateAttributes": [],
+        "display": "inline",
+        "font": "17px",
+        "height": 24.80000114440918,
+        "href": "/esim/japan",
+        "left": 286.3999938964844,
+        "rel": "",
+        "right": 489.75,
+        "text": "比較其他日本 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 203.3500061035156
+      },
+      {
+        "affiliateAttributes": [],
+        "display": "inline-block",
+        "font": "16px",
+        "height": 56.79999923706055,
+        "href": "/esim/japan",
+        "left": 497.9375,
+        "rel": "",
+        "right": 766.8500061035156,
+        "text": "比較其他日本 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 268.9125061035156
+      }
+    ],
+    "footer": true,
+    "h1": "日本 eSIM 推薦 2026\n中文客服 + 原生線路\n精選兩張",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 1265,
+    "table": null,
+    "width": 1280
+  },
+  {
+    "route": "/esim/korea",
+    "viewport": 1280,
+    "clientWidth": 1265,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 56.79999923706055,
+        "href": "https://onelink.one/s/LsI9l",
+        "left": 479.3500061035156,
+        "right": 785.4500122070312,
+        "text": "查看 JOYTEL 韓國 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 306.1000061035156
+      }
+    ],
+    "disclosure": null,
+    "fallbacks": [],
+    "footer": true,
+    "h1": "韓國 eSIM 推薦 2026\n中文客服 + 原生線路\n精選兩張",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 1265,
+    "table": null,
+    "width": 1280
+  },
+  {
+    "route": "/esim-quiz",
+    "viewport": 1280,
+    "clientWidth": 1265,
+    "ctas": [],
+    "disclosure": null,
+    "fallbacks": [],
+    "footer": true,
+    "h1": "出國上網該用哪一種？\n30 秒測出你的方案",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 1265,
+    "table": null,
+    "width": 1280
+  },
+  {
+    "route": "/vietnam-jcb-lounge",
+    "viewport": 1280,
+    "clientWidth": 1265,
+    "ctas": [],
+    "disclosure": null,
+    "fallbacks": [
+      {
+        "affiliateAttributes": [],
+        "display": "inline",
+        "font": "14px",
+        "height": 45.20000076293945,
+        "href": "/esim",
+        "left": 311.20001220703125,
+        "rel": "",
+        "right": 945.125,
+        "text": "JOYTEL（比較目前可用 eSIM 方案）",
+        "visibility": "visible",
+        "width": 633.9249877929688
+      },
+      {
+        "affiliateAttributes": [],
+        "display": "inline",
+        "font": "17px",
+        "height": 24.80000114440918,
+        "href": "/esim",
+        "left": 430.8125,
+        "rel": "",
+        "right": 629.3375091552734,
+        "text": "查看目前可用的 eSIM 方案",
+        "visibility": "visible",
+        "width": 198.52500915527344
+      }
+    ],
+    "footer": true,
+    "h1": "越南新山一機場免費貴賓室攻略\nJCB 白金卡進 Rose Business Lounge 全紀錄",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 1265,
+    "table": null,
+    "width": 1280
+  },
+  {
+    "route": "/esim/joytel",
+    "viewport": 320,
+    "clientWidth": 305,
+    "ctas": [
+      {
+        "display": "inline-block",
+        "font": "16px",
+        "height": 85.5999984741211,
+        "href": "/esim",
+        "left": 52,
+        "right": 252.8000030517578,
+        "text": "查看目前可用的 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 200.8000030517578
+      }
+    ],
+    "disclosure": null,
+    "fallbacks": [
+      {
+        "affiliateAttributes": [],
+        "display": "inline",
+        "font": "17px",
+        "height": 24.80000114440918,
+        "href": "/esim",
+        "left": 16,
+        "rel": "",
+        "right": 236.3500061035156,
+        "text": "查看目前可用的 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 220.3500061035156
+      },
+      {
+        "affiliateAttributes": [],
+        "display": "inline-block",
+        "font": "16px",
+        "height": 85.5999984741211,
+        "href": "/esim",
+        "left": 52,
+        "rel": "",
+        "right": 252.8000030517578,
+        "text": "查看目前可用的 eSIM 方案 →",
+        "visibility": "visible",
+        "width": 200.8000030517578
+      }
+    ],
+    "footer": true,
+    "h1": "JOYTEL eSIM 選購整理 2026\n原生線路、客服\n值不值得買？",
+    "header": true,
+    "parkedActive": 0,
+    "scrollWidth": 305,
+    "table": {
+      "client": 273,
+      "overflow": "auto",
+      "scroll": 336
+    },
+    "width": 320
+  }
+]

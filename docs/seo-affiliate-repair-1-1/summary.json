@@ -1,0 +1,18 @@
+{
+  "parked_active_before": 11,
+  "parked_active_after": 0,
+  "internal_fallbacks": 11,
+  "affiliate_active_removed": 11,
+  "active_affiliate_total_before": 83,
+  "active_affiliate_total_after": 72,
+  "non_parked_affiliate_href_changed": 0,
+  "sitemap_html_urls": 39,
+  "tests_passed": 29,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+  "build_pages": 44,
+  "new_typecheck_diagnostics": 0,
+  "browser_cases_passed": 24,
+  "uppercase_preview_gate": "PASS",
+  "release_gate": "RELEASE-READY; approval required before production release"
+}

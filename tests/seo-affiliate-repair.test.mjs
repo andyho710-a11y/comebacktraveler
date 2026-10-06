@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import test from 'node:test';
+import { createHash } from 'node:crypto';
 
 const read = path => readFileSync(new URL('../' + path, import.meta.url), 'utf8');
 const tracker = read('src/components/AffiliateClickTracker.astro').replace(/<\/?script\b[^>]*>/g, '');
@@ -17,7 +18,8 @@ function setup(path = '/vietnam-packing-list') {
   runInNewContext(tracker, { window, document, URL });
   return { calls, window, document, click(a) {
     const link = { href: a.href, textContent: a.text || 'unsafe free text', getAttribute: key => a[key] ?? null, closest: () => null, classList: { contains: () => false }, getBoundingClientRect: () => ({ top: 200 }) };
-    handler({ target: { closest: () => link } }); return { payload: calls.at(-1)[2], link };
+    const matches = affiliate(a) || /https:\/\/(?:coupa\.ng|collshp\.com|s\.shopee\.tw|afflink\.one|onelink\.one|linkgo\.one|s\.momoshop\.com\.tw|amzn\.to|[^/]*amazon\.com)\//.test(a.href);
+    handler({ target: { closest: () => matches ? link : null } }); return { payload: calls.at(-1)?.[2], link };
   } };
 }
 function quiz() {
@@ -53,7 +55,9 @@ test('three English placeholders stay present and noindex while sitemap removes 
 
 for (const path of targetPages) {
   test('rendered explicit metadata emits six stable reporting dimensions: ' + path, () => {
-    const ctas = anchors(read('dist' + path + '.html')); assert.ok(ctas.length);
+    const ctas = anchors(read('dist' + path + '.html'));
+    if (path === '/esim/joytel') { assert.equal(ctas.length, 0); return; }
+    assert.ok(ctas.length);
     for (const a of ctas) {
       for (const key of ['data-affiliate-product', 'data-affiliate-product-key', 'data-affiliate-category', 'data-affiliate-merchant', 'data-cta-position']) assert.ok(a[key], key);
       assert.match(a['data-affiliate-product-key'], /^[a-z][a-z0-9_]+$/);
@@ -67,11 +71,17 @@ for (const path of targetPages) {
   });
 }
 
-test('all four dynamically rendered quiz CTAs preserve navigation and use only editorial metadata', () => {
+test('quiz Japan is a safe internal fallback; three remaining affiliate variants preserve navigation and metadata', () => {
   const q = quiz();
   const variants = [['jp', 'stable'], ['kr', 'stable'], ['vn', 'stable'], ['vn', 'cheap']];
   for (const [dest, care] of variants) {
     const recommendation = q.recommend({ dest, care, days: 'short', people: 'solo' }); q.render(recommendation);
+    if (dest === 'jp') {
+      assert.equal(recommendation.cta.href, '/esim/japan'); assert.equal(recommendation.cta.aff, false);
+      assert.equal(anchors(q.result.innerHTML).length, 0); assert.ok(!q.result.innerHTML.includes('data-affiliate'));
+      const a = attributes(q.result.innerHTML.match(/<a\b[^>]*href="\/esim\/japan"[^>]*>/)[0]);
+      const state = setup('/esim-quiz'); state.click(a); assert.equal(state.calls.length, 0); continue;
+    }
     const [a] = anchors(q.result.innerHTML); assert.ok(a);
     assert.equal(a.href, baseline.quiz[dest + '_' + care]);
     assert.equal(a['data-affiliate-merchant'], dest === 'vn' && care === 'cheap' ? 'kkday' : 'joytel');
@@ -89,7 +99,7 @@ test('storefront and catalog CTA keys are explicitly collection keys, never a si
     }
   }
   const q = quiz();
-  for (const dest of ['jp', 'kr', 'vn']) assert.match(q.brandFor(dest, 'stable').cta.metadata.key, /^collection_/);
+  for (const dest of ['kr', 'vn']) assert.match(q.brandFor(dest, 'stable').cta.metadata.key, /^collection_/);
 });
 
 test('linkgo classifies as Affiliates.One; explicit KKday merchant is distinct; lookalike domains do not match', () => {
@@ -122,11 +132,38 @@ test('unsafe metadata and session-bearing paths cannot copy personal text into p
   assert.equal(p.merchant, 'unknown'); assert.equal(p.product_category, 'uncategorized'); assert.ok(!JSON.stringify(p).includes('person@example.com'));
 });
 
-test('every static affiliate href and page placement order matches baseline byte-for-byte', () => {
+test('every remaining static affiliate href and page placement order matches baseline byte-for-byte', () => {
   for (const [path, expected] of Object.entries(baseline.links)) {
     const html = read('dist/' + (path === '/' ? 'index' : path.slice(1)) + '.html');
-    assert.deepEqual(anchors(html).map(a => a.href), expected, path);
+    assert.deepEqual(anchors(html).map(a => a.href), expected.filter(href => !/\/(zf2Z8|z4xjt)(?:\?|$)/.test(href)), path);
   }
+});
+
+test('all ten static parked CTAs become internal navigation without affiliate attributes or click events', () => {
+  const mapping = [['/esim/china', '/esim'], ['/esim/joytel', '/esim'], ['/esim/troubleshoot', '/esim'], ['/vietnam-jcb-lounge', '/esim'], ['/esim/japan', '/esim/japan']];
+  let fallbackCount = 0;
+  for (const [path, destination] of mapping) {
+    const html = read('dist' + path + '.html');
+    assert.ok(!/zf2Z8|z4xjt/.test(html), path);
+    const fallbacks = [...html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/g)].filter(m => /(?:目前可用|比較其他日本)/.test(m[0])).map(m => ({ ...attributes(m[0]), text: m[0].replace(/<[^>]*>/g, '').trim() }));
+    assert.equal(fallbacks.length, 2, path); fallbackCount += fallbacks.length;
+    for (const a of fallbacks) {
+      assert.equal(a.href, destination); assert.equal(a.target, undefined); assert.equal(affiliate(a), false);
+      assert.ok(!Object.keys(a).some(key => key.startsWith('data-affiliate') || key === 'data-cta-position'));
+      const state = setup(path); state.click(a); assert.equal(state.calls.length, 0);
+    }
+  }
+  assert.equal(fallbackCount, 10);
+  assert.ok(!/zf2Z8|z4xjt/.test(read('dist/esim-quiz.html')));
+  // There were no parked Korea-specific CTAs: retain its valid owner URLs via the global regression test.
+  assert.ok(!/zf2Z8|z4xjt/.test(read('dist/esim/korea.html')));
+});
+
+test('JOYTEL rendered content remains unchanged except authorized CTA anchors, transparency note and responsive styles', () => {
+  const fixture = JSON.parse(read('tests/fixtures/affiliate-repair-1-1-baseline.json'));
+  const normalized = read('dist/esim/joytel.html').replace(/<a\b[^>]*href="(?:https:\/\/afflink.one\/s\/zf2Z8|\/esim)"[^>]*>[\s\S]*?<\/a>/g, '<fallback-cta/>').replace(/<p class="cta-label"[^>]*>[\s\S]*?<\/p>/g, '<cta-transparency/>').replace(/<style\b[^>]*>[\s\S]*?<\/style>/g, '<page-style/>').replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '<page-script/>').replace(/<link\b[^>]*rel="stylesheet"[^>]*>/g, '<stylesheet/>');
+  // Executable scripts/styles are outside editorial content; schema/head have independent exact assertions below.
+  assert.equal(createHash('sha256').update(normalized).digest('hex'), fixture.joytel_rendered_content_sha256);
 });
 
 test('packing exact disclosure appears once before first commercial CTA', () => {
@@ -148,7 +185,7 @@ test('requested core production routes and protected JOYTEL head/body/schema rem
   assert.deepEqual(schemas, baseline.joytel.schemas);
 });
 
-test('real local Hosting uppercase -> 301 -> lowercase 200 and existing aliases do not loop', { skip: !process.env.REPAIR_HOSTING_URL }, async () => {
+test('real case-sensitive Hosting uppercase -> 301 -> lowercase 200 and existing aliases do not loop', { skip: !process.env.REPAIR_HOSTING_URL }, async () => {
   const origin = process.env.REPAIR_HOSTING_URL;
   for (const path of ['/vietnam-jCB-lounge', '/vietnam-jcb-lounge/', '/vietnam-jcb-lounge.html']) {
     const response = await fetch(origin + path, { redirect: 'manual' }); assert.equal(response.status, 301);

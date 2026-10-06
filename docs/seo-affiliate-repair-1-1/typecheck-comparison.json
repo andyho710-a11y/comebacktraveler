@@ -1,0 +1,9 @@
+{
+  "errors_before": 59,
+  "errors_after": 59,
+  "warnings": 0,
+  "hints": 1,
+  "diagnostics_added": [],
+  "diagnostics_removed": [],
+  "comparison": "file/severity/code/primary message; ignore line shifts"
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "route": "/vietnam-packing-list",
+    "sha256": "897c9b3499ddabfa33cdcfbc7317e8d3cb640d775d5ddc3f9c02dbecdd21b51d",
+    "preview_matches_build": true
+  },
+  {
+    "route": "/vietnam-mosquito-repellent",
+    "sha256": "6026231a29b3e719caa8b92153f5d8be12ab80114d391d3e0fc47be68128445a",
+    "preview_matches_build": true
+  },
+  {
+    "route": "/anti-theft-crossbody-bag-guide",
+    "sha256": "aaeb8a6d18b2230c44ed7f143525a9d50353f30b9e6fb025e328be14de99d699",
+    "preview_matches_build": true
+  },
+  {
+    "route": "/esim/japan",
+    "sha256": "65ba5eaf0478d8187e839f8caf246650fd5f5036e61c00557a32edb7861932ab",
+    "preview_matches_build": true
+  },
+  {
+    "route": "/esim/korea",
+    "sha256": "2410aefa29e89824311e53a3923f1519a1199cde9adbffc297a060ac9f357366",
+    "preview_matches_build": true
+  },
+  {
+    "route": "/esim-quiz",
+    "sha256": "ca18eadee05d1b36acc51ae67d5ed769112871c6e3037564d445f772b75b2cf2",
+    "preview_matches_build": true
+  },
+  {
+    "route": "/vietnam-jcb-lounge",
+    "sha256": "8c4b7d989807936870a7f8e0f54d1f574b5ae5368011bb048e7b6b1300b2a2e4",
+    "preview_matches_build": true
+  },
+  {
+    "route": "/esim/joytel",
+    "sha256": "58803561a24b0c4b9fd6383613de3aaf72000b99093683ac2185e21057efbee7",
+    "preview_matches_build": true
+  }
+]

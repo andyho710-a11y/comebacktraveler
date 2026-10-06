@@ -245,13 +245,11 @@ const canonical = "https://comebacktraveler.com/esim-quiz";
 <script>
   // ── eSIM 決策樹：純前端、state 僅存記憶體，不使用 localStorage/sessionStorage ──
   const AFF = {
-    joytelJp: 'https://onelink.one/s/z4xjt?sub_id=quiz',
     joytelKr: 'https://onelink.one/s/LsI9l?sub_id=quiz',
     joytelVn: 'https://afflink.one/s/SNmCj?sub_id=quiz',
     viettelVn: 'https://linkgo.one/s/qG9cT?sub_id=quiz',
   };
   const AFF_META = {
-    joytelJp: { product: 'JOYTEL 日本 eSIM 方案', key: 'collection_joytel_japan_esim', merchant: 'joytel' },
     joytelKr: { product: 'JOYTEL 韓國 eSIM 方案', key: 'collection_joytel_korea_esim', merchant: 'joytel' },
     joytelVn: { product: 'JOYTEL 越南 Viettel eSIM 方案', key: 'collection_joytel_vietnam_esim', merchant: 'joytel' },
     viettelVn: { product: 'KKday 越南 Viettel 5G eSIM', key: 'kkday_vietnam_viettel_5g_esim', merchant: 'kkday' },
@@ -302,7 +300,7 @@ const canonical = "https://comebacktraveler.com/esim-quiz";
     const stable = care === 'stable';
     if (dest === 'jp') {
       return stable
-        ? { name: 'JOYTEL 日本原生線路', reason: 'JOYTEL 走日本當地原生線路，速度穩、有中文 LINE 真人客服，第一次自助、怕斷線的人最安心。', cta: { href: AFF.joytelJp, label: '查看 JOYTEL 日本方案 →', aff: true, metadata: AFF_META.joytelJp } }
+        ? { name: 'JOYTEL 日本原生線路', reason: 'JOYTEL 走日本當地原生線路，速度穩、有中文 LINE 真人客服，第一次自助、怕斷線的人最安心。', cta: { href: READ.jp, label: '比較其他日本 eSIM 方案 →', aff: false } }
         : { name: 'WaySim 威訊（日本原生）', reason: '同樣是原生線路但價格較親民，適合預算優先、已經熟悉 eSIM 操作的人。我把它和 JOYTEL 的差異整理在日本 eSIM 推薦文裡。', cta: { href: READ.jp, label: '看 JOYTEL vs WaySim 完整比較 →', aff: false } };
     }
     if (dest === 'kr') {
