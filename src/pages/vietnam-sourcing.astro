@@ -1,0 +1,80 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import VietnamSourcingForm from '../components/VietnamSourcingForm.astro';
+const title = '越南工廠與供應商媒合｜越南採購 Sourcing - Comeback Traveler';
+const description = '協助台灣企業尋找與初步篩選越南工廠及供應商，提供 RFQ 詢價、供應商比較、樣品協調、視訊訪廠及實地驗廠安排。';
+const steps = [
+  ['提交採購需求', '提供產品、規格、數量與希望協助的服務。'],
+  ['需求確認與 RFQ 整理', '釐清採購條件，整理供應商可回覆的詢價需求。'],
+  ['尋找及初步篩選越南供應商', '以人工與 AI 輔助整理候選資訊，由人工確認與聯繫。'],
+  ['報價 / 樣品 / 視訊 / 驗廠協調', '依委託範圍比較報價，協調進一步確認。'],
+  ['Buyer 與 Supplier 直接交易', '買方評估後自行與供應商訂約、支付商品貨款。'],
+];
+const services = ['尋找 3–5 家候選供應商', '供應商基本資料整理', 'RFQ 詢價', '報價比較', '樣品安排', 'OEM / ODM 初步確認', '工廠視訊會議安排', '實地驗廠安排', '議價協助', '物流 / 進口資源協助'];
+const faqs = [
+  ['一定要先去越南看工廠嗎？', '不一定。我們先透過公開企業資料、直接聯繫、報價與視訊縮小候選範圍，再依產品風險與採購需求討論是否安排實地確認。'],
+  ['可以只請你們找供應商嗎？', '可以，服務可依需求選擇。候選家數、篩選範圍與交付內容會在正式委託前確認，並依產品供應情況評估。'],
+  ['商品貨款要付給誰？', '商品貨款原則上由買方直接支付供應商，本服務不代收商品貨款。我們依正式委託內容收取 sourcing service fee；若包含成交服務費，會事先約定。'],
+  ['可以協助安排樣品嗎？', '可以協助聯繫供應商，確認樣品規格、費用與寄送方式；樣品費及運費等條件由相關各方確認。'],
+  ['可以安排實地驗廠嗎？', '可以協助安排實地訪廠或對接適合的專業資源，實際時間、範圍與費用需個別確認。初步篩選不等於品質保證。'],
+  ['收費方式如何計算？', '依產品、搜尋難度、供應商數量及所需服務範圍個別報價。正式開始供應商搜尋前，我們會先確認服務內容與費用；若包含成交服務費，會在正式委託前約定計算方式與付款條件。'],
+];
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'Service', '@id': 'https://comebacktraveler.com/vietnam-sourcing#service', name: '越南工廠與供應商媒合', description, url: 'https://comebacktraveler.com/vietnam-sourcing', serviceType: '越南採購 Sourcing', provider: { '@id': 'https://comebacktraveler.com/#organization' }, areaServed: { '@type': 'Country', name: '台灣' } },
+    { '@type': 'FAQPage', '@id': 'https://comebacktraveler.com/vietnam-sourcing#faq', mainEntity: faqs.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) },
+  ],
+};
+---
+<BlogLayout title={title} description={description} schemaType="WebPage">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+  <div class="vs-page">
+    <a class="vs-skip" href="#sourcing-main">跳到主要內容</a>
+    <SiteNav />
+    <main id="sourcing-main">
+      <nav class="vs-breadcrumb" aria-label="麵包屑"><a href="/">首頁</a><span aria-hidden="true"> / </span><span>越南供應商媒合</span></nav>
+      <section class="vs-hero" aria-labelledby="hero-title">
+        <p class="vs-eyebrow">VIETNAM SOURCING · 越南採購需求媒合</p>
+        <h1 id="hero-title">尋找越南工廠，<br />不必先飛越南一家一家找</h1>
+        <p class="vs-lead">告訴我們您要採購的產品與規格，我們協助尋找、初步篩選並聯繫合適的越南供應商。</p>
+        <div class="vs-actions"><a class="vs-primary" href="#rfq" data-sourcing-cta="rfq">提交採購需求</a><a class="vs-secondary" href="#process" data-sourcing-cta="process">了解服務流程</a></div>
+        <p class="vs-caption">為台灣企業提供人工主導的尋源協助 · 線上 RFQ 接收功能準備中</p>
+      </section>
+      <section class="vs-trust" aria-labelledby="trust-title"><h2 id="trust-title">先線上篩選，再實地確認</h2><p>我們採取「先線上篩選、再實地確認」的方式，先透過公開企業資料、工廠資訊、直接聯繫、報價與視訊等方式縮小候選範圍；只有在具體採購需求與候選供應商值得進一步確認時，再安排實地訪廠。</p><p>您提出需求，我們協助整理候選資訊與聯繫；採購決策及商品交易由買方與供應商確認。</p></section>
+      <section id="process" tabindex="-1" aria-labelledby="process-title"><p class="vs-eyebrow">HOW IT WORKS</p><h2 id="process-title">從需求到供應商，分五步進行</h2><ol class="vs-steps">{steps.map(([name, detail], index) => <li><span class="vs-step-number">0{index + 1}</span><h3>{name}</h3><p>{detail}</p></li>)}</ol><p class="vs-callout">商品貨款原則上由買方直接支付供應商，本服務不代收商品貨款。</p></section>
+      <section aria-labelledby="services-title"><p class="vs-eyebrow">SERVICE SCOPE</p><h2 id="services-title">按您的採購階段選擇服務</h2><ul class="vs-services">{services.map(service => <li>{service}</li>)}</ul><p>候選家數依產品供應情況與正式委託範圍確認。涉及進口、法律、專業檢驗等需求時，可協助對接相關資源，具體工作由相應專業服務提供者執行。</p></section>
+      <section class="vs-fees" aria-labelledby="fees-title"><h2 id="fees-title">服務費如何計算？</h2><p>依產品、搜尋難度、供應商數量及所需服務範圍個別報價。正式開始供應商搜尋前，我們會先確認服務內容與費用。若案件包含成交服務費，將於正式委託前明確約定計算方式與付款條件。</p><p><strong>買方原則上直接與供應商進行商品交易，我們不代收商品貨款。</strong></p></section>
+      <section id="rfq" tabindex="-1" aria-labelledby="rfq-title"><p class="vs-eyebrow">BUYER RFQ</p><h2 id="rfq-title">整理您的採購需求</h2><p>RFQ 是詢價需求表。先整理公司聯絡方式、產品條件與服務範圍，方便後續進行需求確認。</p><VietnamSourcingForm /></section>
+      <section id="faq" aria-labelledby="faq-title"><h2 id="faq-title">常見問題</h2>{faqs.map(([question, answer]) => <details><summary>{question}</summary><p>{answer}</p></details>)}</section>
+      <aside class="vs-disclaimer" aria-labelledby="disclaimer-title"><h2 id="disclaimer-title">採購前的確認</h2><p>候選供應商資料與初步篩選不等於品質保證。正式採購前，買方應依產品風險進行樣品、檢驗、合約及必要的實地確認；本服務可協助安排相關流程。</p></aside>
+    </main>
+    <SiteFooter />
+  </div>
+</BlogLayout>
+<style>
+  .vs-page { --ink: #1a1208; --ink-light: #4a3f2f; --paper: #faf8f3; --paper-warm: #f0e9db; --accent: #c0392b; --gold: #80651f; --border: #d4c9b0; --serif: 'Noto Serif TC', serif; --sans: 'Noto Sans TC', sans-serif; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.85; overflow-wrap: anywhere; }
+  main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; } section { padding: 36px 0; border-bottom: 1px solid var(--border); }
+  h1, h2 { font-family: var(--serif); font-weight: 900; line-height: 1.45; } h1 { font-size: clamp(28px, 5vw, 48px); margin: 18px 0; } h2 { font-size: clamp(24px, 3vw, 30px); margin: 0 0 18px; } h3 { font-size: 18px; font-weight: 700; line-height: 1.6; margin: 12px 0; }
+  p { margin: 12px 0; } a { color: var(--accent); } .vs-breadcrumb, .vs-caption { font-size: 14px; color: var(--ink-light); }
+  .vs-eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .12em; } .vs-lead { font-size: 18px; max-width: 700px; }
+  .vs-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 18px; } .vs-actions a { padding: 12px 20px; border: 1px solid var(--accent); border-radius: 4px; font-weight: 700; text-decoration: none; text-align: center; }
+  .vs-primary { background: var(--accent); color: white; } .vs-secondary { background: transparent; } .vs-trust, .vs-fees { background: var(--paper-warm); padding: 24px 18px; margin-top: 24px; border: none; }
+  .vs-steps { list-style: none; padding: 0; margin: 24px 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; } .vs-steps li { border: 1px solid var(--border); padding: 18px; } .vs-step-number { color: var(--accent); font-weight: 700; font-size: 22px; } .vs-steps p { font-size: 15px; color: var(--ink-light); }
+  .vs-callout { border-left: 3px solid var(--accent); padding: 12px 16px; background: var(--paper-warm); }
+  .vs-services { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px 32px; list-style: none; padding: 0; } .vs-services li { border-bottom: 1px solid var(--border); padding: 10px 0; }
+  #rfq, #process { scroll-margin-top: 110px; } details { border-bottom: 1px solid var(--border); padding: 18px 0; } summary { font-weight: 700; cursor: pointer; } details p { color: var(--ink-light); }
+  .vs-disclaimer { padding: 28px 0 0; color: var(--ink-light); } .vs-disclaimer h2 { font-size: 20px; }
+  .vs-skip { position: absolute; top: -100px; left: 16px; z-index: 200; padding: 12px; background: white; } .vs-skip:focus { top: 12px; }
+  :is(a, summary):focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+  @media (min-width: 700px) { main { padding: 32px 32px 80px; } section { padding: 48px 0; } .vs-trust, .vs-fees { padding: 32px; } .vs-services { grid-template-columns: repeat(2, minmax(0, 1fr)); } .vs-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 1000px) { .vs-steps { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  @media (max-width: 399px) { .vs-actions a { flex-basis: 100%; } }
+</style>

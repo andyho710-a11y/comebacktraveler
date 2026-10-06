@@ -9,7 +9,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "typecheck": "astro check",
+    "typecheck:sourcing": "astro check --tsconfig tsconfig.sourcing.json"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
@@ -18,5 +21,9 @@
     "astro": "^6.1.7",
     "tailwindcss": "4.2.4",
     "vite": "6.1.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^5.9.3"
   }
 }
