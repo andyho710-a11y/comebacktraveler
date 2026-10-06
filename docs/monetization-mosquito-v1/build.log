@@ -1,0 +1,67 @@
+
+> comeback-traveler@0.0.1 build
+> astro build
+
+03:38:19 [types] Generated 53ms
+03:38:19 [build] output: "static"
+03:38:19 [build] mode: "static"
+03:38:19 [build] directory: C:\Users\WIN10\.codex\worktrees\seo-affiliate-repair-1\astro\dist\
+03:38:19 [build] Collecting build info...
+03:38:19 [build] ✓ Completed in 83ms.
+03:38:19 [build] Building static entrypoints...
+03:38:21 [vite] ✓ built in 2.48s
+03:38:21 [vite] ✓ built in 68ms
+03:38:21 [build] Rearranging server assets...
+
+ generating static routes 
+03:38:21   ├─ /about.html (+35ms) 
+03:38:21   ├─ /affiliate-disclosure.html (+12ms) 
+03:38:21   ├─ /anti-theft-crossbody-bag-guide.html (+17ms) 
+03:38:22   ├─ /contact.html (+9ms) 
+03:38:22   ├─ /drink-a-glass-of-water.html (+12ms) 
+03:38:22   ├─ /en/about.html (+11ms) 
+03:38:22   ├─ /en/affiliate-disclosure.html (+7ms) 
+03:38:22   ├─ /en/connectivity.html (+7ms) 
+03:38:22   ├─ /en/contact.html (+8ms) 
+03:38:22   ├─ /en/privacy.html (+7ms) 
+03:38:22   ├─ /en/travel-gear.html (+6ms) 
+03:38:22   ├─ /en/vietnam-travel-prep.html (+8ms) 
+03:38:22   ├─ /en.html (+6ms) 
+03:38:22   ├─ /esim/china.html (+7ms) 
+03:38:22   ├─ /esim/china-routing-2026.html (+7ms) 
+03:38:22   ├─ /esim/install.html (+7ms) 
+03:38:22   ├─ /esim/japan.html (+9ms) 
+03:38:22   ├─ /esim/joytel.html (+7ms) 
+03:38:22   ├─ /esim/korea.html (+8ms) 
+03:38:22   ├─ /esim/overseas-internet-guide.html (+7ms) 
+03:38:22   ├─ /esim/saigon-airport-sim.html (+9ms) 
+03:38:22   ├─ /esim/troubleshoot.html (+8ms) 
+03:38:22   ├─ /esim.html (+10ms) 
+03:38:22   ├─ /esim-quiz.html (+6ms) 
+03:38:22   ├─ /first-trip-packing-list.html (+10ms) 
+03:38:22   ├─ /japan-guide.html (+6ms) 
+03:38:22   ├─ /kids-travel-amazing-bay.html (+8ms) 
+03:38:22   ├─ /kids-travel-guide.html (+7ms) 
+03:38:22   ├─ /korea-guide.html (+8ms) 
+03:38:22   ├─ /life-restart-naval.html (+7ms) 
+03:38:22   ├─ /privacy.html (+6ms) 
+03:38:22   ├─ /rss.xml (+62ms) 
+03:38:22   ├─ /saigon-couple-walk.html (+7ms) 
+03:38:22   ├─ /shopping.html (+8ms) 
+03:38:22   ├─ /story.html (+7ms) 
+03:38:22   ├─ /thsr-guide.html (+9ms) 
+03:38:22   ├─ /vietnam-girls-packing.html (+7ms) 
+03:38:22   ├─ /vietnam-guide.html (+7ms) 
+03:38:22   ├─ /vietnam-jcb-lounge.html (+7ms) 
+03:38:22   ├─ /vietnam-mosquito-repellent.html (+8ms) 
+03:38:22   ├─ /vietnam-mosquito-repellent-guide.html (+6ms) 
+03:38:22   ├─ /vietnam-packing-list.html (+7ms) 
+03:38:22   ├─ /vietnam-taxi-app-guide.html (+10ms) 
+03:38:22   ├─ /vietnam-travel-essentials.html (+8ms) 
+03:38:22   ├─ /index.html (+8ms) 
+03:38:22 ✓ Completed in 491ms.
+
+03:38:22 [build] ✓ Completed in 3.31s.
+03:38:22 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+03:38:22 [build] 44 page(s) built in 3.45s
+03:38:22 [build] Complete!

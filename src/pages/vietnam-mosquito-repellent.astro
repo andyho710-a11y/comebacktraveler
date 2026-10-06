@@ -10,7 +10,7 @@ const description = "去越南自由行要帶哪種防蚊用品？住越南十�
 const canonical = "https://comebacktraveler.com/vietnam-mosquito-repellent";
 const cover = "https://comebacktraveler.com/vietnam-mosquito-guide.png";
 
-// 聯盟連結（主入口為蝦皮；酷澎僅作單品補充比價）
+// 本輪僅比較既有單品與 collection 兩種購買意圖；網址不變。
 const SHOPEE_URL = "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront";
 const COUPANG_PICARIDIN = "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A";
 
@@ -159,6 +159,17 @@ const quickList = [
     .internal-links a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
     .internal-links a:hover { text-decoration: underline; }
 
+    .quick-decision { margin: 36px 0; padding: 0 18px 18px; border: 1px solid var(--border); border-radius: 10px; background: var(--paper-warm); }
+    .quick-decision h2 { margin-top: 24px; }
+    .quick-decision p { margin-bottom: 0; font-size: 14.5px; }
+    .decision-kind { color: var(--gold); font-size: 13px; font-weight: 500; margin-bottom: 8px; }
+    .product-card-name { margin-top: 0; overflow-wrap: anywhere; }
+    .product-card-cta, .shopee-btn { min-height: 48px; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+    .commercial-note { font-size: 13.5px; color: var(--ink-light); }
+    .mini-table { table-layout: fixed; overflow-wrap: anywhere; }
+    .mini-table td:first-child { white-space: normal; }
+    .mini-table th:first-child { width: 16%; }
+
     @media (max-width: 600px) {
       .hero, .article { padding: 0 16px; }
       h2 { font-size: 22px; }
@@ -268,7 +279,6 @@ const quickList = [
   </ul>
   <p>如果你只在市區大飯店、幾乎不出戶外，那帶一瓶防蚊液＋止癢藥膏就夠，不用全部都買。</p>
 
-  <AffiliateDisclosure />
 
   <h2>一、Picaridin 防蚊液：最適合多數越南旅客</h2>
 
@@ -290,15 +300,6 @@ const quickList = [
     尤其小腿、腳踝、手臂外側——越南很多蚊子不是飛到臉旁邊，而是直接攻擊腳踝。
   </p>
 
-  <div class="product-card">
-    <img class="product-card-img" src="/vietnam-ess-dintin.png" alt="叮嚀 派卡瑞丁 10H 小黑蚊防蚊液" loading="lazy" />
-    <div class="product-card-body">
-      <div class="product-card-name">叮嚀 派卡瑞丁 10H 小黑蚊防蚊液</div>
-      <div class="product-card-spec">Picaridin 派卡瑞丁 ‧ 主打長效</div>
-      <p class="product-card-why">派卡瑞丁成分，專治越南濕熱環境的小黑蚊與蚊子。不嗆鼻、不黏膩，小孩也能用，是這篇的首選方向。</p>
-      <a class="product-card-cta" href={COUPANG_PICARIDIN} target="_blank" rel="sponsored nofollow noopener" data-affiliate-product="叮嚀 派卡瑞丁 10H 小黑蚊防蚊液" data-affiliate-product-key="dintin_picaridin_10h" data-affiliate-category="mosquito_repellent" data-affiliate-merchant="coupang" data-cta-position="picaridin_product_card" data-affiliate="coupang">酷澎補充比價 →</a>
-    </div>
-  </div>
 
   <div class="tip-box">
     <div class="tip-title">怎麼用比較實際</div>
@@ -316,6 +317,39 @@ const quickList = [
   <p>使用 DEET 要注意：小孩使用先看產品標示，避免噴到手掌、眼周、傷口；
     大人也不要當香水狂噴，該補再補就好。另外 DEET 可能影響部分塑膠材質
     （墨鏡、相機、手機殼、錶帶），噴完最好等皮膚乾一點再碰這些東西。</p>
+
+  <section class="quick-decision" aria-labelledby="quick-decision-title">
+    <h2 id="quick-decision-title">快速選擇：先看行程，再看產品標示</h2>
+    <ul class="check-list">
+      <li><strong>一般城市自由行：</strong>先選有效成分與使用標示清楚的防蚊用品。</li>
+      <li><strong>蚊蟲較多、戶外時間較長：</strong>依上面的 Picaridin／DEET 比較，再確認產品標示與補用方式。</li>
+      <li><strong>防蚊貼／手環：</strong>定位為輔助用品，不取代主要防護方式。</li>
+    </ul>
+    <p>購買前確認適用年齡及使用方式；濃度與使用限制依產品標示。</p>
+  </section>
+
+  <section class="commercial-decision" aria-labelledby="commercial-decision-title">
+    <h2 id="commercial-decision-title">如果你想直接準備</h2>
+    <p>已決定找 Picaridin，可以先確認單品；還想比較品牌與容量，可以瀏覽用品 collection。</p>
+    <AffiliateDisclosure />
+    <div class="product-card">
+      <img class="product-card-img" src="/vietnam-ess-dintin.png" alt="叮寧 派卡瑞丁 10H 小黑蚊防蚊液" loading="lazy" />
+      <div class="product-card-body">
+        <p class="decision-kind">具體單品 · 商家：Coupang 酷澎</p>
+        <h3 class="product-card-name">叮寧 派卡瑞丁 10H 小黑蚊防蚊液</h3>
+        <div class="product-card-spec">Picaridin 派卡瑞丁；容量、濃度與使用限制請在商家頁確認。</div>
+        <p class="product-card-why">給已決定比較 Picaridin 單品、準備城市自由行防蚊用品的人。列入原因是它對應本文既有的 Picaridin 選購方向；「10H」為既有商品名稱，實際使用依產品標示。</p>
+        <a class="product-card-cta" href={COUPANG_PICARIDIN} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate-product="叮寧 派卡瑞丁 10H 小黑蚊防蚊液" data-affiliate-product-key="dintin_picaridin_10h" data-affiliate-category="mosquito_repellent" data-affiliate-merchant="coupang" data-cta-position="decision_primary" data-affiliate="coupang" data-experiment-id="mosquito_monetization_v1">到酷澎確認這款單品 →</a>
+      </div>
+    </div>
+    <div class="shopee-block">
+      <p class="shopee-eyebrow">多品項探索 · 商家：Shopee 蝦皮</p>
+      <h3 class="shopee-title">越南旅行用品 collection</h3>
+      <p class="shopee-desc">這是多品項商品清單，不是單一防蚊商品。適合還想比較品牌、容量與其他旅行用品的人；請逐項確認有效成分、適用年齡及使用方式。</p>
+      <a class="shopee-btn" href={SHOPEE_URL} target="_blank" rel="sponsored nofollow noopener noreferrer" data-affiliate-product="越南防蚊用品蝦皮清單" data-affiliate-product-key="collection_vietnam_travel_essentials" data-affiliate-category="travel_essentials" data-affiliate-merchant="shopee" data-cta-position="decision_collection" data-affiliate="shopee" data-experiment-id="mosquito_monetization_v1">到蝦皮瀏覽用品 collection →</a>
+    </div>
+    <p class="commercial-note">價格與庫存以商家頁面當下資訊為準。</p>
+  </section>
 
   <h2>三、防蚊貼與防蚊手環：可以帶，但別只靠它</h2>
 
@@ -376,19 +410,6 @@ const quickList = [
     <li>本身不太會被蚊子叮——但止癢藥膏還是建議放一條</li>
   </ul>
 
-  <div class="shopee-block">
-    <p class="shopee-eyebrow">🛒 越南防蚊用品・蝦皮一次備齊</p>
-    <h3 class="shopee-title">習慣用蝦皮的，照這份清單一次買齊</h3>
-    <p class="shopee-desc">
-      蝦皮是這篇的主要購買入口：把防蚊液、防蚊貼、止癢藥膏、薄長袖、防蚊手環整理在一份清單，
-      適合想集中下單、慢慢比價、湊免運的人。上方酷澎連結只作為單品補充比價，
-      真正要備齊越南防蚊用品，建議從這份蝦皮清單開始。
-    </p>
-    <a class="shopee-btn" href={SHOPEE_URL} target="_blank" rel="sponsored nofollow noopener" data-affiliate-product="越南防蚊用品蝦皮清單" data-affiliate-product-key="collection_vietnam_travel_essentials" data-affiliate-category="travel_essentials" data-affiliate-merchant="shopee" data-cta-position="mosquito_collection" data-affiliate="shopee">
-      👉 打開蝦皮越南防蚊用品清單
-    </a>
-    <p class="shopee-note">建議出發前 7–10 天購買，保留收貨、退換貨與補買時間。</p>
-  </div>
 
   <h2>常見問題 FAQ</h2>
   <p><strong>Q：去越南一定要帶防蚊液嗎？</strong><br>
@@ -415,10 +436,6 @@ const quickList = [
     希望這份在地整理，能讓你的越南行少抓幾個包、多睡幾個好覺。
   </div>
 
-  <p class="disclosure">
-    本文部分連結為聯盟連結，若你透過蝦皮、酷澎或其他推薦連結購買，我可能獲得少量分潤，但不影響你的購買價格。
-    本文以越南旅行情境、防蚊有效性、親子使用便利性與出發前準備效率為優先，並依公開商品資訊與平台頁面整理。
-  </p>
 
   <SocialLinks
     heading="追蹤我｜Follow Me"

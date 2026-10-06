@@ -105,6 +105,37 @@
       return 'article_body';
     }
 
+    var experimentId = 'mosquito_monetization_v1';
+    var experimentCtas = {
+      dintin_picaridin_10h: { merchant: 'coupang', category: 'mosquito_repellent', position: 'decision_primary' },
+      collection_vietnam_travel_essentials: { merchant: 'shopee', category: 'travel_essentials', position: 'decision_collection' }
+    };
+
+    function isExperimentCta(link) {
+      if (window.location.pathname !== '/vietnam-mosquito-repellent' ||
+          getTrackingValue(link, 'data-experiment-id') !== experimentId) return false;
+      var expected = experimentCtas[getMachineValue(link, 'data-affiliate-product-key', '')];
+      return !!expected && getMerchant(link, link.href) === expected.merchant &&
+        getAffiliateNetwork(link, link.href) === expected.merchant &&
+        getMachineValue(link, 'data-affiliate-category', '') === expected.category &&
+        getMachineValue(link, 'data-cta-position', '') === expected.position;
+    }
+
+    function getSafeDimensions(link) {
+      var pagePath = getPagePath(window.location.pathname);
+      return {
+        page_path: pagePath,
+        page_location: getAnalyticsUrl(window.location.href, false) + pagePath,
+        page_referrer: document.referrer ? getAnalyticsUrl(document.referrer, false) : '',
+        merchant: getMerchant(link, link.href),
+        product_key: getMachineValue(link, 'data-affiliate-product-key', 'unspecified'),
+        product_name: getProductName(link),
+        product_category: getMachineValue(link, 'data-affiliate-category', 'uncategorized'),
+        cta_position: getCtaPosition(link),
+        affiliate_network: getAffiliateNetwork(link, link.href)
+      };
+    }
+
     document.addEventListener('click', function (event) {
       var target = event.target;
       if (!target || !target.closest) return;
@@ -114,17 +145,8 @@
 
       var pagePath = getPagePath(window.location.pathname);
 
-      window.gtag('event', 'affiliate_click', {
-        page_path: pagePath,
-        // Override GA4's default location/referrer so URL query cannot re-enter this event.
-        page_location: getAnalyticsUrl(window.location.href, false) + pagePath,
-        page_referrer: document.referrer ? getAnalyticsUrl(document.referrer, false) : '',
+      var parameters = Object.assign(getSafeDimensions(link), {
         content_language: document.documentElement.lang || 'unknown',
-        merchant: getMerchant(link, link.href),
-        product_key: getMachineValue(link, 'data-affiliate-product-key', 'unspecified'),
-        product_name: getProductName(link),
-        product_category: getMachineValue(link, 'data-affiliate-category', 'uncategorized'),
-        cta_position: getCtaPosition(link),
         brand: ['JOYTEL', 'Klook', 'KKday', 'Airalo', 'eminent', 'BAGSMART'].includes(getTrackingValue(link, 'data-affiliate-brand')) ? getTrackingValue(link, 'data-affiliate-brand') : 'unknown',
         placement: getMachineValue(link, 'data-affiliate-placement', getCtaPosition(link)),
         destination: getMachineValue(link, 'data-affiliate-destination', 'unspecified'),
@@ -132,9 +154,74 @@
         link_url: getAnalyticsUrl(link.href, true),
         link_domain: getAffiliateDomain(link.href),
         category: 'affiliate',
-        affiliate_network: getAffiliateNetwork(link, link.href),
         transport_type: 'beacon'
       });
+      if (isExperimentCta(link)) parameters.experiment_id = experimentId;
+      window.gtag('event', 'affiliate_click', parameters);
     }, true);
+
+    function observeExperimentCtas() {
+      if (window.location.pathname !== '/vietnam-mosquito-repellent' ||
+          typeof window.IntersectionObserver !== 'function') return;
+      var sent = new Set();
+      var states = new Map();
+      var observer = new window.IntersectionObserver(function (entries) {
+        entries.forEach(updateVisibility);
+      }, { threshold: [0, 0.5] });
+
+      function cancel(state) {
+        window.clearTimeout(state.timer);
+        state.timer = null;
+        state.visible = false;
+      }
+
+      function updateVisibility(entry) {
+        var link = entry.target;
+        var state = states.get(link);
+        if (!state) return;
+        var key = getMachineValue(link, 'data-affiliate-product-key', '');
+        if (document.hidden || !entry.isIntersecting || entry.intersectionRatio < 0.5 || sent.has(key)) {
+          cancel(state);
+          return;
+        }
+        state.visible = true;
+        if (state.timer !== null) return;
+        var timer = window.setTimeout(function () {
+          // Process queued threshold crossings before counting continuous dwell.
+          observer.takeRecords().forEach(updateVisibility);
+          if (state.timer !== timer) return;
+          state.timer = null;
+          if (!state.visible || document.hidden || sent.has(key) || !isExperimentCta(link) ||
+              typeof window.gtag !== 'function') return;
+          sent.add(key);
+          window.gtag('event', 'affiliate_cta_view', Object.assign(getSafeDimensions(link), {
+            experiment_id: experimentId,
+            transport_type: 'beacon'
+          }));
+          observer.unobserve(link);
+        }, 1000);
+        state.timer = timer;
+      }
+
+      document.querySelectorAll('a[data-experiment-id="' + experimentId + '"]').forEach(function (link) {
+        if (!isExperimentCta(link)) return;
+        states.set(link, { timer: null, visible: false });
+        observer.observe(link);
+      });
+      document.addEventListener('visibilitychange', function () {
+        states.forEach(function (state, link) {
+          cancel(state);
+          observer.unobserve(link);
+          // A fresh observation after returning requires a new full dwell.
+          if (!document.hidden && !sent.has(getMachineValue(link, 'data-affiliate-product-key', ''))) observer.observe(link);
+        });
+      });
+    }
+
+    // SiteNav loads the tracker before article CTA markup has been parsed.
+    if (window.location.pathname === '/vietnam-mosquito-repellent') {
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', observeExperimentCtas, { once: true });
+      else observeExperimentCtas();
+    }
   })();
 </script>

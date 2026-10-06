@@ -1,0 +1,30 @@
+{
+  "date_taipei": "2026-10-07",
+  "coupang": {
+    "status": "VERIFIED INTENT",
+    "http_get_final": 403,
+    "browser_merchant": "www.tw.coupang.com",
+    "productId": "611480856576064",
+    "itemId": "313832983461890",
+    "vendorItemId": "313832035565578",
+    "visible_product": "叮寧 派卡瑞丁10H小黑蚊防蚊液, 25ml, 1瓶",
+    "get_redirect_host_chain": [
+      "coupa.ng",
+      "coupang.onelink.me",
+      "link.tw.coupang.com",
+      "www.tw.coupang.com"
+    ],
+    "safe_browser_followup": "public page only; no login, add-to-cart, purchase or forms"
+  },
+  "shopee": {
+    "status": "VERIFIED COLLECTION",
+    "http_get_final": 200,
+    "browser_merchant": "collshp.com",
+    "categoryId": "3834915",
+    "visible_category": "旅遊越南小物",
+    "visible_item_count": 14,
+    "visible_products": "旅行收納用品及派卡瑞丁防蚊用品"
+  },
+  "parked_or_obvious_mismatch_observed": false,
+  "owner_action_for_unverified_destination": false
+}

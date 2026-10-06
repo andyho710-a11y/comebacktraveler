@@ -1,0 +1,15 @@
+{
+  "main": "74f6d6d73e8d0888322175c227c1ded0d7f3158a",
+  "preview_url": "https://comeback-traveler-web--mosquito-monetization-v1-8ge9heun.web.app",
+  "preview_expires_utc": "2026-10-07T07:38:42.260018617Z",
+  "live_release_before": "projects/comeback-traveler-web/sites/comeback-traveler-web/channels/live/releases/1791313496841000",
+  "live_release_after": "projects/comeback-traveler-web/sites/comeback-traveler-web/channels/live/releases/1791313496841000",
+  "production_unchanged": true,
+  "cta_before": 2,
+  "cta_after": 2,
+  "affiliate_href_changes": 0,
+  "view_enabled_ctas": 2,
+  "tests_passed": 53,
+  "build_pages": 44,
+  "new_diagnostics": 0
+}

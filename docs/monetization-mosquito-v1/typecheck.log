@@ -1,0 +1,267 @@
+03:38:26 [types] Generated 66ms
+03:38:26 [check] Getting diagnostics for Astro files in C:\Users\WIN10\.codex\worktrees\seo-affiliate-repair-1\astro...
+[96mastro.config.mjs[0m:[93m22[0m:[93m15[0m - [91merror[0m[90m ts(2322): [0mType 'Plugin<any>[]' is not assignable to type 'PluginOption'.
+  Type 'Plugin<any>[]' is not assignable to type 'PluginOption[]'.
+    Type 'Plugin<any>' is not assignable to type 'PluginOption'.
+      Type 'import("C:/Users/WIN10/.codex/worktrees/seo-affiliate-repair-1/astro/node_modules/vite/dist/node/index").Plugin<any>' is not assignable to type 'import("C:/Users/WIN10/.codex/worktrees/seo-affiliate-repair-1/astro/node_modules/astro/node_modules/vite/dist/node/index").Plugin<any>'.
+        Types of property 'hotUpdate' are incompatible.
+          Type 'ObjectHook<(this: HotUpdatePluginContext, options: HotUpdateOptions) => void | EnvironmentModuleNode[] | Promise<void | EnvironmentModuleNode[]>> | undefined' is not assignable to type 'ObjectHook<(this: MinimalPluginContext & { environment: DevEnvironment; }, options: HotUpdateOptions) => void | EnvironmentModuleNode[] | Promise<...>> | undefined'.
+            Type '(this: HotUpdatePluginContext, options: HotUpdateOptions) => void | EnvironmentModuleNode[] | Promise<void | EnvironmentModuleNode[]>' is not assignable to type 'ObjectHook<(this: MinimalPluginContext & { environment: DevEnvironment; }, options: HotUpdateOptions) => void | EnvironmentModuleNode[] | Promise<...>> | undefined'.
+              Type '(this: HotUpdatePluginContext, options: HotUpdateOptions) => void | EnvironmentModuleNode[] | Promise<void | EnvironmentModuleNode[]>' is not assignable to type '(this: MinimalPluginContext & { environment: DevEnvironment; }, options: HotUpdateOptions) => void | EnvironmentModuleNode[] | Promise<...>'.
+                The 'this' types of each signature are incompatible.
+                  Type 'MinimalPluginContext & { environment: DevEnvironment; }' is not assignable to type 'HotUpdatePluginContext'.
+                    Types of property 'environment' are incompatible.
+                      Property 'options' is missing in type 'import("C:/Users/WIN10/.codex/worktrees/seo-affiliate-repair-1/astro/node_modules/astro/node_modules/vite/dist/node/index").DevEnvironment' but required in type 'import("C:/Users/WIN10/.codex/worktrees/seo-affiliate-repair-1/astro/node_modules/vite/dist/node/index").DevEnvironment'.
+
+[7m22[0m     plugins: [tailwindcss()],
+[7m  [0m [91m              ~~~~~~~~~~~~~[0m
+
+[96msrc/components/ReadAloud.astro[0m:[93m153[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'btn' is possibly 'null'.
+
+[7m153[0m     btn.addEventListener('click', function () {
+[7m   [0m [91m    ~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m150[0m:[93m11[0m - [91merror[0m[90m ts(7005): [0mVariable 'keepAlive' implicitly has an 'any' type.
+
+[7m150[0m       if (keepAlive) { clearInterval(keepAlive); keepAlive = null; }
+[7m   [0m [91m          ~~~~~~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m122[0m:[93m34[0m - [91merror[0m[90m ts(18047): [0m'status' is possibly 'null'.
+
+[7m122[0m         if (state === 'playing') status.textContent = '朗讀中… ' + Math.min(idx, chunks.length) + '/' + chunks.length;
+[7m   [0m [91m                                 ~~~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m114[0m:[93m46[0m - [91merror[0m[90m ts(7005): [0mVariable 'chunks' implicitly has an 'any[]' type.
+
+[7m114[0m       const u = new SpeechSynthesisUtterance(chunks[idx]);
+[7m   [0m [91m                                             ~~~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m109[0m:[93m109[0m - [91merror[0m[90m ts(18047): [0m'status' is possibly 'null'.
+
+[7m109[0m       else { icon.textContent = '▶'; label.textContent = '朗讀這篇'; btn.setAttribute('aria-pressed', 'false'); status.textContent = ''; }
+[7m   [0m [91m                                                                                                            ~~~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m109[0m:[93m66[0m - [91merror[0m[90m ts(18047): [0m'btn' is possibly 'null'.
+
+[7m109[0m       else { icon.textContent = '▶'; label.textContent = '朗讀這篇'; btn.setAttribute('aria-pressed', 'false'); status.textContent = ''; }
+[7m   [0m [91m                                                                 ~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m109[0m:[93m38[0m - [91merror[0m[90m ts(18047): [0m'label' is possibly 'null'.
+
+[7m109[0m       else { icon.textContent = '▶'; label.textContent = '朗讀這篇'; btn.setAttribute('aria-pressed', 'false'); status.textContent = ''; }
+[7m   [0m [91m                                     ~~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m109[0m:[93m14[0m - [91merror[0m[90m ts(18047): [0m'icon' is possibly 'null'.
+
+[7m109[0m       else { icon.textContent = '▶'; label.textContent = '朗讀這篇'; btn.setAttribute('aria-pressed', 'false'); status.textContent = ''; }
+[7m   [0m [91m             ~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m108[0m:[93m86[0m - [91merror[0m[90m ts(18047): [0m'btn' is possibly 'null'.
+
+[7m108[0m       else if (s === 'paused') { icon.textContent = '▶'; label.textContent = '繼續朗讀'; btn.setAttribute('aria-pressed', 'true'); }
+[7m   [0m [91m                                                                                     ~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m108[0m:[93m58[0m - [91merror[0m[90m ts(18047): [0m'label' is possibly 'null'.
+
+[7m108[0m       else if (s === 'paused') { icon.textContent = '▶'; label.textContent = '繼續朗讀'; btn.setAttribute('aria-pressed', 'true'); }
+[7m   [0m [91m                                                         ~~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m108[0m:[93m34[0m - [91merror[0m[90m ts(18047): [0m'icon' is possibly 'null'.
+
+[7m108[0m       else if (s === 'paused') { icon.textContent = '▶'; label.textContent = '繼續朗讀'; btn.setAttribute('aria-pressed', 'true'); }
+[7m   [0m [91m                                 ~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m107[0m:[93m80[0m - [91merror[0m[90m ts(18047): [0m'btn' is possibly 'null'.
+
+[7m107[0m       if (s === 'playing') { icon.textContent = '⏸'; label.textContent = '暫停'; btn.setAttribute('aria-pressed', 'true'); }
+[7m   [0m [91m                                                                               ~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m107[0m:[93m54[0m - [91merror[0m[90m ts(18047): [0m'label' is possibly 'null'.
+
+[7m107[0m       if (s === 'playing') { icon.textContent = '⏸'; label.textContent = '暫停'; btn.setAttribute('aria-pressed', 'true'); }
+[7m   [0m [91m                                                     ~~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m107[0m:[93m30[0m - [91merror[0m[90m ts(18047): [0m'icon' is possibly 'null'.
+
+[7m107[0m       if (s === 'playing') { icon.textContent = '⏸'; label.textContent = '暫停'; btn.setAttribute('aria-pressed', 'true'); }
+[7m   [0m [91m                             ~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m105[0m:[93m23[0m - [91merror[0m[90m ts(7006): [0mParameter 's' implicitly has an 'any' type.
+
+[7m105[0m     function setState(s) {
+[7m   [0m [91m                      ~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m102[0m:[93m14[0m - [91merror[0m[90m ts(7005): [0mVariable 'out' implicitly has an 'any[]' type.
+
+[7m102[0m       return out;
+[7m   [0m [91m             ~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m94[0m:[93m13[0m - [91merror[0m[90m ts(7034): [0mVariable 'out' implicitly has type 'any[]' in some locations where its type cannot be determined.
+
+[7m94[0m       const out = [];
+[7m  [0m [91m            ~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m86[0m:[93m39[0m - [91merror[0m[90m ts(2339): [0mProperty 'hidden' does not exist on type 'Element'.
+
+[7m86[0m       if (zhVoices().length > 0) root.hidden = false;
+[7m  [0m [91m                                      ~~~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m86[0m:[93m34[0m - [91merror[0m[90m ts(18047): [0m'root' is possibly 'null'.
+
+[7m86[0m       if (zhVoices().length > 0) root.hidden = false;
+[7m  [0m [91m                                 ~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m74[0m:[93m21[0m - [91merror[0m[90m ts(7006): [0mParameter 'v' implicitly has an 'any' type.
+
+[7m74[0m     function isZhTw(v) { return /zh[-_]?(tw|hant)/i.test(v.lang); }
+[7m  [0m [91m                    ~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m73[0m:[93m19[0m - [91merror[0m[90m ts(7006): [0mParameter 'v' implicitly has an 'any' type.
+
+[7m73[0m     function isZh(v) { return /^zh/i.test(v.lang); }
+[7m  [0m [91m                  ~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m65[0m:[93m9[0m - [91merror[0m[90m ts(7034): [0mVariable 'keepAlive' implicitly has type 'any' in some locations where its type cannot be determined.
+
+[7m65[0m     let keepAlive = null;
+[7m  [0m [91m        ~~~~~~~~~[0m
+[96msrc/components/ReadAloud.astro[0m:[93m63[0m:[93m9[0m - [91merror[0m[90m ts(7034): [0mVariable 'chunks' implicitly has type 'any[]' in some locations where its type cannot be determined.
+
+[7m63[0m     let chunks = [];
+[7m  [0m [91m        ~~~~~~[0m
+
+[96msrc/layouts/BlogLayout.astro[0m:[93m150[0m:[93m27[0m - [93mwarning[0m[90m ts(6133): [0m'ConverlyCustomData' is declared but its value is never read.
+
+[7m150[0m     <script is:inline>var ConverlyCustomData = {channelId: null};</script>
+[7m   [0m [93m                          ~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/esim-quiz.astro[0m:[93m414[0m:[93m3[0m - [91merror[0m[90m ts(18047): [0m'submitBtn' is possibly 'null'.
+
+[7m414[0m   submitBtn.addEventListener('click', function () {
+[7m   [0m [91m  ~~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m411[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'quiz' is possibly 'null'.
+
+[7m411[0m     quiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+[7m   [0m [91m    ~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m409[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'resultEl' is possibly 'null'.
+
+[7m409[0m     resultEl.innerHTML = '';
+[7m   [0m [91m    ~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m408[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'resultEl' is possibly 'null'.
+
+[7m408[0m     resultEl.hidden = true;
+[7m   [0m [91m    ~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m407[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'quiz' is possibly 'null'.
+
+[7m407[0m     quiz.querySelectorAll('.opt.selected').forEach(function (b) { b.classList.remove('selected'); });
+[7m   [0m [91m    ~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m402[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'resultEl' is possibly 'null'.
+
+[7m402[0m     resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+[7m   [0m [91m    ~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m401[0m:[93m5[0m - [91merror[0m[90m ts(2531): [0mObject is possibly 'null'.
+
+[7m401[0m     document.getElementById('quiz-reset').addEventListener('click', resetQuiz);
+[7m   [0m [91m    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m399[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'resultEl' is possibly 'null'.
+
+[7m399[0m     resultEl.hidden = false;
+[7m   [0m [91m    ~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m398[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'resultEl' is possibly 'null'.
+
+[7m398[0m     resultEl.innerHTML = html;
+[7m   [0m [91m    ~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m376[0m:[93m33[0m - [91merror[0m[90m ts(7006): [0mParameter 'item' implicitly has an 'any' type.
+
+[7m376[0m     r.reading.forEach(function (item) {
+[7m   [0m [91m                                ~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m367[0m:[93m19[0m - [91merror[0m[90m ts(7006): [0mParameter 'r' implicitly has an 'any' type.
+
+[7m367[0m   function render(r) {
+[7m   [0m [91m                  ~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m361[0m:[93m17[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ jp: string; kr: string; vn: string; }'.
+
+[7m361[0m         { href: GUIDE[a.dest], label: destL + '自由行攻略' },
+[7m   [0m [91m                ~~~~~~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m360[0m:[93m17[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ jp: string; kr: string; vn: string; }'.
+
+[7m360[0m         { href: READ[a.dest], label: destL + ' eSIM 推薦與比較' },
+[7m   [0m [91m                ~~~~~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m334[0m:[93m19[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ jp: string; kr: string; vn: string; }'.
+
+[7m334[0m           { href: GUIDE[a.dest], label: destL + '自由行攻略' },
+[7m   [0m [91m                  ~~~~~~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m318[0m:[93m97[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ cheap: string; stable: string; call: string; }'.
+
+[7m318[0m     const destL = L.dest[a.dest], daysL = L.days[a.days], peopleL = L.people[a.people], careL = L.care[a.care];
+[7m   [0m [91m                                                                                                ~~~~~~~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m318[0m:[93m69[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ solo: string; two: string; group: string; }'.
+
+[7m318[0m     const destL = L.dest[a.dest], daysL = L.days[a.days], peopleL = L.people[a.people], careL = L.care[a.care];
+[7m   [0m [91m                                                                    ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m318[0m:[93m43[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ short: string; mid: string; long: string; }'.
+
+[7m318[0m     const destL = L.dest[a.dest], daysL = L.days[a.days], peopleL = L.people[a.people], careL = L.care[a.care];
+[7m   [0m [91m                                          ~~~~~~~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m318[0m:[93m19[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ jp: string; kr: string; vn: string; }'.
+
+[7m318[0m     const destL = L.dest[a.dest], daysL = L.days[a.days], peopleL = L.people[a.people], careL = L.care[a.care];
+[7m   [0m [91m                  ~~~~~~~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m317[0m:[93m22[0m - [91merror[0m[90m ts(7006): [0mParameter 'a' implicitly has an 'any' type.
+
+[7m317[0m   function recommend(a) {
+[7m   [0m [91m                     ~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m298[0m:[93m27[0m - [91merror[0m[90m ts(7006): [0mParameter 'care' implicitly has an 'any' type.
+
+[7m298[0m   function brandFor(dest, care) {
+[7m   [0m [91m                          ~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m298[0m:[93m21[0m - [91merror[0m[90m ts(7006): [0mParameter 'dest' implicitly has an 'any' type.
+
+[7m298[0m   function brandFor(dest, care) {
+[7m   [0m [91m                    ~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m296[0m:[93m57[0m - [91merror[0m[90m ts(2769): [0mNo overload matches this call.
+  The last overload gave the following error.
+    Argument of type '(c: string) => string | undefined' is not assignable to parameter of type '(substring: string, ...args: any[]) => string'.
+      Type 'string | undefined' is not assignable to type 'string'.
+        Type 'undefined' is not assignable to type 'string'.
+
+[7m296[0m   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+[7m   [0m [91m                                                        ~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m296[0m:[93m16[0m - [91merror[0m[90m ts(7006): [0mParameter 's' implicitly has an 'any' type.
+
+[7m296[0m   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+[7m   [0m [91m               ~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m293[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'hint' is possibly 'null'.
+
+[7m293[0m     hint.textContent = done ? '可以看結果了' : '請先回答 4 個問題';
+[7m   [0m [91m    ~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m292[0m:[93m15[0m - [91merror[0m[90m ts(2339): [0mProperty 'disabled' does not exist on type 'HTMLElement'.
+
+[7m292[0m     submitBtn.disabled = !done;
+[7m   [0m [91m              ~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m292[0m:[93m5[0m - [91merror[0m[90m ts(18047): [0m'submitBtn' is possibly 'null'.
+
+[7m292[0m     submitBtn.disabled = !done;
+[7m   [0m [91m    ~~~~~~~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m279[0m:[93m17[0m - [91merror[0m[90m ts(2538): [0mType 'null' cannot be used as an index type.
+
+[7m279[0m         answers[key] = btn.getAttribute('data-val');
+[7m   [0m [91m                ~~~[0m
+[96msrc/pages/esim-quiz.astro[0m:[93m275[0m:[93m3[0m - [91merror[0m[90m ts(18047): [0m'quiz' is possibly 'null'.
+
+[7m275[0m   quiz.querySelectorAll('.q').forEach(function (group) {
+[7m   [0m [91m  ~~~~[0m
+
+[96msrc/pages/index.astro[0m:[93m262[0m:[93m35[0m - [91merror[0m[90m ts(7006): [0mParameter 'a' implicitly has an 'any' type.
+
+[7m262[0m         {restartNoteArticles.map((a) => (
+[7m   [0m [91m                                  ~[0m
+[96msrc/pages/index.astro[0m:[93m245[0m:[93m33[0m - [91merror[0m[90m ts(7006): [0mParameter 'a' implicitly has an 'any' type.
+
+[7m245[0m         {otherPrepArticles.map((a) => (
+[7m   [0m [91m                                ~[0m
+[96msrc/pages/index.astro[0m:[93m229[0m:[93m32[0m - [91merror[0m[90m ts(7006): [0mParameter 'a' implicitly has an 'any' type.
+
+[7m229[0m         {internetArticles.map((a) => (
+[7m   [0m [91m                               ~[0m
+[96msrc/pages/index.astro[0m:[93m212[0m:[93m35[0m - [91merror[0m[90m ts(7006): [0mParameter 'a' implicitly has an 'any' type.
+
+[7m212[0m         {packingListArticles.map((a) => (
+[7m   [0m [91m                                  ~[0m
+[96msrc/pages/index.astro[0m:[93m196[0m:[93m35[0m - [91merror[0m[90m ts(7006): [0mParameter 'a' implicitly has an 'any' type.
+
+[7m196[0m         {vietnamPrepArticles.map((a) => (
+[7m   [0m [91m                                  ~[0m
+[96msrc/pages/index.astro[0m:[93m10[0m:[93m44[0m - [91merror[0m[90m ts(7006): [0mParameter 'href' implicitly has an 'any' type.
+
+[7m10[0m const pickArticles = (hrefs) => hrefs.map((href) => articleByHref.get(href)).filter(Boolean);
+[7m  [0m [91m                                           ~~~~[0m
+[96msrc/pages/index.astro[0m:[93m10[0m:[93m23[0m - [91merror[0m[90m ts(7006): [0mParameter 'hrefs' implicitly has an 'any' type.
+
+[7m10[0m const pickArticles = (hrefs) => hrefs.map((href) => articleByHref.get(href)).filter(Boolean);
+[7m  [0m [91m                      ~~~~~[0m
+
+Result (66 files): 
+- 59 errors
+- 0 warnings
+- 1 hint
+
