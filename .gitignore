@@ -38,3 +38,7 @@ firebase-debug.log
 /SECURITY_ADVISORY_ASSESSMENT.md
 /VIETNAM_SOURCING_PRODUCTION_INFRA_REPORT.md
 /scripts/inspect-vietnam-sourcing.py
+
+# Operational release documents are not Tailwind sources.
+/VIETNAM_SOURCING_OPERATIONS.md
+/VIETNAM_SOURCING_PRODUCTION_RELEASE_REPORT.md
