@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "NodeNext", "moduleResolution": "NodeNext",
+    "rootDir": "..", "outDir": "lib", "strict": true, "skipLibCheck": true,
+    "lib": ["ES2022", "DOM"], "types": ["node"], "noEmitOnError": true
+  },
+  "include": ["src/**/*.ts", "../src/lib/vietnam-sourcing/rfq.ts"],
+  "exclude": ["lib", "node_modules"]
+}

@@ -16,6 +16,10 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.env.*
+functions/lib/
+firestore-debug.log
+ui-debug.log
 
 # Netlify
 .netlify/
