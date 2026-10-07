@@ -4,6 +4,7 @@ import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ContentDisclaimer from '../../components/ContentDisclaimer.astro';
+import { esimAffiliateUrls } from '../../data/esim-recommendations';
 
 const title = "JOYTEL eSIM 選購整理 2026｜原生線路、客服、值不值得買？";
 const description = "JOYTEL eSIM 選購整理。依官方線路規格、日韓原生網路標準速率、LINE 客服 SLA 與 DJB、WaySim 完整對比，10 分鐘看完再決定要不要買。數據來源於文中標明。";
@@ -108,6 +109,8 @@ const description = "JOYTEL eSIM 選購整理。依官方線路規格、日韓�
     .cta-box p { color: #d4c9b0; margin-bottom: 20px; font-size: 16px; }
     .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
     .cta-btn:hover { background: #a93226; }
+    .cta-box .cta-btn { max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; padding-inline: 18px; margin: 6px 0; }
+    .cta-box a:not(.cta-btn) { color: var(--paper); text-decoration: underline; }
     .cta-label { font-size: 11px; color: #666; margin-top: 10px; }
 
     .related-links { border-top: 1px solid var(--border); margin-top: 56px; padding-top: 32px; }
@@ -426,9 +429,11 @@ const description = "JOYTEL eSIM 選購整理。依官方線路規格、日韓�
   </p>
 
   <div class="cta-box">
-    <p>原生線路 + LINE 中文真人客服<br>這就是 JOYTEL 在台灣站穩腳步的原因</p>
-    <a class="cta-btn" href="/esim">查看目前可用的 eSIM 方案 →</a>
-    <p class="cta-label">JOYTEL 購買連結更新中，可先查看其他可用方案。</p>
+    <p>JOYTEL 日韓商品 + LINE 中文真人客服<br>請依目的地確認商品線路與使用限制</p>
+    <a class="cta-btn" href={esimAffiliateUrls.joytelJapan} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="affiliates_one" data-affiliate-product="JOYTEL 日本三電信 eSIM" data-affiliate-product-key="collection_joytel_japan_esim" data-affiliate-category="esim" data-affiliate-merchant="joytel" data-cta-position="joytel_japan">查看 JOYTEL 日本 eSIM →</a>
+    <a class="cta-btn" href={esimAffiliateUrls.joytelKorea} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="affiliates_one" data-affiliate-product="JOYTEL 韓國雙電信 eSIM" data-affiliate-product-key="collection_joytel_korea_esim" data-affiliate-category="esim" data-affiliate-merchant="joytel" data-cta-position="joytel_korea">查看 JOYTEL 韓國 eSIM →</a>
+    <p><a href="/esim">查看完整 eSIM 比較 →</a></p>
+    <p class="cta-label">日本連結為三電信漫遊商品；韓國雙電信方案及限制請在商家頁確認。</p>
   </div>
 
   <h2>總結</h2>

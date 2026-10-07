@@ -156,8 +156,9 @@ test('missing observer or analytics does not break navigation or throw', () => {
   const noIO = setup({ io: false }); assert.equal(noIO.observer(), undefined); noIO.click(0); assert.equal(noIO.events.length, 1);
   const s = setup(); s.window.gtag = undefined; s.emit(0, 1); s.advance(1000); s.click(0); assert.equal(s.events.length, 0);
 });
-test('every site affiliate URL and ordering remain equal to locked main baseline', () => {
-  for (const [path, hrefs] of Object.entries(baseline.affiliateHrefs)) assert.deepEqual(affiliates(read('dist/' + path)).map(a => a.href), hrefs.map(decode), path);
+test('every unrelated site affiliate URL and ordering remain equal to locked main baseline', () => {
+  const authorized = new Set(Object.keys(JSON.parse(read('tests/fixtures/esim-routing-baseline.json')).pages).map(p => p + '.html'));
+  for (const [path, hrefs] of Object.entries(baseline.affiliateHrefs)) if (!authorized.has(path)) assert.deepEqual(affiliates(read('dist/' + path)).map(a => a.href), hrefs.map(decode), path);
 });
 test('no parked JOYTEL link regression anywhere in built HTML or quiz', () => {
   const walk = path => readdirSync(new URL('../' + path, import.meta.url), { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(path + '/' + e.name) : e.name.endsWith('.html') ? [path + '/' + e.name] : []);

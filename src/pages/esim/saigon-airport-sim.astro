@@ -4,12 +4,13 @@ import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ContentDisclaimer from '../../components/ContentDisclaimer.astro';
+import { esimAffiliateUrls } from '../../data/esim-recommendations';
 
 const title = "胡志明市機場 SIM 卡值得買嗎？住越南十年的過來人真心建議（2026）";
 const description = "剛下飛機站在新山一機場，到底該不該在現場買 SIM 卡？在越南住過十年、胡志明進出無數次的過來人，幫你算清楚機場買、線上買、蝦皮買的真實差異，落地不再手忙腳亂。";
 const canonical = "https://comebacktraveler.com/esim/saigon-airport-sim";
 const cover = "https://comebacktraveler.com/vietnam-airport-queue.jpg";
-const VIETTEL_ESIM_LINK = "https://linkgo.one/s/qG9cT";
+
 ---
 
 <!DOCTYPE html>
@@ -296,7 +297,8 @@ const VIETTEL_ESIM_LINK = "https://linkgo.one/s/qG9cT";
   <div class="cta-box">
     <strong>想先把越南上網處理好？</strong>
     <p>手機支援 eSIM 的話，可以先參考越南 Viettel 5G 原生 eSIM。出發前在 Wi-Fi 環境安裝好，落地後再啟用數據。</p>
-    <a href={VIETTEL_ESIM_LINK} target="_blank" rel="noopener sponsored nofollow" class="cta-btn" data-affiliate-product="KKday 越南 Viettel 5G eSIM" data-affiliate-product-key="kkday_vietnam_viettel_5g_esim" data-affiliate-category="esim" data-affiliate-merchant="kkday" data-cta-position="airport_viettel_option" data-affiliate="affiliates_one">查看越南 Viettel 5G eSIM →</a>
+    <a class="cta-btn" href={esimAffiliateUrls.kkdayVietnam} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="affiliates_one" data-affiliate-product="KKday 越南 eSIM" data-affiliate-product-key="kkday_vietnam_esim" data-affiliate-category="esim" data-affiliate-merchant="kkday" data-cta-position="airport_vietnam_option">查看 KKday 越南 eSIM →</a>
+    <p>這是另一個可購買選項：KKday 商品目前使用 Vinaphone，並非本文比較的 Viettel；請在商家頁確認方案內容。</p>
     <div class="cta-note">方案天數、流量與價格會變動，下單前請以購買頁面最新資訊為準。</div>
   </div>
 

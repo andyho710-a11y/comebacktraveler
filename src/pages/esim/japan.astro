@@ -4,6 +4,7 @@ import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ContentDisclaimer from '../../components/ContentDisclaimer.astro';
+import { esimAffiliateUrls } from '../../data/esim-recommendations';
 
 const title = "日本 eSIM 推薦 2026｜中文客服 + 原生線路，精選兩張";
 const description = "市面上 8 家以上日本 eSIM，依官方線路規格、客服管道、價格與覆蓋逐一比對，篩出符合「中文真人客服 + 原生線路」這兩個條件的兩張，並說明適合誰、不適合誰。";
@@ -86,6 +87,8 @@ const description = "市面上 8 家以上日本 eSIM，依官方線路規格、
     .cta-box { background: var(--ink); color: var(--paper); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
     .cta-box p { color: #d4c9b0; margin-bottom: 20px; font-size: 16px; }
     .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
+    .cta-box .cta-btn { max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; padding-inline: 18px; margin: 6px 0; }
+    .cta-box a:not(.cta-btn) { color: var(--paper); text-decoration: underline; }
     .cta-label { font-size: 11px; color: #666; margin-top: 10px; }
 
     footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
@@ -220,7 +223,8 @@ const description = "市面上 8 家以上日本 eSIM，依官方線路規格、
 
   <AffiliateDisclosure />
 
-  <p><a href="/esim/japan" style="color:var(--accent);font-weight:600;">比較其他日本 eSIM 方案 →</a></p>
+  <p><a href={esimAffiliateUrls.joytelJapan} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="affiliates_one" data-affiliate-product="JOYTEL 日本三電信 eSIM" data-affiliate-product-key="collection_joytel_japan_esim" data-affiliate-category="esim" data-affiliate-merchant="joytel" data-cta-position="japan_primary">查看 JOYTEL 日本三電信 eSIM →</a></p>
+  <p>此連結為 JOYTEL 日本三電信商品；商家目前標示為漫遊線路，與本文介紹的原生方案不同，請確認方案後選購。</p>
 
   <h3>次推：WaySim 威訊 日本原生線路</h3>
 
@@ -288,9 +292,12 @@ const description = "市面上 8 家以上日本 eSIM，依官方線路規格、
   </p>
 
   <div class="cta-box">
-    <p>原生線路 + LINE 中文客服<br>下方連結可查看日本所有方案與目前優惠</p>
-    <a class="cta-btn" href="/esim/japan">比較其他日本 eSIM 方案 →</a>
-    <p class="cta-label">JOYTEL 購買連結更新中，可先查看其他可用方案。</p>
+    <p>JOYTEL 日本三電信商品 + LINE 中文客服<br>下方可查看 JOYTEL 日本商品，或選擇 Klook 平台購買</p>
+    <a class="cta-btn" href={esimAffiliateUrls.joytelJapan} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="affiliates_one" data-affiliate-product="JOYTEL 日本三電信 eSIM" data-affiliate-product-key="collection_joytel_japan_esim" data-affiliate-category="esim" data-affiliate-merchant="joytel" data-cta-position="japan_purchase">查看 JOYTEL 日本三電信 eSIM →</a>
+    <p>習慣平台購買？Klook 是另一個可購買選項。</p>
+    <a class="cta-btn" href={esimAffiliateUrls.klookJapan} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="affiliates_one" data-affiliate-product="Klook 日本 eSIM" data-affiliate-product-key="collection_klook_japan_esim" data-affiliate-category="esim" data-affiliate-merchant="klook" data-cta-position="japan_alternative">查看 Klook 日本 eSIM →</a>
+    <p><a href="/esim">查看完整 eSIM 比較 →</a></p>
+    <p class="cta-label">此連結為 JOYTEL 日本三電信商品；商家目前標示為漫遊線路，與本文介紹的原生方案不同，請確認方案後選購。</p>
   </div>
 
   <h2>日本 eSIM 常見問題</h2>
