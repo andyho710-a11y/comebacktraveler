@@ -16,7 +16,7 @@ function harness(transport = intake.unavailableTransport, analytics = true) {
   data.append('services_requested', 'samples');
   const form = Object.assign(node('sourcing-form'), { data, addEventListener(name, handler) { listeners[name] = handler; }, querySelectorAll(selector) { return [...nodes.values()].filter(item => selector === '.vs-error' ? item.id.endsWith('-error') : item.attributes['aria-invalid']); }, querySelector() { return [...nodes.values()].find(item => item.attributes['aria-invalid']); }, reset() { reset = true; } });
   const button = node('rfq-submit'); const feedback = node('rfq-feedback');
-  const cta = { hash: '#rfq', addEventListener(name, handler) { this.click = handler; } }; const target = Object.assign(node('rfq'), { scrollIntoView(options) { this.scroll = options; } });
+  const cta = { hash: '#rfq', addEventListener(_name, handler) { this.click = handler; } }; const target = Object.assign(node('rfq'), { scrollIntoView(options) { this.scroll = options; } });
   const document = { querySelector(selector) { return selector === '#rfq' ? target : selector === '#sourcing-form' ? form : selector === '#rfq-submit' ? button : feedback; }, querySelectorAll() { return [cta]; }, getElementById(id) { return nodes.get(id); } };
   class DOMFormData extends FormData { constructor(element) { super(); for (const [key, value] of element.data.entries()) this.append(key, value); } }
   vm.runInNewContext(code, { ...intake, createHttpTransport: () => transport, document, window: { location: { search: '?utm_source=test&email=private' }, ...(analytics ? { gtag(command, event, dimensions) { events.push({ command, event, dimensions }); } } : {}) }, FormData: DOMFormData, matchMedia: () => ({ matches: true }), Date, JSON });

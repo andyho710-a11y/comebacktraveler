@@ -38,7 +38,7 @@ const targetPages = ['/vietnam-mosquito-repellent', '/vietnam-packing-list', '/a
 test('Hosting adds exactly the requested uppercase 301 and retains existing URL normalization', () => {
   const hosting = JSON.parse(read('firebase.json')).hosting;
   assert.deepEqual(hosting.redirects, [{ source: '/vietnam-jCB-lounge', destination: '/vietnam-jcb-lounge', type: 301 }]);
-  assert.equal(hosting.cleanUrls, true); assert.equal(hosting.trailingSlash, false); assert.equal(hosting.rewrites, undefined);
+  assert.equal(hosting.cleanUrls, true); assert.equal(hosting.trailingSlash, false); assert.deepEqual(hosting.rewrites, [{ source: '/api/vietnam-sourcing', function: { functionId: 'vietnamSourcingIntake', region: 'asia-east1' } }]);
   assert.ok(!readdirSync(new URL('../src/pages/', import.meta.url)).includes('vietnam-jCB-lounge.astro'));
   assert.ok(read('dist/vietnam-jcb-lounge.html').includes('rel="canonical" href="https://comebacktraveler.com/vietnam-jcb-lounge"'));
 });
@@ -46,13 +46,13 @@ test('Hosting adds exactly the requested uppercase 301 and retains existing URL 
 test('three English placeholders stay present and noindex while sitemap removes only their URLs', () => {
   const excluded = ['/en/connectivity', '/en/travel-gear', '/en/vietnam-travel-prep'];
   const sitemap = [...read('dist/sitemap-0.xml').matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
-  assert.equal(sitemap.length, 39);
+  assert.equal(sitemap.length, 40);
   for (const path of excluded) {
     const html = read('dist' + path + '.html');
     assert.match(html, /name="robots" content="noindex, follow"/);
     assert.ok(!sitemap.includes('https://comebacktraveler.com' + path));
   }
-  assert.deepEqual(sitemap.slice().sort(), baseline.sitemap.filter(url => !excluded.some(path => url === 'https://comebacktraveler.com' + path)).sort());
+  assert.deepEqual(sitemap.slice().sort(), [...baseline.sitemap.filter(url => !excluded.some(path => url === 'https://comebacktraveler.com' + path)), 'https://comebacktraveler.com/vietnam-sourcing'].sort());
 });
 
 for (const path of targetPages) {

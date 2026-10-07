@@ -1,5 +1,5 @@
 import { readIntake, serializeRFQ, submissionEnvelope } from '../lib/src/lib/vietnam-sourcing/rfq.js';
-import { hash, IP_REQUEST_LIMIT, GLOBAL_REQUEST_LIMIT, RATE_WINDOW_MS } from '../lib/functions/src/service.js';
+import { IP_REQUEST_LIMIT, GLOBAL_REQUEST_LIMIT, RATE_WINDOW_MS } from '../lib/functions/src/service.js';
 export function validEnvelope() {
   const data = new FormData();
   for (const [key, value] of Object.entries({ company_name: 'QA fictitious company', contact_name: 'QA fictitious buyer', email: 'qa@example.com', phone: '+886 900000000', product_name: 'QA test product', specifications: 'QA nonconfidential specification', quantity: '100 units', product_category: 'other', frequency: 'once', oem: 'no', odm: 'no', private_label: 'no', existing_supplier_status: 'none', consent: 'yes' })) data.set(key, value);
