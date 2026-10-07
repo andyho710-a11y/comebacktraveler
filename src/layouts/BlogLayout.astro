@@ -13,6 +13,7 @@ interface Props {
   authorName?: string;
   robots?: string;
   schemaType?: 'BlogPosting' | 'WebPage' | 'CollectionPage';
+  sensitiveIntake?: boolean;
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   authorName,
   robots,
   schemaType = 'BlogPosting',
+  sensitiveIntake = false,
 } = Astro.props;
 const siteBase = Astro.site ?? new URL('https://comebacktraveler.com');
 // build.format:'file' 會讓 Astro.url.pathname 變成 /esim.html、/index.html，
@@ -117,15 +119,27 @@ const structuredData = {
     {robots && <meta name="robots" content={robots} />}
     <meta name="google-site-verification" content="Tew8sawgTRGXNPfGDO3PNQRC0mVNRmPvyvCwGSa0joQ" />
     <meta name="p:domain_verify" content="705f8c3c64a17552025dd31077a84f1e" />
-    <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>
+    {!sensitiveIntake && <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666904599101446" crossorigin="anonymous"></script>}
     <!-- Google tag (gtag.js) -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>
-    <script define:vars={{ language }}>
+    {!sensitiveIntake && <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF"></script>}
+    {sensitiveIntake ? <script define:vars={{ language, pageLocation: canonicalURL.toString() }}>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){window.dataLayer.push(arguments);};
+      // Local QA queues events without sending fictitious leads to the production property.
+      if (['comebacktraveler.com', 'comeback-traveler-web.web.app', 'comeback-traveler-web.firebaseapp.com'].includes(window.location.hostname)) {
+        var analyticsTag = document.createElement('script');
+        analyticsTag.async = true;
+        analyticsTag.src = 'https://www.googletagmanager.com/gtag/js?id=G-XW4LBK8PYF';
+        document.head.appendChild(analyticsTag);
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-XW4LBK8PYF', { content_language: language, page_location: pageLocation, page_referrer: '' });
+      }
+    </script> : <script define:vars={{ language }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-XW4LBK8PYF', { content_language: language });
-    </script>
+    </script>}
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang={language} href={canonicalURL} />
     {alternateURL && <link rel="alternate" hreflang={counterpartLanguage} href={alternateURL} />}
@@ -147,7 +161,6 @@ const structuredData = {
   </head>
   <body class="bg-slate-50 text-gray-800 antialiased">
     <slot />
-    <script is:inline>var ConverlyCustomData = {channelId: null};</script>
-    <script is:inline async defer src="https://cdn.adotone.com/production/adlinks/dc1934b1851fb555c85ddccc0e836789cb9598a699c122a43316fc4893529cb8.js"></script>
+    {!sensitiveIntake && <><script is:inline>var ConverlyCustomData = {channelId: null};</script> <script is:inline async defer src="https://cdn.adotone.com/production/adlinks/dc1934b1851fb555c85ddccc0e836789cb9598a699c122a43316fc4893529cb8.js"></script></>}
   </body>
 </html>

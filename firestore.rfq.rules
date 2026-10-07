@@ -1,0 +1,16 @@
+rules_version = '2';
+// Dedicated rfq-intake database only. Models:
+// rfqs/{random server ID}: RFQ schema v1 + authoritative ISO created_at/updated_at,
+// status=new, attachments=[], notification_status=pending_manual_review.
+// _rfq_receipts/{SHA256 token}: rfq_id, fingerprint, created_at.
+// _rfq_abuse/{hashed IP or global}: count, reset_at, expires_at.
+// No browser CRUD or queries exist. Server Admin SDK uses IAM and bypasses rules.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function clientIntakeWriteAllowed() { return false; }
+    match /{document=**} {
+      allow read, delete: if false;
+      allow create, update: if clientIntakeWriteAllowed();
+    }
+  }
+}

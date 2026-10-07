@@ -16,6 +16,10 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.env.*
+functions/lib/
+firestore-debug.log
+ui-debug.log
 
 # Netlify
 .netlify/
@@ -29,3 +33,8 @@ firebase-debug.log
 
 # jetbrains setting folder
 .idea/
+
+# Keep tracked operational documents out of Tailwind automatic source discovery.
+/SECURITY_ADVISORY_ASSESSMENT.md
+/VIETNAM_SOURCING_PRODUCTION_INFRA_REPORT.md
+/scripts/inspect-vietnam-sourcing.py

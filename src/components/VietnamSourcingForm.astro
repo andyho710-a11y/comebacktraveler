@@ -1,0 +1,69 @@
+---
+import { CATEGORIES, SERVICES, FREQUENCIES, SUPPLIER_STATUSES } from '../lib/vietnam-sourcing/rfq';
+interface CompanyField { name: string; label: string; required?: boolean; autocomplete?: string; type?: 'email' | 'tel' | 'url'; inputmode?: 'numeric'; }
+const companyFields: CompanyField[] = [
+  { name: 'company_name', label: '公司名稱', required: true, autocomplete: 'organization' },
+  { name: 'tax_id', label: '統一編號', inputmode: 'numeric' },
+  { name: 'contact_name', label: '聯絡人', required: true, autocomplete: 'name' },
+  { name: 'title', label: '職稱', autocomplete: 'organization-title' },
+  { name: 'email', label: 'Email', type: 'email', required: true, autocomplete: 'email' },
+  { name: 'phone', label: '電話', type: 'tel', required: true, autocomplete: 'tel' },
+  { name: 'line_id', label: 'LINE ID' },
+  { name: 'website', label: '公司網站', type: 'url', autocomplete: 'url' },
+];
+const productFields = [
+  { name: 'product_name', label: '想採購的產品名稱', required: true },
+  { name: 'purpose', label: '產品用途' },
+  { name: 'quantity', label: '預估採購數量（含單位）', required: true },
+  { name: 'target_price', label: '目標單價 / 預算（含幣別）' },
+  { name: 'moq', label: '希望 MOQ（最低訂購量）' },
+  { name: 'certifications', label: '必要認證' },
+  { name: 'order_timeline', label: '預計下單時間' },
+];
+---
+<form id="sourcing-form" novalidate aria-describedby="rfq-availability rfq-required" method="post">
+  <p id="rfq-availability" class="vs-notice">提交後，我們會依您提供的資料評估需求並進行聯絡。若尚未看到「需求已成功送出」，請稍後重試，或使用<a href="/contact">現有聯絡方式</a>。</p>
+  <p id="rfq-required">標示 * 為必填。請先提供足以初步評估的資訊，機密圖面可待需求確認後再提供。</p>
+  <noscript><p class="vs-notice">此表單需要 JavaScript 才能檢查與提交資料，請啟用 JavaScript 或使用<a href="/contact">聯絡頁</a>。</p></noscript>
+  <div class="vs-honeypot" aria-hidden="true"><label for="website_confirmation">保留欄位，請勿填寫</label><input id="website_confirmation" name="website_confirmation" tabindex="-1" autocomplete="off" /></div>
+  <fieldset><legend>01 · 公司與聯絡資料</legend><div class="vs-fields">
+    {companyFields.map(field => <div class="vs-field"><label for={field.name}>{field.label}{field.required && ' *'}</label><input id={field.name} name={field.name} type={field.type ?? 'text'} required={field.required} autocomplete={field.autocomplete} inputmode={field.inputmode} maxlength="300" aria-describedby={`${field.name}-error`} /><span id={`${field.name}-error`} class="vs-error"></span></div>)}
+  </div></fieldset>
+  <fieldset><legend>02 · 採購產品與規格</legend><div class="vs-fields">
+    {productFields.map(field => <div class="vs-field"><label for={field.name}>{field.label}{field.required && ' *'}</label><input id={field.name} name={field.name} required={field.required} maxlength="300" aria-describedby={`${field.name}-error`} /><span id={`${field.name}-error`} class="vs-error"></span></div>)}
+    <div class="vs-field"><label for="product_category">產品類別</label><select id="product_category" name="product_category" aria-describedby="product_category-error">{Object.entries(CATEGORIES).map(([value, label]) => <option value={value} selected={value === 'other'}>{label}</option>)}</select><span id="product_category-error" class="vs-error"></span></div>
+    <div class="vs-field"><label for="frequency">採購頻率</label><select id="frequency" name="frequency" aria-describedby="frequency-error">{Object.entries(FREQUENCIES).map(([value, label]) => <option value={value} selected={value === 'unsure'}>{label}</option>)}</select><span id="frequency-error" class="vs-error"></span></div>
+    {([['oem', '是否需要 OEM（依買方設計製造）'], ['odm', '是否需要 ODM（供應商協助設計）'], ['private_label', '是否需要自有品牌 / 包裝']] as const).map(([name, label]) => <div class="vs-field"><label for={name}>{label}</label><select id={name} name={name} aria-describedby={`${name}-error`}><option value="unsure">尚未確定</option><option value="yes">需要</option><option value="no">不需要</option></select><span id={`${name}-error`} class="vs-error"></span></div>)}
+    <div class="vs-field vs-wide"><label for="specifications">規格 / 材質 *</label><textarea id="specifications" name="specifications" required rows="5" maxlength="4000" aria-describedby="specifications-error"></textarea><span id="specifications-error" class="vs-error"></span></div>
+  </div></fieldset>
+  <fieldset><legend>03 · 目前尋源進度</legend><div class="vs-field"><label for="existing_supplier_status">是否已有越南供應商</label><select id="existing_supplier_status" name="existing_supplier_status" aria-describedby="existing_supplier_status-error">{Object.entries(SUPPLIER_STATUSES).map(([value, label]) => <option value={value}>{label}</option>)}</select><span id="existing_supplier_status-error" class="vs-error"></span></div></fieldset>
+  <fieldset aria-describedby="services_requested-error"><legend>04 · 希望協助的服務（可複選）</legend><div class="vs-checks">{Object.entries(SERVICES).map(([value, label]) => <label class="vs-check"><input type="checkbox" name="services_requested" value={value} />{label}</label>)}</div><span id="services_requested-error" class="vs-error"></span></fieldset>
+  <fieldset><legend>05 · 補充資料</legend><div class="vs-field"><label for="additional_notes">其他需求 / 補充說明</label><textarea id="additional_notes" name="additional_notes" rows="4" maxlength="4000" aria-describedby="additional_notes-error"></textarea><span id="additional_notes-error" class="vs-error"></span></div><div class="vs-upload"><strong>圖面 / 規格 / 照片</strong><p>文件上傳功能準備中，提交需求後我們會提供文件傳送方式。</p><p>目前不接收檔案；請先在欄位中描述需求。</p></div></fieldset>
+  <label class="vs-check vs-consent" for="consent"><input type="checkbox" id="consent" name="consent" value="yes" required aria-describedby="consent-error" />我同意為本次採購需求提供上述資料，以便進行需求確認與聯絡。 *</label>
+  <p><a href="/privacy">閱讀現有隱私權政策</a></p><span id="consent-error" class="vs-error"></span>
+  <div id="rfq-feedback" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></div>
+  <button id="rfq-submit" type="submit" disabled>提交採購需求</button>
+  <p class="vs-small">只有接收服務確認需求已保存後，才會顯示提交成功。重試同一份需求不會重複建立案件。</p>
+</form>
+<script>
+  import '../scripts/vietnam-sourcing';
+</script>
+<style>
+  form { min-width: 0; } fieldset { min-width: 0; margin: 28px 0; padding: 20px 16px; border: 1px solid var(--border); border-radius: 6px; }
+  legend { font-weight: 700; padding: 0 8px; } label { font-weight: 500; }
+  .vs-fields, .vs-checks { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .vs-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  input:not([type=checkbox]), select, textarea { box-sizing: border-box; width: 100%; min-width: 0; max-width: 100%; font: inherit; font-size: 16px; padding: 11px; border: 1px solid #827765; border-radius: 4px; color: var(--ink); background: white; }
+  textarea { resize: vertical; } input[aria-invalid=true], textarea[aria-invalid=true], select[aria-invalid=true] { border-color: var(--accent); }
+  .vs-check { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; line-height: 1.7; }
+  input[type=checkbox] { flex: 0 0 20px; width: 20px; height: 20px; margin-top: 4px; accent-color: var(--accent); }
+  .vs-consent { margin-top: 24px; } .vs-error { color: #a5281d; font-size: 14px; } .vs-error:empty { display: none; }
+  .vs-notice, .vs-upload { background: var(--paper-warm); padding: 16px; border-left: 3px solid var(--gold); }
+  .vs-upload { margin-top: 18px; } .vs-upload p { margin: 8px 0 0; }
+  .vs-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  button { font: inherit; font-weight: 700; border: none; background: var(--accent); color: white; border-radius: 4px; padding: 14px 20px; width: 100%; margin-top: 18px; cursor: pointer; white-space: normal; }
+  button:disabled { opacity: .75; cursor: wait; } .vs-small { font-size: 14px; color: var(--ink-light); }
+  #rfq-feedback:not(:empty) { padding: 16px; border: 1px solid var(--border); margin-top: 20px; }
+  a { color: var(--accent); text-decoration: underline; } :is(input, textarea, select, button, a):focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  @media (min-width: 700px) { .vs-fields, .vs-checks { grid-template-columns: repeat(2, minmax(0, 1fr)); } .vs-wide { grid-column: 1 / -1; } fieldset { padding: 24px; } button { width: auto; } }
+</style>

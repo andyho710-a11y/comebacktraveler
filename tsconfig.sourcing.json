@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    ".astro/types.d.ts",
+    "src/pages/vietnam-sourcing.astro",
+    "src/components/VietnamSourcingForm.astro",
+    "src/lib/vietnam-sourcing/**/*.ts",
+    "src/scripts/vietnam-sourcing.ts"
+  ],
+  "exclude": ["dist", ".astro/sourcing-baseline"]
+}
