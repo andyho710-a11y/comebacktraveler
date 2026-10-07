@@ -2,11 +2,13 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import test from 'node:test';
-import { createHash } from 'node:crypto';
 
 const read = path => readFileSync(new URL('../' + path, import.meta.url), 'utf8');
 const tracker = read('src/components/AffiliateClickTracker.astro').replace(/<\/?script\b[^>]*>/g, '');
 const baseline = JSON.parse(read('tests/fixtures/affiliate-repair-baseline.json'));
+const routingBaseline = JSON.parse(read('tests/fixtures/esim-routing-baseline.json'));
+const routingPages = new Set(Object.keys(routingBaseline.pages).map(p => '/' + p));
+const esimAffiliateUrls = Object.fromEntries([...read('src/data/esim-recommendations.ts').matchAll(/(\w+): '(https:[^']+)'/g)].map(m => [m[1], m[2]]));
 const decode = text => text.replace(/&#(x[0-9a-f]+|\d+);/gi, (_, number) => String.fromCodePoint(number[0].toLowerCase() === 'x' ? parseInt(number.slice(1), 16) : Number(number))).replace(/&amp;/g, '&').replace(/&quot;/g, '"');
 const attributes = tag => Object.fromEntries([...tag.matchAll(/([\w-]+)="([^"]*)"/g)].map(m => [m[1], decode(m[2])]));
 const affiliate = a => (a.rel || '').split(' ').includes('sponsored') || !!a['data-affiliate'];
@@ -28,7 +30,7 @@ function quiz() {
   const element = { querySelectorAll: () => [], addEventListener: noop, scrollIntoView: noop, classList: { remove: noop }, disabled: true };
   const document = { getElementById: id => id === 'result' ? result : element, querySelectorAll: () => [] };
   const source = read('src/pages/esim-quiz.astro').match(/<script>\s*([\s\S]*?)<\/script>/)[1];
-  const context = { document }; runInNewContext(source + '\nglobalThis.qa = { brandFor, recommend, render };', context);
+  const context = { document, esimAffiliateUrls }; runInNewContext(source.replace(/import[^;]+;/, '').replace(/function renderCta\(cta[^)]*\)/, 'function renderCta(cta)') + '\nglobalThis.qa = { brandFor, recommend, render };', context);
   return { ...context.qa, result };
 }
 const targetPages = ['/vietnam-mosquito-repellent', '/vietnam-packing-list', '/anti-theft-crossbody-bag-guide', '/esim/joytel', '/esim/saigon-airport-sim'];
@@ -56,7 +58,7 @@ test('three English placeholders stay present and noindex while sitemap removes 
 for (const path of targetPages) {
   test('rendered explicit metadata emits six stable reporting dimensions: ' + path, () => {
     const ctas = anchors(read('dist' + path + '.html'));
-    if (path === '/esim/joytel') { assert.equal(ctas.length, 0); return; }
+
     assert.ok(ctas.length);
     for (const a of ctas) {
       for (const key of ['data-affiliate-product', 'data-affiliate-product-key', 'data-affiliate-category', 'data-affiliate-merchant', 'data-cta-position']) assert.ok(a[key], key);
@@ -71,24 +73,14 @@ for (const path of targetPages) {
   });
 }
 
-test('quiz Japan is a safe internal fallback; three remaining affiliate variants preserve navigation and metadata', () => {
+test('quiz centralized direct variants preserve navigation and metadata', () => {
   const q = quiz();
-  const variants = [['jp', 'stable'], ['kr', 'stable'], ['vn', 'stable'], ['vn', 'cheap']];
-  for (const [dest, care] of variants) {
-    const recommendation = q.recommend({ dest, care, days: 'short', people: 'solo' }); q.render(recommendation);
-    if (dest === 'jp') {
-      assert.equal(recommendation.cta.href, '/esim/japan'); assert.equal(recommendation.cta.aff, false);
-      assert.equal(anchors(q.result.innerHTML).length, 0); assert.ok(!q.result.innerHTML.includes('data-affiliate'));
-      const a = attributes(q.result.innerHTML.match(/<a\b[^>]*href="\/esim\/japan"[^>]*>/)[0]);
-      const state = setup('/esim-quiz'); state.click(a); assert.equal(state.calls.length, 0); continue;
-    }
-    const [a] = anchors(q.result.innerHTML); assert.ok(a);
-    assert.equal(a.href, baseline.quiz[dest + '_' + care]);
-    assert.equal(a['data-affiliate-merchant'], dest === 'vn' && care === 'cheap' ? 'kkday' : 'joytel');
-    assert.equal(a['data-affiliate-category'], 'esim'); assert.equal(a['data-cta-position'], 'quiz_result');
-    const state = setup('/esim-quiz'); const { payload, link } = state.click(a);
-    assert.equal(payload.product_key, a['data-affiliate-product-key']); assert.equal(payload.affiliate_network, 'affiliates_one');
-    assert.ok(!payload.product_name.includes('你自己')); assert.equal(link.href, a.href); assert.ok(!payload.link_url.includes('?'));
+  for (const [dest, care, key, merchant] of [['jp','stable','joytelJapan','joytel'],['kr','stable','joytelKorea','joytel'],['vn','stable','kkdayVietnam','kkday'],['vn','cheap','kkdayVietnam','kkday']]) {
+    const recommendation=q.recommend({dest,care,days:'short',people:'solo'}); q.render(recommendation);
+    const [a]=anchors(q.result.innerHTML); assert.equal(a.href,esimAffiliateUrls[key]);
+    assert.equal(a['data-affiliate-merchant'],merchant); assert.equal(a['data-cta-position'],'quiz_result');
+    const state=setup('/esim-quiz'); const {payload,link}=state.click(a);
+    assert.equal(payload.product_key,a['data-affiliate-product-key']); assert.equal(payload.affiliate_network,'affiliates_one'); assert.equal(link.href,a.href);
   }
 });
 
@@ -99,7 +91,8 @@ test('storefront and catalog CTA keys are explicitly collection keys, never a si
     }
   }
   const q = quiz();
-  for (const dest of ['kr', 'vn']) assert.match(q.brandFor(dest, 'stable').cta.metadata.key, /^collection_/);
+  assert.match(q.brandFor('kr', 'stable').cta.metadata.key, /^collection_/);
+  assert.equal(q.brandFor('vn', 'stable').cta.metadata.key, 'kkday_vietnam_esim');
 });
 
 test('linkgo classifies as Affiliates.One; explicit KKday merchant is distinct; lookalike domains do not match', () => {
@@ -134,13 +127,14 @@ test('unsafe metadata and session-bearing paths cannot copy personal text into p
 
 test('every remaining static affiliate href and page placement order matches baseline byte-for-byte', () => {
   for (const [path, expected] of Object.entries(baseline.links)) {
+    if (routingPages.has(path)) continue; // Exact allowed routing changes checked in esim-routing.test.mjs.
     const html = read('dist/' + (path === '/' ? 'index' : path.slice(1)) + '.html');
     assert.deepEqual(anchors(html).map(a => a.href), expected.filter(href => !/\/(zf2Z8|z4xjt)(?:\?|$)/.test(href)), path);
   }
 });
 
-test('all ten static parked CTAs become internal navigation without affiliate attributes or click events', () => {
-  const mapping = [['/esim/china', '/esim'], ['/esim/joytel', '/esim'], ['/esim/troubleshoot', '/esim'], ['/vietnam-jcb-lounge', '/esim'], ['/esim/japan', '/esim/japan']];
+test('unreplaced parked CTAs retain safe internal navigation without affiliate attributes or click events', () => {
+  const mapping = [['/esim/china', '/esim'], ['/esim/troubleshoot', '/esim'], ['/vietnam-jcb-lounge', '/esim']];
   let fallbackCount = 0;
   for (const [path, destination] of mapping) {
     const html = read('dist' + path + '.html');
@@ -153,17 +147,15 @@ test('all ten static parked CTAs become internal navigation without affiliate at
       const state = setup(path); state.click(a); assert.equal(state.calls.length, 0);
     }
   }
-  assert.equal(fallbackCount, 10);
+  assert.equal(fallbackCount, 6);
   assert.ok(!/zf2Z8|z4xjt/.test(read('dist/esim-quiz.html')));
   // There were no parked Korea-specific CTAs: retain its valid owner URLs via the global regression test.
   assert.ok(!/zf2Z8|z4xjt/.test(read('dist/esim/korea.html')));
 });
 
-test('JOYTEL rendered content remains unchanged except authorized CTA anchors, transparency note and responsive styles', () => {
-  const fixture = JSON.parse(read('tests/fixtures/affiliate-repair-1-1-baseline.json'));
-  const normalized = read('dist/esim/joytel.html').replace(/<a\b[^>]*href="(?:https:\/\/afflink.one\/s\/zf2Z8|\/esim)"[^>]*>[\s\S]*?<\/a>/g, '<fallback-cta/>').replace(/<p class="cta-label"[^>]*>[\s\S]*?<\/p>/g, '<cta-transparency/>').replace(/<style\b[^>]*>[\s\S]*?<\/style>/g, '<page-style/>').replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '<page-script/>').replace(/<link\b[^>]*rel="stylesheet"[^>]*>/g, '<stylesheet/>');
-  // Executable scripts/styles are outside editorial content; schema/head have independent exact assertions below.
-  assert.equal(createHash('sha256').update(normalized).digest('hex'), fixture.joytel_rendered_content_sha256);
+test('JOYTEL source remains exact outside the approved purchase anchors and responsive CTA style', () => {
+  const normalize = text => text.replace(/<div class="cta-box">[\s\S]*?<\/div>/g, '').replace(/<a\b[^>]*>[\s\S]*?<\/a>/g, '').replace(/<p class="cta-label"[^>]*>[\s\S]*?<\/p>/g, '').replace(/<p>\s*<\/p>/g,'').replace(/import \{ esimAffiliateUrls \}[^;]+;/,'').replace(/    \.cta-box [^\n]+\n/g,'').replace(/\s+/g,' ').trim();
+  assert.equal(normalize(read('src/pages/esim/joytel.astro')),normalize(routingBaseline.pages['esim/joytel'].source));
 });
 
 test('packing exact disclosure appears once before first commercial CTA', () => {

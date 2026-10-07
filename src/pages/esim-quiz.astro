@@ -86,30 +86,31 @@ const canonical = "https://comebacktraveler.com/esim-quiz";
     .quiz-submit:disabled { opacity: 0.4; cursor: not-allowed; }
     .quiz-submit:not(:disabled):hover { background: #2c1f0f; }
     .quiz-hint { font-size: 13px; color: var(--ink-light); }
-    .quiz-reset { background: none; border: none; color: var(--accent); font-size: 14px; cursor: pointer; text-decoration: underline; padding: 0; font-family: var(--sans); }
+    #result :global(.quiz-reset) { background: none; border: none; color: var(--accent); font-size: 14px; cursor: pointer; text-decoration: underline; padding: 0; font-family: var(--sans); }
 
     /* Result */
     .result { margin-top: 28px; }
     .result[hidden] { display: none; }
-    .result-card { border: 2px solid var(--accent); border-radius: 12px; padding: 28px 30px; background: #fef9f5; }
-    .result-label { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
-    .result-title { font-family: var(--serif); font-weight: 900; font-size: 23px; color: var(--ink); margin-bottom: 12px; line-height: 1.4; }
-    .result-summary { font-size: 16px; color: var(--ink-light); margin-bottom: 14px; }
-    .result-note { font-size: 14px; color: var(--ink-light); background: var(--paper-warm); border-radius: 6px; padding: 12px 16px; margin-bottom: 16px; }
-    .result-sub { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase; margin: 18px 0 8px; }
-    .result-reading { list-style: none; padding: 0; margin: 0 0 18px; }
-    .result-reading li { padding: 5px 0; }
-    .result-reading a { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
-    .result-reading a:hover { text-decoration: underline; }
-    .result-cta {
+    #result :global(.result-card) { border: 2px solid var(--accent); border-radius: 12px; padding: 28px 30px; background: #fef9f5; }
+    #result :global(.result-label) { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    #result :global(.result-title) { font-family: var(--serif); font-weight: 900; font-size: 23px; color: var(--ink); margin-bottom: 12px; line-height: 1.4; }
+    #result :global(.result-summary) { font-size: 16px; color: var(--ink-light); margin-bottom: 14px; }
+    #result :global(.result-note) { font-size: 14px; color: var(--ink-light); background: var(--paper-warm); border-radius: 6px; padding: 12px 16px; margin-bottom: 16px; }
+    #result :global(.result-sub) { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase; margin: 18px 0 8px; }
+    #result :global(.result-reading) { list-style: none; padding: 0; margin: 0 0 18px; }
+    #result :global(.result-reading li) { padding: 5px 0; }
+    #result :global(.result-reading a) { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
+    #result :global(.result-reading a:hover) { text-decoration: underline; }
+    #result :global(.result-cta) {
       display: inline-block; background: var(--accent); color: #fff;
       font-family: var(--serif); font-weight: 600; font-size: 15px;
       padding: 12px 26px; border-radius: 6px; text-decoration: none;
     }
-    .result-cta.alt { background: var(--ink); }
-    .result-cta:hover { background: #a93226; }
-    .result-cta.alt:hover { background: #2c1f0f; }
-    .result-disclosure { font-size: 12px; color: var(--ink-light); margin-top: 10px; }
+    #result :global(.result-cta) { max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; padding-inline: 16px; }
+    #result :global(.result-cta.alt) { background: var(--ink); }
+    #result :global(.result-cta:hover) { background: #a93226; }
+    #result :global(.result-cta.alt:hover) { background: #2c1f0f; }
+    #result :global(.result-disclosure) { font-size: 12px; color: var(--ink-light); margin-top: 10px; }
     .reset-row { margin-top: 16px; text-align: center; }
 
     /* Static prose */
@@ -243,16 +244,15 @@ const canonical = "https://comebacktraveler.com/esim-quiz";
 <SiteFooter />
 
 <script>
+  import { esimAffiliateUrls } from '../data/esim-recommendations';
   // ── eSIM 決策樹：純前端、state 僅存記憶體，不使用 localStorage/sessionStorage ──
-  const AFF = {
-    joytelKr: 'https://onelink.one/s/LsI9l?sub_id=quiz',
-    joytelVn: 'https://afflink.one/s/SNmCj?sub_id=quiz',
-    viettelVn: 'https://linkgo.one/s/qG9cT?sub_id=quiz',
-  };
+  const AFF = esimAffiliateUrls;
   const AFF_META = {
-    joytelKr: { product: 'JOYTEL 韓國 eSIM 方案', key: 'collection_joytel_korea_esim', merchant: 'joytel' },
-    joytelVn: { product: 'JOYTEL 越南 Viettel eSIM 方案', key: 'collection_joytel_vietnam_esim', merchant: 'joytel' },
-    viettelVn: { product: 'KKday 越南 Viettel 5G eSIM', key: 'kkday_vietnam_viettel_5g_esim', merchant: 'kkday' },
+    joytelJapan: { product: 'JOYTEL 日本三電信 eSIM', key: 'collection_joytel_japan_esim', merchant: 'joytel' },
+    joytelKorea: { product: 'JOYTEL 韓國雙電信 eSIM', key: 'collection_joytel_korea_esim', merchant: 'joytel' },
+    klookJapan: { product: 'Klook 日本 eSIM', key: 'collection_klook_japan_esim', merchant: 'klook' },
+    klookKorea: { product: 'Klook 韓國 5G eSIM', key: 'collection_klook_korea_esim', merchant: 'klook' },
+    kkdayVietnam: { product: 'KKday 越南 eSIM', key: 'kkday_vietnam_esim', merchant: 'kkday' },
   };
   const READ = { jp: '/esim/japan', kr: '/esim/korea', vn: '/esim/saigon-airport-sim' };
   const GUIDE = { jp: '/japan-guide', kr: '/korea-guide', vn: '/vietnam-guide' };
@@ -300,18 +300,16 @@ const canonical = "https://comebacktraveler.com/esim-quiz";
     const stable = care === 'stable';
     if (dest === 'jp') {
       return stable
-        ? { name: 'JOYTEL 日本原生線路', reason: 'JOYTEL 走日本當地原生線路，速度穩、有中文 LINE 真人客服，第一次自助、怕斷線的人最安心。', cta: { href: READ.jp, label: '比較其他日本 eSIM 方案 →', aff: false } }
-        : { name: 'WaySim 威訊（日本原生）', reason: '同樣是原生線路但價格較親民，適合預算優先、已經熟悉 eSIM 操作的人。我把它和 JOYTEL 的差異整理在日本 eSIM 推薦文裡。', cta: { href: READ.jp, label: '看 JOYTEL vs WaySim 完整比較 →', aff: false } };
+        ? { name: 'JOYTEL 日本原生線路', purchaseNote: '下方 JOYTEL 日本連結為三電信商品，商家目前標示為漫遊線路，與原生推薦不同；請確認方案後選購。', reason: 'JOYTEL 走日本當地原生線路，速度穩、有中文 LINE 真人客服，第一次自助、怕斷線的人最安心。', cta: { href: AFF.joytelJapan, label: '查看 JOYTEL 日本 eSIM →', aff: true, metadata: AFF_META.joytelJapan } }
+        : { name: 'WaySim 威訊（日本原生）', reason: '同樣是原生線路但價格較親民，適合預算優先、已經熟悉 eSIM 操作的人。我把它和 JOYTEL 的差異整理在日本 eSIM 推薦文裡。', cta: { href: READ.jp, label: '看 JOYTEL vs WaySim 完整比較 →', aff: false }, alternative: { href: AFF.klookJapan, label: '也可查看 Klook 日本 eSIM →', aff: true, metadata: AFF_META.klookJapan } };
     }
     if (dest === 'kr') {
       return stable
-        ? { name: 'JOYTEL 韓國原生線路', reason: 'JOYTEL 走韓國原生線路，Naver Map 導航、中文 LINE 客服都到位，求穩的人選它。', cta: { href: AFF.joytelKr, label: '查看 JOYTEL 韓國方案 →', aff: true, metadata: AFF_META.joytelKr } }
-        : { name: 'WaySim 威訊（韓國原生）', reason: '原生線路、價格較親民，若你打算日韓連著玩也方便。詳細差異看韓國 eSIM 推薦文。', cta: { href: READ.kr, label: '看 JOYTEL vs WaySim 完整比較 →', aff: false } };
+        ? { name: 'JOYTEL 韓國原生線路', reason: 'JOYTEL 走韓國原生線路，Naver Map 導航、中文 LINE 客服都到位，求穩的人選它。', cta: { href: AFF.joytelKorea, label: '查看 JOYTEL 韓國方案 →', aff: true, metadata: AFF_META.joytelKorea } }
+        : { name: 'WaySim 威訊（韓國原生）', reason: '原生線路、價格較親民，若你打算日韓連著玩也方便。詳細差異看韓國 eSIM 推薦文。', cta: { href: READ.kr, label: '看 JOYTEL vs WaySim 完整比較 →', aff: false }, alternative: { href: AFF.klookKorea, label: '查看 Klook 韓國 5G eSIM →', aff: true, metadata: AFF_META.klookKorea } };
     }
-    // vn
-    return stable
-      ? { name: 'Viettel 原生 eSIM（JOYTEL）', reason: 'Viettel 是越南最大電信，覆蓋廣、訊號穩，胡志明、河內、峴港都不太需要擔心。要穩就選原生 Viettel。', cta: { href: AFF.joytelVn, label: '查看越南 Viettel 原生 eSIM →', aff: true, metadata: AFF_META.joytelVn } }
-      : { name: 'Viettel 原生 eSIM（線上先買）', reason: '越南上網我一律優先看 Viettel。重點不是換品牌，而是「在台灣線上先買」通常比新山一機場現場買便宜一截。', cta: { href: AFF.viettelVn, label: '查看越南 Viettel 5G eSIM →', aff: true, metadata: AFF_META.viettelVn } };
+    // Keep Viettel advice as reading; the approved purchase option is KKday.
+    return { name: 'Viettel 原生 eSIM（先比較方案）', reason: '越南上網優先比較 Viettel 原生方案；下方 KKday 是另一個可購買選項，目前為 Vinaphone，並非上方的 Viettel 推薦；請在商品頁確認流量與使用限制。', cta: { href: AFF.kkdayVietnam, label: '查看 KKday 越南 eSIM →', aff: true, metadata: AFF_META.kkdayVietnam } };
   }
 
   function recommend(a) {
@@ -361,6 +359,8 @@ const canonical = "https://comebacktraveler.com/esim-quiz";
         { href: GUIDE[a.dest], label: destL + '自由行攻略' },
       ],
       cta: brand.cta,
+      alternative: brand.alternative,
+      purchaseNote: brand.purchaseNote,
     };
   }
 
@@ -370,6 +370,7 @@ const canonical = "https://comebacktraveler.com/esim-quiz";
     html += '<div class="result-label">你的推薦</div>';
     html += '<h3 class="result-title">' + esc(r.title) + '</h3>';
     html += '<p class="result-summary">' + esc(r.summary) + '</p>';
+    if (r.purchaseNote) html += '<p class="result-note">' + esc(r.purchaseNote) + '</p>';
     if (r.note) html += '<div class="result-note">' + esc(r.note) + '</div>';
 
     html += '<div class="result-sub">延伸閱讀</div><ul class="result-reading">';
@@ -378,21 +379,28 @@ const canonical = "https://comebacktraveler.com/esim-quiz";
     });
     html += '</ul>';
 
-    if (r.cta) {
-      const rel = r.cta.aff ? 'noopener sponsored' : 'noopener';
-      const target = r.cta.aff ? ' target="_blank"' : '';
-      const cls = r.cta.aff ? 'result-cta' : 'result-cta alt';
+    if ((r.cta && r.cta.aff) || r.alternative) html += '<p class="result-disclosure">下方商家購買連結為聯盟連結，你透過它購買我會獲得少量分潤，但不影響你的價格。</p>';
+    function renderCta(cta: { href: string; label: string; aff: boolean; metadata?: { product: string; key: string; merchant: string } }) {
+      if (!cta) return;
+      const rel = cta.aff ? 'noopener sponsored' : 'noopener';
+      const target = cta.aff ? ' target="_blank"' : '';
+      const cls = cta.aff ? 'result-cta' : 'result-cta alt';
       let metadata = '';
-      if (r.cta.aff && r.cta.metadata) {
-        const item = r.cta.metadata;
+      if (cta.aff && cta.metadata) {
+        const item = cta.metadata;
         metadata = ' data-affiliate="affiliates_one" data-affiliate-category="esim" data-cta-position="quiz_result"' +
           ' data-affiliate-product="' + esc(item.product) + '" data-affiliate-product-key="' + esc(item.key) +
           '" data-affiliate-merchant="' + esc(item.merchant) + '"';
       }
-      html += '<a class="' + cls + '" href="' + esc(r.cta.href) + '"' + target + ' rel="' + rel + '"' + metadata + '>' + esc(r.cta.label) + '</a>';
-      if (r.cta.aff) html += '<p class="result-disclosure">本連結為聯盟連結，你透過它購買我會獲得少量分潤，但不影響你的價格。</p>';
+      html += '<a class="' + cls + '" href="' + esc(cta.href) + '"' + target + ' rel="' + rel + '"' + metadata + '>' + esc(cta.label) + '</a>';
+
     }
 
+    renderCta(r.cta);
+    if (r.alternative) {
+      html += '<p class="result-note">另一個可購買選項：Klook；它不是上方推薦的 WaySim 商品。</p>';
+      renderCta(r.alternative);
+    }
     html += '</div>';
     html += '<div class="reset-row"><button class="quiz-reset" id="quiz-reset">↻ 重新測驗</button></div>';
     resultEl.innerHTML = html;

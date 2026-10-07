@@ -4,10 +4,11 @@ import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 import ContentDisclaimer from '../../components/ContentDisclaimer.astro';
+import { esimAffiliateUrls } from '../../data/esim-recommendations';
 
 const title = "2026 eSIM 還能買嗎？「封包送中」爭議 + 防詐宣導，過來人完整解析";
 const description = "2026 年 5 月爆出旅遊 eSIM「封包繞道中國」爭議，加上政府防詐宣導，讓很多人不敢買 eSIM。住國外十年的過來人帶你看懂這波在吵什麼、教你自己判斷手上的 eSIM 安不安全、以及到底該怎麼選。";
-const VIETNAM_LINK = 'https://afflink.one/s/SNmCj';
+
 ---
 
 <!DOCTYPE html>
@@ -354,9 +355,8 @@ const VIETNAM_LINK = 'https://afflink.one/s/SNmCj';
       說到「當地原生」，我下個月要回越南，手邊正好有一張 <strong>JOYTEL 越南 Viettel 原生 eSIM</strong> 準備帶回去使用。<br>
       到時會記錄它的對外 IP、ChatGPT 是否能正常開啟、連線表現與使用過程，再把結果更新給大家。
     </p>
-    <a class="cta-btn" href={VIETNAM_LINK} target="_blank" rel="noopener sponsored">
-      看 JOYTEL 越南原生 eSIM →
-    </a>
+    <p>另一個可購買選項是 KKday 越南 eSIM；這不是上方提到的 JOYTEL 商品，目前電信商為 Vinaphone；流量與使用限制請在商家頁確認。</p>
+    <a class="cta-btn" href={esimAffiliateUrls.kkdayVietnam} target="_blank" rel="sponsored noopener noreferrer" data-affiliate="affiliates_one" data-affiliate-product="KKday 越南 eSIM" data-affiliate-product-key="kkday_vietnam_esim" data-affiliate-category="esim" data-affiliate-merchant="kkday" data-cta-position="vietnam_purchase">查看 KKday 越南 eSIM →</a>
     <p class="cta-label">※ 本文含聯盟行銷連結，點擊後購買我會獲得少量佣金，不影響你的價格</p>
   </div>
 

@@ -25,6 +25,8 @@ export const esimRecommendations: Recommendation[] = [
       {
         brand: 'JOYTEL',
         productName: 'JOYTEL 日本三電信 eSIM',
+        productKey: 'collection_joytel_japan_esim',
+        merchant: 'joytel',
         network: 'affiliates_one',
         affiliateUrl: esimAffiliateUrls.joytelJapan,
         ctaLabel: '查看 JOYTEL 日本三電信 eSIM',
@@ -32,6 +34,8 @@ export const esimRecommendations: Recommendation[] = [
       {
         brand: 'Klook',
         productName: 'Klook 日本 eSIM',
+        productKey: 'collection_klook_japan_esim',
+        merchant: 'klook',
         network: 'affiliates_one',
         affiliateUrl: esimAffiliateUrls.klookJapan,
         ctaLabel: '查看 Klook 日本 eSIM',
@@ -49,6 +53,8 @@ export const esimRecommendations: Recommendation[] = [
       {
         brand: 'JOYTEL',
         productName: 'JOYTEL 韓國雙電信 eSIM',
+        productKey: 'collection_joytel_korea_esim',
+        merchant: 'joytel',
         network: 'affiliates_one',
         affiliateUrl: esimAffiliateUrls.joytelKorea,
         ctaLabel: '查看 JOYTEL 韓國雙電信 eSIM',
@@ -56,6 +62,8 @@ export const esimRecommendations: Recommendation[] = [
       {
         brand: 'Klook',
         productName: 'Klook 韓國 5G eSIM',
+        productKey: 'collection_klook_korea_esim',
+        merchant: 'klook',
         network: 'affiliates_one',
         affiliateUrl: esimAffiliateUrls.klookKorea,
         ctaLabel: '查看 Klook 韓國 5G eSIM',
@@ -72,6 +80,8 @@ export const esimRecommendations: Recommendation[] = [
     offers: [{
       brand: 'KKday',
       productName: 'KKday 越南 eSIM',
+        productKey: 'kkday_vietnam_esim',
+        merchant: 'kkday',
       network: 'affiliates_one',
       affiliateUrl: esimAffiliateUrls.kkdayVietnam,
       ctaLabel: '查看 KKday 越南 eSIM',
