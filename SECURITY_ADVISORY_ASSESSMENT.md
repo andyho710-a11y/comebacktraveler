@@ -104,3 +104,18 @@ Registry records: 51 direct advisory-range entries / 49 unique advisory URLs; 13
 ## Minimal remediation / security gate policy
 
 Do not upgrade the whole site to hide a number. Schedule a separate reviewed toolchain patch, first compatible updates (RSS, nanoid, source-map-js, Vite), then Astro/Sharp compatibility investigation for AVIF RCE and later decoder issues. Rebuild and re-run complete protected production byte gates, frontend regressions and full typecheck delta. No critical/high affected runtime dependency is permitted in RFQ Functions. If a new Functions audit detects one, or a new public image/parser path becomes reachable, stop backend launch until the narrow fix is verified.
+
+
+## Owner-approved infrastructure privacy follow-up — 2026-10-07
+
+Starting commit23fd2e3b170b355695e98f9932251887abcdf593. No package/lock upgrades or new runtime dependencies in this follow-up; existing advisory reachability assessment unchanged. Scope is exactly targeted log privacy hardening and standalone Extensions API removal, with direct owner approval. No Hosting/main/product edits.
+
+Applied exclusion `rfq-intake-request-privacy` only for Cloud Run service vietnamsourcingintake: run.googleapis.com/requests, plus stderr text containing BOTH SyntaxError AND body-parser. `_Required` audit sink unchanged with no exclusions; all other ERROR/system logs remain. Full exact filter and sink verification are in VIETNAM_SOURCING_PRODUCTION_INFRA_REPORT.md. Metrics are not excluded.
+
+Raw upstream malformed-JSON console output is replaced only when its SyntaxError stack identifies body-parser/lib/types/json.js. Production test with a synthetic confidential marker retained safe structured INVALID_JSON/400/timestamp/status while omitting body/stack/marker. Handler logs only event, normalized error_code, http_status, safe status/time/latency. Rate-limit, honeypot, idempotency conflict, storage failure and success/replay signals covered. No RFQ payload, email/phone/company/contact/free text/IP/idempotency token logged. Other console errors retain their original behavior; storage500 remains ERROR and metrics/status observable. Historical platform logs remain subject to existing retention, not retroactively purged.
+
+Dependency audit: Extensions API instance list0, no repository or deployed HTTP Function runtime dependency. Disabled firebaseextensions.googleapis.com ALONE, without force. Post-disable real endpoint/Firestore transaction/receipt/retry200/conflict409 passed, plus invalid JSON/schema/honeypot and anonymous403 rule checks. New log window had0 request-detail entries and0 synthetic confidential-marker matches; retained safe security/application events, request-count/latency time series and audit entries read back. No third-party channel added.
+
+Tests: backend16/16, isolated emulator5/5, frontend105/105, build45 pages;59 existing Astro errors, no new diagnostics. Exact project/Run IAM, deny-all rules, TTL ACTIVE and Hosting equality checked. Synthetic RFQs/receipts removed; final Function ACTIVE and RFQ_INTAKE_ENABLED=false. Remaining owner actions for this two-action scope:0. Site release still requires separate owner authorization.
+
+PRODUCTION INFRA READY FOR SITE RELEASE

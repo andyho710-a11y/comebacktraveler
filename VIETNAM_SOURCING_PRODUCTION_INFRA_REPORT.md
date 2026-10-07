@@ -1,6 +1,6 @@
 # Vietnam Sourcing Production Infrastructure Report
 
-Assessment: 2026-10-07 Asia/Taipei. Integration branch `codex/vietnam-sourcing-production-prep`; starting commit `14d95be06f8c6028aae9e2b442e9f3747e362a86`. Final commit is reported in chat to avoid a self-referential SHA. Production main remains `102035b8201073710aeae0867d63f4d408b87de3`.
+Assessment: 2026-10-07 Asia/Taipei. Integration branch `codex/vietnam-sourcing-production-prep`; original infrastructure baseline `14d95be06f8c6028aae9e2b442e9f3747e362a86`; this owner-approved follow-up starts at `23fd2e3b170b355695e98f9932251887abcdf593`. Final commit is reported in chat to avoid a self-referential SHA. Production main remains `102035b8201073710aeae0867d63f4d408b87de3`.
 
 ## 1. Security advisory assessment
 
@@ -23,7 +23,7 @@ Project comeback-traveler-web (52799693173), billingEnabled=true, active. Existi
 | containerregistry.googleapis.com | DISABLED | ENABLED | Transitive platform/service-enablement dependency of requested core APIs; not separately enabled by task command; no app feature configured |
 | deploymentmanager.googleapis.com | DISABLED | ENABLED | Transitive platform/service-enablement dependency of requested core APIs; not separately enabled by task command; no app feature configured |
 | eventarc.googleapis.com | DISABLED | ENABLED | Gen2 provisioning dependency automatically enabled by Firebase/platform; no app event trigger deployed |
-| firebaseextensions.googleapis.com | DISABLED | ENABLED | Firebase CLI discovery prerequisite; no extension deployed. Cleanup proposed but combined action rejected by automatic review. |
+| firebaseextensions.googleapis.com | DISABLED | DISABLED | Temporarily enabled by Firebase CLI provisioning; owner-approved standalone disable completed after zero-dependency audit. No other API disabled. |
 | firebaserules.googleapis.com | ENABLED | ENABLED | Named Firestore client deny-all rules |
 | firestore.googleapis.com | DISABLED | ENABLED | Named database, server persistence and transactions |
 | logging.googleapis.com | ENABLED | ENABLED | Non-sensitive runtime event logging |
@@ -78,33 +78,35 @@ First Cloud Build failed npm ci: uuid@9.0.1 missing from lock. Minimal fix chang
 
 New Function container repository cleanup policy30 days configured; no unrelated artifact repository policy changed. No live Hosting deploy, main merge/push, nav exposure, supplier outreach, account/payment/file-upload/CRM work.
 
-## 14. Synthetic production test
+## 14. Post-change synthetic production test
 
-Disabled POST503/stored:false, RFQ count unchanged. Temporarily enabled: exactly one clearly synthetic RFQ201, Firestore record+receipt match, duplicate200 same RFQ ID, changed duplicate409, honeypot400, invalid fields400. GET/OPTIONS405, content type415, forbidden Origin403, payload >64KiB413; cache no-store/private and no ACAO. Malformed JSON rejected by upstream framework400 with generic Bad Request HTML, no public stack/internals; frontend already handles non-JSON failure without success. Framework error happens before application handler.
+Extensions API was disabled BEFORE these tests. Backend-only source deployment succeeded; environment rollouts through the Functions API also completed with Extensions disabled. Disabled POST503/stored:false and no persistence. Temporarily enabled: synthetic RFQ201 and Firestore transaction/receipt match, identical retry200 same RFQ ID, conflicting duplicate409, honeypot400, invalid schema400. GET/OPTIONS405, content type415, forbidden Origin403, >64KiB413 and malformed JSON400 (generic public Bad Request; no stack). Six anonymous Firestore read/list/create/update/delete/nested-read checks403. All17 end-to-end checks passed. No real Buyer input or merchant actions.
 
-17 enabled verification checks; 11 public endpoint requests total, five entered rate transaction, no high-frequency stress. Provider and global counters both5, persistent state read back. Full saturation proof stays in emulator suite, not production. Provider extraction actual direct endpoint path verified only; future Hosting proxy chain must be checked at authorized site release.
-
-RFQ ID: `RFQ-20261007-7c52591140b1fcef7d49c0d3410fc65c`. Created UTC: `2026-10-07T03:04:17.926Z`. No company/contact/email/phone/free text copied into this report. Private owner-authenticated REST inspection verified company/contact/requirement and status server fields, without a public dashboard.
+Complete test RFQ ID `RFQ-20261007-3002d5223e8b9a5f4232415dae6ddb59`; created UTC `2026-10-07T03:35:51.936Z`. An earlier test-helper import-name collision interrupted checks after persistence/retry; that synthetic pair was safely deleted before a complete rerun. Exactly two synthetic RFQs were created over the two attempts; both and both receipts were removed. No company/contact/payload copied into this report. Provider/global persistent counters read back at7; production saturation intentionally avoided, emulator covers both limits.
 
 ## 15. Cleanup
 
-Synthetic RFQ and matching idempotency receipt precisely deleted after identity/content checks; both404 confirmed. Remaining RFQs0. Abuse counters preserved until TTL to avoid weakening protection. Function returned to false; no synthetic Buyer remains. No real Buyer data used or deleted.
+Known synthetic document identities and synthetic company marker verified before narrow deletion. Both RFQ/receipt pairs now absent; remaining RFQs0. Abuse counters retained for ACTIVE TTL, preserving protection. Final Function ACTIVE / RFQ_INTAKE_ENABLED=false. No data deletion outside synthetic records/receipts.
 
-## 16. Logging / privacy
+## 16. Owner-approved log privacy hardening and observability
 
-Application emits only rfq_intake_stored/rfq_intake_storage_failure constants. Actual Cloud logs contain none of the synthetic company/name/email/phone/requirement markers. GA4 source unchanged: only safe normalized category/services/page_path; success after confirmed persistence; Preview/local do not load prod GA.
+Owner directly approved this follow-up's two actions. Applied project exclusion `rfq-intake-request-privacy`, active on `_Default`, exactly:
 
-Residual privacy issue: platform Run request logs include remoteIP (12 observed test request entries); framework malformed-JSON stderr emits SyntaxError stack and future parse errors may contain caller snippets. Public response exposes neither stack nor service account. Therefore do not claim every historical/platform log is PII-free. Existing private test log entries remain under current log retention; no broad log deletion attempted.
-
-Concrete proposed exclusion (NOT APPLIED):
 ```text
-resource.type="cloud_run_revision"
-AND resource.labels.service_name="vietnamsourcingintake"
-AND (log_id("run.googleapis.com/requests")
-     OR (log_id("run.googleapis.com/stderr") AND textPayload:"SyntaxError"))
+resource.type="cloud_run_revision" AND resource.labels.service_name="vietnamsourcingintake" AND (log_id("run.googleapis.com/requests") OR (log_id("run.googleapis.com/stderr") AND textPayload:"SyntaxError" AND textPayload:"body-parser"))
 ```
 
-This would affect only RFQ request/JSON-parser error logs; retains constant app stored/failure events, other stderr/system events, platform request/error/latency metrics and Cloud audit logs. Tradeoff: detailed per-request forensic and malformed-JSON error logs would no longer be stored in the default logging destination. Reviewer rejected the combined exclusion/API-disable action: it requires explicit approval for durable loss of request/error visibility and coupled API changes. No exclusion or API disable occurred; no retry/workaround attempted. Need owner decision and post-change log/metrics verification before public release.
+Scope: only this Cloud Run service's IP-bearing request log stream and raw stderr errors that contain BOTH SyntaxError and body-parser. No all-ERROR or whole-Function exclusion. Unrelated SyntaxError/ERROR, other services, stdout structured application logs, system health/startup logs and audit streams remain retained. Sink readback shows only `_Default` and `_Required`; `_Required` audit sink has zero exclusions. Detailed per-request client IP/headers/body forensic logging is intentionally omitted; status/latency monitoring remains available.
+
+Malformed JSON fails in the upstream framework before the intake handler. The narrow console sanitizer recognizes only that JSON-parser stack, replaces it with structured event `rfq_intake_security_event`, `error_code=INVALID_JSON`, `http_status=400`, safe rejected status and timestamp; neither raw error, stack nor body is forwarded. All unrelated console errors are forwarded unchanged. Actual production malformed input containing a unique synthetic email marker proved INVALID_JSON400 was retained while the marker and raw parser payload were absent. Public HTTP semantics remain unchanged.
+
+The handler emits explicit safe fields only: event/message, normalized error_code, http_status, accepted/rejected status, timestamp and latency_ms. No request-derived IP, company/contact/email/phone/specification/price/notes/attachments or idempotency token is logged. Events include persisted201, replay200, conflict409, schema/honeypot400, rate429 and storage500. Unit tests verify rate-limit and500 telemetry and logging failure cannot undo persistence; 500 maps to ERROR severity, schema/security rejects to WARNING. No production fault injection or saturation was performed.
+
+Actual post-change observation: 38 runtime entries, 14 safe structured events, request-detail log count0, synthetic confidential marker matches0. Stored/replay/conflict/schema/honeypot/INVALID_JSON signals all present. Cloud Monitoring request count and latency each returned 13 series/83 points; audit activity returned 52 entries. Platform metrics remain independent of log exclusions; status-class500 visibility and availability/latency remain supported. Function system events and safe app status timing are retained. Existing GA4 privacy behavior unchanged.
+
+Historical logs from the earlier infrastructure test are not retroactively erased by an exclusion; previous private platform IP/parser entries remain governed by bucket retention. This pass proves new ingestion after the change, not a claim that all historical logs were scrubbed. No broad historical deletion or audit deletion.
+
+Extensions dependency check: Firebase Extensions API instance list200 with0 instances; targeted repository source/config/package/workflow search has no Firebase Extensions import/manifest/runtime call; deployed Function is GEN2 HTTP with no event trigger and only Admin Firestore/Functions params/logger. Service Usage standalone disable succeeded WITHOUT force/dependent-service disable. Final API state DISABLED; core runtime/storage APIs remain available as proved by the tests. A future Firebase CLI deploy may request Extensions API for discovery again; inspect and repeat approved narrowly scoped cleanup when necessary rather than treating this as a runtime requirement.
 
 ## 17. Admin visibility / backup and recovery
 
@@ -126,16 +128,22 @@ Current first database metadata freeTier=true; TTL deletes are billed outside fr
 
 ## 20. Remaining owner actions
 
-**2 outstanding approvals in this round:**
-1. Approve/refuse the exact scoped logging exclusion and visibility tradeoff above (or select another reviewed privacy-preserving design), then verify logs/metrics again. This is the release-blocking privacy decision.
-2. Approve cleanup of firebaseextensions.googleapis.com, newly enabled only by Firebase CLI deployment discovery; no extension deployed. Combined cleanup call was rejected and API remains enabled. Check current dependencies before a standalone disable; do not force-disable dependent production services.
+**0 remaining owner actions for this approved infrastructure follow-up.** Targeted logging privacy hardening and standalone Extensions API disable are complete and verified. No additional external notification service, IAM grant, API disable or unrelated infrastructure added.
 
-Later site release is explicitly out of scope: owner separately authorizes enabled=true + Hosting exact rewrite/frontend + main integration and validates real Hosting proxy chain. Adopt daily RFQ SOP, consider cost alerts, reviewed toolchain patch and separate least-privilege build identity migration. These are clearly recorded recommendations/future-release gates, not claimed completed actions or included in the two current approval count.
+Site release remains a separately authorized future task: main integration, exact Hosting rewrite/frontend release, enabling intake and validating the actual Hosting proxy chain. Daily admin inspection/cost review, future toolchain patch and separate build-identity migration remain documented operational recommendations; they are not unfinished approvals in this two-action scope.
 
-## 21. Release recommendation / verification
+## 21. Final production infrastructure gates
 
-Backend ACTIVE, correct region/runtime/SA, named DB/rules/indexes/TTL verified; actual synthetic transaction/retry and cleanup successful; private operator inspection functional. Final RFQ disabled. Production Hosting live release/version unchanged; no main change/push/deploy. Build45 pages/frontend105/backend13 gates re-run after minimal package fix; all protected HTML/JS/CSS remain exact except already approved privacy addition. Prior unchanged backend emulator5/5 evidence retained, no fresh high-frequency production stress claimed.
+- READY: Function ACTIVE; RFQ_INTAKE_ENABLED=false; named rfq-intake database healthy, same asia-east1 location.
+- READY: exact deny-all client rules unchanged; six real anonymous operations403; isolated emulator rules and anti-abuse suite5/5.
+- READY: abuse TTL ACTIVE, no RFQ/receipt retention/index/rule change.
+- READY: project and Run IAM policies equal before/after; dedicated runtime/custom conditioned database role unchanged. Existing broader build identity remains an explicitly separate prior limitation, no new grant.
+- READY: new runtime logs omit payload/PII/request-IP and raw parser details; safe structured INVALID_JSON/400 and required operational/security events retained.
+- READY: Audit Logs and Cloud Run request-count/latency metrics retained and read back; other ERROR/system health logs retained.
+- READY: Extensions API DISABLED with no dependency; synthetic persistence/receipt/retry409 proof after disable; synthetic RFQs and receipts removed, remaining RFQs0.
+- READY: build45 pages; frontend105/105; backend16/16; emulator5/5; Astro59 errors/0 warnings/1 hint, new diagnostic delta0. Protected production HTML/JS/CSS byte gates passed. No eSIM/Mosquito/Affiliate or frontend changes.
+- READY: live Hosting release/version exactly equals before: release1791336282578000, versionb4360d804ef7e9ea. Main/origin main remains102035b8201073710aeae0867d63f4d408b87de3. No main merge/push or Hosting deploy.
 
-Ready backend infrastructure does not satisfy final privacy gate while platform log collection decision is unresolved. Automatic approval rejection is an owner-action blocker, not a reachable critical package blocker.
+Evidence is local private operational output under D:/astro/.tmp-sourcing-owner-actions: dependency/Function snapshots, exact exclusion/sinks, enabled/disabled/cleanup checks, safe log/Monitoring/Audit query results, IAM/rules/TTL/Hosting readback, build/frontend/backend/emulator/typecheck logs. No tokens or confidential RFQ fields committed. Final commit SHA is in the delivery response.
 
-BLOCKED — OWNER ACTION
+PRODUCTION INFRA READY FOR SITE RELEASE

@@ -40,10 +40,15 @@ export function providerClientIp(forwarded: string | undefined, remote: string |
   const candidate = forwarded?.split(',').at(-1)?.trim();
   return candidate && isIP(candidate) ? candidate : remote && isIP(remote) ? remote : 'unknown';
 }
-export function createIntakeHandler(options: { store: IntakeStore; origins: readonly string[]; enabled: boolean; clock?: () => Date; onStorageFailure?: () => void; onStored?: () => void }) {
+export interface IntakeEvent { error_code: string; http_status: number; status: 'accepted' | 'rejected'; timestamp: string; latency_ms: number; }
+export function createIntakeHandler(options: { store: IntakeStore; origins: readonly string[]; enabled: boolean; clock?: () => Date; onStorageFailure?: () => void; onStored?: () => void; onEvent?: (event: IntakeEvent) => void }) {
   const headers = { 'Cache-Control': 'no-store, private', 'X-Content-Type-Options': 'nosniff' };
-  const error = (status: number, code: string): IntakeResponse => ({ status, body: { stored: false, code }, headers });
   return async (request: IntakeRequest): Promise<IntakeResponse> => {
+    const started = Date.now();
+    const signal = (http_status: number, error_code: string) => {
+      try { options.onEvent?.({ error_code, http_status, status: http_status < 400 ? 'accepted' : 'rejected', timestamp: new Date().toISOString(), latency_ms: Math.max(0, Date.now() - started) }); } catch { /* Observability must not affect persistence or responses. */ }
+    };
+    const error = (status: number, code: string, eventCode = code.toUpperCase()): IntakeResponse => { signal(status, eventCode); return { status, body: { stored: false, code }, headers }; };
     if (!options.enabled) return error(503, 'unavailable');
     if (request.method !== 'POST') return { ...error(405, 'method_not_allowed'), headers: { ...headers, Allow: 'POST' } };
     if (!options.origins.includes(request.origin)) return error(403, 'forbidden');
@@ -53,15 +58,18 @@ export function createIntakeHandler(options: { store: IntakeStore; origins: read
     try {
       if (!await options.store.consumeRate(hash(`ip:${request.clientIp}`), now.getTime())) return { ...error(429, 'rate_limited'), headers: { ...headers, 'Retry-After': '600' } };
       let parsed: unknown;
-      try { parsed = JSON.parse(Buffer.from(request.rawBody).toString('utf8')); } catch { return error(400, 'invalid_request'); }
+      try { parsed = JSON.parse(Buffer.from(request.rawBody).toString('utf8')); } catch { return error(400, 'invalid_request', 'INVALID_JSON'); }
       const submission = normalizeSubmission(parsed);
-      if (!submission || request.idempotencyKey.toLowerCase() !== submission.submission_id || !validateIntake(submission.input).valid) return error(400, 'invalid_request');
+      if (!submission || request.idempotencyKey.toLowerCase() !== submission.submission_id) return error(400, 'invalid_request', 'INVALID_SCHEMA');
+      const validation = validateIntake(submission.input);
+      if (!validation.valid) return error(400, 'invalid_request', validation.spam ? 'HONEYPOT' : 'INVALID_SCHEMA');
       const query = new URLSearchParams(submission.attribution).toString();
       const record: StoredRFQ = { ...serializeRFQ(submission.input, query, generateRFQId(now), now.toISOString()), notification_status: 'pending_manual_review' };
       const fingerprint = hash(JSON.stringify({ input: submission.input, attribution: submission.attribution }));
       const receipt = await options.store.persist(record, hash(submission.submission_id), fingerprint);
       if ('conflict' in receipt) return error(409, 'idempotency_conflict');
       if (!receipt.replay) { try { options.onStored?.(); } catch { /* a log failure cannot undo persistence */ } }
+      signal(receipt.replay ? 200 : 201, receipt.replay ? 'IDEMPOTENCY_REPLAY' : 'RFQ_STORED');
       return { status: receipt.replay ? 200 : 201, headers, body: { stored: true, submission_id: submission.submission_id, rfq_id: receipt.rfq_id } };
     } catch {
       // Log only a constant event name through the injected callback, never error/body/IP.
