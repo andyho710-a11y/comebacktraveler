@@ -6,6 +6,8 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://comebacktraveler.com',
   trailingSlash: 'never',
+  // Preserve Astro 6 HTML whitespace semantics during the Astro 7 migration.
+  compressHTML: true,
   build: {
     format: 'file',
   },
