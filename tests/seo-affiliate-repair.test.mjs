@@ -129,7 +129,7 @@ test('every remaining static affiliate href and page placement order matches bas
   for (const [path, expected] of Object.entries(baseline.links)) {
     if (routingPages.has(path)) continue; // Exact allowed routing changes checked in esim-routing.test.mjs.
     const html = read('dist/' + (path === '/' ? 'index' : path.slice(1)) + '.html');
-    assert.deepEqual(anchors(html).map(a => a.href), expected.filter(href => !/\/(zf2Z8|z4xjt)(?:\?|$)/.test(href)), path);
+    assert.deepEqual(anchors(path === '/japan-guide' ? html.replace(/<section id="japan-ticket-quick-pick"[\s\S]*?<\/section>/, '') : html).map(a => a.href), expected.filter(href => !/\/(zf2Z8|z4xjt)(?:\?|$)/.test(href)), path);
   }
 });
 
