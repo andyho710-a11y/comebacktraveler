@@ -1,0 +1,42 @@
+---
+import AffiliateDisclosure from './AffiliateDisclosure.astro';
+import { japanTicketGroups } from '../data/japan-ticket-recommendations';
+---
+<section id="japan-ticket-quick-pick" class="japan-ticket-picks" aria-labelledby="japan-ticket-heading">
+  <h2 id="japan-ticket-heading">日本熱門票券，哪些最好出發前先訂？</h2>
+  <p class="ticket-intro">先確認會去的景點與抵達機場，再查看票券方案。這裡把入園門票、快速通關與機場交通分開，方便你按行程挑選。</p>
+  <AffiliateDisclosure />
+  {japanTicketGroups.map(group => <div class="ticket-group">
+    <h3>{group.title}</h3>
+    <ul class="ticket-options">{group.offers.map(offer => <li class="ticket-option">
+      <div class="ticket-copy"><h4>{offer.title}</h4><p>{offer.description}</p>
+      {'warning' in offer && <p class="ticket-warning" id="usj-express-warning"><strong>入園券提醒：</strong>{offer.warning}</p>}</div>
+      <a class="ticket-cta" href={offer.url} target="_blank" rel="sponsored noopener noreferrer"
+        aria-describedby={'warning' in offer ? 'usj-express-warning' : undefined}
+        data-affiliate="klook" data-affiliate-brand="Klook" data-affiliate-merchant="klook"
+        data-affiliate-product={offer.title} data-affiliate-product-key={offer.key}
+        data-affiliate-category={offer.category} data-affiliate-destination={offer.destination}
+        data-affiliate-article="/japan-guide" data-affiliate-placement="japan-ticket-quick-pick" data-cta-position="japan-ticket-quick-pick">
+        <span>{offer.label}<span aria-hidden="true"> →</span></span><span class="ticket-new-tab">（另開分頁）</span>
+      </a>
+    </li>)}</ul>
+  </div>)}
+  <p class="ticket-price-note">價格、可售日期與方案以商品頁當下資訊為準。</p>
+</section>
+<style>
+  .japan-ticket-picks { margin: 32px 0; padding: 20px 16px; border: 1px solid var(--border); border-radius: 8px; background: var(--paper-warm); scroll-margin-top: 100px; overflow-wrap: anywhere; }
+  h2 { font-size: 24px; line-height: 1.5; margin: 0 0 12px; font-family: var(--serif); }
+  .ticket-intro { margin: 0; font-size: 15px; }
+  h3 { margin: 24px 0 12px; font-size: 19px; font-family: var(--serif); }
+  .ticket-options { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .ticket-option { padding: 16px; border: 1px solid var(--border); border-radius: 6px; background: var(--paper); min-width: 0; display: grid; gap: 14px; }
+  h4 { font-size: 17px; line-height: 1.6; margin: 0 0 6px; }
+  .ticket-copy p { margin: 0; font-size: 15px; line-height: 1.8; color: var(--ink-light); }
+  .ticket-copy .ticket-warning { margin-top: 10px; padding-left: 10px; border-left: 3px solid var(--accent); color: var(--ink); }
+  .ticket-cta { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 12px 14px; min-height: 48px; min-width: 0; border-radius: 4px; background: var(--accent); color: #fff; text-align: center; font-size: 15px; line-height: 1.6; text-decoration: none; }
+  .ticket-cta:hover { background: #a93226; text-decoration: underline; }
+  .ticket-cta:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+  .ticket-new-tab { font-size: 12px; }
+  .ticket-price-note { margin: 18px 0 0; font-size: 13px; color: var(--ink-light); }
+  @media (min-width: 700px) { .ticket-option { grid-template-columns: minmax(0, 1fr) 200px; align-items: center; } }
+</style>

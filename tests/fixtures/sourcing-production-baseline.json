@@ -11,7 +11,6 @@
     "esim.html": "cbec20262eed38f6d8dcc33256d433b6aa6e2a8e4c6d880483d0f67e12ebfc4b",
     "first-trip-packing-list.html": "541c44569a3876d19eaaebaaf0853b5451da835099e1aed4a2842c15b73489ca",
     "index.html": "9ccec6266f50ac0bcf5b62eac2f1e1d29a8ecc90be50f3bf10789bc601a0d21b",
-    "japan-guide.html": "6a4492635bec25375399676e2aa8dbc0aff489a1c90da5eb183ae3148a4c7832",
     "kids-travel-amazing-bay.html": "1c700001d27af248d60ee8f775b3e0d1988c8618592bc2acdf8f82e478e02bd3",
     "kids-travel-guide.html": "2046acf1f07413643a077688d510c949ae996d8f9c397f2fe195042fd3a420e9",
     "korea-guide.html": "98de3a39185c36b4233d408b6c481a3735928fd7c13af9dd932c0c364218f718",
@@ -53,7 +52,6 @@
     "_astro/first-trip-packing-list@_@astro.gp-ajeAO.css": "7f23f2cebf10f4f2bbb17727ef702890d45a849efba0ea3a4452916f5fb1f194",
     "_astro/index@_@astro.DpK08kbZ.css": "e3dcb41c793f18d0cb0998be145b286e6a3e8cea98c117795d9d3e575eae29da",
     "_astro/install@_@astro.cIuyXlHH.css": "e611dc3851edf41add2d3fae9e014b3d5100ed6abe1a08617e3022b6562723ca",
-    "_astro/japan-guide@_@astro.BPOKcuv_.css": "9ade431e386ade1d610ffac7bec487430270000e579769d4216a468b7b449d00",
     "_astro/japan@_@astro.CQZUp43a.css": "815acc09422983e2d618c58bf608c1ba24a91fb0326e113a173b0546862b4619",
     "_astro/joytel@_@astro.ByIU0WwL.css": "3a92330df44b88440968e79972db76405a1975c333a91efebf92cbbc8ed50faa",
     "_astro/kids-travel-amazing-bay@_@astro.DR5tKS6K.css": "0b188310855ea78c781ae6e067a929c38bc957c5d70dd417c71ff71da19da8bf",
@@ -73,6 +71,8 @@
     "_astro/vietnam-mosquito-repellent@_@astro.C_mBiozY.css": "3c1d70080d9a87b220d272d6b7ca9b70285b36f4691e406f804d63ed6d173ad8",
     "_astro/vietnam-packing-list@_@astro.D1gQIu61.css": "f8cf722b7222bc0ad37bb98ac94f458e7f6f31f99257481e101efb50b88a96b3",
     "_astro/vietnam-taxi-app-guide@_@astro.DMvv1BdQ.css": "37a2e32339f57b84938aa19aceaddb4b84ab0ab1b7b9d2e5671696cbecc69ebc",
-    "_astro/vietnam-travel-essentials@_@astro.Da-yU6H6.css": "78357d8cd09bbe853d130eb1ff97c5caf052b2306af0e7a76af9d1f5d700ac94"
+    "_astro/vietnam-travel-essentials@_@astro.Da-yU6H6.css": "78357d8cd09bbe853d130eb1ff97c5caf052b2306af0e7a76af9d1f5d700ac94",
+    "japan-guide.html": "286462a6b95f9ccb045c90f89767463c5b9142230960cbba762d5f7f3d48291c",
+    "_astro/japan-guide@_@astro.DtLnpQrW.css": "ada145e727f546b4fd4e650cd90557ffb0cb8fbb457c641e35d4656b6ef031bd"
   }
 }
