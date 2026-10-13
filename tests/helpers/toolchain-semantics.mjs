@@ -1,6 +1,7 @@
 import { parse } from 'ultrahtml';
 import { createHash } from 'node:crypto';
 export const digest = value => createHash('sha256').update(value).digest('hex');
+export const sourceDigest = value => digest(value.toString().replace(/\r\n/g,'\n'));
 const entity = value => value.replace(/&(?:#(x[0-9a-f]+|\d+)|amp|quot|apos|lt|gt|nbsp);/gi, (all, code) => code ? String.fromCodePoint(code[0].toLowerCase()==='x'?parseInt(code.slice(1),16):Number(code)) : ({'&amp;':'&','&quot;':'"','&apos;':"'",'&lt;':'<','&gt;':'>','&nbsp;':'\u00a0'}[all.toLowerCase()]));
 const scope = value => value.replace(/data-astro-cid-[\w-]+/g,'data-astro-scope').replace(/astro-[\w-]{8}/g,'astro-scope');
 export function semanticHTML(html) {

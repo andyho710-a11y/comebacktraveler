@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,readdirSync,statSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
-import {digest,semanticHTML} from './helpers/toolchain-semantics.mjs';
+import {digest,sourceDigest,semanticHTML} from './helpers/toolchain-semantics.mjs';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url));
 const baseline=JSON.parse(read('tests/fixtures/astro7-semantic-baseline.json'));
 const files=dir=>readdirSync(new URL('../'+dir,import.meta.url),{recursive:true}).filter(p=>statSync(new URL('../'+dir+'/'+p,import.meta.url)).isFile()).map(p=>p.replaceAll('\\','/')).sort();
@@ -12,7 +12,7 @@ test('all 45 production routes and parsed content/SEO/CTA DOM match pre-upgrade 
 });
 test('all application sources, affiliate tracker and public/XML output stay exact',()=>{
  assert.deepEqual(files('src'),Object.keys(baseline.source).map(p=>p.slice(4)).sort());
- for(const [p,h]of Object.entries(baseline.source))assert.equal(digest(read(p)),h,p);
+ for(const [p,h]of Object.entries(baseline.source))assert.equal(sourceDigest(read(p)),h,p);
  for(const [p,h]of Object.entries(baseline.unchangedFiles))assert.equal(digest(read('dist/'+p)),h,p);
 });
 test('semantic comparison ignores only compiler packaging and rejects content/URL/metadata changes',()=>{
