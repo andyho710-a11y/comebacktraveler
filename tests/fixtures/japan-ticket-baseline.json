@@ -5,11 +5,16 @@
     "/_astro/japan-guide@_@astro.BPOKcuv_.css"
   ],
   "protected": {
-    "esim.html": "cbec20262eed38f6d8dcc33256d433b6aa6e2a8e4c6d880483d0f67e12ebfc4b",
-    "_astro/BlogLayout.59cL8T7k.css": "6cabe3dbd74c75b3ec4fed2dec79d2839f4a5a5fe75b759ae7fd0cc45761539e",
-    "_astro/esim@_@astro.1xN06RB9.css": "eda90d70ef46f18be9fa1f8c9395259e8fa2288126f35355f4e0b76776f70239",
-    "first-trip-packing-list.html": "541c44569a3876d19eaaebaaf0853b5451da835099e1aed4a2842c15b73489ca",
-    "_astro/first-trip-packing-list@_@astro.gp-ajeAO.css": "7f23f2cebf10f4f2bbb17727ef702890d45a849efba0ea3a4452916f5fb1f194"
+    "esim.html": "72fa7628ed4c4956178d450d7fcbb13cfc17da542ad3c2b234022683aad93942",
+    "_astro/BlogLayout.CsLqpDYm.css": "304a388adb809e4260e7cd1a9868f39b6bbb531fd5746db2ec3cd76146003d22",
+    "_astro/esim.BXcyS_hc.css": "9912425b876f2ab6b525092aa6a6f4467ded0e6181177961a9ae4c96dd0ddd1d",
+    "first-trip-packing-list.html": "effe3b6cf7e8342439e5e8c2d9ba7b5107d68c677483a297a5ed12ce62e48142",
+    "_astro/first-trip-packing-list.DMqj56n3.css": "a31017e188dd3a3432c9e6a7422bd6ee7680e7387aeb12fd7bfb0f8b95e71add"
   },
-  "originalContentHash": "c36728a2847a952bad9cc25aa4fe927902aaf66cc3fcfd1bc70af449ad3efa5e"
+  "originalContentHash": "980269a7d8d660f02cbc2d267174f3c62ff210acb7098242bb908b3dddd07e03",
+  "toolchainBaseline": {
+    "base": "57546b25c7eb6061b530c4e13c745076249ffcc7",
+    "astro": "7.2.8",
+    "note": "Compiler packaging rebased only after independent all-page DOM, affiliate, sitemap/RSS and protected UI equivalence validation."
+  }
 }

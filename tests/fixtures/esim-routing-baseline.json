@@ -9,7 +9,7 @@
         "<link rel=\"canonical\" href=\"https://comebacktraveler.com/esim\">",
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organization\",\"@id\":\"https://comebacktraveler.com/#organization\",\"name\":\"重來的旅人\",\"alternateName\":\"Comeback Traveler\",\"url\":\"https://comebacktraveler.com\",\"description\":\"由在越南生活十年的台灣旅人整理的越南旅遊準備、出國用品與上網攻略。\",\"sameAs\":[\"https://www.instagram.com/comebacktraveler\",\"https://www.youtube.com/@AndyFeverDream\"]},{\"@type\":\"WebSite\",\"@id\":\"https://comebacktraveler.com/#website\",\"name\":\"重來的旅人 Comeback Traveler\",\"url\":\"https://comebacktraveler.com\",\"inLanguage\":\"zh-TW\",\"publisher\":{\"@id\":\"https://comebacktraveler.com/#organization\"}},{\"@type\":\"BlogPosting\",\"@id\":\"https://comebacktraveler.com/esim#webpage\",\"name\":\"出國 eSIM 怎麼選？住越南 10 年的台灣人幫你整理好了 | 重來的旅人\",\"description\":\"整理 6 家 eSIM 品牌完整比較表，以台灣旅客常去的日本、韓國、東南亞為主，5 分鐘做決定，不用再 Google 到天亮。\",\"url\":\"https://comebacktraveler.com/esim\",\"inLanguage\":\"zh-TW\",\"isPartOf\":{\"@id\":\"https://comebacktraveler.com/#website\"},\"image\":\"https://comebacktraveler.com/esim-cover.jpg\",\"headline\":\"出國 eSIM 怎麼選？住越南 10 年的台灣人幫你整理好了 | 重來的旅人\",\"mainEntityOfPage\":{\"@id\":\"https://comebacktraveler.com/esim\"},\"author\":{\"@type\":\"Person\",\"@id\":\"https://comebacktraveler.com/about#author\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com/about\"},\"publisher\":{\"@id\":\"https://comebacktraveler.com/#organization\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://comebacktraveler.com/esim#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"首頁\",\"item\":\"https://comebacktraveler.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"出國 eSIM 怎麼選？住越南 10 年的台灣人幫你整理好了 | 重來的旅人\",\"item\":\"https://comebacktraveler.com/esim\"}]}]}</script>",
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"@id\":\"https://comebacktraveler.com/esim#faq\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"eSIM 和實體 SIM、WiFi 機差在哪？\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"eSIM 不用換實體卡，出發前掃描 QR Code 安裝，落地後切換行動數據即可使用；實體 SIM 需要換卡；WiFi 機適合多人共用，但需要租還與充電。\"}},{\"@type\":\"Question\",\"name\":\"一支手機可以同時用原本門號和 eSIM 嗎？\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"多數近年的雙 SIM 手機可以保留原本門號接電話或簡訊，並把 eSIM 設為行動數據；出發前仍要確認自己的機型支援 eSIM。\"}},{\"@type\":\"Question\",\"name\":\"eSIM 裝了卻沒網路怎麼辦？\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"先確認 eSIM 已啟用、行動數據已切到 eSIM，並依業者指示檢查數據漫遊與 APN。若仍無法上網，再依序排查安裝、網路與裝置設定。\"}}]}</script>",
-        "<h1 data-astro-cid-hxw6amdd>出國 eSIM 怎麼選？<br data-astro-cid-hxw6amdd>住了越南 10 年的台灣人<br data-astro-cid-hxw6amdd>幫你整理好了</h1>"
+        "<h1 data-astro-cid-hqjwsb5v>出國 eSIM 怎麼選？<br data-astro-cid-hqjwsb5v>住了越南 10 年的台灣人<br data-astro-cid-hqjwsb5v>幫你整理好了</h1>"
       ]
     },
     "esim/japan": {
@@ -19,7 +19,7 @@
         "<meta name=\"description\" content=\"市面上 8 家以上日本 eSIM，依官方線路規格、客服管道、價格與覆蓋逐一比對，篩出符合「中文真人客服 + 原生線路」這兩個條件的兩張，並說明適合誰、不適合誰。\">",
         "<link rel=\"canonical\" href=\"https://comebacktraveler.com/esim/japan\">",
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"日本 eSIM 推薦 2026｜中文客服 + 原生線路，精選兩張\",\"description\":\"市面上 8 家以上日本 eSIM，依官方線路規格、客服管道、價格與覆蓋逐一比對，篩出符合「中文真人客服 + 原生線路」這兩個條件的兩張，並說明適合誰、不適合誰。\",\"url\":\"https://comebacktraveler.com/esim/japan\",\"mainEntityOfPage\":\"https://comebacktraveler.com/esim/japan\",\"inLanguage\":\"zh-TW\",\"datePublished\":\"2026-04-20\",\"dateModified\":\"2026-04-20\",\"author\":{\"@type\":\"Person\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com/about\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com\"}}</script>",
-        "<h1 data-astro-cid-v2z7mqn4>日本 eSIM 推薦 2026<br data-astro-cid-v2z7mqn4>中文客服 + 原生線路<br data-astro-cid-v2z7mqn4>精選兩張</h1>"
+        "<h1 data-astro-cid-tv6744fe>日本 eSIM 推薦 2026<br data-astro-cid-tv6744fe>中文客服 + 原生線路<br data-astro-cid-tv6744fe>精選兩張</h1>"
       ]
     },
     "esim/korea": {
@@ -29,7 +29,7 @@
         "<meta name=\"description\" content=\"去韓國不用再找換錢所換 SIM 卡。依官方線路規格、客服管道與價格逐一比對韓國主要 eSIM，篩出符合「中文真人客服 + SKT/KT 原生線路」的兩張，並說明適合誰、不適合誰。\">",
         "<link rel=\"canonical\" href=\"https://comebacktraveler.com/esim/korea\">",
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"韓國 eSIM 推薦 2026｜中文客服 + 原生線路，精選兩張\",\"description\":\"去韓國不用再找換錢所換 SIM 卡。依官方線路規格、客服管道與價格逐一比對韓國主要 eSIM，篩出符合「中文真人客服 + SKT/KT 原生線路」的兩張，並說明適合誰、不適合誰。\",\"url\":\"https://comebacktraveler.com/esim/korea\",\"mainEntityOfPage\":\"https://comebacktraveler.com/esim/korea\",\"inLanguage\":\"zh-TW\",\"datePublished\":\"2026-04-20\",\"dateModified\":\"2026-04-20\",\"author\":{\"@type\":\"Person\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com/about\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com\"}}</script>",
-        "<h1 data-astro-cid-liabja4c>韓國 eSIM 推薦 2026<br data-astro-cid-liabja4c>中文客服 + 原生線路<br data-astro-cid-liabja4c>精選兩張</h1>"
+        "<h1 data-astro-cid-hmjlebbt>韓國 eSIM 推薦 2026<br data-astro-cid-hmjlebbt>中文客服 + 原生線路<br data-astro-cid-hmjlebbt>精選兩張</h1>"
       ]
     },
     "esim/joytel": {
@@ -39,7 +39,7 @@
         "<meta name=\"description\" content=\"JOYTEL eSIM 選購整理。依官方線路規格、日韓原生網路標準速率、LINE 客服 SLA 與 DJB、WaySim 完整對比，10 分鐘看完再決定要不要買。數據來源於文中標明。\">",
         "<link rel=\"canonical\" href=\"https://comebacktraveler.com/esim/joytel\">",
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"JOYTEL eSIM 選購整理 2026｜原生線路、客服、值不值得買？\",\"description\":\"JOYTEL eSIM 選購整理。依官方線路規格、日韓原生網路標準速率、LINE 客服 SLA 與 DJB、WaySim 完整對比，10 分鐘看完再決定要不要買。數據來源於文中標明。\",\"url\":\"https://comebacktraveler.com/esim/joytel\",\"mainEntityOfPage\":\"https://comebacktraveler.com/esim/joytel\",\"inLanguage\":\"zh-TW\",\"datePublished\":\"2026-04-25\",\"dateModified\":\"2026-04-25\",\"author\":{\"@type\":\"Person\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com/about\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com\"}}</script>",
-        "<h1 data-astro-cid-buvpjghg>JOYTEL eSIM 選購整理 2026<br data-astro-cid-buvpjghg>原生線路、客服<br data-astro-cid-buvpjghg>值不值得買？</h1>"
+        "<h1 data-astro-cid-t5qur5vu>JOYTEL eSIM 選購整理 2026<br data-astro-cid-t5qur5vu>原生線路、客服<br data-astro-cid-t5qur5vu>值不值得買？</h1>"
       ]
     },
     "esim-quiz": {
@@ -49,7 +49,7 @@
         "<meta name=\"description\" content=\"不知道出國該用 eSIM、WiFi 機還是當地 SIM？回答 4 個問題，依人數、通話需求與天數，幫你選對日本、韓國、越南的上網方案，並推薦合適的 eSIM。中立工具，附完整文字版選購建議。\">",
         "<link rel=\"canonical\" href=\"https://comebacktraveler.com/esim-quiz\">",
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"eSIM 決策樹｜出國上網方案測驗\",\"description\":\"不知道出國該用 eSIM、WiFi 機還是當地 SIM？回答 4 個問題，依人數、通話需求與天數，幫你選對日本、韓國、越南的上網方案，並推薦合適的 eSIM。中立工具，附完整文字版選購建議。\",\"url\":\"https://comebacktraveler.com/esim-quiz\",\"applicationCategory\":\"TravelApplication\",\"operatingSystem\":\"Web\",\"inLanguage\":\"zh-TW\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"TWD\"},\"author\":{\"@type\":\"Person\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com/about\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com\"}}</script>",
-        "<h1 data-astro-cid-vbuuxj7n>出國上網該用哪一種？<br data-astro-cid-vbuuxj7n>30 秒測出你的方案</h1>"
+        "<h1 data-astro-cid-zi6ycdmx>出國上網該用哪一種？<br data-astro-cid-zi6ycdmx>30 秒測出你的方案</h1>"
       ]
     },
     "esim/install": {
@@ -59,7 +59,7 @@
         "<meta name=\"description\" content=\"第一次裝 eSIM 不知道從哪開始？iPhone 掃 QR Code、Android 三星/Pixel 步驟全圖解，5 分鐘搞定，附常見問題排解。\">",
         "<link rel=\"canonical\" href=\"https://comebacktraveler.com/esim/install\">",
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"eSIM 怎麼安裝？iPhone + Android 圖解教學｜重來的旅人\",\"description\":\"第一次裝 eSIM 不知道從哪開始？iPhone 掃 QR Code、Android 三星/Pixel 步驟全圖解，5 分鐘搞定，附常見問題排解。\",\"url\":\"https://comebacktraveler.com/esim/install\",\"mainEntityOfPage\":\"https://comebacktraveler.com/esim/install\",\"inLanguage\":\"zh-TW\",\"datePublished\":\"2026-04-22\",\"dateModified\":\"2026-04-22\",\"author\":{\"@type\":\"Person\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com/about\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com\"}}</script>",
-        "<h1 data-astro-cid-yqpcoo4r>eSIM 怎麼安裝？<br data-astro-cid-yqpcoo4r>iPhone + Android<br data-astro-cid-yqpcoo4r>圖解步驟教學</h1>"
+        "<h1 data-astro-cid-o5v2gojd>eSIM 怎麼安裝？<br data-astro-cid-o5v2gojd>iPhone + Android<br data-astro-cid-o5v2gojd>圖解步驟教學</h1>"
       ]
     },
     "esim/overseas-internet-guide": {
@@ -69,7 +69,7 @@
         "<meta name=\"description\" content=\"第一次出國不知道網路怎麼辦？住國外十年的過來人，用最白話的方式比較 eSIM、WiFi 機、電信漫遊三種方案的優缺點、適合誰、怎麼省，幫你出國前一次搞懂，不再踩雷。\">",
         "<link rel=\"canonical\" href=\"https://comebacktraveler.com/esim/overseas-internet-guide\">",
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"出國上網懶人包｜eSIM、WiFi 機、漫遊該選哪個？一篇看懂\",\"description\":\"第一次出國不知道網路怎麼辦？住國外十年的過來人，用最白話的方式比較 eSIM、WiFi 機、電信漫遊三種方案的優缺點、適合誰、怎麼省，幫你出國前一次搞懂，不再踩雷。\",\"url\":\"https://comebacktraveler.com/esim/overseas-internet-guide\",\"inLanguage\":\"zh-TW\",\"datePublished\":\"2026-05-31\",\"dateModified\":\"2026-05-31\",\"author\":{\"@type\":\"Person\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com/about\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com\"}}</script>",
-        "<h1 data-astro-cid-ttjldobv>出國上網懶人包<br data-astro-cid-ttjldobv>eSIM、WiFi 機、漫遊<br data-astro-cid-ttjldobv>該選哪個？一篇看懂</h1>"
+        "<h1 data-astro-cid-cmantzbd>出國上網懶人包<br data-astro-cid-cmantzbd>eSIM、WiFi 機、漫遊<br data-astro-cid-cmantzbd>該選哪個？一篇看懂</h1>"
       ]
     },
     "esim/china-routing-2026": {
@@ -79,7 +79,7 @@
         "<meta name=\"description\" content=\"2026 年 5 月爆出旅遊 eSIM「封包繞道中國」爭議，加上政府防詐宣導，讓很多人不敢買 eSIM。住國外十年的過來人帶你看懂這波在吵什麼、教你自己判斷手上的 eSIM 安不安全、以及到底該怎麼選。\">",
         "<link rel=\"canonical\" href=\"https://comebacktraveler.com/esim/china-routing-2026\">",
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"2026 eSIM 還能買嗎？「封包送中」爭議 + 防詐宣導，過來人完整解析\",\"description\":\"2026 年 5 月爆出旅遊 eSIM「封包繞道中國」爭議，加上政府防詐宣導，讓很多人不敢買 eSIM。住國外十年的過來人帶你看懂這波在吵什麼、教你自己判斷手上的 eSIM 安不安全、以及到底該怎麼選。\",\"url\":\"https://comebacktraveler.com/esim/china-routing-2026\",\"inLanguage\":\"zh-TW\",\"datePublished\":\"2026-05-31\",\"dateModified\":\"2026-05-31\",\"author\":{\"@type\":\"Person\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com/about\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com\"}}</script>",
-        "<h1 data-astro-cid-mcfqdiuj>2026 eSIM 還能買嗎？<br data-astro-cid-mcfqdiuj>「封包送中」爭議 +<br data-astro-cid-mcfqdiuj>防詐宣導，過來人完整解析</h1>"
+        "<h1 data-astro-cid-hsuwadu7>2026 eSIM 還能買嗎？<br data-astro-cid-hsuwadu7>「封包送中」爭議 +<br data-astro-cid-hsuwadu7>防詐宣導，過來人完整解析</h1>"
       ]
     },
     "esim/saigon-airport-sim": {
@@ -89,7 +89,7 @@
         "<meta name=\"description\" content=\"剛下飛機站在新山一機場，到底該不該在現場買 SIM 卡？在越南住過十年、胡志明進出無數次的過來人，幫你算清楚機場買、線上買、蝦皮買的真實差異，落地不再手忙腳亂。\">",
         "<link rel=\"canonical\" href=\"https://comebacktraveler.com/esim/saigon-airport-sim\">",
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"胡志明市機場 SIM 卡值得買嗎？住越南十年的過來人真心建議（2026）\",\"description\":\"剛下飛機站在新山一機場，到底該不該在現場買 SIM 卡？在越南住過十年、胡志明進出無數次的過來人，幫你算清楚機場買、線上買、蝦皮買的真實差異，落地不再手忙腳亂。\",\"url\":\"https://comebacktraveler.com/esim/saigon-airport-sim\",\"author\":{\"@type\":\"Person\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com/about\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"重來的旅人\",\"url\":\"https://comebacktraveler.com\"},\"datePublished\":\"2026-06-07\",\"dateModified\":\"2026-06-07\",\"image\":\"https://comebacktraveler.com/vietnam-airport-queue.jpg\",\"inLanguage\":\"zh-TW\"}</script>",
-        "<h1 data-astro-cid-tleseaoi>胡志明市機場 SIM 卡<br data-astro-cid-tleseaoi>值得現場買嗎？</h1>"
+        "<h1 data-astro-cid-i7gi2qb4>胡志明市機場 SIM 卡<br data-astro-cid-i7gi2qb4>值得現場買嗎？</h1>"
       ]
     }
   },
@@ -163,13 +163,13 @@
       "https://coupa.ng/cnc3yV?abTestInfo=100412_group_A",
       "https://coupa.ng/cnc3qG?abTestInfo=100412_group_A",
       "https://coupa.ng/cnc3Dz?abTestInfo=100412_group_A",
-      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&#38;view=storefront",
+      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront",
       "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A",
       "https://coupa.ng/cnKCOY?abTestInfo=100412_group_A",
       "https://coupa.ng/cnc3qG?abTestInfo=100412_group_A",
       "https://coupa.ng/cnKD7Q?abTestInfo=100412_group_A",
       "https://coupa.ng/cnc3yV?abTestInfo=100412_group_A",
-      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&#38;view=storefront"
+      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront"
     ],
     "vietnam-guide.html": [
       "https://linkgo.one/s/eKT34",
@@ -179,24 +179,24 @@
     "vietnam-mosquito-repellent-guide.html": [],
     "vietnam-mosquito-repellent.html": [
       "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A",
-      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&#38;view=storefront"
+      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront"
     ],
     "vietnam-packing-list.html": [
-      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&#38;view=storefront",
+      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront",
       "https://s.momoshop.com.tw/s/llZBggFG"
     ],
     "vietnam-taxi-app-guide.html": [],
     "vietnam-travel-essentials.html": [
       "https://s.shopee.tw/Lm4PqAlxr",
       "https://s.momoshop.com.tw/s/HoLv7ksQ",
-      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&#38;view=storefront",
+      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront",
       "https://coupa.ng/cnc3Dz?abTestInfo=100412_group_A",
       "https://coupa.ng/cnc3H4?abTestInfo=100412_group_A",
       "https://coupa.ng/cnc3yV?abTestInfo=100412_group_A",
       "https://coupa.ng/cnc3qG?abTestInfo=100412_group_A",
       "https://s.momoshop.com.tw/s/HoLv7ksQ",
-      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&#38;view=storefront",
-      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&#38;view=storefront"
+      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront",
+      "https://collshp.com/andyho8431/category/3834915?share_channel_code=6&view=storefront"
     ],
     "en/about.html": [],
     "en/affiliate-disclosure.html": [],
