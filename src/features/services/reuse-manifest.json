@@ -1,0 +1,122 @@
+{
+  "source_repository": "andyho710-a11y/kaohsiung-help",
+  "source_revision": "72bf9d517f4b616854271ea6e597a1441a487469",
+  "backend_reused": true,
+  "database_migrations": [],
+  "files": [
+    {
+      "source": "src/lib/admin-operations.ts",
+      "target": "src/features/services/lib/admin-operations.ts",
+      "source_sha256": "de86abb0eff5fdd4389ae116d188c9b3404ae3905331def6c9999f867aa2cce1",
+      "integrated_sha256": "35523521ff43400212b523ca312f6c43aef9b802dd69c3554745622017daafca"
+    },
+    {
+      "source": "src/lib/admin.ts",
+      "target": "src/features/services/lib/admin.ts",
+      "source_sha256": "e737b01e67ec3af7e9041a9d358de1cc4b9b3dc1766b4fd26866f81c988eb88d",
+      "integrated_sha256": "fce271f05ad8d9ece0d500563483a7dc4c78f8dd630bcfb30a1c14e2febee6b5"
+    },
+    {
+      "source": "src/lib/catalog.ts",
+      "target": "src/features/services/lib/catalog.ts",
+      "source_sha256": "6ab0ed2c83ca3024c28e23fcc33d084dc60c167ffef9346824a51d073f207c16",
+      "integrated_sha256": "6ab0ed2c83ca3024c28e23fcc33d084dc60c167ffef9346824a51d073f207c16"
+    },
+    {
+      "source": "src/lib/client.ts",
+      "target": "src/features/services/lib/client.ts",
+      "source_sha256": "8a740a1fb4e95cd8e2ce023d82d49d6e0f31a7f5c3bef39ff60c398793f354bf",
+      "integrated_sha256": "8a740a1fb4e95cd8e2ce023d82d49d6e0f31a7f5c3bef39ff60c398793f354bf"
+    },
+    {
+      "source": "src/lib/job-detail.ts",
+      "target": "src/features/services/lib/job-detail.ts",
+      "source_sha256": "8e33aac3029d092dabf1591ed0d49df720cf994a18fd9c925fa50adc70d4a9b8",
+      "integrated_sha256": "8e33aac3029d092dabf1591ed0d49df720cf994a18fd9c925fa50adc70d4a9b8"
+    },
+    {
+      "source": "src/lib/jobs.ts",
+      "target": "src/features/services/lib/jobs.ts",
+      "source_sha256": "bb8fc4a4b20150e3cfcac7292f075f357c58a0369cac4cd0570ebe1243b25439",
+      "integrated_sha256": "cbb8897af4818a838a5b352cc22277b3ab9be48649a7792e35ff07a6cb660857"
+    },
+    {
+      "source": "src/lib/tracking.ts",
+      "target": "src/features/services/lib/tracking.ts",
+      "source_sha256": "aaffbd3f5bc2826a2b311014a835af3b631f988ce9621c45f44622f848e1ae47",
+      "integrated_sha256": "aaffbd3f5bc2826a2b311014a835af3b631f988ce9621c45f44622f848e1ae47"
+    },
+    {
+      "source": "src/layouts/Layout.astro",
+      "target": "src/features/services/layouts/Layout.astro",
+      "source_sha256": "3d353c1548c14c1a84372ea56249315160be8ce1ce7ebc3ce33ab89e59fd74a4",
+      "integrated_sha256": "c0bc73ec1adfc549e8f71156d2d3ea8ad42655f924dd87d71134df5ff2caf1a2"
+    },
+    {
+      "source": "src/styles/global.css",
+      "target": "src/features/services/styles/global.css",
+      "source_sha256": "331875f39da41576dabcb3697030253d51df30974942f3c5a79adf5187a07b1d",
+      "integrated_sha256": "3e3ff80b986da806f3c3c503bfb63d7c191338543528b8d2f22fbbe2a1f53e7f"
+    },
+    {
+      "source": "src/pages/account.astro",
+      "target": "src/pages/services/account.astro",
+      "source_sha256": "f6bae755be6f90a0e9de4b770d8d4acd0463ef1c9c53b6f2c4ca75d68b475f41",
+      "integrated_sha256": "14131e5b30717cfe83a6fed1cc6b7090c291c00b0375a3873888ccde1d22ca2c"
+    },
+    {
+      "source": "src/pages/admin.astro",
+      "target": "src/pages/services/admin.astro",
+      "source_sha256": "c546cd5a1cc44c738b33ade10aeead0369e5ad65906b5c3b1e90b8d702b68e10",
+      "integrated_sha256": "fc4bd14dad6dffa6f95b1376a85a36537edcba398cffbfe537006f01364e4e37"
+    },
+    {
+      "source": "src/pages/dashboard.astro",
+      "target": "src/pages/services/dashboard.astro",
+      "source_sha256": "7b57ca2a575f11ff1b4c7078a7c58e8255f407dabdeb60711ea530f6ae890c8d",
+      "integrated_sha256": "7aebcd64a215b21d17449010843c85383d5b7cab2890e4435dd10173e46b2346"
+    },
+    {
+      "source": "src/pages/index.astro",
+      "target": "src/pages/services/index.astro",
+      "source_sha256": "515dddfb04adc317b111dea85152f1ecccd649c6098804a955206d70d26d8cbb",
+      "integrated_sha256": "ab8b647339af69d21a8b08bfccf63c0b34483e63d66eef721ab0cf1b14ef8486"
+    },
+    {
+      "source": "src/pages/job.astro",
+      "target": "src/pages/services/job.astro",
+      "source_sha256": "bf3d37c20407c4ae0fea72670fc1acd5fc3922feb17cf415076a0b5073f0e21b",
+      "integrated_sha256": "7ae61e86a06ceceff418447384adaffd6e7ff774cdbbde6589897e9e15eb3f85"
+    },
+    {
+      "source": "src/pages/jobs.astro",
+      "target": "src/pages/services/jobs.astro",
+      "source_sha256": "f5e4b5a68ae4f0d995730c5b0995c4efc927c371bc630ac9fac05d57b379a7c3",
+      "integrated_sha256": "225acac854577351923528134339ec3b57b8da242647f096b108727e3344398f"
+    },
+    {
+      "source": "src/pages/notifications.astro",
+      "target": "src/pages/services/notifications.astro",
+      "source_sha256": "6f5dafe82c1ae67e0de5862c015388d4622872723c6329fc18656c5194fb1af8",
+      "integrated_sha256": "149013b8d5c1f20a493ef19704fed7068506a3d8cc20564b7c91a2c8283fda25"
+    },
+    {
+      "source": "src/pages/post.astro",
+      "target": "src/pages/services/post.astro",
+      "source_sha256": "8c851a4b95ba32fbebdee3194254ebecae48b392e752bb85d17a71d58d883569",
+      "integrated_sha256": "f9fbf683d53c9bde3be0fe122552d38e8e78b4cbe028a7eeecfdd2a80ae83ac6"
+    },
+    {
+      "source": "src/pages/privacy.astro",
+      "target": "src/pages/services/privacy.astro",
+      "source_sha256": "c9c271b2df2944b26bb2c057bab6f78b82747322771e29aaef88258e27998f34",
+      "integrated_sha256": "4a89d90ea314a39b2af4d8e34e38776f3e4e79b26734b4ff130ec53af35b2746"
+    },
+    {
+      "source": "src/pages/provider.astro",
+      "target": "src/pages/services/provider.astro",
+      "source_sha256": "e58e1e5500c8d3f2d7d478a8bf57ba864e3ed4faa2239d950fb11f161cfd159a",
+      "integrated_sha256": "d8bcea9fa1380c0ae680761f70ec39edca47a90d72a61d32fc47fe28d4f9a7f9"
+    }
+  ]
+}

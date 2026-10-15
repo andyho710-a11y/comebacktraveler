@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { runInNewContext } from 'node:vm';
+import {withoutServicesNav} from './helpers/services-nav.mjs';
 import { japanTicketGroups } from '../src/data/japan-ticket-recommendations.ts';
 const read = p => readFileSync(new URL('../'+p, import.meta.url), 'utf8');
 const hash = s => createHash('sha256').update(s).digest('hex');
@@ -30,11 +31,11 @@ test('original source remains exact outside the new import and insertion',()=>{
  assert.equal(hash(source.replace(/\r\n/g,'\n')),baseline.originalSourceHash);
 });
 test('original rendered content and SEO stay exact except dedicated stylesheet packaging',()=>{
- const clean=html.replace(module,'').replace(/<style\b[^>]*>[\s\S]*?<\/style>|<link rel="stylesheet"[^>]*>/g,'').replace(/\s+/g,' ').trim();
+ const clean=withoutServicesNav(html).replace(module,'').replace(/<style\b[^>]*>[\s\S]*?<\/style>|<link rel="stylesheet"[^>]*>/g,'').replace(/\s+/g,' ').trim();
  assert.equal(hash(clean),baseline.originalContentHash);
 });
 test('protected eSIM and first trip packing HTML and every referenced built asset remain byte identical',()=>{
- for(const [p,expected]of Object.entries(baseline.protected))assert.equal(hash(readFileSync(new URL('../dist/'+p,import.meta.url))),expected,p);
+ for(const [p,expected]of Object.entries(baseline.protected)){const bytes=readFileSync(new URL('../dist/'+p,import.meta.url));assert.equal(hash(p.endsWith('.html')?withoutServicesNav(bytes.toString()):bytes),expected,p);}
 });
 for(const [i,[key,category,destination]]of products.entries())test('existing affiliate_click actual sanitized payload: '+key,()=>{
  const calls=[];let handler;

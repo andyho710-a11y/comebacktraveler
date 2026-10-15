@@ -1,0 +1,4 @@
+export const categories = { cleaning: '居家清潔', organizing: '收納整理', furniture: '家具組裝', minor: '一般小修繕' } as const;
+export const districts = ['楠梓區','左營區','鼓山區','三民區','鹽埕區','前金區','新興區','苓雅區','前鎮區','旗津區','小港區','鳳山區','鳥松區','仁武區','大社區','大樹區','林園區','大寮區','梓官區','岡山區','橋頭區','燕巢區','田寮區','阿蓮區','路竹區','湖內區','茄萣區','永安區','彌陀區','旗山區','美濃區','六龜區','甲仙區','杉林區','內門區','茂林區','桃源區','那瑪夏區'];
+export const statuses: Record<string,string> = { pending:'待人工審核',open:'開放報價',awaiting_provider:'等待服務者確認',matched:'媒合成功',submitted:'等待客戶驗收',completed:'已完成',rejected:'未通過審核',cancelled:'已取消',cancellation_requested:'等待取消協議',disputed:'爭議處理中',approved:'已核准',suspended:'已停權',selected:'等待確認接單',accepted:'已確認接單',declined:'未接受接單',withdrawn:'已撤回',offered:'報價中',processing:'寄送處理中',sent:'已交付郵件服務',failed:'寄送失敗',skipped:'已停止寄送' };
+export const excluded = '不受理瓦斯、電力配線、消防、結構、防水拆除、高空作業、危險廢棄物清運、醫療照護及任何需專業證照的工程。';

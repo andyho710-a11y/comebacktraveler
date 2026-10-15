@@ -1,0 +1,3 @@
+src/features/services/** text eol=lf
+src/pages/services/** text eol=lf
+scripts/services/** text eol=lf

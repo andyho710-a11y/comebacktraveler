@@ -15,6 +15,7 @@ export default defineConfig({
     sitemap({
       // 刻意 noindex 的草稿、遷移頁與英文預留頁不列入 sitemap。
       filter: (page) =>
+        !new URL(page).pathname.match(/^\/services(?:\/|$)/) &&
         !page.includes('/drink-a-glass-of-water') &&
         !page.endsWith('/vietnam-mosquito-repellent-guide') &&
         !['/en/connectivity', '/en/travel-gear', '/en/vietnam-travel-prep'].includes(new URL(page).pathname),

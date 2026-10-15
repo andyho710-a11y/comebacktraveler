@@ -23,6 +23,7 @@ const chineseLinks = [
   { href: '/vietnam-guide', label: '越南', key: 'vietnam' },
   { href: '/thsr-guide', label: '高鐵省錢', key: 'thsr' },
   { href: '/about', label: '關於', key: 'about' },
+  { href: '/services', label: '生活服務', key: 'services' },
 ];
 const englishLinks = [
   { href: '/en/vietnam-travel-prep', label: 'Vietnam prep', key: 'vietnam-prep' },
@@ -155,8 +156,16 @@ const links = isEnglish ? englishLinks : chineseLinks;
     var toggle = document.querySelector('.cbt-nav-toggle');
     var links = document.querySelector('.cbt-nav-links');
     if (toggle && links) {
+      var mobileMenu = window.matchMedia('(max-width: 720px)');
+      function fitMenu() {
+        links.style.flexWrap = mobileMenu.matches ? 'nowrap' : '';
+        links.style.maxHeight = mobileMenu.matches && links.classList.contains('is-open') ? 'none' : '';
+      }
+      mobileMenu.addEventListener('change', fitMenu);
+      fitMenu();
       toggle.addEventListener('click', function () {
         var open = links.classList.toggle('is-open');
+        fitMenu();
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     }

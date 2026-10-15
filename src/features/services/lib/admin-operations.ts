@@ -1,0 +1,21 @@
+import {client,check,run,escape} from './client';
+import {date,money} from './jobs';
+import {statuses,categories} from './catalog';
+type RecordRow={id:string;status:string;district:string;category:keyof typeof categories;created_at:string;owner_id:string;selected_provider_id:string|null;amount:number|null;matched_at:string|null;service_at:string|null;quote_count:number};
+export async function renderOperations(parent:HTMLElement){
+ const section=document.createElement('section');section.className='section';parent.prepend(section);
+ section.innerHTML='<h2>媒合與營運追蹤</h2><p class="hint">僅管理者可查看。統計來自真實資料庫，測試案件不計入。媒合成功只計服務者已確認的案件，後續取消仍保留原紀錄。</p><div id="metrics" class="metrics"></div><div class="field"><label for="record-status">案件狀態</label><select id="record-status"><option value="">全部案件</option></select></div><div id="records" class="job-list"></div><div class="actions"><button class="button secondary small" id="previous-records">上一頁</button><button class="button secondary small" id="next-records">下一頁</button><button class="button secondary small" id="refresh-metrics">更新統計</button></div><h3>通知寄送紀錄</h3><div id="mail-records"></div>';
+ const select=section.querySelector<HTMLSelectElement>('#record-status')!;
+ for(const status of ['pending','open','awaiting_provider','matched','submitted','completed','cancelled','cancellation_requested','disputed','rejected']){const option=document.createElement('option');option.value=status;option.textContent=statuses[status];select.append(option);}
+ let offset=0;
+ async function refresh(){
+  const [{data:metrics},{data:records},{data:mail}]=await Promise.all([client!.rpc('admin_metrics'),client!.rpc('admin_job_records',{p_status:select.value,p_offset:offset}),client!.rpc('admin_email_records')].map(async pending=>check(await pending)));
+  const fields:Record<string,string>={jobs:'累計案件',quotes:'累計報價',matches:'媒合成功',completed:'已驗收完工',cancelled:'已取消',disputed:'爭議處理中',awaiting_provider:'待服務者確認',email_pending:'待寄通知',email_failed:'寄送失敗'};
+  section.querySelector('#metrics')!.innerHTML=Object.entries(fields).map(([key,label])=>`<div class="metric"><span>${label}</span><strong>${escape(metrics[key])}</strong></div>`).join('');
+  const rows=records as RecordRow[];
+  section.querySelector('#records')!.innerHTML=rows.map(row=>`<article class="job-card"><span class="tag gold">${escape(statuses[row.status])}</span><h3>${escape(row.district)} · ${escape(categories[row.category])}</h3><p class="hint">案件 ${escape(row.id)}<br/>刊登 ${escape(date(row.created_at))}</p><p>報價 ${escape(row.quote_count)} 筆${row.amount!==null?' · 成交報價 '+money(row.amount):' · 尚無確認接單'}</p>${row.matched_at?`<p>媒合成功 ${escape(date(row.matched_at))}<br/>約定服務 ${escape(date(row.service_at!))}</p>`:''}<details><summary>雙方帳號識別</summary><p class="hint">客戶 ${escape(row.owner_id)}<br/>服務者 ${escape(row.selected_provider_id??'尚未選定／已取消')}</p></details><a class="button secondary small" href="/services/job?id=${encodeURIComponent(row.id)}">查看案件與處理紀錄</a></article>`).join('')||'<div class="empty">目前沒有符合狀態的實際案件。</div>';
+  (section.querySelector('#previous-records') as HTMLButtonElement).disabled=offset===0;(section.querySelector('#next-records') as HTMLButtonElement).disabled=rows.length<30;
+  section.querySelector('#mail-records')!.innerHTML=(mail as {job_id:string|null;kind:string;title:string;state:string;attempts:number;sent_at:string|null;last_error:string;created_at:string}[]).map(item=>`<div class="quote"><strong>${escape(item.title)}</strong><span class="tag">${escape(statuses[item.state]??item.state)}</span><p class="hint">${escape(date(item.created_at))} · 嘗試 ${escape(item.attempts)} 次${item.last_error?' · '+escape(item.last_error):''}</p>${item.job_id?`<a href="/services/job?id=${encodeURIComponent(item.job_id)}">查看相關案件</a>`:''}</div>`).join('')||'<p>尚無寄送紀錄。系統寄信測試會明確標示，不計入成交。</p>';
+ }
+ select.onchange=()=>{offset=0;void run(refresh);};section.querySelector('#previous-records')!.addEventListener('click',()=>{offset=Math.max(0,offset-30);void run(refresh);});section.querySelector('#next-records')!.addEventListener('click',()=>{offset+=30;void run(refresh);});section.querySelector('#refresh-metrics')!.addEventListener('click',()=>void run(refresh));await refresh();
+}

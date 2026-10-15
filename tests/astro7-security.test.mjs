@@ -3,16 +3,17 @@ import assert from 'node:assert/strict';
 import {readFileSync,readdirSync,statSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 import {digest,sourceDigest,semanticHTML} from './helpers/toolchain-semantics.mjs';
+import {withoutServicesNav,originalTravelSource} from './helpers/services-nav.mjs';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url));
 const baseline=JSON.parse(read('tests/fixtures/astro7-semantic-baseline.json'));
 const files=dir=>readdirSync(new URL('../'+dir,import.meta.url),{recursive:true}).filter(p=>statSync(new URL('../'+dir+'/'+p,import.meta.url)).isFile()).map(p=>p.replaceAll('\\','/')).sort();
 test('all 45 production routes and parsed content/SEO/CTA DOM match pre-upgrade main',()=>{
- assert.deepEqual(files('dist').filter(p=>p.endsWith('.html')),Object.keys(baseline.html).sort());
- for(const [p,h]of Object.entries(baseline.html))assert.equal(semanticHTML(read('dist/'+p).toString()),h,p);
+ assert.deepEqual(files('dist').filter(p=>p.endsWith('.html')&&p!=='services.html'&&!p.startsWith('services/')),Object.keys(baseline.html).sort());
+ for(const [p,h]of Object.entries(baseline.html))assert.equal(semanticHTML(withoutServicesNav(read('dist/'+p).toString())),h,p);
 });
 test('all application sources, affiliate tracker and public/XML output stay exact',()=>{
- assert.deepEqual(files('src'),Object.keys(baseline.source).map(p=>p.slice(4)).sort());
- for(const [p,h]of Object.entries(baseline.source))assert.equal(sourceDigest(read(p)),h,p);
+ assert.deepEqual(files('src').filter(p=>!p.startsWith('features/services/')&&!p.startsWith('pages/services/')),Object.keys(baseline.source).map(p=>p.slice(4)).sort());
+ for(const [p,h]of Object.entries(baseline.source))assert.equal(sourceDigest(originalTravelSource(p,read(p).toString())),h,p);
  for(const [p,h]of Object.entries(baseline.unchangedFiles))assert.equal(digest(read('dist/'+p)),h,p);
 });
 test('semantic comparison ignores only compiler packaging and rejects content/URL/metadata changes',()=>{

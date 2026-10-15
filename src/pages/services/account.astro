@@ -1,0 +1,34 @@
+---
+import Layout from '../../features/services/layouts/Layout.astro';
+const googleEnabled=import.meta.env.PUBLIC_GOOGLE_ENABLED==='true';
+---
+<Layout title="會員登入與註冊｜高雄好幫手"><div class="narrow"><div class="page-head"><div class="eyebrow">YOUR ACCOUNT</div><h1>先認識，再放心媒合。</h1><p>使用 Email 建立會員，完成驗證後就能刊登需求或申請成為服務者。</p></div>
+ <div class="info" id="environment">測試預覽中。會員功能須完成後端及寄信設定後才會開放。</div>
+ <div class="form-card" id="auth-section"><form id="auth-form"><div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" required maxlength="254" /></div><div class="field"><label for="password">密碼（至少 12 字元）</label><input id="password" type="password" autocomplete="current-password" minlength="12" maxlength="128" required /></div><label class="consent"><input type="checkbox" id="auth-consent" /><span>註冊時，我已閱讀並同意<a href="/services/privacy" target="_blank" rel="noopener">個資告知與服務約定</a>。</span></label><div class="actions"><button class="button" type="submit">登入</button><button class="button secondary" id="register" type="button">免費註冊</button><button class="button secondary" id="reset" type="button">忘記密碼</button></div></form>{googleEnabled&&<><hr/><button class="button secondary" id="google" type="button">使用 Google 帳號登入</button></>}</div>
+ <div id="member-section" class="form-card" hidden><h2>我的會員資料</h2><p id="member-email"></p><form id="profile-form"><div class="field"><label for="display-name">稱呼（不使用完整地址或電話）</label><input id="display-name" required minlength="2" maxlength="40" autocomplete="nickname" /></div><div class="field"><label for="phone">聯絡電話（私人資料）</label><input id="phone" type="tel" required pattern="[0-9+() -]{8,24}" autocomplete="tel" /></div><label class="consent"><input id="profile-consent" type="checkbox" required /><span>我同意<a href="/services/privacy">個資告知與服務約定</a>，聯絡資料僅用於媒合及服務安排。</span></label><button class="button" type="submit">儲存會員資料</button></form><div class="actions" style="margin-top:20px"><a class="button secondary" href="/services/post">刊登需求</a><a class="button secondary" href="/services/dashboard">我的案件</a><button class="button secondary" id="logout">登出</button></div></div>
+ <div id="password-section" class="form-card" hidden><form id="password-form"><h2>設定新密碼</h2><div class="field"><label for="new-password">新密碼（至少 12 字元）</label><input id="new-password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required /></div><button class="button">更新密碼</button></form></div>
+ </div><script>
+ import { client,enabled,run,message,check,session,recovering } from '../../features/services/lib/client';
+ const el = (id:string) => document.getElementById(id)!;
+ const input = (id:string) => (el(id) as HTMLInputElement).value;
+ if(enabled) el('environment').hidden=true;
+ if(recovering || new URLSearchParams(location.search).get('reset')==='1') el('password-section').hidden=false;
+ async function refresh() {
+  if(!client) return;
+  const {data}=await client.auth.getUser();
+  const user=data.user;
+  el('auth-section').hidden=!!user; el('member-section').hidden=!user;
+  if(user) { el('member-email').textContent=user.email??'已登入'; const {data:profile}=check(await client.from('profiles').select('*').eq('id',user.id).maybeSingle()); if(profile) { (el('display-name') as HTMLInputElement).value=profile.display_name; (el('phone') as HTMLInputElement).value=profile.phone; }
+   if(new URLSearchParams(location.search).get('next')==='admin'&&!recovering&&new URLSearchParams(location.search).get('reset')!=='1'){const {data:admin}=check(await client.rpc('is_admin'));if(admin)location.replace('/services/admin');else message('此帳號沒有管理者權限。',true);}
+  }
+ }
+ el('auth-form').addEventListener('submit',e=>{e.preventDefault();void run(async()=>{check(await client!.auth.signInWithPassword({email:input('email'),password:input('password')}));await refresh();message('登入完成。');});});
+ el('register').addEventListener('click',()=>void run(async()=>{if(!(el('auth-form') as HTMLFormElement).reportValidity())return;if(!(el('auth-consent') as HTMLInputElement).checked)throw new Error('請先閱讀並同意個資告知。');const {data}=check(await client!.auth.signUp({email:input('email'),password:input('password'),options:{emailRedirectTo:location.origin+'/services/account'}}));if(data.user?.identities?.length===0)throw new Error('此 Email 可能已註冊，請登入或重設密碼。');message('註冊請求已送出，請到信箱完成驗證。若未收到信件，請聯絡管理者；未驗證前無法刊登。');}));
+ el('google')?.addEventListener('click',()=>void run(async()=>{check(await client!.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+'/services/account'}}));}));
+ el('reset').addEventListener('click',()=>void run(async()=>{if(!(el('email') as HTMLInputElement).reportValidity())return;check(await client!.auth.resetPasswordForEmail(input('email'),{redirectTo:location.origin+'/services/account'}));message('若此 Email 已註冊，請查看信箱的重設密碼連結。');}));
+ el('profile-form').addEventListener('submit',e=>{e.preventDefault();void run(async()=>{await session();check(await client!.rpc('save_profile',{p_name:input('display-name'),p_phone:input('phone'),p_consent:(el('profile-consent') as HTMLInputElement).checked}));message('會員資料已儲存。');});});
+ el('logout').addEventListener('click',()=>void run(async()=>{check(await client!.auth.signOut());await refresh();message('已登出。');}));
+ el('password-form').addEventListener('submit',e=>{e.preventDefault();void run(async()=>{check(await client!.auth.updateUser({password:input('new-password')}));el('password-section').hidden=true;message('密碼已更新。');});});
+ client?.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY'||new URLSearchParams(location.search).get('reset')==='1')el('password-section').hidden=false;});
+ void refresh().catch(()=>message('無法取得會員狀態，請重新登入。',true));
+ </script></Layout>

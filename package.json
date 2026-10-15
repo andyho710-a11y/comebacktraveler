@@ -7,18 +7,20 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/services/check-config.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "typecheck": "astro check",
     "typecheck:sourcing": "astro check --tsconfig tsconfig.sourcing.json",
+    "typecheck:services": "astro check --tsconfig tsconfig.services.json",
     "test:backend": "npm --prefix functions test",
     "build:backend": "npm --prefix functions run build"
   },
   "dependencies": {
     "@astrojs/rss": "4.0.19",
     "@astrojs/sitemap": "^3.7.2",
+    "@supabase/supabase-js": "2.117.3",
     "@tailwindcss/vite": "4.2.4",
     "astro": "7.2.8",
     "sharp": "0.35.5",
