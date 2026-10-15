@@ -8,7 +8,7 @@ const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const pages=['account','admin','dashboard','job','jobs','notifications','post','privacy','provider'];
 test('exactly ten services pages reuse the completed platform source manifest',()=>{
  assert.deepEqual(readdirSync(new URL('../src/pages/services',import.meta.url)).sort(),[...pages,'index'].map(p=>p+'.astro').sort());
- const manifest=JSON.parse(read('src/features/services/reuse-manifest.json'));assert.equal(manifest.source_repository,'andyho710-a11y/kaohsiung-help');assert.match(manifest.source_revision,/^72bf9d5[a-f0-9]{33}$/);assert.equal(manifest.backend_reused,true);assert.deepEqual(manifest.database_migrations,[]);assert.equal(manifest.files.length,19);
+ const manifest=JSON.parse(read('src/features/services/reuse-manifest.json'));assert.equal(manifest.source_repository,'andyho710-a11y/kaohsiung-help');assert.match(manifest.source_revision,/^72bf9d5[a-f0-9]{33}$/);assert.equal(manifest.backend_reused,true);assert.deepEqual(manifest.database_migrations,['202610150010_staged_privacy.sql','202610150011_privacy_transition_guards.sql','202610150012_photo_review_identity.sql']);assert.equal(manifest.files.length,19);
  for(const file of manifest.files)assert.equal(createHash('sha256').update(read(file.target).replace(/\r\n/g,'\n')).digest('hex'),file.integrated_sha256,file.target);
 });
 test('service screens do not load travel analytics, affiliate scripts or travel styles',()=>{

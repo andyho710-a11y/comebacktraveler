@@ -2,7 +2,11 @@
   "source_repository": "andyho710-a11y/kaohsiung-help",
   "source_revision": "72bf9d517f4b616854271ea6e597a1441a487469",
   "backend_reused": true,
-  "database_migrations": [],
+  "database_migrations": [
+    "202610150010_staged_privacy.sql",
+    "202610150011_privacy_transition_guards.sql",
+    "202610150012_photo_review_identity.sql"
+  ],
   "files": [
     {
       "source": "src/lib/admin-operations.ts",
@@ -14,7 +18,8 @@
       "source": "src/lib/admin.ts",
       "target": "src/features/services/lib/admin.ts",
       "source_sha256": "e737b01e67ec3af7e9041a9d358de1cc4b9b3dc1766b4fd26866f81c988eb88d",
-      "integrated_sha256": "fce271f05ad8d9ece0d500563483a7dc4c78f8dd630bcfb30a1c14e2febee6b5"
+      "integrated_sha256": "48d53de968238cb0116266b3c80c2a6faa01187fd3808bd088063b4027b30432",
+      "initial_integrated_sha256": "fce271f05ad8d9ece0d500563483a7dc4c78f8dd630bcfb30a1c14e2febee6b5"
     },
     {
       "source": "src/lib/catalog.ts",
@@ -26,13 +31,15 @@
       "source": "src/lib/client.ts",
       "target": "src/features/services/lib/client.ts",
       "source_sha256": "8a740a1fb4e95cd8e2ce023d82d49d6e0f31a7f5c3bef39ff60c398793f354bf",
-      "integrated_sha256": "8a740a1fb4e95cd8e2ce023d82d49d6e0f31a7f5c3bef39ff60c398793f354bf"
+      "integrated_sha256": "c543aea752c71775218bb09610f4101fd0a267c6ce1b9f75dd3dd58380088371",
+      "initial_integrated_sha256": "8a740a1fb4e95cd8e2ce023d82d49d6e0f31a7f5c3bef39ff60c398793f354bf"
     },
     {
       "source": "src/lib/job-detail.ts",
       "target": "src/features/services/lib/job-detail.ts",
       "source_sha256": "8e33aac3029d092dabf1591ed0d49df720cf994a18fd9c925fa50adc70d4a9b8",
-      "integrated_sha256": "8e33aac3029d092dabf1591ed0d49df720cf994a18fd9c925fa50adc70d4a9b8"
+      "integrated_sha256": "71df61170f3a4610b6f8a6f1b343407b85692768bf540f1534e5f6b160a87461",
+      "initial_integrated_sha256": "8e33aac3029d092dabf1591ed0d49df720cf994a18fd9c925fa50adc70d4a9b8"
     },
     {
       "source": "src/lib/jobs.ts",
@@ -56,7 +63,8 @@
       "source": "src/styles/global.css",
       "target": "src/features/services/styles/global.css",
       "source_sha256": "331875f39da41576dabcb3697030253d51df30974942f3c5a79adf5187a07b1d",
-      "integrated_sha256": "3e3ff80b986da806f3c3c503bfb63d7c191338543528b8d2f22fbbe2a1f53e7f"
+      "integrated_sha256": "ff6ccd277dbb4f40affd72fcfd79add94b53c6fb65553335e3f93f74aeda321b",
+      "initial_integrated_sha256": "3e3ff80b986da806f3c3c503bfb63d7c191338543528b8d2f22fbbe2a1f53e7f"
     },
     {
       "source": "src/pages/account.astro",
@@ -104,13 +112,15 @@
       "source": "src/pages/post.astro",
       "target": "src/pages/services/post.astro",
       "source_sha256": "8c851a4b95ba32fbebdee3194254ebecae48b392e752bb85d17a71d58d883569",
-      "integrated_sha256": "f9fbf683d53c9bde3be0fe122552d38e8e78b4cbe028a7eeecfdd2a80ae83ac6"
+      "integrated_sha256": "1cdc9805a6864a7d1be224fe31f9844e680a983ad1db1f5b015b04522db6df9f",
+      "initial_integrated_sha256": "f9fbf683d53c9bde3be0fe122552d38e8e78b4cbe028a7eeecfdd2a80ae83ac6"
     },
     {
       "source": "src/pages/privacy.astro",
       "target": "src/pages/services/privacy.astro",
       "source_sha256": "c9c271b2df2944b26bb2c057bab6f78b82747322771e29aaef88258e27998f34",
-      "integrated_sha256": "4a89d90ea314a39b2af4d8e34e38776f3e4e79b26734b4ff130ec53af35b2746"
+      "integrated_sha256": "1803a86df8f275aee1cb52cf054b39a2961acb0413bd5415cf097a59ce9fc867",
+      "initial_integrated_sha256": "4a89d90ea314a39b2af4d8e34e38776f3e4e79b26734b4ff130ec53af35b2746"
     },
     {
       "source": "src/pages/provider.astro",
@@ -118,5 +128,12 @@
       "source_sha256": "e58e1e5500c8d3f2d7d478a8bf57ba864e3ed4faa2239d950fb11f161cfd159a",
       "integrated_sha256": "d8bcea9fa1380c0ae680761f70ec39edca47a90d72a61d32fc47fe28d4f9a7f9"
     }
-  ]
+  ],
+  "enhancements": {
+    "staged_privacy": "2026-10-15",
+    "added_files": [
+      "src/features/services/lib/privacy.ts"
+    ],
+    "backend_environment": "staging only"
+  }
 }

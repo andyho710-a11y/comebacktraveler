@@ -34,10 +34,10 @@ export function check<T extends { error: { message: string } | null }>(result: T
     'over_request_rate_limit':'操作次數暫時達上限，請稍後再試。'
   };const mailFailure=/Error sending (recovery|confirmation) email/i.test(error.message)?'驗證或重設密碼信尚未寄出，請稍後再試或聯絡營運者。':null;throw new Error(mailFailure??friendly[error.code??'']??error.message);}return result;
 }
-export async function downloadPhoto(path:string): Promise<Blob> {
+export async function downloadPhoto(path:string,purpose=''): Promise<Blob> {
   const {data:{session}} = await client!.auth.getSession();
   if(!session) throw new Error('請先登入查看照片。');
-  const response = await fetch(url+'/storage/v1/object/authenticated/job-photos/'+path.split('/').map(encodeURIComponent).join('/')+'?cacheNonce='+crypto.randomUUID(),{headers:{Authorization:'Bearer '+session.access_token,apikey:key},cache:'no-store'});
+  const response = await fetch(url+'/functions/v1/service-private-photo',{method:'POST',body:JSON.stringify({path,purpose}),headers:{Authorization:'Bearer '+session.access_token,apikey:key,'Content-Type':'application/json'},cache:'no-store'});
   if(!response.ok) throw new Error('無法取得照片，或目前沒有照片查看權限。');
   return response.blob();
 }

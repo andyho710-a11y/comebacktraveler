@@ -1,0 +1,116 @@
+import {test,before,after} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile,readdir} from 'node:fs/promises';
+import {PGlite} from '@electric-sql/pglite';
+const names=['admin','owner','foreign','provider','other','pending'],ids=Object.fromEntries(names.map((n,i)=>[n,`10000000-0000-4000-8000-${String(i+1).padStart(12,'0')}`]));
+let db,job,photo,quote;
+const root=async(q,p=[])=>{await db.exec('reset role');return db.query(q,p);};
+const as=async(n,q,p=[])=>{await db.exec('reset role');await db.query("select set_config('request.jwt.claim.sub',$1,false)",[ids[n]??'']);await db.exec('set role '+(n==='anon'?'anon':'authenticated'));return db.query(q,p);};
+const value=async(n,q,p=[])=>Object.values((await as(n,q,p)).rows[0])[0];
+before(async()=>{
+ db=new PGlite();await db.exec(`create role anon;create role authenticated;create role service_role;create schema auth;create schema storage;create table auth.users(id uuid primary key,email_confirmed_at timestamptz,email text);create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;grant usage on schema auth,storage,public to anon,authenticated;grant execute on function auth.uid() to anon,authenticated;create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[]);create table storage.objects(id uuid primary key default gen_random_uuid(),bucket_id text references storage.buckets(id),name text,metadata jsonb,created_at timestamptz default now(),unique(bucket_id,name));alter table storage.objects enable row level security;grant select,insert,update,delete on storage.objects to authenticated;`);
+ for(const n of names)await db.query('insert into auth.users values($1,now(),$2)',[ids[n],n+'@example.invalid']);
+ await db.exec('create schema cron;create schema net;create schema vault;');
+ const baseline=new URL('../supabase/baseline/',import.meta.url);
+ for(const file of (await readdir(baseline)).filter(f=>f.endsWith('.sql')&&!f.includes('0006_')).sort())await db.exec(await readFile(new URL(file,baseline),'utf8'));
+ await db.exec(await readFile(new URL('../supabase/migrations/202610150010_staged_privacy.sql',import.meta.url),'utf8'));
+ await db.exec(await readFile(new URL('../supabase/migrations/202610150011_privacy_transition_guards.sql',import.meta.url),'utf8'));
+ await db.exec(await readFile(new URL('../supabase/migrations/202610150012_photo_review_identity.sql',import.meta.url),'utf8'));
+ await root('insert into private.admin_users values($1)',[ids.admin]);
+ for(const n of names)await as(n,"select save_profile($1,'0900000000',true)",[n+'測試會員']);
+ for(const n of ['provider','other','pending'])await as(n,"select apply_provider('私人服務者姓名',array['cleaning'],array['三民區'],'一般居家清潔服務，合成權限測試',true)");
+ for(const n of ['provider','other'])await as('admin',"select review_provider($1,'approved','公開服務者稱呼','一般居家清潔服務，合成權限測試','合成審核')",[ids[n]]);
+ job=await value('owner',"select create_job('cleaning','三民區',now()+interval '3 days',1000,3000,'分階段個資合成測試，一般居家清潔','高雄三民私人完整地址','私人客戶姓名','0912345678',true)");
+ photo=`${ids.owner}/${job}/20000000-0000-4000-8000-000000000001.jpg`;
+ await as('owner',"insert into storage.objects(bucket_id,name,metadata) values('job-photos',$1,'{}')",[photo]);
+ await as('admin',"select review_job($1,true,'分階段個資合成測試，一般居家清潔','審核備註不可分享')",[job]);
+});
+after(async()=>db?.close());
+test('staged privacy, inspection scopes, audit and lifecycle revocation',async t=>{
+ await t.test('anonymous and all direct sensitive table paths are denied',async()=>{
+  await assert.rejects(()=>as('anon','select read_job_contact($1)',[job]));
+  for(const n of ['owner','admin','provider','foreign'])await assert.rejects(()=>as(n,'select * from job_private'));
+  assert.equal((await as('admin','select * from profiles where id=$1',[ids.owner])).rows.length,0);
+  assert.equal((await as('admin','select * from provider_applications')).rows.length,0);
+  for(const n of ['owner','admin','provider'])assert.equal((await as(n,"select * from storage.objects where name=$1",[photo])).rows.length,0);
+ });
+ await t.test('quotation stage never exposes contacts, name or unconsented photos',async()=>{
+  assert.equal((await as('provider','select * from read_job_contact($1)',[job])).rows.length,0);
+  assert.equal((await as('foreign','select * from read_job_contact($1)',[job])).rows.length,0);
+  assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),false);
+  assert.equal(await value('owner','select authorize_private_photo($1)',[photo.replace(/[^/]+$/,'20000000-0000-4000-8000-000000000099.jpg')]),false);
+  await as('owner',"select set_photo_sharing($1,$2,'quote')",[job,photo]);
+  assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),false);
+  await assert.rejects(()=>as('provider','select review_photo($1,$2,true)',[job,photo]));
+  await as('admin','select review_photo($1,$2,true)',[job,photo]);
+  assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),true);
+  await root('delete from storage.objects where name=$1',[photo]);await root("insert into storage.objects(bucket_id,name,metadata) values('job-photos',$1,'{}')",[photo]);
+  await as('owner',"select set_photo_sharing($1,$2,'quote')",[job,photo]);
+  assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),false,'same-path replacement must not inherit safety approval');
+  await as('admin','select review_photo($1,$2,true)',[job,photo]);
+  assert.equal(await value('pending','select authorize_private_photo($1)',[photo]),false);
+  assert.equal(await value('foreign','select authorize_private_photo($1)',[photo]),false);
+  await as('owner',"select set_photo_sharing($1,$2,'after_match')",[job,photo]);
+  assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),false);
+ });
+ await t.test('administrator reads require a purpose and leave no sensitive values in audit',async()=>{
+  await assert.rejects(()=>as('admin','select * from read_job_contact($1)',[job]));
+  const contact=(await as('admin',"select * from read_job_contact($1,'moderation')",[job])).rows[0];assert.equal(contact.contact_name,'私人客戶姓名');
+  await assert.rejects(()=>as('admin','select authorize_private_photo($1)',[photo]));
+  assert.equal(await value('admin',"select authorize_private_photo($1,'moderation')",[photo]),true);
+  assert.equal((await as('admin','select * from admin_provider_applications()')).rows.length,3);
+  const logs=(await as('owner','select * from privacy_access_records($1)',[job])).rows;assert.ok(logs.some(l=>l.actor_role==='admin'&&l.resource==='contact'));
+  assert.ok(!JSON.stringify(logs).includes('私人客戶姓名'));assert.ok(!JSON.stringify(logs).includes('0912345678'));
+  await assert.rejects(()=>as('provider','select * from privacy_access_records($1)',[job]));
+ });
+ await t.test('individual inspection consent enforces target, fields, expiry and revocation',async()=>{
+  await assert.rejects(()=>as('foreign','select set_site_visit_grant($1,$2,true,true,true,4,true)',[job,ids.provider]));
+  await assert.rejects(()=>as('owner','select set_site_visit_grant($1,$2,true,true,true,49,true)',[job,ids.provider]));
+  await assert.rejects(()=>as('owner','select set_site_visit_grant($1,$2,true,true,true,4,false)',[job,ids.provider]));
+  await as('owner','select set_site_visit_grant($1,$2,true,false,false,4,true)',[job,ids.provider]);
+  const contact=(await as('provider','select * from read_job_contact($1)',[job])).rows[0];assert.deepEqual(contact,{contact_name:null,contact_phone:'0912345678',address:null});
+  assert.equal((await as('other','select * from read_job_contact($1)',[job])).rows.length,0);
+  assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),false);
+  await root("update private.site_visit_grants set expires_at=now()-interval '1 second' where job_id=$1",[job]);
+  assert.equal((await as('provider','select * from read_job_contact($1)',[job])).rows.length,0);
+  await as('owner','select set_site_visit_grant($1,$2,false,true,true,4,true)',[job,ids.provider]);
+  const address=(await as('provider','select * from read_job_contact($1)',[job])).rows[0];assert.equal(address.contact_phone,null);assert.equal(address.contact_name,null);assert.equal(address.address,'高雄三民私人完整地址');
+  assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),true);
+  await as('owner','select revoke_site_visit_grant($1,$2)',[job,ids.provider]);
+  assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),false);
+ });
+ await t.test('selection requires explicit consent; selection alone gives no contact access',async()=>{
+  await as('provider',"select offer_quote($1,1800,'合成測試一般居家清潔報價')",[job]);
+  await as('other',"select offer_quote($1,2000,'其他服務者一般清潔合成報價')",[job]);
+  quote=await value('owner','select id from quotes where job_id=$1 and provider_id=$2',[job,ids.provider]);
+  await assert.rejects(()=>as('owner','select choose_quote($1)',[quote]));
+  await assert.rejects(()=>as('provider','select consent_match_sharing($1,true)',[job]));
+  await as('owner','select consent_match_sharing($1,true)',[job]);await as('owner','select choose_quote($1)',[quote]);
+  assert.equal((await as('provider','select * from read_job_contact($1)',[job])).rows.length,0);
+  assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),false);
+ });
+ await t.test('only accepting provider receives minimal contacts, and consent can be withdrawn',async()=>{
+  await as('provider','select confirm_assignment($1,true)',[job]);
+  const contact=(await as('provider','select * from read_job_contact($1)',[job])).rows[0];assert.equal(contact.contact_name,null);assert.equal(contact.contact_phone,'0912345678');assert.equal(contact.address,'高雄三民私人完整地址');
+  assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),true);
+  assert.equal((await as('other','select * from read_job_contact($1)',[job])).rows.length,0);
+  assert.equal(await value('other','select authorize_private_photo($1)',[photo]),false);
+  await as('owner','select consent_match_sharing($1,false)',[job]);assert.equal((await as('provider','select * from read_job_contact($1)',[job])).rows.length,0);assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),false);
+  await as('owner','select consent_match_sharing($1,true)',[job]);
+ });
+ await t.test('case suspension, cancellation, closure and reassignment revoke old access',async()=>{
+  await as('owner',"select open_job_case($1,'dispute','合成爭議暫停分享')",[job]);
+  assert.equal((await as('provider','select * from read_job_contact($1)',[job])).rows.length,0);assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),false);
+  await as('owner','select consent_match_sharing($1,false)',[job]);
+  await as('admin',"select resolve_job_case($1,'resume','合成爭議恢復進度')",[job]);
+  assert.equal((await as('provider','select * from read_job_contact($1)',[job])).rows.length,0);
+  await as('owner','select consent_match_sharing($1,true)',[job]);
+  await as('provider',"select submit_completion($1,'合成測試一般清潔已完成等待驗收')",[job]);await as('owner',"select accept_completion($1,'合成確認完成')",[job]);
+  assert.equal((await as('provider','select * from read_job_contact($1)',[job])).rows.length,0);assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),false);assert.equal((await as('provider','select * from jobs where id=$1',[job])).rows.length,0);
+  // A controlled fixture state change also proves permission is tied to the current provider, not its historical match snapshot.
+  await root("update jobs set status='matched',selected_provider_id=$2 where id=$1",[job,ids.other]);
+  assert.equal((await as('provider','select * from read_job_contact($1)',[job])).rows.length,0);assert.equal(await value('provider','select authorize_private_photo($1)',[photo]),false);
+  await root("update jobs set status='cancelled',selected_provider_id=null where id=$1",[job]);
+  assert.equal((await as('other','select * from read_job_contact($1)',[job])).rows.length,0);
+ });
+});

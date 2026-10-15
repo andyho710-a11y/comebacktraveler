@@ -12,7 +12,8 @@ const clients={},ids=[],results=[];let job,photo;
 const ok=(r)=>{if(r.error)throw new Error(r.error.message);return r.data;};
 const check=async(name,fn)=>{await fn();results.push({name,passed:true});console.log('PASS',name);};
 const rejects=async(p)=>{const r=await p;assert.ok(r.error,'Operation must fail');};
-const rows=async(c,table,field,id)=>ok(await c.from(table).select('*').eq(field,id));
+const rows=async(c,table,field,id)=>ok(table==='job_private'?await c.rpc('read_job_contact',{p_job:id}):await c.from(table).select('*').eq(field,id));
+async function photoDownload(c,path){const {data:{session}}=await c.auth.getSession();const response=await fetch(url+'/functions/v1/service-private-photo',{method:'POST',headers:{Authorization:'Bearer '+session.access_token,apikey:anon,'Content-Type':'application/json'},body:JSON.stringify({path}),cache:'no-store'});return response.ok?{data:await response.blob(),error:null}:{data:null,error:{message:'Photo access denied: '+response.status}};}
 const jpeg=Buffer.from('/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////2wBDAf//////////////////////////////////////////////////////////////////////////////////////wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdAAB//9k=','base64');
 try{
  for(const name of ['admin','alice','bob','cleaner','other','pending']){
@@ -22,8 +23,7 @@ try{
   ok(await c.auth.signInWithPassword({email,password}));clients[name]={c,id:user.id};
   ok(await c.rpc('save_profile',{p_name:name+'測試會員',p_phone:'0900000000',p_consent:true}));
  }
- sql(ref,`insert into private.admin_users(user_id) values('${clients.admin.id}')`);
- sql(ref,`insert into private.test_users(user_id) values ${ids.map(id=>"('"+id+"')").join(',')}`);
+ sql(ref,`begin;insert into private.admin_users(user_id) values('${clients.admin.id}') on conflict do nothing;insert into private.test_users(user_id) values ${ids.map(id=>"('"+id+"')").join(',')} on conflict do nothing;commit;`);
  const {c:a,id:alice}=clients.alice,{c:b}=clients.bob,{c:admin}=clients.admin,{c:cleaner}=clients.cleaner,{c:other}=clients.other,{c:pending}=clients.pending;
  for(const name of ['cleaner','other','pending'])ok(await clients[name].c.rpc('apply_provider',{p_name:name+'測試姓名',p_categories:['cleaning'],p_districts:['三民區'],p_intro:'合成測試，一般居家清潔服務範圍',p_consent:true}));
  for(const name of ['cleaner','other'])ok(await admin.rpc('review_provider',{p_user:clients[name].id,p_status:'approved',p_name:name+'測試好幫手',p_bio:'合成測試，提供一般居家清潔服務',p_note:'測試環境人工審核'}));
@@ -36,8 +36,8 @@ try{
   await rejects(a.storage.from('job-photos').upload(`${alice}/${job}/${crypto.randomUUID()}.jpg`,Buffer.from('invalid'),{contentType:'text/plain'}));
   await rejects(a.storage.from('job-photos').upload(`${alice}/${job}/${crypto.randomUUID()}.jpg`,Buffer.alloc(2097153),{contentType:'image/jpeg'}));
  });
- await check('real private Storage accepts owner JPEG and owner download',async()=>{ok(await a.storage.from('job-photos').upload(photo,jpeg,{contentType:'image/jpeg',cacheControl:'0'}));const blob=ok(await a.storage.from('job-photos').download(photo));assert.ok(blob.size>0);});
- await check('real private Storage denies other customer and unselected provider',async()=>{await rejects(b.storage.from('job-photos').download(photo));await rejects(cleaner.storage.from('job-photos').download(photo));const listed=ok(await b.storage.from('job-photos').list(`${alice}/${job}`));assert.equal(listed.length,0);});
+ await check('real private Storage accepts owner JPEG and owner download',async()=>{ok(await a.storage.from('job-photos').upload(photo,jpeg,{contentType:'image/jpeg',cacheControl:'0'}));ok(await a.rpc('set_photo_sharing',{p_job:job,p_path:photo,p_stage:'after_match'}));ok(await admin.rpc('review_photo',{p_job:job,p_path:photo,p_safe:true}));const blob=ok(await photoDownload(a,photo));assert.ok(blob.size>0);});
+ await check('real private Storage denies other customer and unselected provider',async()=>{await rejects(photoDownload(b,photo));await rejects(photoDownload(cleaner,photo));const listed=ok(await b.storage.from('job-photos').list(`${alice}/${job}`));assert.equal(listed.length,0);});
  await check('unapproved provider cannot view or quote pending/open work',async()=>{assert.equal((await rows(pending,'jobs','id',job)).length,0);await rejects(pending.rpc('offer_quote',{p_job:job,p_amount:1800,p_note:'未核准的服務者不應該可以報價'}));});
  ok(await admin.rpc('review_job',{p_job:job,p_approve:true,p_summary:'合成測試需求，清潔廚房浴室和地板',p_note:'安全範圍與個資已確認'}));
  await check('approved matching provider reads approved job but not contacts',async()=>{assert.equal((await rows(cleaner,'jobs','id',job)).length,1);assert.equal((await rows(cleaner,'job_private','job_id',job)).length,0);});
@@ -45,11 +45,11 @@ try{
  const quotes=ok(await a.from('quotes').select('*').eq('job_id',job));const quote=quotes.find(q=>q.provider_id===clients.cleaner.id).id;
  await check('only quote author, owner and admin can read each quote',async()=>{assert.equal(quotes.length,2);assert.equal((await rows(other,'quotes','id',quote)).length,0);assert.equal((await rows(b,'quotes','id',quote)).length,0);});
  await check('foreign customer cannot select quote',async()=>{await rejects(b.rpc('choose_quote',{p_quote:quote}));});
- ok(await a.rpc('choose_quote',{p_quote:quote}));
+ ok(await a.rpc('consent_match_sharing',{p_job:job,p_consent:true}));ok(await a.rpc('choose_quote',{p_quote:quote}));
  await check('selection is not success and cannot reveal private data before provider acceptance',async()=>{assert.equal((await rows(a,'jobs','id',job))[0].status,'awaiting_provider');assert.equal((await rows(a,'successful_matches','job_id',job)).length,0);assert.equal((await rows(cleaner,'job_private','job_id',job)).length,0);await rejects(other.rpc('confirm_assignment',{p_job:job,p_accept:true}));await rejects(a.rpc('confirm_assignment',{p_job:job,p_accept:true}));});
  ok(await cleaner.rpc('confirm_assignment',{p_job:job,p_accept:true}));
  await check('provider acceptance creates one immutable snapshot and one private admin notification',async()=>{await rejects(cleaner.rpc('confirm_assignment',{p_job:job,p_accept:true}));const matches=await rows(a,'successful_matches','job_id',job);assert.equal(matches.length,1);assert.equal(matches[0].amount,1800);assert.equal(matches[0].customer_id,alice);const notes=ok(await admin.from('notifications').select('*').eq('job_id',job).eq('kind','matched'));assert.equal(notes.length,1);assert.ok(!notes[0].body.includes('合成測試地址'));assert.equal((await rows(b,'notifications','id',notes[0].id)).length,0);await rejects(b.rpc('admin_metrics'));});
- await check('selection grants chosen provider contact and photo access only',async()=>{assert.equal((await rows(cleaner,'job_private','job_id',job)).length,1);ok(await cleaner.storage.from('job-photos').download(photo));assert.equal((await rows(other,'job_private','job_id',job)).length,0);await rejects(other.storage.from('job-photos').download(photo));});
+ await check('selection grants chosen provider contact and photo access only',async()=>{assert.equal((await rows(cleaner,'job_private','job_id',job)).length,1);ok(await photoDownload(cleaner,photo));assert.equal((await rows(other,'job_private','job_id',job)).length,0);await rejects(photoDownload(other,photo));});
  await check('customer receives chosen provider contact; other customers cannot',async()=>{assert.equal(ok(await a.rpc('selected_provider_contact',{p_job:job})).length,1);assert.equal(ok(await b.rpc('selected_provider_contact',{p_job:job})).length,0);});
  await check('second selection is rejected',async()=>{await rejects(a.rpc('choose_quote',{p_quote:quote}));});
  await check('completion requires selected provider then job owner acceptance',async()=>{await rejects(other.rpc('submit_completion',{p_job:job,p_note:'非承接者不能夠提交完工回報'}));ok(await cleaner.rpc('submit_completion',{p_job:job,p_note:'合成測試完成廚房浴室地板，等待驗收'}));await rejects(b.rpc('accept_completion',{p_job:job,p_feedback:'非客戶不能驗收'}));ok(await a.rpc('accept_completion',{p_job:job,p_feedback:'合成測試驗收完成'}));});

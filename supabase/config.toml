@@ -1,0 +1,4 @@
+project_id = "comeback-services-test"
+
+[functions.service-private-photo]
+verify_jwt = true
