@@ -21,7 +21,7 @@ test('all 45 production routes and parsed content/SEO/CTA DOM match pre-upgrade 
 test('all application sources, affiliate tracker and public/XML output stay exact',()=>{
  assert.deepEqual(files('src').filter(p=>!p.startsWith('features/services/')&&!p.startsWith('pages/services/')),Object.keys(baseline.source).map(p=>p.slice(4)).sort());
  for(const [p,h]of Object.entries(baseline.source))assert.equal(sourceDigest(originalTravelSource(p,read(p).toString())),h,p);
- for(const [p,h]of Object.entries(baseline.unchangedFiles))assert.equal(normalizedTextFiles[p]?sourceDigest(read('dist/'+p)):digest(read('dist/'+p)),normalizedTextFiles[p]??h,p);
+ for(const [p,h]of Object.entries(baseline.unchangedFiles)){const bytes=read('dist/'+p);const comparable=p==='sitemap-0.xml'?Buffer.from(bytes.toString().replace('<url><loc>https://comebacktraveler.com/services</loc></url>','')):bytes;assert.equal(normalizedTextFiles[p]?sourceDigest(comparable):digest(comparable),normalizedTextFiles[p]??h,p);}
 });
 test('semantic comparison ignores only compiler packaging and rejects content/URL/metadata changes',()=>{
  const html=read('dist/japan-guide.html').toString();const expected=semanticHTML(html);

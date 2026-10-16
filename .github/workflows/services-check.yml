@@ -21,3 +21,16 @@ jobs:
       - run: npm test
       - run: npm run typecheck:services
       - run: npm audit --omit=dev
+      - name: Verify production services build and index isolation
+        run: |
+          node scripts/services/check-config.mjs --production
+          npm run build
+          npm test
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+          PUBLIC_SUPABASE_URL: ${{ vars.SERVICES_SUPABASE_URL }}
+          PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.SERVICES_SUPABASE_PUBLISHABLE_KEY }}
+          PUBLIC_ENVIRONMENT: production
+          PUBLIC_PILOT_ENABLED: 'true'
+          PUBLIC_OPERATOR_NAME: andyho710（個人試營運）
+          PUBLIC_PRIVACY_EMAIL: andyho710@gmail.com

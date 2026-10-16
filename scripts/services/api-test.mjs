@@ -2,9 +2,9 @@ import {createClient} from '@supabase/supabase-js';
 import {randomBytes} from 'node:crypto';
 import {writeFileSync,mkdirSync,readFileSync,existsSync} from 'node:fs';
 import assert from 'node:assert/strict';
-import {keys,sql} from './supabase-cli.mjs';
-const ref=process.argv[2];if(ref!=='jqzyduwzcbhylgjlrdvf')throw Error('Only staging is authorized for integration tests');
-const production=ref==='nneammnczvwziggoyzrn'&&process.argv.includes('--production-smoke');
+import {keys,sql,testTarget,evidencePath} from './release-backend.mjs';
+const ref=process.argv[2];
+const production=ref==='nneammnczvwziggoyzrn'&&process.argv.includes('--production-release');
 if(ref!=='jqzyduwzcbhylgjlrdvf'&&!production)throw new Error('Only explicitly selected isolated environments are allowed');
 const {anon,service}=keys(ref);const url=`https://${ref}.supabase.co`;
 const root=createClient(url,service,{auth:{persistSession:false,autoRefreshToken:false}});
@@ -61,8 +61,8 @@ try{
   ok(await admin.rpc('stop_job',{p_job:id,p_note:'合成安全處理測試'}));
   await rejects(cleaner.rpc('offer_quote',{p_job:id,p_amount:1800,p_note:'停止刊登不得繼續接受報價'}));
  });
- const evidenceFile=production?'docs/production-smoke-evidence.json':'work/services-api-evidence.json';const previous=existsSync(evidenceFile)?JSON.parse(readFileSync(evidenceFile,'utf8')):{};
- mkdirSync('docs',{recursive:true});writeFileSync(production?'docs/production-smoke-evidence.json':'work/services-api-evidence.json',JSON.stringify({...previous,tested_at:new Date().toISOString(),project_ref:ref,passed:true,scope:'Real PostgREST RLS, RPC, password login with synthetic verified fixtures, and private Storage HTTP. Public email delivery is a separate pending gate.',results},null,2));
+ const evidenceFile=evidencePath(ref,'services-api-evidence.json');const previous=existsSync(evidenceFile)?JSON.parse(readFileSync(evidenceFile,'utf8')):{};
+ mkdirSync('docs',{recursive:true});writeFileSync(evidencePath(ref,'services-api-evidence.json'),JSON.stringify({...previous,tested_at:new Date().toISOString(),project_ref:ref,passed:true,scope:'Real PostgREST RLS, RPC, password login with synthetic verified fixtures, and private Storage HTTP. Public email delivery is a separate pending gate.',results},null,2));
  console.log((production?'Production smoke':'Staging API')+' tests passed. SMTP proof is preserved separately; synthetic fixtures do not prove email receipt.');
 }finally{
  if(photo)ok(await root.storage.from('job-photos').remove([photo]));

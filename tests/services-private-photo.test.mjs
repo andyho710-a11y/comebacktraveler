@@ -16,3 +16,13 @@ test('photo gateway fails closed before storage and never exposes signed URLs',a
  const original=globalThis.fetch;let calls=0;globalThis.fetch=async()=>{calls++;return new Response('{}',{status:401});};
  try{const r=await handlePhoto(new Request('https://example.test',{method:'POST',headers:{Authorization:'Bearer fixture'},body:JSON.stringify({path:'10000000-0000-4000-8000-000000000001/10000000-0000-4000-8000-000000000002/10000000-0000-4000-8000-000000000003.jpg'})}),env);assert.equal(r.status,401);assert.equal(calls,1);assert.equal(r.headers.get('Cache-Control'),'private, no-store, max-age=0');assert.ok(!(await r.text()).includes('test-only-secret'));}finally{globalThis.fetch=original;}
 });
+
+test('production photo CORS accepts only its configured sites and exact release preview',async()=>{
+ const origin='https://comeback-traveler-web--services-release-test123.web.app';
+ const env={SUPABASE_URL:'https://nneammnczvwziggoyzrn.supabase.co',SUPABASE_ANON_KEY:'test-public',SUPABASE_SERVICE_ROLE_KEY:'test-secret',SERVICE_PHOTO_PREVIEW_ORIGIN:origin};
+ const options=(o)=>new Request('https://example.test',{method:'OPTIONS',headers:{Origin:o}});
+ for(const o of ['https://comebacktraveler.com','https://kaoh-help-20261014.web.app',origin]){const r=await handlePhoto(options(o),env);assert.equal(r.status,204);assert.equal(r.headers.get('Access-Control-Allow-Origin'),o);}
+ for(const o of ['https://hostile.test','https://comeback-traveler-web--services-release-other.web.app','https://comeback-traveler-web--services-integration-we1toi2q.web.app'])assert.equal((await handlePhoto(options(o),env)).status,403);
+ assert.equal((await handlePhoto(options(origin),{...env,SUPABASE_URL:'https://jqzyduwzcbhylgjlrdvf.supabase.co'})).status,403);
+ assert.equal((await handlePhoto(options('https://hostile.test'),{...env,SERVICE_PHOTO_PREVIEW_ORIGIN:'https://hostile.test'})).status,403);
+});

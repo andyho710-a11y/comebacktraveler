@@ -3,9 +3,9 @@ import {randomBytes} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {writeFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
-import {keys,sql} from './supabase-cli.mjs';
+import {keys,sql,testTarget,evidencePath} from './release-backend.mjs';
 import {frontendFingerprint} from './source-fingerprints.mjs';
-const ref='jqzyduwzcbhylgjlrdvf',base='https://comeback-traveler-web--services-integration-we1toi2q.web.app/services',wmux='D:/wmux-0.7.0-win-x64/resources/cli/wmux.js';
+const ref=process.argv[2]??'jqzyduwzcbhylgjlrdvf',base=testTarget(ref),wmux='D:/wmux-0.7.0-win-x64/resources/cli/wmux.js';
 const browser=(...args)=>{try{return JSON.parse(execFileSync(process.execPath,[wmux,'browser',...args],{encoding:'utf8',timeout:30000,stdio:['ignore','pipe','pipe']}));}catch{throw new Error('Visible browser action failed: '+args[0]);}};
 const evaluate=code=>browser('eval',code).result;
 async function waitFor(code,message){for(let attempt=0;attempt<30;attempt++){if(evaluate(code))return;await new Promise(resolve=>setTimeout(resolve,400));}throw new Error(message);}
@@ -48,7 +48,7 @@ try{
  await login('foreign');await open('/admin');await waitFor('document.getElementById("admin-content").textContent.includes("不是管理者")','Ordinary user must be blocked');assert.equal(evaluate('document.querySelectorAll(".metric").length'),0);pass('Ordinary signed-in user cannot render operating data');
  await login('admin');await open('/admin');await waitFor('document.querySelectorAll(".metric strong").length===9','Admin operations did not load');const actual=ok(await admin.rpc('admin_metrics'));const values=JSON.parse(evaluate('JSON.stringify(Array.from(document.querySelectorAll(".metric strong")).map(node=>Number(node.textContent)))'));assert.deepEqual(values,[actual.jobs,actual.quotes,actual.matches,actual.completed,actual.cancelled,actual.disputed,actual.awaiting_provider,actual.email_pending,actual.email_failed]);
  const geometry=JSON.parse(evaluate('JSON.stringify({width:innerWidth,documentWidth:document.documentElement.scrollWidth})'));assert.ok(geometry.documentWidth<=geometry.width);pass('Narrow mobile admin layout renders actual metrics, with no horizontal overflow');
- writeFileSync('work/services-browser-evidence.json',JSON.stringify({tested_at:new Date().toISOString(),project_ref:ref,passed:true,mobile:true,auth_permissions:true,flow_completed:true,viewport:geometry,frontend_source_hash:frontendFingerprint(),checks,fixture_case_excluded_from_metrics:true},null,2));
+ writeFileSync(evidencePath(ref,'services-browser-evidence.json'),JSON.stringify({tested_at:new Date().toISOString(),project_ref:ref,passed:true,mobile:true,auth_permissions:true,flow_completed:true,viewport:geometry,frontend_source_hash:frontendFingerprint(),checks,fixture_case_excluded_from_metrics:true},null,2));
 }finally{
  const ids=Object.values(users).map(user=>user.id);if(ids.length){const list=ids.map(id=>`'${id}'`).join(',');sql(ref,`delete from audit_events where actor_id in (${list});delete from jobs where owner_id in (${list});delete from private.admin_users where user_id in (${list})`);for(const id of ids)ok(await root.auth.admin.deleteUser(id));}
  await open('/account');await new Promise(resolve=>setTimeout(resolve,500));evaluate('document.getElementById("logout")?.click();true');await open('/');console.log('Synthetic browser fixtures removed.');

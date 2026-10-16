@@ -3,9 +3,9 @@ import {randomBytes} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {writeFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
-import {keys} from './supabase-cli.mjs';
-const ref='jqzyduwzcbhylgjlrdvf';
-const target='https://comeback-traveler-web--services-integration-we1toi2q.web.app/services/account';
+import {keys,testTarget,evidencePath} from './release-backend.mjs';
+const ref=process.argv[2]??'jqzyduwzcbhylgjlrdvf';
+const target=testTarget(ref)+'/account';
 const wmux='D:/wmux-0.7.0-win-x64/resources/cli/wmux.js';
 const browser=(...args)=>JSON.parse(execFileSync(process.execPath,[wmux,'browser',...args],{encoding:'utf8',timeout:30000,stdio:['ignore','pipe','pipe']}));
 const evaluate=code=>browser('eval',code).result;
@@ -41,7 +41,7 @@ try{
  assert.ok((await oldLogin.auth.signInWithPassword({email,password:original})).error,'Previous password must be rejected');
  evaluate('document.getElementById("logout").click();true');
  const evidence={tested_at:new Date().toISOString(),project_ref:ref,passed:true,scope:'Visible browser on deployed staging, synthetic recovery link without email delivery',checks:['Recovery link signs in and reveals new-password form','Browser updates password through real Auth API','New password login succeeds','Previous password login fails'],smtp_delivery_verified:false};
- writeFileSync('work/services-recovery-evidence.json',JSON.stringify(evidence,null,2));
+ writeFileSync(evidencePath(ref,'services-recovery-evidence.json'),JSON.stringify(evidence,null,2));
  console.log('Deployed browser recovery flow passed: 4 checks. No email was sent.');
 }finally{
  if(id)assert.equal((await admin.auth.admin.deleteUser(id)).error,null,'Synthetic user cleanup');

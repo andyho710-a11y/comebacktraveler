@@ -1,14 +1,16 @@
 ---
 import '../styles/global.css';
-const { title = '高雄好幫手｜清潔・小修繕免費媒合', description = '把家裡的小事，交給附近的好幫手。高雄清潔與小修繕免費媒合，需求與服務者人工審核。' } = Astro.props;
+const { title = '高雄好幫手｜清潔・小修繕免費媒合', description = '把家裡的小事，交給附近的好幫手。高雄清潔與小修繕免費媒合，需求與服務者人工審核。', indexable = false } = Astro.props;
 const pilot = import.meta.env.PUBLIC_PILOT_ENABLED === 'true';
 const staging = import.meta.env.PUBLIC_ENVIRONMENT === 'staging';
+const publicLanding = indexable && pilot && import.meta.env.PUBLIC_ENVIRONMENT === 'production';
 ---
 <!doctype html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content={description} /><meta name="robots" content="noindex,nofollow" />
+    <meta name="description" content={description} /><meta name="robots" content={publicLanding ? 'index,follow' : 'noindex,nofollow'} />
+    {publicLanding && <link rel="canonical" href="https://comebacktraveler.com/services" />}
     <meta name="theme-color" content="#174c3c" /><title>{title}</title>
     <link rel="icon" href="/services/favicon.svg" type="image/svg+xml" />
   </head>

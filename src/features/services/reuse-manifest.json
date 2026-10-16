@@ -57,7 +57,8 @@
       "source": "src/layouts/Layout.astro",
       "target": "src/features/services/layouts/Layout.astro",
       "source_sha256": "3d353c1548c14c1a84372ea56249315160be8ce1ce7ebc3ce33ab89e59fd74a4",
-      "integrated_sha256": "c0bc73ec1adfc549e8f71156d2d3ea8ad42655f924dd87d71134df5ff2caf1a2"
+      "integrated_sha256": "4dd46694da520e8a7e133dbbf0750056023e9f8274de946f13838727e9fbf9e5",
+      "initial_integrated_sha256": "c0bc73ec1adfc549e8f71156d2d3ea8ad42655f924dd87d71134df5ff2caf1a2"
     },
     {
       "source": "src/styles/global.css",
@@ -88,7 +89,8 @@
       "source": "src/pages/index.astro",
       "target": "src/pages/services/index.astro",
       "source_sha256": "515dddfb04adc317b111dea85152f1ecccd649c6098804a955206d70d26d8cbb",
-      "integrated_sha256": "ab8b647339af69d21a8b08bfccf63c0b34483e63d66eef721ab0cf1b14ef8486"
+      "integrated_sha256": "af1d4c5426fe70aa1fb661d204c9a21e544ecb1d4c044125eb1bcd2303c37dcb",
+      "initial_integrated_sha256": "ab8b647339af69d21a8b08bfccf63c0b34483e63d66eef721ab0cf1b14ef8486"
     },
     {
       "source": "src/pages/job.astro",

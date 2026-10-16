@@ -1,5 +1,5 @@
-import {createClient} from '@supabase/supabase-js';import {randomBytes,randomUUID} from 'node:crypto';import assert from 'node:assert/strict';import {writeFileSync} from 'node:fs';import {keys,sql} from './supabase-cli.mjs';
-const ref=process.argv[2];if(ref!=='jqzyduwzcbhylgjlrdvf')throw Error('Staging only');
+import {createClient} from '@supabase/supabase-js';import {randomBytes,randomUUID} from 'node:crypto';import assert from 'node:assert/strict';import {writeFileSync} from 'node:fs';import {keys,sql,testTarget,evidencePath} from './release-backend.mjs';
+const ref=process.argv[2];
 const {anon,service}=keys(ref),url=`https://${ref}.supabase.co`,root=createClient(url,service,{auth:{persistSession:false}}),users={},ids=[],checks=[],photos=[];let job,photo;
 const ok=r=>{if(r.error)throw Error(r.error.message);return r.data;},deny=async p=>assert.ok((await p).error),pass=name=>{checks.push({name,passed:true});console.log('PASS',name);};
 const rpc=async(n,name,args)=>ok(await users[n].c.rpc(name,args));
@@ -56,7 +56,7 @@ try{
  const cancelQuote=ok(await users.owner.c.from('quotes').select('id').eq('job_id',job))[0];await rpc('owner','consent_match_sharing',{p_job:job,p_consent:true});await rpc('owner','choose_quote',{p_quote:cancelQuote.id});await rpc('provider','confirm_assignment',{p_job:job,p_accept:true});assert.equal((await contacts('provider')).length,1);
  await rpc('owner','open_job_case',{p_job:job,p_kind:'cancellation',p_reason:'合成測試，雙方同意取消'});assert.equal((await contacts('provider')).length,0);await refused('provider');await rpc('provider','respond_cancellation',{p_job:job,p_accept:true});assert.equal((await contacts('provider')).length,0);await refused('provider');pass('actual two-party cancellation suspends and then revokes contact/photo access');
  assert.ok((await rpc('admin','admin_provider_applications')).length>=3);const metricAfter=await rpc('admin','admin_metrics');for(const name of ['jobs','quotes','matches','completed','cancelled'])assert.equal(metricAfter[name],metricBefore[name]);pass('admin review and metrics remain available; synthetic activity is excluded');
- writeFileSync('work/privacy-api-evidence.json',JSON.stringify({tested_at:new Date().toISOString(),project_ref:ref,passed:true,checks,synthetic:true,production_modified:false},null,2));
+ writeFileSync(evidencePath(ref,'privacy-api-evidence.json'),JSON.stringify({tested_at:new Date().toISOString(),project_ref:ref,passed:true,checks,synthetic:true,production_modified:ref==='nneammnczvwziggoyzrn'},null,2));
 }finally{
  if(photos.length)ok(await root.storage.from('job-photos').remove(photos));if(ids.length){const list=ids.map(id=>`'${id}'`).join(',');sql(ref,`delete from audit_events where actor_id in (${list});delete from jobs where owner_id in (${list});delete from private.admin_users where user_id in (${list});`);for(const id of ids)ok(await root.auth.admin.deleteUser(id));}console.log('Synthetic privacy fixtures cleaned.');
 }

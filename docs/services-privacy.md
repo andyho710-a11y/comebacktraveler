@@ -51,7 +51,9 @@ The owner explicitly approved rotation of the two legacy staging photo paths aft
 
 Tailwind discovery excludes service/backend/testing artifacts via `.gitignore`; tracked additions must be staged explicitly with `git add -f`. This preserves the original travel CSS bytes. Never force-add `supabase/.temp`, environment files, test credentials or the ignored working directory.
 
-## Rollback / future production approval
+## Historical preview boundary (superseded for the approved 2026-10-16 release)
+
+The following records the preceding staging-only acceptance. The owner has since explicitly authorized production cutover. See [production release and recovery](services-release.md) for the current gated procedure, production compatibility and rollback. Existing staging-only helpers remain restricted; the production release uses separately guarded helpers.
 
 Keep the draft PR unmerged and deploy only `services-integration`. To withdraw the preview, expire that channel or restore its preceding Hosting version. Do not clone the staging preview to live. Preserve the privacy migration and data; reverting to a legacy direct-read client will fail closed for private data. The old independent Firebase staging frontend has not been rewritten to use the new audited APIs; use this updated integration preview for privacy acceptance. The independent Firebase production frontend/backend are untouched.
 

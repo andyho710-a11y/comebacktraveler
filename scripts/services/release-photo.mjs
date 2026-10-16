@@ -1,0 +1,5 @@
+import {writeFileSync,readFileSync} from 'node:fs';import assert from 'node:assert/strict';import {cli,parse} from './supabase-cli.mjs';import {assertRelease,productionRef} from './release-backend.mjs';
+assertRelease(productionRef);assert.equal(JSON.parse(readFileSync('work/release/migrations.json')).applied.length,3);assert.equal(JSON.parse(readFileSync('work/release/configuration.json')).owner_admin,true);
+cli(['functions','deploy','service-private-photo','--project-ref',productionRef,'--use-api']);
+const list=parse(cli(['functions','list','--project-ref',productionRef,'--output','json']));const f=list.find(f=>f.slug==='service-private-photo'||f.name==='service-private-photo');assert.equal(f?.status,'ACTIVE');assert.equal(f.verify_jwt,true);
+writeFileSync('work/release/photo-function.json',JSON.stringify({verified_at:new Date().toISOString(),project_ref:productionRef,name:f.name,version:f.version,active:true,verify_jwt:true,streaming:true,signed_urls:false},null,2));console.log('Production private-photo function ACTIVE; platform JWT verification enabled.');

@@ -10,6 +10,7 @@ const npm='C:/Program Files/nodejs/node_modules/npm/bin/npm-cli.js';
 execFileSync(process.execPath,[npm,'run','build'],{stdio:'inherit',env:{...process.env,ASTRO_TELEMETRY_DISABLED:'1'}});
 execFileSync(process.execPath,[npm,'test'],{stdio:'inherit'});
 const config=JSON.parse(readFileSync('firebase.json'));config.hosting.public=resolve('dist');
+for(const rule of config.hosting.headers)for(const h of rule.headers)if(h.key==='X-Robots-Tag')h.value='noindex, nofollow';
 // Preview pages keep travel markup intact while external analytics/ad scripts are blocked.
 // The stricter services policy remains last; production firebase.json is unchanged.
 config.hosting.headers.unshift({source:'**',headers:[{key:'X-Robots-Tag',value:'noindex, nofollow'},{key:'Content-Security-Policy',value:"default-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' blob: data: https:; frame-ancestors 'none'; object-src 'none'"}]});

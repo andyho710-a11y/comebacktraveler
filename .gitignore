@@ -58,3 +58,4 @@ firebase-debug.log
 /scripts/services/
 /.github/workflows/services-check.yml
 /docs/services-privacy.md
+/docs/services-release.md
