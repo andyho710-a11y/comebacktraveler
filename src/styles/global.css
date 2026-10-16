@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+/* Services ships its own stylesheet; keep travel utility discovery stable. */
+@source not "../features/services";
+@source not "../pages/services";
+@source not "../../scripts/services";
+@source not "../../tests/services-integration.test.mjs";
+@source not "../../docs/services-integration.md";
+@source not "../../.github/workflows/services-check.yml";

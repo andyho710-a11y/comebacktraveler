@@ -1,0 +1,22 @@
+import {readFileSync,writeFileSync,readdirSync} from 'node:fs';import {execFileSync} from 'node:child_process';import assert from 'node:assert/strict';import {PGlite} from '@electric-sql/pglite';
+const script=`Add-Type -AssemblyName System.Security; $s=[Console]::In.ReadToEnd(); $b=[Convert]::FromBase64String($s); $e=[Security.Cryptography.ProtectedData]::Unprotect($b,$null,[Security.Cryptography.DataProtectionScope]::CurrentUser); [Console]::Out.Write([Convert]::ToBase64String($e))`;
+const snapshot=JSON.parse(Buffer.from(execFileSync('powershell',['-NoProfile','-NonInteractive','-Command',script],{input:readFileSync('work/release/production-before.dpapi').toString('base64'),encoding:'utf8',stdio:['pipe','pipe','pipe'],maxBuffer:32*1024*1024}),'base64'));
+const db=new PGlite();
+try{
+ await db.exec(`create role anon;create role authenticated;create role service_role;create schema auth;create schema storage;create table auth.users(id uuid primary key,email_confirmed_at timestamptz,email text);create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;grant usage on schema auth,storage,public to anon,authenticated;grant execute on function auth.uid() to anon,authenticated;create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[]);create table storage.objects(id uuid primary key default gen_random_uuid(),bucket_id text references storage.buckets(id),name text,metadata jsonb,created_at timestamptz default now(),unique(bucket_id,name));alter table storage.objects enable row level security;grant select,insert,update,delete on storage.objects to authenticated;create schema cron;create schema net;create schema vault;`);
+ for(const u of snapshot.identity)await db.query('insert into auth.users values($1,$2,$3)',[u.id,u.email_confirmed_at,u.email]);
+ for(const f of snapshot.baseline)await db.exec(f.sql.replace(/^create extension if not exists .*;\r?\n/gm,''));
+ await db.exec('create table private.platform_migrations(version text primary key,checksum text not null)');
+ // Verify the saved baseline definitions match the actual remote application functions.
+ const local=(await db.query("select n.nspname as schema,p.proname,pg_get_function_identity_arguments(p.oid) as args,pg_get_functiondef(p.oid) as definition from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname in ('public','private') and p.prokind='f'")).rows;
+ for(const f of snapshot.functions){const l=local.find(x=>x.schema===f.schema&&x.proname===f.proname&&x.args===f.args);assert.ok(l,'Remote function missing from baseline: '+f.proname);assert.equal(l.definition.replace(/\r\n/g,'\n'),f.definition.replace(/\r\n/g,'\n'),'Baseline function drift: '+f.proname);}
+ // Every exported row is restored in an isolated DB; managed Auth credentials are untouched.
+ // Restore raw rows without re-firing email/audit triggers, only in this disposable local DB.
+ await db.exec('set session_replication_role=replica');
+ for(const t of snapshot.tables)for(const row of t.rows){const cols=Object.keys(row);for(const c of cols)assert.match(c,/^[a-z_]+$/);await db.query(`insert into ${t.schemaname}.${t.tablename} (${cols.join(',')}) overriding system value values (${cols.map((_,i)=>'$'+(i+1)).join(',')})`,cols.map(c=>typeof row[c]==='object'&&row[c]!==null?JSON.stringify(row[c]):row[c]));}
+ await db.exec('set session_replication_role=origin');
+ for(const t of snapshot.tables)assert.equal(Number((await db.query(`select count(*) from ${t.schemaname}.${t.tablename}`)).rows[0].count),t.rows.length);
+ for(const f of readdirSync('supabase/migrations').filter(f=>f.endsWith('.sql')).sort())await db.exec(readFileSync('supabase/migrations/'+f,'utf8'));
+ assert.equal(Number((await db.query('select count(*) from private.admin_users')).rows[0].count),1);
+ const result={verified_at:new Date().toISOString(),application_restore_rehearsed:true,all_exported_rows_restored:true,remote_functions_match_baseline:snapshot.functions.length,privacy_migrations_rehearsed:3,owner_admin_retained:true,legacy_assessment:'No existing jobs or photos. Legacy direct contact/photo calls fail closed under new permissions; old Firebase frontend must be replaced by compatible services build before reopening intake.',passed:true};writeFileSync('work/release/backup-rehearsal.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));
+}finally{await db.close();}

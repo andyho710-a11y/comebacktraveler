@@ -17,6 +17,7 @@ pnpm-debug.log*
 .env
 .env.production
 .env.*
+!.env.example
 functions/lib/
 firestore-debug.log
 ui-debug.log
@@ -42,3 +43,19 @@ firebase-debug.log
 # Operational release documents are not Tailwind sources.
 /VIETNAM_SOURCING_OPERATIONS.md
 /VIETNAM_SOURCING_PRODUCTION_RELEASE_REPORT.md
+
+/work/
+/.firebase.services-preview.json
+/supabase/.temp/
+
+# Tracked explicitly with git add -f; keep database/edge artifacts and privacy
+# test literals out of Tailwind automatic discovery for the travel website.
+/supabase/
+/tests/services-privacy.test.mjs
+/tests/services-private-photo.test.mjs
+/src/features/services/
+/src/pages/services/
+/scripts/services/
+/.github/workflows/services-check.yml
+/docs/services-privacy.md
+/docs/services-release.md

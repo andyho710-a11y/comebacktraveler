@@ -3,17 +3,25 @@ import assert from 'node:assert/strict';
 import {readFileSync,readdirSync,statSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 import {digest,sourceDigest,semanticHTML} from './helpers/toolchain-semantics.mjs';
+import {withoutServicesNav,originalTravelSource} from './helpers/services-nav.mjs';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url));
 const baseline=JSON.parse(read('tests/fixtures/astro7-semantic-baseline.json'));
+// Original main Git blobs use LF; Windows checkout may use CRLF for these text files.
+// Pin their complete normalized content rather than changing the deployed files.
+const normalizedTextFiles={
+ 'ads.txt':'108d061027c5023cdf3dd8b1537132df8c17d5ffbee892eb91e47f9558fd6551',
+ 'favicon.svg':'2d7a310283d6f9cc753210d83224cd6db6348cb82a5536348884e5831d46203f',
+ 'robots.txt':'85f0f30bd1ba5ac7e53ba5f1a5c8bf849486b2dbf3b7ab03b64920a6eb9ccd84'
+};
 const files=dir=>readdirSync(new URL('../'+dir,import.meta.url),{recursive:true}).filter(p=>statSync(new URL('../'+dir+'/'+p,import.meta.url)).isFile()).map(p=>p.replaceAll('\\','/')).sort();
 test('all 45 production routes and parsed content/SEO/CTA DOM match pre-upgrade main',()=>{
- assert.deepEqual(files('dist').filter(p=>p.endsWith('.html')),Object.keys(baseline.html).sort());
- for(const [p,h]of Object.entries(baseline.html))assert.equal(semanticHTML(read('dist/'+p).toString()),h,p);
+ assert.deepEqual(files('dist').filter(p=>p.endsWith('.html')&&p!=='services.html'&&!p.startsWith('services/')),Object.keys(baseline.html).sort());
+ for(const [p,h]of Object.entries(baseline.html))assert.equal(semanticHTML(withoutServicesNav(read('dist/'+p).toString())),h,p);
 });
 test('all application sources, affiliate tracker and public/XML output stay exact',()=>{
- assert.deepEqual(files('src'),Object.keys(baseline.source).map(p=>p.slice(4)).sort());
- for(const [p,h]of Object.entries(baseline.source))assert.equal(sourceDigest(read(p)),h,p);
- for(const [p,h]of Object.entries(baseline.unchangedFiles))assert.equal(digest(read('dist/'+p)),h,p);
+ assert.deepEqual(files('src').filter(p=>!p.startsWith('features/services/')&&!p.startsWith('pages/services/')),Object.keys(baseline.source).map(p=>p.slice(4)).sort());
+ for(const [p,h]of Object.entries(baseline.source))assert.equal(sourceDigest(originalTravelSource(p,read(p).toString())),h,p);
+ for(const [p,h]of Object.entries(baseline.unchangedFiles)){const bytes=read('dist/'+p);const comparable=p==='sitemap-0.xml'?Buffer.from(bytes.toString().replace('<url><loc>https://comebacktraveler.com/services</loc></url>','')):bytes;assert.equal(normalizedTextFiles[p]?sourceDigest(comparable):digest(comparable),normalizedTextFiles[p]??h,p);}
 });
 test('semantic comparison ignores only compiler packaging and rejects content/URL/metadata changes',()=>{
  const html=read('dist/japan-guide.html').toString();const expected=semanticHTML(html);

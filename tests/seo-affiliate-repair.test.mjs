@@ -46,13 +46,14 @@ test('Hosting adds exactly the requested uppercase 301 and retains existing URL 
 test('three English placeholders stay present and noindex while sitemap removes only their URLs', () => {
   const excluded = ['/en/connectivity', '/en/travel-gear', '/en/vietnam-travel-prep'];
   const sitemap = [...read('dist/sitemap-0.xml').matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
-  assert.equal(sitemap.length, 40);
+  const services = read('dist/services.html').includes('content="index,follow"') ? ['https://comebacktraveler.com/services'] : [];
+  assert.equal(sitemap.length, 40 + services.length);
   for (const path of excluded) {
     const html = read('dist' + path + '.html');
     assert.match(html, /name="robots" content="noindex, follow"/);
     assert.ok(!sitemap.includes('https://comebacktraveler.com' + path));
   }
-  assert.deepEqual(sitemap.slice().sort(), [...baseline.sitemap.filter(url => !excluded.some(path => url === 'https://comebacktraveler.com' + path)), 'https://comebacktraveler.com/vietnam-sourcing'].sort());
+  assert.deepEqual(sitemap.slice().sort(), [...baseline.sitemap.filter(url => !excluded.some(path => url === 'https://comebacktraveler.com' + path)), 'https://comebacktraveler.com/vietnam-sourcing', ...services].sort());
 });
 
 for (const path of targetPages) {

@@ -1,0 +1,8 @@
+---
+import Layout from '../../features/services/layouts/Layout.astro';
+---
+<Layout title="我的通知｜高雄好幫手"><div class="page-head"><div class="eyebrow">YOUR NOTIFICATIONS</div><h1>接單與服務進度，都留在這裡。</h1><p>通知僅限本人登入查看。施工時間後請回報完工或處理取消與爭議。</p></div><div id="notifications"><a class="button" href="/services/account">登入查看我的通知</a></div><script>
+import {client,enabled,session,check,run,escape} from '../../features/services/lib/client';import {date} from '../../features/services/lib/jobs';
+async function load(){const user=await session();const {data}=check(await client!.from('notifications').select('*').eq('recipient_id',user.id).order('created_at',{ascending:false}).limit(100));document.getElementById('notifications')!.innerHTML=data!.map(item=>`<article class="job-card"><span class="tag">${item.read_at?'已讀':'未讀'}</span><h2>${escape(item.title)}</h2><p>${escape(item.body)}</p><p class="hint">${escape(date(item.created_at))}</p><div class="actions"><a class="button secondary small" href="${item.job_id?'/services/job?id='+encodeURIComponent(item.job_id):'/services/admin'}">查看詳情</a>${item.read_at?'':`<button class="button secondary small read-notification" data-id="${escape(item.id)}">標記已讀</button>`}</div></article>`).join('')||'<div class="empty">目前沒有通知。</div>';document.querySelectorAll<HTMLButtonElement>('.read-notification').forEach(button=>button.onclick=()=>void run(async()=>{check(await client!.rpc('mark_notification_read',{p_id:button.dataset.id}));await load();}));}
+if(enabled)void run(load);
+</script></Layout>

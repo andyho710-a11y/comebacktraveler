@@ -18,10 +18,23 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run build
+      - name: Build travel site and approved services configuration
+        run: |
+          node scripts/services/check-config.mjs --production
+          npm run build
+        env:
+          PUBLIC_SUPABASE_URL: ${{ vars.SERVICES_SUPABASE_URL }}
+          PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.SERVICES_SUPABASE_PUBLISHABLE_KEY }}
+          PUBLIC_ENVIRONMENT: production
+          PUBLIC_PILOT_ENABLED: 'true'
+          PUBLIC_OPERATOR_NAME: andyho710（個人試營運）
+          PUBLIC_PRIVACY_EMAIL: andyho710@gmail.com
 
       - name: Check build output
-        run: ls -R dist
+        run: |
+          npm test
+          npm run typecheck:services
+          npm audit --omit=dev
 
       # 用服務帳戶（GOOGLE_APPLICATION_CREDENTIALS）以 firebase-tools 部署。
       # 須用 latest：v13 不吃 GOOGLE_APPLICATION_CREDENTIALS（會 Failed to authenticate）；

@@ -1,0 +1,7 @@
+import {createClient} from '@supabase/supabase-js';import {writeFileSync,readFileSync} from 'node:fs';import assert from 'node:assert/strict';import {keys,sql,assertRelease,productionRef,testTarget} from './release-backend.mjs';
+assertRelease(productionRef);const {anon,service}=keys(productionRef),url='https://'+productionRef+'.supabase.co';
+assert.equal(JSON.parse(readFileSync('work/release/configuration.json')).smtp_and_other_auth_settings_preserved,true);
+const root=createClient(url,service,{auth:{persistSession:false,autoRefreshToken:false}}),client=createClient(url,anon,{auth:{persistSession:false,autoRefreshToken:false}});
+const publicResponse=await fetch(url+'/functions/v1/notification-dispatch',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});assert.equal(publicResponse.status,401);await publicResponse.body?.cancel();
+const probe=await root.rpc('notification_delivery_probe');assert.equal(probe.error,null);const recovery=await client.auth.resetPasswordForEmail('andyho710@gmail.com',{redirectTo:testTarget(productionRef)+'/account?reset=1'});assert.equal(recovery.error,null);
+const evidence={requested_at:new Date().toISOString(),project_ref:productionRef,owner_email:'andyho710@gmail.com',notification_id:probe.data,notification_public_invocation_denied:true,recovery_request_accepted:true,recovery_target:testTarget(productionRef)+'/account?reset=1',actual_inbox_receipt:false};writeFileSync('work/release/mail-request.json',JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence));
