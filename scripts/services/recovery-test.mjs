@@ -40,7 +40,7 @@ try{
  const oldLogin=createClient(`https://${ref}.supabase.co`,anon,{auth:{persistSession:false,autoRefreshToken:false}});
  assert.ok((await oldLogin.auth.signInWithPassword({email,password:original})).error,'Previous password must be rejected');
  evaluate('document.getElementById("logout").click();true');
- const evidence={tested_at:new Date().toISOString(),project_ref:ref,passed:true,scope:'Visible browser on deployed staging, synthetic recovery link without email delivery',checks:['Recovery link signs in and reveals new-password form','Browser updates password through real Auth API','New password login succeeds','Previous password login fails'],smtp_delivery_verified:false};
+ const evidence={tested_at:new Date().toISOString(),project_ref:ref,passed:true,scope:'Visible browser on the selected deployed acceptance environment; synthetic recovery link without email delivery',checks:['Recovery link signs in and reveals new-password form','Browser updates password through real Auth API','New password login succeeds','Previous password login fails'],smtp_delivery_verified:false};
  writeFileSync(evidencePath(ref,'services-recovery-evidence.json'),JSON.stringify(evidence,null,2));
  console.log('Deployed browser recovery flow passed: 4 checks. No email was sent.');
 }finally{
