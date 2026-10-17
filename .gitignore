@@ -59,3 +59,5 @@ firebase-debug.log
 /.github/workflows/services-check.yml
 /docs/services-privacy.md
 /docs/services-release.md
+/tests/services-provider-review.test.mjs
+/docs/services-provider-review.md

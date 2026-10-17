@@ -1,0 +1,38 @@
+import {client,check,run,escape,message} from './client';
+import {statuses,categories} from './catalog';
+type App={user_id:string;status:string;real_name:string;categories:(keyof typeof categories)[];districts:string[];introduction:string;review_note:string;updated_at:string;created_at:string|null;submitted_at:string|null;email_verified:boolean;profile_complete:boolean;public_provider_present:boolean;public_name:string|null;public_bio:string|null;eligible:boolean;missing_fields:string[]};
+type Page={items:App[];total:number;counts:Record<string,number>|null;has_more:boolean};
+const time=(s:string|null)=>s?new Date(s).toLocaleString('zh-TW',{timeZone:'Asia/Taipei',hour12:false}):'舊版未記錄，無法確認';
+const label=(s:string)=>statuses[s as keyof typeof statuses]??s;
+export async function renderProviderReviews(host:HTMLElement){
+ let filter='all',cursor:string|null=null,history:(string|null)[]=[],sequence=0;
+ host.innerHTML='<p class="hint">這裡只列出已提交的服務者申請。註冊會員、Email 驗證或儲存會員資料，不等於提交申請。申請未出現時，請對方到「成為好幫手」確認申請編號。</p><div class="actions"><label>申請狀態<select id="provider-filter"><option value="all">全部</option><option value="pending">待審核</option><option value="approved">已核准</option><option value="rejected">已拒絕</option><option value="suspended">停權</option></select></label><button type="button" id="provider-refresh" class="button secondary small">重新整理最新申請</button></div><p id="provider-counts" class="hint" aria-live="polite"></p><div id="provider-list" class="job-list"></div><div class="actions"><button id="provider-prev" class="button secondary small" type="button">上一頁</button><button id="provider-next" class="button secondary small" type="button">下一頁</button></div>';
+ const list=host.querySelector<HTMLElement>('#provider-list')!,prev=host.querySelector<HTMLButtonElement>('#provider-prev')!,next=host.querySelector<HTMLButtonElement>('#provider-next')!;let last:string|null=null,more=false;const action=(fn:()=>Promise<void>)=>run(fn).finally(()=>{prev.disabled=history.length===0;next.disabled=!more||!last;});
+ async function load(){
+  const token=++sequence;list.setAttribute('aria-busy','true');
+  let result;try{result=check(await client!.rpc('admin_provider_applications_page',{p_status:filter,p_limit:20,p_cursor:cursor}));}catch(e){list.removeAttribute('aria-busy');list.textContent='申請列表未載入，請重新整理；不代表沒有申請。';throw e;}
+  if(token!==sequence)return;const page=result.data as Page;list.removeAttribute('aria-busy');
+  const counts=page.counts??{};host.querySelector('#provider-counts')!.textContent=`此篩選共 ${page.total} 筆；待審 ${counts.pending??0}、已核准 ${counts.approved??0}、已拒絕 ${counts.rejected??0}、停權 ${counts.suspended??0}。每頁最多 20 筆，依最近提交時間排序。`;
+  list.innerHTML=page.items.map(a=>{
+   const approved=a.status==='approved';const choices=approved?[['suspended','停權']]:[['approved',a.status==='suspended'?'恢復資格':'核准'],['rejected','拒絕']].filter(([s])=>s!==a.status);
+   return `<form class="job-card provider-review" data-id="${escape(a.user_id)}" data-status="${escape(a.status)}"><span class="tag">${escape(label(a.status))}</span><h3>${escape(a.real_name)}</h3><p class="hint">申請編號：<span class="provider-id">${escape(a.user_id)}</span><br/>首次申請：${escape(time(a.created_at))}<br/>最近提交：${escape(time(a.submitted_at))}<br/>最後更新／審核：${escape(time(a.updated_at))}</p><p>${escape(a.categories.map(c=>categories[c]??c).join('、'))} · ${escape(a.districts.join('、'))}</p><p class="provider-eligibility">${a.eligible?'接案資格已生效：可查看符合類別與行政區、由其他客戶刊登的公開案件並報價。':approved?'已核准，但接案條件未齊全，請檢查 Email 驗證與公開服務資料。':'尚未取得接案資格，無法報價。'}</p><p class="hint">Email ${a.email_verified?'已驗證':'未驗證'}；會員資料${a.profile_complete?'已完成':'未完成'}。</p>${a.missing_fields.length?`<p class="notice error">缺少：${escape(a.missing_fields.join('、'))}</p>`:''}<button type="button" class="button secondary small provider-private" data-id="${escape(a.user_id)}">為申請審核查看必要聯絡資料（會記錄）</button><div class="provider-private-result"></div><p>${escape(a.introduction)}</p>${approved?`<p>公開稱呼：${escape(a.public_name??'尚無')}<br/>公開簡介：${escape(a.public_bio??'尚無')}</p>`:`<div class="field"><label>公開稱呼（避免真實姓名）<input name="name" minlength="2" maxlength="40" value="${escape(a.public_name??'')}" required /></label></div><div class="field"><label>公開簡介（移除個資與高風險項目）<textarea name="bio" minlength="10" maxlength="1000" required>${escape(a.public_bio??a.introduction)}</textarea></label></div>`}<div class="field"><label>審核備註<textarea name="note" maxlength="500">${escape(a.review_note)}</textarea></label></div><div class="actions">${choices.map(([s,l])=>`<button type="submit" class="button ${s==='approved'?'small':'secondary small'}" name="decision" value="${s}" ${s==='approved'?'':'formnovalidate'}>${l}</button>`).join('')}<button type="button" class="button secondary small provider-history">審核與異常紀錄</button></div><div class="provider-history-result" aria-live="polite"></div></form>`;
+  }).join('')||'<div class="empty">目前篩選沒有已提交的申請；可切換「全部」或重新整理最新申請。</div>';
+  more=page.has_more;last=page.items.at(-1)?.user_id??null;prev.disabled=history.length===0;next.disabled=!page.has_more||!last;
+  list.querySelectorAll<HTMLFormElement>('.provider-review').forEach(form=>{
+   const app=page.items.find(a=>a.user_id===form.dataset.id)!;
+   form.addEventListener('submit',e=>{e.preventDefault();const decision=(e.submitter as HTMLButtonElement)?.value;if(!decision)return;const fields=new FormData(form);void action(async()=>{
+    const {data}=check(await client!.rpc('review_provider_checked',{p_user:app.user_id,p_status:decision,p_name:fields.get('name')??app.public_name??'',p_bio:fields.get('bio')??app.public_bio??'',p_note:fields.get('note')??'',p_expected:app.status}));
+    if(!data?.ok)throw Error(data?.message??'審核未完成，請重新整理確認。');
+    message(`${data.message} 資格：${label(data.status)}。`);cursor=null;history=[];await load();
+   });});
+   form.querySelector<HTMLButtonElement>('.provider-private')!.onclick=()=>void action(async()=>{const {data}=check(await client!.rpc('admin_provider_contact',{p_user:app.user_id,p_purpose:'moderation'}));const c=data?.[0];form.querySelector('.provider-private-result')!.textContent=c?c.display_name+' · '+c.phone:'沒有聯絡資料。';});
+   let before:number|null=null,historyComplete=false;
+   const historyButton=form.querySelector<HTMLButtonElement>('.provider-history')!;
+   historyButton.onclick=()=>void action(async()=>{const {data}=check(await client!.rpc('admin_provider_history',{p_user:app.user_id,p_before:before,p_limit:20}));const rows=data as {id:number;actor_id:string|null;kind:string;from_status:string|null;to_status:string|null;outcome:string;code:string;note:string;created_at:string}[];const node=form.querySelector('.provider-history-result')!;if(!before)node.textContent='';node.insertAdjacentHTML('beforeend',rows.map(r=>`<p class="hint">${escape(time(r.created_at))} · ${escape(r.outcome==='failure'?'操作失敗':r.kind==='submitted'?'申請已提交':'審核紀錄')} · ${escape(r.from_status?label(r.from_status)+' → ':'')}${escape(r.to_status?label(r.to_status):'資格未變更')}<br/>操作者：${escape(r.actor_id??'無紀錄')}${r.code?' · 錯誤代碼 '+escape(r.code):''}<br/>${escape(r.note)}</p>`).join('')||'<p class="hint">尚無紀錄；舊版未記錄的提交時間不會推測補填。</p>');before=rows.at(-1)?.id??before;historyButton.textContent=rows.length===20?'載入較早紀錄':'紀錄已載入';historyComplete=rows.length<20;}).finally(()=>{historyButton.disabled=historyComplete;});
+  });
+ }
+ host.querySelector<HTMLSelectElement>('#provider-filter')!.onchange=e=>{filter=(e.target as HTMLSelectElement).value;cursor=null;history=[];void action(load);};
+ host.querySelector<HTMLButtonElement>('#provider-refresh')!.onclick=()=>{cursor=null;history=[];void action(load);};
+ prev.onclick=()=>{cursor=history.pop()??null;void action(load);};next.onclick=()=>{history.push(cursor);cursor=last;void action(load);};
+ await load();
+}
