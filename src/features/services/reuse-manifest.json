@@ -5,7 +5,8 @@
   "database_migrations": [
     "202610150010_staged_privacy.sql",
     "202610150011_privacy_transition_guards.sql",
-    "202610150012_photo_review_identity.sql"
+    "202610150012_photo_review_identity.sql",
+    "202610170013_provider_review.sql"
   ],
   "files": [
     {
@@ -18,7 +19,7 @@
       "source": "src/lib/admin.ts",
       "target": "src/features/services/lib/admin.ts",
       "source_sha256": "e737b01e67ec3af7e9041a9d358de1cc4b9b3dc1766b4fd26866f81c988eb88d",
-      "integrated_sha256": "48d53de968238cb0116266b3c80c2a6faa01187fd3808bd088063b4027b30432",
+      "integrated_sha256": "f34f5afa86fc072fc468661761f1085149a18dcd4f0728937dfaa9efc5406385",
       "initial_integrated_sha256": "fce271f05ad8d9ece0d500563483a7dc4c78f8dd630bcfb30a1c14e2febee6b5"
     },
     {
@@ -64,14 +65,15 @@
       "source": "src/styles/global.css",
       "target": "src/features/services/styles/global.css",
       "source_sha256": "331875f39da41576dabcb3697030253d51df30974942f3c5a79adf5187a07b1d",
-      "integrated_sha256": "ff6ccd277dbb4f40affd72fcfd79add94b53c6fb65553335e3f93f74aeda321b",
+      "integrated_sha256": "25ffa54b4a148e48b2bbe5c4fa7f5019943319740554173543e194cc7d59c340",
       "initial_integrated_sha256": "3e3ff80b986da806f3c3c503bfb63d7c191338543528b8d2f22fbbe2a1f53e7f"
     },
     {
       "source": "src/pages/account.astro",
       "target": "src/pages/services/account.astro",
       "source_sha256": "f6bae755be6f90a0e9de4b770d8d4acd0463ef1c9c53b6f2c4ca75d68b475f41",
-      "integrated_sha256": "14131e5b30717cfe83a6fed1cc6b7090c291c00b0375a3873888ccde1d22ca2c"
+      "integrated_sha256": "fd370e392d6671f7b0054e97a74912104053fe956c39094dc955ffb8dc6b611b",
+      "initial_integrated_sha256": "14131e5b30717cfe83a6fed1cc6b7090c291c00b0375a3873888ccde1d22ca2c"
     },
     {
       "source": "src/pages/admin.astro",
@@ -128,7 +130,8 @@
       "source": "src/pages/provider.astro",
       "target": "src/pages/services/provider.astro",
       "source_sha256": "e58e1e5500c8d3f2d7d478a8bf57ba864e3ed4faa2239d950fb11f161cfd159a",
-      "integrated_sha256": "d8bcea9fa1380c0ae680761f70ec39edca47a90d72a61d32fc47fe28d4f9a7f9"
+      "integrated_sha256": "a4dd312f0a13df1c4ed6223030a1655f917bde0d8bbba5500c57c0a04b812962",
+      "initial_integrated_sha256": "d8bcea9fa1380c0ae680761f70ec39edca47a90d72a61d32fc47fe28d4f9a7f9"
     }
   ],
   "enhancements": {

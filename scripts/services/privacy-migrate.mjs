@@ -1,6 +1,6 @@
 import {readFileSync,writeFileSync} from 'node:fs';import {createHash} from 'node:crypto';import {execFileSync} from 'node:child_process';import {sql} from './supabase-cli.mjs';
 const ref=process.argv[2];if(ref!=='jqzyduwzcbhylgjlrdvf')throw Error('This rollout is authorized for staging only');
-const version=process.argv[3]??'202610150010',files={'202610150010':'staged_privacy','202610150011':'privacy_transition_guards','202610150012':'photo_review_identity'};if(!files[version])throw Error('Unknown privacy migration');
+const version=process.argv[3]??'202610150010',files={'202610150010':'staged_privacy','202610150011':'privacy_transition_guards','202610150012':'photo_review_identity','202610170013':'provider_review'};if(!files[version])throw Error('Unknown privacy migration');
 const source=readFileSync('supabase/migrations/'+version+'_'+files[version]+'.sql','utf8'),checksum=createHash('sha256').update(source.replace(/\r\n/g,'\n')).digest('hex');
 const exists=sql(ref,"select to_regclass('private.integration_migrations') is not null as present")[0].present;
 const applied=exists?sql(ref,`select checksum from private.integration_migrations where version='${version}'`):[];
