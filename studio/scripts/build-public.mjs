@@ -1,4 +1,4 @@
-import { readFileSync, rmSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs';
+import { readFileSync, rmSync, writeFileSync, readdirSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { resolve, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -8,7 +8,11 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 let contact = {};
 if (!process.env.STUDIO_LINE_URL) contact = JSON.parse(readFileSync(new URL('../.runtime/config.json', import.meta.url), 'utf8'));
 const env = { ...process.env, STUDIO_LAUNCH_MODE: 'line-only', STUDIO_INDEXABLE: 'true', STUDIO_LINE_URL: process.env.STUDIO_LINE_URL || contact.lineUrl, STUDIO_LINE_ID: process.env.STUDIO_LINE_ID || contact.lineId || '' };
+const verificationFile = new URL('../.runtime/google-site-verification.txt', import.meta.url);
+if (!env.STUDIO_GOOGLE_SITE_VERIFICATION && existsSync(verificationFile)) env.STUDIO_GOOGLE_SITE_VERIFICATION = readFileSync(verificationFile, 'utf8').trim();
+if (env.STUDIO_GOOGLE_SITE_VERIFICATION && !/^[A-Za-z0-9_-]{20,200}$/.test(env.STUDIO_GOOGLE_SITE_VERIFICATION)) throw Error('Invalid Google verification marker');
 const config = publicConfig(env);
+if (config.site === 'https://kaohsiung-safe-transfer.web.app' && !env.STUDIO_GOOGLE_SITE_VERIFICATION) throw Error('Preserve the verified Google ownership marker before rebuilding the live site');
 const result = spawnSync(process.execPath, [resolve(root, 'node_modules/astro/bin/astro.mjs'), 'build', '--outDir', 'dist-public'], { cwd: root, env, stdio: 'inherit' });
 if (result.status !== 0) process.exit(result.status || 1);
 const out = resolve(root, 'dist-public');

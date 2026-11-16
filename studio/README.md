@@ -58,4 +58,4 @@ npm run check:public
 npx -y firebase-tools@latest deploy --only hosting --config firebase.public.json --project comeback-traveler-web
 ```
 
-聯絡網址與 ID 從未追蹤的 `.runtime/config.json` 讀取；建置產物本來就供公開網站顯示，但不提交 GitHub。CI 只用明確標示的假資料建置，從不部署。GSC 的公開驗證標記可由 `STUDIO_GOOGLE_SITE_VERIFICATION` 注入；IndexNow 驗證檔自動產生且不進 Git。獲客執行表見 [public-acquisition-plan.md](docs/public-acquisition-plan.md)。
+聯絡網址與 ID 從未追蹤的 `.runtime/config.json` 讀取；建置產物本來就供公開網站顯示，但不提交 GitHub。CI 只用明確標示的假資料建置，從不部署。GSC 的公開驗證標記由 `.runtime/google-site-verification.txt` 或 `STUDIO_GOOGLE_SITE_VERIFICATION` 注入；正式站重建會檢查標記存在，請勿刪除；IndexNow 驗證檔自動產生且不進 Git。獲客執行表見 [public-acquisition-plan.md](docs/public-acquisition-plan.md)。
