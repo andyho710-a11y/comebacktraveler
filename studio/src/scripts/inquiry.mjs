@@ -2,18 +2,20 @@ import { validateInquiry, inquiryText, sourceFromSearch, analyticsEvent } from '
 const form = document.querySelector('#inquiry-form');
 const status = document.querySelector('#form-status');
 const submit = document.querySelector('#submit-inquiry');
+const lineOnly = form.dataset.launchMode === 'line-only';
 let startedAt = Date.now(), key = crypto.randomUUID(), busy = false, sent = false, started = false, gaReady = false, analyticsFrame;
 const source = sourceFromSearch(location.search);
 let config;
 function event(name) {
   const safe = analyticsEvent(name, source);
-  if (!['inquiry_submit', 'quote_request'].includes(name)) fetch('/api/events', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ event: name, source }) }).catch(() => {});
+  if (!lineOnly && !['inquiry_submit', 'quote_request'].includes(name)) fetch('/api/events', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ event: name, source }) }).catch(() => {});
   if (gaReady) analyticsFrame.contentWindow.postMessage({ type: 'studio_event', name: safe.name, source: safe.params.source }, location.origin);
 }
 function data() {
   const values = Object.fromEntries(new FormData(form));
   for (const field of ['waitHours', 'passengers', 'bags']) values[field] = Number(values[field]);
   values.consent = values.consent === 'on'; values.startedAt = startedAt; values.source = source;
+  if (lineOnly) { values.name ||= '在 LINE 對話中告知'; values.contact ||= '透過本次 LINE 對話聯繫'; }
   return values;
 }
 function valid() {
@@ -28,7 +30,7 @@ form.addEventListener('input', () => {
   if (sent) { sent = false; key = crypto.randomUUID(); submit.disabled = !config?.enabled; submit.textContent = config?.enabled ? '送出新的行程詢問' : '收單尚未啟用'; }
 });
 form.addEventListener('submit', async e => {
-  e.preventDefault(); if (busy || sent || !config?.enabled) return;
+  e.preventDefault(); if (lineOnly || busy || sent || !config?.enabled) return;
   const value = valid(); if (!value) return;
   busy = true; submit.disabled = true; status.textContent = '正在安全送出詢問，請稍候…';
   try {
@@ -51,14 +53,22 @@ document.querySelector('#copy-text').addEventListener('click', async () => {
   catch { text.focus(); text.select(); status.textContent = '請長按或使用複製快捷鍵，複製已選取的文字。'; }
 });
 try {
-  const response = await fetch('/api/config'); if (!response.ok) throw Error(); config = await response.json();
+  if (lineOnly) config = { enabled: false, demo: false, lineUrl: form.dataset.lineUrl, lineId: form.dataset.lineId, gaId: '' };
+  else { const response = await fetch('/api/config'); if (!response.ok) throw Error(); config = await response.json(); }
   submit.disabled = !config.enabled; submit.textContent = config.enabled ? (config.demo ? '送出測試詢問' : '送出行程詢問') : '收單尚未啟用';
-  if (!config.demo) document.querySelector('#environment').textContent = config.enabled ? '行程詢問 · 人工確認後依法完成正式預約' : '籌備中 · 尚未開放正式收單';
-  document.querySelector('#privacy-contact').textContent = `管理者：${config.operator}。個資聯絡：${config.privacyContact}。詢單保留 ${config.retentionDays} 天。`;
+  if (lineOnly) {
+    submit.hidden = true;
+    document.querySelector('#environment').textContent = '試營運 · LINE 人工詢問 · 預約須經人工及車隊程序確認';
+    document.querySelector('#privacy-contact').textContent = '文字只在目前頁面產生。網站不儲存行程資料，也不會自動傳送；請自行複製到 LINE。';
+  } else {
+    if (!config.demo) document.querySelector('#environment').textContent = config.enabled ? '行程詢問 · 人工確認後依法完成正式預約' : '籌備中 · 尚未開放正式收單';
+    document.querySelector('#privacy-contact').textContent = `管理者：${config.operator}。個資聯絡：${config.privacyContact}。詢單保留 ${config.retentionDays} 天。`;
+  }
   if (config.lineUrl) {
     const link = document.querySelector('#line-link'); link.href = config.lineUrl; link.hidden = false;
     link.textContent = '用個人 LINE 聯繫 ↗'; document.querySelector('#line-status').textContent = `目前使用個人 LINE${config.lineId ? '：' + config.lineId : ''}。若手機未能開啟，請使用經營者提供的加入方式；尚非官方帳號。`;
     link.addEventListener('click', () => event('line_click'));
+    document.querySelectorAll('[data-line-cta]').forEach(cta => cta.addEventListener('click', () => event('line_click')));
   }
   if (config.phone) { const phone = document.querySelector('#phone-link'); phone.href = `tel:${config.phone}`; phone.textContent = config.phone; phone.hidden = false; phone.addEventListener('click', () => event('phone_click')); }
   if (config.gaId) {

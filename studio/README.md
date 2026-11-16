@@ -1,6 +1,6 @@
 # 高雄安心長途接送｜獨立測試工作室
 
-此專案位於原 repository 的 `studio/`，採獨立依賴、建置目錄、版型及資料庫。**不掛到 Comeback Traveler 正式路由，不修改 `/services`、Supabase、Firebase 設定、旅遊站追蹤或部署工作流程。** 不部署、不收款、不自動報價或派遣。正式收單尚未核准。
+此專案位於原 repository 的 `studio/`，採獨立依賴、建置目錄、版型及資料庫。**不掛到 Comeback Traveler 正式路由，不修改 `/services`、Supabase、根 Firebase 設定、旅遊站追蹤或原部署流程。** 2026-11-16 業主已授權公開試營運，採獨立 Hosting 的 LINE 人工詢問版；不收款、不自動報價或派遣，Node／SQLite 後台仍不對外部署。
 
 ## 本機開始（Node 22.13+；建議 Node 24 LTS）
 
@@ -49,4 +49,13 @@ npm run purge
 - [LINE 文案、通知與 AI 擴充](docs/line-automation.md)
 - [測試與驗收](docs/validation.md)
 
-**正式託管尚未建立。** Firebase Hosting 只能承載靜態部分；本版 Node／SQLite 不能僅用原 Hosting 上傳就運作。請先核准獨立常駐主機與安全維運方式，或另案改寫為 Firebase／其他已核准受保護資料服務。沒有啟用付費 API、主機或通知服務。
+**公開試營運：** https://kaohsiung-safe-transfer.web.app/ ，使用同專案的獨立 Hosting site，僅發佈 `dist-public`。網站本身不收單儲存、不部署 admin／analytics 頁面、不載入 GA4；客人自行複製文字後使用 LINE 人工聯繫。原 Node／SQLite 與背景通知仍需另行核准常駐託管方式。沒有購買網域、主機、廣告或啟用付費 API。
+
+```powershell
+$env:STUDIO_SITE_URL='https://kaohsiung-safe-transfer.web.app'
+npm run build:public
+npm run check:public
+npx -y firebase-tools@latest deploy --only hosting --config firebase.public.json --project comeback-traveler-web
+```
+
+聯絡網址與 ID 從未追蹤的 `.runtime/config.json` 讀取；建置產物本來就供公開網站顯示，但不提交 GitHub。CI 只用明確標示的假資料建置，從不部署。GSC 的公開驗證標記可由 `STUDIO_GOOGLE_SITE_VERIFICATION` 注入；IndexNow 驗證檔自動產生且不進 Git。獲客執行表見 [public-acquisition-plan.md](docs/public-acquisition-plan.md)。

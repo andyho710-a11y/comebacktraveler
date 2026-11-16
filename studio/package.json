@@ -7,6 +7,8 @@
   },
   "scripts": {
     "build": "astro build",
+    "build:public": "node scripts/build-public.mjs",
+    "check:public": "node scripts/check-public.mjs",
     "setup": "node scripts/setup.mjs",
     "start": "node --experimental-sqlite server/start.mjs",
     "dev": "astro dev --host 127.0.0.1 --port 4331",
