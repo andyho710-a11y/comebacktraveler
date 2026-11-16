@@ -1,0 +1,32 @@
+---
+import '../styles/studio.css';
+const { title, description, admin = false } = Astro.props;
+const configured = import.meta.env.STUDIO_SITE_URL && !import.meta.env.STUDIO_SITE_URL.includes('.invalid');
+const indexable = configured && import.meta.env.STUDIO_INDEXABLE === 'true' && !admin;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title><meta name="description" content={description} />
+    <meta name="robots" content={indexable ? 'index, follow' : 'noindex, nofollow'} />
+    {configured && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" /><meta property="og:locale" content="zh_TW" />
+    <meta property="og:title" content={title} /><meta property="og:description" content={description} />
+    {configured && <><meta property="og:url" content={canonical} /><meta property="og:image" content={new URL('/share.png', Astro.site)} /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /></>}
+    {configured && !admin && <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url: canonical.href, inLanguage: 'zh-TW' }).replace(/</g, '\\u003c')} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip" href="#main">跳至主要內容</a>
+    <div class="preview-banner" id="environment">展示與測試版 · 尚未開放正式預約 · 請勿填寫真實個資</div>
+    <header class="header wrap">
+      <a href="/" class="brand" aria-label="高雄安心長途接送首頁"><span class="brand-icon" aria-hidden="true">↗</span><span>高雄安心<span class="brand-sub">長途接送 · 個人工作室籌備中</span></span></a>
+      <nav aria-label="主要選單">{admin ? <a href="/">返回服務首頁</a> : <><a href="#services">服務項目</a><a href="#process">預約方式</a><a href="#faq">常見問題</a></>}</nav>
+      {!admin && <a class="button small" href="#inquiry">LINE 詢問行程 <span aria-hidden="true">↗</span></a>}
+    </header>
+    <slot />
+    <footer class="wrap footer"><div><strong>高雄安心長途接送</strong><p>一位駕駛，專心安排每一段路。</p></div><div><a href="/privacy">個資與隱私告知</a><span> · </span><a href="/admin">管理員入口</a><p>獲客與詢單系統。正式報價、預約、付款及派遣，依現有車隊與主管機關規範辦理。</p></div></footer>
+  </body>
+</html>
