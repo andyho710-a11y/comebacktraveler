@@ -1,0 +1,21 @@
+{
+  "name": "kaohsiung-transfer-studio",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "astro build",
+    "build:public": "node scripts/build-public.mjs",
+    "check:public": "node scripts/check-public.mjs",
+    "setup": "node scripts/setup.mjs",
+    "start": "node --experimental-sqlite server/start.mjs",
+    "dev": "astro dev --host 127.0.0.1 --port 4331",
+    "test": "node --experimental-sqlite --test tests/*.test.mjs",
+    "purge": "node --experimental-sqlite scripts/purge.mjs"
+  },
+  "dependencies": {
+    "astro": "7.4.12"
+  }
+}

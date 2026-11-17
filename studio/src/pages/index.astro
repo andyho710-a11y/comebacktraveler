@@ -1,0 +1,55 @@
+---
+import StudioLayout from '../layouts/StudioLayout.astro';
+import { publicConfig } from '../lib/public-config.mjs';
+const launch = publicConfig(process.env);
+const faqs = [
+  ['可以在目的地等候，再載我們回來嗎？', '可以提出原車等候需求。請提供預計停留時間，駕駛會依檔期、總工時與車隊規範人工確認；提出需求不代表已接受預約。'],
+  ['可以安排多個停靠點嗎？', '可以先告知停靠地區、順序及每站預計時間，再確認路線、工時與依法計價條件。'],
+  ['多久以前預約？如何確認預約成功？', '建議行程確定後提早詢問。填表或傳送 LINE 都只是詢問，須經人工聯繫、依法報價並完成車隊規定的正式預約程序才成立。'],
+  ['可以搭幾位乘客、放幾件行李？', '車主提供的車型為 Toyota Corolla Cross Hybrid 油電車，5 人座包含駕駛，原則最多 4 位乘客，仍以行照、安全座椅及實際配置核對。年份、等級與行李容量尚待確認；請先提供行李尺寸再安排。'],
+  ['可以從高雄到台南、屏東或嘉義嗎？', '這些是可提出詢問的路線。是否承接須確認實際營業區域、接送規定、行程與檔期，並非保證所有路線都能服務。'],
+  ['長輩外出包含陪診或無障礙服務嗎？', '目前規劃一般乘車接送與等候，不提供醫療照護、長照特約、專業陪診或無障礙車輛服務。若需特殊協助，請洽具對應資格的單位。'],
+  ['取消、改期或需要付款時怎麼辦？', '請儘早聯繫。具體取消、改期、費用與付款方式，於正式預約前依車隊規定說明並確認；本網站不收款、不收訂金。'],
+];
+---
+<StudioLayout serviceType="高雄長途接送與行程詢問" title="高雄安心長途接送｜長輩外出、跨縣市往返與半日包車" description="從楠梓、左營、橋頭、岡山出發，詢問長途接送、長輩外出等候往返與半日包車。先聊需求，再人工確認路線與合法預約方式。">
+  <main id="main">
+    <section class="hero wrap">
+      <div class="hero-copy"><p class="eyebrow"><span></span> 從高雄出發，把行程安排得更安心</p><h1>出門有人接，<br />回程也<span class="underline">有人等。</span></h1><p class="hero-description">替父母安排一趟外出，或是全家久違的返鄉。<br class="desktop" />長一點的路，先說好時間，也留好回程。</p><div class="hero-actions"><a class="button" href={launch.launched ? launch.lineUrl : "#inquiry"} target={launch.launched ? "_blank" : undefined} rel="noreferrer" data-line-cta>LINE 詢問行程 <span aria-hidden="true">↗</span></a><a class="text-link" href="#services">看看適合的服務 <span aria-hidden="true">↓</span></a></div><p class="subtle">提前詢問 · 人工確認 · 依規定完成正式預約</p><div class="hero-tags"><span>長輩外出</span><span>跨縣市往返</span><span>半日包車</span></div></div>
+      <figure class="vehicle-hero">
+        <img src="/photos/vehicle-exterior-1440.webp" srcset="/photos/vehicle-exterior-720.webp 720w, /photos/vehicle-exterior-1440.webp 1440w" sizes="(max-width: 800px) calc(100vw - 40px), (max-width: 1260px) 45vw, 550px" width="1440" height="1084" fetchpriority="high" alt="車主提供的白色 Toyota Corolla Cross Hybrid 外觀照片，車牌與個資已遮蔽" />
+        <figcaption><span class="eyebrow">YOUR JOURNEY, THIS CAR</span><strong>Toyota Corolla Cross Hybrid</strong><span>油電車 · 5 人座含駕駛</span></figcaption>
+      </figure>
+    </section>
+    <div class="promise-band"><div class="wrap promises"><span><b>01</b> 提前安排，不趕行程</span><span><b>02</b> 一對一討論需求</span><span><b>03</b> 接送與等候一起確認</span></div></div>
+    <section id="services" class="wrap section"><div class="section-heading"><div><p class="eyebrow">FOR THE JOURNEYS THAT MATTER</p><h2>不只是一段路，<br />是一次放心的安排。</h2></div><p>從單程出發到原車等候，<br />依照你的行程，一起確認合適的方式。</p></div><div class="service-grid">
+      <article class="service-card"><div class="card-top"><span class="service-icon" aria-hidden="true">↗</span><small>01 / ONE WAY</small></div><h3>跨縣市單程接送</h3><p>返鄉探親、家庭聚會、異地辦事，提前安排一趟長途行程。</p><a class="card-note" href="/cross-county">了解跨縣市行程怎麼安排 →</a></article>
+      <article class="service-card featured"><div class="card-top"><span class="service-icon" aria-hidden="true">↔</span><small>02 / ROUND TRIP</small></div><h3>長輩外出・等候往返</h3><p>替父母安排交通，先討論上下車與停留時間，回程也一起安排。</p><a class="card-note" href="/senior-round-trip">了解長輩接送與等候方式 →</a></article>
+      <article class="service-card"><div class="card-top"><span class="service-icon" aria-hidden="true">☀</span><small>03 / AT YOUR PACE</small></div><h3>半日／一日包車</h3><p>家庭出遊、跨點辦事或商務行程，一起規劃停靠點與用車時數。</p><a class="card-note" href="/half-day-charter">了解半日包車的準備事項 →</a></article>
+    </div></section>
+    <section id="vehicle" class="wrap section vehicle-section" aria-labelledby="vehicle-heading">
+      <div class="section-heading"><div><p class="eyebrow">A LOOK INSIDE</p><h2 id="vehicle-heading">出發前，先看看乘車空間。</h2></div><p>車主提供照片，已遮蔽證件與車牌。<br />乘客與行李需求，預約前一起確認。</p></div>
+      <div class="vehicle-gallery">
+        <figure><a href="/photos/vehicle-rear-seat-1440.webp" target="_blank" rel="noreferrer" aria-label="開啟較大的後座空間照片"><img src="/photos/vehicle-rear-seat-720.webp" srcset="/photos/vehicle-rear-seat-720.webp 720w, /photos/vehicle-rear-seat-1440.webp 1440w" sizes="(max-width: 800px) calc(100vw - 40px), (max-width: 1260px) 45vw, 572px" width="1440" height="1084" loading="lazy" decoding="async" alt="Toyota Corolla Cross Hybrid 後座座椅與乘坐空間，前座背面證件已遮蔽" /></a><figcaption><h3>後座空間</h3><p>5 人座包含駕駛，原則最多 4 位乘客；兒童安全座椅與實際乘坐配置，請提前討論。</p></figcaption></figure>
+        <figure><a href="/photos/vehicle-luggage-1440.webp" target="_blank" rel="noreferrer" aria-label="開啟較大的行李廂照片"><img src="/photos/vehicle-luggage-720.webp" srcset="/photos/vehicle-luggage-720.webp 720w, /photos/vehicle-luggage-1440.webp 1440w" sizes="(max-width: 800px) calc(100vw - 40px), (max-width: 1260px) 45vw, 572px" width="1440" height="1084" loading="lazy" decoding="async" alt="後座椅背保持直立的 Toyota Corolla Cross Hybrid 行李廂，遠處證件與車牌已遮蔽" /></a><figcaption><h3>行李廂空間</h3><p>照片為後座椅背直立時的空間。請提供行李件數與長寬高；嬰兒車、大型物品也請先告知。</p></figcaption></figure>
+      </div>
+      <p class="vehicle-note">照片供了解車輛空間，裝載仍須依人數、物品尺寸與安全配置確認。車輛年份、等級及可提供設備，請於預約前向駕駛確認。</p>
+      <a class="text-link" href="#inquiry">把乘客與行李需求一起告訴我 →</a>
+    </section>
+    <section class="area-section"><div class="wrap area-grid"><div><p class="eyebrow">ROOTED IN KAOHSIUNG</p><h2>熟悉高雄，<br />陪你往遠一點的地方。</h2><p>優先討論的出發地區</p><div class="area-tags"><span>楠梓</span><span>左營</span><span>橋頭</span><span>岡山</span></div><p>台南、屏東、嘉義等跨縣市路線，可先提供需求。<br />依實際營業區域、接送規定及檔期確認承接。</p></div><aside class="note-card"><span class="eyebrow">先認識，再安心出發</span><h3>先認識，再安排這一趟。</h3><p>個人駕駛，有 Uber、Yoxi、55688 服務經驗。由駕駛親自確認行程，依現有車隊規範完成正式預約。</p><dl><div><dt>Toyota Corolla Cross Hybrid</dt><dd>車主提供</dd></div><div><dt>5 人座含駕駛</dt><dd>最多 4 位乘客，依實際配置確認</dd></div><div><dt>行李／安全座椅需求</dt><dd>預約前逐項確認</dd></div><div><dt>執業／保險及車隊預約方式</dt><dd>預約前向駕駛確認</dd></div></dl></aside></div></section>
+    <section id="process" class="wrap section"><p class="eyebrow">A SIMPLE WAY TO PLAN</p><h2>把需求說清楚，安排就簡單。</h2><ol class="steps"><li><span>01</span><h3>告訴我行程</h3><p>填寫需求，或整理成 LINE 訊息。</p></li><li><span>02</span><h3>人工確認</h3><p>確認路線、檔期、車型與等候需求。</p></li><li><span>03</span><h3>依法報價與預約</h3><p>依車隊規範說明費用並完成正式程序。</p></li><li><span>04</span><h3>依約完成接送</h3><p>出發前再次確認時間與集合方式。</p></li></ol><p class="callout">填寫表單或傳送訊息只代表行程詢問，不會自動成立預約、報價或付款。</p></section>
+    <section id="inquiry" class="inquiry-section"><div class="wrap inquiry-grid"><div class="inquiry-intro"><p class="eyebrow">LET'S PLAN YOUR JOURNEY</p><h2>這趟路，<br />你想怎麼安排？</h2><p>先提供地區即可，不需要完整門牌。<br />請勿填寫身分證、病歷或其他敏感資料。</p><div class="contact-panel"><h3>習慣直接用 LINE 聊？</h3><p id="line-status">{launch.launched ? "目前透過個人 LINE 人工聯繫，也可先整理行程文字。" : "官方帳號待設定。可先產生詢問文字，再自行複製。"}</p><a id="line-link" class="button" hidden={!launch.launched} href={launch.lineUrl || undefined} rel="noreferrer" target="_blank">用 LINE 詢問行程 ↗</a><a id="phone-link" hidden>電話聯繫</a></div><p class="subtle">{launch.launched ? "填寫內容只在目前頁面產生，不送到網站伺服器。請自行在 LINE 確認收件人後傳送；勿傳送敏感個資。" : "實際車型、車隊流程與服務資料確認前，這裡僅供測試。請勿送出真實個資。"}</p></div>
+      <form id="inquiry-form" class="form-card" data-launch-mode={launch.launched ? "line-only" : "backend"} data-line-url={launch.lineUrl} data-line-id={launch.lineId}><div class="form-heading"><h3>{launch.launched ? "整理行程，複製到 LINE" : "行程詢問"}</h3><span>約 2 分鐘填寫</span></div><p>＊為必填。此表單不是正式預約。</p>
+        <fieldset><legend>01 行程安排</legend><div class="form-grid"><label>用車日期＊<input name="date" type="date" required /></label><label>預計出發時間＊<input name="time" type="time" required /></label><label>上車地區＊<input name="pickup" maxlength="100" autocomplete="off" placeholder="例如：高雄楠梓區" required /></label><label>目的地＊<input name="destination" maxlength="100" autocomplete="off" placeholder="填寫縣市、地區或地標" required /></label><label>單程或來回＊<select name="trip"><option value="oneway">單程</option><option value="return">來回</option></select></label><label>預計等候（小時）<input name="waitHours" type="number" min="0" max="24" step="0.5" value="0" required /></label><label class="full">其他停靠點<input name="stops" maxlength="300" placeholder="選填：停靠地區與預計停留時間" /></label></div></fieldset>
+        <fieldset><legend>02 乘車需求</legend><div class="form-grid"><label>乘客人數＊<input name="passengers" type="number" min="1" max={launch.launched ? "4" : "9"} value="1" required /></label><label>行李件數＊<input name="bags" type="number" min="0" max="20" value="0" required /></label></div><p class="field-note">人數欄位供需求蒐集，非保證載客容量。超出實際車型的需求須另行討論。</p></fieldset>
+        <fieldset><legend>03 聯絡方式</legend><div class="form-grid"><label>聯絡稱呼{launch.launched ? "（選填）" : "＊"}<input name="name" maxlength="40" autocomplete="off" required={!launch.launched} placeholder="方便聯繫的稱呼即可" /></label><label>LINE 或電話{launch.launched ? "（選填）" : "＊"}<input name="contact" maxlength="80" autocomplete="off" required={!launch.launched} placeholder="提供一種即可" /></label><label class="full">其他需求<textarea name="notes" maxlength="500" rows="3" placeholder="選填，請避免填寫健康或其他敏感資料"></textarea></label></div></fieldset>
+        <div class="honeypot" aria-hidden="true"><label>請保留空白<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+        <label class="check"><input name="consent" type="checkbox" required /><span>我已閱讀<a href="/privacy" target="_blank" rel="noreferrer">隱私告知</a>，了解{launch.launched ? "文字只在本頁產生，須自行傳送到 LINE，且詢問不等於預約成功。" : "詢單僅供行程詢問與聯繫使用，須人工確認及完成合法預約程序。"}＊</span></label>
+        <p id="privacy-contact" class="field-note">{launch.launched ? "網站不儲存行程資料。請自行複製並傳送；頁面關閉後不保留表單。" : "資料管理者及聯絡窗口待確認；本機測試資料最多保留 30 天。"}</p><div class="form-actions"><button type="submit" class="button" id="submit-inquiry" hidden={launch.launched} disabled>收單尚未啟用</button><button type="button" class="button secondary" id="make-text">產生 LINE 詢問文字</button></div><p role="status" aria-live="polite" id="form-status"></p><div id="message-box" hidden><label>請確認內容，再自行複製到 LINE<textarea id="message-text" rows="10" readonly></textarea></label><button id="copy-text" type="button" class="button secondary">複製詢問文字</button><p class="field-note">文字只在目前頁面產生；不放進網址、不自動傳給 LINE。</p></div>
+      </form></div></section>
+    <section id="faq" class="wrap section faq-section"><div><p class="eyebrow">BEFORE WE SET OFF</p><h2>出發前，<br />你可能想知道。</h2></div><div class="faq-list">{faqs.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+    <section class="wrap closing"><span class="eyebrow">每一趟重要的行程，都值得提前安排。</span><h2>下次出門，先把回程也安排好。</h2><a class="button" href="#inquiry">一起聊聊這趟行程 ↗</a></section>
+  </main>
+  <div class="mobile-cta"><span>先聊需求，再確認預約</span><a href={launch.launched ? launch.lineUrl : "#inquiry"} class="button small" target={launch.launched ? "_blank" : undefined} rel="noreferrer" data-line-cta>LINE 詢問行程 ↗</a></div>
+  <script>import '../scripts/inquiry.mjs';</script>
+</StudioLayout>

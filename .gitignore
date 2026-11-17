@@ -61,3 +61,8 @@ firebase-debug.log
 /docs/services-release.md
 /tests/services-provider-review.test.mjs
 /docs/services-provider-review.md
+
+# Independently built studio; exclude its sources from travel Tailwind discovery.
+# Selected source files are intentionally tracked with git add -f.
+/studio/
+/.github/workflows/studio-check.yml

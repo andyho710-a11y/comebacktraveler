@@ -1,0 +1,10 @@
+import { randomBytes } from 'node:crypto';
+import { mkdirSync, writeFileSync, existsSync } from 'node:fs';
+import { hashPassword } from '../server/app.mjs';
+const path = new URL('../.runtime/', import.meta.url);
+mkdirSync(path, { recursive: true, mode: 0o700 });
+if (existsSync(new URL('config.json', path))) throw Error('設定已存在，不覆蓋現有金鑰。');
+const password = randomBytes(24).toString('base64url');
+writeFileSync(new URL('config.json', path), JSON.stringify({ mode: 'demo', origin: 'http://127.0.0.1:4330', enabled: true, operator: '', privacyContact: '', retentionDays: 30, legalApproved: false, indexable: false, lineUrl: '', lineId: '', phone: '', gaId: '', analyticsApproved: false, encryptionKey: randomBytes(32).toString('hex'), adminHash: hashPassword(password) }, null, 2), { mode: 0o600, flag: 'wx' });
+writeFileSync(new URL('admin-password.txt', path), password, { mode: 0o600, flag: 'wx' });
+console.log('本機測試設定已建立。管理員密碼位於 studio/.runtime/admin-password.txt，請勿提交或分享。僅供假資料測試。');

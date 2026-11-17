@@ -1,0 +1,38 @@
+---
+import '../styles/studio.css';
+import { publicConfig } from '../lib/public-config.mjs';
+const { title, description, admin = false, serviceType } = Astro.props;
+const launch = publicConfig(process.env);
+const configured = import.meta.env.STUDIO_SITE_URL && !import.meta.env.STUDIO_SITE_URL.includes('.invalid');
+const indexable = configured && import.meta.env.STUDIO_INDEXABLE === 'true' && !admin;
+const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+const canonical = new URL(canonicalPath, Astro.site);
+const graph = [{ '@type': 'WebSite', '@id': new URL('/#website', Astro.site).href, name: '高雄安心長途接送', url: Astro.site?.href, inLanguage: 'zh-TW' }, { '@type': 'WebPage', '@id': canonical.href, name: title, description, url: canonical.href, inLanguage: 'zh-TW', isPartOf: { '@id': new URL('/#website', Astro.site).href } }];
+if (launch.launched && serviceType) graph.push({ '@type': 'Service', name: title, serviceType, description, url: canonical.href, areaServed: ['高雄市楠梓區', '高雄市左營區', '高雄市橋頭區', '高雄市岡山區'], provider: { '@type': 'Organization', name: '高雄安心長途接送', url: Astro.site?.href } });
+---
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title><meta name="description" content={description} />
+    <meta name="robots" content={indexable ? 'index, follow, max-image-preview:large' : 'noindex, nofollow'} />
+    {import.meta.env.STUDIO_GOOGLE_SITE_VERIFICATION && <meta name="google-site-verification" content={import.meta.env.STUDIO_GOOGLE_SITE_VERIFICATION} />}
+    {configured && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" /><meta property="og:locale" content="zh_TW" />
+    <meta property="og:title" content={title} /><meta property="og:description" content={description} />
+    {configured && <><meta property="og:url" content={canonical} /><meta property="og:image" content={new URL('/share.png', Astro.site)} /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /></>}
+    {configured && !admin && <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip" href="#main">跳至主要內容</a>
+    <div class="preview-banner" id="environment">{launch.launched ? '試營運 · LINE 人工詢問行程 · 須確認車隊規範後完成正式預約' : '展示與測試版 · 尚未開放正式預約 · 請勿填寫真實個資'}</div>
+    <header class="header wrap">
+      <a href="/" class="brand" aria-label="高雄安心長途接送首頁"><span class="brand-icon" aria-hidden="true">↗</span><span>高雄安心<span class="brand-sub">長途接送 · {launch.launched ? '個人工作室' : '個人工作室籌備中'}</span></span></a>
+      <nav aria-label="主要選單">{admin ? <a href="/">返回服務首頁</a> : <><a href="/#services">服務項目</a><a href="/#process">預約方式</a><a href="/#faq">常見問題</a></>}</nav>
+      {!admin && <a class="button small" href={launch.launched ? launch.lineUrl : '/#inquiry'} data-line-cta target={launch.launched ? '_blank' : undefined} rel="noreferrer">LINE 詢問行程 <span aria-hidden="true">↗</span></a>}
+    </header>
+    <slot />
+    <footer class="wrap footer"><div><strong>高雄安心長途接送</strong><p>一位駕駛，專心安排每一段路。</p>{launch.launched && <p>一般乘車接送，無醫療、長照特約、陪診或無障礙接送服務。</p>}</div><div><a href="/privacy">個資與隱私告知</a>{!launch.launched && <><span> · </span><a href="/admin">管理員入口</a></>}<p>正式報價、預約、付款及派遣，依現有車隊與主管機關規範辦理。</p>{launch.launched && <p><a href="/cross-county">跨縣市接送</a> · <a href="/senior-round-trip">長輩等候往返</a> · <a href="/half-day-charter">半日包車</a></p>}</div></footer>
+  </body>
+</html>

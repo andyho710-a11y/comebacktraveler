@@ -1,0 +1,34 @@
+name: Check isolated transfer studio
+on:
+  pull_request:
+    paths: ['studio/**', '.github/workflows/studio-check.yml']
+  push:
+    branches: ['codex/kaohsiung-transfer-studio']
+permissions:
+  contents: read
+jobs:
+  studio:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: studio
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: studio/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: node scripts/check-build.mjs
+      - run: npm run build:public
+        env:
+          STUDIO_SITE_URL: https://studio-ci.example.test
+          STUDIO_LINE_URL: https://line.me/ti/p/~synthetic
+          STUDIO_LINE_ID: synthetic
+      - run: npm run check:public
+        env:
+          STUDIO_EXPECTED_ORIGIN: https://studio-ci.example.test
+      - run: npm audit --audit-level=moderate
