@@ -22,6 +22,11 @@
         "source": "/vietnam-jCB-lounge",
         "destination": "/vietnam-jcb-lounge",
         "type": 301
+      },
+      {
+        "source": "/services/{account,admin,dashboard,job,jobs,notifications,post,provider}{,/**,.html}",
+        "destination": "/services",
+        "type": 301
       }
     ],
     "headers": [
@@ -50,19 +55,30 @@
           },
           {
             "key": "Content-Security-Policy",
-            "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' blob: data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self'"
+            "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; form-action 'none'"
           }
         ]
       },
       {
-        "source": "/services/**",
-        "headers": [{"key":"X-Robots-Tag","value":"noindex, nofollow"}]
+        "source": "/services/privacy{,/**,.html}",
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex, nofollow"
+          }
+        ]
       },
       {
         "source": "/services{,/,.html}",
-        "headers": [{"key":"X-Robots-Tag","value":"index, follow"}]
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "index, follow"
+          }
+        ]
       }
-    ]
+    ],
+    "site": "comeback-traveler-web"
   },
   "functions": [
     {

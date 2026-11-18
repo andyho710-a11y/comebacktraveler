@@ -37,7 +37,7 @@ const targetPages = ['/vietnam-mosquito-repellent', '/vietnam-packing-list', '/a
 
 test('Hosting adds exactly the requested uppercase 301 and retains existing URL normalization', () => {
   const hosting = JSON.parse(read('firebase.json')).hosting;
-  assert.deepEqual(hosting.redirects, [{ source: '/vietnam-jCB-lounge', destination: '/vietnam-jcb-lounge', type: 301 }]);
+  assert.deepEqual(hosting.redirects.filter(r => !r.source.startsWith('/services/')), [{ source: '/vietnam-jCB-lounge', destination: '/vietnam-jcb-lounge', type: 301 }]);
   assert.equal(hosting.cleanUrls, true); assert.equal(hosting.trailingSlash, false); assert.deepEqual(hosting.rewrites, [{ source: '/api/vietnam-sourcing', function: { functionId: 'vietnamSourcingIntake', region: 'asia-east1' } }]);
   assert.ok(!readdirSync(new URL('../src/pages/', import.meta.url)).includes('vietnam-jCB-lounge.astro'));
   assert.ok(read('dist/vietnam-jcb-lounge.html').includes('rel="canonical" href="https://comebacktraveler.com/vietnam-jcb-lounge"'));
