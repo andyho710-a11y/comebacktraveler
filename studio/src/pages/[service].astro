@@ -10,6 +10,6 @@ const launch = publicConfig(process.env);
   <main id="main" class="wrap section prose"><p class="breadcrumb"><a href="/">首頁</a> / 服務說明</p><p class="eyebrow">PLAN BEFORE YOU GO</p><h1>{service.heading}</h1><p>{service.intro}</p><p class="trust-note">{service.answer}</p>
     <a class="button" href={launch.launched ? launch.lineUrl : '/#inquiry'} target={launch.launched ? '_blank' : undefined} rel="noreferrer">LINE 詢問這趟行程 ↗</a><p><a href="/#inquiry">先整理行程文字，再自行傳送 →</a></p>
     {service.sections.map(([heading, text]) => <section><h2>{heading}</h2><p>{text}</p></section>)}
-    <section><h2>詢問前，先準備這些資訊</h2><ul>{service.checklist.map(text => <li>{text}</li>)}</ul><p>先填地區即可，不需要完整門牌或敏感資料。網頁整理文字不會自動送出，LINE 詢問不等於預約成功。</p></section><p><a href="/cross-county">跨縣市接送</a> · <a href="/senior-round-trip">長輩外出往返</a> · <a href="/half-day-charter">半日包車</a></p><p class="field-note">更新日期：2026-11-16。實際承接依營業區域、車隊規範及檔期確認。</p>
+    <section><h2>詢問前，先準備這些資訊</h2><ul>{service.checklist.map(text => <li>{text}</li>)}</ul><p>先填地區即可，不需要完整門牌或敏感資料。網頁整理文字不會自動送出，LINE 詢問不等於預約成功。</p></section><p><a href="/cross-county">跨縣市接送</a> · <a href="/senior-round-trip">長輩外出往返</a> · <a href="/half-day-charter">半日包車</a></p><p class="field-note">更新日期：2026-11-18。實際承接依營業區域、車隊規範及檔期確認。</p>
   </main>
 </StudioLayout>

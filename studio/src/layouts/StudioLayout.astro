@@ -33,6 +33,6 @@ if (launch.launched && serviceType) graph.push({ '@type': 'Service', name: title
       {!admin && <a class="button small" href={launch.launched ? launch.lineUrl : '/#inquiry'} data-line-cta target={launch.launched ? '_blank' : undefined} rel="noreferrer">LINE 詢問行程 <span aria-hidden="true">↗</span></a>}
     </header>
     <slot />
-    <footer class="wrap footer"><div><strong>高雄安心長途接送</strong><p>一位駕駛，專心安排每一段路。</p>{launch.launched && <p>一般乘車接送，無醫療、長照特約、陪診或無障礙接送服務。</p>}</div><div><a href="/privacy">個資與隱私告知</a>{!launch.launched && <><span> · </span><a href="/admin">管理員入口</a></>}<p>正式報價、預約、付款及派遣，依現有車隊與主管機關規範辦理。</p>{launch.launched && <p><a href="/cross-county">跨縣市接送</a> · <a href="/senior-round-trip">長輩等候往返</a> · <a href="/half-day-charter">半日包車</a></p>}</div></footer>
+    <footer class="wrap footer"><div><strong>高雄安心長途接送</strong><p>一位駕駛，專心安排每一段路。</p>{launch.launched && <p>一般接送與院內事務陪診；不含醫療照護、長照特約、搬抱移位或無障礙車輛服務。</p>}</div><div><a href="/privacy">個資與隱私告知</a>{!launch.launched && <><span> · </span><a href="/admin">管理員入口</a></>}<p>正式報價、預約、付款及派遣，依現有車隊與主管機關規範辦理。</p>{launch.launched && <p><a href="/cross-county">跨縣市接送</a> · <a href="/senior-round-trip">長輩等候往返</a> · <a href="/half-day-charter">半日包車</a></p>}</div></footer>
   </body>
 </html>

@@ -16,6 +16,11 @@ for (const path of paths) {
 }
 assert.equal(existsSync(join(root, 'admin.html')), false); assert.equal(existsSync(join(root, 'analytics.html')), false);
 const index = readFileSync(join(root, 'index.html'), 'utf8');
+const pricing = JSON.parse(readFileSync('src/data/pricing.json', 'utf8'));
+for (const plan of pricing.packages) assert.ok(index.includes(plan.price.toLocaleString('en-US')), 'Missing published price');
+assert.ok(index.includes('2 小時 $800 起，交通另計'));
+assert.ok(index.includes('並非市場最低'));
+assert.doesNotMatch(index, /無醫療、長照特約、陪診或/);
 assert.match(index, /data-launch-mode="line-only"/); assert.match(index, /網站不儲存行程資料|網站不儲存/);
 const sitemap = readFileSync(join(root, 'sitemap.xml'), 'utf8'); assert.equal((sitemap.match(/<loc>/g) || []).length, 5);
 for (const path of paths) assert.ok(sitemap.includes(`${expected}/${path}`));
