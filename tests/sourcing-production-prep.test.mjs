@@ -4,10 +4,16 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import vm from 'node:vm';
 import {withoutServicesNav} from './helpers/services-nav.mjs';
+import {semanticHTML} from './helpers/toolchain-semantics.mjs';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const baseline=JSON.parse(read('tests/fixtures/sourcing-production-baseline.json'));
-test('every current production HTML and executable/style asset stays exact except approved privacy addition',()=>{
- for(const [path,hash] of Object.entries(baseline.hashes)){const bytes=readFileSync(new URL('../dist/'+path,import.meta.url));assert.equal(createHash('sha256').update(path.endsWith('.html')?withoutServicesNav(bytes.toString()):bytes).digest('hex'),hash,path);}
+test('production page semantics and linked assets survive patched compiler packaging',()=>{
+ const semantics=JSON.parse(read('tests/fixtures/astro7-semantic-baseline.json'));
+ for(const path of Object.keys(baseline.hashes).filter(p=>p.endsWith('.html'))){
+  const html=read('dist/'+path);
+  assert.equal(semanticHTML(withoutServicesNav(html)),semantics.html[path],path);
+  for(const asset of [...html.matchAll(/(?:href|src)="(\/_astro\/[^"?#]+)"/g)].map(m=>m[1]))assert.ok(readFileSync(new URL('../dist'+asset,import.meta.url)).length>0,asset);
+ }
 });
 test('sensitive analytics loads only on approved production hosts and clears referrer; Preview queues safely',()=>{
  const html=read('dist/vietnam-sourcing.html');

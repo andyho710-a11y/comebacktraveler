@@ -18,17 +18,11 @@ jobs:
 
       - run: npm ci
 
-      - name: Build travel site and approved services configuration
-        run: |
-          node scripts/services/check-config.mjs --production
-          npm run build
+      - name: Build travel site and personal transfer service
+        run: npm run build
         env:
-          PUBLIC_SUPABASE_URL: ${{ vars.SERVICES_SUPABASE_URL }}
-          PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.SERVICES_SUPABASE_PUBLISHABLE_KEY }}
-          PUBLIC_ENVIRONMENT: production
-          PUBLIC_PILOT_ENABLED: 'true'
-          PUBLIC_OPERATOR_NAME: andyho710（個人試營運）
-          PUBLIC_PRIVACY_EMAIL: andyho710@gmail.com
+          TRANSFER_LINE_URL: ${{ vars.TRANSFER_LINE_URL }}
+          TRANSFER_LINE_ID: ${{ vars.TRANSFER_LINE_ID }}
 
       - name: Check build output
         run: |

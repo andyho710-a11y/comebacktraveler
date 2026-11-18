@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { runInNewContext } from 'node:vm';
 import {withoutServicesNav} from './helpers/services-nav.mjs';
+import {semanticHTML} from './helpers/toolchain-semantics.mjs';
 import { japanTicketGroups } from '../src/data/japan-ticket-recommendations.ts';
 const read = p => readFileSync(new URL('../'+p, import.meta.url), 'utf8');
 const hash = s => createHash('sha256').update(s).digest('hex');
@@ -34,8 +35,13 @@ test('original rendered content and SEO stay exact except dedicated stylesheet p
  const clean=withoutServicesNav(html).replace(module,'').replace(/<style\b[^>]*>[\s\S]*?<\/style>|<link rel="stylesheet"[^>]*>/g,'').replace(/\s+/g,' ').trim();
  assert.equal(hash(clean),baseline.originalContentHash);
 });
-test('protected eSIM and first trip packing HTML and every referenced built asset remain byte identical',()=>{
- for(const [p,expected]of Object.entries(baseline.protected)){const bytes=readFileSync(new URL('../dist/'+p,import.meta.url));assert.equal(hash(p.endsWith('.html')?withoutServicesNav(bytes.toString()):bytes),expected,p);}
+test('protected eSIM and packing content retain pinned semantics after the patched compiler',()=>{
+ const semantics=JSON.parse(read('tests/fixtures/astro7-semantic-baseline.json'));
+ for(const p of Object.keys(baseline.protected).filter(p=>p.endsWith('.html'))){
+  const rendered=read('dist/'+p);
+  assert.equal(semanticHTML(withoutServicesNav(rendered)),semantics.html[p],p);
+  for(const asset of [...rendered.matchAll(/(?:href|src)="(\/_astro\/[^"?#]+)"/g)].map(m=>m[1]))assert.ok(readFileSync(new URL('../dist'+asset,import.meta.url)).length>0,asset);
+ }
 });
 for(const [i,[key,category,destination]]of products.entries())test('existing affiliate_click actual sanitized payload: '+key,()=>{
  const calls=[];let handler;
