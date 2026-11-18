@@ -38,12 +38,11 @@ test('personal service CSP removes marketplace connections and disables form sub
  assert.equal(config.hosting.headers[1].source,'/services/privacy{,/**,.html}');
 });
 
-test('price comparisons preserve equal published time and mileage and do not invent a market minimum',()=>{
- const reference=pricing.reference;
+test('trial pricing retains approved rates without competitor comparisons or invented discounts',()=>{
+ assert.deepEqual(pricing.packages.map(p=>[p.hours,p.km,p.price]),[[4,140,2800],[5,160,3200],[8,220,4200]]);
+ assert.equal(pricing.marketing.label,'試營運優惠');
+ assert.doesNotMatch(read('dist/services.html'),/LINE\s*GO|linego\.me|公開基本價比較|基本價少|省\s*\$/i);
  for(const plan of pricing.packages){
-   assert.equal(plan.reference,reference.basePrice+(plan.hours-reference.baseHours)*reference.hourly);
-   assert.equal(plan.km,reference.baseKm+(plan.hours-reference.baseHours)*reference.additionalKm);
-   assert.ok(plan.price<plan.reference);
    assert.ok(read('dist/services.html').includes('$'+plan.price.toLocaleString('en-US')));
  }
  assert.equal(pricing.companion.minimumPrice,pricing.companion.hourly*pricing.companion.minimumHours);
@@ -55,7 +54,7 @@ test('price comparisons preserve equal published time and mileage and do not inv
    assert.ok(b.price<=a.price+increments*pricing.overtime.price);
    assert.equal(b.km,a.km+increments*pricing.overtime.additionalKm);
  }
- assert.match(pricing.reference.note,/不代表全市場最低/);
+ assert.equal(pricing.reference,undefined);
  assert.match(read('dist/services.html'),/交通費另外報價/);
 });
 
