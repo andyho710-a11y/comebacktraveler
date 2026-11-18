@@ -2,18 +2,37 @@
   "updated": "2026-11-18",
   "currency": "TWD",
   "packages": [
-    { "hours": 4, "km": 140, "price": 2800, "label": "半日包車", "reference": 3795 },
-    { "hours": 5, "km": 160, "price": 3200, "label": "彈性半日", "reference": 4290 },
-    { "hours": 8, "km": 220, "price": 4200, "label": "全日包車", "reference": 5775 }
+    {
+      "hours": 4,
+      "km": 140,
+      "price": 2800,
+      "label": "半日包車"
+    },
+    {
+      "hours": 5,
+      "km": 160,
+      "price": 3200,
+      "label": "彈性半日"
+    },
+    {
+      "hours": 8,
+      "km": 220,
+      "price": 4200,
+      "label": "全日包車"
+    }
   ],
-  "overtime": { "minutes": 30, "price": 200, "additionalKm": 10 },
+  "overtime": {
+    "minutes": 30,
+    "price": 200,
+    "additionalKm": 10
+  },
   "extraKm": 15,
-  "companion": { "hourly": 400, "minimumHours": 2, "minimumPrice": 800, "extraMinutes": 30, "extraPrice": 200 },
-  "reference": {
-    "name": "LINE GO 舒適四人座",
-    "url": "https://www.linego.me/charter_service",
-    "baseHours": 3, "baseKm": 120, "basePrice": 3300, "hourly": 495, "additionalKm": 20,
-    "note": "比較公開基本費率；車款、取消條件、包含項目及最終報價不同，不代表全市場最低。"
+  "companion": {
+    "hourly": 400,
+    "minimumHours": 2,
+    "minimumPrice": 800,
+    "extraMinutes": 30,
+    "extraPrice": 200
   },
   "conditions": [
     "適用平日 07:00-22:00，楠梓、左營、橋頭、岡山上車並於同區域結束；其他地區、跨縣市、山區、連假及夜間另報。",
@@ -24,5 +43,9 @@
     "可協助掛號、候診、繳費、領藥；不含醫療照護、搬抱移位或專業病情解讀。陪診與包車搭配時先確認組合總價，不直接疊加兩套時薪。",
     "5 人座包含駕駛，最多 4 位乘客；行李與安全座椅依實際配置確認。取消、改期及付款條件須於預約前確認。",
     "本表為行程規劃參考方案；實際承接、計價及正式預約須依車隊規範確認，詢問不等於預約成立。"
-  ]
+  ],
+  "marketing": {
+    "label": "試營運優惠",
+    "note": "目前提供試營運優惠。日後如有價格調整，將更新價目並於預約前說明確認；實際承接、費用與預約仍須人工確認。"
+  }
 }
