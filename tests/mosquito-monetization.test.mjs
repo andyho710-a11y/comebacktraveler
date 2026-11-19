@@ -69,6 +69,8 @@ test('Article and FAQ schemas remain exact', () => {
 });
 test('main article, FAQ, quick list and internal links are preserved outside decision blocks', () => {
   const editorial = text => text.match(/<article class="article">([\s\S]*?)<\/article>/)[1]
+    .replace(' id="mosquito-table-label"', '')
+    .replace(/<div class="mini-table-wrap reading-table" role="region" tabindex="0" aria-labelledby="mosquito-table-label">\s*(<table class="mini-table">[\s\S]*?<\/table>)\s*<\/div>/, '$1')
     .replace(/<section class="(?:quick-decision|commercial-decision)"[\s\S]*?<\/section>/g, '')
     .replace(/<div class="(?:product-card|shopee-block)">[\s\S]*?\n  <\/div>/g, '')
     .replace(/<p class="disclosure">[\s\S]*?<\/p>/g, '').replace(/<AffiliateDisclosure\s*\/>/g, '').replace(/\s+/g, ' ').trim();

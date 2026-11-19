@@ -154,8 +154,9 @@ test('unreplaced parked CTAs retain safe internal navigation without affiliate a
   assert.ok(!/zf2Z8|z4xjt/.test(read('dist/esim/korea.html')));
 });
 
-test('JOYTEL source remains exact outside the approved purchase anchors and responsive CTA style', () => {
-  const normalize = text => text.replace(/<div class="cta-box">[\s\S]*?<\/div>/g, '').replace(/<a\b[^>]*>[\s\S]*?<\/a>/g, '').replace(/<p class="cta-label"[^>]*>[\s\S]*?<\/p>/g, '').replace(/<p>\s*<\/p>/g,'').replace(/import \{ esimAffiliateUrls \}[^;]+;/,'').replace(/    \.cta-box [^\n]+\n/g,'').replace(/\s+/g,' ').trim();
+test('JOYTEL source copy remains exact outside the approved purchase anchors', () => {
+  // The full stylesheet and head imports are pinned by the site-wide source snapshot.
+  const normalize = text => text.replace("import ReadingThemeHead from '../../components/ReadingThemeHead.astro';", '').replace('<ReadingThemeHead />', '').replace(/<style>[\s\S]*?<\/style>/, '').replace(/<div class="cta-box">[\s\S]*?<\/div>/g, '').replace(/<a\b[^>]*>[\s\S]*?<\/a>/g, '').replace(/<p class="cta-label"[^>]*>[\s\S]*?<\/p>/g, '').replace(/<p>\s*<\/p>/g,'').replace(/import \{ esimAffiliateUrls \}[^;]+;/,'').replace(/\s+/g,' ').trim();
   assert.equal(normalize(read('src/pages/esim/joytel.astro')),normalize(routingBaseline.pages['esim/joytel'].source));
 });
 

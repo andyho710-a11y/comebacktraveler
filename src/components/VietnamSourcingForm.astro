@@ -53,17 +53,17 @@ const productFields = [
   legend { font-weight: 700; padding: 0 8px; } label { font-weight: 500; }
   .vs-fields, .vs-checks { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
   .vs-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-  input:not([type=checkbox]), select, textarea { box-sizing: border-box; width: 100%; min-width: 0; max-width: 100%; font: inherit; font-size: 16px; padding: 11px; border: 1px solid #827765; border-radius: 4px; color: var(--ink); background: white; }
+  input:not([type=checkbox]), select, textarea { box-sizing: border-box; width: 100%; min-width: 0; max-width: 100%; font: inherit; font-size: 16px; padding: 11px; border: 1px solid #827765; border-radius: 4px; color: var(--ink); background: light-dark(white, var(--reading-surface)); }
   textarea { resize: vertical; } input[aria-invalid=true], textarea[aria-invalid=true], select[aria-invalid=true] { border-color: var(--accent); }
   .vs-check { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; line-height: 1.7; }
   input[type=checkbox] { flex: 0 0 20px; width: 20px; height: 20px; margin-top: 4px; accent-color: var(--accent); }
-  .vs-consent { margin-top: 24px; } .vs-error { color: #a5281d; font-size: 14px; } .vs-error:empty { display: none; }
+  .vs-consent { margin-top: 24px; } .vs-error { color: light-dark(#a5281d, var(--reading-accent)); font-size: 14px; } .vs-error:empty { display: none; }
   .vs-notice, .vs-upload { background: var(--paper-warm); padding: 16px; border-left: 3px solid var(--gold); }
   .vs-upload { margin-top: 18px; } .vs-upload p { margin: 8px 0 0; }
   .vs-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-  button { font: inherit; font-weight: 700; border: none; background: var(--accent); color: white; border-radius: 4px; padding: 14px 20px; width: 100%; margin-top: 18px; cursor: pointer; white-space: normal; }
+  button { font: inherit; font-weight: 700; border: none; background: var(--reading-action); color: var(--reading-action-text); border-radius: 4px; padding: 14px 20px; width: 100%; margin-top: 18px; cursor: pointer; white-space: normal; }
   button:disabled { opacity: .75; cursor: wait; } .vs-small { font-size: 14px; color: var(--ink-light); }
   #rfq-feedback:not(:empty) { padding: 16px; border: 1px solid var(--border); margin-top: 20px; }
-  a { color: var(--accent); text-decoration: underline; } :is(input, textarea, select, button, a):focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  a { color: var(--accent); text-decoration: underline; } :is(input, textarea, select, button, a):focus-visible { outline: 2px solid var(--reading-focus); outline-offset: 3px; }
   @media (min-width: 700px) { .vs-fields, .vs-checks { grid-template-columns: repeat(2, minmax(0, 1fr)); } .vs-wide { grid-column: 1 / -1; } fieldset { padding: 24px; } button { width: auto; } }
 </style>

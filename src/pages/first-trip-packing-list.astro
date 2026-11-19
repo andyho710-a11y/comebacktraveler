@@ -1,4 +1,5 @@
 ---
+import ReadingThemeHead from '../components/ReadingThemeHead.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -16,6 +17,7 @@ const canonical = "https://comebacktraveler.com/first-trip-packing-list";
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <ReadingThemeHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -48,14 +50,14 @@ const canonical = "https://comebacktraveler.com/first-trip-packing-list";
   })} />
   <style>
     :root {
-      --ink: #1a1208;
-      --ink-light: #4a3f2f;
-      --paper: #faf8f3;
-      --paper-warm: #f2ede0;
-      --accent: #c0392b;
-      --gold: #b8860b;
-      --green: #1c7c4a;
-      --border: #d4c9b0;
+      --ink: var(--reading-ink);
+      --ink-light: var(--reading-muted);
+      --paper: var(--reading-paper);
+      --paper-warm: var(--reading-warm);
+      --accent: var(--reading-accent);
+      --gold: var(--reading-gold);
+      --green: light-dark(#1c7c4a, var(--reading-success));
+      --border: var(--reading-border);
       --serif: 'Noto Serif TC', serif;
       --sans: 'Noto Sans TC', sans-serif;
     }
@@ -67,7 +69,7 @@ const canonical = "https://comebacktraveler.com/first-trip-packing-list";
     h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(27px, 4.5vw, 40px); line-height: 1.4; margin-bottom: 20px; }
     .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.75; }
     .meta { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
-    .author-dot { width: 42px; height: 42px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .author-dot { width: 42px; height: 42px; border-radius: 50%; background: var(--reading-inverse); color: var(--reading-inverse-text); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
 
     .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
@@ -77,7 +79,7 @@ const canonical = "https://comebacktraveler.com/first-trip-packing-list";
     h2::before { content: ''; position: absolute; left: 0; top: 5px; width: 4px; height: 76%; background: var(--accent); border-radius: 2px; }
     strong { color: var(--ink); font-weight: 600; }
     .article a { color: var(--accent); }
-    .article :global(.recommendations .recommendation-cta) { color: #fff; }
+    .article :global(.recommendations .recommendation-cta) { color: var(--reading-action-text); }
     .article :global(.recommendations h2) { padding-left: 0; }
     .article :global(.recommendations h2::before) { content: none; }
     hr { border: none; border-top: 1px solid var(--border); margin: 44px 0; }
@@ -142,13 +144,13 @@ const canonical = "https://comebacktraveler.com/first-trip-packing-list";
 
   <p>這篇清單寫給「久久才飛一次」的你。不用帶很多，但重要的不能漏。</p>
 
-  <aside style="border:1px solid #d4c9b0;background:#f2ede0;border-radius:8px;padding:14px 18px;margin:20px 0;font-size:14px;line-height:1.75;">
+  <aside style="border:1px solid var(--reading-border);background:var(--reading-warm);border-radius:8px;padding:14px 18px;margin:20px 0;font-size:14px;line-height:1.75;">
     <strong>行李清單系列｜看你要去哪、要的是哪一種：</strong>
     <ul style="margin:8px 0 0;padding-left:18px;">
       <li><strong>第一次出國行李清單（你正在看這篇）</strong>——通用、不分國家：證件、3C、藥品基本款。</li>
-      <li><a href="/vietnam-packing-list" style="color:#c0392b;">越南行李清單</a>——帶多少、怎麼裝、什麼該上手提。</li>
-      <li><a href="/vietnam-travel-essentials" style="color:#c0392b;">越南必備小物推薦</a>——要帶哪些物品、為什麼。</li>
-      <li><a href="/vietnam-girls-packing" style="color:#c0392b;">越南女生旅行必帶</a>——女生專屬：防曬、私密護理、防身、美妝。</li>
+      <li><a href="/vietnam-packing-list" style="color:var(--reading-accent);">越南行李清單</a>——帶多少、怎麼裝、什麼該上手提。</li>
+      <li><a href="/vietnam-travel-essentials" style="color:var(--reading-accent);">越南必備小物推薦</a>——要帶哪些物品、為什麼。</li>
+      <li><a href="/vietnam-girls-packing" style="color:var(--reading-accent);">越南女生旅行必帶</a>——女生專屬：防曬、私密護理、防身、美妝。</li>
     </ul>
   </aside>
 

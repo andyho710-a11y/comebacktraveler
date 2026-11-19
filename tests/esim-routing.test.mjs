@@ -77,11 +77,15 @@ test('all unrelated affiliate URLs and their order remain unchanged',()=>{
 for(const [p,original]of Object.entries(baseline.pages))test('SEO head and H1 unchanged: '+p,()=>{
  const current=read('dist/'+p+'.html');const head=[...current.matchAll(/<title>.*?<\/title>|<meta name="description"[^>]*>|<link rel="canonical"[^>]*>|<h1\b[^>]*>.*?<\/h1>|<script[^>]*type="application\/ld\+json"[^>]*>.*?<\/script>/gs)].map(m=>m[0]);assert.deepEqual(head,original.head);
 });
-test('mosquito experiment source, tracking and freeze document are byte-identical',()=>{
+test('mosquito experiment source matches the approved theme revision; tracking and freeze document stay exact',()=>{
  for(const [p,hash]of Object.entries(baseline.protected))assert.equal(createHash('sha256').update(read(p).replace(/\r\n/g,'\n')).digest('hex'),hash,p);
 });
 
-test('main body remains exact outside purchase blocks, links and the explicit merchant clarification',()=>{
- const normalize=s=>s.replace(/^---[\s\S]*?---/,'').replace(/<style\b[^>]*>[\s\S]*?<\/style>/g,'').replace(/<script\b[^>]*>[\s\S]*?<\/script>/g,'').replace(/<div class="cta-box">[\s\S]*?<\/div>/g,'').replace(/<a\b[^>]*>[\s\S]*?<\/a>/g,'').replace(/<p>(?:此連結為 JOYTEL 日本三電信商品|這是另一個可購買選項：KKday)[\s\S]*?<\/p>/g,'').replace(/\s+/g,' ').trim();
+test('main body remains exact outside purchase blocks, links, merchant clarification and reading-theme markup',()=>{
+ const normalize=s=>s.replace(/^---[\s\S]*?---/,'').replace('<ReadingThemeHead />','')
+  .replace(' id="esim-comparison-label"','')
+  .replace('class="table-wrap reading-table" role="region" tabindex="0" aria-labelledby="esim-comparison-label"','class="table-wrap"')
+  .replace('background:light-dark(#fef9f5, var(--reading-warm));','background:#fef9f5;')
+  .replace(/<style\b[^>]*>[\s\S]*?<\/style>/g,'').replace(/<script\b[^>]*>[\s\S]*?<\/script>/g,'').replace(/<div class="cta-box">[\s\S]*?<\/div>/g,'').replace(/<a\b[^>]*>[\s\S]*?<\/a>/g,'').replace(/<p>(?:此連結為 JOYTEL 日本三電信商品|這是另一個可購買選項：KKday)[\s\S]*?<\/p>/g,'').replace(/\s+/g,' ').trim();
  for(const [path,original]of Object.entries(baseline.pages)) assert.equal(normalize(read('src/pages/'+path+'.astro')),normalize(original.source),path);
 });

@@ -1,4 +1,5 @@
 ---
+import ReadingThemeHead from '../components/ReadingThemeHead.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -13,6 +14,7 @@ const canonical = "https://comebacktraveler.com/drink-a-glass-of-water";
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <ReadingThemeHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -47,13 +49,13 @@ const canonical = "https://comebacktraveler.com/drink-a-glass-of-water";
   })} />
   <style>
     :root {
-      --ink: #1a1208;
-      --ink-light: #4a3f2f;
-      --paper: #faf8f3;
-      --paper-warm: #f2ede0;
-      --accent: #c0392b;
-      --gold: #b8860b;
-      --border: #d4c9b0;
+      --ink: var(--reading-ink);
+      --ink-light: var(--reading-muted);
+      --paper: var(--reading-paper);
+      --paper-warm: var(--reading-warm);
+      --accent: var(--reading-accent);
+      --gold: var(--reading-gold);
+      --border: var(--reading-border);
       --serif: 'Noto Serif TC', serif;
       --sans: 'Noto Sans TC', sans-serif;
     }
@@ -65,7 +67,7 @@ const canonical = "https://comebacktraveler.com/drink-a-glass-of-water";
     h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(27px, 4.5vw, 40px); line-height: 1.4; margin-bottom: 20px; }
     .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.75; }
     .meta { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
-    .author-dot { width: 42px; height: 42px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .author-dot { width: 42px; height: 42px; border-radius: 50%; background: var(--reading-inverse); color: var(--reading-inverse-text); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
 
     .article { max-width: 720px; margin: 0 auto; padding: 0 24px 80px; }
@@ -82,7 +84,7 @@ const canonical = "https://comebacktraveler.com/drink-a-glass-of-water";
     .reflect p { margin-bottom: 0.6em; color: var(--ink); }
     .reflect p:last-child { margin-bottom: 0; }
 
-    .helpline { margin: 32px 0 0; padding: 16px 20px; border: 1px solid var(--border); background: #f4f7f3; border-radius: 8px; font-size: 14px; line-height: 1.8; color: var(--ink-light); }
+    .helpline { margin: 32px 0 0; padding: 16px 20px; border: 1px solid var(--border); background: light-dark(#f4f7f3, var(--reading-success-surface)); border-radius: 8px; font-size: 14px; line-height: 1.8; color: var(--ink-light); }
     .helpline strong { color: var(--accent); }
 
     .more-reading { margin: 44px 0 0; padding-top: 28px; border-top: 1px solid var(--border); display: flex; gap: 20px; flex-wrap: wrap; }

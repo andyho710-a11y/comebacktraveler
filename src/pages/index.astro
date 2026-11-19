@@ -317,13 +317,13 @@ const homeStructuredData = {
 
 <style>
   .root {
-    --ink: #1a1208;
-    --ink-light: #4a3f2f;
-    --paper: #faf8f3;
-    --paper-warm: #f2ede0;
-    --accent: #c0392b;
-    --gold: #b8860b;
-    --border: #d4c9b0;
+    --ink: var(--reading-ink);
+    --ink-light: var(--reading-muted);
+    --paper: var(--reading-paper);
+    --paper-warm: var(--reading-warm);
+    --accent: var(--reading-accent);
+    --gold: var(--reading-gold);
+    --border: var(--reading-border);
     --serif: 'Noto Serif TC', serif;
     --sans: 'Noto Sans TC', sans-serif;
     background: var(--paper);
@@ -398,8 +398,8 @@ const homeStructuredData = {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--reading-inverse);
+    color: var(--reading-inverse-text);
     font-family: var(--serif);
     font-weight: 900;
     font-size: 15px;
@@ -419,7 +419,7 @@ const homeStructuredData = {
   .article p { margin-bottom: 1.4em; }
   .ai-answer { padding-top: 0; }
   .answer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 20px 0; }
-  .answer-card { border: 1px solid var(--border); border-radius: 8px; background: #fffdf8; padding: 18px; }
+  .answer-card { border: 1px solid var(--border); border-radius: 8px; background: var(--reading-surface); padding: 18px; }
   .answer-card h3 { font-family: var(--serif); font-size: 16px; margin: 0 0 8px; }
   .answer-card p { font-size: 14px; line-height: 1.7; margin: 0; color: var(--ink-light); }
   .answer-links { font-size: 15px; }
@@ -457,7 +457,7 @@ const homeStructuredData = {
     line-height: 1.9;
   }
   .story-box strong { color: var(--ink); font-weight: 600; }
-  .story-link-sep { color: var(--border); margin: 0 8px; }
+  .story-link-sep { color: var(--reading-muted); margin: 0 8px; }
 
   /* Intro content block */
   .intro-content { padding-bottom: 0; }
@@ -499,7 +499,7 @@ const homeStructuredData = {
     font-size: 13.5px;
     font-weight: 600;
     text-decoration: none;
-    background: #fffdf9;
+    background: light-dark(#fffdf9, var(--reading-surface));
   }
   .category-nav a:hover {
     border-color: var(--accent);
@@ -512,7 +512,7 @@ const homeStructuredData = {
     border: 1.5px solid var(--border);
     border-left: 5px solid var(--accent);
     border-radius: 8px;
-    background: #fffdf8;
+    background: var(--reading-surface);
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 24px;
@@ -553,8 +553,8 @@ const homeStructuredData = {
     display: inline-flex;
     padding: 11px 15px;
     border-radius: 6px;
-    background: var(--accent);
-    color: #fff;
+    background: var(--reading-action);
+    color: var(--reading-action-text);
     text-decoration: none;
   }
 
@@ -583,14 +583,14 @@ const homeStructuredData = {
     padding: 12px 18px;
     border: 1.5px solid var(--accent);
     border-radius: 8px;
-    background: #fef9f5;
+    background: light-dark(#fef9f5, var(--reading-warm));
     color: var(--accent);
     font-weight: 600;
     font-size: 14.5px;
     text-decoration: none;
     transition: background 0.15s;
   }
-  .quiz-cta:hover { background: #fbeee6; }
+  .quiz-cta:hover { background: light-dark(#fbeee6, var(--reading-warm)); }
 
   /* Home full-width sections (出國前準備 / 旅遊 / eSIM / 人生筆記) */
   .home-section { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
@@ -711,20 +711,20 @@ const homeStructuredData = {
     overflow: hidden;
   }
   .subscribe-inner {
-    background: var(--ink);
+    background: var(--reading-inverse);
     padding: 36px 40px;
     text-align: center;
-    color: var(--paper);
+    color: var(--reading-inverse-text);
   }
   .subscribe-icon { font-size: 28px; margin-bottom: 12px; }
   .subscribe-title {
     font-family: var(--serif);
     font-weight: 900;
     font-size: 22px;
-    color: var(--paper);
+    color: var(--reading-inverse-text);
     margin-bottom: 10px;
   }
-  .subscribe-desc { font-size: 15px; color: #d4c9b0; margin-bottom: 24px; line-height: 1.6; }
+  .subscribe-desc { font-size: 15px; color: var(--reading-inverse-muted); margin-bottom: 24px; line-height: 1.6; }
   .subscribe-form { max-width: 440px; margin: 0 auto; }
   .subscribe-row { display: flex; gap: 10px; }
   .subscribe-input {
@@ -732,32 +732,31 @@ const homeStructuredData = {
     font-family: var(--sans);
     font-size: 15px;
     padding: 12px 16px;
-    border: 1.5px solid #4a3f2f;
+    border: 1.5px solid light-dark(#4a3f2f, var(--reading-border));
     border-radius: 4px;
-    background: #2c1f0f;
-    color: var(--paper);
-    outline: none;
+    background: light-dark(#2c1f0f, var(--reading-inverse));
+    color: var(--reading-inverse-text);
     transition: border-color 0.15s;
   }
   .subscribe-input:focus { border-color: var(--accent); }
-  .subscribe-input::placeholder { color: #6b5a46; }
+  .subscribe-input::placeholder { color: var(--reading-inverse-muted); }
   .subscribe-btn {
     font-family: var(--serif);
     font-weight: 700;
     font-size: 15px;
     padding: 12px 24px;
-    background: var(--accent);
-    color: #fff;
+    background: var(--reading-action);
+    color: var(--reading-action-text);
     border: none;
     border-radius: 4px;
     cursor: pointer;
     white-space: nowrap;
     transition: background 0.15s;
   }
-  .subscribe-btn:hover { background: #a93226; }
-  .subscribe-note { font-size: 12px; color: #6b5a46; margin-top: 12px; margin-bottom: 0; }
-  .subscribe-success { padding: 16px; background: #1c5e15; border-radius: 4px; margin-top: 16px; }
-  .subscribe-success p { margin: 0; color: #d5e8d4; font-size: 15px; }
+  .subscribe-btn:hover { background: var(--reading-action-hover); }
+  .subscribe-note { font-size: 12px; color: var(--reading-inverse-muted); margin-top: 12px; margin-bottom: 0; }
+  .subscribe-success { padding: 16px; background: light-dark(#1c5e15, var(--reading-success-surface)); border-radius: 4px; margin-top: 16px; }
+  .subscribe-success p { margin: 0; color: light-dark(#d5e8d4, var(--reading-success)); font-size: 15px; }
 
   /* Footer */
   .site-footer {

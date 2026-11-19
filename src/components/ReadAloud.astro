@@ -31,18 +31,18 @@ const { target = '.article' } = Astro.props;
     font-family: 'Noto Sans TC', sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: #c0392b;
-    background: #fef9f5;
-    border: 1.5px solid #c0392b;
+    color: var(--reading-accent);
+    background: light-dark(#fef9f5, var(--reading-warm));
+    border: 1.5px solid var(--reading-accent);
     border-radius: 999px;
     padding: 8px 18px;
     cursor: pointer;
     transition: background 0.15s, color 0.15s;
   }
-  .ra-btn:hover { background: #c0392b; color: #fff; }
-  .ra-btn[aria-pressed="true"] { background: #c0392b; color: #fff; }
+  .ra-btn:hover { background: var(--reading-action); color: var(--reading-action-text); }
+  .ra-btn[aria-pressed="true"] { background: var(--reading-action); color: var(--reading-action-text); }
   .ra-icon { font-size: 12px; line-height: 1; }
-  .ra-status { font-size: 13px; color: #4a3f2f; }
+  .ra-status { font-size: 13px; color: var(--reading-muted); }
 </style>
 
 <script>

@@ -47,11 +47,11 @@ const links = isEnglish
 
 <style>
   .cbt-footer {
-    --f-ink: #1a1208;
-    --f-ink-light: #4a3f2f;
-    --f-paper: #faf8f3;
-    --f-accent: #c0392b;
-    border-top: 2px solid var(--f-ink);
+    --f-ink: var(--reading-ink);
+    --f-ink-light: var(--reading-muted);
+    --f-paper: var(--reading-paper);
+    --f-accent: var(--reading-accent);
+    border-top: 2px solid light-dark(#1a1208, var(--reading-border));
     padding: 40px 24px;
     text-align: center;
     font-size: 13px;

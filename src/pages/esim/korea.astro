@@ -1,4 +1,5 @@
 ---
+import ReadingThemeHead from '../../components/ReadingThemeHead.astro';
 import SiteNav from '../../components/SiteNav.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
@@ -14,6 +15,7 @@ const description = "去韓國不用再找換錢所換 SIM 卡。依官方線路
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <ReadingThemeHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -35,13 +37,13 @@ const description = "去韓國不用再找換錢所換 SIM 卡。依官方線路
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #1a1208;
-      --ink-light: #4a3f2f;
-      --paper: #faf8f3;
-      --paper-warm: #f2ede0;
-      --accent: #c0392b;
-      --gold: #b8860b;
-      --border: #d4c9b0;
+      --ink: var(--reading-ink);
+      --ink-light: var(--reading-muted);
+      --paper: var(--reading-paper);
+      --paper-warm: var(--reading-warm);
+      --accent: var(--reading-accent);
+      --gold: var(--reading-gold);
+      --border: var(--reading-border);
       --serif: 'Noto Serif TC', serif;
       --sans: 'Noto Sans TC', sans-serif;
     }
@@ -57,7 +59,7 @@ const description = "去韓國不用再找換錢所換 SIM 卡。依官方線路
     h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
     .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
     .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
-    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--reading-inverse); color: var(--reading-inverse-text); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
 
     .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
@@ -69,28 +71,28 @@ const description = "去韓國不用再找換錢所換 SIM 卡。依官方線路
     h3 { font-family: var(--serif); font-weight: 600; font-size: 20px; margin: 32px 0 10px; }
 
     .recommend-card { border: 2px solid var(--ink); border-radius: 8px; padding: 28px 32px; margin: 32px 0; }
-    .recommend-card.top { border-color: var(--accent); background: #fef9f5; }
+    .recommend-card.top { border-color: var(--accent); background: light-dark(#fef9f5, var(--reading-warm)); }
     .card-rank { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
     .card-title { font-family: var(--serif); font-weight: 900; font-size: 22px; margin-bottom: 12px; }
     .card-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
     .tag { font-size: 12px; padding: 3px 10px; border-radius: 10px; background: var(--paper-warm); color: var(--ink-light); font-weight: 500; }
-    .tag-red { background: #fde8e8; color: #8b1a1a; }
+    .tag-red { background: var(--reading-alert-surface); color: var(--reading-alert); }
     .card-pros { margin: 16px 0; }
     .card-pros li { list-style: none; padding: 4px 0; font-size: 15px; }
-    .card-pros li::before { content: '✓ '; color: #1D9E75; font-weight: 600; }
-    .card-cons li::before { content: '△ '; color: #b8860b; font-weight: 600; }
+    .card-pros li::before { content: '✓ '; color: light-dark(#237550, var(--reading-success)); font-weight: 600; }
+    .card-cons li::before { content: '△ '; color: var(--reading-gold); font-weight: 600; }
     .card-price { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--accent); margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px; }
 
     .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
     .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
 
-    .cta-box { background: var(--ink); color: var(--paper); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
-    .cta-box p { color: #d4c9b0; margin-bottom: 20px; font-size: 16px; }
-    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
-    .cta-btn:hover { background: #a93226; }
+    .cta-box { background: var(--reading-inverse); color: var(--reading-inverse-text); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
+    .cta-box p { color: var(--reading-inverse-muted); margin-bottom: 20px; font-size: 16px; }
+    .cta-btn { display: inline-block; background: var(--reading-action); color: var(--reading-action-text); font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
+    .cta-btn:hover { background: var(--reading-action-hover); }
     .cta-box .cta-btn { max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; padding-inline: 18px; margin: 6px 0; }
-    .cta-box a:not(.cta-btn) { color: var(--paper); text-decoration: underline; }
-    .cta-label { font-size: 11px; color: #666; margin-top: 10px; }
+    .cta-box a:not(.cta-btn) { color: var(--reading-inverse-text); text-decoration: underline; }
+    .cta-label { font-size: 11px; color: light-dark(#666, var(--reading-muted)); margin-top: 10px; }
 
     footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
 
@@ -101,15 +103,15 @@ const description = "去韓國不用再找換錢所換 SIM 卡。依官方線路
     .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-group label { font-size: 13px; font-weight: 500; color: var(--ink-light); letter-spacing: 0.04em; }
     .required { color: var(--accent); }
-    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--reading-control-border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
     .form-group input:focus, .form-group textarea:focus { border-color: var(--ink); }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: #b0a898; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: light-dark(#6d6251, var(--reading-muted)); }
     .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    .form-note { font-size: 12px; color: #999; margin: 0; }
-    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--ink); color: var(--paper); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
-    .submit-btn:hover { background: #2c1f0f; }
-    .form-success { margin-top: 20px; padding: 18px 24px; background: #d5e8d4; border-radius: 4px; color: #27611b; font-size: 15px; font-weight: 500; }
-    .form-success p { margin: 0; color: #27611b; }
+    .form-note { font-size: 12px; color: light-dark(#665b4b, var(--reading-muted)); margin: 0; }
+    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--reading-inverse); color: var(--reading-inverse-text); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .submit-btn:hover { background: light-dark(#2c1f0f, var(--reading-inverse)); }
+    .form-success { margin-top: 20px; padding: 18px 24px; background: var(--reading-success-surface); border-radius: 4px; color: var(--reading-success); font-size: 15px; font-weight: 500; }
+    .form-success p { margin: 0; color: var(--reading-success); }
 
     @media (max-width: 600px) {
       .hero, .article { padding: 0 16px; }

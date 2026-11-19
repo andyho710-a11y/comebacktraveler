@@ -1,4 +1,5 @@
 ---
+import ReadingThemeHead from '../components/ReadingThemeHead.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SocialLinks from '../components/SocialLinks.astro';
@@ -28,6 +29,7 @@ const quickList = [
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <ReadingThemeHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -73,13 +75,13 @@ const quickList = [
   })} />
   <style>
     :root {
-      --ink: #1a1208;
-      --ink-light: #4a3f2f;
-      --paper: #faf8f3;
-      --paper-warm: #f2ede0;
-      --accent: #c0392b;
-      --gold: #b8860b;
-      --border: #d4c9b0;
+      --ink: var(--reading-ink);
+      --ink-light: var(--reading-muted);
+      --paper: var(--reading-paper);
+      --paper-warm: var(--reading-warm);
+      --accent: var(--reading-accent);
+      --gold: var(--reading-gold);
+      --border: var(--reading-border);
       --serif: 'Noto Serif TC', serif;
       --sans: 'Noto Sans TC', sans-serif;
     }
@@ -91,7 +93,7 @@ const quickList = [
     h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
     .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
     .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
-    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--reading-inverse); color: var(--reading-inverse-text); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
 
     .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
@@ -106,12 +108,13 @@ const quickList = [
     .hero-poster { display: block; width: 100%; max-width: 460px; height: auto; margin: 8px auto 6px; border-radius: 10px; border: 1px solid var(--border); }
     .hero-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 32px; font-style: italic; }
 
-    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: var(--reading-surface); }
     .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
     .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
 
-    .mini-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
-    .mini-table th { background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 600; padding: 10px 12px; text-align: left; }
+    .mini-table-wrap { margin: 24px 0; }
+    .mini-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .mini-table th { background: var(--reading-inverse); color: var(--reading-inverse-text); font-family: var(--serif); font-weight: 600; padding: 10px 12px; text-align: left; }
     .mini-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
     .mini-table tr:nth-child(even) td { background: var(--paper-warm); }
     .mini-table td:first-child { text-align: center; font-weight: 700; color: var(--accent); white-space: nowrap; }
@@ -122,30 +125,30 @@ const quickList = [
 
     .x-list { padding-left: 0; list-style: none; margin: 16px 0 24px; }
     .x-list li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
-    .x-list li::before { content: '✕'; position: absolute; left: 0; top: 0; color: #999; font-weight: 700; }
+    .x-list li::before { content: '✕'; position: absolute; left: 0; top: 0; color: light-dark(#665b4b, var(--reading-muted)); font-weight: 700; }
 
     .num-list { padding-left: 0; list-style: none; margin: 16px 0 24px; counter-reset: numlist; }
     .num-list li { position: relative; padding-left: 36px; margin-bottom: 12px; font-size: 16px; counter-increment: numlist; }
-    .num-list li::before { content: counter(numlist); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: var(--accent); color: var(--paper); border-radius: 50%; font-family: var(--serif); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+    .num-list li::before { content: counter(numlist); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: var(--reading-action); color: var(--reading-action-text); border-radius: 50%; font-family: var(--serif); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
 
     /* 聯盟商品卡片 */
-    .product-card { display: flex; gap: 20px; align-items: center; border: 1.5px solid var(--border); border-radius: 10px; padding: 18px 20px; margin: 24px 0; background: #fffdf8; transition: box-shadow 0.2s, border-color 0.2s; }
+    .product-card { display: flex; gap: 20px; align-items: center; border: 1.5px solid var(--border); border-radius: 10px; padding: 18px 20px; margin: 24px 0; background: var(--reading-surface); transition: box-shadow 0.2s, border-color 0.2s; }
     .product-card:hover { box-shadow: 0 6px 20px rgba(26, 18, 8, 0.08); border-color: var(--gold); }
     .product-card-img { width: 120px; height: 120px; flex-shrink: 0; object-fit: contain; background: #fff; border-radius: 8px; border: 1px solid var(--border); padding: 6px; }
     .product-card-body { flex: 1; min-width: 0; }
     .product-card-name { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); margin-bottom: 4px; line-height: 1.4; }
     .product-card-spec { font-size: 12.5px; letter-spacing: 0.04em; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
     .product-card-why { font-size: 14.5px; color: var(--ink-light); line-height: 1.7; margin-bottom: 14px; }
-    .product-card-cta { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; text-decoration: none; font-size: 14.5px; font-weight: 500; padding: 9px 18px; border-radius: 6px; transition: background 0.2s; }
-    .product-card-cta:hover { background: #9e2c1f; }
+    .product-card-cta { display: inline-flex; align-items: center; gap: 6px; background: var(--reading-action); color: var(--reading-action-text); text-decoration: none; font-size: 14.5px; font-weight: 500; padding: 9px 18px; border-radius: 6px; transition: background 0.2s; }
+    .product-card-cta:hover { background: light-dark(#9e2c1f, var(--reading-action-hover)); }
 
-    .shopee-block { border: 1px solid #ee4d2d; border-radius: 12px; padding: 1.25rem 1.5rem; margin: 2rem 0; background: #fff7f5; }
-    .shopee-eyebrow { color: #ee4d2d; font-weight: 700; font-size: 0.9rem; margin: 0 0 0.5rem; }
+    .shopee-block { border: 1px solid light-dark(#ee4d2d, var(--reading-alert)); border-radius: 12px; padding: 1.25rem 1.5rem; margin: 2rem 0; background: light-dark(#fff7f5, var(--reading-alert-surface)); }
+    .shopee-eyebrow { color: light-dark(#b93522, var(--reading-accent)); font-weight: 700; font-size: 0.9rem; margin: 0 0 0.5rem; }
     .shopee-title { margin: 0 0 0.75rem; font-size: 1.15rem; }
     .shopee-desc { margin: 0 0 1.25rem; line-height: 1.7; }
-    .shopee-btn { display: inline-block; background: #ee4d2d; color: #fff; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; }
-    .shopee-btn:hover { background: #d63e1f; }
-    .shopee-note { margin: 0.75rem 0 0; font-size: 0.85rem; color: #888; }
+    .shopee-btn { display: inline-block; background: light-dark(#b93522, var(--reading-action)); color: var(--reading-action-text); font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; }
+    .shopee-btn:hover { background: light-dark(#b3321d, var(--reading-action-hover)); }
+    .shopee-note { margin: 0.75rem 0 0; font-size: 0.85rem; color: light-dark(#665b4b, var(--reading-muted)); }
 
     a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
     a.inline:hover { background: var(--paper-warm); }
@@ -247,28 +250,30 @@ const quickList = [
     「成分對、評價高、適合親子」的原則幫你篩過的，你也可以照同樣邏輯自己找。
   </div>
 
-  <h2>越南防蚊用品快速清單</h2>
+  <h2 id="mosquito-table-label">越南防蚊用品快速清單</h2>
 
-  <table class="mini-table">
-    <thead>
-      <tr>
-        <th>優先級</th>
-        <th>防蚊用品</th>
-        <th>適合情境</th>
-        <th>建議購買</th>
-      </tr>
-    </thead>
-    <tbody>
-      {quickList.map((r) => (
+  <div class="mini-table-wrap reading-table" role="region" tabindex="0" aria-labelledby="mosquito-table-label">
+    <table class="mini-table">
+      <thead>
         <tr>
-          <td>{r.rank}</td>
-          <td>{r.item}</td>
-          <td>{r.scene}</td>
-          <td>{r.buy}</td>
+          <th>優先級</th>
+          <th>防蚊用品</th>
+          <th>適合情境</th>
+          <th>建議購買</th>
         </tr>
-      ))}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {quickList.map((r) => (
+          <tr>
+            <td>{r.rank}</td>
+            <td>{r.item}</td>
+            <td>{r.scene}</td>
+            <td>{r.buy}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 
   <h2>這篇適合誰看？</h2>
   <ul class="check-list">

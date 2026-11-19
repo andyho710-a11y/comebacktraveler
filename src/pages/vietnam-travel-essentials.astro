@@ -1,4 +1,5 @@
 ---
+import ReadingThemeHead from '../components/ReadingThemeHead.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SocialLinks from '../components/SocialLinks.astro';
@@ -113,6 +114,7 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <ReadingThemeHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -132,13 +134,13 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
   <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   <style>
     :root {
-      --ink: #1a1208;
-      --ink-light: #4a3f2f;
-      --paper: #faf8f3;
-      --paper-warm: #f2ede0;
-      --accent: #c0392b;
-      --gold: #b8860b;
-      --border: #d4c9b0;
+      --ink: var(--reading-ink);
+      --ink-light: var(--reading-muted);
+      --paper: var(--reading-paper);
+      --paper-warm: var(--reading-warm);
+      --accent: var(--reading-accent);
+      --gold: var(--reading-gold);
+      --border: var(--reading-border);
       --serif: 'Noto Serif TC', serif;
       --sans: 'Noto Sans TC', sans-serif;
     }
@@ -154,7 +156,7 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
     h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
     .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
     .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
-    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--reading-inverse); color: var(--reading-inverse-text); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
 
     .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
@@ -169,11 +171,11 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
     .article-photo { width: 100%; height: auto; border-radius: 6px; margin: 32px 0 8px; display: block; }
     .photo-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 36px; font-style: italic; }
 
-    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: var(--reading-surface); }
     .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
     .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
 
-    .update-note { border-left: 3px solid var(--gold); background: #fdf8ee; color: var(--ink-light); padding: 12px 16px; margin: 20px 0 28px; border-radius: 6px; font-size: 14px; line-height: 1.75; }
+    .update-note { border-left: 3px solid var(--gold); background: light-dark(#fdf8ee, var(--reading-warm)); color: var(--ink-light); padding: 12px 16px; margin: 20px 0 28px; border-radius: 6px; font-size: 14px; line-height: 1.75; }
     .update-note strong { color: var(--ink); }
     .decision-table-wrap { overflow-x: auto; margin: 24px 0; border: 1px solid var(--border); border-radius: 8px; }
     .decision-table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 14.5px; }
@@ -187,47 +189,47 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
 
     .num-list { padding-left: 0; list-style: none; margin: 16px 0 24px; counter-reset: numlist; }
     .num-list li { position: relative; padding-left: 36px; margin-bottom: 12px; font-size: 16px; counter-increment: numlist; }
-    .num-list li::before { content: counter(numlist); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: var(--accent); color: var(--paper); border-radius: 50%; font-family: var(--serif); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+    .num-list li::before { content: counter(numlist); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: var(--reading-action); color: var(--reading-action-text); border-radius: 50%; font-family: var(--serif); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
 
     /* 聯盟商品卡片 */
-    .product-card { display: flex; gap: 20px; align-items: center; border: 1.5px solid var(--border); border-radius: 10px; padding: 18px 20px; margin: 24px 0; background: #fffdf8; transition: box-shadow 0.2s, border-color 0.2s; }
+    .product-card { display: flex; gap: 20px; align-items: center; border: 1.5px solid var(--border); border-radius: 10px; padding: 18px 20px; margin: 24px 0; background: var(--reading-surface); transition: box-shadow 0.2s, border-color 0.2s; }
     .product-card:hover { box-shadow: 0 6px 20px rgba(26, 18, 8, 0.08); border-color: var(--gold); }
     .product-card-img { width: 120px; height: 120px; flex-shrink: 0; object-fit: contain; background: #fff; border-radius: 8px; border: 1px solid var(--border); padding: 6px; }
     .product-card-body { flex: 1; min-width: 0; }
     .product-card-name { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); margin-bottom: 4px; line-height: 1.4; }
     .product-card-spec { font-size: 12.5px; letter-spacing: 0.04em; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
     .product-card-why { font-size: 14.5px; color: var(--ink-light); line-height: 1.7; margin-bottom: 14px; }
-    .product-card-cta { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; text-decoration: none; font-size: 14.5px; font-weight: 500; padding: 9px 18px; border-radius: 6px; transition: background 0.2s; }
-    .product-card-cta:hover { background: #9e2c1f; }
+    .product-card-cta { display: inline-flex; align-items: center; gap: 6px; background: var(--reading-action); color: var(--reading-action-text); text-decoration: none; font-size: 14.5px; font-weight: 500; padding: 9px 18px; border-radius: 6px; transition: background 0.2s; }
+    .product-card-cta:hover { background: light-dark(#9e2c1f, var(--reading-action-hover)); }
 
     .buying-paths { margin: 32px 0; padding: 24px; border: 1.5px solid var(--gold); border-radius: 12px; background: var(--paper-warm); }
     .buying-paths h2 { margin: 0 0 8px; font-size: 21px; }
     .buying-paths-intro { margin: 0 0 18px; color: var(--ink-light); font-size: 14.5px; }
     .buying-paths-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-    .buying-path { display: flex; flex-direction: column; align-items: flex-start; border: 1px solid var(--border); border-radius: 9px; padding: 18px; background: #fffdf8; }
+    .buying-path { display: flex; flex-direction: column; align-items: flex-start; border: 1px solid var(--border); border-radius: 9px; padding: 18px; background: var(--reading-surface); }
     .buying-path-label { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; }
     .buying-path strong { margin: 5px 0 7px; font-family: var(--serif); font-size: 17px; }
     .buying-path p { margin: 0 0 14px; color: var(--ink-light); font-size: 13.5px; line-height: 1.65; }
-    .buying-path a { margin-top: auto; display: inline-flex; justify-content: center; width: 100%; padding: 10px 14px; border-radius: 7px; background: var(--accent); color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; }
-    .buying-path a:hover { background: #9e2c1f; }
+    .buying-path a { margin-top: auto; display: inline-flex; justify-content: center; width: 100%; padding: 10px 14px; border-radius: 7px; background: var(--reading-action); color: var(--reading-action-text); font-size: 14px; font-weight: 700; text-decoration: none; }
+    .buying-path a:hover { background: light-dark(#9e2c1f, var(--reading-action-hover)); }
     .buying-paths-more { margin: 16px 0 0; text-align: center; font-size: 14px; }
 
     .shopee-block {
-      border: 1px solid #ee4d2d;
+      border: 1px solid light-dark(#ee4d2d, var(--reading-alert));
       border-radius: 12px;
       padding: 1.25rem 1.5rem;
       margin: 2rem 0;
-      background: #fff7f5;
+      background: light-dark(#fff7f5, var(--reading-alert-surface));
     }
-    .shopee-eyebrow { color: #ee4d2d; font-weight: 700; font-size: 0.9rem; margin: 0 0 0.5rem; }
+    .shopee-eyebrow { color: light-dark(#b93522, var(--reading-accent)); font-weight: 700; font-size: 0.9rem; margin: 0 0 0.5rem; }
     .shopee-title { margin: 0 0 0.75rem; font-size: 1.15rem; }
     .shopee-desc { margin: 0 0 1.25rem; line-height: 1.7; }
     .shopee-btn {
-      display: inline-block; background: #ee4d2d; color: #fff; font-weight: 700;
+      display: inline-block; background: light-dark(#b93522, var(--reading-action)); color: var(--reading-action-text); font-weight: 700;
       padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none;
     }
-    .shopee-btn:hover { background: #d63e1f; }
-    .shopee-note { margin: 0.75rem 0 0; font-size: 0.85rem; color: #888; }
+    .shopee-btn:hover { background: light-dark(#b3321d, var(--reading-action-hover)); }
+    .shopee-note { margin: 0.75rem 0 0; font-size: 0.85rem; color: light-dark(#665b4b, var(--reading-muted)); }
 
     a.inline { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
     a.inline:hover { background: var(--paper-warm); }
@@ -325,13 +327,13 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
     炎熱天氣、3C 充電、防身安全。
   </p>
 
-  <aside style="border:1px solid #d4c9b0;background:#f2ede0;border-radius:8px;padding:14px 18px;margin:20px 0;font-size:14px;line-height:1.75;">
+  <aside style="border:1px solid var(--reading-border);background:var(--reading-warm);border-radius:8px;padding:14px 18px;margin:20px 0;font-size:14px;line-height:1.75;">
     <strong>行李清單系列｜看你要的是哪一種：</strong>
     <ul style="margin:8px 0 0;padding-left:18px;">
-      <li><a href="/first-trip-packing-list" style="color:#c0392b;">第一次出國行李清單</a>——通用、不分國家：證件、3C、藥品基本款。</li>
-      <li><a href="/vietnam-packing-list" style="color:#c0392b;">越南行李清單</a>——帶多少、怎麼裝、什麼該上手提。</li>
+      <li><a href="/first-trip-packing-list" style="color:var(--reading-accent);">第一次出國行李清單</a>——通用、不分國家：證件、3C、藥品基本款。</li>
+      <li><a href="/vietnam-packing-list" style="color:var(--reading-accent);">越南行李清單</a>——帶多少、怎麼裝、什麼該上手提。</li>
       <li><strong>越南必備小物推薦（你正在看這篇）</strong>——要帶哪些物品、為什麼。</li>
-      <li><a href="/vietnam-girls-packing" style="color:#c0392b;">越南女生旅行必帶</a>——女生專屬：防曬、私密護理、防身、美妝。</li>
+      <li><a href="/vietnam-girls-packing" style="color:var(--reading-accent);">越南女生旅行必帶</a>——女生專屬：防曬、私密護理、防身、美妝。</li>
     </ul>
   </aside>
 
@@ -341,13 +343,13 @@ const momoPacsafeUrl = "https://s.momoshop.com.tw/s/HoLv7ksQ";
     重點是<strong>規格要對</strong>——對了就是這支幫你的。你也可以照同樣的邏輯自己找。
   </div>
 
-  <h2>先用這張表判斷：你真的需要買什麼？</h2>
+  <h2 id="essentials-table-label">先用這張表判斷：你真的需要買什麼？</h2>
 
   <p>
     這不是把所有旅行用品都塞進行李箱的清單。我用越南的天氣、移動方式與住宿條件，先把「多數人會用到」和「看行程再決定」分開。已經有同類用品的人，不必為了湊清單重複買。
   </p>
 
-  <div class="decision-table-wrap">
+  <div class="decision-table-wrap reading-table" role="region" tabindex="0" aria-labelledby="essentials-table-label">
     <table class="decision-table">
       <thead>
         <tr><th>情境</th><th>優先準備</th><th>可以先不買</th></tr>

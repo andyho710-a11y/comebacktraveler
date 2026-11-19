@@ -1,4 +1,5 @@
 ---
+import ReadingThemeHead from '../components/ReadingThemeHead.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SocialLinks from '../components/SocialLinks.astro';
@@ -14,6 +15,7 @@ const canonical = "https://comebacktraveler.com/thsr-guide";
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <ReadingThemeHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -33,13 +35,13 @@ const canonical = "https://comebacktraveler.com/thsr-guide";
   })} />
   <style>
     :root {
-      --ink: #1a1208;
-      --ink-light: #4a3f2f;
-      --paper: #faf8f3;
-      --paper-warm: #f2ede0;
-      --accent: #c0392b;
-      --gold: #b8860b;
-      --border: #d4c9b0;
+      --ink: var(--reading-ink);
+      --ink-light: var(--reading-muted);
+      --paper: var(--reading-paper);
+      --paper-warm: var(--reading-warm);
+      --accent: var(--reading-accent);
+      --gold: var(--reading-gold);
+      --border: var(--reading-border);
       --serif: 'Noto Serif TC', serif;
       --sans: 'Noto Sans TC', sans-serif;
     }
@@ -55,7 +57,7 @@ const canonical = "https://comebacktraveler.com/thsr-guide";
     h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
     .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
     .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
-    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--reading-inverse); color: var(--reading-inverse-text); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
 
     .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
@@ -75,24 +77,24 @@ const canonical = "https://comebacktraveler.com/thsr-guide";
     .conclusion-box li strong { color: var(--accent); }
 
     .method-card { border: 1.5px solid var(--border); border-radius: 8px; padding: 28px 32px; margin: 32px 0; }
-    .method-card.featured { border-color: var(--accent); background: #fef9f5; }
+    .method-card.featured { border-color: var(--accent); background: light-dark(#fef9f5, var(--reading-warm)); }
     .method-num { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 8px; }
     .method-title { font-family: var(--serif); font-weight: 900; font-size: 21px; margin-bottom: 12px; color: var(--ink); }
     .method-price { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--accent); margin: 10px 0 4px; }
     .method-tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 16px; }
     .tag { font-size: 12px; padding: 3px 10px; border-radius: 10px; background: var(--paper-warm); color: var(--ink-light); font-weight: 500; }
-    .tag-red { background: #fde8e8; color: #8b1a1a; }
-    .tag-green { background: #d5e8d4; color: #1c5e15; }
+    .tag-red { background: var(--reading-alert-surface); color: var(--reading-alert); }
+    .tag-green { background: var(--reading-success-surface); color: light-dark(#1c5e15, var(--reading-success)); }
 
     .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
     .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
 
     .compare-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 14px; }
-    .compare-table th { background: var(--ink); color: var(--paper); padding: 12px 14px; text-align: left; font-family: var(--serif); font-weight: 600; font-size: 13px; }
+    .compare-table th { background: var(--reading-inverse); color: var(--reading-inverse-text); padding: 12px 14px; text-align: left; font-family: var(--serif); font-weight: 600; font-size: 13px; }
     .compare-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
     .compare-table tr:last-child td { border-bottom: none; }
     .compare-table tr:nth-child(even) td { background: var(--paper-warm); }
-    .compare-table .highlight td { background: #fef0ee !important; font-weight: 500; }
+    .compare-table .highlight td { background: light-dark(#fef0ee, var(--reading-alert-surface)) !important; font-weight: 500; }
     .compare-table .highlight td:first-child { border-left: 3px solid var(--accent); padding-left: 11px; }
     .stars { color: var(--gold); letter-spacing: 1px; }
 
@@ -102,15 +104,15 @@ const canonical = "https://comebacktraveler.com/thsr-guide";
     .freq-label { font-size: 12px; font-weight: 500; letter-spacing: 0.12em; color: var(--ink-light); text-transform: uppercase; margin-bottom: 6px; }
     .freq-rec { font-family: var(--serif); font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 6px; }
 
-    .coupon-box { background: var(--ink); color: var(--paper); border-radius: 8px; padding: 24px 28px; margin: 32px 0; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .coupon-box { background: var(--reading-inverse); color: var(--reading-inverse-text); border-radius: 8px; padding: 24px 28px; margin: 32px 0; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
     .coupon-code { font-family: var(--serif); font-size: 22px; font-weight: 900; letter-spacing: 0.12em; color: #ffd700; border: 2px dashed #ffd700; padding: 8px 18px; border-radius: 4px; flex-shrink: 0; }
-    .coupon-desc { font-size: 14px; color: #d4c9b0; line-height: 1.6; }
+    .coupon-desc { font-size: 14px; color: var(--reading-inverse-muted); line-height: 1.6; }
     .coupon-desc strong { color: var(--paper); }
 
-    .cta-box { background: var(--ink); color: var(--paper); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
-    .cta-box p { color: #d4c9b0; margin-bottom: 20px; font-size: 16px; }
-    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
-    .cta-note { font-size: 12px; color: #888; margin-top: 12px; }
+    .cta-box { background: var(--reading-inverse); color: var(--reading-inverse-text); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
+    .cta-box p { color: var(--reading-inverse-muted); margin-bottom: 20px; font-size: 16px; }
+    .cta-btn { display: inline-block; background: var(--reading-action); color: var(--reading-action-text); font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
+    .cta-note { font-size: 12px; color: light-dark(#665b4b, var(--reading-muted)); margin-top: 12px; }
 
     .faq-item { border-top: 1px solid var(--border); padding: 24px 0; }
     .faq-item:last-child { border-bottom: 1px solid var(--border); }
@@ -126,15 +128,15 @@ const canonical = "https://comebacktraveler.com/thsr-guide";
     .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-group label { font-size: 13px; font-weight: 500; color: var(--ink-light); letter-spacing: 0.04em; }
     .required { color: var(--accent); }
-    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--reading-control-border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
     .form-group input:focus, .form-group textarea:focus { border-color: var(--ink); }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: #b0a898; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: light-dark(#6d6251, var(--reading-muted)); }
     .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    .form-note { font-size: 12px; color: #999; margin: 0; }
-    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--ink); color: var(--paper); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
-    .submit-btn:hover { background: #2c1f0f; }
-    .form-success { margin-top: 20px; padding: 18px 24px; background: #d5e8d4; border-radius: 4px; color: #27611b; font-size: 15px; font-weight: 500; }
-    .form-success p { margin: 0; color: #27611b; }
+    .form-note { font-size: 12px; color: light-dark(#665b4b, var(--reading-muted)); margin: 0; }
+    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--reading-inverse); color: var(--reading-inverse-text); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .submit-btn:hover { background: light-dark(#2c1f0f, var(--reading-inverse)); }
+    .form-success { margin-top: 20px; padding: 18px 24px; background: var(--reading-success-surface); border-radius: 4px; color: var(--reading-success); font-size: 15px; font-weight: 500; }
+    .form-success p { margin: 0; color: var(--reading-success); }
 
     @media (max-width: 600px) {
       .hero, .article { padding: 0 16px; }
