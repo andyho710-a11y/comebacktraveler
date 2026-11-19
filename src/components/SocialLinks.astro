@@ -74,12 +74,12 @@ const {
 
 <style>
   .social-links {
-    --sl-ink: #1a1208;
-    --sl-ink-light: #4a3f2f;
-    --sl-paper: #faf8f3;
-    --sl-paper-warm: #f2ede0;
-    --sl-border: #d4c9b0;
-    --sl-accent: #c0392b;
+    --sl-ink: var(--reading-ink);
+    --sl-ink-light: var(--reading-muted);
+    --sl-paper: var(--reading-paper);
+    --sl-paper-warm: var(--reading-warm);
+    --sl-border: var(--reading-border);
+    --sl-accent: var(--reading-accent);
     margin: 40px 0;
     padding: 24px 24px 22px;
     border: 1.5px solid var(--sl-border);
@@ -145,11 +145,11 @@ const {
     background: transparent;
     border-color: rgba(255, 255, 255, 0.15);
   }
-  .social-links.is-inverse .social-heading { color: #faf8f3; }
-  .social-links.is-inverse .social-sub { color: #d4c9b0; }
+  .social-links.is-inverse .social-heading { color: light-dark(#faf8f3, var(--reading-inverse-text)); }
+  .social-links.is-inverse .social-sub { color: var(--reading-inverse-muted); }
   .social-links.is-inverse .social-btn {
     background: transparent;
-    color: #faf8f3;
+    color: light-dark(#faf8f3, var(--reading-inverse-text));
     border-color: rgba(250, 248, 243, 0.4);
   }
   .social-links.is-inverse .social-btn:hover { border-color: transparent; }

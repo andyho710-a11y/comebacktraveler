@@ -1,4 +1,5 @@
 ---
+import ReadingThemeHead from '../components/ReadingThemeHead.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -17,6 +18,7 @@ const LINK_KTX = 'https://linkgo.one/s/dWtAb';
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <ReadingThemeHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -37,13 +39,13 @@ const LINK_KTX = 'https://linkgo.one/s/dWtAb';
   })} />
   <style>
     :root {
-      --ink: #1a1208;
-      --ink-light: #4a3f2f;
-      --paper: #faf8f3;
-      --paper-warm: #f2ede0;
-      --accent: #c0392b;
-      --gold: #b8860b;
-      --border: #d4c9b0;
+      --ink: var(--reading-ink);
+      --ink-light: var(--reading-muted);
+      --paper: var(--reading-paper);
+      --paper-warm: var(--reading-warm);
+      --accent: var(--reading-accent);
+      --gold: var(--reading-gold);
+      --border: var(--reading-border);
       --serif: 'Noto Serif TC', serif;
       --sans: 'Noto Sans TC', sans-serif;
     }
@@ -59,7 +61,7 @@ const LINK_KTX = 'https://linkgo.one/s/dWtAb';
     h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
     .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
     .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
-    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--reading-inverse); color: var(--reading-inverse-text); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
 
     .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
@@ -82,7 +84,7 @@ const LINK_KTX = 'https://linkgo.one/s/dWtAb';
     .klook-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
     .klook-title { font-family: var(--serif); font-weight: 700; font-size: 16px; margin-bottom: 8px; }
     .klook-why { font-size: 14px; color: var(--ink-light); margin-bottom: 12px; }
-    .klook-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: 4px; text-decoration: none; }
+    .klook-btn { display: inline-block; background: var(--reading-action); color: var(--reading-action-text); font-family: var(--serif); font-weight: 600; font-size: 14px; padding: 10px 22px; border-radius: 4px; text-decoration: none; }
 
     .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
     .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
@@ -107,15 +109,15 @@ const LINK_KTX = 'https://linkgo.one/s/dWtAb';
     .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-group label { font-size: 13px; font-weight: 500; color: var(--ink-light); }
     .required { color: var(--accent); }
-    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--reading-control-border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
     .form-group input:focus, .form-group textarea:focus { border-color: var(--ink); }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: #b0a898; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: light-dark(#6d6251, var(--reading-muted)); }
     .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    .form-note { font-size: 12px; color: #999; margin: 0; }
-    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--ink); color: var(--paper); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
-    .submit-btn:hover { background: #2c1f0f; }
-    .form-success { margin-top: 20px; padding: 18px 24px; background: #d5e8d4; border-radius: 4px; }
-    .form-success p { margin: 0; color: #27611b; font-size: 15px; font-weight: 500; }
+    .form-note { font-size: 12px; color: light-dark(#665b4b, var(--reading-muted)); margin: 0; }
+    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--reading-inverse); color: var(--reading-inverse-text); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .submit-btn:hover { background: light-dark(#2c1f0f, var(--reading-inverse)); }
+    .form-success { margin-top: 20px; padding: 18px 24px; background: var(--reading-success-surface); border-radius: 4px; }
+    .form-success p { margin: 0; color: var(--reading-success); font-size: 15px; font-weight: 500; }
 
     @media (max-width: 600px) {
       .hero, .article { padding: 0 16px; }

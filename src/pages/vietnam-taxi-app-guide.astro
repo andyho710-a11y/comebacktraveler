@@ -1,4 +1,5 @@
 ---
+import ReadingThemeHead from '../components/ReadingThemeHead.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SocialLinks from '../components/SocialLinks.astro';
@@ -13,6 +14,7 @@ const cover = "https://comebacktraveler.com/vietnam-taxi-app.jpg";
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <ReadingThemeHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -45,13 +47,13 @@ const cover = "https://comebacktraveler.com/vietnam-taxi-app.jpg";
   })} />
   <style>
     :root {
-      --ink: #1a1208;
-      --ink-light: #4a3f2f;
-      --paper: #faf8f3;
-      --paper-warm: #f2ede0;
-      --accent: #c0392b;
-      --gold: #b8860b;
-      --border: #d4c9b0;
+      --ink: var(--reading-ink);
+      --ink-light: var(--reading-muted);
+      --paper: var(--reading-paper);
+      --paper-warm: var(--reading-warm);
+      --accent: var(--reading-accent);
+      --gold: var(--reading-gold);
+      --border: var(--reading-border);
       --serif: 'Noto Serif TC', serif;
       --sans: 'Noto Sans TC', sans-serif;
     }
@@ -67,7 +69,7 @@ const cover = "https://comebacktraveler.com/vietnam-taxi-app.jpg";
     h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
     .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
     .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
-    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--reading-inverse); color: var(--reading-inverse-text); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
 
     .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
@@ -82,7 +84,7 @@ const cover = "https://comebacktraveler.com/vietnam-taxi-app.jpg";
     .article-photo { width: 100%; height: auto; border-radius: 6px; margin: 32px 0 8px; display: block; }
     .photo-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 36px; font-style: italic; }
 
-    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: #fffdf8; }
+    .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 28px 0; background: var(--reading-surface); }
     .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
     .tip-box p { margin: 0; font-size: 14.5px; line-height: 1.75; }
 
@@ -92,14 +94,14 @@ const cover = "https://comebacktraveler.com/vietnam-taxi-app.jpg";
 
     .num-list { padding-left: 0; list-style: none; margin: 16px 0 24px; counter-reset: numlist; }
     .num-list li { position: relative; padding-left: 36px; margin-bottom: 12px; font-size: 16px; counter-increment: numlist; }
-    .num-list li::before { content: counter(numlist); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: var(--accent); color: var(--paper); border-radius: 50%; font-family: var(--serif); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+    .num-list li::before { content: counter(numlist); position: absolute; left: 0; top: 1px; width: 24px; height: 24px; background: var(--reading-action); color: var(--reading-action-text); border-radius: 50%; font-family: var(--serif); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
 
     .compare-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 15px; background: var(--paper); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
     .compare-table thead { background: var(--paper-warm); }
     .compare-table th, .compare-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
     .compare-table th { font-family: var(--serif); font-weight: 600; color: var(--ink); font-size: 14px; }
     .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table tbody tr:nth-child(even) { background: rgba(242, 237, 224, 0.35); }
+    .compare-table tbody tr:nth-child(even) { background: color-mix(in srgb, var(--reading-warm) 35%, transparent); }
     .compare-table td strong { color: var(--ink); }
 
     .info-grid { display: grid; grid-template-columns: 100px 1fr; gap: 12px 20px; margin: 24px 0; padding: 20px 24px; background: var(--paper-warm); border-radius: 6px; font-size: 15px; }

@@ -1,4 +1,5 @@
 ---
+import ReadingThemeHead from '../components/ReadingThemeHead.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 
@@ -11,6 +12,7 @@ const canonical = "https://comebacktraveler.com/esim-quiz";
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <ReadingThemeHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -41,13 +43,13 @@ const canonical = "https://comebacktraveler.com/esim-quiz";
   })} />
   <style>
     :root {
-      --ink: #1a1208;
-      --ink-light: #4a3f2f;
-      --paper: #faf8f3;
-      --paper-warm: #f2ede0;
-      --accent: #c0392b;
-      --gold: #b8860b;
-      --border: #d4c9b0;
+      --ink: var(--reading-ink);
+      --ink-light: var(--reading-muted);
+      --paper: var(--reading-paper);
+      --paper-warm: var(--reading-warm);
+      --accent: var(--reading-accent);
+      --gold: var(--reading-gold);
+      --border: var(--reading-border);
       --serif: 'Noto Serif TC', serif;
       --sans: 'Noto Sans TC', sans-serif;
     }
@@ -75,23 +77,23 @@ const canonical = "https://comebacktraveler.com/esim-quiz";
       transition: background 0.15s, border-color 0.15s, color 0.15s;
     }
     .opt:hover { border-color: var(--accent); }
-    .opt.selected { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 500; }
+    .opt.selected { background: var(--reading-action); border-color: var(--accent); color: var(--reading-action-text); font-weight: 500; }
 
     .quiz-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 24px; }
     .quiz-submit {
-      font-family: var(--serif); font-weight: 600; font-size: 16px; color: #fff;
-      background: var(--ink); border: none; border-radius: 6px; padding: 13px 32px; cursor: pointer;
+      font-family: var(--serif); font-weight: 600; font-size: 16px; color: var(--reading-action-text);
+      background: var(--reading-inverse); border: none; border-radius: 6px; padding: 13px 32px; cursor: pointer;
       transition: background 0.15s, opacity 0.15s;
     }
     .quiz-submit:disabled { opacity: 0.4; cursor: not-allowed; }
-    .quiz-submit:not(:disabled):hover { background: #2c1f0f; }
+    .quiz-submit:not(:disabled):hover { background: light-dark(#2c1f0f, var(--reading-inverse)); }
     .quiz-hint { font-size: 13px; color: var(--ink-light); }
     #result :global(.quiz-reset) { background: none; border: none; color: var(--accent); font-size: 14px; cursor: pointer; text-decoration: underline; padding: 0; font-family: var(--sans); }
 
     /* Result */
     .result { margin-top: 28px; }
     .result[hidden] { display: none; }
-    #result :global(.result-card) { border: 2px solid var(--accent); border-radius: 12px; padding: 28px 30px; background: #fef9f5; }
+    #result :global(.result-card) { border: 2px solid var(--accent); border-radius: 12px; padding: 28px 30px; background: light-dark(#fef9f5, var(--reading-warm)); }
     #result :global(.result-label) { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
     #result :global(.result-title) { font-family: var(--serif); font-weight: 900; font-size: 23px; color: var(--ink); margin-bottom: 12px; line-height: 1.4; }
     #result :global(.result-summary) { font-size: 16px; color: var(--ink-light); margin-bottom: 14px; }
@@ -102,14 +104,14 @@ const canonical = "https://comebacktraveler.com/esim-quiz";
     #result :global(.result-reading a) { color: var(--accent); text-decoration: none; font-size: 15px; font-weight: 500; }
     #result :global(.result-reading a:hover) { text-decoration: underline; }
     #result :global(.result-cta) {
-      display: inline-block; background: var(--accent); color: #fff;
+      display: inline-block; background: var(--reading-action); color: var(--reading-action-text);
       font-family: var(--serif); font-weight: 600; font-size: 15px;
       padding: 12px 26px; border-radius: 6px; text-decoration: none;
     }
     #result :global(.result-cta) { max-width: 100%; box-sizing: border-box; overflow-wrap: anywhere; padding-inline: 16px; }
-    #result :global(.result-cta.alt) { background: var(--ink); }
-    #result :global(.result-cta:hover) { background: #a93226; }
-    #result :global(.result-cta.alt:hover) { background: #2c1f0f; }
+    #result :global(.result-cta.alt) { background: var(--reading-inverse); }
+    #result :global(.result-cta:hover) { background: var(--reading-action-hover); }
+    #result :global(.result-cta.alt:hover) { background: light-dark(#2c1f0f, var(--reading-inverse)); }
     #result :global(.result-disclosure) { font-size: 12px; color: var(--ink-light); margin-top: 10px; }
     .reset-row { margin-top: 16px; text-align: center; }
 

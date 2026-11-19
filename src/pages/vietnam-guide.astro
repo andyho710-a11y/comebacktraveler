@@ -1,4 +1,5 @@
 ---
+import ReadingThemeHead from '../components/ReadingThemeHead.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import SiteNav from '../components/SiteNav.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -13,6 +14,7 @@ const canonical = "https://comebacktraveler.com/vietnam-guide";
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <ReadingThemeHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -34,13 +36,13 @@ const canonical = "https://comebacktraveler.com/vietnam-guide";
   })} />
   <style>
     :root {
-      --ink: #1a1208;
-      --ink-light: #4a3f2f;
-      --paper: #faf8f3;
-      --paper-warm: #f2ede0;
-      --accent: #c0392b;
-      --gold: #b8860b;
-      --border: #d4c9b0;
+      --ink: var(--reading-ink);
+      --ink-light: var(--reading-muted);
+      --paper: var(--reading-paper);
+      --paper-warm: var(--reading-warm);
+      --accent: var(--reading-accent);
+      --gold: var(--reading-gold);
+      --border: var(--reading-border);
       --serif: 'Noto Serif TC', serif;
       --sans: 'Noto Sans TC', sans-serif;
     }
@@ -56,7 +58,7 @@ const canonical = "https://comebacktraveler.com/vietnam-guide";
     h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
     .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
     .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
-    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--reading-inverse); color: var(--reading-inverse-text); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
 
     .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
@@ -71,19 +73,19 @@ const canonical = "https://comebacktraveler.com/vietnam-guide";
     .photo-caption { font-size: 13px; color: var(--ink-light); text-align: center; margin-bottom: 32px; font-style: italic; }
 
     .recommend-card { border: 2px solid var(--border); border-radius: 8px; padding: 28px 32px; margin: 32px 0; }
-    .recommend-card.featured { border-color: var(--accent); background: #fef9f5; }
+    .recommend-card.featured { border-color: var(--accent); background: light-dark(#fef9f5, var(--reading-warm)); }
     .card-num { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
     .card-title { font-family: var(--serif); font-weight: 900; font-size: 22px; margin-bottom: 12px; }
     .card-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
     .tag { font-size: 12px; padding: 3px 10px; border-radius: 10px; background: var(--paper-warm); color: var(--ink-light); font-weight: 500; }
-    .tag-green { background: #d5e8d4; color: #1c5e15; }
-    .tag-red { background: #fde8e8; color: #8b1a1a; }
+    .tag-green { background: var(--reading-success-surface); color: light-dark(#1c5e15, var(--reading-success)); }
+    .tag-red { background: var(--reading-alert-surface); color: var(--reading-alert); }
     .card-body { font-size: 15px; line-height: 1.75; margin-bottom: 20px; }
     .card-body li { margin-bottom: 6px; padding-left: 4px; }
-    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 13px 30px; border-radius: 4px; text-decoration: none; transition: background 0.15s; }
-    .cta-btn:hover { background: #a93226; }
-    .cta-btn.secondary { background: var(--ink); }
-    .cta-btn.secondary:hover { background: #2c1f0f; }
+    .cta-btn { display: inline-block; background: var(--reading-action); color: var(--reading-action-text); font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 13px 30px; border-radius: 4px; text-decoration: none; transition: background 0.15s; }
+    .cta-btn:hover { background: var(--reading-action-hover); }
+    .cta-btn.secondary { background: var(--reading-inverse); }
+    .cta-btn.secondary:hover { background: light-dark(#2c1f0f, var(--reading-inverse)); }
 
     .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
     .tip-title { font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }

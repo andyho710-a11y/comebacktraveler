@@ -14,7 +14,7 @@ const normalizedTextFiles={
  'robots.txt':'85f0f30bd1ba5ac7e53ba5f1a5c8bf849486b2dbf3b7ab03b64920a6eb9ccd84'
 };
 const files=dir=>readdirSync(new URL('../'+dir,import.meta.url),{recursive:true}).filter(p=>statSync(new URL('../'+dir+'/'+p,import.meta.url)).isFile()).map(p=>p.replaceAll('\\','/')).sort();
-test('all 45 production routes and parsed content/SEO/CTA DOM match pre-upgrade main',()=>{
+test('all 45 travel routes and parsed content/SEO/CTA DOM match the site snapshot',()=>{
  assert.deepEqual(files('dist').filter(p=>p.endsWith('.html')&&p!=='services.html'&&!p.startsWith('services/')),Object.keys(baseline.html).sort());
  for(const [p,h]of Object.entries(baseline.html))assert.equal(semanticHTML(withoutServicesNav(read('dist/'+p).toString())),h,p);
 });

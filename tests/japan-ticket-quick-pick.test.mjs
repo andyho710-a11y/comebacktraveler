@@ -27,11 +27,11 @@ test('disclosure precedes purchases and Express warning is directly associated w
  assert.ok(module.includes('價格、可售日期與方案以商品頁當下資訊為準。'));
  assert.doesNotMatch(module,/TODO|placeholder|最便宜|必買|一定要搶|折扣碼|NT\$/i);
 });
-test('original source remains exact outside the new import and insertion',()=>{
+test('theme-aware source is pinned outside the ticket module import and insertion',()=>{
  const source=read('src/pages/japan-guide.astro').replace(/\r\n/g,'\n').replace("import JapanTicketQuickPick from '../components/JapanTicketQuickPick.astro';\n",'').replace('  <JapanTicketQuickPick />\n\n','');
  assert.equal(hash(source.replace(/\r\n/g,'\n')),baseline.originalSourceHash);
 });
-test('original rendered content and SEO stay exact except dedicated stylesheet packaging',()=>{
+test('rendered content and SEO are pinned outside the ticket module and stylesheet packaging',()=>{
  const clean=withoutServicesNav(html).replace(module,'').replace(/<style\b[^>]*>[\s\S]*?<\/style>|<link rel="stylesheet"[^>]*>/g,'').replace(/\s+/g,' ').trim();
  assert.equal(hash(clean),baseline.originalContentHash);
 });

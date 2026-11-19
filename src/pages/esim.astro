@@ -199,7 +199,7 @@ const brands = [
         只有一個過來人想告訴你的真心話。
       </div>
 
-      <div style="border:1.5px solid var(--accent);border-radius:10px;padding:20px 24px;margin:8px 0 8px;background:#fef9f5;">
+      <div style="border:1.5px solid var(--accent);border-radius:10px;padding:20px 24px;margin:8px 0 8px;background:light-dark(#fef9f5, var(--reading-warm));">
         <div style="font-family:var(--serif);font-weight:700;font-size:17px;margin-bottom:6px;">懶得看整張表？先做個 30 秒測驗</div>
         <p style="font-size:14.5px;color:var(--ink-light);margin:0 0 12px;line-height:1.7;">回答 4 個問題（去哪、待幾天、幾人、最在意什麼），我直接幫你判斷該用 eSIM、WiFi 機還是當地 SIM，eSIM 還會推薦對應品牌。</p>
         <a href="/esim-quiz" style="color:var(--accent);font-weight:600;text-decoration:none;">→ 開始 eSIM 決策樹測驗</a>
@@ -232,7 +232,7 @@ const brands = [
 
       <!-- Table -->
       <div class="table-section">
-        <div class="table-label">品牌比較表 · 2026 年整理</div>
+        <div class="table-label" id="esim-comparison-label">品牌比較表 · 2026 年整理</div>
         <div class="filter-bar" role="group" aria-label="依地區篩選">
           <button class="filter-btn active" data-tag="all">全部</button>
           <button class="filter-btn" data-tag="japan">日本</button>
@@ -240,7 +240,7 @@ const brands = [
           <button class="filter-btn" data-tag="sea">東南亞</button>
           <button class="filter-btn" data-tag="europe">歐洲</button>
         </div>
-        <div class="table-wrap">
+        <div class="table-wrap reading-table" role="region" tabindex="0" aria-labelledby="esim-comparison-label">
           <table>
             <thead>
               <tr>
@@ -454,13 +454,13 @@ const brands = [
   #esim-buying-checklist { scroll-margin-top: 96px; }
 
   .esim-root {
-    --ink: #1a1208;
-    --ink-light: #4a3f2f;
-    --paper: #faf8f3;
-    --paper-warm: #f2ede0;
-    --accent: #c0392b;
-    --gold: #b8860b;
-    --border: #d4c9b0;
+    --ink: var(--reading-ink);
+    --ink-light: var(--reading-muted);
+    --paper: var(--reading-paper);
+    --paper-warm: var(--reading-warm);
+    --accent: var(--reading-accent);
+    --gold: var(--reading-gold);
+    --border: var(--reading-border);
     --serif: 'Noto Serif TC', serif;
     --sans: 'Noto Sans TC', sans-serif;
 
@@ -538,8 +538,8 @@ const brands = [
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--reading-inverse);
+    color: var(--reading-inverse-text);
     font-family: var(--serif);
     font-weight: 900;
     font-size: 15px;
@@ -647,8 +647,8 @@ const brands = [
     font-family: var(--sans);
   }
   .filter-btn.active {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--reading-inverse);
+    color: var(--reading-inverse-text);
     border-color: var(--ink);
   }
   .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -658,14 +658,14 @@ const brands = [
     font-size: 13.5px;
     min-width: 620px;
   }
-  thead tr { background: var(--ink); }
+  thead tr { background: var(--reading-inverse); }
   th {
     padding: 12px 14px;
     text-align: left;
     font-weight: 500;
     font-size: 11.5px;
     letter-spacing: 0.08em;
-    color: var(--paper-warm);
+    color: var(--reading-inverse-text);
     white-space: nowrap;
     font-family: var(--sans);
   }
@@ -676,9 +676,9 @@ const brands = [
     color: var(--ink);
     line-height: 1.5;
   }
-  tr.featured td { background: #fef9f0; }
-  tr:hover td { background: #f5f1e8; }
-  tr.featured:hover td { background: #fef3e0; }
+  tr.featured td { background: light-dark(#fef9f0, var(--reading-warm)); }
+  tr:hover td { background: light-dark(#f5f1e8, var(--reading-warm)); }
+  tr.featured:hover td { background: light-dark(#fef3e0, var(--reading-warm)); }
   .brand-name { font-weight: 500; font-family: var(--serif); font-size: 15px; }
   .badge {
     display: inline-block;
@@ -688,30 +688,30 @@ const brands = [
     margin-top: 4px;
     font-family: var(--sans);
   }
-  .badge-rec  { background: #fdebd0; color: #a04000; }
-  .badge-tw   { background: #d5e8d4; color: #27611b; }
-  .badge-platform { background: #e8d5f5; color: #5b2c8d; }
-  .badge-intl { background: #d6eaf8; color: #1a5276; }
-  .badge-cp   { background: #d5e8f5; color: #154360; }
-  .check { color: #27ae60; font-weight: 600; }
-  .cross { color: #c0392b; }
+  .badge-rec  { background: light-dark(#fdebd0, var(--reading-warm)); color: light-dark(#a04000, var(--reading-gold)); }
+  .badge-tw   { background: var(--reading-success-surface); color: var(--reading-success); }
+  .badge-platform { background: light-dark(#e8d5f5, var(--reading-info-surface)); color: light-dark(#5b2c8d, var(--reading-info)); }
+  .badge-intl { background: var(--reading-info-surface); color: light-dark(#1a5276, var(--reading-info)); }
+  .badge-cp   { background: light-dark(#d5e8f5, var(--reading-info-surface)); color: var(--reading-info); }
+  .check { color: var(--reading-success); font-weight: 600; }
+  .cross { color: var(--reading-accent); }
   .cell-note { font-size: 11px; color: var(--ink-light); margin-top: 2px; }
-  .table-note { font-size: 12px; color: #888; margin-top: 10px; }
+  .table-note { font-size: 12px; color: light-dark(#665b4b, var(--reading-muted)); margin-top: 10px; }
 
   /* CTA */
   .cta-box {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--reading-inverse);
+    color: var(--reading-inverse-text);
     padding: 32px 36px;
     border-radius: 8px;
     margin: 48px 0;
     text-align: center;
   }
-  .cta-box p { color: #f2ede0; margin-bottom: 20px; font-size: 16px; }
+  .cta-box p { color: light-dark(#f2ede0, var(--reading-inverse-text)); margin-bottom: 20px; font-size: 16px; }
   .cta-btn {
     display: inline-block;
-    background: var(--accent);
-    color: #fff;
+    background: var(--reading-action);
+    color: var(--reading-action-text);
     font-family: var(--serif);
     font-weight: 600;
     font-size: 16px;
@@ -721,8 +721,8 @@ const brands = [
     letter-spacing: 0.04em;
     transition: background 0.2s;
   }
-  .cta-btn:hover { background: #a93226; }
-  .cta-label { font-size: 11px; color: #888; margin-top: 10px; font-family: var(--sans); }
+  .cta-btn:hover { background: var(--reading-action-hover); }
+  .cta-label { font-size: 11px; color: var(--reading-inverse-muted); margin-top: 10px; font-family: var(--sans); }
 
   /* Footer */
   .site-footer {
@@ -770,11 +770,10 @@ const brands = [
     font-family: var(--sans);
     font-size: 15px;
     padding: 10px 14px;
-    border: 1.5px solid var(--border);
+    border: 1.5px solid var(--reading-control-border);
     border-radius: 4px;
     background: var(--paper);
     color: var(--ink);
-    outline: none;
     transition: border-color 0.15s;
     resize: vertical;
   }
@@ -784,7 +783,7 @@ const brands = [
   }
   .form-group input::placeholder,
   .form-group textarea::placeholder {
-    color: #b0a898;
+    color: light-dark(#6d6251, var(--reading-muted));
   }
   .form-footer {
     display: flex;
@@ -795,7 +794,7 @@ const brands = [
   }
   .form-note {
     font-size: 12px;
-    color: #999;
+    color: light-dark(#665b4b, var(--reading-muted));
     margin: 0;
   }
   .submit-btn {
@@ -803,25 +802,25 @@ const brands = [
     font-weight: 600;
     font-size: 15px;
     padding: 12px 32px;
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--reading-inverse);
+    color: var(--reading-inverse-text);
     border: none;
     border-radius: 4px;
     cursor: pointer;
     letter-spacing: 0.04em;
     transition: background 0.15s;
   }
-  .submit-btn:hover { background: #2c1f0f; }
+  .submit-btn:hover { background: light-dark(#2c1f0f, var(--reading-inverse)); }
   .form-success {
     margin-top: 20px;
     padding: 18px 24px;
-    background: #d5e8d4;
+    background: var(--reading-success-surface);
     border-radius: 4px;
-    color: #27611b;
+    color: var(--reading-success);
     font-size: 15px;
     font-weight: 500;
   }
-  .form-success p { margin: 0; color: #27611b; }
+  .form-success p { margin: 0; color: var(--reading-success); }
 
   @media (max-width: 600px) {
     .hero { padding: 0 16px; }

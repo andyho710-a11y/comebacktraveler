@@ -1,4 +1,5 @@
 ---
+import ReadingThemeHead from '../../components/ReadingThemeHead.astro';
 import SiteNav from '../../components/SiteNav.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
@@ -13,6 +14,7 @@ const description = "JOYTEL、DJB 等 eSIM 裝不起來、QR Code 掃不了、�
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <ReadingThemeHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -39,14 +41,14 @@ const description = "JOYTEL、DJB 等 eSIM 裝不起來、QR Code 掃不了、�
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #1a1208;
-      --ink-light: #4a3f2f;
-      --paper: #faf8f3;
-      --paper-warm: #f2ede0;
-      --accent: #c0392b;
-      --gold: #b8860b;
-      --border: #d4c9b0;
-      --green: #1D9E75;
+      --ink: var(--reading-ink);
+      --ink-light: var(--reading-muted);
+      --paper: var(--reading-paper);
+      --paper-warm: var(--reading-warm);
+      --accent: var(--reading-accent);
+      --gold: var(--reading-gold);
+      --border: var(--reading-border);
+      --green: light-dark(#237550, var(--reading-success));
       --serif: 'Noto Serif TC', serif;
       --sans: 'Noto Sans TC', sans-serif;
     }
@@ -62,7 +64,7 @@ const description = "JOYTEL、DJB 等 eSIM 裝不起來、QR Code 掃不了、�
     h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(26px, 5vw, 42px); line-height: 1.35; margin-bottom: 20px; }
     .subtitle { font-size: 17px; color: var(--ink-light); margin-bottom: 32px; line-height: 1.7; }
     .meta { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 48px; font-size: 13px; color: var(--ink-light); }
-    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .author-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--reading-inverse); color: var(--reading-inverse-text); font-family: var(--serif); font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .meta-author { font-weight: 500; font-size: 14px; color: var(--ink); }
 
     .article { max-width: 740px; margin: 0 auto; padding: 0 24px 80px; }
@@ -81,7 +83,7 @@ const description = "JOYTEL、DJB 等 eSIM 裝不起來、QR Code 掃不了、�
     .toc a:hover { text-decoration: underline; }
 
     .problem-block { border: 1.5px solid var(--border); border-radius: 8px; padding: 24px 28px; margin: 28px 0; }
-    .problem-block.urgent { border-color: var(--accent); background: #fef9f5; }
+    .problem-block.urgent { border-color: var(--accent); background: light-dark(#fef9f5, var(--reading-warm)); }
     .problem-num { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
     .problem-title { font-family: var(--serif); font-weight: 900; font-size: 19px; margin-bottom: 14px; }
     .problem-cause { font-size: 14px; color: var(--ink-light); background: var(--paper-warm); padding: 10px 14px; border-radius: 4px; margin-bottom: 14px; }
@@ -89,7 +91,7 @@ const description = "JOYTEL、DJB 等 eSIM 裝不起來、QR Code 掃不了、�
     .steps { list-style: none; counter-reset: step-counter; }
     .steps li { counter-increment: step-counter; padding: 8px 0 8px 36px; position: relative; font-size: 15px; border-bottom: 1px dashed var(--border); }
     .steps li:last-child { border-bottom: none; }
-    .steps li::before { content: counter(step-counter); position: absolute; left: 0; top: 8px; width: 24px; height: 24px; background: var(--ink); color: var(--paper); font-family: var(--serif); font-weight: 600; font-size: 13px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .steps li::before { content: counter(step-counter); position: absolute; left: 0; top: 8px; width: 24px; height: 24px; background: var(--reading-inverse); color: var(--reading-inverse-text); font-family: var(--serif); font-weight: 600; font-size: 13px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
     code { font-family: monospace; font-size: 14px; background: var(--paper-warm); padding: 1px 6px; border-radius: 3px; color: var(--accent); border: 1px solid var(--border); }
 
     .tip-box { border: 1.5px solid var(--border); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
@@ -102,11 +104,11 @@ const description = "JOYTEL、DJB 等 eSIM 裝不起來、QR Code 掃不了、�
     .device-card li { font-size: 14px; padding: 3px 0; color: var(--ink-light); }
     .device-card li::before { content: '› '; color: var(--accent); }
 
-    .cta-box { background: var(--ink); color: var(--paper); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
-    .cta-box p { color: #d4c9b0; margin-bottom: 20px; font-size: 16px; }
-    .cta-btn { display: inline-block; background: var(--accent); color: #fff; font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
-    .cta-btn:hover { background: #a93226; }
-    .cta-label { font-size: 11px; color: #666; margin-top: 10px; }
+    .cta-box { background: var(--reading-inverse); color: var(--reading-inverse-text); padding: 32px 36px; border-radius: 8px; margin: 48px 0; text-align: center; }
+    .cta-box p { color: var(--reading-inverse-muted); margin-bottom: 20px; font-size: 16px; }
+    .cta-btn { display: inline-block; background: var(--reading-action); color: var(--reading-action-text); font-family: var(--serif); font-weight: 600; font-size: 16px; padding: 14px 36px; border-radius: 4px; text-decoration: none; }
+    .cta-btn:hover { background: var(--reading-action-hover); }
+    .cta-label { font-size: 11px; color: light-dark(#666, var(--reading-muted)); margin-top: 10px; }
 
     .related-links { border-top: 1px solid var(--border); margin-top: 56px; padding-top: 32px; }
     .related-links h3 { font-family: var(--serif); font-weight: 600; font-size: 17px; margin-bottom: 16px; color: var(--ink-light); }
@@ -123,15 +125,15 @@ const description = "JOYTEL、DJB 等 eSIM 裝不起來、QR Code 掃不了、�
     .form-group { display: flex; flex-direction: column; gap: 6px; }
     .form-group label { font-size: 13px; font-weight: 500; color: var(--ink-light); letter-spacing: 0.04em; }
     .required { color: var(--accent); }
-    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
+    .form-group input, .form-group textarea { font-family: var(--sans); font-size: 15px; padding: 10px 14px; border: 1.5px solid var(--reading-control-border); border-radius: 4px; background: var(--paper); color: var(--ink); outline: none; transition: border-color 0.15s; resize: vertical; }
     .form-group input:focus, .form-group textarea:focus { border-color: var(--ink); }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: #b0a898; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: light-dark(#6d6251, var(--reading-muted)); }
     .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    .form-note { font-size: 12px; color: #999; margin: 0; }
-    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--ink); color: var(--paper); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
-    .submit-btn:hover { background: #2c1f0f; }
-    .form-success { margin-top: 20px; padding: 18px 24px; background: #d5e8d4; border-radius: 4px; color: #27611b; font-size: 15px; font-weight: 500; }
-    .form-success p { margin: 0; color: #27611b; }
+    .form-note { font-size: 12px; color: light-dark(#665b4b, var(--reading-muted)); margin: 0; }
+    .submit-btn { font-family: var(--serif); font-weight: 600; font-size: 15px; padding: 12px 32px; background: var(--reading-inverse); color: var(--reading-inverse-text); border: none; border-radius: 4px; cursor: pointer; transition: background 0.15s; }
+    .submit-btn:hover { background: light-dark(#2c1f0f, var(--reading-inverse)); }
+    .form-success { margin-top: 20px; padding: 18px 24px; background: var(--reading-success-surface); border-radius: 4px; color: var(--reading-success); font-size: 15px; font-weight: 500; }
+    .form-success p { margin: 0; color: var(--reading-success); }
 
     footer { border-top: 2px solid var(--ink); padding: 40px 24px; text-align: center; font-size: 13px; color: var(--ink-light); }
 

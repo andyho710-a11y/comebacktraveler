@@ -38,12 +38,12 @@ const { title, description, current, alternatePath, alternateHref, robots } = As
 
 <style is:global>
   .en-page {
-    --en-ink: #1a1208;
-    --en-muted: #5d5549;
-    --en-paper: #faf8f3;
-    --en-warm: #f2ede0;
-    --en-accent: #c0392b;
-    --en-border: #d4c9b0;
+    --en-ink: var(--reading-ink);
+    --en-muted: light-dark(#5d5549, var(--reading-muted));
+    --en-paper: var(--reading-paper);
+    --en-warm: var(--reading-warm);
+    --en-accent: var(--reading-accent);
+    --en-border: var(--reading-border);
     min-height: 100vh;
     background: var(--en-paper);
     color: var(--en-ink);
@@ -62,7 +62,7 @@ const { title, description, current, alternatePath, alternateHref, robots } = As
   .en-lead { max-width: 700px; font-size: 1.24rem !important; line-height: 1.65; }
   .en-rule { height: 1px; margin: 36px 0; background: var(--en-border); }
   .en-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 32px 0; }
-  .en-card { display: block; min-height: 170px; padding: 24px; border: 1px solid var(--en-border); border-radius: 10px; background: #fffdf9; color: inherit !important; text-decoration: none; transition: transform .15s ease, border-color .15s ease; }
+  .en-card { display: block; min-height: 170px; padding: 24px; border: 1px solid var(--en-border); border-radius: 10px; background: light-dark(#fffdf9, var(--reading-surface)); color: inherit !important; text-decoration: none; transition: transform .15s ease, border-color .15s ease; }
   .en-card:hover { transform: translateY(-2px); border-color: var(--en-accent); }
   .en-card p { margin: 0; font-size: .96rem; }
   .en-card-label { margin: 0 0 8px !important; color: var(--en-accent) !important; font-size: .72rem !important; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }

@@ -1,0 +1,70 @@
+:root {
+  color-scheme: light dark;
+
+  --reading-paper: light-dark(#faf8f3, #1c2530);
+  --reading-surface: light-dark(#fffdf8, #253140);
+  --reading-warm: light-dark(#f2ede0, #2d3949);
+  --reading-ink: light-dark(#1a1208, #eeeff2);
+  --reading-muted: light-dark(#4a3f2f, #c6ced9);
+  --reading-border: light-dark(#d4c9b0, #52647a);
+  --reading-control-border: light-dark(#827765, #8193aa);
+  --reading-accent: light-dark(#c0392b, #ffac9c);
+  --reading-gold: light-dark(#80651f, #e9c484);
+  --reading-success: light-dark(#27611b, #a9dfb4);
+  --reading-success-surface: light-dark(#d5e8d4, #274536);
+  --reading-alert: light-dark(#8b1a1a, #ffc0b9);
+  --reading-alert-surface: light-dark(#fde8e8, #4a3039);
+  --reading-info: light-dark(#154360, #b9d9f6);
+  --reading-info-surface: light-dark(#d6eaf8, #2b4056);
+  --reading-inverse: light-dark(#1a1208, #314158);
+  --reading-inverse-text: light-dark(#faf8f3, #f0f2f6);
+  --reading-inverse-muted: light-dark(#d4c9b0, #d0d9e7);
+  --reading-action: light-dark(#c0392b, #a23930);
+  --reading-action-hover: light-dark(#a93226, #8f302a);
+  --reading-action-text: #fff;
+  --reading-focus: light-dark(#2874bf, #f5ca83);
+
+  background: var(--reading-paper);
+  color: var(--reading-ink);
+}
+
+:root[data-reading-theme='light'] { color-scheme: light; }
+:root[data-reading-theme='dark'] { color-scheme: dark; }
+
+:root :focus-visible {
+  outline: 2px solid var(--reading-focus);
+  outline-offset: 3px;
+}
+
+:where(pre, code, kbd, samp) {
+  background: var(--reading-warm);
+  color: var(--reading-ink);
+}
+
+:where(pre) {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.reading-table {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.reading-table:focus-visible { outline-offset: -2px; }
+
+@media print {
+  :root,
+  :root[data-reading-theme] { color-scheme: light; }
+
+  :root {
+    background: #fff;
+    print-color-adjust: exact;
+  }
+
+  .reading-theme-control, .cbt-nav { display: none !important; }
+
+  :root .reading-table[tabindex] { overflow: visible; }
+  :root .reading-table table { min-width: 0; }
+  :root .reading-table :is(th, td) { white-space: normal; overflow-wrap: anywhere; }
+}

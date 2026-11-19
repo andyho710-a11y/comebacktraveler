@@ -90,7 +90,7 @@ for (const item of recommendations) {
   .recommendations {
     margin: 28px 0 36px;
     padding: 20px 16px;
-    border: 1.5px solid var(--border, #d4c9b0);
+    border: 1.5px solid var(--border, var(--reading-border));
     border-radius: 8px;
     background: var(--paper-warm, #f2ede0);
     color: var(--ink, #1a1208);
@@ -105,7 +105,7 @@ for (const item of recommendations) {
     gap: 14px;
     min-width: 0;
     padding: 16px;
-    border: 1px solid var(--border, #d4c9b0);
+    border: 1px solid var(--border, var(--reading-border));
     border-radius: 6px;
     background: var(--paper, #faf8f3);
     overflow-wrap: anywhere;
@@ -125,19 +125,19 @@ for (const item of recommendations) {
     padding: 12px 16px;
     border: 2px solid transparent;
     border-radius: 4px;
-    background: var(--accent, #c0392b);
-    color: #fff;
+    background: var(--reading-action);
+    color: var(--reading-action-text);
     font-size: 15px;
     font-weight: 600;
     line-height: 1.5;
     text-align: center;
     text-decoration: none;
   }
-  .recommendation-cta:hover { background: #a93226; text-decoration: underline; }
-  .recommendation-cta:focus-visible { outline: 3px solid var(--ink, #1a1208); outline-offset: 4px; }
+  .recommendation-cta:hover { background: var(--reading-action-hover); text-decoration: underline; }
+  .recommendation-cta:focus-visible { outline: 2px solid var(--reading-focus); outline-offset: 4px; }
   .new-tab { font-size: 12px; font-weight: 400; }
-  .guidance { background: var(--ink, #1a1208); }
-  .guidance:hover { background: #4a3f2f; }
+  .guidance { background: var(--reading-inverse); }
+  .guidance:hover { background: light-dark(#4a3f2f, var(--reading-inverse)); }
   @media (min-width: 700px) {
     .recommendations { padding: 24px; }
     .recommendation-card { grid-template-columns: minmax(0, 1fr) 220px; align-items: center; gap: 20px; }

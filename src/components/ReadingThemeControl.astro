@@ -1,0 +1,36 @@
+---
+interface Props {
+  language?: 'zh-TW' | 'en';
+}
+
+const english = Astro.props.language === 'en';
+---
+
+<select
+  class="reading-theme-control"
+  data-reading-theme-control
+  aria-label={english ? 'Reading theme' : '閱讀主題'}
+  disabled
+>
+  <option value="system">{english ? 'System' : '跟隨系統'}</option>
+  <option value="light">{english ? 'Light' : '淺色'}</option>
+  <option value="dark">{english ? 'Dark' : '深色'}</option>
+</select>
+
+<style>
+  .reading-theme-control {
+    flex: 0 0 auto;
+    width: 7.2em;
+    min-height: 36px;
+    padding: 4px 6px;
+    border: 1px solid var(--reading-control-border);
+    border-radius: 4px;
+    background: var(--reading-surface);
+    color: var(--reading-ink);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .reading-theme-control:disabled { visibility: hidden; }
+</style>

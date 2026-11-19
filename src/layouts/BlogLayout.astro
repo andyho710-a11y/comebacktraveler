@@ -1,4 +1,5 @@
 ---
+import ReadingThemeHead from '../components/ReadingThemeHead.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -110,6 +111,7 @@ const structuredData = {
 <html lang={language}>
   <head>
     <meta charset="utf-8" />
+    <ReadingThemeHead />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -159,7 +161,7 @@ const structuredData = {
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <slot name="head" />
   </head>
-  <body class="bg-slate-50 text-gray-800 antialiased">
+  <body class="antialiased">
     <slot />
     {!sensitiveIntake && <><script is:inline>var ConverlyCustomData = {channelId: null};</script> <script is:inline async defer src="https://cdn.adotone.com/production/adlinks/dc1934b1851fb555c85ddccc0e836789cb9598a699c122a43316fc4893529cb8.js"></script></>}
   </body>
